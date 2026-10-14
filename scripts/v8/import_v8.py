@@ -70,7 +70,8 @@ MOUTHS = {
 EYES = {
     "usu": None,
     "jefe": None,
-    "sister":   {"neutral": "02_der", "alegria": "02_der", "risa": "03", "enfado": "04_der", "sorpresa": "02_izq", "tristeza": "03"},
+    # Casi todos los pares de Sister miran de lado; el ojo suelto 05 mira al frente y se usa en ambos lados.
+    "sister":   {"neutral": "05", "alegria": "05", "risa": "03", "enfado": "05", "sorpresa": "05", "tristeza": "05"},
     "reynaldo": {"neutral": "04", "alegria": "05", "risa": "05", "enfado": "06", "sorpresa": "03_izq", "tristeza": "02"},
     "barbas":   {"neutral": "01", "alegria": "05_der", "risa": "05_der", "enfado": "07", "sorpresa": "02", "tristeza": "03"},
 }
@@ -92,12 +93,37 @@ MANUAL_LENSES = {
 # Recortes defectuosos detectados al revisar (se importan pero se avisa y no se usan en borradores).
 ASSET_NOTES = {
     "face.sister.eyes.sister_eyes_01": "El recorte contiene tres ojos (dos pares solapados).",
-    "face.sister.eyes.sister_eyes_05": "El recorte contiene un solo ojo.",
+    "face.sister.eyes.sister_eyes_05": "Un solo ojo mirando al frente: se usa en ambos lados (el derecho en espejo).",
     "face.barbas.mouths.barbas_mouth_10": "Contiene un fragmento de barba suelto en la parte superior.",
 }
 
 
 VIOLATIONS = []
+CLEANED = []
+
+
+def clean_fragments(im, cat):
+    """Elimina trozos sueltos de recorte: bocas → solo la pieza principal; ojos/cejas → piezas ≥ 20 % de la mayor."""
+    im = im.convert("RGBA")
+    w, h = im.size
+    a = im.getchannel("A").load()
+    pts = [(x, y) for y in range(h) for x in range(w) if a[x, y] > 10]
+    comps = sorted(components(pts), key=len, reverse=True)
+    if len(comps) <= 1:
+        return im, 0
+    big = len(comps[0])
+    keep = comps[:1] if cat == "mouths" else [c for c in comps if len(c) >= 0.2 * big]
+    drop = [c for c in comps if c not in keep and len(c) > 3]
+    if not drop:
+        return im, 0
+    out = im.copy()
+    op = out.load()
+    for c in comps:
+        if c in keep:
+            continue
+        for q in c:
+            op[q] = (0, 0, 0, 0)
+    return out, len(drop)
 
 
 def die(msg):
@@ -231,6 +257,8 @@ def analyse_part(cid, cat, im, original_size):
                 # centro = centro del contenido; radio interior ≈ media anchura menos el grosor de la montura.
                 rx = (b[2] - b[0]) / 2 - 5
                 lens[side] = [anchors[side][0], anchors[side][1], round(rx, 1), round(min(rx, (b[3] - b[1]) / 2), 1)]
+        if len(column_runs(im)) < 2:  # ojo suelto: ancla en su centro
+            anchors = {"full": [round((bb[0] + bb[2]) / 2, 1), round((bb[1] + bb[3]) / 2, 1)]}
         info["anchors"] = anchors
         if lens:
             info["lens"] = lens
@@ -646,14 +674,26 @@ def main():
                     missing.append(a["file"])
                     continue
                 im = Image.open(os.path.join(v8, a["file"]))
+                cleaned, removed = clean_fragments(im, cat)
+                if removed:
+                    # copia limpia (solo se borran píxeles de fragmentos sueltos; nada se redibuja)
+                    rel = "clean/" + a["file"]
+                    dst = os.path.join(dest_root, rel)
+                    os.makedirs(os.path.dirname(dst), exist_ok=True)
+                    cleaned.save(dst)
+                    src = ASSET_BASE + "/" + rel
+                    im = Image.open(dst)
+                    CLEANED.append(f"{aid}: {removed} fragmento(s) suelto(s) eliminados")
                 entry = {"id": aid, "name": a["name"], "src": src, "width": im.size[0], "height": im.size[1], "bbox": content_bbox(im)}
+                if removed:
+                    entry["cleaned"] = removed
                 if cat == "brows":
                     runs = column_runs(im)
                     entry["kind"] = "pair" if len(runs) >= 2 else "single"
                     if entry["kind"] == "single":
                         entry["slope"], entry["curve"] = brow_shape(im)
                 elif cat == "eyes":
-                    entry["kind"] = "pair"
+                    entry["kind"] = "pair" if len(column_runs(im)) >= 2 else "single"
                     suffix = a["name"].split("_eyes_")[-1]
                     ewb = EYES_WITH_BROWS.get(cid)
                     if ewb == "all" or (isinstance(ewb, set) and suffix in ewb):
@@ -793,8 +833,14 @@ def main():
             eyes_with_brows = False
             if EYES[cid]:
                 eid = eye_id(EYES[cid][emo])
-                e["eyeL"] = {"assetId": eid, "crop": "left"}
-                e["eyeR"] = {"assetId": eid, "crop": "right"}
+                single = any(x["id"] == eid and x["kind"] == "single" for x in face["eyes"])
+                if single:  # mismo ojo en ambos lados, el derecho en espejo
+                    big = {"dscale": 1.12} if emo == "sorpresa" else {}
+                    e["eyeL"] = {"assetId": eid, **big}
+                    e["eyeR"] = {"assetId": eid, "flip": True, **big}
+                else:
+                    e["eyeL"] = {"assetId": eid, "crop": "left"}
+                    e["eyeR"] = {"assetId": eid, "crop": "right"}
                 eyes_with_brows = any(x["id"] == eid and x.get("includesBrows") for x in face["eyes"])
             bid, dy = brow_for[emo]
             if emo in manual and not eyes_with_brows:
@@ -881,6 +927,7 @@ def main():
             lines.append(f"- `{p['id']}`: {p.get('rig', {}).get('source', 'sin rig')}")
     lines += ["", "## Avisos", "", *report_lines, *[f"- `{k}`: {v}" for k, v in ASSET_NOTES.items()],
               *[f"- ⚠ {v_}" for v_ in VIOLATIONS],
+              *[f"- Limpieza: {c_}" for c_ in CLEANED],
               "- El ZIP no incluye calibraciones ni prefabs guardados (LEEME_ASSETS.txt). Los de Pocket son borradores.",
               "- `scenarios: 0`, `props: 0`, `expressions: 0` en library_index: fondos y objetos siguen siendo provisionales.",
               "- Usu y Jefe no tienen piezas de ojos: llevan gafas de sol dibujadas en el cuerpo.",

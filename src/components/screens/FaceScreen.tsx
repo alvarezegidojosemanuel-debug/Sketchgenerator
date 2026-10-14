@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Catalog, ExpressionPrefab, FaceAsset, FaceRig, FaceSlot, PartRef, SlotAdjust } from "@/lib/catalog/types";
 import { applyOverrides, emotionLabel, emptyOverrides, FACE_SLOTS, findCharacter, variantStatus } from "@/lib/catalog";
-import { slotLabel, validateOverrides, withExpression, withoutEntry, withRig } from "@/lib/face/overrides";
+import { salvageOverrides, slotLabel, validateOverrides, withExpression, withoutEntry, withRig } from "@/lib/face/overrides";
 import { downloadText } from "@/lib/import-export";
 import { HeadPreview } from "../HeadPreview";
 import type { PocketState } from "../usePocket";
@@ -39,10 +39,13 @@ export function FaceScreen({ s }: { s: PocketState }) {
   // Borradores de trabajo (no se guardan hasta pulsar Guardar)
   const pose = ch.poses.find((p) => p.id === poseId) ?? ch.poses[0];
   const savedPrefab = ch.expressions.find((e) => e.id === exprId) ?? ch.expressions[0];
-  const [rig, setRig] = useState<FaceRig | undefined>(pose.rig);
-  const [prefab, setPrefab] = useState<ExpressionPrefab>(savedPrefab);
-  useEffect(() => setRig(structuredClone(pose.rig)), [pose]);
-  useEffect(() => setPrefab(structuredClone(savedPrefab)), [savedPrefab]);
+  // Borradores ligados a SU pose / expresión: al cambiar de pose nunca se arrastran ajustes de otra.
+  const [rigDraft, setRigDraft] = useState<{ id: string; rig: FaceRig | undefined } | null>(null);
+  const [prefabDraft, setPrefabDraft] = useState<ExpressionPrefab | null>(null);
+  const rig = rigDraft && rigDraft.id === pose.id ? rigDraft.rig : pose.rig;
+  const prefab = prefabDraft && prefabDraft.id === savedPrefab.id ? prefabDraft : savedPrefab;
+  const setRig = (fn: (r: FaceRig | undefined) => FaceRig | undefined) => setRigDraft({ id: pose.id, rig: fn(structuredClone(rig)) });
+  const setPrefab = (fn: (p: ExpressionPrefab) => ExpressionPrefab) => setPrefabDraft(fn(structuredClone(prefab)));
   useEffect(() => {
     if (!ch.poses.some((p) => p.id === poseId)) setPoseId(ch.poses[0].id);
     if (!ch.expressions.some((e) => e.id === exprId)) setExprId(ch.expressions[0].id);
@@ -53,8 +56,40 @@ export function FaceScreen({ s }: { s: PocketState }) {
     return () => clearInterval(h);
   }, [talk]);
 
-  const dirtyRig = JSON.stringify(rig) !== JSON.stringify(pose.rig);
+  // Comparación sin metadatos (al guardar, el estado pasa a "calibrated": no es un cambio del usuario).
+  const rigKey = (r: FaceRig | undefined) => JSON.stringify(r ? { ...r, status: undefined, source: undefined, review: undefined } : null);
+  const dirtyRig = rigKey(rig) !== rigKey(pose.rig);
   const dirtyPrefab = JSON.stringify(prefab) !== JSON.stringify(savedPrefab);
+  const [autoState, setAutoState] = useState<"saved" | "pending" | "error">("saved");
+
+  // Guardado automático: cada ajuste se escribe en este dispositivo (IndexedDB) al momento.
+  // ovRef guarda la última versión escrita para que dos cambios seguidos no se pisen.
+  const ovRef = useRef(localFace);
+  useEffect(() => {
+    ovRef.current = localFace;
+  }, [localFace]);
+  const persist = useCallback(
+    async (snap: { rig?: FaceRig; poseId: string; prefab?: ExpressionPrefab; charId: string }) => {
+      try {
+        let ov = ovRef.current;
+        if (snap.rig) ov = withRig(ov, catalog, snap.poseId, snap.rig);
+        if (snap.prefab) ov = withExpression(ov, catalog, snap.charId, snap.prefab);
+        if (!ov) return;
+        ovRef.current = ov;
+        await saveFace(ov);
+        setAutoState("saved");
+      } catch {
+        setAutoState("error");
+      }
+    },
+    [catalog, saveFace],
+  );
+  useEffect(() => {
+    if (!dirtyRig && !dirtyPrefab) return;
+    setAutoState("pending");
+    // Inmediato (sin espera): así nada se pierde al cambiar de pose, de pestaña o cerrar la app.
+    void persist({ rig: dirtyRig ? rig : undefined, poseId: pose.id, prefab: dirtyPrefab ? prefab : undefined, charId: ch.id });
+  }, [rig, prefab, dirtyRig, dirtyPrefab, pose.id, ch.id, persist]);
 
   // Catálogo de previsualización con los borradores aplicados
   const preview: Catalog = useMemo(() => {
@@ -96,22 +131,26 @@ export function FaceScreen({ s }: { s: PocketState }) {
   };
 
   // --- guardar ---
-  const saveRig = async () => {
-    if (!rig) return;
-    await saveFace(withRig(localFace, catalog, pose.id, rig));
-    setMsg(`Calibración de ${ch.name} · ${pose.label} guardada en este dispositivo.`);
-  };
-  const savePrefab = async (asFinal: boolean) => {
-    await saveFace(withExpression(localFace, catalog, ch.id, { ...prefab, status: asFinal ? "final" : prefab.status }));
-    setMsg(`Expresión «${prefab.label}» guardada${asFinal ? " como revisada" : ""}.`);
+  const savePrefab = (asFinal: boolean) => {
+    // pasa por el guardado automático
+    setPrefab((p) => ({ ...p, status: asFinal ? "final" : p.status }));
+    setMsg(`Expresión «${prefab.label}» marcada como revisada.`);
   };
   const resetRig = async () => {
     // Al quitar el override, el catálogo efectivo vuelve al rig estimado y el efecto recarga el borrador.
-    if (localFace?.rigs[pose.id]) await saveFace(withoutEntry(localFace, "rig", pose.id));
+    setRigDraft(null);
+    if (ovRef.current?.rigs[pose.id]) {
+      ovRef.current = withoutEntry(ovRef.current, "rig", pose.id);
+      await saveFace(ovRef.current);
+    }
     setMsg("Calibración local eliminada.");
   };
   const resetPrefab = async () => {
-    if (localFace?.expressions[prefab.id]) await saveFace(withoutEntry(localFace, "expression", prefab.id));
+    setPrefabDraft(null);
+    if (ovRef.current?.expressions[prefab.id]) {
+      ovRef.current = withoutEntry(ovRef.current, "expression", prefab.id);
+      await saveFace(ovRef.current);
+    }
     setMsg("Cambios locales de la expresión eliminados.");
   };
   const createExpression = async () => {
@@ -123,7 +162,8 @@ export function FaceScreen({ s }: { s: PocketState }) {
       return;
     }
     const e: ExpressionPrefab = { ...structuredClone(prefab), id, label: newName.trim().slice(0, 60), status: "draft", custom: true, poseOverrides: {} };
-    await saveFace(withExpression(localFace, catalog, ch.id, e));
+    ovRef.current = withExpression(ovRef.current, catalog, ch.id, e);
+    await saveFace(ovRef.current);
     setExprId(id);
     setNewName("");
     setMsg(`Expresión «${e.label}» creada a partir de «${prefab.label}».`);
@@ -136,11 +176,15 @@ export function FaceScreen({ s }: { s: PocketState }) {
     if (!f) return;
     setImportErrors([]);
     try {
-      const v = validateOverrides(JSON.parse(await f.text()), catalog);
-      if (!v.ok || !v.value) {
-        setImportErrors(v.errors);
+      const raw = JSON.parse(await f.text());
+      const full = validateOverrides(raw, catalog);
+      const { value, dropped } = salvageOverrides(raw, catalog);
+      if (!value) {
+        setImportErrors(full.errors);
         return;
       }
+      if (dropped.length) setImportErrors(full.errors);
+      const v = { value };
       const merged = localFace ? structuredClone(localFace) : emptyOverrides(catalog);
       Object.assign(merged.rigs, v.value.rigs);
       Object.assign(merged.expressions, v.value.expressions);
@@ -314,13 +358,11 @@ export function FaceScreen({ s }: { s: PocketState }) {
           </Field>
         )}
 
+        <p className={autoState === "error" ? "error-text" : "fine"} role="status">
+          {autoState === "pending" ? "Guardando…" : autoState === "error" ? "⚠ No se pudo guardar en este navegador (¿modo privado?). Exporta las caras para no perderlas." : "✓ Guardado automáticamente en este dispositivo"}
+        </p>
         <div className="row">
-          <button type="button" className="btn btn-primary" disabled={!dirtyRig} onClick={saveRig}>Guardar calibración de pose</button>
-          <button type="button" className="btn btn-primary" disabled={!dirtyPrefab} onClick={() => savePrefab(false)}>Guardar expresión</button>
-          <button type="button" className="btn btn-secondary" onClick={() => savePrefab(true)}>Marcar como revisada</button>
-        </div>
-        <div className="row">
-          <button type="button" className="btn btn-ghost" disabled={!dirtyRig && !dirtyPrefab} onClick={() => { setRig(structuredClone(pose.rig)); setPrefab(structuredClone(savedPrefab)); }}>Deshacer cambios sin guardar</button>
+          <button type="button" className="btn btn-secondary" onClick={() => savePrefab(true)}>✓ Marcar expresión como revisada</button>
           {localFace?.rigs[pose.id] && <button type="button" className="btn btn-danger" onClick={resetRig}>Quitar calibración local</button>}
           {localFace?.expressions[prefab.id] && <button type="button" className="btn btn-danger" onClick={resetPrefab}>Quitar cambios de la expresión</button>}
         </div>

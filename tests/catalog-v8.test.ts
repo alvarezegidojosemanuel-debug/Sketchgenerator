@@ -69,8 +69,18 @@ describe("caras: piezas individuales y posición por pose", () => {
   const right = findPose(catalog, "sister", "char.sister.pose_neutral_3q_right")!;
   const neutral = findExpression(catalog, "sister", "expression.sister.neutral")!;
 
+  it("Sister mira al frente: el mismo ojo suelto en ambos lados, el derecho en espejo", () => {
+    expect(neutral.eyeL).toEqual({ assetId: "face.sister.eyes.sister_eyes_05" });
+    expect(neutral.eyeR).toEqual({ assetId: "face.sister.eyes.sister_eyes_05", flip: true });
+  });
+
   it("ojos y cejas son capas independientes (izq/der) con recorte por lado y espejo", () => {
-    const layers = layoutFace({ character: sister, pose: front, expression: neutral });
+    const pairNeutral: ExpressionPrefab = {
+      ...neutral,
+      eyeL: { assetId: "face.sister.eyes.sister_eyes_02_der", crop: "left" },
+      eyeR: { assetId: "face.sister.eyes.sister_eyes_02_der", crop: "right" },
+    };
+    const layers = layoutFace({ character: sister, pose: front, expression: pairNeutral });
     const by = Object.fromEntries(layers.map((l) => [l.slot, l]));
     expect(Object.keys(by).sort()).toEqual(["browL", "browR", "eyeL", "eyeR", "mouth"]);
     // los ojos del par se recortan por mitades: misma imagen, regiones distintas
@@ -81,7 +91,7 @@ describe("caras: piezas individuales y posición por pose", () => {
     expect(by.browR.flip).toBe(true);
     expect(by.browL.flip).toBe(false);
     // cambiar solo un ojo no afecta al otro (guiño)
-    const wink: ExpressionPrefab = { ...neutral, eyeR: { assetId: "face.sister.eyes.sister_eyes_03", crop: "right" } };
+    const wink: ExpressionPrefab = { ...pairNeutral, eyeR: { assetId: "face.sister.eyes.sister_eyes_03", crop: "right" } };
     const w = Object.fromEntries(layoutFace({ character: sister, pose: front, expression: wink }).map((l) => [l.slot, l]));
     expect(w.eyeL.assetId).toBe(by.eyeL.assetId);
     expect(w.eyeR.assetId).toBe("face.sister.eyes.sister_eyes_03");
@@ -253,5 +263,27 @@ describe("estabilidad al hablar (bocas y ojos siempre en el mismo sitio)", () =>
         expect(pose.rig!.mouth!.scale).toBeCloseTo(front.rig!.mouth!.scale * k, 2);
       }
     }
+  });
+});
+
+describe("guardado real de ajustes por expresión+pose (regresión)", () => {
+  it("un ajuste de un solo hueco en una pose se guarda y se vuelve a cargar", () => {
+    const usu = findCharacter(catalog, "usu")!;
+    const e = { ...findExpression(catalog, "usu", "expression.usu.neutral")!, poseOverrides: { "char.usu.pose_neutral_front": { browL: { dx: 0, dy: -6, dscale: 1, rot: 0 } } } };
+    const ov = withRig(withExpression(null, catalog, "usu", e), catalog, usu.poses[2].id, usu.poses[2].rig!);
+    const back = JSON.parse(JSON.stringify(ov));
+    expect(validateOverrides(back, catalog).errors).toEqual([]);
+    const eff = applyOverrides(catalog, back);
+    expect(findExpression(eff, "usu", "expression.usu.neutral")!.poseOverrides!["char.usu.pose_neutral_front"].browL!.dy).toBe(-6);
+  });
+
+  it("una entrada defectuosa no hace perder el resto", async () => {
+    const { salvageOverrides } = await import("@/lib/face/overrides");
+    const usu = findCharacter(catalog, "usu")!;
+    const ov = withRig(null, catalog, usu.poses[0].id, usu.poses[0].rig!);
+    (ov.rigs as Record<string, unknown>)["char.usu.pose_inexistente"] = { status: "calibrated" };
+    const { value, dropped } = salvageOverrides(JSON.parse(JSON.stringify(ov)), catalog);
+    expect(Object.keys(value!.rigs)).toEqual([usu.poses[0].id]);
+    expect(dropped).toEqual(["char.usu.pose_inexistente"]);
   });
 });

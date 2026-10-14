@@ -48,7 +48,8 @@ const Prefab = z.object({
   browR: Part.nullable().optional(),
   mouth: Part,
   talk: z.array(z.string().max(120)).max(8),
-  poseOverrides: z.record(z.string().max(120), z.record(z.enum(["eyeL", "eyeR", "browL", "browR", "mouth"]), Adjust)).optional(),
+  // partialRecord: cada pose ajusta solo los huecos que se han tocado (z.record con enum exige todos)
+  poseOverrides: z.record(z.string().max(120), z.partialRecord(z.enum(["eyeL", "eyeR", "browL", "browR", "mouth"]), Adjust)).optional(),
   custom: z.boolean().optional(),
 });
 const OverridesSchema = z.object({
@@ -119,4 +120,29 @@ export function withoutEntry(ov: FaceOverrides, kind: "rig" | "expression", id: 
 
 export function slotLabel(s: FaceSlot): string {
   return { eyeL: "Ojo izq.", eyeR: "Ojo der.", browL: "Ceja izq.", browR: "Ceja der.", mouth: "Boca" }[s];
+}
+
+/**
+ * Carga tolerante: conserva todas las entradas válidas y descarta solo las inválidas
+ * (nunca se pierde todo el trabajo por una entrada defectuosa).
+ */
+export function salvageOverrides(input: unknown, catalog: Catalog): { value: FaceOverrides | null; dropped: string[] } {
+  const full = validateOverrides(input, catalog);
+  if (full.ok && full.value) return { value: full.value, dropped: [] };
+  if (typeof input !== "object" || input === null) return { value: null, dropped: ["archivo no válido"] };
+  const src = input as Partial<FaceOverrides>;
+  const out = emptyOverrides(catalog);
+  out.updatedAt = typeof src.updatedAt === "string" ? src.updatedAt : out.updatedAt;
+  const dropped: string[] = [];
+  for (const [id, rig] of Object.entries(src.rigs ?? {})) {
+    const probe = { ...emptyOverrides(catalog), rigs: { [id]: rig } };
+    if (validateOverrides(probe, catalog).ok) out.rigs[id] = rig as FaceRig;
+    else dropped.push(id);
+  }
+  for (const [id, e] of Object.entries(src.expressions ?? {})) {
+    const probe = { ...emptyOverrides(catalog), expressions: { [id]: e } };
+    if (validateOverrides(probe, catalog).ok) out.expressions[id] = e as FaceOverrides["expressions"][string];
+    else dropped.push(id);
+  }
+  return { value: out, dropped };
 }

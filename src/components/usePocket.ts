@@ -8,7 +8,7 @@ import demoUsuReyRaw from "@/data/sketch-usu-reynaldo.json";
 import type { PocketProject } from "@/lib/schema/pocket";
 import { validateProject, type Issue } from "@/lib/schema/validate";
 import { faceStore, newProjectId, projectStore } from "@/lib/storage/projects";
-import { validateOverrides } from "@/lib/face/overrides";
+import { salvageOverrides } from "@/lib/face/overrides";
 import type { SketchIntent } from "@/lib/generator/prompt";
 
 export type Tab = "idea" | "generar" | "ver" | "editar" | "caras" | "proyectos";
@@ -56,9 +56,9 @@ export function usePocket() {
       .get()
       .then((ov) => {
         if (!ov) return;
-        const v = validateOverrides(ov, defaultCatalog);
-        if (v.ok && v.value) setLocalFace(v.value);
-        else setStorageError("Las calibraciones guardadas no son válidas para este catálogo y se ignoran.");
+        const { value, dropped } = salvageOverrides(ov, defaultCatalog);
+        if (value) setLocalFace(value);
+        if (dropped.length) setStorageError(`Se ignoraron ${dropped.length} calibraciones no válidas: ${dropped.join(", ")}`);
       })
       .catch(() => {});
   }, []);
