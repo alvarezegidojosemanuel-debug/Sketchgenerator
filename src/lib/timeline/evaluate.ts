@@ -1,5 +1,5 @@
 import type { Catalog } from "@/lib/catalog/types";
-import { findCharacter } from "@/lib/catalog";
+import { findCharacter, findExpression } from "@/lib/catalog";
 import type { DialogueEvent, PocketEvent, PocketProject, PropsEvent, Take } from "@/lib/schema/pocket";
 
 export interface ActorState {
@@ -16,6 +16,8 @@ export interface ActorState {
   gazeY: number;
   speaking: boolean;
   mouthOpen: boolean;
+  /** Boca concreta de este frame (lip-sync con las bocas "talk" de la expresión); undefined = reposo. */
+  mouthAssetId: string | undefined;
   mouthMode: "auto" | "calibrated";
   mouthDx: number;
   mouthDy: number;
@@ -57,6 +59,11 @@ export function sortedEvents(take: Take): PocketEvent[] {
     .map(([e]) => e);
 }
 
+/** Índice de forma de boca abierta (cambia ~4 veces/s) para variar entre las bocas "talk". */
+export function mouthShapeIndex(e: DialogueEvent, t: number): number {
+  return Math.floor((t - e.start) * 4);
+}
+
 /** Boca aproximada: alterna abierta/cerrada ~8 veces/s y se cierra al final de la frase. */
 export function mouthFlap(e: DialogueEvent, t: number): boolean {
   const local = t - e.start;
@@ -84,6 +91,7 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number): FrameStat
       gazeY: 0,
       speaking: false,
       mouthOpen: false,
+      mouthAssetId: undefined,
       mouthMode: "auto",
       mouthDx: 0,
       mouthDy: 0,
@@ -91,6 +99,7 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number): FrameStat
   }
   const props: PropState[] = [];
   const subtitles: Subtitle[] = [];
+  const talkIndex = new Map<string, number>();
 
   for (const e of sortedEvents(take)) {
     if (t < e.start) continue;
@@ -101,7 +110,10 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number): FrameStat
       case "dialogue": {
         if (!st || !active) break;
         st.speaking = true;
-        st.mouthOpen = st.mouthOpen || mouthFlap(e, t);
+        if (mouthFlap(e, t)) {
+          st.mouthOpen = true;
+          talkIndex.set(st.uid, mouthShapeIndex(e, t));
+        }
         subtitles.push({
           eventId: e.id,
           actorUid: e.actorUid,
@@ -150,6 +162,14 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number): FrameStat
         });
         break;
     }
+  }
+
+  // La boca se resuelve al final, con la expresión vigente en t.
+  for (const st of actors.values()) {
+    const k = talkIndex.get(st.uid);
+    if (k === undefined) continue;
+    const ex = st.expressionId ? findExpression(catalog, st.characterId, st.expressionId) : undefined;
+    if (ex?.talk.length) st.mouthAssetId = ex.talk[k % ex.talk.length];
   }
 
   return {

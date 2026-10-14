@@ -3,14 +3,16 @@
 Web móvil (Next.js + TypeScript) que convierte una idea cómica en un sketch **editable y reproducible** de PUÑETOS.
 Funciona de principio a fin **sin claves ni gasto en tokens**: genera un prompt, lo pegas en ChatGPT (u otro modelo), pegas el JSON de vuelta y lo ves y editas en el móvil.
 
-> ⚠️ **Catálogo provisional.** El ZIP `PUNETOS_STUDIO_V3(1).zip` no estaba disponible al construir esto. La app trae un catálogo *placeholder* (dibujos SVG simples con los 5 personajes: Usu, Reynaldo, Sister, Barbas, Jefe) marcado como `source.kind: "placeholder"`, y la interfaz lo indica con la etiqueta «catálogo provisional». Sus IDs **no** son IDs de V3. Para usar la biblioteca real, ver [Catálogo V3](#catálogo-v3).
+Usa los **assets reales de PUÑETOS STUDIO V8** (5 personajes × 10 poses, 23 ojos, 57 cejas, 50 bocas), importados desde `config/library_index.json` sin redibujar nada. Ver [Assets V8](#assets-v8) y `docs/V8_INVENTORY.md`.
+
+> ⚠️ **Caras sin calibrar todavía.** El ZIP V8 no trae calibraciones ni prefabs (lo dice su `LEEME_ASSETS.txt`). Pocket **estima** la posición de ojos, cejas y boca en cada pose y crea **expresiones en borrador**, y la app lo marca como «estimada» / «borrador». Hay que revisarlo y guardarlo en la pantalla **Caras**. Los fondos y objetos siguen siendo provisionales, porque V8 no incluye escenarios ni props.
 
 ## Arranque
 
 ```bash
 npm install
 npm run dev          # http://localhost:3000
-npm test             # 41 pruebas (Vitest)
+npm test             # 58 pruebas (Vitest)
 npm run typecheck
 npm run build
 ```
@@ -26,9 +28,26 @@ Node 20 o superior.
    - **OpenRouter gratuito (opcional)**: apagado. Solo aparece si lo activas tú y el despliegue lo tiene configurado.
 3. **Ver**: escenario 9:16, reproducir, pausar y detener, barra de tiempo, voces del navegador (Web Speech), subtítulos y boca aproximada.
 4. **Editar**: tomas, personajes (pose, expresión, X/Y, escala, profundidad, espejo), eventos ordenados por tiempo. Toca un evento para editar el texto, la voz, la pose, la expresión, la mirada, los objetos, el inicio y la duración. Arrastra a los personajes sobre el escenario.
-5. **Proyectos**: se autoguarda en IndexedDB. Desde aquí puedes cargar, borrar, exportar e importar JSON Pocket y exportar a V3 (con informe de pérdidas).
+5. **Caras**: elige personaje y pose y verás todas sus expresiones. En cada hueco (ojo izq./der., ceja izq./der., boca) puedes:
+   - cambiar la pieza; las piezas dobles se recortan por mitades y las simples se reflejan para el otro lado;
+   - moverla con la cruceta o arrastrando, escalarla y girarla;
+   - ajustar **solo esa expresión en esa pose** (personaje + emoción + pose) o **calibrar la pose** para todas las expresiones;
+   - elegir las bocas del lip-sync y probarlas con «Probar boca hablando»;
+   - crear expresiones nuevas.
+
+   Todo se guarda en el navegador y se puede exportar o importar como `pocket-face-overrides.json`. Ese archivo se puede copiar a `src/data/face-overrides.json` para que lo use todo el mundo.
+6. **Proyectos**: se autoguarda en IndexedDB. Desde aquí puedes cargar, borrar, exportar e importar JSON Pocket, exportar a `punetos_project` v3 (con informe de pérdidas) y abrir las demos (Usu + Reynaldo, Usu + Jefe).
 
 > Si borras los datos del navegador, pierdes los borradores. Exporta el JSON para guardar una copia.
+
+## Tu primer sketch desde el móvil
+
+1. Abre la URL de Vercel en el móvil. Si quieres, añádela a la pantalla de inicio.
+2. **Idea**: escribe o dicta la idea, elige 30 s, marca Usu y Reynaldo y elige el tono.
+3. **Generar** → **📋 Copiar prompt** → pégalo en ChatGPT.
+4. Copia el JSON que devuelve → vuelve a Pocket → **Pegar** (o pega en el cuadro y pulsa **Validar**) → **Abrir en previsualización**.
+5. **Ver** → ▶. Si algo no te convence, **Editar** (texto, pose, expresión, posición) o **Caras** (ajustar una cara en esa pose).
+6. Se guarda solo. En **Proyectos** puedes exportar el JSON como copia.
 
 ## Despliegue GitHub → Vercel
 
@@ -48,7 +67,8 @@ src/lib/
   generator/      prompt determinista (mismo texto para ChatGPT y OpenRouter)
   import-export/  parseo tolerante de texto/JSON (sin eval), exportación
   timeline/       evaluación pura de una toma en t y reproductor con reloj inyectable
-  renderer/       layout de capas (fondo, props-back, actores, props-front)
+  renderer/       capas (fondo, props-back, actores, props-front) y cara por slots (face.ts)
+  face/           guardar/validar calibraciones y prefabs de expresión
   tts/            Web Speech (voces y dictado)
   adapters/       pocketToV3() / v3ToPocket() con informe de pérdidas
   server/         lógica de /api/generate (OpenRouter free-only)
@@ -56,11 +76,13 @@ src/lib/
 src/components/   UI móvil (5 pantallas)
 schema/pocket.schema.json   generado desde Zod (`npm run gen:schema`)
 catalog.json                catálogo actual (copia de src/data/catalog.json)
-examples/sketch-demo.json   sketch de 30 s con Usu y Jefe
-scripts/                    generación de catálogo placeholder / desde V3
+examples/sketch-usu-reynaldo.json  demo de 30 s Usu + Reynaldo (expresiones, voces, ojos, boca, movimiento)
+examples/sketch-demo.json   demo de 30 s Usu + Jefe
+scripts/v8/import_v8.py     importador de assets V8 → catálogo (Python + Pillow, solo desarrollo)
+src/data/face-overrides.json calibraciones/prefabs revisados versionados (vacío de momento)
 ```
 
-## Contrato JSON `pocket-1`
+## Contrato JSON `pocket-1` (formato definitivo del generador)
 
 Mira `schema/pocket.schema.json` y `examples/sketch-demo.json`. En resumen: `metadata`, `catalogVersion`, `canvas` (1080×1920), y `takes[]`, cada una con `id`, `duration`, `backgroundId`, `actors[]` (`uid`, `characterId`, `poseId`, `x`, `y` en los pies, `scale`, `zIndex`) y `events[]` (`id`, `track`, `actorUid`, `start`, `duration`).
 
@@ -77,25 +99,44 @@ Las correcciones automáticas nunca fabrican assets. Si se pide una expresión n
 
 Estos campos son **propuestos para Pocket** y no equivalen al esquema V3/V8.
 
-## Catálogo V3
+## Assets V8
 
 ```bash
-unzip "PUNETOS_STUDIO_V3(1).zip" -d v3-source   # v3-source/ está en .gitignore
-npm run catalog:v3 -- v3-source --dry-run       # inventario sin escribir nada
-npm run catalog:v3 -- v3-source                 # copia assets + licencias y escribe el catálogo
+unzip PUNETOS_ASSETS_V8_PARTE_1_DE_2.zip -d v8-source   # v8-source/ está en .gitignore
+unzip PUNETOS_ASSETS_V8_PARTE_2_DE_2.zip -d v8-source
+pip install pillow
+npm run catalog:v8 -- v8-source
 ```
 
-El script lee `config/library_index.json` y conserva las rutas relativas originales bajo `public/assets/v3/`. Además copia los ficheros de licencia y escribe `docs/V3_INVENTORY.md`, que lista las entradas sin clasificar o sin archivo. No inventa IDs: lo que no sabe clasificar lo deja fuera y lo indica.
+Qué hace el importador:
+- Copia solo los PNG referenciados por `library_index.json` a `public/assets/v8/`, con sus rutas originales.
+- Analiza cada pieza: tamaño original frente a normalizado, ancla (centro, mitad izquierda o derecha, labio superior de la boca) y si es simple o doble.
+- Estima un *rig* facial por pose a partir del dibujo:
+  - **Usu y Jefe**: gafas de sol. No tienen piezas de ojos.
+  - **Reynaldo**: cristales de las gafas; sus ojos se recortan al interior de cada cristal.
+  - **Sister**: óvalo de la cara.
+  - **Barbas**: contorno de la barba; su boca se recorta a la barba.
+- Crea 6 expresiones borrador por personaje: neutral, alegría, risa, enfado, sorpresa y tristeza.
+- Escribe `docs/V8_INVENTORY.md`.
 
-Como no se ha podido ver el formato real de `library_index.json`, la clasificación es heurística y **hay que revisarla** con el ZIP real. Después habrá que rehacer `examples/sketch-demo.json` con IDs reales.
+**Modelo facial** (`expresión efectiva = personaje + emoción + pose`):
+- Cada pose tiene un rig: posición y escala de cada hueco.
+- Cada expresión indica qué pieza va en cada hueco y puede tener ajustes propios por pose (`poseOverrides`).
+- Las piezas solo se trasladan, se escalan de forma uniforme, se giran o se reflejan. Nunca se deforman.
+- Al hablar, todas las bocas comparten el ancla del labio superior y la escala del dibujo original, así que no saltan de sitio. Hay tests que lo comprueban para todas las combinaciones.
 
-## Adaptador V3
+**Validación hecha:** revisé visualmente las 50 poses × 5 personajes y el lip-sync en pose frontal y 3/4. **Revisar a mano en «Caras»:**
+- `char.reynaldo.pose_reaction`: la mano tapa las gafas y los cristales se midieron a mano.
+- Cejas en las poses 3/4 de Usu y Jefe.
+- Cualquier expresión que se vaya a usar en serio. Al guardarla pasa a «calibrada» / «revisada».
 
-`src/lib/adapters/v3.ts` sigue la forma documentada de `templates/TIMELINE_SCHEMA_EXAMPLE.json`: `version: 3`, `type: "punetos_project"`, tomas con `scene` y `timeline.events`, y eventos `body` (`asset_id`, `body_mode`, `from_*`, `target_*`), `face` (`asset_id`) y `mouth` (`asset_id: "__auto__"`).
+## Adaptador `punetos_project` (v3)
+
+V8 sigue usando `"version": 3, "type": "punetos_project"` en su `templates/TIMELINE_SCHEMA_EXAMPLE.json`; el test importa **ese archivo real** (`tests/fixtures/v8-timeline-schema-example.json`) con IDs reales (`char.usu.pose_walk_small_right`, `expression.usu.sorpresa`). `src/lib/adapters/v3.ts` sigue la forma de ese archivo: `version: 3`, `type: "punetos_project"`, tomas con `scene` y `timeline.events`, y eventos `body` (`asset_id`, `body_mode`, `from_*`, `target_*`), `face` (`asset_id`) y `mouth` (`asset_id: "__auto__"`).
 
 Hay un informe de pérdidas: ojos, objetos, ajustes de voz, flip, escala en body y boca calibrada no se exportan. También informa de los supuestos: la forma de `scene.layers` y los valores de `body_mode` son **suposiciones** pendientes de verificar.
 
-El fixture `tests/fixtures/v3-timeline-example.json` se construyó a partir de la especificación, no del fichero real. No hay round-trip perfecto.
+No hay round-trip perfecto, y la forma de `scene.layers` sigue sin documentar en el ZIP.
 
 ## OpenRouter (opcional, solo gratis)
 
@@ -110,16 +151,16 @@ El fixture `tests/fixtures/v3-timeline-example.json` se construyó a partir de l
 
 | Fase | Estado |
 |---|---|
-| 1. Inventario V3 + web básica con reproducción | ✅ web + reproducción; ⚠️ inventario real pendiente del ZIP (script listo) |
+| 1. Inventario de assets + web básica con reproducción | ✅ V8 real (`docs/V8_INVENTORY.md`) |
 | 2. Editor móvil, import/export con validación y tests | ✅ |
-| 3. Prompt + bucle ChatGPT → JSON → Pocket | ✅ |
+| 3. Prompt + bucle ChatGPT → JSON → Pocket | ✅ (IDs V8 reales en el prompt) |
 | 4. OpenRouter opt-in free-only con límites | ✅ (contadores en memoria) |
-| 5. Compatibilidad V8, calibraciones y expresiones por pose | ❌ **depende del ZIP/código V8 real** (no se inventa compatibilidad) |
-| 6. Conector ChatGPT / MCP | ❌ **pendiente**: requiere endpoints autenticados y comprobar los permisos reales de la cuenta. El copiar/pegar sigue siendo la vía garantizada |
-| 7. PWA, CI y Vercel | ✅ CI + instrucciones Vercel; ❌ PWA (manifest/service worker) pendiente |
+| 5. Assets V8, expresiones por pose y calibración | ✅ assets, editor de caras y guardado; ⚠️ rigs **estimados** y prefabs **borrador** hasta revisarlos. No hay código V8: los gestos de manos por emoción no existen como assets |
+| 6. Conector ChatGPT / MCP | ❌ pendiente |
+| 7. PWA, CI y Vercel | ✅ CI + instrucciones Vercel; ❌ PWA |
 
 Pruebas mínimas de la especificación:
-1. Sketch de 30 s con Usu y Jefe sin clave: `tests/playback.test.ts` y `schema.test.ts`.
+1. Sketches de 30 s sin clave (Usu + Jefe y Usu + Reynaldo): `tests/playback.test.ts`, `catalog-v8.test.ts`.
 2. Exportar e importar conservando diálogos y posiciones: `import-export.test.ts`.
 3. JSON inválido con error útil: `schema.test.ts`.
 4. ID inexistente rechazado: `schema.test.ts`.
@@ -127,8 +168,8 @@ Pruebas mínimas de la especificación:
 6. Límite gratuito sin modelo de pago: `api.test.ts`.
 7. Uso en móvil: revisado con un viewport Pixel 7 (Playwright, sin scroll horizontal). **Falta probarlo en Android e iPhone reales.**
 
-Otras limitaciones: las voces TTS y su sincronización varían según el dispositivo, no se produce audio exportable y la boca es aproximada (abre y cierra mientras se habla). Los gestos por emoción y pose dependen de los prefabs V8.
+Otras limitaciones: las voces TTS y su sincronización varían según el dispositivo y no se produce audio exportable. El lip-sync es aproximado: alterna las bocas de la expresión unas 4 veces por segundo y no sigue los fonemas.
 
 ## Licencia
 
-El código y los dibujos *placeholder* son de este repositorio. Los assets de PUÑETOS Studio conservan su licencia original, que el script copia junto a ellos.
+El código y los fondos y objetos *placeholder* son de este repositorio. Los assets de PUÑETOS STUDIO V8 (`public/assets/v8/`) pertenecen a sus autores y se incluyen con su nota original (`LEEME_ASSETS.txt`).

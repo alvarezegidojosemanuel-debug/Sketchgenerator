@@ -42,10 +42,10 @@ describe("rechazos (pruebas 3 y 4)", () => {
 
   it("rechaza una pose de otro personaje", () => {
     const p = demo();
-    p.takes[0].actors[0].poseId = "jefe_idle";
+    p.takes[0].actors[0].poseId = "char.jefe.pose_neutral_front";
     const r = validateProject(p, catalog);
     expect(r.ok).toBe(false);
-    expect(r.errors[0].message).toMatch(/pose "jefe_idle" no existe para Usu/);
+    expect(r.errors[0].message).toMatch(/pose "char.jefe.pose_neutral_front" no existe para Usu/);
   });
 
   it("rechaza fondo y objeto inexistentes", () => {
@@ -103,7 +103,7 @@ describe("normalización de errores comunes (sin fabricar assets)", () => {
   "takes": [{
     "duration": 5,
     "backgroundId": "Oficina",
-    "actors": [{ "uid": "a1", "characterId": "Usu", "poseId": "senala", "x": "300", "y": 1780 }],
+    "actors": [{ "uid": "a1", "characterId": "Usu", "poseId": "pointing", "x": "300", "y": 1780 }],
     "events": [
       { "track": "dialogo", "actor_uid": "a1", "start": 0, "text": "Hola, buenos días a todos" },
       { "track": "face", "actorUid": "a1", "start": 1, "duration": 0.5, "expressionId": "furioso_extremo" },
@@ -121,7 +121,7 @@ describe("normalización de errores comunes (sin fabricar assets)", () => {
     expect(r.ok).toBe(true);
     const t = r.project!.takes[0];
     expect(t.backgroundId).toBe("bg_oficina");
-    expect(t.actors[0]).toMatchObject({ characterId: "usu", poseId: "usu_senala", x: 300 });
+    expect(t.actors[0]).toMatchObject({ characterId: "usu", poseId: "char.usu.pose_pointing", x: 300 });
     expect(t.events[0]).toMatchObject({ track: "dialogue", actorUid: "a1" });
     expect(t.events[0].duration).toBeGreaterThan(0);
     expect(t.duration).toBe(7);
@@ -131,10 +131,16 @@ describe("normalización de errores comunes (sin fabricar assets)", () => {
   it("expresión no registrada → fallback declarado con aviso", () => {
     const r = importProjectText(llmOutput, catalog);
     const face = r.project!.takes[0].events[1] as { expressionId: string };
-    expect(face.expressionId).toBe("usu_cara_neutral");
+    expect(face.expressionId).toBe("expression.usu.neutral");
     expect(r.warnings.some((w) => /fallback declarado/.test(w.message))).toBe(true);
     const face2 = r.project!.takes[0].events[2] as { expressionId: string };
-    expect(face2.expressionId).toBe("usu_cara_triste");
+    expect(face2.expressionId).toBe("expression.usu.tristeza");
+  });
+
+  it("expresión de otro personaje → la equivalente del actor, con aviso (nunca piezas incompatibles)", () => {
+    const r = importProjectText(llmOutput.replace('"expressionId": "furioso_extremo"', '"expressionId": "expression.jefe.enfado"'), catalog);
+    expect((r.project!.takes[0].events[1] as { expressionId: string }).expressionId).toBe("expression.usu.enfado");
+    expect(r.warnings.some((w) => w.path === "takes[0].events[1].expressionId")).toBe(true);
   });
 
   it("no inventa personajes: un nombre desconocido sigue siendo error", () => {

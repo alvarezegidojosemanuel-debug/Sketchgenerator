@@ -17,7 +17,8 @@ describe("generador de prompts", () => {
       for (const p of ch.poses) expect(prompt).toContain(p.id);
       for (const e of ch.expressions) expect(prompt).toContain(e.id);
     }
-    expect(prompt).not.toContain("sister_idle");
+    expect(prompt).not.toContain("char.sister.");
+    expect(prompt).toContain("gafas de sol");
     expect(prompt).toContain('"schemaVersion": "pocket-1"');
     expect(prompt).toMatch(/UN ÚNICO OBJETO JSON/);
     expect(prompt).toContain("30 segundos");

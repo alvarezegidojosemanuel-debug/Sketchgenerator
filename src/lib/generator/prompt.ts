@@ -30,12 +30,12 @@ export interface PromptResult {
 const sortById = <T extends { id: string }>(xs: T[]) => [...xs].sort((a, b) => a.id.localeCompare(b.id));
 
 function characterBlock(ch: Character): string {
-  const poses = sortById(ch.poses).map((p) => `${p.id} (${p.label})`).join(", ");
+  const poses = ch.poses.map((p) => `${p.id} (${p.label})`).join(", ");
   const exprs = sortById(ch.expressions).map((e) => `${e.id} [${e.emotion}]`).join(", ");
   return [
-    `- characterId "${ch.id}" — ${ch.name}`,
-    `  poses: ${poses}`,
-    `  expresiones: ${exprs}`,
+    `- characterId "${ch.id}" — ${ch.name}${ch.hasEyes ? "" : " (lleva gafas de sol dibujadas: los eventos \"eyes\" no se ven)"}`,
+    `  poses (poseId): ${poses}`,
+    `  expresiones (expressionId, válidas en todas sus poses): ${exprs}`,
     `  fallback de expresión: ${ch.fallbackExpressionId}`,
   ].join("\n");
 }
@@ -60,12 +60,12 @@ export function buildExample(catalog: Catalog, chars: Character[], backgroundId:
         duration: 4,
         backgroundId: bg,
         actors: [
-          { uid: "a1", characterId: a.id, poseId: a.poses[0].id, x: 330, y: 1780, scale: 1, zIndex: 1 },
-          ...(twoActors ? [{ uid: "a2", characterId: b.id, poseId: b.poses[0].id, x: 760, y: 1780, scale: 1, zIndex: 2, flip: true }] : []),
+          { uid: "a1", characterId: a.id, poseId: a.poses[0].id, x: 300, y: 1780, scale: 1, zIndex: 1, expressionId: exprOf(a, "neutral") },
+          ...(twoActors ? [{ uid: "a2", characterId: b.id, poseId: b.poses[0].id, x: 780, y: 1780, scale: 1, zIndex: 2, expressionId: exprOf(b, "neutral") }] : []),
         ],
         events: [
           { id: "e1", track: "dialogue", actorUid: "a1", start: 0, duration: 1.8, text: "¿Quién ha dejado esto aquí?" },
-          { id: "e2", track: "face", actorUid: twoActors ? "a2" : "a1", start: 1.9, duration: 0.5, expressionId: exprOf(twoActors ? b : a, "sorprendido") },
+          { id: "e2", track: "face", actorUid: twoActors ? "a2" : "a1", start: 1.9, duration: 0.5, expressionId: exprOf(twoActors ? b : a, "sorpresa") },
           {
             id: "e3",
             track: "body",
@@ -74,7 +74,8 @@ export function buildExample(catalog: Catalog, chars: Character[], backgroundId:
             duration: 0.6,
             poseId: (twoActors ? b : a).poses[(twoActors ? b : a).poses.length - 1].id,
           },
-          { id: "e4", track: "dialogue", actorUid: twoActors ? "a2" : "a1", start: 2.2, duration: 1.6, text: "Yo no he sido." },
+          { id: "e4", track: "dialogue", actorUid: twoActors ? "a2" : "a1", start: 2.2, duration: 1.6, text: "Yo no he sido.", voice: { rate: 1.05, pitch: 0.9 } },
+          { id: "e5", track: "eyes", actorUid: "a1", start: 2.2, duration: 0.3, gazeX: 0.8, gazeY: 0 },
         ],
       },
     ],
@@ -140,16 +141,16 @@ Emociones genéricas: ${[...catalog.emotions].sort().join(", ")}
   "takes": [ {
     "id": string único, "name": string, "duration": segundos (>0, máx ${LIMITS.maxTakeDuration}),
     "backgroundId": ID de fondo o null,
-    "actors": [ { "uid": string único en la toma, "characterId", "poseId" (del mismo personaje), "x": 0-1080, "y": 0-1920 (pies; suelo ≈ 1780), "scale": 0.6-1.4, "zIndex": entero, "flip": boolean opcional } ],
+    "actors": [ { "uid": string único en la toma, "characterId", "poseId" (del mismo personaje), "x": 0-1080 (centro), "y": 0-1920 (pies; suelo ≈ 1780), "scale": 0.7-1.2, "zIndex": entero, "flip": boolean opcional (espejo), "expressionId" inicial } ],
     "events": [ { "id": string único, "track": ..., "actorUid": uid de un actor de ESTA toma, "start": >= 0, "duration": > 0, ...campos del tipo } ]
   } ]
 }
 Tipos de evento (campo "track"):
 - "dialogue": "text" (máx ${LIMITS.maxTextLength} caracteres; frases cortas), "voice" opcional { "rate": 0.5-2, "pitch": 0-2 }.
 - "body": "poseId" opcional (pose del mismo personaje), "x"/"y"/"scale" opcionales (destino del movimiento), "ease": "linear" | "inOut" | "instant".
-- "face": "expressionId" (expresión del mismo personaje).
-- "eyes": "gazeX", "gazeY" entre -1 y 1 (mirada).
-- "mouth": "mode": "auto" (normalmente no hace falta; la boca se anima sola al hablar).
+- "face": "expressionId" (expresión DEL MISMO personaje; cambia cejas, ojos y boca a la vez y se mantiene hasta el siguiente "face").
+- "eyes": "gazeX", "gazeY" entre -1 y 1 (mirada: -1 izquierda/arriba, 1 derecha/abajo).
+- "mouth": "mode": "auto" (la boca se anima sola durante los diálogos con las bocas de la expresión actual; normalmente no hace falta).
 - "props": "propId", "layer": "props-back" | "props-front", "x", "y", "scale" opcional; visible durante su duración; "actorUid" opcional.
 
 ## Reglas estrictas
@@ -157,7 +158,8 @@ Tipos de evento (campo "track"):
 2. No inventes IDs: characterId, poseId, expressionId, backgroundId y propId deben salir del catálogo de arriba.
 3. Si quieres una expresión que no existe, usa el fallback de expresión del personaje.
 4. start + duration de cada evento <= duration de su toma. La suma de duraciones de las tomas ≈ ${intent.duration} s.
-5. Diálogos breves (≈ 0,35 s por palabra + 0,5 s), ritmo cómico, remate final claro.
+5. Diálogos breves (≈ 0,35 s por palabra + 0,5 s), ritmo cómico, remate final claro. Pon "voice" { "rate", "pitch" } distinto a cada personaje.
+5b. Cada personaje mide ≈ 720 px de alto y ≈ 330 de ancho: deja ≥ 360 px entre los "x" de dos personajes. Para que dos personajes se miren, usa poses 3/4 ("..._3q_right" a la izquierda, "..._3q_left" a la derecha) o "flip".
 6. No solapes dos diálogos del mismo actor. Encadena acciones: reacción (face/body) justo antes o después de cada frase.
 7. Máximo ${LIMITS.maxActorsPerTake} actores y ${LIMITS.maxEventsPerTake} eventos por toma. Nada de HTML, código ni URLs en los textos.
 

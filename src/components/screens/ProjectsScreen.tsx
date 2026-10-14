@@ -89,9 +89,14 @@ export function ProjectsScreen({ s }: { s: PocketState }) {
             </li>
           ))}
         </ul>
-        <button type="button" className="btn btn-ghost" onClick={() => { s.replaceProject(demoProject(), "demo"); s.setTab("ver"); }}>
-          Abrir sketch demo
-        </button>
+        <div className="row">
+          <button type="button" className="btn btn-secondary" onClick={() => { s.replaceProject(demoProject("usu-reynaldo"), "demo"); s.setTab("ver"); }}>
+            Demo: Usu + Reynaldo
+          </button>
+          <button type="button" className="btn btn-ghost" onClick={() => { s.replaceProject(demoProject("usu-jefe"), "demo"); s.setTab("ver"); }}>
+            Demo: Usu + Jefe
+          </button>
+        </div>
       </Card>
     </div>
   );

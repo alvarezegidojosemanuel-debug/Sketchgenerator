@@ -1,23 +1,23 @@
 import type { Catalog, Pose } from "@/lib/catalog/types";
-import { findBackground, findExpression, findPose, findProp, mouthFor } from "@/lib/catalog";
+import { findBackground, findCharacter, findExpression, findPose, findProp } from "@/lib/catalog";
 import type { ActorState, FrameState, PropState } from "@/lib/timeline/evaluate";
+import { layoutFace, type FaceLayer } from "./face";
 
 /**
  * Traduce un FrameState a capas posicionadas en el lienzo 1080×1920
- * (independiente de React/DOM para poder probarlo y reutilizarlo en Canvas).
+ * (independiente de React/DOM). Profundidad: fondo, props-back, actores, props-front.
  */
 export interface ActorLayout {
   uid: string;
   z: number;
   pose: Pose | undefined;
-  /** Esquina superior izquierda del contenedor de la pose, en px del lienzo. */
+  /** Esquina superior izquierda de la imagen de la pose, en px del lienzo (antes de escalar). */
   left: number;
   top: number;
+  /** Escala total = escala del actor × displayScale de la pose. */
   scale: number;
   flip: boolean;
-  face?: { src: string; left: number; top: number; width: number; height: number };
-  mouth?: { src: string; left: number; top: number; width: number; height: number };
-  eyes: { cx: number; cy: number; px: number; py: number }[];
+  face: FaceLayer[];
   speaking: boolean;
 }
 
@@ -48,42 +48,35 @@ function layoutProp(catalog: Catalog, p: PropState, base: number): PropLayout | 
   return { key: p.key, src: prop.src, left: p.x - w / 2, top: p.y - h, width: w, height: h, z: base + p.zIndex };
 }
 
-function layoutActor(catalog: Catalog, a: ActorState): ActorLayout {
+export function layoutActor(catalog: Catalog, a: ActorState): ActorLayout {
+  const ch = findCharacter(catalog, a.characterId);
   const pose = findPose(catalog, a.characterId, a.poseId);
   const pw = pose?.width ?? 400;
-  const ph = pose?.height ?? 900;
-  const anchors = pose?.anchors ?? {};
-  const out: ActorLayout = {
+  const ph = pose?.height ?? 600;
+  const expression = a.expressionId ? findExpression(catalog, a.characterId, a.expressionId) : undefined;
+  return {
     uid: a.uid,
     z: Z.actors + a.zIndex,
     pose,
     left: a.x - pw / 2,
     top: a.y - ph,
-    scale: a.scale,
+    scale: a.scale * (pose?.displayScale ?? 1),
     flip: a.flip,
-    eyes: [],
     speaking: a.speaking,
+    face:
+      ch && pose
+        ? layoutFace({
+            character: ch,
+            pose,
+            expression,
+            mouthAssetId: a.mouthAssetId,
+            gazeX: a.gazeX,
+            gazeY: a.gazeY,
+            mouthDx: a.mouthDx,
+            mouthDy: a.mouthDy,
+          })
+        : [],
   };
-  const expr = a.expressionId ? findExpression(catalog, a.characterId, a.expressionId) : undefined;
-  if (expr?.src) {
-    const ew = expr.width ?? 240;
-    const eh = expr.height ?? 240;
-    const fx = (anchors.face?.x ?? 0.5) * pw;
-    const fy = (anchors.face?.y ?? 0.19) * ph;
-    out.face = { src: expr.src, left: fx - ew / 2, top: fy - eh / 2, width: ew, height: eh };
-  }
-  for (const eye of [anchors.eyeL, anchors.eyeR]) {
-    if (!eye) continue;
-    out.eyes.push({ cx: eye.x * pw, cy: eye.y * ph, px: eye.x * pw + a.gazeX * 8, py: eye.y * ph + a.gazeY * 6 });
-  }
-  const m = mouthFor(catalog, a.mouthOpen ? "open" : "closed");
-  if (m) {
-    // Anclaje del catálogo (auto) o fallback manual cuando la pose no lo trae.
-    const mx = (anchors.mouth?.x ?? 0.5) * pw + a.mouthDx;
-    const my = (anchors.mouth?.y ?? 0.25) * ph + a.mouthDy;
-    out.mouth = { src: m.src, left: mx - m.width / 2, top: my - m.height / 2, width: m.width, height: m.height };
-  }
-  return out;
 }
 
 export function layoutFrame(catalog: Catalog, frame: FrameState): StageLayout {

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import type { Catalog } from "@/lib/catalog/types";
 import type { FrameState } from "@/lib/timeline/evaluate";
 import { layoutFrame } from "@/lib/renderer/layout";
+import { FigureBody } from "./ActorFigure";
 
 interface Props {
   catalog: Catalog;
@@ -71,7 +72,7 @@ export function Stage({ catalog, frame, showSubtitles = true, selectedUid, onSel
           ))}
           {layout.actors.map((a) => {
             const pw = a.pose?.width ?? 400;
-            const ph = a.pose?.height ?? 900;
+            const ph = a.pose?.height ?? 600;
             return (
               <div
                 key={a.uid}
@@ -87,19 +88,7 @@ export function Stage({ catalog, frame, showSubtitles = true, selectedUid, onSel
                   cursor: onMoveActor ? "grab" : undefined,
                 }}
               >
-                {a.pose ? <img src={a.pose.src} alt="" draggable={false} width={pw} height={ph} /> : <div className="missing">?</div>}
-                {a.eyes.length > 0 && (
-                  <svg className="layer" width={pw} height={ph} style={{ left: 0, top: 0 }} aria-hidden>
-                    {a.eyes.map((e, i) => (
-                      <g key={i}>
-                        <circle cx={e.cx} cy={e.cy} r={17} fill="#fff" stroke="#1f1308" strokeWidth={3} />
-                        <circle cx={e.px} cy={e.py} r={8} fill="#1f1308" />
-                      </g>
-                    ))}
-                  </svg>
-                )}
-                {a.face && <img className="layer" src={a.face.src} alt="" draggable={false} style={{ left: a.face.left, top: a.face.top, width: a.face.width, height: a.face.height }} />}
-                {a.mouth && <img className="layer" src={a.mouth.src} alt="" draggable={false} style={{ left: a.mouth.left, top: a.mouth.top, width: a.mouth.width, height: a.mouth.height }} />}
+                <FigureBody a={a} />
               </div>
             );
           })}

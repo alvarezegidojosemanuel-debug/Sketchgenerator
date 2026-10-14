@@ -11,3 +11,4 @@ next-env.d.ts
 # ZIPs de origen: no se versionan (licencia / tamaño)
 *.zip
 /v3-source/
+/v8-source/

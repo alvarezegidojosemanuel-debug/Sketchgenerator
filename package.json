@@ -11,8 +11,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "gen:schema": "tsx scripts/gen-schema.ts",
-    "gen:placeholder": "node scripts/make-placeholder-catalog.mjs",
-    "catalog:v3": "node scripts/build-catalog-from-v3.mjs"
+    "catalog:v8": "python3 -I scripts/v8/import_v8.py"
   },
   "engines": {
     "node": ">=20"

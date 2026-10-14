@@ -1,20 +1,28 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { catalog } from "@/lib/catalog";
+import { applyOverrides, catalog as defaultCatalog } from "@/lib/catalog";
+import type { FaceOverrides } from "@/lib/catalog/types";
 import demoRaw from "@/data/sketch-demo.json";
+import demoUsuReyRaw from "@/data/sketch-usu-reynaldo.json";
 import type { PocketProject } from "@/lib/schema/pocket";
 import { validateProject, type Issue } from "@/lib/schema/validate";
-import { newProjectId, projectStore } from "@/lib/storage/projects";
+import { faceStore, newProjectId, projectStore } from "@/lib/storage/projects";
+import { validateOverrides } from "@/lib/face/overrides";
 import type { SketchIntent } from "@/lib/generator/prompt";
 
-export type Tab = "idea" | "generar" | "ver" | "editar" | "proyectos";
+export type Tab = "idea" | "generar" | "ver" | "editar" | "caras" | "proyectos";
 
 const LAST_ID_KEY = "pocket:lastProjectId";
 const INTENT_KEY = "pocket:intent";
 
-export function demoProject(): PocketProject {
-  const r = validateProject(structuredClone(demoRaw), catalog);
+export const DEMOS = {
+  "usu-reynaldo": demoUsuReyRaw,
+  "usu-jefe": demoRaw,
+} as const;
+
+export function demoProject(which: keyof typeof DEMOS = "usu-jefe"): PocketProject {
+  const r = validateProject(structuredClone(DEMOS[which]), defaultCatalog);
   if (!r.project) throw new Error("El sketch demo no valida: " + JSON.stringify(r.errors));
   return r.project;
 }
@@ -32,12 +40,32 @@ function safeLocal<T>(fn: () => T, fallback: T): T {
 export function usePocket() {
   const [tab, setTab] = useState<Tab>("idea");
   const [intent, setIntentState] = useState<SketchIntent>(defaultIntent);
-  const [project, setProjectState] = useState<PocketProject>(() => demoProject());
+  const [project, setProjectState] = useState<PocketProject>(() => demoProject("usu-reynaldo"));
   const [projectId, setProjectId] = useState<string>(() => "demo");
   const [saveState, setSaveState] = useState<"idle" | "saving" | "saved" | "error">("idle");
   const [storageError, setStorageError] = useState<string | null>(null);
+  const [localFace, setLocalFace] = useState<FaceOverrides | null>(null);
+  const catalog = useMemo(() => applyOverrides(defaultCatalog, localFace), [localFace]);
   const loaded = useRef(false);
   const dirty = useRef(false);
+
+  // Calibraciones faciales guardadas en este navegador.
+  useEffect(() => {
+    faceStore
+      .get()
+      .then((ov) => {
+        if (!ov) return;
+        const v = validateOverrides(ov, defaultCatalog);
+        if (v.ok && v.value) setLocalFace(v.value);
+        else setStorageError("Las calibraciones guardadas no son válidas para este catálogo y se ignoran.");
+      })
+      .catch(() => {});
+  }, []);
+
+  const saveFace = useCallback(async (ov: FaceOverrides) => {
+    setLocalFace(ov);
+    await faceStore.save(ov);
+  }, []);
 
   // Restaurar intención y último proyecto.
   useEffect(() => {
@@ -113,10 +141,10 @@ export function usePocket() {
     return () => clearTimeout(h);
   }, [project, projectId]);
 
-  const validation = useMemo(() => validateProject(project, catalog), [project]);
+  const validation = useMemo(() => validateProject(project, catalog), [project, catalog]);
   const issues: Issue[] = validation.errors;
 
-  return { tab, setTab, intent, setIntent, project, projectId, replaceProject, editProject, issues, saveState, storageError, catalog };
+  return { tab, setTab, intent, setIntent, project, projectId, replaceProject, editProject, issues, saveState, storageError, catalog, localFace, saveFace };
 }
 
 export type PocketState = ReturnType<typeof usePocket>;

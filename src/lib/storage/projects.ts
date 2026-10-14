@@ -3,10 +3,12 @@
  * Borrar los datos del navegador elimina los borradores: exporta JSON para guardar copia.
  */
 import type { PocketProject } from "@/lib/schema/pocket";
+import type { FaceOverrides } from "@/lib/catalog/types";
 
 const DB_NAME = "punetos-pocket";
 const STORE = "projects";
-const VERSION = 1;
+const FACE_STORE = "face";
+const VERSION = 2;
 
 export interface StoredProject {
   id: string;
@@ -22,18 +24,19 @@ function open(): Promise<IDBDatabase> {
     req.onupgradeneeded = () => {
       const db = req.result;
       if (!db.objectStoreNames.contains(STORE)) db.createObjectStore(STORE, { keyPath: "id" });
+      if (!db.objectStoreNames.contains(FACE_STORE)) db.createObjectStore(FACE_STORE);
     };
     req.onsuccess = () => resolve(req.result);
     req.onerror = () => reject(req.error);
   });
 }
 
-async function tx<T>(mode: IDBTransactionMode, fn: (s: IDBObjectStore) => IDBRequest<T>): Promise<T> {
+async function tx<T>(mode: IDBTransactionMode, fn: (s: IDBObjectStore) => IDBRequest<T>, store = STORE): Promise<T> {
   const db = await open();
   try {
     return await new Promise<T>((resolve, reject) => {
-      const t = db.transaction(STORE, mode);
-      const req = fn(t.objectStore(STORE));
+      const t = db.transaction(store, mode);
+      const req = fn(t.objectStore(store));
       req.onsuccess = () => resolve(req.result);
       req.onerror = () => reject(req.error);
     });
@@ -61,3 +64,9 @@ export function newProjectId(): string {
     ? crypto.randomUUID()
     : `p_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
 }
+
+/** Calibraciones faciales y prefabs guardados en este navegador. */
+export const faceStore = {
+  get: () => tx<FaceOverrides | undefined>("readonly", (s) => s.get("local") as IDBRequest<FaceOverrides | undefined>, FACE_STORE),
+  save: (ov: FaceOverrides) => tx("readwrite", (s) => s.put(ov, "local"), FACE_STORE),
+};

@@ -85,18 +85,36 @@ function matchPoseId(ch: Character, raw: unknown): string | undefined {
   const hit =
     ch.poses.find((p) => p.id === raw) ??
     ch.poses.find((p) => norm(p.id) === n) ??
-    ch.poses.find((p) => norm(p.id) === `${norm(ch.id)}_${n}`) ??
+    ch.poses.find((p) => norm(p.key) === n) ??
+    ch.poses.find((p) => norm(p.key) === `pose_${n}`) ??
     ch.poses.find((p) => norm(p.label) === n);
   return hit?.id;
+}
+
+/** Sinónimos frecuentes → emoción del catálogo. */
+export const EMOTION_SYNONYMS: Record<string, string> = {
+  neutro: "neutral", normal: "neutral", serio: "neutral",
+  feliz: "alegria", contento: "alegria", alegre: "alegria", happy: "alegria", sonrisa: "alegria",
+  reir: "risa", riendo: "risa", carcajada: "risa", laugh: "risa",
+  enfadado: "enfado", enojado: "enfado", furioso: "enfado", ira: "enfado", angry: "enfado",
+  sorprendido: "sorpresa", asombro: "sorpresa", surprised: "sorpresa", susto: "sorpresa", asustado: "sorpresa",
+  triste: "tristeza", sad: "tristeza", pena: "tristeza", llorar: "tristeza",
+};
+
+export function normalizeEmotion(raw: string): string {
+  const n = norm(raw);
+  return EMOTION_SYNONYMS[n] ?? n;
 }
 
 function matchExpressionId(ch: Character, raw: unknown): string | undefined {
   if (typeof raw !== "string") return undefined;
   const n = norm(raw);
+  const last = n.split(".").pop() ?? n;
   const hit =
     ch.expressions.find((e) => e.id === raw) ??
     ch.expressions.find((e) => norm(e.id) === n) ??
-    ch.expressions.find((e) => norm(e.label) === n);
+    ch.expressions.find((e) => norm(e.label) === n) ??
+    ch.expressions.find((e) => e.emotion === normalizeEmotion(last) && (n === last || n.startsWith(`expression.${ch.id}.`)));
   return hit?.id;
 }
 
@@ -259,7 +277,7 @@ export function normalizeRaw(input: unknown, catalog: Catalog, warnings: Issue[]
             if (eid) e.expressionId = eid;
             else {
               // ¿Es en realidad una emoción?
-              const asEmotion = typeof e.expressionId === "string" ? norm(e.expressionId) : "";
+              const asEmotion = typeof e.expressionId === "string" ? normalizeEmotion(String(e.expressionId).split(".").pop() ?? "") : "";
               const { expression, usedFallback } = expressionForEmotion(catalog, ch.id, asEmotion);
               warnings.push({
                 path: `${ep}.expressionId`,
@@ -270,7 +288,7 @@ export function normalizeRaw(input: unknown, catalog: Catalog, warnings: Issue[]
               e.expressionId = expression?.id;
             }
           } else if (typeof e.emotion === "string") {
-            const { expression, usedFallback } = expressionForEmotion(catalog, ch.id, norm(e.emotion));
+            const { expression, usedFallback } = expressionForEmotion(catalog, ch.id, normalizeEmotion(e.emotion));
             if (usedFallback) {
               warnings.push({
                 path: `${ep}.emotion`,

@@ -1,0 +1,7 @@
+PUÑETOS STUDIO V8 - ASSETS Y JSON, SIN CODIGO
+
+Incluye imagenes PNG y archivos JSON de inventario, poses y ejemplo de timeline.
+No contiene scripts, ejecutables, codigo Python/JS, HTML, BAT, SH ni archivos compilados.
+Conserva las rutas originales relativas a PUNETOS_STUDIO_V8 para que coincidan con library_index.json.
+Nota: el ZIP original no incluye calibraciones ni prefabs personales guardados posteriormente.
+Este paquete no es una aplicacion ejecutable: es material para importar al repositorio Pocket.

@@ -1,0 +1,428 @@
+{
+  "schemaVersion": "pocket-1",
+  "catalogVersion": "v8-assets-1",
+  "metadata": {
+    "title": "La contraseña del wifi",
+    "language": "es-ES",
+    "approxDuration": 30,
+    "idea": "Reynaldo lleva horas intentando adivinar la nueva contraseña del wifi que ha puesto Usu."
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1920
+  },
+  "takes": [
+    {
+      "id": "take_1",
+      "name": "La pregunta",
+      "duration": 10,
+      "backgroundId": "bg_salon",
+      "actors": [
+        {
+          "uid": "usu",
+          "characterId": "usu",
+          "poseId": "char.usu.pose_neutral_3q_right",
+          "x": 290,
+          "y": 1780,
+          "scale": 1,
+          "zIndex": 2,
+          "expressionId": "expression.usu.neutral"
+        },
+        {
+          "uid": "rey",
+          "characterId": "reynaldo",
+          "poseId": "char.reynaldo.pose_walk_small_left",
+          "x": 1380,
+          "y": 1780,
+          "scale": 1,
+          "zIndex": 1,
+          "expressionId": "expression.reynaldo.enfado"
+        }
+      ],
+      "events": [
+        {
+          "id": "t1_movil",
+          "track": "props",
+          "actorUid": "usu",
+          "propId": "prop_movil",
+          "layer": "props-front",
+          "x": 420,
+          "y": 1600,
+          "scale": 0.9,
+          "start": 0,
+          "duration": 5.6
+        },
+        {
+          "id": "t1_e0",
+          "track": "eyes",
+          "actorUid": "usu",
+          "start": 0,
+          "duration": 0.3,
+          "gazeX": 0.6,
+          "gazeY": 1
+        },
+        {
+          "id": "t1_b1",
+          "track": "body",
+          "actorUid": "rey",
+          "start": 0.4,
+          "duration": 2.6,
+          "x": 790,
+          "ease": "inOut"
+        },
+        {
+          "id": "t1_b2",
+          "track": "body",
+          "actorUid": "rey",
+          "start": 3.0,
+          "duration": 0.2,
+          "poseId": "char.reynaldo.pose_neutral_3q_left",
+          "ease": "instant"
+        },
+        {
+          "id": "t1_m1",
+          "track": "mouth",
+          "actorUid": "rey",
+          "start": 3.0,
+          "duration": 7,
+          "mode": "auto"
+        },
+        {
+          "id": "t1_d1",
+          "track": "dialogue",
+          "actorUid": "rey",
+          "start": 3.2,
+          "duration": 2.4,
+          "text": "Usu. ¿Has cambiado la contraseña del wifi?",
+          "voice": {
+            "rate": 0.95,
+            "pitch": 0.8
+          }
+        },
+        {
+          "id": "t1_e1",
+          "track": "eyes",
+          "actorUid": "usu",
+          "start": 5.6,
+          "duration": 0.3,
+          "gazeX": 1,
+          "gazeY": 0
+        },
+        {
+          "id": "t1_f1",
+          "track": "face",
+          "actorUid": "usu",
+          "start": 5.8,
+          "duration": 0.3,
+          "expressionId": "expression.usu.alegria"
+        },
+        {
+          "id": "t1_b3",
+          "track": "body",
+          "actorUid": "usu",
+          "start": 5.8,
+          "duration": 0.4,
+          "poseId": "char.usu.pose_talk_emphasis",
+          "ease": "instant"
+        },
+        {
+          "id": "t1_d2",
+          "track": "dialogue",
+          "actorUid": "usu",
+          "start": 6.0,
+          "duration": 2.6,
+          "text": "Sí. Ahora es «NoTeLaPiensoDecir».",
+          "voice": {
+            "rate": 1.05,
+            "pitch": 1.15
+          }
+        },
+        {
+          "id": "t1_f2",
+          "track": "face",
+          "actorUid": "rey",
+          "start": 8.8,
+          "duration": 0.3,
+          "expressionId": "expression.reynaldo.sorpresa"
+        },
+        {
+          "id": "t1_b4",
+          "track": "body",
+          "actorUid": "rey",
+          "start": 8.8,
+          "duration": 0.3,
+          "poseId": "char.reynaldo.pose_reaction",
+          "flip": true,
+          "ease": "instant"
+        }
+      ]
+    },
+    {
+      "id": "take_2",
+      "name": "Las mayúsculas",
+      "duration": 10,
+      "backgroundId": "bg_salon",
+      "actors": [
+        {
+          "uid": "usu",
+          "characterId": "usu",
+          "poseId": "char.usu.pose_talk_emphasis",
+          "x": 290,
+          "y": 1780,
+          "scale": 1,
+          "zIndex": 2,
+          "expressionId": "expression.usu.alegria"
+        },
+        {
+          "uid": "rey",
+          "characterId": "reynaldo",
+          "poseId": "char.reynaldo.pose_arms_crossed",
+          "x": 790,
+          "y": 1780,
+          "scale": 1,
+          "zIndex": 1,
+          "expressionId": "expression.reynaldo.enfado"
+        }
+      ],
+      "events": [
+        {
+          "id": "t2_d1",
+          "track": "dialogue",
+          "actorUid": "rey",
+          "start": 0.3,
+          "duration": 1.5,
+          "text": "¿Con mayúsculas?",
+          "voice": {
+            "rate": 0.95,
+            "pitch": 0.8
+          }
+        },
+        {
+          "id": "t2_f1",
+          "track": "face",
+          "actorUid": "usu",
+          "start": 2.0,
+          "duration": 0.3,
+          "expressionId": "expression.usu.risa"
+        },
+        {
+          "id": "t2_b1",
+          "track": "body",
+          "actorUid": "usu",
+          "start": 2.0,
+          "duration": 0.3,
+          "poseId": "char.usu.pose_talk_explain",
+          "ease": "instant"
+        },
+        {
+          "id": "t2_d2",
+          "track": "dialogue",
+          "actorUid": "usu",
+          "start": 2.2,
+          "duration": 2.6,
+          "text": "Y con un emoji de berenjena al final.",
+          "voice": {
+            "rate": 1.05,
+            "pitch": 1.15
+          }
+        },
+        {
+          "id": "t2_e1",
+          "track": "eyes",
+          "actorUid": "rey",
+          "start": 5.0,
+          "duration": 0.4,
+          "gazeX": -0.3,
+          "gazeY": -1
+        },
+        {
+          "id": "t2_f2",
+          "track": "face",
+          "actorUid": "rey",
+          "start": 5.2,
+          "duration": 0.3,
+          "expressionId": "expression.reynaldo.tristeza"
+        },
+        {
+          "id": "t2_b2",
+          "track": "body",
+          "actorUid": "rey",
+          "start": 5.2,
+          "duration": 0.3,
+          "poseId": "char.reynaldo.pose_neutral_front",
+          "ease": "instant"
+        },
+        {
+          "id": "t2_d3",
+          "track": "dialogue",
+          "actorUid": "rey",
+          "start": 5.4,
+          "duration": 2.8,
+          "text": "Llevo tres horas escribiendo la palabra «berenjena».",
+          "voice": {
+            "rate": 0.9,
+            "pitch": 0.75
+          }
+        },
+        {
+          "id": "t2_e2",
+          "track": "eyes",
+          "actorUid": "rey",
+          "start": 8.3,
+          "duration": 0.3,
+          "gazeX": -1,
+          "gazeY": 0
+        },
+        {
+          "id": "t2_f3",
+          "track": "face",
+          "actorUid": "usu",
+          "start": 8.4,
+          "duration": 0.3,
+          "expressionId": "expression.usu.sorpresa"
+        },
+        {
+          "id": "t2_b3",
+          "track": "body",
+          "actorUid": "usu",
+          "start": 8.4,
+          "duration": 0.3,
+          "poseId": "char.usu.pose_reaction",
+          "ease": "instant"
+        }
+      ]
+    },
+    {
+      "id": "take_3",
+      "name": "La nevera",
+      "duration": 10,
+      "backgroundId": "bg_salon",
+      "actors": [
+        {
+          "uid": "usu",
+          "characterId": "usu",
+          "poseId": "char.usu.pose_reaction",
+          "x": 290,
+          "y": 1780,
+          "scale": 1,
+          "zIndex": 2,
+          "expressionId": "expression.usu.sorpresa"
+        },
+        {
+          "uid": "rey",
+          "characterId": "reynaldo",
+          "poseId": "char.reynaldo.pose_neutral_3q_left",
+          "x": 790,
+          "y": 1780,
+          "scale": 1,
+          "zIndex": 1,
+          "expressionId": "expression.reynaldo.tristeza"
+        }
+      ],
+      "events": [
+        {
+          "id": "t3_b1",
+          "track": "body",
+          "actorUid": "usu",
+          "start": 0.2,
+          "duration": 0.3,
+          "poseId": "char.usu.pose_pointing",
+          "ease": "instant"
+        },
+        {
+          "id": "t3_f1",
+          "track": "face",
+          "actorUid": "usu",
+          "start": 0.2,
+          "duration": 0.3,
+          "expressionId": "expression.usu.enfado"
+        },
+        {
+          "id": "t3_d1",
+          "track": "dialogue",
+          "actorUid": "usu",
+          "start": 0.4,
+          "duration": 2.4,
+          "text": "¡Pero si la tienes pegada en la nevera!",
+          "voice": {
+            "rate": 1.1,
+            "pitch": 1.2
+          }
+        },
+        {
+          "id": "t3_f2",
+          "track": "face",
+          "actorUid": "rey",
+          "start": 3.0,
+          "duration": 0.3,
+          "expressionId": "expression.reynaldo.alegria"
+        },
+        {
+          "id": "t3_b2",
+          "track": "body",
+          "actorUid": "rey",
+          "start": 3.2,
+          "duration": 0.2,
+          "poseId": "char.reynaldo.pose_walk_small_right",
+          "ease": "instant"
+        },
+        {
+          "id": "t3_b3",
+          "track": "body",
+          "actorUid": "rey",
+          "start": 3.4,
+          "duration": 2.0,
+          "x": 1400,
+          "ease": "inOut"
+        },
+        {
+          "id": "t3_e1",
+          "track": "eyes",
+          "actorUid": "usu",
+          "start": 3.6,
+          "duration": 0.4,
+          "gazeX": 1,
+          "gazeY": 0
+        },
+        {
+          "id": "t3_b4",
+          "track": "body",
+          "actorUid": "usu",
+          "start": 5.6,
+          "duration": 0.3,
+          "poseId": "char.usu.pose_neutral_front",
+          "ease": "instant"
+        },
+        {
+          "id": "t3_f3",
+          "track": "face",
+          "actorUid": "usu",
+          "start": 5.6,
+          "duration": 0.3,
+          "expressionId": "expression.usu.risa"
+        },
+        {
+          "id": "t3_e2",
+          "track": "eyes",
+          "actorUid": "usu",
+          "start": 5.6,
+          "duration": 0.3,
+          "gazeX": 0,
+          "gazeY": 0
+        },
+        {
+          "id": "t3_d2",
+          "track": "dialogue",
+          "actorUid": "usu",
+          "start": 5.9,
+          "duration": 3.4,
+          "text": "La de la nevera es la antigua. La antigua era «berenjena».",
+          "voice": {
+            "rate": 1.05,
+            "pitch": 1.15
+          }
+        }
+      ]
+    }
+  ]
+}

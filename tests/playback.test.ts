@@ -13,11 +13,12 @@ describe("evaluación de la línea de tiempo", () => {
     const jefeAt = (t: number) => evaluateTake(take, catalog, t).actors.find((a) => a.uid === "jefe")!;
     expect(jefeAt(0).x).toBe(1400);
     expect(jefeAt(4.5).x).toBeLessThan(1400);
-    expect(jefeAt(4.5).x).toBeGreaterThan(760);
-    expect(jefeAt(6).x).toBe(760);
-    expect(jefeAt(6).expressionId).toBe("jefe_cara_enfadado");
+    expect(jefeAt(4.5).x).toBeGreaterThan(780);
+    expect(jefeAt(6).x).toBe(780);
+    expect(jefeAt(6).poseId).toBe("char.jefe.pose_neutral_3q_left");
+    expect(jefeAt(6).expressionId).toBe("expression.jefe.enfado");
     const usu = evaluateTake(take, catalog, 9).actors.find((a) => a.uid === "usu")!;
-    expect(usu.poseId).toBe("usu_manos_arriba");
+    expect(usu.poseId).toBe("char.usu.pose_reaction");
   });
 
   it("subtítulos, boca y props activos solo en su intervalo", () => {

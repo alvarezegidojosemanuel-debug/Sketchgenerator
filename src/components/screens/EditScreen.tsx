@@ -8,6 +8,8 @@ import { estimateSpeechDuration } from "@/lib/schema/validate";
 import { evaluateTake, sortedEvents } from "@/lib/timeline/evaluate";
 import { listVoices, onVoicesReady, speak, stopSpeaking } from "@/lib/tts";
 import { Stage } from "../Stage";
+import { HeadPreview } from "../HeadPreview";
+import type { Catalog } from "@/lib/catalog/types";
 import type { PocketState } from "../usePocket";
 import { Card, Field, IssueList, Stepper } from "../ui";
 
@@ -266,7 +268,7 @@ export function EditScreen({ s }: { s: PocketState }) {
 function summary(e: PocketEvent, s: PocketState): string {
   switch (e.track) {
     case "dialogue": return `“${e.text}”`;
-    case "body": return [e.poseId?.replace(/^[a-z]+_/, ""), e.x !== undefined ? `→ ${Math.round(e.x)},${Math.round(e.y ?? 0)}` : ""].filter(Boolean).join(" ");
+    case "body": return [e.poseId ? s.catalog.characters.flatMap((c) => c.poses).find((p) => p.id === e.poseId)?.label : undefined, e.x !== undefined ? `→ ${Math.round(e.x)},${Math.round(e.y ?? 0)}` : ""].filter(Boolean).join(" ");
     case "face": return s.catalog.characters.flatMap((c) => c.expressions).find((x) => x.id === e.expressionId)?.label ?? e.expressionId ?? "";
     case "eyes": return `mirada ${e.gazeX.toFixed(1)}, ${e.gazeY.toFixed(1)}`;
     case "mouth": return e.mode;
@@ -350,11 +352,14 @@ function EventEditor({ s, take, ev, voices, onChange, onDelete }: { s: PocketSta
         </>
       )}
 
-      {ev.track === "face" && ch && (
-        <Field label="Expresión">
-          <div className="chips">
+      {ev.track === "face" && ch && actor && (
+        <Field label="Expresión (vista en la pose de ese momento)">
+          <div className="expr-grid">
             {ch.expressions.map((x) => (
-              <button key={x.id} type="button" className={`chip${x.id === ev.expressionId ? " on" : ""}`} onClick={() => onChange((e) => { if (e.track === "face") e.expressionId = x.id; })}>{x.label}</button>
+              <button key={x.id} type="button" className={`expr-tile${x.id === ev.expressionId ? " on" : ""}`} onClick={() => onChange((e) => { if (e.track === "face") e.expressionId = x.id; })}>
+                <HeadPreview catalog={catalog} characterId={ch.id} poseId={poseAt(take, actor.uid, ev.start, catalog)} expressionId={x.id} size={96} />
+                <span>{x.label}{x.status === "final" ? " ✓" : ""}</span>
+              </button>
             ))}
           </div>
         </Field>
@@ -414,4 +419,9 @@ function setGaze(e: React.PointerEvent<HTMLDivElement>, onChange: (fn: (e: Pocke
   const gx = Math.max(-1, Math.min(1, ((e.clientX - r.left) / r.width) * 2 - 1));
   const gy = Math.max(-1, Math.min(1, ((e.clientY - r.top) / r.height) * 2 - 1));
   onChange((x) => { if (x.track === "eyes") { x.gazeX = r1(gx); x.gazeY = r1(gy); } });
+}
+
+function poseAt(take: Take, uid: string, t: number, catalog: Catalog): string {
+  const st = evaluateTake(take, catalog, t + 0.001).actors.find((a) => a.uid === uid);
+  return st?.poseId ?? take.actors.find((a) => a.uid === uid)?.poseId ?? "";
 }
