@@ -29,8 +29,8 @@ export interface FaceRig {
   browL?: SlotTransform;
   browR?: SlotTransform;
   mouth?: SlotTransform;
-  /** estimated = calculado automáticamente (no calibrado); calibrated = ajustado y guardado por una persona. */
-  status: "estimated" | "calibrated";
+  /** estimated = calculado automáticamente; derived = extendido desde calibraciones a mano; calibrated = ajustado por una persona. */
+  status: "estimated" | "derived" | "calibrated";
   source?: string;
   review?: string;
 }

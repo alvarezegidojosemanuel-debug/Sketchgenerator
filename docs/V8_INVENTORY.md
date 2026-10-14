@@ -101,18 +101,28 @@ Archivos copiados a `public/assets/v8/`: **180** (rutas originales conservadas).
 - ⚠ char.barbas.pose_talk_explain: boca izq. fuera de la cara en (139,175)
 - ⚠ char.barbas.pose_talk_explain: boca der. fuera de la cara en (304,175)
 - ⚠ char.barbas.pose_talk_emphasis: boca izq. fuera de la cara en (163,211)
+- Limpieza: face.reynaldo.eyes.reynaldo_eyes_01: sin montura
+- Limpieza: face.reynaldo.eyes.reynaldo_eyes_02: sin montura
+- Limpieza: face.reynaldo.eyes.reynaldo_eyes_03_der: sin montura
+- Limpieza: face.reynaldo.eyes.reynaldo_eyes_03_izq: sin montura
+- Limpieza: face.reynaldo.eyes.reynaldo_eyes_04: sin montura
+- Limpieza: face.reynaldo.eyes.reynaldo_eyes_05: sin montura
+- Limpieza: face.reynaldo.eyes.reynaldo_eyes_06: sin montura
 - Limpieza: face.reynaldo.brows.reynaldo_brow_08: 1 fragmento(s) suelto(s) eliminados
 - Limpieza: face.reynaldo.mouths.reynaldo_mouth_01: 1 fragmento(s) suelto(s) eliminados
 - Limpieza: face.reynaldo.mouths.reynaldo_mouth_05: 1 fragmento(s) suelto(s) eliminados
 - Limpieza: face.sister.eyes.sister_eyes_01: 2 fragmento(s) suelto(s) eliminados
 - Limpieza: face.barbas.eyes.barbas_eyes_01: 2 fragmento(s) suelto(s) eliminados
-- Limpieza: face.barbas.mouths.barbas_mouth_03: 2 fragmento(s) suelto(s) eliminados
-- Limpieza: face.barbas.mouths.barbas_mouth_04: 2 fragmento(s) suelto(s) eliminados
-- Limpieza: face.barbas.mouths.barbas_mouth_05: 1 fragmento(s) suelto(s) eliminados
-- Limpieza: face.barbas.mouths.barbas_mouth_07: 1 fragmento(s) suelto(s) eliminados
-- Limpieza: face.barbas.mouths.barbas_mouth_08: 3 fragmento(s) suelto(s) eliminados
-- Limpieza: face.barbas.mouths.barbas_mouth_09: 3 fragmento(s) suelto(s) eliminados
-- Limpieza: face.barbas.mouths.barbas_mouth_10: 2 fragmento(s) suelto(s) eliminados
+- Limpieza: face.barbas.mouths.barbas_mouth_01: sin barba
+- Limpieza: face.barbas.mouths.barbas_mouth_02: sin barba
+- Limpieza: face.barbas.mouths.barbas_mouth_03: sin barba
+- Limpieza: face.barbas.mouths.barbas_mouth_04: sin barba
+- Limpieza: face.barbas.mouths.barbas_mouth_05: sin barba
+- Limpieza: face.barbas.mouths.barbas_mouth_06: sin barba
+- Limpieza: face.barbas.mouths.barbas_mouth_07: sin barba
+- Limpieza: face.barbas.mouths.barbas_mouth_08: sin barba
+- Limpieza: face.barbas.mouths.barbas_mouth_09: sin barba
+- Limpieza: face.barbas.mouths.barbas_mouth_10: sin barba
 - Limpieza: face.jefe.brows.jefe_brow_09: 1 fragmento(s) suelto(s) eliminados
 - Limpieza: face.jefe.mouths.jefe_mouth_07: 1 fragmento(s) suelto(s) eliminados
 - El ZIP no incluye calibraciones ni prefabs guardados (LEEME_ASSETS.txt). Los de Pocket son borradores.

@@ -22,7 +22,7 @@ const Rig = z.object({
   browL: SlotT.optional(),
   browR: SlotT.optional(),
   mouth: SlotT.optional(),
-  status: z.enum(["estimated", "calibrated"]),
+  status: z.enum(["estimated", "derived", "calibrated"]),
   source: z.string().max(300).optional(),
   review: z.string().max(300).optional(),
 });

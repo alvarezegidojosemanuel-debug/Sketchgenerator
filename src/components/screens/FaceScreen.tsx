@@ -219,7 +219,7 @@ export function FaceScreen({ s }: { s: PocketState }) {
           <select value={pose.id} onChange={(e) => setPoseId(e.target.value)}>
             {ch.poses.map((p) => (
               <option key={p.id} value={p.id}>
-                {p.label} {p.rig?.status === "calibrated" ? "✓" : "· estimada"}
+                {p.label} {p.rig?.status === "calibrated" ? "✓ calibrada" : p.rig?.status === "derived" ? "· ajustada" : "· estimada"}
               </option>
             ))}
           </select>
@@ -239,7 +239,7 @@ export function FaceScreen({ s }: { s: PocketState }) {
 
       <Card title={`Editar: ${prefab.label}`}>
         <div className="status-row">
-          <span className={`badge ${st.rig === "calibrated" ? "badge-ok" : "badge-warn"}`}>Posición pose: {st.rig === "calibrated" ? "calibrada" : "estimada (sin calibrar)"}</span>
+          <span className={`badge ${st.rig === "estimated" || st.rig === "missing" ? "badge-warn" : "badge-ok"}`}>Posición pose: {st.rig === "calibrated" ? "calibrada a mano" : st.rig === "derived" ? "ajustada desde tus calibraciones" : "estimada (sin calibrar)"}</span>
           <span className={`badge ${st.prefab === "final" ? "badge-ok" : "badge-warn"}`}>Expresión: {st.prefab === "final" ? "revisada" : "borrador"}</span>
           {st.poseSpecific && <span className="badge">ajuste propio en esta pose</span>}
           <span className="badge">{emotionLabel(catalog, prefab.emotion)}</span>
@@ -389,6 +389,20 @@ export function FaceScreen({ s }: { s: PocketState }) {
             <input type="file" accept=".json,application/json" onChange={(e) => importFile(e.target.files?.[0])} />
           </label>
         </div>
+        {localFace && (Object.keys(localFace.rigs).length > 0 || Object.keys(localFace.expressions).length > 0) && (
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={async () => {
+              if (!confirm("¿Borrar las caras guardadas en ESTE navegador y usar las del proyecto? (exporta antes si quieres conservarlas)")) return;
+              ovRef.current = emptyOverrides(catalog);
+              await saveFace(ovRef.current);
+              setMsg("Caras locales borradas: se usan las calibraciones del proyecto.");
+            }}
+          >
+            Usar las caras del proyecto (borrar las locales)
+          </button>
+        )}
         <p className="fine">
           Guardado: {Object.keys(localFace?.rigs ?? {}).length} poses calibradas · {Object.keys(localFace?.expressions ?? {}).length} expresiones.
         </p>

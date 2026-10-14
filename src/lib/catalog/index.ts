@@ -88,7 +88,7 @@ export function expressionForEmotion(
 }
 
 /** Estado de una combinación personaje + expresión + pose. */
-export function variantStatus(pose: Pose | undefined, e: ExpressionPrefab | undefined): { rig: "estimated" | "calibrated" | "missing"; prefab: "draft" | "final" | "missing"; poseSpecific: boolean } {
+export function variantStatus(pose: Pose | undefined, e: ExpressionPrefab | undefined): { rig: "estimated" | "derived" | "calibrated" | "missing"; prefab: "draft" | "final" | "missing"; poseSpecific: boolean } {
   return {
     rig: pose?.rig ? pose.rig.status : "missing",
     prefab: e ? e.status : "missing",

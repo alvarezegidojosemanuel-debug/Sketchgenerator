@@ -20,7 +20,7 @@ const TABS: { id: Tab; label: string; icon: string }[] = [
 
 export function PocketApp() {
   const s = usePocket();
-  const uncalibrated = s.catalog.characters.reduce((n, c) => n + c.poses.filter((p) => p.rig?.status !== "calibrated").length, 0);
+  const uncalibrated = s.catalog.characters.reduce((n, c) => n + c.poses.filter((p) => p.rig?.status === "estimated").length, 0);
   return (
     <div className="app">
       <header className="topbar">

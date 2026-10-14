@@ -21,7 +21,7 @@ Qué hace:
   * Escribe src/data/catalog.json, catalog.json y docs/V8_INVENTORY.md.
 """
 import json, os, shutil, sys, datetime
-from PIL import Image, ImageFilter
+from PIL import Image, ImageDraw, ImageFilter
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 ASSET_BASE = "/assets/v8"
@@ -100,6 +100,99 @@ ASSET_NOTES = {
 
 VIOLATIONS = []
 CLEANED = []
+
+
+def convex_hull(points):
+    pts = sorted(set(points))
+    if len(pts) <= 2:
+        return pts
+    cross = lambda o, a, b: (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0])
+    lower, upper = [], []
+    for p in pts:
+        while len(lower) >= 2 and cross(lower[-2], lower[-1], p) <= 0:
+            lower.pop()
+        lower.append(p)
+    for p in reversed(pts):
+        while len(upper) >= 2 and cross(upper[-2], upper[-1], p) <= 0:
+            upper.pop()
+        upper.append(p)
+    return lower[:-1] + upper[:-1]
+
+
+def strip_beard(im):
+    """Bocas de Barbas: quita la barba del recorte; queda la boca (labios azules y lo que encierran).
+    Se conserva todo lo que está dentro del contorno de los labios (envolvente convexa del azul),
+    porque en las bocas abiertas el borde superior es bigote y no labio."""
+    im = im.convert("RGBA")
+    w, h = im.size
+    out = im.copy()
+    px = out.load()
+    lip = lambda p: p[3] > 60 and (is_blue(p) or (p[2] > 150 and p[2] > p[0] + 40))
+    blue = [(x, y) for y in range(h) for x in range(w) if lip(px[x, y])]
+    comps = sorted(components(blue), key=len, reverse=True)
+    main = [q for c in comps if len(c) >= 0.15 * len(comps[0]) for q in c] if comps else []
+    hull = convex_hull(main)
+    mask = Image.new("L", (w, h), 0)
+    if len(hull) >= 3:
+        ImageDraw.Draw(mask).polygon(hull, fill=255)
+    mp = mask.load()
+    for y in range(h):
+        for x in range(w):
+            if not mp[x, y]:
+                px[x, y] = (0, 0, 0, 0)
+    return out
+
+
+def peel_fringe(im, depth=6):
+    """Quita el borde oscuro que deja la barba alrededor de los labios: pela, desde fuera hacia dentro,
+    los píxeles NO azules que tocan la transparencia. Los labios azules hacen de barrera, así que
+    el interior de la boca (dientes, lengua) no se toca."""
+    out = im.convert("RGBA").copy()
+    px = out.load()
+    w, h = out.size
+    for _ in range(depth):
+        kill = []
+        for y in range(h):
+            for x in range(w):
+                p = px[x, y]
+                if p[3] <= 10 or not px_is_beard(p):  # solo barba: dientes, lengua y labios no se tocan
+                    continue
+                if any(not (0 <= x + dx < w and 0 <= y + dy < h) or px[x + dx, y + dy][3] <= 10 for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))):
+                    kill.append((x, y))
+        if not kill:
+            break
+        for q in kill:
+            px[q] = (0, 0, 0, 0)
+    return out
+
+
+def strip_frame(im):
+    """Ojos de Reynaldo: quita la montura dibujada (el cuerpo ya lleva gafas); queda el interior del cristal."""
+    im = im.convert("RGBA")
+    w, h = im.size
+    out = im.copy()
+    px = out.load()
+    dark = lambda p: p[3] > 90 and max(p[:3]) < 75
+    outside = set()
+    stack = [(x, y) for x in range(w) for y in (0, h - 1)] + [(x, y) for y in range(h) for x in (0, w - 1)]
+    while stack:
+        q = stack.pop()
+        if q in outside:
+            continue
+        x, y = q
+        if not (0 <= x < w and 0 <= y < h):
+            continue
+        p = px[x, y]
+        if p[3] > 90 and not dark(p):
+            continue
+        outside.add(q)
+        stack += [(x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)]
+    for (x, y) in outside:
+        px[x, y] = (0, 0, 0, 0)
+    # quitar el borde antialias de la montura (1 px)
+    a = out.getchannel("A").filter(ImageFilter.MinFilter(3))
+    out.putalpha(Image.composite(out.getchannel("A"), a, a))
+    return out
 
 
 def clean_fragments(im, cat):
@@ -616,7 +709,7 @@ def estimate_rig(char, pose_key, im, ref):
         rig["browR"] = slot(cx + E / 4, ey - 0.32 * E, 0.3 * E / ref["brow"])
         my = y0 + 0.42 * bh
         # la pieza (boca + trozo de barba) se recorta a la barba dibujada: nunca la sobrepasa al hablar
-        rig["mouth"] = {**slot(cx, my, 0.9 * bw / ref["mouth"]), "clip": [round(bw / 2 * 0.86, 1), round(bh / 2 * 0.84, 1), 0.0, round((y0 + y1) / 2 - my - 0.04 * bh, 1)]}
+        rig["mouth"] = slot(cx, my, 0.9 * bw / ref["mouth"])  # boca sin barba: no necesita recorte
         method = f"barba bbox=({x0},{y0},{x1},{y1})"
     rig["status"] = "estimated"
     rig["source"] = "scripts/v8/import_v8.py (" + method + ")"
@@ -674,7 +767,15 @@ def main():
                     missing.append(a["file"])
                     continue
                 im = Image.open(os.path.join(v8, a["file"]))
+                pre = im  # geometría (anclas, escala) se mide ANTES de la limpieza: la limpieza solo borra píxeles
                 cleaned, removed = clean_fragments(im, cat)
+                special = None
+                if cid == "barbas" and cat == "mouths":
+                    cleaned, special = peel_fringe(strip_beard(cleaned)), "sin barba"
+                elif cid == "reynaldo" and cat == "eyes":
+                    cleaned, special = strip_frame(cleaned), "sin montura"
+                if special:
+                    removed = removed or 1
                 if removed:
                     # copia limpia (solo se borran píxeles de fragmentos sueltos; nada se redibuja)
                     rel = "clean/" + a["file"]
@@ -683,7 +784,7 @@ def main():
                     cleaned.save(dst)
                     src = ASSET_BASE + "/" + rel
                     im = Image.open(dst)
-                    CLEANED.append(f"{aid}: {removed} fragmento(s) suelto(s) eliminados")
+                    CLEANED.append(f"{aid}: " + (special or f"{removed} fragmento(s) suelto(s) eliminados"))
                 entry = {"id": aid, "name": a["name"], "src": src, "width": im.size[0], "height": im.size[1], "bbox": content_bbox(im)}
                 if removed:
                     entry["cleaned"] = removed
@@ -708,9 +809,9 @@ def main():
                     op = os.path.join(v8, a["original_file"])
                     if os.path.isfile(op):
                         orig_size = Image.open(op).size
-                entry.update(analyse_part(cid, cat, im, orig_size or im.size))
-                if cid == "barbas" and cat in ("mouths", "eyes"):
-                    entry["feather"] = True  # bordes rectos del recorte: se suavizan al componer
+                entry.update(analyse_part(cid, cat, pre if special else im, orig_size or im.size))
+                if special:
+                    entry["bbox"] = content_bbox(im)
                 face[cat].append(entry)
 
         # Tamaños de referencia en píxeles ORIGINALES (la escala de los rigs se expresa en esas unidades)

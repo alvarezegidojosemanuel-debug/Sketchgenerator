@@ -1494,16 +1494,17 @@
      {
       "id": "face.reynaldo.eyes.reynaldo_eyes_01",
       "name": "reynaldo_eyes_01",
-      "src": "/assets/v8/library/normalized_face/reynaldo/eyes/reynaldo_eyes_01.png",
+      "src": "/assets/v8/clean/library/normalized_face/reynaldo/eyes/reynaldo_eyes_01.png",
       "width": 160,
       "height": 110,
       "bbox": [
-       11,
        13,
-       149,
-       96
+       14,
+       147,
+       95
       ],
-      "kind": "single",
+      "cleaned": 1,
+      "kind": "pair",
       "original": "library/packs/punetos_face_parts_v1/PUNETOS_FACE_PARTS_V1/reynaldo/eyes_no_glasses/reynaldo_eyes_01.png",
       "normScale": 1,
       "anchors": {
@@ -1530,16 +1531,17 @@
      {
       "id": "face.reynaldo.eyes.reynaldo_eyes_02",
       "name": "reynaldo_eyes_02",
-      "src": "/assets/v8/library/normalized_face/reynaldo/eyes/reynaldo_eyes_02.png",
+      "src": "/assets/v8/clean/library/normalized_face/reynaldo/eyes/reynaldo_eyes_02.png",
       "width": 160,
       "height": 110,
       "bbox": [
-       11,
-       20,
-       149,
-       89
+       18,
+       21,
+       145,
+       88
       ],
-      "kind": "single",
+      "cleaned": 1,
+      "kind": "pair",
       "includesBrows": true,
       "original": "library/packs/punetos_face_parts_v1/PUNETOS_FACE_PARTS_V1/reynaldo/eyes_no_glasses/reynaldo_eyes_02.png",
       "normScale": 1,
@@ -1567,16 +1569,17 @@
      {
       "id": "face.reynaldo.eyes.reynaldo_eyes_03_der",
       "name": "reynaldo_eyes_03 der",
-      "src": "/assets/v8/library/normalized_face/reynaldo/eyes/reynaldo_eyes_03_der.png",
+      "src": "/assets/v8/clean/library/normalized_face/reynaldo/eyes/reynaldo_eyes_03_der.png",
       "width": 160,
       "height": 110,
       "bbox": [
-       11,
-       17,
-       149,
-       92
+       21,
+       18,
+       145,
+       91
       ],
-      "kind": "single",
+      "cleaned": 1,
+      "kind": "pair",
       "original": "library/packs/punetos_face_parts_v1/PUNETOS_FACE_PARTS_V1/reynaldo/eyes_no_glasses/reynaldo_eyes_03.png",
       "normScale": 1,
       "anchors": {
@@ -1603,16 +1606,17 @@
      {
       "id": "face.reynaldo.eyes.reynaldo_eyes_03_izq",
       "name": "reynaldo_eyes_03 izq",
-      "src": "/assets/v8/library/normalized_face/reynaldo/eyes/reynaldo_eyes_03_izq.png",
+      "src": "/assets/v8/clean/library/normalized_face/reynaldo/eyes/reynaldo_eyes_03_izq.png",
       "width": 160,
       "height": 110,
       "bbox": [
-       11,
-       17,
-       149,
-       92
+       13,
+       18,
+       145,
+       91
       ],
-      "kind": "single",
+      "cleaned": 1,
+      "kind": "pair",
       "original": "library/packs/punetos_face_parts_v1/PUNETOS_FACE_PARTS_V1/reynaldo/eyes_no_glasses/reynaldo_eyes_03.png",
       "normScale": 1,
       "anchors": {
@@ -1639,16 +1643,17 @@
      {
       "id": "face.reynaldo.eyes.reynaldo_eyes_04",
       "name": "reynaldo_eyes_04",
-      "src": "/assets/v8/library/normalized_face/reynaldo/eyes/reynaldo_eyes_04.png",
+      "src": "/assets/v8/clean/library/normalized_face/reynaldo/eyes/reynaldo_eyes_04.png",
       "width": 160,
       "height": 110,
       "bbox": [
-       11,
-       25,
-       149,
-       85
+       16,
+       26,
+       144,
+       84
       ],
-      "kind": "single",
+      "cleaned": 1,
+      "kind": "pair",
       "original": "library/packs/punetos_face_parts_v1/PUNETOS_FACE_PARTS_V1/reynaldo/eyes_no_glasses/reynaldo_eyes_04.png",
       "normScale": 1,
       "anchors": {
@@ -1675,16 +1680,17 @@
      {
       "id": "face.reynaldo.eyes.reynaldo_eyes_05",
       "name": "reynaldo_eyes_05",
-      "src": "/assets/v8/library/normalized_face/reynaldo/eyes/reynaldo_eyes_05.png",
+      "src": "/assets/v8/clean/library/normalized_face/reynaldo/eyes/reynaldo_eyes_05.png",
       "width": 160,
       "height": 110,
       "bbox": [
-       11,
-       25,
-       149,
-       85
+       20,
+       26,
+       145,
+       84
       ],
-      "kind": "single",
+      "cleaned": 1,
+      "kind": "pair",
       "original": "library/packs/punetos_face_parts_v1/PUNETOS_FACE_PARTS_V1/reynaldo/eyes_no_glasses/reynaldo_eyes_05.png",
       "normScale": 1,
       "anchors": {
@@ -1711,16 +1717,17 @@
      {
       "id": "face.reynaldo.eyes.reynaldo_eyes_06",
       "name": "reynaldo_eyes_06",
-      "src": "/assets/v8/library/normalized_face/reynaldo/eyes/reynaldo_eyes_06.png",
+      "src": "/assets/v8/clean/library/normalized_face/reynaldo/eyes/reynaldo_eyes_06.png",
       "width": 160,
       "height": 110,
       "bbox": [
-       11,
-       27,
-       149,
-       83
+       18,
+       28,
+       142,
+       82
       ],
-      "kind": "single",
+      "cleaned": 1,
+      "kind": "pair",
       "includesBrows": true,
       "original": "library/packs/punetos_face_parts_v1/PUNETOS_FACE_PARTS_V1/reynaldo/eyes_no_glasses/reynaldo_eyes_06.png",
       "normScale": 1,
@@ -2259,11 +2266,12 @@
       "face.reynaldo.mouths.reynaldo_mouth_03"
      ],
      "eyeL": {
-      "assetId": "face.reynaldo.eyes.reynaldo_eyes_04"
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_04",
+      "crop": "left"
      },
      "eyeR": {
       "assetId": "face.reynaldo.eyes.reynaldo_eyes_04",
-      "flip": true
+      "crop": "right"
      },
      "browL": {
       "assetId": "face.reynaldo.brows.reynaldo_brow_10"
@@ -2287,11 +2295,12 @@
       "face.reynaldo.mouths.reynaldo_mouth_01"
      ],
      "eyeL": {
-      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05"
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "left"
      },
      "eyeR": {
       "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
-      "flip": true
+      "crop": "right"
      },
      "browL": {
       "assetId": "face.reynaldo.brows.reynaldo_brow_04"
@@ -2315,11 +2324,12 @@
       "face.reynaldo.mouths.reynaldo_mouth_07"
      ],
      "eyeL": {
-      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05"
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "left"
      },
      "eyeR": {
       "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
-      "flip": true
+      "crop": "right"
      },
      "browL": {
       "assetId": "face.reynaldo.brows.reynaldo_brow_04",
@@ -2345,11 +2355,12 @@
       "face.reynaldo.mouths.reynaldo_mouth_08"
      ],
      "eyeL": {
-      "assetId": "face.reynaldo.eyes.reynaldo_eyes_06"
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_06",
+      "crop": "left"
      },
      "eyeR": {
       "assetId": "face.reynaldo.eyes.reynaldo_eyes_06",
-      "flip": true
+      "crop": "right"
      }
     },
     {
@@ -2367,12 +2378,11 @@
      ],
      "eyeL": {
       "assetId": "face.reynaldo.eyes.reynaldo_eyes_03_izq",
-      "dscale": 1.12
+      "crop": "left"
      },
      "eyeR": {
       "assetId": "face.reynaldo.eyes.reynaldo_eyes_03_izq",
-      "flip": true,
-      "dscale": 1.12
+      "crop": "right"
      },
      "browL": {
       "assetId": "face.reynaldo.brows.reynaldo_brow_04",
@@ -2397,11 +2407,12 @@
       "face.reynaldo.mouths.reynaldo_mouth_08"
      ],
      "eyeL": {
-      "assetId": "face.reynaldo.eyes.reynaldo_eyes_02"
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_02",
+      "crop": "left"
      },
      "eyeR": {
       "assetId": "face.reynaldo.eyes.reynaldo_eyes_02",
-      "flip": true
+      "crop": "right"
      }
     }
    ],
@@ -3751,13 +3762,7 @@
       "mouth": {
        "x": 238.0,
        "y": 196.5,
-       "scale": 0.787,
-       "clip": [
-        90.3,
-        44.5,
-        0.0,
-        4.2
-       ]
+       "scale": 1.568
       },
       "status": "estimated",
       "source": "scripts/v8/import_v8.py (barba bbox=(133,152,343,258))"
@@ -3796,13 +3801,7 @@
       "mouth": {
        "x": 227.5,
        "y": 225.0,
-       "scale": 0.847,
-       "clip": [
-        104.5,
-        55.0,
-        0.0,
-        5.2
-       ]
+       "scale": 1.688
       },
       "status": "estimated",
       "source": "scripts/v8/import_v8.py (barba bbox=(106,170,349,301))"
@@ -3841,13 +3840,7 @@
       "mouth": {
        "x": 286.0,
        "y": 219.0,
-       "scale": 0.849,
-       "clip": [
-        101.5,
-        55.0,
-        0.0,
-        5.2
-       ]
+       "scale": 1.691
       },
       "status": "estimated",
       "source": "scripts/v8/import_v8.py (barba bbox=(168,164,404,295))"
@@ -3886,13 +3879,7 @@
       "mouth": {
        "x": 223.0,
        "y": 202.8,
-       "scale": 0.761,
-       "clip": [
-        89.4,
-        45.8,
-        0.0,
-        4.4
-       ]
+       "scale": 1.515
       },
       "status": "estimated",
       "source": "scripts/v8/import_v8.py (barba bbox=(119,157,327,266))"
@@ -3931,13 +3918,7 @@
       "mouth": {
        "x": 292.5,
        "y": 228.8,
-       "scale": 0.831,
-       "clip": [
-        104.5,
-        58.8,
-        0.0,
-        5.6
-       ]
+       "scale": 1.656
       },
       "status": "estimated",
       "source": "scripts/v8/import_v8.py (barba bbox=(171,170,414,310))"
@@ -3976,13 +3957,7 @@
       "mouth": {
        "x": 221.5,
        "y": 174.6,
-       "scale": 0.688,
-       "clip": [
-        83.0,
-        33.6,
-        0.0,
-        3.2
-       ]
+       "scale": 1.37
       },
       "status": "estimated",
       "source": "scripts/v8/import_v8.py (barba bbox=(125,141,318,221))"
@@ -4021,13 +3996,7 @@
       "mouth": {
        "x": 261.5,
        "y": 211.3,
-       "scale": 0.818,
-       "clip": [
-        96.8,
-        43.3,
-        0.0,
-        4.1
-       ]
+       "scale": 1.63
       },
       "status": "estimated",
       "source": "scripts/v8/import_v8.py (barba bbox=(149,168,374,271))"
@@ -4066,13 +4035,7 @@
       "mouth": {
        "x": 254.5,
        "y": 196.8,
-       "scale": 0.771,
-       "clip": [
-        94.2,
-        45.8,
-        0.0,
-        4.4
-       ]
+       "scale": 1.536
       },
       "status": "estimated",
       "source": "scripts/v8/import_v8.py (barba bbox=(145,151,364,260))"
@@ -4111,13 +4074,7 @@
       "mouth": {
        "x": 264.5,
        "y": 217.7,
-       "scale": 0.849,
-       "clip": [
-        103.6,
-        48.7,
-        0.0,
-        4.6
-       ]
+       "scale": 1.692
       },
       "status": "estimated",
       "source": "scripts/v8/import_v8.py (barba bbox=(144,169,385,285))"
@@ -4156,13 +4113,7 @@
       "mouth": {
        "x": 263.5,
        "y": 200.0,
-       "scale": 0.825,
-       "clip": [
-        97.6,
-        47.0,
-        0.0,
-        4.5
-       ]
+       "scale": 1.645
       },
       "status": "estimated",
       "source": "scripts/v8/import_v8.py (barba bbox=(150,153,377,265))"
@@ -4193,8 +4144,7 @@
         76.0,
         55.0
        ]
-      },
-      "feather": true
+      }
      },
      {
       "id": "face.barbas.eyes.barbas_eyes_02",
@@ -4217,8 +4167,7 @@
         83.0,
         55.5
        ]
-      },
-      "feather": true
+      }
      },
      {
       "id": "face.barbas.eyes.barbas_eyes_03",
@@ -4241,8 +4190,7 @@
         79.5,
         54.0
        ]
-      },
-      "feather": true
+      }
      },
      {
       "id": "face.barbas.eyes.barbas_eyes_04",
@@ -4265,8 +4213,7 @@
         81.0,
         54.0
        ]
-      },
-      "feather": true
+      }
      },
      {
       "id": "face.barbas.eyes.barbas_eyes_05_der",
@@ -4289,8 +4236,7 @@
         80.0,
         53.5
        ]
-      },
-      "feather": true
+      }
      },
      {
       "id": "face.barbas.eyes.barbas_eyes_05_izq",
@@ -4313,8 +4259,7 @@
         79.5,
         54.5
        ]
-      },
-      "feather": true
+      }
      },
      {
       "id": "face.barbas.eyes.barbas_eyes_06",
@@ -4337,8 +4282,7 @@
         80.5,
         52.5
        ]
-      },
-      "feather": true
+      }
      },
      {
       "id": "face.barbas.eyes.barbas_eyes_07",
@@ -4361,8 +4305,7 @@
         80.0,
         55.0
        ]
-      },
-      "feather": true
+      }
      }
     ],
     "brows": [
@@ -4641,15 +4584,16 @@
      {
       "id": "face.barbas.mouths.barbas_mouth_01",
       "name": "barbas_mouth_01",
-      "src": "/assets/v8/library/normalized_face/barbas/mouths/barbas_mouth_01.png",
+      "src": "/assets/v8/clean/library/normalized_face/barbas/mouths/barbas_mouth_01.png",
       "width": 260,
       "height": 175,
       "bbox": [
-       26,
-       15,
-       239,
-       162
+       102,
+       57,
+       206,
+       93
       ],
+      "cleaned": 1,
       "kind": "single",
       "original": "library/packs/punetos_face_parts_v1/PUNETOS_FACE_PARTS_V1/barbas/mouths/barbas_mouth_01.png",
       "normScale": 0.8912,
@@ -4658,21 +4602,21 @@
         132.5,
         27
        ]
-      },
-      "feather": true
+      }
      },
      {
       "id": "face.barbas.mouths.barbas_mouth_02",
       "name": "barbas_mouth_02",
-      "src": "/assets/v8/library/normalized_face/barbas/mouths/barbas_mouth_02.png",
+      "src": "/assets/v8/clean/library/normalized_face/barbas/mouths/barbas_mouth_02.png",
       "width": 260,
       "height": 175,
       "bbox": [
-       38,
-       17,
-       226,
-       162
+       115,
+       55,
+       206,
+       98
       ],
+      "cleaned": 1,
       "kind": "single",
       "original": "library/packs/punetos_face_parts_v1/PUNETOS_FACE_PARTS_V1/barbas/mouths/barbas_mouth_02.png",
       "normScale": 0.8744,
@@ -4681,8 +4625,7 @@
         132.0,
         29
        ]
-      },
-      "feather": true
+      }
      },
      {
       "id": "face.barbas.mouths.barbas_mouth_03",
@@ -4691,22 +4634,21 @@
       "width": 260,
       "height": 175,
       "bbox": [
-       38,
-       14,
-       231,
-       162
+       110,
+       52,
+       213,
+       109
       ],
       "cleaned": 2,
       "kind": "single",
       "original": "library/packs/punetos_face_parts_v1/PUNETOS_FACE_PARTS_V1/barbas/mouths/barbas_mouth_03.png",
-      "normScale": 0.8616,
+      "normScale": 0.9062,
       "anchors": {
        "full": [
-        134.5,
+        129.5,
         26
        ]
-      },
-      "feather": true
+      }
      },
      {
       "id": "face.barbas.mouths.barbas_mouth_04",
@@ -4715,22 +4657,21 @@
       "width": 260,
       "height": 175,
       "bbox": [
-       54,
-       21,
-       242,
-       156
+       119,
+       49,
+       220,
+       114
       ],
       "cleaned": 2,
       "kind": "single",
       "original": "library/packs/punetos_face_parts_v1/PUNETOS_FACE_PARTS_V1/barbas/mouths/barbas_mouth_04.png",
-      "normScale": 0.6926,
+      "normScale": 0.8296,
       "anchors": {
        "full": [
-        148.5,
+        130.0,
         33
        ]
-      },
-      "feather": true
+      }
      },
      {
       "id": "face.barbas.mouths.barbas_mouth_05",
@@ -4739,35 +4680,35 @@
       "width": 260,
       "height": 175,
       "bbox": [
-       49,
-       31,
-       242,
-       147
+       116,
+       56,
+       176,
+       107
       ],
       "cleaned": 1,
       "kind": "single",
       "original": "library/packs/punetos_face_parts_v1/PUNETOS_FACE_PARTS_V1/barbas/mouths/barbas_mouth_05.png",
-      "normScale": 0.6031,
+      "normScale": 0.7,
       "anchors": {
        "full": [
-        145.5,
+        130.0,
         43
        ]
-      },
-      "feather": true
+      }
      },
      {
       "id": "face.barbas.mouths.barbas_mouth_06",
       "name": "barbas_mouth_06",
-      "src": "/assets/v8/library/normalized_face/barbas/mouths/barbas_mouth_06.png",
+      "src": "/assets/v8/clean/library/normalized_face/barbas/mouths/barbas_mouth_06.png",
       "width": 260,
       "height": 175,
       "bbox": [
-       23,
-       36,
-       242,
-       141
+       103,
+       81,
+       213,
+       136
       ],
+      "cleaned": 1,
       "kind": "single",
       "original": "library/packs/punetos_face_parts_v1/PUNETOS_FACE_PARTS_V1/barbas/mouths/barbas_mouth_06.png",
       "normScale": 0.9125,
@@ -4776,8 +4717,7 @@
         132.5,
         48
        ]
-      },
-      "feather": true
+      }
      },
      {
       "id": "face.barbas.mouths.barbas_mouth_07",
@@ -4786,22 +4726,21 @@
       "width": 260,
       "height": 175,
       "bbox": [
-       53,
-       38,
-       242,
-       141
+       120,
+       79,
+       235,
+       134
       ],
       "cleaned": 1,
       "kind": "single",
       "original": "library/packs/punetos_face_parts_v1/PUNETOS_FACE_PARTS_V1/barbas/mouths/barbas_mouth_07.png",
-      "normScale": 0.756,
+      "normScale": 0.896,
       "anchors": {
        "full": [
-        147.5,
+        130.0,
         50
        ]
-      },
-      "feather": true
+      }
      },
      {
       "id": "face.barbas.mouths.barbas_mouth_08",
@@ -4810,22 +4749,21 @@
       "width": 260,
       "height": 175,
       "bbox": [
-       25,
-       31,
-       239,
+       102,
+       69,
+       222,
        146
       ],
       "cleaned": 3,
       "kind": "single",
       "original": "library/packs/punetos_face_parts_v1/PUNETOS_FACE_PARTS_V1/barbas/mouths/barbas_mouth_08.png",
-      "normScale": 0.9726,
+      "normScale": 1.0,
       "anchors": {
        "full": [
-        132.5,
+        129.5,
         43
        ]
-      },
-      "feather": true
+      }
      },
      {
       "id": "face.barbas.mouths.barbas_mouth_09",
@@ -4834,22 +4772,21 @@
       "width": 260,
       "height": 175,
       "bbox": [
-       25,
-       33,
-       242,
-       144
+       95,
+       76,
+       221,
+       133
       ],
       "cleaned": 3,
       "kind": "single",
       "original": "library/packs/punetos_face_parts_v1/PUNETOS_FACE_PARTS_V1/barbas/mouths/barbas_mouth_09.png",
-      "normScale": 0.9274,
+      "normScale": 0.9573,
       "anchors": {
        "full": [
-        133.5,
+        130.0,
         45
        ]
-      },
-      "feather": true
+      }
      },
      {
       "id": "face.barbas.mouths.barbas_mouth_10",
@@ -4858,10 +4795,10 @@
       "width": 260,
       "height": 175,
       "bbox": [
-       18,
-       66,
-       242,
-       150
+       103,
+       92,
+       190,
+       147
       ],
       "cleaned": 2,
       "kind": "single",
@@ -4871,10 +4808,9 @@
       "anchors": {
        "full": [
         130.0,
-        79
+        36
        ]
-      },
-      "feather": true
+      }
      }
     ]
    },
