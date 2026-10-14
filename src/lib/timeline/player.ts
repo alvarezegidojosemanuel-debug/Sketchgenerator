@@ -3,8 +3,12 @@ import { locate, projectSchedule } from "./evaluate";
 
 export interface PlayerCallbacks {
   onFrame: (takeIndex: number, t: number, globalT: number) => void;
-  /** Se dispara una vez cuando el cabezal cruza el inicio de un diálogo. */
-  onDialogue?: (e: DialogueEvent, takeIndex: number) => void;
+  /**
+   * Se dispara una vez cuando el cabezal cruza el inicio de un diálogo.
+   * Devuelve true si se va a locutar: entonces el reproductor espera a que la voz termine
+   * (speechStarted / speechEnded con la misma clave) antes de pasar del final del bloque.
+   */
+  onDialogue?: (e: DialogueEvent, takeIndex: number, key: string) => boolean | void;
   /** Cambio de toma, pausa o fin: el consumidor debe detener la voz. */
   onInterrupt?: () => void;
   onEnd?: () => void;
@@ -22,15 +26,31 @@ export const browserClock: Clock = {
   cancel: (h) => cancelAnimationFrame(h),
 };
 
+interface PendingSpeech {
+  actorUid: string;
+  endGlobal: number;
+  firedAt: number;
+  startedAt: number | null;
+  done: boolean;
+}
+
+/** Si la voz no empieza en este tiempo tras su bloque, se da por fallida y no se espera. */
+const START_TIMEOUT_MS = 2500;
+/** Máximo que se espera a una sola frase. */
+const MAX_HOLD_MS = 30000;
+
 /**
- * Temporizador reproducible: la posición depende solo del reloj, no de la voz.
- * Las voces TTS pueden desincronizarse según el dispositivo (se avisa en la UI).
+ * Temporizador de la animación. «El diálogo manda»: si una voz dura más que su bloque,
+ * el reloj se detiene al final del bloque hasta que la voz termina, para que los gestos
+ * siguientes no se adelanten al audio. Sin voz, el tiempo es puramente el del reloj.
  */
 export class Player {
   private globalT = 0;
   private lastTick = 0;
   private handle: number | null = null;
   private currentTake = -1;
+  private pending = new Map<string, PendingSpeech>();
+  private _holding = false;
 
   constructor(
     private project: PocketProject,
@@ -44,6 +64,36 @@ export class Player {
 
   get current(): PocketProject {
     return this.project;
+  }
+
+  /** true mientras el reloj espera a que termine una voz. */
+  get holding() {
+    return this._holding;
+  }
+
+  speechStarted(key: string) {
+    const p = this.pending.get(key);
+    if (p && p.startedAt === null) p.startedAt = this.clock.now();
+  }
+
+  speechEnded(key: string) {
+    const p = this.pending.get(key);
+    if (p) p.done = true;
+  }
+
+  /** Actores cuya voz está sonando ahora → segundos que lleva sonando. */
+  liveSpeakers(): Map<string, number> {
+    const now = this.clock.now();
+    const m = new Map<string, number>();
+    for (const p of this.pending.values()) {
+      if (!p.done && p.startedAt !== null) m.set(p.actorUid, (now - p.startedAt) / 1000);
+    }
+    return m;
+  }
+
+  /** true si hay voces gestionadas (entonces la boca la marca el audio, no el bloque). */
+  get voiceDriven() {
+    return this.pending.size > 0;
   }
 
   get position() {
@@ -74,6 +124,8 @@ export class Player {
   pause() {
     if (this.handle !== null) this.clock.cancel(this.handle);
     this.handle = null;
+    this.pending.clear();
+    this._holding = false;
     this.cb.onInterrupt?.();
     this.emit();
   }
@@ -95,7 +147,23 @@ export class Player {
   /** Avanza manualmente (tests y depuración). */
   advance(dt: number) {
     const prev = this.globalT;
-    this.globalT = Math.min(this.total, this.globalT + dt);
+    let next = Math.min(this.total, this.globalT + dt);
+    // El diálogo manda: no pasar del final de un bloque cuya voz sigue sonando (o aún no ha empezado).
+    const now = this.clock.now();
+    let cap = Infinity;
+    for (const p of this.pending.values()) {
+      if (p.done) continue;
+      const waited = p.startedAt === null ? now - p.firedAt : now - p.startedAt;
+      if ((p.startedAt === null && waited > START_TIMEOUT_MS + 1000 * Math.max(0, next - p.endGlobal)) || waited > MAX_HOLD_MS) {
+        p.done = true; // voz fallida o colgada: no bloquear la reproducción
+        continue;
+      }
+      if (p.endGlobal <= next) cap = Math.min(cap, p.endGlobal);
+    }
+    this._holding = cap < Infinity && cap - 1e-4 < next;
+    if (this._holding) next = Math.max(prev, cap - 1e-4);
+    for (const [k, p] of this.pending) if (p.done) this.pending.delete(k);
+    this.globalT = next;
     // Primero el frame (puede interrumpir la voz al cambiar de toma), luego los diálogos nuevos.
     this.emit();
     this.fireDialogues(prev, this.globalT);
@@ -123,7 +191,12 @@ export class Player {
       for (const e of this.project.takes[s.index].events) {
         if (e.track !== "dialogue") continue;
         const g = s.offset + e.start;
-        if (g > prev && g <= next) this.cb.onDialogue(e, s.index);
+        if (g > prev && g <= next) {
+          const key = `${s.index}:${e.id}`;
+          if (this.cb.onDialogue(e, s.index, key)) {
+            this.pending.set(key, { actorUid: e.actorUid, endGlobal: g + e.duration, firedAt: this.clock.now(), startedAt: null, done: false });
+          }
+        }
       }
     }
   }

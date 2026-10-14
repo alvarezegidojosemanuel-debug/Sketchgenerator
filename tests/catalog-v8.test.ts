@@ -202,7 +202,7 @@ describe("demo Usu + Reynaldo", () => {
     const said: string[] = [];
     let ended = false;
     const p = validateProject(raw, catalog).project!;
-    const pl = new Player(p, { onFrame: () => {}, onDialogue: (e) => said.push(e.id), onEnd: () => (ended = true) }, clock);
+    const pl = new Player(p, { onFrame: () => {}, onDialogue: (e) => { said.push(e.id); }, onEnd: () => (ended = true) }, clock);
     pl.play();
     for (let i = 0; i < 2000 && q.length; i++) {
       now += 33;

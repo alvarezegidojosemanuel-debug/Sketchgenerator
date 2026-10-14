@@ -57,7 +57,7 @@ describe("reproductor sin clave ni red (prueba 1)", () => {
     const p = project();
     const player = new Player(p, {
       onFrame: (ti) => frames.add(ti),
-      onDialogue: (e) => said.push(e.id),
+      onDialogue: (e) => { said.push(e.id); },
       onInterrupt: () => interrupts++,
       onEnd: () => (ended = true),
     }, clock);
@@ -91,5 +91,55 @@ describe("transiciones suaves", () => {
     const end = evaluateTake(take, catalog, ev.start + POSE_FADE + 0.05).actors.find((a) => a.uid === "usu")!;
     expect(end.prevPoseId).toBeUndefined();
     expect(layoutActor(catalog, end).ghost).toBeUndefined();
+  });
+});
+
+describe("el diálogo manda (sincronía voz ↔ animación)", () => {
+  const setup = () => {
+    let now = 0;
+    const queue: (() => void)[] = [];
+    const clock: Clock = { now: () => now, request: (cb) => queue.push(cb), cancel: () => queue.splice(0) };
+    const keys: string[] = [];
+    const p = project();
+    const player = new Player(p, { onFrame: () => {}, onDialogue: (_e, _ti, key) => { keys.push(key); return true; } }, clock);
+    const step = (ms: number) => { for (let i = 0; i < ms / 33; i++) { now += 33; queue.shift()?.(); } };
+    return { player, keys, step, p, startVoice: (k: string) => player.speechStarted(k), endVoice: (k: string) => player.speechEnded(k) };
+  };
+
+  it("si la voz dura más que su bloque, el reloj espera al final del bloque y no adelanta los gestos", () => {
+    const { player, keys, step, p, startVoice, endVoice } = setup();
+    player.play();
+    step(500); // llega el primer diálogo (0.4 s)
+    expect(keys.length).toBe(1);
+    startVoice(keys[0]);
+    const d = p.takes[0].events.find((e) => e.id === "t1_d1")!;
+    step(6000); // la voz sigue sonando mucho más que su bloque (2.6 s)
+    expect(player.holding).toBe(true);
+    expect(player.position).toBeLessThan(d.start + d.duration);
+    expect(player.position).toBeGreaterThan(d.start + d.duration - 0.01);
+    expect(player.liveSpeakers().has("usu")).toBe(true);
+    endVoice(keys[0]);
+    step(200);
+    expect(player.holding).toBe(false);
+    expect(player.position).toBeGreaterThan(d.start + d.duration);
+    expect(player.liveSpeakers().size).toBe(0);
+  });
+
+  it("si la voz nunca arranca (TTS roto), no bloquea la reproducción", () => {
+    const { player, step } = setup();
+    player.play();
+    step(12000);
+    expect(player.position).toBeGreaterThan(5);
+  });
+
+  it("con voz real la boca solo se mueve mientras suena", () => {
+    const take = project().takes[0];
+    const t = 1.0; // dentro del primer diálogo de Usu
+    const silent = evaluateTake(take, catalog, t, { live: new Map() }).actors.find((a) => a.uid === "usu")!;
+    expect(silent.speaking).toBe(false);
+    expect(silent.mouthOpen).toBe(false);
+    const talking = evaluateTake(take, catalog, 9.9, { live: new Map([["usu", 0.01]]) }).actors.find((a) => a.uid === "usu")!;
+    expect(talking.speaking).toBe(true); // aunque su bloque ya terminó, sigue sonando su voz
+    expect(talking.mouthOpen).toBe(true);
   });
 });

@@ -25,9 +25,23 @@ export function onVoicesReady(cb: (voices: SpeechSynthesisVoice[]) => void): () 
   return () => window.speechSynthesis.removeEventListener("voiceschanged", handler);
 }
 
-export function speak(text: string, opts: VoiceSettings & { lang?: string; defaults?: { pitch: number; rate: number } } = {}) {
-  if (!ttsSupported()) return;
+// Referencias vivas: algunos navegadores pierden onend si el objeto se recolecta.
+const live = new Set<SpeechSynthesisUtterance>();
+
+export function speak(
+  text: string,
+  opts: VoiceSettings & { lang?: string; defaults?: { pitch: number; rate: number }; onStart?: () => void; onEnd?: () => void } = {},
+): boolean {
+  if (!ttsSupported()) return false;
   const u = new SpeechSynthesisUtterance(text);
+  live.add(u);
+  u.onstart = () => opts.onStart?.();
+  const finish = () => {
+    live.delete(u);
+    opts.onEnd?.();
+  };
+  u.onend = finish;
+  u.onerror = finish;
   u.lang = opts.lang ?? "es-ES";
   u.rate = opts.rate ?? opts.defaults?.rate ?? 1;
   u.pitch = opts.pitch ?? opts.defaults?.pitch ?? 1;
@@ -36,6 +50,7 @@ export function speak(text: string, opts: VoiceSettings & { lang?: string; defau
     if (v) u.voice = v;
   }
   window.speechSynthesis.speak(u);
+  return true;
 }
 
 export function stopSpeaking() {

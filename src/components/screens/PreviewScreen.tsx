@@ -50,6 +50,7 @@ export function PreviewScreen({ s }: { s: PocketState }) {
           </span>
         </div>
       </div>
+      {pl.holding && <p className="fine">⏸ Esperando a que termine la voz (el diálogo manda)…</p>}
       <div className="row">
         <label className="switch">
           <input type="checkbox" checked={voice} disabled={!hasTts} onChange={(e) => setVoice(e.target.checked)} />
@@ -61,7 +62,7 @@ export function PreviewScreen({ s }: { s: PocketState }) {
         </label>
       </div>
       <p className="fine">
-        {hasTts ? "Las voces y la sincronización dependen del dispositivo y del navegador; no se genera audio exportable." : "Este navegador no ofrece síntesis de voz: se muestran solo subtítulos."} La boca es aproximada.
+        {hasTts ? "Con voces, el diálogo manda: si una frase dura más que su bloque, la escena espera a que termine y la boca se mueve solo mientras suena. Las voces dependen del dispositivo; no se genera audio exportable." : "Este navegador no ofrece síntesis de voz: se muestran solo subtítulos."}
       </p>
       <button type="button" className="btn btn-secondary btn-block" onClick={() => s.setTab("editar")}>
         ✎ Editar este sketch

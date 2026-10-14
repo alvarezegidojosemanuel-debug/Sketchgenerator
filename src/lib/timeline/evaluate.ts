@@ -82,8 +82,21 @@ export function mouthFlap(e: DialogueEvent, t: number): boolean {
   return Math.floor(local * 8) % 2 === 0;
 }
 
+export interface EvaluateOptions {
+  /**
+   * Voz real sonando: actor → segundos que lleva hablando. Si se pasa, la boca la marca el
+   * audio (se mueve solo mientras suena y se cierra cuando acaba), no la duración del bloque.
+   */
+  live?: Map<string, number>;
+}
+
+/** Boca mientras suena la voz real: ~8 aperturas por segundo. */
+export function liveMouthOpen(elapsed: number): boolean {
+  return Math.floor(elapsed * 8) % 2 === 0;
+}
+
 /** Estado completo de una toma en el instante t (función pura, reproducible). */
-export function evaluateTake(take: Take, catalog: Catalog, t: number): FrameState {
+export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: EvaluateOptions = {}): FrameState {
   const actors = new Map<string, ActorState>();
   for (const a of take.actors) {
     actors.set(a.uid, {
@@ -120,17 +133,18 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number): FrameStat
     switch (e.track) {
       case "dialogue": {
         if (!st || !active) break;
-        st.speaking = true;
-        if (mouthFlap(e, t)) {
-          st.mouthOpen = true;
-          talkIndex.set(st.uid, mouthShapeIndex(e, t));
-        }
         subtitles.push({
           eventId: e.id,
           actorUid: e.actorUid,
           speaker: findCharacter(catalog, st.characterId)?.name ?? st.characterId,
           text: e.text,
         });
+        if (opts.live) break; // con voz real, la boca la decide el audio (abajo)
+        st.speaking = true;
+        if (mouthFlap(e, t)) {
+          st.mouthOpen = true;
+          talkIndex.set(st.uid, mouthShapeIndex(e, t));
+        }
         break;
       }
       case "body": {
@@ -182,6 +196,18 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number): FrameStat
           zIndex: e.zIndex ?? 0,
         });
         break;
+    }
+  }
+
+  if (opts.live) {
+    for (const [uid, elapsed] of opts.live) {
+      const st = actors.get(uid);
+      if (!st) continue;
+      st.speaking = true;
+      if (liveMouthOpen(elapsed)) {
+        st.mouthOpen = true;
+        talkIndex.set(uid, Math.floor(elapsed * 4));
+      }
     }
   }
 
