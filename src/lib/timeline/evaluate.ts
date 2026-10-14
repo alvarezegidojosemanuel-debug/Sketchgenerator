@@ -1,5 +1,6 @@
 import type { Catalog } from "@/lib/catalog/types";
 import { findCharacter, findExpression } from "@/lib/catalog";
+import { stripAudioTags } from "@/lib/voice/tags";
 import type { DialogueEvent, PocketEvent, PocketProject, PropsEvent, Take } from "@/lib/schema/pocket";
 
 export interface ActorState {
@@ -152,7 +153,7 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
           eventId: e.id,
           actorUid: e.actorUid,
           speaker: findCharacter(catalog, st.characterId)?.name ?? st.characterId,
-          text: e.text,
+          text: stripAudioTags(e.text),
         });
         if (opts.live || opts.levels) break; // con voz real, la boca la decide el audio (abajo)
         st.speaking = true;

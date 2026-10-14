@@ -11,7 +11,7 @@ import { levelAt } from "@/lib/voice/dsp";
 import { clipKey } from "@/lib/voice/fit";
 import { playClip, stopAllClips, type Clip } from "@/lib/voice/piper";
 
-export type VoiceEngine = "piper" | "browser" | "off";
+export type VoiceEngine = "elevenlabs" | "piper" | "browser" | "off";
 
 export function usePlayer(project: PocketProject, catalog: Catalog, opts: { engine: VoiceEngine; clips: Map<string, Clip> | null }) {
   const [pos, setPos] = useState({ takeIndex: 0, t: 0, global: 0 });
@@ -34,12 +34,13 @@ export function usePlayer(project: PocketProject, catalog: Catalog, opts: { engi
         const current = player.current;
         const take = current.takes[takeIndex];
         // Voz Piper: audio real generado de antemano, con tiempo exacto
-        const clip = engine === "piper" ? clips?.get(clipKey(take.id, e.id)) : undefined;
+        const usesClips = engine === "piper" || engine === "elevenlabs";
+        const clip = usesClips ? clips?.get(clipKey(take.id, e.id)) : undefined;
         if (clip) {
           playClip(clip, { onStart: () => player.speechStarted(key), onEnd: () => player.speechEnded(key) });
           return true;
         }
-        if (engine === "piper") return false; // sin clip (aún generándose): no bloquear
+        if (usesClips) return false; // sin clip (aún generándose): no bloquear
         const actor = take?.actors.find((a) => a.uid === e.actorUid);
         const ch = actor ? findCharacter(catalog, actor.characterId) : undefined;
         return speak(e.text, {
@@ -78,7 +79,7 @@ export function usePlayer(project: PocketProject, catalog: Catalog, opts: { engi
     // Con voz real: la boca se mueve solo mientras suena y, con Piper, según el volumen de la onda.
     const live = pl.liveSpeakers();
     const levels = new Map<string, number>();
-    if (opts.engine === "piper" && opts.clips) {
+    if ((opts.engine === "piper" || opts.engine === "elevenlabs") && opts.clips) {
       for (const [uid, { key, elapsed }] of pl.liveClips()) {
         const cut = key.indexOf(":");
         const ti = key.slice(0, cut);

@@ -6,6 +6,8 @@ import { ttsSupported } from "@/lib/tts";
 import { attributionsFor } from "@/lib/voice/catalog";
 import { clipKey, fitProjectToAudio } from "@/lib/voice/fit";
 import { generateLines, unlockAudio, type Clip, type Progress } from "@/lib/voice/piper";
+import { accessCode, elevenModel, generateElevenLines, type ElevenModel } from "@/lib/voice/elevenlabs";
+import { ElevenCast } from "../ElevenCast";
 import { Stage } from "../Stage";
 import { usePlayer, type VoiceEngine } from "../usePlayer";
 import type { PocketState } from "../usePocket";
@@ -17,7 +19,9 @@ const ENGINE_KEY = "pocket:voiceEngine";
 
 export function PreviewScreen({ s }: { s: PocketState }) {
   const { project, catalog } = s;
-  const [engine, setEngineState] = useState<VoiceEngine>("piper");
+  const [engine, setEngineState] = useState<VoiceEngine>("elevenlabs");
+  const [model, setModel] = useState<ElevenModel>("eleven_multilingual_v2");
+  const [code, setCode] = useState("");
   const [subs, setSubs] = useState(true);
   const [hasTts, setHasTts] = useState(true);
   const [clips, setClips] = useState<Map<string, Clip> | null>(null);
@@ -28,9 +32,11 @@ export function PreviewScreen({ s }: { s: PocketState }) {
 
   useEffect(() => {
     setHasTts(ttsSupported());
+    setModel(elevenModel.get());
+    setCode(accessCode.get());
     try {
       const v = localStorage.getItem(ENGINE_KEY) as VoiceEngine | null;
-      if (v === "piper" || v === "browser" || v === "off") setEngineState(v);
+      if (v === "piper" || v === "elevenlabs" || v === "browser" || v === "off") setEngineState(v);
     } catch {
       /* sin almacenamiento */
     }
@@ -57,8 +63,12 @@ export function PreviewScreen({ s }: { s: PocketState }) {
       ),
     [project],
   );
-  const sig = useMemo(() => JSON.stringify([lines, project.metadata.voices ?? null]), [lines, project.metadata.voices]);
-  const ready = engine !== "piper" || (clips !== null && clipsSig === sig);
+  const usesClips = engine === "piper" || engine === "elevenlabs";
+  const sig = useMemo(
+    () => JSON.stringify([engine, lines, engine === "elevenlabs" ? [project.metadata.elevenVoices ?? null, model] : project.metadata.voices ?? null]),
+    [engine, lines, project.metadata.voices, project.metadata.elevenVoices, model],
+  );
+  const ready = !usesClips || (clips !== null && clipsSig === sig);
 
   const pl = usePlayer(project, catalog, { engine, clips: clipsSig === sig ? clips : null });
   const { slots } = projectSchedule(project);
@@ -67,7 +77,10 @@ export function PreviewScreen({ s }: { s: PocketState }) {
   const prepare = async (): Promise<boolean> => {
     setVoiceError(null);
     try {
-      const m = await generateLines(lines, project.metadata.voices, setProgress);
+      const m =
+        engine === "elevenlabs"
+          ? await generateElevenLines(lines, project.metadata.elevenVoices, code, model, setProgress)
+          : await generateLines(lines, project.metadata.voices, setProgress);
       setClips(m);
       setClipsSig(sig);
       return true;
@@ -82,7 +95,7 @@ export function PreviewScreen({ s }: { s: PocketState }) {
   const onPlay = async () => {
     if (pl.playing) return pl.pause();
     await unlockAudio(); // dentro del toque: los navegadores exigen un gesto para sonar
-    if (engine === "piper" && !ready && !(await prepare())) return;
+    if (usesClips && !ready && !(await prepare())) return;
     pl.play();
   };
 
@@ -136,12 +149,13 @@ export function PreviewScreen({ s }: { s: PocketState }) {
         </div>
       )}
       {pl.holding && <p className="fine">⏸ Esperando a que termine la voz (el diálogo manda)…</p>}
-      {voiceError && <p className="error-text">No se pudieron generar las voces ({voiceError}). Comprueba la conexión la primera vez o usa las voces del navegador.</p>}
+      {voiceError && <p className="error-text">No se pudieron generar las voces: {voiceError}</p>}
       <div className="row">
         <label className="field" style={{ flex: 1, minWidth: 200 }}>
           <span className="field-label">Voces</span>
           <select value={engine} onChange={(e) => setEngine(e.target.value as VoiceEngine)}>
-            <option value="piper">Alta calidad (Piper, gratis)</option>
+            <option value="elevenlabs">ElevenLabs (máxima calidad)</option>
+            <option value="piper">Piper (gratis, sin conexión)</option>
             {hasTts && <option value="browser">Voces del navegador</option>}
             <option value="off">Sin voz (solo subtítulos)</option>
           </select>
@@ -151,7 +165,7 @@ export function PreviewScreen({ s }: { s: PocketState }) {
           <span>Subtítulos</span>
         </label>
       </div>
-      {engine === "piper" && (
+      {usesClips && (
         <div className="row">
           <button type="button" className="btn btn-secondary" disabled={progress !== null || (ready && clips !== null)} onClick={prepare}>
             {ready && clips ? "✓ Voces preparadas" : "Preparar voces"}
@@ -163,7 +177,7 @@ export function PreviewScreen({ s }: { s: PocketState }) {
       )}
       {fitMsg && <p className="fine">✓ {fitMsg}</p>}
       <p className="fine">
-        {engine === "piper"
+        {usesClips
           ? "La boca sigue el volumen real de cada voz y la escena espera a que termine cada frase. «Ajustar diálogos» deja los bloques con la duración exacta de su voz."
           : engine === "browser"
             ? "Las voces del navegador dependen del dispositivo; la boca se mueve mientras suenan."
@@ -173,6 +187,7 @@ export function PreviewScreen({ s }: { s: PocketState }) {
         <p className="fine">Créditos obligatorios de voz para tus publicaciones: {credits.join(" · ")}</p>
       )}
       {engine === "piper" && <VoiceCast s={s} />}
+      {engine === "elevenlabs" && <ElevenCast s={s} model={model} onModel={setModel} code={code} onCode={setCode} />}
       <button type="button" className="btn btn-secondary btn-block" onClick={() => s.setTab("editar")}>
         ✎ Editar este sketch
       </button>

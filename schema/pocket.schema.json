@@ -75,6 +75,55 @@
               "speed"
             ]
           }
+        },
+        "elevenVoices": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[A-Za-z0-9_.:-]+$"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "voiceId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9]{8,40}$"
+              },
+              "name": {
+                "type": "string",
+                "maxLength": 80
+              },
+              "stability": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "similarity": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "style": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "speed": {
+                "type": "number",
+                "minimum": 0.7,
+                "maximum": 1.2
+              }
+            },
+            "required": [
+              "voiceId",
+              "stability",
+              "similarity",
+              "style",
+              "speed"
+            ]
+          }
         }
       },
       "required": [

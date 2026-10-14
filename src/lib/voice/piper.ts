@@ -8,6 +8,7 @@
 import { castFor, findPiperVoice, PIPER_BASE, type CastEntry } from "./catalog";
 import { envelope, resample, trimSilence } from "./dsp";
 import { clipCache } from "@/lib/storage/projects";
+import { stripAudioTags } from "./tags";
 
 const ORT = "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.18.0/dist/";
 const PHON = "https://cdn.jsdelivr.net/npm/@diffusionstudio/piper-wasm@1.0.0/build/piper_phonemize";
@@ -162,8 +163,9 @@ export interface LineRequest {
 export async function generateLines(lines: LineRequest[], cast: Record<string, CastEntry> | undefined, onProgress?: (p: Progress) => void): Promise<Map<string, Clip>> {
   const result = new Map<string, Clip>();
   const todo: { req: LineRequest; c: CastEntry; ck: string }[] = [];
-  for (const req of lines) {
+  for (let req of lines) {
     const c = castFor(req.characterId, cast);
+    req = { ...req, text: stripAudioTags(req.text) };
     const ck = clipKeyOf(req.text, c, req.rate ?? 1);
     const hit = await clipCache.get(ck).catch(() => undefined);
     if (hit) result.set(req.key, { ...hit, env: envelope(hit.samples, hit.sampleRate), duration: hit.samples.length / hit.sampleRate });

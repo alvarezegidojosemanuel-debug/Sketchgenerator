@@ -33,7 +33,7 @@ export function speak(
   opts: VoiceSettings & { lang?: string; defaults?: { pitch: number; rate: number }; onStart?: () => void; onEnd?: () => void } = {},
 ): boolean {
   if (!ttsSupported()) return false;
-  const u = new SpeechSynthesisUtterance(text);
+  const u = new SpeechSynthesisUtterance(text.replace(/\s*\[[^\]]{1,30}\]\s*/g, " ").trim());
   live.add(u);
   u.onstart = () => opts.onStart?.();
   const finish = () => {

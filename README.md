@@ -82,6 +82,16 @@ scripts/v8/import_v8.py     importador de assets V8 → catálogo (Python + Pill
 src/data/face-overrides.json calibraciones/prefabs revisados versionados (vacío de momento)
 ```
 
+## Voces ElevenLabs (máxima calidad)
+
+En **Ver → Voces: ElevenLabs**:
+- **Reparto:** introduces tu código de acceso y Pocket lista las voces de tu cuenta, con muestras gratis. Cada personaje recibe una voz distinta, con ajustes de estabilidad, estilo, parecido y velocidad (se guarda en `metadata.elevenVoices`).
+- **Modelos:** Multilingual v2 (natural), v3 (más expresiva; entiende acotaciones como `[laughs]` o `[sighs]`, que ChatGPT puede escribir y que se quitan de los subtítulos) o Flash v2.5 (gasta la mitad).
+- **Coste:** cada frase se genera **una vez** y se guarda en el dispositivo, así que repetir o editar otras frases no gasta créditos.
+- **Seguridad:** la clave solo vive en el servidor (`/api/voice/tts`, `/api/voice/voices`), protegido por `POCKET_ACCESS_CODE`, con tope diario y por IP. Pon también un límite de créditos a la propia clave en ElevenLabs.
+
+Variables en Vercel: `ELEVENLABS_API_KEY`, `POCKET_ACCESS_CODE` y, opcionalmente, `ELEVENLABS_DAILY_CHARS`.
+
 ## Voces (Piper, gratis, en el dispositivo)
 
 En **Ver → Voces: Alta calidad (Piper)** la app genera voces neuronales en el propio navegador, sin claves ni servidor:

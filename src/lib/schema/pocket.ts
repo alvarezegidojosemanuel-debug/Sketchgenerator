@@ -157,6 +157,16 @@ export const CastEntry = z.object({
   speed: z.number().finite().min(0.6).max(1.6),
 });
 
+/** Voz ElevenLabs de un personaje. */
+export const ElevenCast = z.object({
+  voiceId: z.string().regex(/^[A-Za-z0-9]{8,40}$/),
+  name: z.string().max(80).optional(),
+  stability: z.number().min(0).max(1),
+  similarity: z.number().min(0).max(1),
+  style: z.number().min(0).max(1),
+  speed: z.number().min(0.7).max(1.2),
+});
+
 export const PocketProject = z.object({
   schemaVersion: z.literal(SCHEMA_VERSION),
   catalogVersion: z.string().min(1).max(80),
@@ -167,6 +177,8 @@ export const PocketProject = z.object({
     idea: z.string().max(1000).optional(),
     /** Reparto de voces por personaje (opcional; si falta se usa el reparto por defecto). */
     voices: z.record(id, CastEntry).optional(),
+    /** Reparto de voces ElevenLabs por personaje. */
+    elevenVoices: z.record(id, ElevenCast).optional(),
   }),
   canvas: z.object({ width: z.literal(1080), height: z.literal(1920) }),
   takes: z.array(Take).min(1).max(LIMITS.maxTakes),
