@@ -11,6 +11,7 @@ import { previewVoice } from "@/lib/voice/piper";
 import { Stage } from "../Stage";
 import { HeadPreview } from "../HeadPreview";
 import { TimelineLanes } from "../TimelineLanes";
+import { arrangeTake } from "@/lib/timeline/arrange";
 import type { Catalog } from "@/lib/catalog/types";
 import type { PocketState } from "../usePocket";
 import { Card, Field, IssueList, Stepper } from "../ui";
@@ -270,6 +271,9 @@ export function EditScreen({ s }: { s: PocketState }) {
           ))}
         </ul>
         <p className="fine">Arriba = delante. El fondo siempre va detrás; los objetos «delante» siempre encima.</p>
+        <button type="button" className="btn btn-secondary" disabled={take.actors.length < 2} onClick={() => editTake((tk) => { Object.assign(tk, arrangeTake(tk)); })}>
+          👥 Colocar a todos en escena ({take.actors.length})
+        </button>
       </Card>
 
       <Card title="Personajes en escena">

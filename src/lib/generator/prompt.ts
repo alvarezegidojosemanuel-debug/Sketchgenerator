@@ -159,7 +159,11 @@ Tipos de evento (campo "track"):
 3. Si quieres una expresión que no existe, usa el fallback de expresión del personaje.
 4. start + duration de cada evento <= duration de su toma. La suma de duraciones de las tomas ≈ ${intent.duration} s.
 5. Diálogos breves (≈ 0,35 s por palabra + 0,5 s), ritmo cómico, remate final claro. Pon "voice" { "rate", "pitch" } distinto a cada personaje.
-5b. Cada personaje mide ≈ 720 px de alto y ≈ 330 de ancho: deja ≥ 360 px entre los "x" de dos personajes. Para que dos personajes se miren, usa poses 3/4 ("..._3q_right" a la izquierda, "..._3q_left" a la derecha) o "flip".
+5b. TODOS los personajes de una escena pueden estar en la MISMA toma: no los repartas en tomas distintas salvo que la historia lo pida. Un personaje mide ≈ 500 px de ancho a escala 1. Coloca según cuántos haya en la toma (x, y, scale, zIndex):
+   1: (540,1780,1,1) · 2: (300,1780,1,1) (780,1780,1,1) · 3: (200,1790,0.85,1) (540,1790,0.85,1) (880,1790,0.85,1)
+   4: detrás (340,1650,0.7,1) (740,1650,0.7,1), delante (230,1810,0.8,2) (850,1810,0.8,2)
+   5: detrás (310,1650,0.68,1) (770,1650,0.68,1), delante (180,1810,0.78,2) (540,1810,0.78,2) (900,1810,0.78,2)
+   Para que dos personajes se miren usa poses 3/4 ("..._3q_right" a la izquierda, "..._3q_left" a la derecha) o "flip".
 6. No solapes dos diálogos del mismo actor. Encadena acciones: reacción (face/body) justo antes o después de cada frase.
 7. Máximo ${LIMITS.maxActorsPerTake} actores y ${LIMITS.maxEventsPerTake} eventos por toma. Nada de HTML, código ni URLs en los textos.
 
