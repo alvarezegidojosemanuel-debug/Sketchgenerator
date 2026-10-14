@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { catalog } from "@/lib/catalog";
-import { createLimiterState, handleGenerate, statusInfo } from "@/lib/server/openrouter";
+import { createLimiterState, handleGenerate, statusInfo, type GenerateEnv } from "@/lib/server/openrouter";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -14,7 +14,7 @@ function clientIp(req: NextRequest): string {
 }
 
 export async function GET() {
-  return NextResponse.json(statusInfo(process.env, { now: Date.now, state }), { headers: { "Cache-Control": "no-store" } });
+  return NextResponse.json(statusInfo(process.env as GenerateEnv, { now: Date.now, state }), { headers: { "Cache-Control": "no-store" } });
 }
 
 export async function POST(req: NextRequest) {
@@ -28,6 +28,6 @@ export async function POST(req: NextRequest) {
   } catch {
     return NextResponse.json({ error: "bad_json", message: "El cuerpo no es JSON." }, { status: 400 });
   }
-  const res = await handleGenerate(body, clientIp(req), process.env, { fetch, now: Date.now, state, catalog });
+  const res = await handleGenerate(body, clientIp(req), process.env as GenerateEnv, { fetch, now: Date.now, state, catalog });
   return NextResponse.json(res.body, { status: res.status, headers: { "Cache-Control": "no-store" } });
 }

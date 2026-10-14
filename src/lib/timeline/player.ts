@@ -42,6 +42,10 @@ export class Player {
     return this.handle !== null;
   }
 
+  get current(): PocketProject {
+    return this.project;
+  }
+
   get position() {
     return this.globalT;
   }
