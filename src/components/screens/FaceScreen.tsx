@@ -18,10 +18,11 @@ function assetsFor(slot: FaceSlot, face: { eyes: FaceAsset[]; brows: FaceAsset[]
 
 export function FaceScreen({ s }: { s: PocketState }) {
   const { catalog, localFace, saveFace } = s;
-  const [charId, setCharId] = useState(catalog.characters[0].id);
-  const ch = findCharacter(catalog, charId)!;
-  const [poseId, setPoseId] = useState(ch.poses[0].id);
-  const [exprId, setExprId] = useState(ch.expressions[0].id);
+  const target = s.faceTarget;
+  const [charId, setCharId] = useState(target?.characterId ?? catalog.characters[0].id);
+  const ch = findCharacter(catalog, charId) ?? catalog.characters[0];
+  const [poseId, setPoseId] = useState(target?.poseId ?? ch.poses[0].id);
+  const [exprId, setExprId] = useState(target?.expressionId ?? ch.expressions[0].id);
   const [slot, setSlot] = useState<FaceSlot>("mouth");
   const [mode, setMode] = useState<Mode>("expr");
   const [step, setStep] = useState(2);
@@ -30,6 +31,10 @@ export function FaceScreen({ s }: { s: PocketState }) {
   const [msg, setMsg] = useState<string | null>(null);
   const [importErrors, setImportErrors] = useState<{ path: string; message: string }[]>([]);
   const [newName, setNewName] = useState("");
+  const [cameFromEditor] = useState(Boolean(target));
+  useEffect(() => {
+    if (target) s.setFaceTarget(null);
+  }, [target, s]);
 
   // Borradores de trabajo (no se guardan hasta pulsar Guardar)
   const pose = ch.poses.find((p) => p.id === poseId) ?? ch.poses[0];
@@ -153,6 +158,11 @@ export function FaceScreen({ s }: { s: PocketState }) {
 
   return (
     <div className="screen">
+      {cameFromEditor && (
+        <button type="button" className="btn btn-secondary btn-block" onClick={() => s.setTab("editar")}>
+          ← Volver al editor
+        </button>
+      )}
       <Card title="Personaje y pose">
         <div className="chips">
           {catalog.characters.map((c) => (
@@ -176,7 +186,7 @@ export function FaceScreen({ s }: { s: PocketState }) {
         <div className="expr-grid">
           {ch.expressions.map((e) => (
             <button key={e.id} type="button" className={`expr-tile${e.id === exprId ? " on" : ""}`} onClick={() => setExprId(e.id)}>
-              <HeadPreview catalog={catalog} characterId={ch.id} poseId={pose.id} expressionId={e.id} size={110} />
+              <HeadPreview catalog={catalog} characterId={ch.id} poseId={pose.id} expressionId={e.id} size={110} fluid />
               <span>{e.label}{e.status === "final" ? " ✓" : ""}</span>
             </button>
           ))}

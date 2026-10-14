@@ -97,6 +97,10 @@ Archivos copiados a `public/assets/v8/`: **180** (rutas originales conservadas).
 - `face.sister.eyes.sister_eyes_01`: El recorte contiene tres ojos (dos pares solapados).
 - `face.sister.eyes.sister_eyes_05`: El recorte contiene un solo ojo.
 - `face.barbas.mouths.barbas_mouth_10`: Contiene un fragmento de barba suelto en la parte superior.
+- ⚠ char.barbas.pose_neutral_3q_right: boca izq. fuera de la cara en (184,219)
+- ⚠ char.barbas.pose_talk_explain: boca izq. fuera de la cara en (139,175)
+- ⚠ char.barbas.pose_talk_explain: boca der. fuera de la cara en (304,175)
+- ⚠ char.barbas.pose_talk_emphasis: boca izq. fuera de la cara en (163,211)
 - El ZIP no incluye calibraciones ni prefabs guardados (LEEME_ASSETS.txt). Los de Pocket son borradores.
 - `scenarios: 0`, `props: 0`, `expressions: 0` en library_index: fondos y objetos siguen siendo provisionales.
 - Usu y Jefe no tienen piezas de ojos: llevan gafas de sol dibujadas en el cuerpo.

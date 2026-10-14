@@ -97,6 +97,9 @@ ASSET_NOTES = {
 }
 
 
+VIOLATIONS = []
+
+
 def die(msg):
     print(msg, file=sys.stderr)
     sys.exit(1)
@@ -469,6 +472,24 @@ def inside_head(im, x, y, cx, margin, both=False):
     return x
 
 
+def face_center(im, y):
+    """Centro horizontal del tramo azul más ancho de la fila y (la cara)."""
+    im = im.convert("RGBA")
+    px = im.load()
+    w, h = im.size
+    yy = int(min(h - 1, max(0, y)))
+    best, start = None, None
+    for x in range(w + 1):
+        b = x < w and is_blue(px[x, yy])
+        if b and start is None:
+            start = x
+        elif not b and start is not None:
+            if best is None or x - start > best[1] - best[0]:
+                best = (start, x)
+            start = None
+    return (best[0] + best[1]) / 2 if best else None
+
+
 def slot(x, y, s):
     return {"x": round(x, 1), "y": round(y, 1), "scale": round(s, 3)}
 
@@ -537,6 +558,7 @@ def estimate_rig(char, pose_key, im, ref):
             mw = 0.42 * lw
             mx = inside_head(im, cx + facing * 0.12 * lh, my, cx, mw / 2 + 6, both=True)
             rig["mouth"] = slot(mx, my, mw / ref["mouth"])
+            rig["_lens"] = [x0, y0, x1, y1]
             method = f"gafas bbox=({x0},{y0},{x1},{y1}) cristales={runs}"
     elif char == "sister":
         f = sister_face(im)
@@ -566,7 +588,7 @@ def estimate_rig(char, pose_key, im, ref):
         rig["browR"] = slot(cx + E / 4, ey - 0.32 * E, 0.3 * E / ref["brow"])
         my = y0 + 0.42 * bh
         # la pieza (boca + trozo de barba) se recorta a la barba dibujada: nunca la sobrepasa al hablar
-        rig["mouth"] = {**slot(cx, my, 0.9 * bw / ref["mouth"]), "clip": [round(bw / 2, 1), round(bh / 2, 1), 0.0, round((y0 + y1) / 2 - my, 1)]}
+        rig["mouth"] = {**slot(cx, my, 0.9 * bw / ref["mouth"]), "clip": [round(bw / 2 * 0.86, 1), round(bh / 2 * 0.84, 1), 0.0, round((y0 + y1) / 2 - my - 0.04 * bh, 1)]}
         method = f"barba bbox=({x0},{y0},{x1},{y1})"
     rig["status"] = "estimated"
     rig["source"] = "scripts/v8/import_v8.py (" + method + ")"
@@ -699,6 +721,50 @@ def main():
                     if sl in rig and sl in front["rig"] and not (cid == "reynaldo" and sl.startswith("eye")):
                         fp = front["rig"][sl].get("persp", 1)
                         rig[sl]["scale"] = round(front["rig"][sl]["scale"] / fp * k * rig[sl].get("persp", 1), 3)
+        # Alturas de cejas y boca de Usu/Jefe: desde el CENTRO de las gafas con el tamaño de la pose frontal
+        # (la altura medida en algunas poses incluye pelo o patillas y desplazaba la cara).
+        if front and "_lens" in front.get("rig", {}):
+            fx0, fy0, fx1, fy1 = front["rig"]["_lens"]
+            flh = fy1 - fy0
+            for q in poses:
+                rig = q.get("rig")
+                if not rig or "_lens" not in rig:
+                    continue
+                k = front["displayScale"] / q["displayScale"]
+                lx0, ly0, lx1, ly1 = rig["_lens"]
+                lh = flh * k
+                cy = (ly0 + ly1) / 2
+                for sl in ("browL", "browR"):
+                    rig[sl]["y"] = round(cy - (0.5 + 0.56) * lh, 1)
+                rig["mouth"]["y"] = round(cy + (0.5 + 1.2) * lh, 1)
+        # Comprobación final en TODAS las poses: la boca entera y las cejas deben caer sobre la cabeza.
+        for q in poses:
+            rig = q.get("rig")
+            if not rig:
+                continue
+            rig.pop("_lens", None)
+            pim = Image.open(os.path.join(v8, assets["poses"][q["id"]]["file"]))
+            m = rig["mouth"]
+            half = m["scale"] * ref["mouth"] / 2 + 4
+            if cid != "barbas":  # la boca de Barbas va sobre la barba y ya se recorta a su contorno
+                m["x"] = round(inside_head(pim, m["x"], m["y"], q["width"] / 2 if not face_center(pim, m["y"]) else face_center(pim, m["y"]), half, both=True), 1)
+            for sl in ("browL", "browR"):
+                b = rig[sl]
+                bh = b["scale"] * ref["brow"] / 2
+                b["x"] = round(inside_head(pim, b["x"], b["y"], face_center(pim, b["y"]) or q["width"] / 2, min(bh, 12)), 1)
+            # verificación: extremos de la boca y centro de cada ceja sobre la cabeza
+            ppx = pim.convert("RGBA").load()
+            def on_head(x, y):
+                xi, yi = int(x), int(y)
+                if not (0 <= xi < q["width"] and 0 <= yi < q["height"]):
+                    return False
+                p_ = ppx[xi, yi]
+                return is_blue(p_) or (cid == "barbas" and is_hair(p_))
+            mh = m["scale"] * ref["mouth"] / 2
+            for label, (x, y) in (("boca izq.", (m["x"] - mh, m["y"])), ("boca der.", (m["x"] + mh, m["y"])),
+                                  ("ceja izq.", (rig["browL"]["x"], rig["browL"]["y"] + 6)), ("ceja der.", (rig["browR"]["x"], rig["browR"]["y"] + 6))):
+                if not on_head(x, y):
+                    VIOLATIONS.append(f"{q['id']}: {label} fuera de la cara en ({x:.0f},{y:.0f})")
         for q in poses:
             for sl in ("browL", "browR"):
                 if q.get("rig", {}).get(sl):
@@ -814,6 +880,7 @@ def main():
         for p in c["poses"]:
             lines.append(f"- `{p['id']}`: {p.get('rig', {}).get('source', 'sin rig')}")
     lines += ["", "## Avisos", "", *report_lines, *[f"- `{k}`: {v}" for k, v in ASSET_NOTES.items()],
+              *[f"- ⚠ {v_}" for v_ in VIOLATIONS],
               "- El ZIP no incluye calibraciones ni prefabs guardados (LEEME_ASSETS.txt). Los de Pocket son borradores.",
               "- `scenarios: 0`, `props: 0`, `expressions: 0` en library_index: fondos y objetos siguen siendo provisionales.",
               "- Usu y Jefe no tienen piezas de ojos: llevan gafas de sol dibujadas en el cuerpo.",

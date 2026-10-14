@@ -44,6 +44,7 @@ export function usePocket() {
   const [projectId, setProjectId] = useState<string>(() => "demo");
   const [saveState, setSaveState] = useState<"idle" | "saving" | "saved" | "error">("idle");
   const [storageError, setStorageError] = useState<string | null>(null);
+  const [faceTarget, setFaceTarget] = useState<{ characterId: string; poseId: string; expressionId?: string } | null>(null);
   const [localFace, setLocalFace] = useState<FaceOverrides | null>(null);
   const catalog = useMemo(() => applyOverrides(defaultCatalog, localFace), [localFace]);
   const loaded = useRef(false);
@@ -144,7 +145,7 @@ export function usePocket() {
   const validation = useMemo(() => validateProject(project, catalog), [project, catalog]);
   const issues: Issue[] = validation.errors;
 
-  return { tab, setTab, intent, setIntent, project, projectId, replaceProject, editProject, issues, saveState, storageError, catalog, localFace, saveFace };
+  return { tab, setTab, intent, setIntent, project, projectId, replaceProject, editProject, issues, saveState, storageError, catalog, localFace, saveFace, faceTarget, setFaceTarget };
 }
 
 export type PocketState = ReturnType<typeof usePocket>;

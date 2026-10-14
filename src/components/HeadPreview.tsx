@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Catalog, FaceSlot } from "@/lib/catalog/types";
 import { findPose } from "@/lib/catalog";
 import { layoutActor } from "@/lib/renderer/layout";
@@ -13,8 +13,9 @@ interface Props {
   poseId: string;
   expressionId: string;
   mouthAssetId?: string;
-  /** Ancho en px de pantalla. */
+  /** Ancho en px de pantalla (si fluid, se mide el contenedor real). */
   size: number;
+  fluid?: boolean;
   /** Fracción del ancho de la pose que se muestra (zoom). */
   view?: number;
   highlight?: FaceSlot | null;
@@ -25,9 +26,19 @@ interface Props {
 }
 
 /** Primer plano de la cabeza (pose + capas faciales) para miniaturas y para calibrar. */
-export function HeadPreview({ catalog, characterId, poseId, expressionId, mouthAssetId, size, view = 0.85, highlight, onDrag, gazeX = 0, gazeY = 0 }: Props) {
+export function HeadPreview({ catalog, characterId, poseId, expressionId, mouthAssetId, size: fixedSize, fluid, view = 0.85, highlight, onDrag, gazeX = 0, gazeY = 0 }: Props) {
   const pose = findPose(catalog, characterId, poseId);
   const last = useRef<{ x: number; y: number } | null>(null);
+  const box = useRef<HTMLDivElement>(null);
+  const [measured, setMeasured] = useState<number | null>(null);
+  useEffect(() => {
+    const el = box.current;
+    if (!fluid || !el) return;
+    const ro = new ResizeObserver(() => setMeasured(el.clientWidth || null));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [fluid]);
+  const size = fluid && measured ? measured : fixedSize;
   if (!pose) return <div className="head-preview" style={{ width: size, height: size }} />;
   const state: ActorState = {
     uid: "preview", characterId, poseId, x: pose.width / 2, y: pose.height, scale: 1 / pose.displayScale, flip: false, zIndex: 0,
@@ -43,8 +54,9 @@ export function HeadPreview({ catalog, characterId, poseId, expressionId, mouthA
   const ty = -(cy - boxW / 2) * k;
   return (
     <div
+      ref={box}
       className="head-preview"
-      style={{ width: size, height: size, touchAction: onDrag ? "none" : undefined }}
+      style={{ width: fluid ? "100%" : size, height: fluid ? undefined : size, aspectRatio: fluid ? "1" : undefined, touchAction: onDrag ? "none" : undefined }}
       onPointerDown={(e) => {
         if (!onDrag) return;
         (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);

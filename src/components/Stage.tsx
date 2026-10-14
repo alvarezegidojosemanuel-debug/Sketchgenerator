@@ -76,6 +76,7 @@ export function Stage({ catalog, frame, showSubtitles = true, selectedUid, onSel
             return (
               <div
                 key={a.uid}
+                data-uid={a.uid}
                 className={`layer actor${selectedUid === a.uid ? " selected" : ""}`}
                 onPointerDown={onPointerDown(a.uid)}
                 style={{

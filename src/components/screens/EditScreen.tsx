@@ -214,6 +214,17 @@ export function EditScreen({ s }: { s: PocketState }) {
               <Field label="Escala"><Stepper value={selA.scale} step={0.05} min={LIMITS.minScale} max={LIMITS.maxScale} onChange={(v) => editActor(selA.uid, (a) => { a.scale = v; })} /></Field>
               <Field label="Profundidad"><Stepper value={selA.zIndex} step={1} min={-100} max={100} onChange={(v) => editActor(selA.uid, (a) => { a.zIndex = Math.round(v); })} /></Field>
             </div>
+            <button
+              type="button"
+              className="btn btn-secondary btn-block"
+              onClick={() => {
+                const st = frame.actors.find((a) => a.uid === selA.uid);
+                s.setFaceTarget({ characterId: selA.characterId, poseId: st?.poseId ?? selA.poseId, expressionId: st?.expressionId });
+                s.setTab("caras");
+              }}
+            >
+              🙂 Ajustar su cara en esta pose ({selCh.poses.find((p) => p.id === (frame.actors.find((a) => a.uid === selA.uid)?.poseId ?? selA.poseId))?.label})
+            </button>
             <div className="row">
               <label className="switch"><input type="checkbox" checked={!!selA.flip} onChange={(e) => editActor(selA.uid, (a) => { a.flip = e.target.checked || undefined; })} /><span>Mirar a la izquierda (espejo)</span></label>
               <button
@@ -357,7 +368,7 @@ function EventEditor({ s, take, ev, voices, onChange, onDelete }: { s: PocketSta
           <div className="expr-grid">
             {ch.expressions.map((x) => (
               <button key={x.id} type="button" className={`expr-tile${x.id === ev.expressionId ? " on" : ""}`} onClick={() => onChange((e) => { if (e.track === "face") e.expressionId = x.id; })}>
-                <HeadPreview catalog={catalog} characterId={ch.id} poseId={poseAt(take, actor.uid, ev.start, catalog)} expressionId={x.id} size={96} />
+                <HeadPreview catalog={catalog} characterId={ch.id} poseId={poseAt(take, actor.uid, ev.start, catalog)} expressionId={x.id} size={96} fluid />
                 <span>{x.label}{x.status === "final" ? " ✓" : ""}</span>
               </button>
             ))}
