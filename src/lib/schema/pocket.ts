@@ -149,6 +149,14 @@ export const Take = z.object({
   events: z.array(PocketEvent).max(LIMITS.maxEventsPerTake),
 });
 
+/** Voz de un personaje (motor Piper): ver src/lib/voice/catalog.ts. */
+export const CastEntry = z.object({
+  voiceId: z.string().min(1).max(60),
+  speaker: z.number().int().min(0).max(20).optional(),
+  pitch: z.number().finite().min(0.7).max(1.4),
+  speed: z.number().finite().min(0.6).max(1.6),
+});
+
 export const PocketProject = z.object({
   schemaVersion: z.literal(SCHEMA_VERSION),
   catalogVersion: z.string().min(1).max(80),
@@ -157,6 +165,8 @@ export const PocketProject = z.object({
     language: z.string().min(2).max(20).default("es-ES"),
     approxDuration: positive.max(LIMITS.maxTotalDuration),
     idea: z.string().max(1000).optional(),
+    /** Reparto de voces por personaje (opcional; si falta se usa el reparto por defecto). */
+    voices: z.record(id, CastEntry).optional(),
   }),
   canvas: z.object({ width: z.literal(1080), height: z.literal(1920) }),
   takes: z.array(Take).min(1).max(LIMITS.maxTakes),

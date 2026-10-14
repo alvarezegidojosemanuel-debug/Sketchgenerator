@@ -7,13 +7,18 @@ import type { PocketProject } from "@/lib/schema/pocket";
 import { evaluateTake, type FrameState } from "@/lib/timeline/evaluate";
 import { Player } from "@/lib/timeline/player";
 import { speak, stopSpeaking } from "@/lib/tts";
+import { levelAt } from "@/lib/voice/dsp";
+import { clipKey } from "@/lib/voice/fit";
+import { playClip, stopAllClips, type Clip } from "@/lib/voice/piper";
 
-export function usePlayer(project: PocketProject, catalog: Catalog, opts: { voice: boolean }) {
+export type VoiceEngine = "piper" | "browser" | "off";
+
+export function usePlayer(project: PocketProject, catalog: Catalog, opts: { engine: VoiceEngine; clips: Map<string, Clip> | null }) {
   const [pos, setPos] = useState({ takeIndex: 0, t: 0, global: 0 });
   const [playing, setPlaying] = useState(false);
   const [holding, setHolding] = useState(false);
-  const voiceRef = useRef(opts.voice);
-  voiceRef.current = opts.voice;
+  const optsRef = useRef(opts);
+  optsRef.current = opts;
   const playerRef = useRef<Player | null>(null);
 
   if (!playerRef.current) {
@@ -23,12 +28,20 @@ export function usePlayer(project: PocketProject, catalog: Catalog, opts: { voic
         setHolding(playerRef.current?.holding ?? false);
       },
       onDialogue: (e, takeIndex, key) => {
-        if (!voiceRef.current) return false;
+        const { engine, clips } = optsRef.current;
+        if (engine === "off") return false;
         const player = playerRef.current!;
         const current = player.current;
-        const actor = current.takes[takeIndex]?.actors.find((a) => a.uid === e.actorUid);
+        const take = current.takes[takeIndex];
+        // Voz Piper: audio real generado de antemano, con tiempo exacto
+        const clip = engine === "piper" ? clips?.get(clipKey(take.id, e.id)) : undefined;
+        if (clip) {
+          playClip(clip, { onStart: () => player.speechStarted(key), onEnd: () => player.speechEnded(key) });
+          return true;
+        }
+        if (engine === "piper") return false; // sin clip (aún generándose): no bloquear
+        const actor = take?.actors.find((a) => a.uid === e.actorUid);
         const ch = actor ? findCharacter(catalog, actor.characterId) : undefined;
-        // El diálogo manda: el reproductor espera a que esta voz termine antes de seguir.
         return speak(e.text, {
           ...e.voice,
           lang: current.metadata.language,
@@ -37,7 +50,10 @@ export function usePlayer(project: PocketProject, catalog: Catalog, opts: { voic
           onEnd: () => player.speechEnded(key),
         });
       },
-      onInterrupt: () => stopSpeaking(),
+      onInterrupt: () => {
+        stopSpeaking();
+        stopAllClips();
+      },
       onEnd: () => setPlaying(false),
     });
   }
@@ -51,15 +67,29 @@ export function usePlayer(project: PocketProject, catalog: Catalog, opts: { voic
     return () => {
       p.pause();
       stopSpeaking();
+      stopAllClips();
     };
   }, []);
 
   const frame: FrameState = useMemo(() => {
     const take = project.takes[Math.min(pos.takeIndex, project.takes.length - 1)];
     const pl = playerRef.current!;
-    // Con voz activa, la boca sigue al audio real (se mueve solo mientras suena).
-    return evaluateTake(take, catalog, pos.t, pl.voiceDriven ? { live: pl.liveSpeakers() } : {});
-  }, [project, catalog, pos]);
+    if (!pl.voiceDriven) return evaluateTake(take, catalog, pos.t);
+    // Con voz real: la boca se mueve solo mientras suena y, con Piper, según el volumen de la onda.
+    const live = pl.liveSpeakers();
+    const levels = new Map<string, number>();
+    if (opts.engine === "piper" && opts.clips) {
+      for (const [uid, { key, elapsed }] of pl.liveClips()) {
+        const cut = key.indexOf(":");
+        const ti = key.slice(0, cut);
+        const eid = key.slice(cut + 1);
+        const tk = project.takes[Number(ti)];
+        const clip = tk ? opts.clips.get(clipKey(tk.id, eid)) : undefined;
+        if (clip) levels.set(uid, levelAt(clip.env, elapsed));
+      }
+    }
+    return evaluateTake(take, catalog, pos.t, { live, levels: levels.size ? levels : undefined });
+  }, [project, catalog, pos, opts.engine, opts.clips]);
 
   const p = playerRef.current;
   return {

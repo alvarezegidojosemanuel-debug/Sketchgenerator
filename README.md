@@ -82,6 +82,30 @@ scripts/v8/import_v8.py     importador de assets V8 → catálogo (Python + Pill
 src/data/face-overrides.json calibraciones/prefabs revisados versionados (vacío de momento)
 ```
 
+## Voces (Piper, gratis, en el dispositivo)
+
+En **Ver → Voces: Alta calidad (Piper)** la app genera voces neuronales en el propio navegador, sin claves ni servidor:
+
+- **Descarga:** cada voz se baja una vez de HuggingFace (25–110 MB) y queda en la caché del navegador. Cada frase generada se guarda en IndexedDB, así que repetir o editar no vuelve a sintetizar.
+- **Reparto de voces** (por proyecto, en `metadata.voices`): voz, hablante, tono y velocidad para cada personaje. El tono se cambia sin alterar la velocidad.
+- **Boca:** sigue el volumen real de la onda de voz, con bocas más abiertas cuanto más alto suena.
+- **Tiempos:** la escena espera a que termine cada frase. **⏱ Ajustar diálogos a las voces** pone a cada bloque la duración exacta de su audio y desplaza lo que viene detrás.
+- **Piezas externas:** onnxruntime-web y el fonemizador (espeak-ng en WASM, `@diffusionstudio/piper-wasm`) se cargan desde jsDelivr.
+
+Licencias, comprobadas en el MODEL_CARD de cada voz (`rhasspy/piper-voices` v1.0.0). Todas permiten uso comercial:
+
+| Voz | Acento | Licencia |
+|---|---|---|
+| davefx | España | CC0 |
+| carlfm | España | Dominio público |
+| ald | México | Unlicense |
+| claude | México | Apache 2.0 |
+| sharvard (hombre/mujer) | España | CC BY 3.0 — **citar** |
+| mls_10246 / mls_9972 | España | CC BY 4.0 — **citar** |
+| daniela | Argentina | CC BY-SA 4.0 — **citar** |
+
+La pantalla Ver muestra el texto de crédito que hay que poner en la publicación cuando el reparto usa una voz con atribución. El fonemizador espeak-ng es GPL-3.0: se carga como programa aparte y no afecta al audio que generas.
+
 ## Contrato JSON `pocket-1` (formato definitivo del generador)
 
 Mira `schema/pocket.schema.json` y `examples/sketch-demo.json`. En resumen: `metadata`, `catalogVersion`, `canvas` (1080×1920), y `takes[]`, cada una con `id`, `duration`, `backgroundId`, `actors[]` (`uid`, `characterId`, `poseId`, `x`, `y` en los pies, `scale`, `zIndex`) y `events[]` (`id`, `track`, `actorUid`, `start`, `duration`).

@@ -88,6 +88,21 @@ export interface EvaluateOptions {
    * audio (se mueve solo mientras suena y se cierra cuando acaba), no la duración del bloque.
    */
   live?: Map<string, number>;
+  /** Volumen real de la voz (0..1) por actor: la boca se abre según la onda del audio. */
+  levels?: Map<string, number>;
+}
+
+/** Umbral de volumen por debajo del cual la boca se considera cerrada. */
+export const MOUTH_THRESHOLD = 0.14;
+
+/** Bocas de hablar ordenadas de más cerrada a más abierta (altura del dibujo original). */
+function talkByOpenness(catalog: Catalog, characterId: string, talk: string[]): string[] {
+  const ch = findCharacter(catalog, characterId);
+  const h = (id: string) => {
+    const a = ch?.face.mouths.find((m) => m.id === id);
+    return a ? (a.bbox[3] - a.bbox[1]) / (a.normScale ?? 1) : 0;
+  };
+  return [...talk].sort((x, y) => h(x) - h(y));
 }
 
 /** Boca mientras suena la voz real: ~8 aperturas por segundo. */
@@ -139,7 +154,7 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
           speaker: findCharacter(catalog, st.characterId)?.name ?? st.characterId,
           text: e.text,
         });
-        if (opts.live) break; // con voz real, la boca la decide el audio (abajo)
+        if (opts.live || opts.levels) break; // con voz real, la boca la decide el audio (abajo)
         st.speaking = true;
         if (mouthFlap(e, t)) {
           st.mouthOpen = true;
@@ -199,8 +214,27 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
     }
   }
 
+  const levelDriven = new Set<string>();
+  if (opts.levels) {
+    for (const [uid, level] of opts.levels) {
+      const st = actors.get(uid);
+      if (!st) continue;
+      st.speaking = true;
+      levelDriven.add(uid);
+      if (level > MOUTH_THRESHOLD) {
+        const ex = st.expressionId ? findExpression(catalog, st.characterId, st.expressionId) : undefined;
+        const ordered = ex?.talk.length ? talkByOpenness(catalog, st.characterId, ex.talk) : [];
+        st.mouthOpen = true;
+        if (ordered.length) {
+          const k = Math.min(ordered.length - 1, Math.floor(((level - MOUTH_THRESHOLD) / (1 - MOUTH_THRESHOLD)) * ordered.length));
+          st.mouthAssetId = ordered[k];
+        }
+      }
+    }
+  }
   if (opts.live) {
     for (const [uid, elapsed] of opts.live) {
+      if (levelDriven.has(uid)) continue;
       const st = actors.get(uid);
       if (!st) continue;
       st.speaking = true;
@@ -213,6 +247,7 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
 
   // La boca se resuelve al final, con la expresión vigente en t.
   for (const st of actors.values()) {
+    if (levelDriven.has(st.uid)) continue;
     const k = talkIndex.get(st.uid);
     if (k === undefined) continue;
     const ex = st.expressionId ? findExpression(catalog, st.characterId, st.expressionId) : undefined;

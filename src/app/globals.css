@@ -253,3 +253,8 @@ textarea.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; fon
 .layer-list li.on .layer-name { border-color: var(--accent); }
 .layer-name { flex: 1; min-height: 44px; text-align: left; border: 1px solid var(--line); border-radius: 10px; background: var(--panel-2); padding: 6px 10px; display: flex; flex-direction: column; cursor: pointer; }
 .layer-name small { color: var(--muted); }
+.cast-row { display: flex; flex-direction: column; gap: 8px; padding: 10px 0; border-top: 1px solid var(--line); }
+.cast-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.progress { position: relative; height: 30px; border-radius: 8px; background: var(--bg); border: 1px solid var(--line); overflow: hidden; }
+.progress > div { position: absolute; inset: 0 auto 0 0; background: color-mix(in srgb, var(--accent) 45%, transparent); transition: width .2s; }
+.progress > span { position: relative; z-index: 1; display: flex; align-items: center; height: 100%; padding: 0 10px; font-size: 13px; }

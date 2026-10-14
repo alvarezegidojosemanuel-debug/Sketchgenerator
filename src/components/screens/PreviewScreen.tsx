@@ -1,24 +1,103 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { projectSchedule } from "@/lib/timeline/evaluate";
 import { ttsSupported } from "@/lib/tts";
+import { attributionsFor } from "@/lib/voice/catalog";
+import { clipKey, fitProjectToAudio } from "@/lib/voice/fit";
+import { generateLines, unlockAudio, type Clip, type Progress } from "@/lib/voice/piper";
 import { Stage } from "../Stage";
-import { usePlayer } from "../usePlayer";
+import { usePlayer, type VoiceEngine } from "../usePlayer";
 import type { PocketState } from "../usePocket";
+import { VoiceCast } from "../VoiceCast";
 import { IssueList } from "../ui";
 
 const fmt = (t: number) => `${Math.floor(t / 60)}:${(t % 60).toFixed(1).padStart(4, "0")}`;
+const ENGINE_KEY = "pocket:voiceEngine";
 
 export function PreviewScreen({ s }: { s: PocketState }) {
   const { project, catalog } = s;
-  const [voice, setVoice] = useState(true);
+  const [engine, setEngineState] = useState<VoiceEngine>("piper");
   const [subs, setSubs] = useState(true);
   const [hasTts, setHasTts] = useState(true);
-  useEffect(() => setHasTts(ttsSupported()), []);
-  const pl = usePlayer(project, catalog, { voice: voice && hasTts });
+  const [clips, setClips] = useState<Map<string, Clip> | null>(null);
+  const [clipsSig, setClipsSig] = useState("");
+  const [progress, setProgress] = useState<Progress | null>(null);
+  const [voiceError, setVoiceError] = useState<string | null>(null);
+  const [fitMsg, setFitMsg] = useState<string | null>(null);
+
+  useEffect(() => {
+    setHasTts(ttsSupported());
+    try {
+      const v = localStorage.getItem(ENGINE_KEY) as VoiceEngine | null;
+      if (v === "piper" || v === "browser" || v === "off") setEngineState(v);
+    } catch {
+      /* sin almacenamiento */
+    }
+  }, []);
+  const setEngine = (v: VoiceEngine) => {
+    setEngineState(v);
+    try {
+      localStorage.setItem(ENGINE_KEY, v);
+    } catch {
+      /* sin almacenamiento */
+    }
+  };
+
+  // Frases del proyecto y firma (si cambian textos o reparto, hay que regenerar)
+  const lines = useMemo(
+    () =>
+      project.takes.flatMap((t) =>
+        t.events
+          .filter((e) => e.track === "dialogue")
+          .map((e) => {
+            const d = e as { id: string; text: string; actorUid: string; voice?: { rate?: number } };
+            return { key: clipKey(t.id, d.id), text: d.text, characterId: t.actors.find((a) => a.uid === d.actorUid)?.characterId ?? "", rate: d.voice?.rate };
+          }),
+      ),
+    [project],
+  );
+  const sig = useMemo(() => JSON.stringify([lines, project.metadata.voices ?? null]), [lines, project.metadata.voices]);
+  const ready = engine !== "piper" || (clips !== null && clipsSig === sig);
+
+  const pl = usePlayer(project, catalog, { engine, clips: clipsSig === sig ? clips : null });
   const { slots } = projectSchedule(project);
   const take = project.takes[pl.pos.takeIndex];
+
+  const prepare = async (): Promise<boolean> => {
+    setVoiceError(null);
+    try {
+      const m = await generateLines(lines, project.metadata.voices, setProgress);
+      setClips(m);
+      setClipsSig(sig);
+      return true;
+    } catch (e) {
+      setVoiceError(e instanceof Error ? e.message : String(e));
+      return false;
+    } finally {
+      setProgress(null);
+    }
+  };
+
+  const onPlay = async () => {
+    if (pl.playing) return pl.pause();
+    await unlockAudio(); // dentro del toque: los navegadores exigen un gesto para sonar
+    if (engine === "piper" && !ready && !(await prepare())) return;
+    pl.play();
+  };
+
+  const fit = () => {
+    if (!clips) return;
+    const durations = new Map([...clips].map(([k, c]) => [k, c.duration]));
+    const { project: p, changed } = fitProjectToAudio(project, durations);
+    s.editProject((d) => {
+      d.takes = p.takes;
+      d.metadata.approxDuration = p.metadata.approxDuration;
+    });
+    setFitMsg(changed ? `${changed} diálogo(s) ajustados a su voz; lo que venía detrás se ha desplazado.` : "Los diálogos ya coinciden con sus voces.");
+  };
+
+  const credits = attributionsFor(project.metadata.voices ?? {}, [...new Set(project.takes.flatMap((t) => t.actors.map((a) => a.characterId)))]);
 
   return (
     <div className="screen screen-stage">
@@ -32,7 +111,7 @@ export function PreviewScreen({ s }: { s: PocketState }) {
       {s.issues.length > 0 && <IssueList errors={s.issues} max={3} />}
       <Stage catalog={catalog} frame={pl.frame} showSubtitles={subs} />
       <div className="transport">
-        <button type="button" className="btn btn-round btn-primary" onClick={pl.playing ? pl.pause : pl.play} aria-label={pl.playing ? "Pausar" : "Reproducir"}>
+        <button type="button" className="btn btn-round btn-primary" onClick={onPlay} disabled={progress !== null} aria-label={pl.playing ? "Pausar" : "Reproducir"}>
           {pl.playing ? "❚❚" : "▶"}
         </button>
         <button type="button" className="btn btn-round" onClick={pl.stop} aria-label="Detener">
@@ -50,20 +129,50 @@ export function PreviewScreen({ s }: { s: PocketState }) {
           </span>
         </div>
       </div>
+      {progress && (
+        <div className="progress">
+          <div style={{ width: `${Math.round(progress.ratio * 100)}%` }} />
+          <span>{progress.label}</span>
+        </div>
+      )}
       {pl.holding && <p className="fine">⏸ Esperando a que termine la voz (el diálogo manda)…</p>}
+      {voiceError && <p className="error-text">No se pudieron generar las voces ({voiceError}). Comprueba la conexión la primera vez o usa las voces del navegador.</p>}
       <div className="row">
-        <label className="switch">
-          <input type="checkbox" checked={voice} disabled={!hasTts} onChange={(e) => setVoice(e.target.checked)} />
-          <span>Voces del navegador</span>
+        <label className="field" style={{ flex: 1, minWidth: 200 }}>
+          <span className="field-label">Voces</span>
+          <select value={engine} onChange={(e) => setEngine(e.target.value as VoiceEngine)}>
+            <option value="piper">Alta calidad (Piper, gratis)</option>
+            {hasTts && <option value="browser">Voces del navegador</option>}
+            <option value="off">Sin voz (solo subtítulos)</option>
+          </select>
         </label>
         <label className="switch">
           <input type="checkbox" checked={subs} onChange={(e) => setSubs(e.target.checked)} />
           <span>Subtítulos</span>
         </label>
       </div>
+      {engine === "piper" && (
+        <div className="row">
+          <button type="button" className="btn btn-secondary" disabled={progress !== null || (ready && clips !== null)} onClick={prepare}>
+            {ready && clips ? "✓ Voces preparadas" : "Preparar voces"}
+          </button>
+          <button type="button" className="btn btn-secondary" disabled={!ready || !clips} onClick={fit}>
+            ⏱ Ajustar diálogos a las voces
+          </button>
+        </div>
+      )}
+      {fitMsg && <p className="fine">✓ {fitMsg}</p>}
       <p className="fine">
-        {hasTts ? "Con voces, el diálogo manda: si una frase dura más que su bloque, la escena espera a que termine y la boca se mueve solo mientras suena. Las voces dependen del dispositivo; no se genera audio exportable." : "Este navegador no ofrece síntesis de voz: se muestran solo subtítulos."}
+        {engine === "piper"
+          ? "La boca sigue el volumen real de cada voz y la escena espera a que termine cada frase. «Ajustar diálogos» deja los bloques con la duración exacta de su voz."
+          : engine === "browser"
+            ? "Las voces del navegador dependen del dispositivo; la boca se mueve mientras suenan."
+            : "Sin voz: la boca se anima según la duración de cada bloque."}
       </p>
+      {engine === "piper" && credits.length > 0 && (
+        <p className="fine">Créditos obligatorios de voz para tus publicaciones: {credits.join(" · ")}</p>
+      )}
+      {engine === "piper" && <VoiceCast s={s} />}
       <button type="button" className="btn btn-secondary btn-block" onClick={() => s.setTab("editar")}>
         ✎ Editar este sketch
       </button>

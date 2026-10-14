@@ -7,6 +7,7 @@ import { LIMITS } from "@/lib/schema/pocket";
 import { estimateSpeechDuration } from "@/lib/schema/validate";
 import { evaluateTake, sortedEvents } from "@/lib/timeline/evaluate";
 import { listVoices, onVoicesReady, speak, stopSpeaking } from "@/lib/tts";
+import { previewVoice } from "@/lib/voice/piper";
 import { Stage } from "../Stage";
 import { HeadPreview } from "../HeadPreview";
 import { TimelineLanes } from "../TimelineLanes";
@@ -384,7 +385,12 @@ function EventEditor({ s, take, ev, voices, onChange, onDelete }: { s: PocketSta
             </select>
           </Field>
           <div className="row">
-            <button type="button" className="btn btn-secondary" onClick={() => { stopSpeaking(); speak(ev.text, { ...ev.voice, lang: s.project.metadata.language, defaults: ch?.defaultVoice }); }}>▶ Probar voz</button>
+            <button type="button" className="btn btn-secondary" onClick={() => {
+              stopSpeaking();
+              if (!actor) return;
+              // voz de alta calidad (Piper) con el reparto del proyecto; si falla, la del navegador
+              previewVoice(ev.text, actor.characterId, s.project.metadata.voices).catch(() => speak(ev.text, { ...ev.voice, lang: s.project.metadata.language, defaults: ch?.defaultVoice }));
+            }}>▶ Probar voz</button>
             <button type="button" className="btn btn-ghost" onClick={() => onChange((x) => { if (x.track === "dialogue") x.duration = estimateSpeechDuration(x.text); })}>Ajustar duración al texto</button>
           </div>
           {voices.length === 0 && <p className="fine">No hay voces disponibles en este navegador (o aún se están cargando).</p>}

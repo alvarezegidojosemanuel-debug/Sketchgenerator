@@ -91,6 +91,16 @@ export class Player {
     return m;
   }
 
+  /** Actor → clave y segundos de la voz que suena ahora (para leer su envolvente). */
+  liveClips(): Map<string, { key: string; elapsed: number }> {
+    const now = this.clock.now();
+    const m = new Map<string, { key: string; elapsed: number }>();
+    for (const [key, p] of this.pending) {
+      if (!p.done && p.startedAt !== null) m.set(p.actorUid, { key, elapsed: (now - p.startedAt) / 1000 });
+    }
+    return m;
+  }
+
   /** true si hay voces gestionadas (entonces la boca la marca el audio, no el bloque). */
   get voiceDriven() {
     return this.pending.size > 0;
@@ -193,9 +203,10 @@ export class Player {
         const g = s.offset + e.start;
         if (g > prev && g <= next) {
           const key = `${s.index}:${e.id}`;
-          if (this.cb.onDialogue(e, s.index, key)) {
-            this.pending.set(key, { actorUid: e.actorUid, endGlobal: g + e.duration, firedAt: this.clock.now(), startedAt: null, done: false });
-          }
+          // Se registra ANTES de lanzar la voz: un motor que empieza al instante (audio ya generado)
+          // llama a speechStarted dentro de onDialogue.
+          this.pending.set(key, { actorUid: e.actorUid, endGlobal: g + e.duration, firedAt: this.clock.now(), startedAt: null, done: false });
+          if (!this.cb.onDialogue(e, s.index, key)) this.pending.delete(key);
         }
       }
     }

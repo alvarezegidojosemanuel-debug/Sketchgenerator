@@ -1,5 +1,8 @@
 import type { Catalog, Character } from "@/lib/catalog/types";
 import { expressionForEmotion, findCharacter } from "@/lib/catalog";
+import { PIPER_VOICES } from "@/lib/voice/catalog";
+
+const PIPER_VOICE_IDS = new Set(PIPER_VOICES.map((v) => v.id));
 import { LIMITS, PocketProject, SCHEMA_VERSION, type PocketProject as Project } from "./pocket";
 
 export interface Issue {
@@ -400,6 +403,10 @@ export function checkSemantics(project: Project, catalog: Catalog): Issue[] {
       }
     });
   });
+
+  for (const [cid, c] of Object.entries(project.metadata.voices ?? {})) {
+    if (!PIPER_VOICE_IDS.has(c.voiceId)) errors.push({ path: `metadata.voices.${cid}.voiceId`, message: `voz "${c.voiceId}" no existe` });
+  }
 
   if (totalEvents > LIMITS.maxEventsTotal) {
     errors.push({ path: "takes", message: `demasiados eventos (${totalEvents} > ${LIMITS.maxEventsTotal})` });

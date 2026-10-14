@@ -143,3 +143,30 @@ describe("el diálogo manda (sincronía voz ↔ animación)", () => {
     expect(talking.mouthOpen).toBe(true);
   });
 });
+
+describe("voz que empieza al instante (audio pregenerado)", () => {
+  it("speechStarted dentro de onDialogue cuenta como voz sonando", () => {
+    let now = 0;
+    const queue: (() => void)[] = [];
+    const clock: Clock = { now: () => now, request: (cb) => queue.push(cb), cancel: () => queue.splice(0) };
+    const ref: { p?: Player } = {};
+    ref.p = new Player(project(), { onFrame: () => {}, onDialogue: (_e, _t, key) => { ref.p!.speechStarted(key); return true; } }, clock);
+    ref.p.play();
+    for (let i = 0; i < 20; i++) { now += 33; queue.shift()?.(); }
+    expect(ref.p.liveClips().get("usu")?.key).toBe("0:t1_d1");
+  });
+
+  it("la boca se abre según el volumen y elige bocas más abiertas cuanto más alto", async () => {
+    const { findExpression } = await import("@/lib/catalog");
+    const take = project().takes[0];
+    const quiet = evaluateTake(take, catalog, 1, { live: new Map([["usu", 0.1]]), levels: new Map([["usu", 0.05]]) }).actors.find((a) => a.uid === "usu")!;
+    expect(quiet.mouthOpen).toBe(false);
+    const soft = evaluateTake(take, catalog, 1, { live: new Map([["usu", 0.1]]), levels: new Map([["usu", 0.2]]) }).actors.find((a) => a.uid === "usu")!;
+    const loud = evaluateTake(take, catalog, 1, { live: new Map([["usu", 0.1]]), levels: new Map([["usu", 1]]) }).actors.find((a) => a.uid === "usu")!;
+    expect(soft.mouthOpen && loud.mouthOpen).toBe(true);
+    const talk = findExpression(catalog, "usu", soft.expressionId!)!.talk;
+    expect(talk).toContain(soft.mouthAssetId);
+    expect(talk).toContain(loud.mouthAssetId);
+    expect(soft.mouthAssetId).not.toBe(loud.mouthAssetId);
+  });
+});

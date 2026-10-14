@@ -36,6 +36,45 @@
         "idea": {
           "type": "string",
           "maxLength": 1000
+        },
+        "voices": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[A-Za-z0-9_.:-]+$"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "voiceId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 60
+              },
+              "speaker": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 20
+              },
+              "pitch": {
+                "type": "number",
+                "minimum": 0.7,
+                "maximum": 1.4
+              },
+              "speed": {
+                "type": "number",
+                "minimum": 0.6,
+                "maximum": 1.6
+              }
+            },
+            "required": [
+              "voiceId",
+              "pitch",
+              "speed"
+            ]
+          }
         }
       },
       "required": [

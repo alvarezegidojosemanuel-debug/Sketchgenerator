@@ -8,7 +8,8 @@ import type { FaceOverrides } from "@/lib/catalog/types";
 const DB_NAME = "punetos-pocket";
 const STORE = "projects";
 const FACE_STORE = "face";
-const VERSION = 2;
+const CLIP_STORE = "voiceClips";
+const VERSION = 3;
 
 export interface StoredProject {
   id: string;
@@ -25,6 +26,7 @@ function open(): Promise<IDBDatabase> {
       const db = req.result;
       if (!db.objectStoreNames.contains(STORE)) db.createObjectStore(STORE, { keyPath: "id" });
       if (!db.objectStoreNames.contains(FACE_STORE)) db.createObjectStore(FACE_STORE);
+      if (!db.objectStoreNames.contains(CLIP_STORE)) db.createObjectStore(CLIP_STORE);
     };
     req.onsuccess = () => resolve(req.result);
     req.onerror = () => reject(req.error);
@@ -69,4 +71,11 @@ export function newProjectId(): string {
 export const faceStore = {
   get: () => tx<FaceOverrides | undefined>("readonly", (s) => s.get("local") as IDBRequest<FaceOverrides | undefined>, FACE_STORE),
   save: (ov: FaceOverrides) => tx("readwrite", (s) => s.put(ov, "local"), FACE_STORE),
+};
+
+/** Audio de voz ya generado (Piper), para no volver a sintetizar la misma frase. */
+export const clipCache = {
+  get: (key: string) => tx<{ samples: Float32Array; sampleRate: number } | undefined>("readonly", (s) => s.get(key) as IDBRequest<{ samples: Float32Array; sampleRate: number } | undefined>, CLIP_STORE),
+  put: (key: string, v: { samples: Float32Array; sampleRate: number }) => tx("readwrite", (s) => s.put(v, key), CLIP_STORE),
+  clear: () => tx("readwrite", (s) => s.clear(), CLIP_STORE),
 };
