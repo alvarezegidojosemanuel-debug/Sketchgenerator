@@ -1,0 +1,871 @@
+{
+  "catalogVersion": "placeholder-0.1",
+  "source": {
+    "kind": "placeholder",
+    "note": "Catálogo PROVISIONAL generado por scripts/make-placeholder-catalog.mjs con dibujos SVG simples. No contiene IDs ni arte de PUÑETOS Studio V3/V8. Reemplazar con `npm run catalog:v3 -- <carpeta V3>`.",
+    "license": "Dibujos placeholder creados para este repositorio (misma licencia que el código)."
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1920
+  },
+  "emotions": [
+    "neutral",
+    "feliz",
+    "enfadado",
+    "sorprendido",
+    "triste"
+  ],
+  "characters": [
+    {
+      "id": "usu",
+      "name": "Usu",
+      "color": "#3b82f6",
+      "defaultVoice": {
+        "pitch": 1.1,
+        "rate": 1.05
+      },
+      "poses": [
+        {
+          "id": "usu_idle",
+          "label": "De pie",
+          "src": "/assets/placeholder/characters/usu/pose_idle.svg",
+          "width": 400,
+          "height": 900,
+          "anchors": {
+            "face": {
+              "x": 0.5,
+              "y": 0.18888888888888888
+            },
+            "mouth": {
+              "x": 0.5,
+              "y": 0.25333333333333335
+            },
+            "eyeL": {
+              "x": 0.405,
+              "y": 0.18333333333333332
+            },
+            "eyeR": {
+              "x": 0.595,
+              "y": 0.18333333333333332
+            }
+          }
+        },
+        {
+          "id": "usu_senala",
+          "label": "Señala",
+          "src": "/assets/placeholder/characters/usu/pose_senala.svg",
+          "width": 400,
+          "height": 900,
+          "anchors": {
+            "face": {
+              "x": 0.5,
+              "y": 0.18888888888888888
+            },
+            "mouth": {
+              "x": 0.5,
+              "y": 0.25333333333333335
+            },
+            "eyeL": {
+              "x": 0.405,
+              "y": 0.18333333333333332
+            },
+            "eyeR": {
+              "x": 0.595,
+              "y": 0.18333333333333332
+            }
+          }
+        },
+        {
+          "id": "usu_brazos_cruzados",
+          "label": "Brazos cruzados",
+          "src": "/assets/placeholder/characters/usu/pose_brazos_cruzados.svg",
+          "width": 400,
+          "height": 900,
+          "anchors": {
+            "face": {
+              "x": 0.5,
+              "y": 0.18888888888888888
+            },
+            "mouth": {
+              "x": 0.5,
+              "y": 0.25333333333333335
+            },
+            "eyeL": {
+              "x": 0.405,
+              "y": 0.18333333333333332
+            },
+            "eyeR": {
+              "x": 0.595,
+              "y": 0.18333333333333332
+            }
+          }
+        },
+        {
+          "id": "usu_manos_arriba",
+          "label": "Manos arriba",
+          "src": "/assets/placeholder/characters/usu/pose_manos_arriba.svg",
+          "width": 400,
+          "height": 900,
+          "anchors": {
+            "face": {
+              "x": 0.5,
+              "y": 0.18888888888888888
+            },
+            "mouth": {
+              "x": 0.5,
+              "y": 0.25333333333333335
+            },
+            "eyeL": {
+              "x": 0.405,
+              "y": 0.18333333333333332
+            },
+            "eyeR": {
+              "x": 0.595,
+              "y": 0.18333333333333332
+            }
+          }
+        }
+      ],
+      "expressions": [
+        {
+          "id": "usu_cara_neutral",
+          "emotion": "neutral",
+          "label": "Neutral",
+          "src": "/assets/placeholder/characters/usu/cara_neutral.svg",
+          "width": 240,
+          "height": 240
+        },
+        {
+          "id": "usu_cara_feliz",
+          "emotion": "feliz",
+          "label": "Feliz",
+          "src": "/assets/placeholder/characters/usu/cara_feliz.svg",
+          "width": 240,
+          "height": 240
+        },
+        {
+          "id": "usu_cara_enfadado",
+          "emotion": "enfadado",
+          "label": "Enfadado",
+          "src": "/assets/placeholder/characters/usu/cara_enfadado.svg",
+          "width": 240,
+          "height": 240
+        },
+        {
+          "id": "usu_cara_sorprendido",
+          "emotion": "sorprendido",
+          "label": "Sorprendido",
+          "src": "/assets/placeholder/characters/usu/cara_sorprendido.svg",
+          "width": 240,
+          "height": 240
+        },
+        {
+          "id": "usu_cara_triste",
+          "emotion": "triste",
+          "label": "Triste",
+          "src": "/assets/placeholder/characters/usu/cara_triste.svg",
+          "width": 240,
+          "height": 240
+        }
+      ],
+      "fallbackExpressionId": "usu_cara_neutral"
+    },
+    {
+      "id": "reynaldo",
+      "name": "Reynaldo",
+      "color": "#16a34a",
+      "defaultVoice": {
+        "pitch": 0.9,
+        "rate": 1
+      },
+      "poses": [
+        {
+          "id": "reynaldo_idle",
+          "label": "De pie",
+          "src": "/assets/placeholder/characters/reynaldo/pose_idle.svg",
+          "width": 400,
+          "height": 900,
+          "anchors": {
+            "face": {
+              "x": 0.5,
+              "y": 0.18888888888888888
+            },
+            "mouth": {
+              "x": 0.5,
+              "y": 0.25333333333333335
+            },
+            "eyeL": {
+              "x": 0.405,
+              "y": 0.18333333333333332
+            },
+            "eyeR": {
+              "x": 0.595,
+              "y": 0.18333333333333332
+            }
+          }
+        },
+        {
+          "id": "reynaldo_senala",
+          "label": "Señala",
+          "src": "/assets/placeholder/characters/reynaldo/pose_senala.svg",
+          "width": 400,
+          "height": 900,
+          "anchors": {
+            "face": {
+              "x": 0.5,
+              "y": 0.18888888888888888
+            },
+            "mouth": {
+              "x": 0.5,
+              "y": 0.25333333333333335
+            },
+            "eyeL": {
+              "x": 0.405,
+              "y": 0.18333333333333332
+            },
+            "eyeR": {
+              "x": 0.595,
+              "y": 0.18333333333333332
+            }
+          }
+        },
+        {
+          "id": "reynaldo_brazos_cruzados",
+          "label": "Brazos cruzados",
+          "src": "/assets/placeholder/characters/reynaldo/pose_brazos_cruzados.svg",
+          "width": 400,
+          "height": 900,
+          "anchors": {
+            "face": {
+              "x": 0.5,
+              "y": 0.18888888888888888
+            },
+            "mouth": {
+              "x": 0.5,
+              "y": 0.25333333333333335
+            },
+            "eyeL": {
+              "x": 0.405,
+              "y": 0.18333333333333332
+            },
+            "eyeR": {
+              "x": 0.595,
+              "y": 0.18333333333333332
+            }
+          }
+        },
+        {
+          "id": "reynaldo_manos_arriba",
+          "label": "Manos arriba",
+          "src": "/assets/placeholder/characters/reynaldo/pose_manos_arriba.svg",
+          "width": 400,
+          "height": 900,
+          "anchors": {
+            "face": {
+              "x": 0.5,
+              "y": 0.18888888888888888
+            },
+            "mouth": {
+              "x": 0.5,
+              "y": 0.25333333333333335
+            },
+            "eyeL": {
+              "x": 0.405,
+              "y": 0.18333333333333332
+            },
+            "eyeR": {
+              "x": 0.595,
+              "y": 0.18333333333333332
+            }
+          }
+        }
+      ],
+      "expressions": [
+        {
+          "id": "reynaldo_cara_neutral",
+          "emotion": "neutral",
+          "label": "Neutral",
+          "src": "/assets/placeholder/characters/reynaldo/cara_neutral.svg",
+          "width": 240,
+          "height": 240
+        },
+        {
+          "id": "reynaldo_cara_feliz",
+          "emotion": "feliz",
+          "label": "Feliz",
+          "src": "/assets/placeholder/characters/reynaldo/cara_feliz.svg",
+          "width": 240,
+          "height": 240
+        },
+        {
+          "id": "reynaldo_cara_enfadado",
+          "emotion": "enfadado",
+          "label": "Enfadado",
+          "src": "/assets/placeholder/characters/reynaldo/cara_enfadado.svg",
+          "width": 240,
+          "height": 240
+        },
+        {
+          "id": "reynaldo_cara_sorprendido",
+          "emotion": "sorprendido",
+          "label": "Sorprendido",
+          "src": "/assets/placeholder/characters/reynaldo/cara_sorprendido.svg",
+          "width": 240,
+          "height": 240
+        },
+        {
+          "id": "reynaldo_cara_triste",
+          "emotion": "triste",
+          "label": "Triste",
+          "src": "/assets/placeholder/characters/reynaldo/cara_triste.svg",
+          "width": 240,
+          "height": 240
+        }
+      ],
+      "fallbackExpressionId": "reynaldo_cara_neutral"
+    },
+    {
+      "id": "sister",
+      "name": "Sister",
+      "color": "#db2777",
+      "defaultVoice": {
+        "pitch": 1.35,
+        "rate": 1.05
+      },
+      "poses": [
+        {
+          "id": "sister_idle",
+          "label": "De pie",
+          "src": "/assets/placeholder/characters/sister/pose_idle.svg",
+          "width": 400,
+          "height": 900,
+          "anchors": {
+            "face": {
+              "x": 0.5,
+              "y": 0.18888888888888888
+            },
+            "mouth": {
+              "x": 0.5,
+              "y": 0.25333333333333335
+            },
+            "eyeL": {
+              "x": 0.405,
+              "y": 0.18333333333333332
+            },
+            "eyeR": {
+              "x": 0.595,
+              "y": 0.18333333333333332
+            }
+          }
+        },
+        {
+          "id": "sister_senala",
+          "label": "Señala",
+          "src": "/assets/placeholder/characters/sister/pose_senala.svg",
+          "width": 400,
+          "height": 900,
+          "anchors": {
+            "face": {
+              "x": 0.5,
+              "y": 0.18888888888888888
+            },
+            "mouth": {
+              "x": 0.5,
+              "y": 0.25333333333333335
+            },
+            "eyeL": {
+              "x": 0.405,
+              "y": 0.18333333333333332
+            },
+            "eyeR": {
+              "x": 0.595,
+              "y": 0.18333333333333332
+            }
+          }
+        },
+        {
+          "id": "sister_brazos_cruzados",
+          "label": "Brazos cruzados",
+          "src": "/assets/placeholder/characters/sister/pose_brazos_cruzados.svg",
+          "width": 400,
+          "height": 900,
+          "anchors": {
+            "face": {
+              "x": 0.5,
+              "y": 0.18888888888888888
+            },
+            "mouth": {
+              "x": 0.5,
+              "y": 0.25333333333333335
+            },
+            "eyeL": {
+              "x": 0.405,
+              "y": 0.18333333333333332
+            },
+            "eyeR": {
+              "x": 0.595,
+              "y": 0.18333333333333332
+            }
+          }
+        },
+        {
+          "id": "sister_manos_arriba",
+          "label": "Manos arriba",
+          "src": "/assets/placeholder/characters/sister/pose_manos_arriba.svg",
+          "width": 400,
+          "height": 900,
+          "anchors": {
+            "face": {
+              "x": 0.5,
+              "y": 0.18888888888888888
+            },
+            "mouth": {
+              "x": 0.5,
+              "y": 0.25333333333333335
+            },
+            "eyeL": {
+              "x": 0.405,
+              "y": 0.18333333333333332
+            },
+            "eyeR": {
+              "x": 0.595,
+              "y": 0.18333333333333332
+            }
+          }
+        }
+      ],
+      "expressions": [
+        {
+          "id": "sister_cara_neutral",
+          "emotion": "neutral",
+          "label": "Neutral",
+          "src": "/assets/placeholder/characters/sister/cara_neutral.svg",
+          "width": 240,
+          "height": 240
+        },
+        {
+          "id": "sister_cara_feliz",
+          "emotion": "feliz",
+          "label": "Feliz",
+          "src": "/assets/placeholder/characters/sister/cara_feliz.svg",
+          "width": 240,
+          "height": 240
+        },
+        {
+          "id": "sister_cara_enfadado",
+          "emotion": "enfadado",
+          "label": "Enfadado",
+          "src": "/assets/placeholder/characters/sister/cara_enfadado.svg",
+          "width": 240,
+          "height": 240
+        },
+        {
+          "id": "sister_cara_sorprendido",
+          "emotion": "sorprendido",
+          "label": "Sorprendido",
+          "src": "/assets/placeholder/characters/sister/cara_sorprendido.svg",
+          "width": 240,
+          "height": 240
+        },
+        {
+          "id": "sister_cara_triste",
+          "emotion": "triste",
+          "label": "Triste",
+          "src": "/assets/placeholder/characters/sister/cara_triste.svg",
+          "width": 240,
+          "height": 240
+        }
+      ],
+      "fallbackExpressionId": "sister_cara_neutral"
+    },
+    {
+      "id": "barbas",
+      "name": "Barbas",
+      "color": "#a16207",
+      "defaultVoice": {
+        "pitch": 0.75,
+        "rate": 0.95
+      },
+      "poses": [
+        {
+          "id": "barbas_idle",
+          "label": "De pie",
+          "src": "/assets/placeholder/characters/barbas/pose_idle.svg",
+          "width": 400,
+          "height": 900,
+          "anchors": {
+            "face": {
+              "x": 0.5,
+              "y": 0.18888888888888888
+            },
+            "mouth": {
+              "x": 0.5,
+              "y": 0.25333333333333335
+            },
+            "eyeL": {
+              "x": 0.405,
+              "y": 0.18333333333333332
+            },
+            "eyeR": {
+              "x": 0.595,
+              "y": 0.18333333333333332
+            }
+          }
+        },
+        {
+          "id": "barbas_senala",
+          "label": "Señala",
+          "src": "/assets/placeholder/characters/barbas/pose_senala.svg",
+          "width": 400,
+          "height": 900,
+          "anchors": {
+            "face": {
+              "x": 0.5,
+              "y": 0.18888888888888888
+            },
+            "mouth": {
+              "x": 0.5,
+              "y": 0.25333333333333335
+            },
+            "eyeL": {
+              "x": 0.405,
+              "y": 0.18333333333333332
+            },
+            "eyeR": {
+              "x": 0.595,
+              "y": 0.18333333333333332
+            }
+          }
+        },
+        {
+          "id": "barbas_brazos_cruzados",
+          "label": "Brazos cruzados",
+          "src": "/assets/placeholder/characters/barbas/pose_brazos_cruzados.svg",
+          "width": 400,
+          "height": 900,
+          "anchors": {
+            "face": {
+              "x": 0.5,
+              "y": 0.18888888888888888
+            },
+            "mouth": {
+              "x": 0.5,
+              "y": 0.25333333333333335
+            },
+            "eyeL": {
+              "x": 0.405,
+              "y": 0.18333333333333332
+            },
+            "eyeR": {
+              "x": 0.595,
+              "y": 0.18333333333333332
+            }
+          }
+        },
+        {
+          "id": "barbas_manos_arriba",
+          "label": "Manos arriba",
+          "src": "/assets/placeholder/characters/barbas/pose_manos_arriba.svg",
+          "width": 400,
+          "height": 900,
+          "anchors": {
+            "face": {
+              "x": 0.5,
+              "y": 0.18888888888888888
+            },
+            "mouth": {
+              "x": 0.5,
+              "y": 0.25333333333333335
+            },
+            "eyeL": {
+              "x": 0.405,
+              "y": 0.18333333333333332
+            },
+            "eyeR": {
+              "x": 0.595,
+              "y": 0.18333333333333332
+            }
+          }
+        }
+      ],
+      "expressions": [
+        {
+          "id": "barbas_cara_neutral",
+          "emotion": "neutral",
+          "label": "Neutral",
+          "src": "/assets/placeholder/characters/barbas/cara_neutral.svg",
+          "width": 240,
+          "height": 240
+        },
+        {
+          "id": "barbas_cara_feliz",
+          "emotion": "feliz",
+          "label": "Feliz",
+          "src": "/assets/placeholder/characters/barbas/cara_feliz.svg",
+          "width": 240,
+          "height": 240
+        },
+        {
+          "id": "barbas_cara_enfadado",
+          "emotion": "enfadado",
+          "label": "Enfadado",
+          "src": "/assets/placeholder/characters/barbas/cara_enfadado.svg",
+          "width": 240,
+          "height": 240
+        },
+        {
+          "id": "barbas_cara_sorprendido",
+          "emotion": "sorprendido",
+          "label": "Sorprendido",
+          "src": "/assets/placeholder/characters/barbas/cara_sorprendido.svg",
+          "width": 240,
+          "height": 240
+        },
+        {
+          "id": "barbas_cara_triste",
+          "emotion": "triste",
+          "label": "Triste",
+          "src": "/assets/placeholder/characters/barbas/cara_triste.svg",
+          "width": 240,
+          "height": 240
+        }
+      ],
+      "fallbackExpressionId": "barbas_cara_neutral"
+    },
+    {
+      "id": "jefe",
+      "name": "Jefe",
+      "color": "#374151",
+      "defaultVoice": {
+        "pitch": 0.85,
+        "rate": 0.95
+      },
+      "poses": [
+        {
+          "id": "jefe_idle",
+          "label": "De pie",
+          "src": "/assets/placeholder/characters/jefe/pose_idle.svg",
+          "width": 400,
+          "height": 900,
+          "anchors": {
+            "face": {
+              "x": 0.5,
+              "y": 0.18888888888888888
+            },
+            "mouth": {
+              "x": 0.5,
+              "y": 0.25333333333333335
+            },
+            "eyeL": {
+              "x": 0.405,
+              "y": 0.18333333333333332
+            },
+            "eyeR": {
+              "x": 0.595,
+              "y": 0.18333333333333332
+            }
+          }
+        },
+        {
+          "id": "jefe_senala",
+          "label": "Señala",
+          "src": "/assets/placeholder/characters/jefe/pose_senala.svg",
+          "width": 400,
+          "height": 900,
+          "anchors": {
+            "face": {
+              "x": 0.5,
+              "y": 0.18888888888888888
+            },
+            "mouth": {
+              "x": 0.5,
+              "y": 0.25333333333333335
+            },
+            "eyeL": {
+              "x": 0.405,
+              "y": 0.18333333333333332
+            },
+            "eyeR": {
+              "x": 0.595,
+              "y": 0.18333333333333332
+            }
+          }
+        },
+        {
+          "id": "jefe_brazos_cruzados",
+          "label": "Brazos cruzados",
+          "src": "/assets/placeholder/characters/jefe/pose_brazos_cruzados.svg",
+          "width": 400,
+          "height": 900,
+          "anchors": {
+            "face": {
+              "x": 0.5,
+              "y": 0.18888888888888888
+            },
+            "mouth": {
+              "x": 0.5,
+              "y": 0.25333333333333335
+            },
+            "eyeL": {
+              "x": 0.405,
+              "y": 0.18333333333333332
+            },
+            "eyeR": {
+              "x": 0.595,
+              "y": 0.18333333333333332
+            }
+          }
+        },
+        {
+          "id": "jefe_manos_arriba",
+          "label": "Manos arriba",
+          "src": "/assets/placeholder/characters/jefe/pose_manos_arriba.svg",
+          "width": 400,
+          "height": 900,
+          "anchors": {
+            "face": {
+              "x": 0.5,
+              "y": 0.18888888888888888
+            },
+            "mouth": {
+              "x": 0.5,
+              "y": 0.25333333333333335
+            },
+            "eyeL": {
+              "x": 0.405,
+              "y": 0.18333333333333332
+            },
+            "eyeR": {
+              "x": 0.595,
+              "y": 0.18333333333333332
+            }
+          }
+        }
+      ],
+      "expressions": [
+        {
+          "id": "jefe_cara_neutral",
+          "emotion": "neutral",
+          "label": "Neutral",
+          "src": "/assets/placeholder/characters/jefe/cara_neutral.svg",
+          "width": 240,
+          "height": 240
+        },
+        {
+          "id": "jefe_cara_feliz",
+          "emotion": "feliz",
+          "label": "Feliz",
+          "src": "/assets/placeholder/characters/jefe/cara_feliz.svg",
+          "width": 240,
+          "height": 240
+        },
+        {
+          "id": "jefe_cara_enfadado",
+          "emotion": "enfadado",
+          "label": "Enfadado",
+          "src": "/assets/placeholder/characters/jefe/cara_enfadado.svg",
+          "width": 240,
+          "height": 240
+        },
+        {
+          "id": "jefe_cara_sorprendido",
+          "emotion": "sorprendido",
+          "label": "Sorprendido",
+          "src": "/assets/placeholder/characters/jefe/cara_sorprendido.svg",
+          "width": 240,
+          "height": 240
+        },
+        {
+          "id": "jefe_cara_triste",
+          "emotion": "triste",
+          "label": "Triste",
+          "src": "/assets/placeholder/characters/jefe/cara_triste.svg",
+          "width": 240,
+          "height": 240
+        }
+      ],
+      "fallbackExpressionId": "jefe_cara_neutral"
+    }
+  ],
+  "backgrounds": [
+    {
+      "id": "bg_oficina",
+      "label": "Oficina",
+      "src": "/assets/placeholder/backgrounds/bg_oficina.svg"
+    },
+    {
+      "id": "bg_cocina",
+      "label": "Cocina",
+      "src": "/assets/placeholder/backgrounds/bg_cocina.svg"
+    },
+    {
+      "id": "bg_bar",
+      "label": "Bar",
+      "src": "/assets/placeholder/backgrounds/bg_bar.svg"
+    },
+    {
+      "id": "bg_calle",
+      "label": "Calle",
+      "src": "/assets/placeholder/backgrounds/bg_calle.svg"
+    },
+    {
+      "id": "bg_salon",
+      "label": "Salón",
+      "src": "/assets/placeholder/backgrounds/bg_salon.svg"
+    }
+  ],
+  "props": [
+    {
+      "id": "prop_cafe",
+      "label": "Taza de café",
+      "width": 120,
+      "height": 120,
+      "src": "/assets/placeholder/props/prop_cafe.svg"
+    },
+    {
+      "id": "prop_movil",
+      "label": "Móvil",
+      "width": 90,
+      "height": 160,
+      "src": "/assets/placeholder/props/prop_movil.svg"
+    },
+    {
+      "id": "prop_papeles",
+      "label": "Papeles",
+      "width": 180,
+      "height": 140,
+      "src": "/assets/placeholder/props/prop_papeles.svg"
+    },
+    {
+      "id": "prop_planta",
+      "label": "Planta",
+      "width": 220,
+      "height": 360,
+      "src": "/assets/placeholder/props/prop_planta.svg"
+    },
+    {
+      "id": "prop_maletin",
+      "label": "Maletín",
+      "width": 220,
+      "height": 170,
+      "src": "/assets/placeholder/props/prop_maletin.svg"
+    }
+  ],
+  "mouths": [
+    {
+      "id": "boca_cerrada",
+      "kind": "closed",
+      "width": 80,
+      "height": 50,
+      "src": "/assets/placeholder/mouths/boca_cerrada.svg"
+    },
+    {
+      "id": "boca_abierta",
+      "kind": "open",
+      "width": 80,
+      "height": 50,
+      "src": "/assets/placeholder/mouths/boca_abierta.svg"
+    }
+  ]
+}

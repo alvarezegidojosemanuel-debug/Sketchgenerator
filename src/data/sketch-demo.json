@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "pocket-1",
+  "catalogVersion": "placeholder-0.1",
+  "metadata": {
+    "title": "La taza del jefe",
+    "language": "es-ES",
+    "approxDuration": 30,
+    "idea": "Usu se bebe sin querer el café del jefe un lunes por la mañana."
+  },
+  "canvas": { "width": 1080, "height": 1920 },
+  "takes": [
+    {
+      "id": "take_1",
+      "name": "El crimen",
+      "duration": 10,
+      "backgroundId": "bg_oficina",
+      "actors": [
+        { "uid": "usu", "characterId": "usu", "poseId": "usu_idle", "x": 330, "y": 1780, "scale": 1, "zIndex": 2, "expressionId": "usu_cara_feliz" },
+        { "uid": "jefe", "characterId": "jefe", "poseId": "jefe_idle", "x": 1400, "y": 1780, "scale": 1.05, "zIndex": 1, "flip": true }
+      ],
+      "events": [
+        { "id": "t1_cafe", "track": "props", "propId": "prop_cafe", "layer": "props-front", "x": 470, "y": 1310, "scale": 1, "start": 0, "duration": 4.2 },
+        { "id": "t1_d1", "track": "dialogue", "actorUid": "usu", "start": 0.4, "duration": 2.6, "text": "Ah, lunes. Nada como un café que no he pagado yo." },
+        { "id": "t1_e1", "track": "eyes", "actorUid": "usu", "start": 0.4, "duration": 1, "gazeX": 0.8, "gazeY": 0.3 },
+        { "id": "t1_b1", "track": "body", "actorUid": "usu", "start": 3.2, "duration": 0.6, "poseId": "usu_brazos_cruzados" },
+        { "id": "t1_b2", "track": "body", "actorUid": "jefe", "start": 3.4, "duration": 2.2, "x": 760, "ease": "inOut" },
+        { "id": "t1_f1", "track": "face", "actorUid": "jefe", "start": 5.6, "duration": 0.4, "expressionId": "jefe_cara_enfadado" },
+        { "id": "t1_d2", "track": "dialogue", "actorUid": "jefe", "start": 5.8, "duration": 2.4, "text": "Usu. ¿Esa es mi taza de «Mejor Jefe del Mundo»?" },
+        { "id": "t1_e2", "track": "eyes", "actorUid": "usu", "start": 6, "duration": 0.5, "gazeX": 1, "gazeY": 0 },
+        { "id": "t1_f2", "track": "face", "actorUid": "usu", "start": 8.4, "duration": 0.4, "expressionId": "usu_cara_sorprendido" },
+        { "id": "t1_b3", "track": "body", "actorUid": "usu", "start": 8.4, "duration": 0.3, "poseId": "usu_manos_arriba", "ease": "instant" }
+      ]
+    },
+    {
+      "id": "take_2",
+      "name": "La coartada",
+      "duration": 10,
+      "backgroundId": "bg_oficina",
+      "actors": [
+        { "uid": "usu", "characterId": "usu", "poseId": "usu_manos_arriba", "x": 330, "y": 1780, "scale": 1, "zIndex": 2, "expressionId": "usu_cara_sorprendido" },
+        { "uid": "jefe", "characterId": "jefe", "poseId": "jefe_brazos_cruzados", "x": 760, "y": 1780, "scale": 1.05, "zIndex": 1, "flip": true, "expressionId": "jefe_cara_enfadado" }
+      ],
+      "events": [
+        { "id": "t2_d1", "track": "dialogue", "actorUid": "usu", "start": 0.3, "duration": 2.6, "text": "Técnicamente, la taza dice «Mejor Jefe». No dice cuál." },
+        { "id": "t2_b1", "track": "body", "actorUid": "usu", "start": 0.3, "duration": 0.5, "poseId": "usu_senala" },
+        { "id": "t2_f1", "track": "face", "actorUid": "usu", "start": 0.3, "duration": 0.3, "expressionId": "usu_cara_feliz" },
+        { "id": "t2_d2", "track": "dialogue", "actorUid": "jefe", "start": 3.3, "duration": 1.8, "text": "Está en mi despacho. Con mi nombre." },
+        { "id": "t2_b2", "track": "body", "actorUid": "jefe", "start": 3.3, "duration": 0.5, "poseId": "jefe_senala" },
+        { "id": "t2_e1", "track": "eyes", "actorUid": "usu", "start": 5.2, "duration": 0.6, "gazeX": -0.8, "gazeY": -0.5 },
+        { "id": "t2_f2", "track": "face", "actorUid": "usu", "start": 5.4, "duration": 0.3, "expressionId": "usu_cara_triste" },
+        { "id": "t2_d3", "track": "dialogue", "actorUid": "usu", "start": 5.6, "duration": 2.8, "text": "Pues entonces alguien está intentando incriminarme." },
+        { "id": "t2_b3", "track": "body", "actorUid": "usu", "start": 5.6, "duration": 1.2, "x": 260, "poseId": "usu_brazos_cruzados" },
+        { "id": "t2_e2", "track": "eyes", "actorUid": "usu", "start": 8.5, "duration": 0.4, "gazeX": 0.9, "gazeY": 0 }
+      ]
+    },
+    {
+      "id": "take_3",
+      "name": "El remate",
+      "duration": 10,
+      "backgroundId": "bg_oficina",
+      "actors": [
+        { "uid": "usu", "characterId": "usu", "poseId": "usu_brazos_cruzados", "x": 260, "y": 1780, "scale": 1, "zIndex": 2, "expressionId": "usu_cara_neutral" },
+        { "uid": "jefe", "characterId": "jefe", "poseId": "jefe_brazos_cruzados", "x": 760, "y": 1780, "scale": 1.05, "zIndex": 1, "flip": true, "expressionId": "jefe_cara_enfadado" }
+      ],
+      "events": [
+        { "id": "t3_d1", "track": "dialogue", "actorUid": "jefe", "start": 0.3, "duration": 2.4, "text": "Muy bien. Hoy invitas tú a café a toda la planta." },
+        { "id": "t3_f1", "track": "face", "actorUid": "jefe", "start": 2.8, "duration": 0.3, "expressionId": "jefe_cara_feliz" },
+        { "id": "t3_f2", "track": "face", "actorUid": "usu", "start": 2.9, "duration": 0.3, "expressionId": "usu_cara_sorprendido" },
+        { "id": "t3_d2", "track": "dialogue", "actorUid": "usu", "start": 3.2, "duration": 1.4, "text": "¿A toda la planta?" },
+        { "id": "t3_planta", "track": "props", "propId": "prop_planta", "layer": "props-back", "x": 960, "y": 1740, "scale": 1.1, "start": 4.6, "duration": 5.4 },
+        { "id": "t3_d3", "track": "dialogue", "actorUid": "jefe", "start": 4.8, "duration": 2.6, "text": "A la planta del rincón también. Lleva tres años sin regar." },
+        { "id": "t3_b1", "track": "body", "actorUid": "jefe", "start": 4.8, "duration": 0.5, "poseId": "jefe_senala", "flip": false },
+        { "id": "t3_e1", "track": "eyes", "actorUid": "usu", "start": 5, "duration": 0.4, "gazeX": 1, "gazeY": 0.2 },
+        { "id": "t3_e2", "track": "eyes", "actorUid": "jefe", "start": 5, "duration": 0.4, "gazeX": 1, "gazeY": 0.2 },
+        { "id": "t3_f3", "track": "face", "actorUid": "usu", "start": 7.6, "duration": 0.3, "expressionId": "usu_cara_triste" },
+        { "id": "t3_d4", "track": "dialogue", "actorUid": "usu", "start": 7.8, "duration": 1.8, "text": "Hasta la planta vive mejor que yo." },
+        { "id": "t3_b2", "track": "body", "actorUid": "usu", "start": 7.8, "duration": 0.6, "poseId": "usu_idle", "y": 1800, "scale": 0.95 }
+      ]
+    }
+  ]
+}

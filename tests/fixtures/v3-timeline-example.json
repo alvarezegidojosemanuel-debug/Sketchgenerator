@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "type": "punetos_project",
+  "takes": [
+    {
+      "id": "take_x",
+      "name": "Toma 1",
+      "duration": 3.2,
+      "scene": { "version": 3, "canvas": { "width": 1080, "height": 1920 }, "background": null, "layers": [] },
+      "timeline": {
+        "events": [
+          { "id": "b1", "actor_uid": "actor1", "track": "body", "start": 0, "duration": 0.8, "asset_id": "usu_idle", "body_mode": "move", "from_x": 200, "from_y": 1780, "target_x": 420, "target_y": 1780 },
+          { "id": "f1", "actor_uid": "actor1", "track": "face", "start": 0, "duration": 0.5, "asset_id": "usu_cara_feliz" },
+          { "id": "m1", "actor_uid": "actor1", "track": "mouth", "start": 0, "duration": 3.2, "asset_id": "__auto__" },
+          { "id": "d1", "actor_uid": "actor1", "track": "dialogue", "start": 0, "duration": 3.2, "text": "Ejemplo" }
+        ]
+      }
+    }
+  ]
+}

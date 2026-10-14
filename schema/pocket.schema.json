@@ -1,0 +1,538 @@
+{
+  "$id": "https://punetos-pocket.local/schema/pocket.schema.json",
+  "title": "PUÑETOS Pocket project (pocket-1)",
+  "description": "Contrato JSON canónico de PUÑETOS Pocket. Campos propuestos para Pocket; no equivalen automáticamente al esquema V3/V8. Los IDs (characterId, poseId, expressionId, backgroundId, propId) deben existir en el catálogo de la versión indicada.",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "pocket-1"
+    },
+    "catalogVersion": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "language": {
+          "default": "es-ES",
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 20
+        },
+        "approxDuration": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 180
+        },
+        "idea": {
+          "type": "string",
+          "maxLength": 1000
+        }
+      },
+      "required": [
+        "title",
+        "approxDuration"
+      ]
+    },
+    "canvas": {
+      "type": "object",
+      "properties": {
+        "width": {
+          "type": "number",
+          "const": 1080
+        },
+        "height": {
+          "type": "number",
+          "const": 1920
+        }
+      },
+      "required": [
+        "width",
+        "height"
+      ]
+    },
+    "takes": {
+      "minItems": 1,
+      "maxItems": 30,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[A-Za-z0-9_.:-]+$"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 120
+          },
+          "duration": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "maximum": 60
+          },
+          "backgroundId": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 80,
+                "pattern": "^[A-Za-z0-9_.:-]+$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "actors": {
+            "maxItems": 8,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "uid": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 80,
+                  "pattern": "^[A-Za-z0-9_.:-]+$"
+                },
+                "characterId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 80,
+                  "pattern": "^[A-Za-z0-9_.:-]+$"
+                },
+                "poseId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 80,
+                  "pattern": "^[A-Za-z0-9_.:-]+$"
+                },
+                "x": {
+                  "type": "number",
+                  "minimum": -600,
+                  "maximum": 1680
+                },
+                "y": {
+                  "type": "number",
+                  "minimum": -600,
+                  "maximum": 2520
+                },
+                "scale": {
+                  "default": 1,
+                  "type": "number",
+                  "minimum": 0.1,
+                  "maximum": 4
+                },
+                "zIndex": {
+                  "default": 0,
+                  "type": "integer",
+                  "minimum": -100,
+                  "maximum": 100
+                },
+                "flip": {
+                  "type": "boolean"
+                },
+                "expressionId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 80,
+                  "pattern": "^[A-Za-z0-9_.:-]+$"
+                }
+              },
+              "required": [
+                "uid",
+                "characterId",
+                "poseId",
+                "x",
+                "y"
+              ]
+            }
+          },
+          "events": {
+            "maxItems": 200,
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80,
+                      "pattern": "^[A-Za-z0-9_.:-]+$"
+                    },
+                    "start": {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    "duration": {
+                      "type": "number",
+                      "exclusiveMinimum": 0
+                    },
+                    "track": {
+                      "type": "string",
+                      "const": "dialogue"
+                    },
+                    "actorUid": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80,
+                      "pattern": "^[A-Za-z0-9_.:-]+$"
+                    },
+                    "text": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 280
+                    },
+                    "voice": {
+                      "type": "object",
+                      "properties": {
+                        "rate": {
+                          "type": "number",
+                          "minimum": 0.5,
+                          "maximum": 2
+                        },
+                        "pitch": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 2
+                        },
+                        "voiceName": {
+                          "type": "string",
+                          "maxLength": 120
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "start",
+                    "duration",
+                    "track",
+                    "actorUid",
+                    "text"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80,
+                      "pattern": "^[A-Za-z0-9_.:-]+$"
+                    },
+                    "start": {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    "duration": {
+                      "type": "number",
+                      "exclusiveMinimum": 0
+                    },
+                    "track": {
+                      "type": "string",
+                      "const": "body"
+                    },
+                    "actorUid": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80,
+                      "pattern": "^[A-Za-z0-9_.:-]+$"
+                    },
+                    "poseId": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80,
+                      "pattern": "^[A-Za-z0-9_.:-]+$"
+                    },
+                    "x": {
+                      "type": "number",
+                      "minimum": -600,
+                      "maximum": 1680
+                    },
+                    "y": {
+                      "type": "number",
+                      "minimum": -600,
+                      "maximum": 2520
+                    },
+                    "scale": {
+                      "type": "number",
+                      "minimum": 0.1,
+                      "maximum": 4
+                    },
+                    "flip": {
+                      "type": "boolean"
+                    },
+                    "ease": {
+                      "type": "string",
+                      "enum": [
+                        "linear",
+                        "inOut",
+                        "instant"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "start",
+                    "duration",
+                    "track",
+                    "actorUid"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80,
+                      "pattern": "^[A-Za-z0-9_.:-]+$"
+                    },
+                    "start": {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    "duration": {
+                      "type": "number",
+                      "exclusiveMinimum": 0
+                    },
+                    "track": {
+                      "type": "string",
+                      "const": "face"
+                    },
+                    "actorUid": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80,
+                      "pattern": "^[A-Za-z0-9_.:-]+$"
+                    },
+                    "expressionId": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80,
+                      "pattern": "^[A-Za-z0-9_.:-]+$"
+                    },
+                    "emotion": {
+                      "type": "string",
+                      "maxLength": 40
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "start",
+                    "duration",
+                    "track",
+                    "actorUid"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80,
+                      "pattern": "^[A-Za-z0-9_.:-]+$"
+                    },
+                    "start": {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    "duration": {
+                      "type": "number",
+                      "exclusiveMinimum": 0
+                    },
+                    "track": {
+                      "type": "string",
+                      "const": "mouth"
+                    },
+                    "actorUid": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80,
+                      "pattern": "^[A-Za-z0-9_.:-]+$"
+                    },
+                    "mode": {
+                      "type": "string",
+                      "enum": [
+                        "auto",
+                        "calibrated"
+                      ]
+                    },
+                    "dx": {
+                      "type": "number",
+                      "minimum": -400,
+                      "maximum": 400
+                    },
+                    "dy": {
+                      "type": "number",
+                      "minimum": -400,
+                      "maximum": 400
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "start",
+                    "duration",
+                    "track",
+                    "actorUid",
+                    "mode"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80,
+                      "pattern": "^[A-Za-z0-9_.:-]+$"
+                    },
+                    "start": {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    "duration": {
+                      "type": "number",
+                      "exclusiveMinimum": 0
+                    },
+                    "track": {
+                      "type": "string",
+                      "const": "eyes"
+                    },
+                    "actorUid": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80,
+                      "pattern": "^[A-Za-z0-9_.:-]+$"
+                    },
+                    "gazeX": {
+                      "type": "number",
+                      "minimum": -1,
+                      "maximum": 1
+                    },
+                    "gazeY": {
+                      "type": "number",
+                      "minimum": -1,
+                      "maximum": 1
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "start",
+                    "duration",
+                    "track",
+                    "actorUid",
+                    "gazeX",
+                    "gazeY"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80,
+                      "pattern": "^[A-Za-z0-9_.:-]+$"
+                    },
+                    "start": {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    "duration": {
+                      "type": "number",
+                      "exclusiveMinimum": 0
+                    },
+                    "track": {
+                      "type": "string",
+                      "const": "props"
+                    },
+                    "actorUid": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80,
+                      "pattern": "^[A-Za-z0-9_.:-]+$"
+                    },
+                    "propId": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80,
+                      "pattern": "^[A-Za-z0-9_.:-]+$"
+                    },
+                    "layer": {
+                      "type": "string",
+                      "enum": [
+                        "props-back",
+                        "props-front"
+                      ]
+                    },
+                    "x": {
+                      "type": "number",
+                      "minimum": -600,
+                      "maximum": 1680
+                    },
+                    "y": {
+                      "type": "number",
+                      "minimum": -600,
+                      "maximum": 2520
+                    },
+                    "scale": {
+                      "type": "number",
+                      "minimum": 0.1,
+                      "maximum": 4
+                    },
+                    "zIndex": {
+                      "type": "integer",
+                      "minimum": -100,
+                      "maximum": 100
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "start",
+                    "duration",
+                    "track",
+                    "propId",
+                    "layer",
+                    "x",
+                    "y"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "required": [
+          "id",
+          "duration",
+          "backgroundId",
+          "actors",
+          "events"
+        ]
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "catalogVersion",
+    "metadata",
+    "canvas",
+    "takes"
+  ]
+}

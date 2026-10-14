@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="900" viewBox="0 0 400 900">
+  <!-- PLACEHOLDER Pocket: no es arte de PUÑETOS Studio -->
+  <ellipse cx="200" cy="885" rx="150" ry="14" fill="#000" opacity="0.18"/>
+  <rect x="125" y="600" width="65" height="275" rx="22" fill="#3f3f46"/>
+  <rect x="210" y="600" width="65" height="275" rx="22" fill="#3f3f46"/>
+  <path d="M105 300 Q200 265 295 300 L300 630 L100 630Z" fill="#16a34a"/>
+  
+  <path d="M110 320 L30 160" stroke="#16a34a" stroke-width="46" stroke-linecap="round" fill="none"/><circle cx="26" cy="148" r="26" fill="#e0ac7e"/><path d="M290 320 L370 160" stroke="#16a34a" stroke-width="46" stroke-linecap="round" fill="none"/><circle cx="374" cy="148" r="26" fill="#e0ac7e"/>
+  <rect x="175" y="255" width="50" height="45" fill="#e0ac7e"/>
+  <circle cx="200" cy="170" r="110" fill="#e0ac7e"/>
+  <circle cx="92" cy="180" r="18" fill="#e0ac7e"/>
+  <circle cx="308" cy="180" r="18" fill="#e0ac7e"/>
+  <path d="M95 140 Q180 20 305 140 L300 110 Q200 50 100 110Z" fill="#9ca3af"/>
+</svg>

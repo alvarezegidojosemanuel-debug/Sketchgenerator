@@ -1,0 +1,13 @@
+node_modules/
+.next/
+out/
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+.env
+.env.local
+.env.*.local
+.vercel
+# ZIPs de origen: no se versionan (licencia / tamaño)
+*.zip
+/v3-source/
