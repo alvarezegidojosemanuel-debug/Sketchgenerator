@@ -59,8 +59,20 @@ export async function listElevenVoices(code: string): Promise<ElevenVoice[]> {
 
 export const DEFAULT_ELEVEN = { stability: 0.4, similarity: 0.8, style: 0.35, speed: 1 };
 
+/** Voz con acento de España según sus etiquetas (castellano, peninsular, Madrid, andaluz…). */
+export function isSpainVoice(v: ElevenVoice): boolean {
+  const t = `${v.labels.accent ?? ""} ${v.labels.language ?? ""} ${v.labels.description ?? ""} ${v.name}`;
+  return /spain|españa|castil|peninsul|iberian|european spanish|madri|andalu|catal|galleg|canari|vasco/i.test(t);
+}
+
+/** Primero las voces de España, luego el resto. */
+export function sortForSpain(voices: ElevenVoice[]): ElevenVoice[] {
+  return [...voices].sort((a, b) => Number(isSpainVoice(b)) - Number(isSpainVoice(a)) || a.name.localeCompare(b.name));
+}
+
 /** Reparto automático: voz distinta por personaje según el género de la etiqueta (Sister → mujer). */
 export function autoCast(voices: ElevenVoice[], characterIds: string[]): Record<string, ElevenCastEntry> {
+  voices = sortForSpain(voices).filter((v, _i, all) => !all.some(isSpainVoice) || isSpainVoice(v));
   const female = voices.filter((v) => /female|mujer/i.test(v.labels.gender ?? ""));
   const male = voices.filter((v) => !/female|mujer/i.test(v.labels.gender ?? ""));
   const out: Record<string, ElevenCastEntry> = {};

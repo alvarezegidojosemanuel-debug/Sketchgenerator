@@ -72,3 +72,15 @@ describe("acotaciones de voz", () => {
     expect(sub.text).toBe("Ah, lunes.");
   });
 });
+
+describe("voces de España", () => {
+  it("detecta el acento de España y el reparto automático las prefiere", async () => {
+    const { autoCast, isSpainVoice } = await import("@/lib/voice/elevenlabs");
+    const v = (id: string, gender: string, accent: string) => ({ id, name: id, category: "x", labels: { gender, accent }, preview: "" });
+    const voices = [v("BrianUS0001", "male", "american"), v("Madrid00001", "male", "castilian spanish"), v("Sevilla0001", "female", "andalusian"), v("LatAm000001", "female", "latin american")];
+    expect(voices.map(isSpainVoice)).toEqual([false, true, true, false]);
+    const cast = autoCast(voices, ["usu", "sister"]);
+    expect(cast.usu.voiceId).toBe("Madrid00001");
+    expect(cast.sister.voiceId).toBe("Sevilla0001");
+  });
+});

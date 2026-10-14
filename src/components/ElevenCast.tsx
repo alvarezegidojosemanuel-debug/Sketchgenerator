@@ -9,6 +9,8 @@ import {
   ELEVEN_MODELS,
   elevenModel,
   elevenStatus,
+  isSpainVoice,
+  sortForSpain,
   listElevenVoices,
   playVoicePreview,
   type ElevenCastEntry,
@@ -43,7 +45,7 @@ export function ElevenCast({ s, model, onModel, code, onCode }: Props) {
   const load = async (c = code) => {
     setError(null);
     try {
-      const v = await listElevenVoices(c);
+      const v = sortForSpain(await listElevenVoices(c));
       setVoices(v);
       // personajes sin voz: reparto automático
       const missing = chars.filter((ch) => !cast[ch]);
@@ -111,6 +113,11 @@ export function ElevenCast({ s, model, onModel, code, onCode }: Props) {
         </select>
       </Field>
       {error && <p className="error-text">{error}</p>}
+      {voices && !voices.some(isSpainVoice) && (
+        <p className="error-text">
+          Tu cuenta no tiene voces con acento de España. En elevenlabs.io → Voces → Biblioteca, filtra Español + acento España, añade varias a «Mis voces» y pulsa Conectar otra vez.
+        </p>
+      )}
       {voices &&
         chars.map((cid) => {
           const c = cast[cid];
@@ -128,11 +135,13 @@ export function ElevenCast({ s, model, onModel, code, onCode }: Props) {
                   {!c && <option value="">Elige…</option>}
                   {voices.map((x) => (
                     <option key={x.id} value={x.id}>
+                      {isSpainVoice(x) ? "🇪🇸 " : ""}
                       {x.name} {[x.labels.gender, x.labels.accent, x.labels.age].filter(Boolean).join(" · ")}
                     </option>
                   ))}
                 </select>
               </Field>
+              {v && !isSpainVoice(v) && <p className="fine">⚠ Esta voz no está marcada como de España: puede sonar con acento latino o neutro.</p>}
               {c && (
                 <div className="grid2">
                   <Field label="Estabilidad" hint="baja = más expresiva">
