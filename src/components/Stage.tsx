@@ -70,21 +70,24 @@ export function Stage({ catalog, frame, showSubtitles = true, selectedUid, onSel
           {layout.propsBack.map((p) => (
             <img key={p.key} className="layer" src={p.src} alt="" draggable={false} style={{ left: p.left, top: p.top, width: p.width, height: p.height, zIndex: p.z }} />
           ))}
-          {layout.actors.map((a) => {
+          {layout.actors.flatMap((a) => (a.ghost ? [{ ...a.ghost, uid: a.uid + "__ghost", z: a.z }, a] : [a])).map((a) => {
             const pw = a.pose?.width ?? 400;
             const ph = a.pose?.height ?? 600;
+            const ghost = a.uid.endsWith("__ghost");
             return (
               <div
                 key={a.uid}
-                data-uid={a.uid}
-                className={`layer actor${selectedUid === a.uid ? " selected" : ""}`}
-                onPointerDown={onPointerDown(a.uid)}
+                data-uid={ghost ? undefined : a.uid}
+                className={`layer actor${!ghost && selectedUid === a.uid ? " selected" : ""}`}
+                onPointerDown={ghost ? undefined : onPointerDown(a.uid)}
                 style={{
                   left: a.left,
                   top: a.top,
                   width: pw,
                   height: ph,
                   zIndex: a.z,
+                  opacity: a.opacity < 1 ? a.opacity : undefined,
+                  pointerEvents: ghost ? "none" : undefined,
                   transform: `scale(${a.flip ? -a.scale : a.scale}, ${a.scale})`,
                   cursor: onMoveActor ? "grab" : undefined,
                 }}

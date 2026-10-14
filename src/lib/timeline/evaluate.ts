@@ -19,6 +19,12 @@ export interface ActorState {
   /** Boca concreta de este frame (lip-sync con las bocas "talk" de la expresión); undefined = reposo. */
   mouthAssetId: string | undefined;
   mouthMode: "auto" | "calibrated";
+  /** Transición suave: pose anterior y mezcla 0→1 de la nueva (fundido). */
+  prevPoseId?: string;
+  poseMix: number;
+  /** Fundido de expresión. */
+  prevExpressionId?: string;
+  exprMix: number;
   mouthDx: number;
   mouthDy: number;
 }
@@ -48,6 +54,9 @@ export interface FrameState {
 }
 
 const clamp01 = (v: number) => (v < 0 ? 0 : v > 1 ? 1 : v);
+/** Duración del fundido entre poses y entre expresiones (s). */
+export const POSE_FADE = 0.22;
+export const EXPR_FADE = 0.15;
 const easeInOut = (p: number) => (p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2);
 const lerp = (a: number, b: number, p: number) => a + (b - a) * p;
 
@@ -92,6 +101,8 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number): FrameStat
       speaking: false,
       mouthOpen: false,
       mouthAssetId: undefined,
+      poseMix: 1,
+      exprMix: 1,
       mouthMode: "auto",
       mouthDx: 0,
       mouthDy: 0,
@@ -124,7 +135,12 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number): FrameStat
       }
       case "body": {
         if (!st) break;
-        if (e.poseId) st.poseId = e.poseId;
+        if (e.poseId && e.poseId !== st.poseId) {
+          st.prevPoseId = st.poseId;
+          st.poseId = e.poseId;
+          st.poseMix = clamp01((t - e.start) / Math.min(POSE_FADE, e.duration));
+          if (st.poseMix >= 1) st.prevPoseId = undefined;
+        }
         if (e.flip !== undefined) st.flip = e.flip;
         const raw = e.ease === "instant" ? 1 : clamp01((t - e.start) / e.duration);
         const p = e.ease === "linear" ? raw : easeInOut(raw);
@@ -134,7 +150,12 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number): FrameStat
         break;
       }
       case "face":
-        if (st && e.expressionId) st.expressionId = e.expressionId;
+        if (st && e.expressionId && e.expressionId !== st.expressionId) {
+          st.prevExpressionId = st.expressionId;
+          st.expressionId = e.expressionId;
+          st.exprMix = clamp01((t - e.start) / Math.min(EXPR_FADE, e.duration));
+          if (st.exprMix >= 1) st.prevExpressionId = undefined;
+        }
         break;
       case "eyes": {
         if (!st) break;

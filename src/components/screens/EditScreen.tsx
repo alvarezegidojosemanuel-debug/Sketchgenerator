@@ -9,6 +9,7 @@ import { evaluateTake, sortedEvents } from "@/lib/timeline/evaluate";
 import { listVoices, onVoicesReady, speak, stopSpeaking } from "@/lib/tts";
 import { Stage } from "../Stage";
 import { HeadPreview } from "../HeadPreview";
+import { TimelineLanes } from "../TimelineLanes";
 import type { Catalog } from "@/lib/catalog/types";
 import type { PocketState } from "../usePocket";
 import { Card, Field, IssueList, Stepper } from "../ui";
@@ -30,6 +31,7 @@ export function EditScreen({ s }: { s: PocketState }) {
   const [selActor, setSelActor] = useState<string | null>(null);
   const [selEvent, setSelEvent] = useState<string | null>(null);
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
+  const [view, setView] = useState<"capas" | "lista">("capas");
   const takeIndex = Math.min(ti, project.takes.length - 1);
   const take = project.takes[takeIndex];
 
@@ -155,6 +157,67 @@ export function EditScreen({ s }: { s: PocketState }) {
       </div>
       <p className="fine">Arrastra un personaje para moverlo. Con un evento «Cuerpo» seleccionado, arrastrar cambia su destino.</p>
 
+      <Card
+        title={`Línea de tiempo (${take.events.length})`}
+        right={
+          <div className="view-toggle" role="radiogroup">
+            <button type="button" className={view === "capas" ? "on" : ""} onClick={() => setView("capas")}>Capas</button>
+            <button type="button" className={view === "lista" ? "on" : ""} onClick={() => setView("lista")}>Lista</button>
+          </div>
+        }
+      >
+        <div className="add-row">
+          {(["dialogue", "body", "face", "eyes", "props", "mouth"] as Track[]).map((tr) => (
+            <button key={tr} type="button" className="btn btn-small" onClick={() => addEvent(tr)} disabled={take.events.length >= LIMITS.maxEventsPerTake}>
+              ＋ {TRACK_LABEL[tr]}
+            </button>
+          ))}
+        </div>
+        <p className="fine">Se añaden en el tiempo actual ({t.toFixed(1)} s) para el personaje seleccionado{selActor ? ` (${actorName(selActor)})` : ""}.</p>
+        {view === "capas" ? (
+          <>
+            <TimelineLanes
+              take={take}
+              catalog={catalog}
+              t={t}
+              selectedId={selEvent}
+              onSeek={(x) => setT(x)}
+              onSelect={(id, uid) => { setSelEvent(id); if (uid) setSelActor(uid); }}
+              onRetime={(id, start, duration) => editEvent(id, (e) => { e.start = start; e.duration = duration; })}
+              summary={(e) => summary(e, s)}
+            />
+            {selectedEvent && (
+              <div className="event open">
+                <div className="event-row" style={{ cursor: "default" }}>
+                  <span className="ev-time">{selectedEvent.start.toFixed(1)}s</span>
+                  <span className="ev-track">{TRACK_LABEL[selectedEvent.track]}</span>
+                  <span className="ev-actor">{selectedEvent.track === "props" ? catalog.props.find((p) => p.id === selectedEvent.propId)?.label : actorName(selectedEvent.actorUid)}</span>
+                  <span className="ev-sum">{summary(selectedEvent, s)}</span>
+                </div>
+                <EventEditor s={s} take={take} ev={selectedEvent} voices={voices} onChange={(fn) => editEvent(selectedEvent.id, fn)} onDelete={() => { editTake((tk) => { tk.events = tk.events.filter((x) => x.id !== selectedEvent.id); }); setSelEvent(null); }} />
+              </div>
+            )}
+          </>
+        ) : (
+        <ul className="event-list">
+          {events.map((e) => {
+            const open = e.id === selEvent;
+            return (
+              <li key={e.id} className={`event track-${e.track}${open ? " open" : ""}`}>
+                <button type="button" className="event-row" onClick={() => { setSelEvent(open ? null : e.id); if (!open) { setT(Math.min(take.duration, e.start + Math.min(0.2, e.duration / 2))); if (e.actorUid) setSelActor(e.actorUid); } }}>
+                  <span className="ev-time">{e.start.toFixed(1)}s</span>
+                  <span className="ev-track">{TRACK_LABEL[e.track]}</span>
+                  <span className="ev-actor">{e.track === "props" ? catalog.props.find((p) => p.id === e.propId)?.label : actorName(e.actorUid)}</span>
+                  <span className="ev-sum">{summary(e, s)}</span>
+                </button>
+                {open && <EventEditor s={s} take={take} ev={e} voices={voices} onChange={(fn) => editEvent(e.id, fn)} onDelete={() => { editTake((tk) => { tk.events = tk.events.filter((x) => x.id !== e.id); }); setSelEvent(null); }} />}
+              </li>
+            );
+          })}
+        </ul>
+        )}
+      </Card>
+
       <Card title="Toma">
         <div className="grid2">
           <Field label="Nombre">
@@ -182,6 +245,30 @@ export function EditScreen({ s }: { s: PocketState }) {
         >
           Borrar toma
         </button>
+      </Card>
+
+      <Card title="Capas de escena">
+        <ul className="layer-list">
+          {[...take.actors].sort((x, y) => y.zIndex - x.zIndex).map((a, i, arr) => (
+            <li key={a.uid} className={a.uid === selActor ? "on" : ""}>
+              <button type="button" className="layer-name" onClick={() => setSelActor(a.uid)}>
+                <b>{findCharacter(catalog, a.characterId)?.name ?? a.characterId}</b>
+                <small>{findCharacter(catalog, a.characterId)?.poses.find((p) => p.id === a.poseId)?.label} · profundidad {a.zIndex}</small>
+              </button>
+              <button type="button" className="btn btn-small" aria-label="Traer delante" disabled={i === 0} onClick={() => editTake((tk) => {
+                const other = tk.actors.find((x) => x.uid === arr[i - 1].uid)!;
+                const me = tk.actors.find((x) => x.uid === a.uid)!;
+                [me.zIndex, other.zIndex] = [other.zIndex === me.zIndex ? me.zIndex + 1 : other.zIndex, me.zIndex];
+              })}>▲</button>
+              <button type="button" className="btn btn-small" aria-label="Enviar detrás" disabled={i === arr.length - 1} onClick={() => editTake((tk) => {
+                const other = tk.actors.find((x) => x.uid === arr[i + 1].uid)!;
+                const me = tk.actors.find((x) => x.uid === a.uid)!;
+                [me.zIndex, other.zIndex] = [other.zIndex === me.zIndex ? me.zIndex - 1 : other.zIndex, me.zIndex];
+              })}>▼</button>
+            </li>
+          ))}
+        </ul>
+        <p className="fine">Arriba = delante. El fondo siempre va detrás; los objetos «delante» siempre encima.</p>
       </Card>
 
       <Card title="Personajes en escena">
@@ -246,32 +333,6 @@ export function EditScreen({ s }: { s: PocketState }) {
         )}
       </Card>
 
-      <Card title={`Eventos (${take.events.length})`}>
-        <div className="add-row">
-          {(["dialogue", "body", "face", "eyes", "props", "mouth"] as Track[]).map((tr) => (
-            <button key={tr} type="button" className="btn btn-small" onClick={() => addEvent(tr)} disabled={take.events.length >= LIMITS.maxEventsPerTake}>
-              ＋ {TRACK_LABEL[tr]}
-            </button>
-          ))}
-        </div>
-        <p className="fine">Se añaden en el tiempo actual ({t.toFixed(1)} s) para el personaje seleccionado.</p>
-        <ul className="event-list">
-          {events.map((e) => {
-            const open = e.id === selEvent;
-            return (
-              <li key={e.id} className={`event track-${e.track}${open ? " open" : ""}`}>
-                <button type="button" className="event-row" onClick={() => { setSelEvent(open ? null : e.id); if (!open) { setT(Math.min(take.duration, e.start + Math.min(0.2, e.duration / 2))); if (e.actorUid) setSelActor(e.actorUid); } }}>
-                  <span className="ev-time">{e.start.toFixed(1)}s</span>
-                  <span className="ev-track">{TRACK_LABEL[e.track]}</span>
-                  <span className="ev-actor">{e.track === "props" ? catalog.props.find((p) => p.id === e.propId)?.label : actorName(e.actorUid)}</span>
-                  <span className="ev-sum">{summary(e, s)}</span>
-                </button>
-                {open && <EventEditor s={s} take={take} ev={e} voices={voices} onChange={(fn) => editEvent(e.id, fn)} onDelete={() => { editTake((tk) => { tk.events = tk.events.filter((x) => x.id !== e.id); }); setSelEvent(null); }} />}
-              </li>
-            );
-          })}
-        </ul>
-      </Card>
     </div>
   );
 }

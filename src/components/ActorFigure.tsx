@@ -11,7 +11,16 @@ export function FigureBody({ a, highlight }: { a: ActorLayout; highlight?: FaceS
   return (
     <>
       {a.pose ? <img src={a.pose.src} alt="" draggable={false} width={pw} height={ph} /> : <div className="missing">?</div>}
-      {a.face.map((l) => (
+      {a.faceFrom && <FaceLayers layers={a.faceFrom} opacity={1 - a.faceMix} />}
+      <FaceLayers layers={a.face} opacity={a.faceMix} highlight={highlight} />
+    </>
+  );
+}
+
+function FaceLayers({ layers, opacity, highlight }: { layers: ActorLayout["face"]; opacity: number; highlight?: FaceSlot | null }) {
+  return (
+    <>
+      {layers.map((l) => (
         <div
           key={l.slot}
           className={`face-layer${highlight === l.slot ? " hl" : ""}`}
@@ -23,6 +32,7 @@ export function FigureBody({ a, highlight }: { a: ActorLayout; highlight?: FaceS
             height: l.height,
             transformOrigin: `${l.originX}px ${l.originY}px`,
             transform: faceLayerTransform(l),
+            opacity: opacity < 1 ? opacity : undefined,
             clipPath: l.clip ? `ellipse(${l.clip[0]}px ${l.clip[1]}px at ${l.clip[2]}px ${l.clip[3]}px)` : undefined,
           }}
         >

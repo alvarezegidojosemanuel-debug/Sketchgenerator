@@ -19,6 +19,13 @@ export interface ActorLayout {
   flip: boolean;
   face: FaceLayer[];
   speaking: boolean;
+  /** Opacidad del actor (fundido de pose). */
+  opacity: number;
+  /** Cara anterior en fundido de expresión (debajo, desvaneciéndose). */
+  faceFrom?: FaceLayer[];
+  faceMix: number;
+  /** Pose anterior en fundido (se dibuja debajo con opacidad 1 - opacity). */
+  ghost?: ActorLayout;
 }
 
 export interface PropLayout {
@@ -49,6 +56,16 @@ function layoutProp(catalog: Catalog, p: PropState, base: number): PropLayout | 
 }
 
 export function layoutActor(catalog: Catalog, a: ActorState): ActorLayout {
+  const main = layoutActorPose(catalog, a);
+  if (a.prevPoseId && a.poseMix < 1) {
+    // Fundido sin transparencia en el centro: cada pose se mantiene opaca la mitad del fundido.
+    main.opacity = Math.min(1, 2 * a.poseMix);
+    main.ghost = { ...layoutActorPose(catalog, { ...a, poseId: a.prevPoseId, prevPoseId: undefined }), opacity: Math.min(1, 2 * (1 - a.poseMix)) };
+  }
+  return main;
+}
+
+function layoutActorPose(catalog: Catalog, a: ActorState): ActorLayout {
   const ch = findCharacter(catalog, a.characterId);
   const pose = findPose(catalog, a.characterId, a.poseId);
   const pw = pose?.width ?? 400;
@@ -63,6 +80,12 @@ export function layoutActor(catalog: Catalog, a: ActorState): ActorLayout {
     scale: a.scale * (pose?.displayScale ?? 1),
     flip: a.flip,
     speaking: a.speaking,
+    opacity: 1,
+    faceMix: a.prevExpressionId && a.exprMix < 1 ? a.exprMix : 1,
+    faceFrom:
+      ch && pose && a.prevExpressionId && a.exprMix < 1
+        ? layoutFace({ character: ch, pose, expression: findExpression(catalog, a.characterId, a.prevExpressionId), gazeX: a.gazeX, gazeY: a.gazeY, mouthDx: a.mouthDx, mouthDy: a.mouthDy })
+        : undefined,
     face:
       ch && pose
         ? layoutFace({
