@@ -78,16 +78,24 @@ async function mixAudio(project: PocketProject, catalog: Catalog, clips: Map<str
   return ctx.startRendering();
 }
 
-function pickVideoCodec(): Promise<string | null> {
-  const candidates = ["avc1.640033", "avc1.640032", "avc1.4d0033", "avc1.4d0032", "avc1.42e033"];
-  return (async () => {
-    for (const codec of candidates) {
-      const r = await VideoEncoder.isConfigSupported({ codec, width: W, height: H, bitrate: 6_000_000, framerate: FPS }).catch(() => null);
-      if (r?.supported) return codec;
-    }
-    return null;
-  })();
+/** H.264 primero (lo que piden redes sociales); si el navegador no lo tiene, VP9 dentro del MP4. */
+async function pickVideoCodec(): Promise<{ codec: string; mux: "avc" | "vp9" } | null> {
+  const candidates: { codec: string; mux: "avc" | "vp9" }[] = [
+    { codec: "avc1.640033", mux: "avc" },
+    { codec: "avc1.640032", mux: "avc" },
+    { codec: "avc1.4d0033", mux: "avc" },
+    { codec: "avc1.42e033", mux: "avc" },
+    { codec: "vp09.00.41.08", mux: "vp9" },
+  ];
+  for (const c of candidates) {
+    const r = await VideoEncoder.isConfigSupported({ codec: c.codec, width: W, height: H, bitrate: 6_000_000, framerate: FPS }).catch(() => null);
+    if (r?.supported) return c;
+  }
+  return null;
 }
+
+/** Códec usado en la última exportación (para avisar si no es H.264). */
+export let lastExportCodec: "avc" | "vp9" | null = null;
 
 export async function exportMp4(
   project: PocketProject,
@@ -105,20 +113,22 @@ export async function exportMp4(
   onProgress({ stage: "audio", ratio: 0 });
   const audio = await mixAudio(project, catalog, clips, total);
 
-  const codec = await pickVideoCodec();
-  if (!codec) throw new Error("Este navegador no tiene codificador H.264 para 1080×1920.");
+  const picked = await pickVideoCodec();
+  if (!picked) throw new Error("Este navegador no puede codificar vídeo 1080×1920. Prueba con Chrome.");
+  const codec = picked.codec;
+  lastExportCodec = picked.mux;
   const audioCfg = { codec: "mp4a.40.2", sampleRate: SR, numberOfChannels: 2, bitrate: 160_000 };
   const audioOk = (await AudioEncoder.isConfigSupported(audioCfg).catch(() => null))?.supported;
 
   const muxer = new Muxer({
     target: new ArrayBufferTarget(),
-    video: { codec: "avc", width: W, height: H, frameRate: FPS },
+    video: { codec: picked.mux, width: W, height: H, frameRate: FPS },
     ...(audioOk ? { audio: { codec: "aac" as const, sampleRate: SR, numberOfChannels: 2 } } : {}),
     fastStart: "in-memory",
   });
   let failure: unknown = null;
   const venc = new VideoEncoder({ output: (c, m) => muxer.addVideoChunk(c, m), error: (e) => (failure = e) });
-  venc.configure({ codec, width: W, height: H, bitrate: 6_000_000, framerate: FPS, avc: { format: "avc" } });
+  venc.configure({ codec, width: W, height: H, bitrate: 6_000_000, framerate: FPS, ...(picked.mux === "avc" ? { avc: { format: "avc" as const } } : {}) });
 
   // --- audio (en bloques de 1024 muestras)
   if (audioOk) {

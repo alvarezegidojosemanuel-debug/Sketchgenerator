@@ -8,7 +8,7 @@ import { clipKey, fitProjectToAudio } from "@/lib/voice/fit";
 import { generateLines, unlockAudio, type Clip, type Progress } from "@/lib/voice/piper";
 import { accessCode, elevenModel, generateElevenLines, type ElevenModel } from "@/lib/voice/elevenlabs";
 import { ElevenCast } from "../ElevenCast";
-import { exportMp4, type ExportProgress } from "@/lib/export/mp4";
+import { exportMp4, lastExportCodec, type ExportProgress } from "@/lib/export/mp4";
 
 const EXPORT_LABEL: Record<ExportProgress["stage"], string> = { imagenes: "Cargando imágenes…", audio: "Mezclando audio…", video: "Creando vídeo…", listo: "Listo" };
 import { Stage } from "../Stage";
@@ -115,19 +115,20 @@ export function PreviewScreen({ s }: { s: PocketState }) {
   };
 
   const [exporting, setExporting] = useState<ExportProgress | null>(null);
-  const [video, setVideo] = useState<{ url: string; name: string; blob: Blob } | null>(null);
+  const [video, setVideo] = useState<{ url: string; name: string; blob: Blob; codec: string | null } | null>(null);
+  const [exportError, setExportError] = useState<string | null>(null);
   const doExport = async () => {
     if (pl.playing) pl.pause();
-    setVoiceError(null);
+    setExportError(null);
     if (usesClips && !ready && !(await prepare())) return;
     try {
       setExporting({ stage: "imagenes", ratio: 0 });
       const blob = await exportMp4(playProject, catalog, usesClips ? liveClips : null, setExporting);
       if (video) URL.revokeObjectURL(video.url);
       const name = `${project.metadata.title.replace(/[^\p{L}\p{N} _-]+/gu, "").trim().replace(/\s+/g, "_") || "sketch"}.mp4`;
-      setVideo({ url: URL.createObjectURL(blob), name, blob });
+      setVideo({ url: URL.createObjectURL(blob), name, blob, codec: lastExportCodec });
     } catch (e) {
-      setVoiceError(e instanceof Error ? e.message : String(e));
+      setExportError(e instanceof Error ? e.message : String(e));
     } finally {
       setExporting(null);
     }
@@ -224,6 +225,7 @@ export function PreviewScreen({ s }: { s: PocketState }) {
           {exporting ? `🎬 ${EXPORT_LABEL[exporting.stage]} ${Math.round(exporting.ratio * 100)} %` : "🎬 Exportar MP4 (1080×1920)"}
         </button>
       </div>
+      {exportError && <p className="error-text">No se pudo exportar el vídeo: {exportError}</p>}
       {video && (
         <div className="card">
           <video src={video.url} controls playsInline style={{ width: "100%", maxHeight: "60vh", borderRadius: 12, background: "#000" }} />
@@ -233,6 +235,7 @@ export function PreviewScreen({ s }: { s: PocketState }) {
               <button type="button" className="btn btn-secondary" onClick={shareVideo}>📤 Compartir</button>
             )}
           </div>
+          {video.codec === "vp9" && <p className="fine">⚠️ Este navegador no tiene H.264: el vídeo va en VP9. Para subirlo a redes mejor expórtalo desde Chrome.</p>}
           <p className="fine">{usesClips ? "Con las voces y sonidos del sketch." : "Sin voces (elige Piper o ElevenLabs para exportar con voz); con efectos de sonido."}</p>
         </div>
       )}
