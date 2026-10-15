@@ -250,7 +250,10 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
     const back = wantsBack && !!bg && OFFICE_BGS.includes(bg);
     const b = new SceneBuilder(`s${si + 1}`, back, cast, catalog, human);
     if (!back) {
-      const slots = groupLayout(cast.length);
+      const bgInfo = bg ? catalog.backgrounds.find((x) => x.id === bg) : undefined;
+      const k = bgInfo?.actorScale ?? 1;
+      const dy = bgInfo?.actorY !== undefined ? bgInfo.actorY - 1780 : 0;
+      const slots = groupLayout(cast.length).map((sl) => ({ ...sl, y: Math.round(sl.y + dy), scale: Math.round(sl.scale * k * 1000) / 1000, x: Math.round(540 + (sl.x - 540) * (0.6 + 0.4 * k)) }));
       cast.forEach((cid, i) => {
         const sl = slots[i];
         const pose = human ? "h_neutro" : sl.x < 470 ? "neutral_3q_right" : sl.x > 610 ? "neutral_3q_left" : "neutral_front";

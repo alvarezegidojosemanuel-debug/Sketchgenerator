@@ -139,6 +139,10 @@ export interface Background {
   src: string;
   placeholder?: boolean;
   user?: boolean;
+  /** Escala de los personajes en este escenario (perspectiva); 1 = normal. */
+  actorScale?: number;
+  /** Línea de los pies (y en px del lienzo) para los personajes de primer plano. */
+  actorY?: number;
 }
 
 export interface Prop {
