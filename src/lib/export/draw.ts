@@ -101,6 +101,19 @@ function drawActor(ctx: Ctx, a: ActorLayout, images: ImageMap) {
   ctx.translate(a.left + pw / 2, a.top + ph);
   ctx.scale(a.flip ? -a.scale : a.scale, a.scale);
   ctx.translate(-pw / 2, -ph);
+  if (a.pose.flat) {
+    // sombra de contacto (igual que .contact-shadow en el escenario)
+    const g = ctx.createRadialGradient(pw / 2, ph, 0, pw / 2, ph, pw * 0.35);
+    g.addColorStop(0, "rgba(0,0,0,0.35)");
+    g.addColorStop(1, "rgba(0,0,0,0)");
+    ctx.save();
+    ctx.translate(pw / 2, ph);
+    ctx.scale(1, 0.17);
+    ctx.translate(-pw / 2, -ph);
+    ctx.fillStyle = g;
+    ctx.fillRect(pw * 0.15, ph - pw * 0.35, pw * 0.7, pw * 0.7);
+    ctx.restore();
+  }
   const body = images.get(a.talkOpen && a.pose.talkSrc ? a.pose.talkSrc : a.pose.src);
   if (body) ctx.drawImage(body, 0, 0, pw, ph);
   const base = ctx.globalAlpha;

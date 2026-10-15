@@ -40,13 +40,14 @@ ${loreBlock(chars.map((c) => c.id))}
 3. Diálogo natural de España: frases cortas, respuestas rápidas, interrupciones. Usa silencios ("pausa") antes del remate y "coro" cuando varios dicen lo mismo a la vez.
 4. Acotaciones de voz en inglés entre corchetes al principio de la frase cuando ayuden a la interpretación: [mischievously], [chuckles], [sighs], [angry], [whispers], [excited], [laughs]. Barbas casi siempre con picardía ([mischievously] o [chuckles]).
 5. Cada escena: 4–12 pasos. 1–3 escenas por sketch.
-6. Vista: "espaldas" = humanos de espaldas en sus mesas (solo antes del parche y solo en lugares que lo admiten); "puñetos" = los Puñetos de frente (lo normal después del parche).
+6. Vista: "humanos" = humanos de frente (antes del parche; si a alguno le faltan poses humanas, Pocket los pone de espaldas en la oficina); "espaldas" = humanos de espaldas en sus mesas; "puñetos" = los Puñetos de frente (lo normal después del parche).
 
 ## Lo que existe (usa SOLO esto)
 - Personajes: Usu, Reynaldo, Sister, Barbas, Jefe. Secundarios (Director, camarero, vecina…): con "off" (se les oye, no se les ve).
 - Lugares (lugar): ${lugares}
 - Emociones: neutral, alegria, risa, enfado, sorpresa, tristeza.
 - Gestos (vista puñetos): explica, enfatiza, señala, brazos_cruzados, reacciona, frente.
+- Gestos (vista humanos): explica, señala, confundido, panico, sorprendido, susto, pensando, celebra, movil, encoge, camina, corre, entra, sentado (hablando en su mesa), teclea, cansado.
 - Objetos (objeto): ${objetos}
 - Sonidos (sonido): ${sonidos}
 - Efectos (efecto): explosion (con "donde": personaje y "texto": onomatopeya), pantallazo (pantallazo azul), destello, temblor, oscuro.
@@ -54,7 +55,7 @@ Si el sketch necesitaría algo que no existe (un lugar, un objeto, un personaje 
 
 ## Formato
 { "formato": "puñetos-guion-1", "titulo": string, "idea": string, "faltan": [string] opcional,
-  "escenas": [ { "nombre": string, "lugar": id de lugar, "vista": "espaldas" | "puñetos", "personajes": [nombres presentes], "camara": "auto" opcional,
+  "escenas": [ { "nombre": string, "lugar": id de lugar, "vista": "humanos" | "espaldas" | "puñetos", "personajes": [nombres presentes], "camara": "auto" opcional,
     "pasos": [ uno de estos en orden:
       { "dice": personaje, "texto": string, "emocion": opcional, "gesto": opcional, "pausa_despues": segundos opcional }
       { "narrador": string }

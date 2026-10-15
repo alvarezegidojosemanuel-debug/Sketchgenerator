@@ -147,6 +147,7 @@ textarea.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; fon
 .stage-empty-bg { background: linear-gradient(#2a2540, #15121f); }
 .actor { pointer-events: auto; transform-origin: 50% 100%; }
 .actor img { display: block; pointer-events: none; }
+.actor .contact-shadow { position: absolute; border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.35), rgba(0,0,0,0)); pointer-events: none; }
 .actor.selected { outline: 6px dashed var(--accent); outline-offset: 6px; }
 .actor .missing { width: 100%; height: 100%; display: grid; place-items: center; font-size: 200px; background: rgba(255,0,0,.25); }
 .subtitles { position: absolute; left: 60px; right: 60px; bottom: 70px; z-index: 9000; text-align: center; pointer-events: none; }

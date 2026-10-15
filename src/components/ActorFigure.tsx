@@ -10,7 +10,9 @@ export function FigureBody({ a, highlight }: { a: ActorLayout; highlight?: FaceS
   const ph = a.pose?.height ?? 600;
   return (
     <>
-      {a.pose ? <img src={a.pose.src} alt="" draggable={false} width={pw} height={ph} /> : <div className="missing">?</div>}
+      {/* sombra de contacto: «asienta» en el suelo a los personajes dibujados enteros */}
+      {a.pose?.flat && <div className="contact-shadow" style={{ left: pw * 0.15, width: pw * 0.7, top: ph - pw * 0.06, height: pw * 0.12 }} />}
+      {a.pose ? <img src={a.pose.src} alt="" draggable={false} width={pw} height={ph} style={a.pose.flat ? { position: "relative" } : undefined} /> : <div className="missing">?</div>}
       {/* boca abierta siempre montada (casi invisible) para que al hablar no parpadee */}
       {a.pose?.talkSrc && <img src={a.pose.talkSrc} alt="" draggable={false} width={pw} height={ph} style={{ position: "absolute", left: 0, top: 0, opacity: a.talkOpen ? 1 : 0.001 }} />}
       {a.faceFrom && <FaceLayers layers={a.faceFrom} opacity={1 - a.faceMix} />}

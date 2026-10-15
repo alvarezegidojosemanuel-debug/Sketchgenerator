@@ -62,12 +62,17 @@ const POSE_ALIAS: Record<string, string> = {
   sorprendido: "sorprendido", sorprendida: "sorprendido", retrocede: "sorprendido",
   camina: "camina", andando: "camina", entra: "entra", saluda: "entra",
   sentado: "sentado_habla", sentado_habla: "sentado_habla", cansado: "sentado_cansado", sentado_cansado: "sentado_cansado",
+  teclea: "sentado_teclea", sentado_teclea: "sentado_teclea", agobiado: "sentado_agobiado",
+  celebra: "celebra", celebrar: "celebra", victoria: "celebra", pensando: "pensando", piensa: "pensando", pensativo: "pensando",
+  movil: "movil", telefono_movil: "movil", encoge: "encoge", hombros: "encoge", corre: "corre", corriendo: "corre", susto: "susto",
 };
 /** Vista «humanos» (de frente, poses dibujadas enteras): equivalencias de las poses de los Puñetos. */
-const HUMAN_POSE: Record<string, string> = {
-  neutral_front: "neutro", neutral_3q_left: "neutro", neutral_3q_right: "neutro",
-  talk_explain: "explica", talk_emphasis: "explica", pointing: "explica", arms_crossed: "neutro",
-  reaction: "sorprendido", walk_small_left: "camina", walk_small_right: "camina",
+const HUMAN_POSE: Record<string, string[]> = {
+  neutral_front: ["neutro"], neutral_3q_left: ["neutro"], neutral_3q_right: ["neutro"],
+  talk_explain: ["explica"], talk_emphasis: ["explica"], pointing: ["senala", "explica"], arms_crossed: ["neutro"],
+  reaction: ["sorprendido"], walk_small_left: ["camina"], walk_small_right: ["camina"],
+  susto: ["susto", "sorprendido"], panico: ["panico", "susto"], pensando: ["pensando", "confundido"], encoge: ["encoge", "explica"],
+  sentado_habla: ["sentado_habla", "sentado_teclea"], sentado_agobiado: ["sentado_agobiado", "sentado_cansado"], sentado_cansado: ["sentado_cansado", "sentado_agobiado"],
 };
 const SOUND_ALIAS: Record<string, string> = { telefono: "sfx_telefono", alarma: "sfx_alarma", pop: "sfx_pop", whoosh: "sfx_whoosh", ding: "sfx_ding", boing: "sfx_boing", golpe: "sfx_golpe", fracaso: "sfx_fracaso", teclado: "sfx_teclado", pantallazo: "sfx_pantallazo", servidor: "sfx_servidor", explosion: "sfx_explosion", portazo: "sfx_golpe" };
 
@@ -118,9 +123,9 @@ class SceneBuilder {
     return ch?.expressions.some((e) => e.id === id) ? id : ch?.fallbackExpressionId;
   }
   pose(cid: string, key: string) {
-    const id = this.human ? `char.${cid}.pose_h_${HUMAN_POSE[key] ?? key}` : `char.${cid}.pose_${key}`;
     const ch = this.catalog.characters.find((c) => c.id === cid);
-    return ch?.poses.some((p) => p.id === id) ? id : undefined;
+    const ids = this.human ? (HUMAN_POSE[key] ?? [key]).map((k) => `char.${cid}.pose_h_${k}`) : [`char.${cid}.pose_${key}`];
+    return ids.find((id) => ch?.poses.some((p) => p.id === id));
   }
 
   say(who: string | undefined, text: string, opts: { emo?: string; gesture?: string; gap?: number; voiceOf?: string; speakerName?: string; at?: number }) {
@@ -249,7 +254,9 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
       cast.forEach((cid, i) => {
         const sl = slots[i];
         const pose = human ? "h_neutro" : sl.x < 470 ? "neutral_3q_right" : sl.x > 610 ? "neutral_3q_left" : "neutral_front";
-        b.actors.push({ uid: cid, characterId: cid, poseId: `char.${cid}.pose_${pose}`, x: sl.x, y: sl.y, scale: sl.scale, zIndex: sl.zIndex, expressionId: b.expr(cid, "neutral") });
+        // humanos: las poses están dibujadas mirando a la derecha; los de la mitad derecha se giran hacia el centro
+        const flip = human && sl.x > 610 ? { flip: true } : {};
+        b.actors.push({ uid: cid, characterId: cid, poseId: `char.${cid}.pose_${pose}`, x: sl.x, y: sl.y, scale: sl.scale, zIndex: sl.zIndex, ...flip, expressionId: b.expr(cid, "neutral") });
       });
     }
     const steps = (Array.isArray(sc.pasos) ? sc.pasos : []) as unknown[];
