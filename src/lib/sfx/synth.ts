@@ -183,6 +183,20 @@ const pantallazo: Gen = () => {
   return out;
 };
 
+/** Zumbido grave de servidor con algún golpeteo. */
+const servidor: Gen = () => {
+  const n = len(3);
+  const out = new Float32Array(n);
+  const r = rng(5);
+  for (let i = 0; i < n; i++) {
+    const t = i / SR;
+    const hum = 0.22 * Math.sin(2 * Math.PI * 58 * t) + 0.12 * Math.sin(2 * Math.PI * 116 * t + 0.4) + 0.05 * (r() * 2 - 1);
+    const knock = t % 0.9 < 0.05 ? (r() * 2 - 1) * 0.35 * (1 - (t % 0.9) / 0.05) : 0;
+    out[i] = (hum * (0.8 + 0.2 * Math.sin(t * 3)) + knock) * env(i, n, 0.2, 0.3);
+  }
+  return out;
+};
+
 const GENERATORS: Record<string, { label: string; gen: Gen }> = {
   telefono: { label: "Teléfono sonando", gen: telefono },
   alarma: { label: "Alarma / sirena", gen: alarma },
@@ -194,6 +208,7 @@ const GENERATORS: Record<string, { label: string; gen: Gen }> = {
   fracaso: { label: "Tachán triste (fracaso)", gen: fracaso },
   teclado: { label: "Tecleo en el ordenador", gen: teclado },
   pantallazo: { label: "Pantallazo (chispazo y apagón)", gen: pantallazo },
+  servidor: { label: "Servidor con ruido raro", gen: servidor },
 };
 
 const cache = new Map<string, Float32Array>();

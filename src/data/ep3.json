@@ -1,0 +1,741 @@
+{
+ "schemaVersion": "pocket-1",
+ "catalogVersion": "v8-assets-1",
+ "metadata": {
+  "title": "Ep. 3 · ¿Qué coño nos ha pasado?",
+  "language": "es-ES",
+  "approxDuration": 81.2,
+  "idea": "Primer día en visión Puñeta: se ven azules, Usu descubre sus poderes y nacen Draco y Humillos.",
+  "wishlist": [
+   "Draco y Humillos definitivos",
+   "aura del Director (ejecutivo de sonrisa de anuncio)",
+   "aura de la recepcionista"
+  ]
+ },
+ "canvas": {
+  "width": 1080,
+  "height": 1920
+ },
+ "takes": [
+  {
+   "id": "e3t1",
+   "name": "Lunes",
+   "duration": 34.0,
+   "backgroundId": "bg_oficina_manana",
+   "actors": [
+    {
+     "uid": "rey",
+     "characterId": "reynaldo",
+     "poseId": "char.reynaldo.pose_neutral_3q_right",
+     "x": 310,
+     "y": 1650,
+     "scale": 0.68,
+     "zIndex": 1,
+     "expressionId": "expression.reynaldo.neutral"
+    },
+    {
+     "uid": "sis",
+     "characterId": "sister",
+     "poseId": "char.sister.pose_neutral_3q_left",
+     "x": 770,
+     "y": 1650,
+     "scale": 0.68,
+     "zIndex": 1,
+     "expressionId": "expression.sister.neutral"
+    },
+    {
+     "uid": "jefe",
+     "characterId": "jefe",
+     "poseId": "char.jefe.pose_neutral_3q_right",
+     "x": 180,
+     "y": 1810,
+     "scale": 0.78,
+     "zIndex": 2,
+     "expressionId": "expression.jefe.neutral"
+    },
+    {
+     "uid": "usu",
+     "characterId": "usu",
+     "poseId": "char.usu.pose_neutral_front",
+     "x": 540,
+     "y": 1810,
+     "scale": 0.78,
+     "zIndex": 3,
+     "expressionId": "expression.usu.neutral"
+    },
+    {
+     "uid": "bar",
+     "characterId": "barbas",
+     "poseId": "char.barbas.pose_neutral_3q_left",
+     "x": 900,
+     "y": 1810,
+     "scale": 0.78,
+     "zIndex": 2,
+     "expressionId": "expression.barbas.neutral"
+    }
+   ],
+   "events": [
+    {
+     "id": "e3t1_di1",
+     "track": "dialogue",
+     "start": 0.3,
+     "duration": 1.2,
+     "text": "Lunes."
+    },
+    {
+     "id": "e3t1_fa2",
+     "track": "face",
+     "start": 1.85,
+     "duration": 0.3,
+     "actorUid": "bar",
+     "expressionId": "expression.barbas.sorpresa"
+    },
+    {
+     "id": "e3t1_fa3",
+     "track": "face",
+     "start": 1.85,
+     "duration": 0.3,
+     "actorUid": "jefe",
+     "expressionId": "expression.jefe.sorpresa"
+    },
+    {
+     "id": "e3t1_bo4",
+     "track": "body",
+     "start": 1.85,
+     "duration": 0.3,
+     "actorUid": "jefe",
+     "poseId": "char.jefe.pose_pointing"
+    },
+    {
+     "id": "e3t1_di5",
+     "track": "dialogue",
+     "start": 1.85,
+     "duration": 1.7,
+     "actorUid": "jefe",
+     "text": "Barbas… estás azul."
+    },
+    {
+     "id": "e3t1_fa6",
+     "track": "face",
+     "start": 3.9,
+     "duration": 0.3,
+     "actorUid": "bar",
+     "expressionId": "expression.barbas.risa"
+    },
+    {
+     "id": "e3t1_di7",
+     "track": "dialogue",
+     "start": 3.9,
+     "duration": 5.6,
+     "actorUid": "bar",
+     "text": "Tú también, Jefe. Te lo digo con todo el amor del mundo: te favorece."
+    },
+    {
+     "id": "e3t1_fa8",
+     "track": "face",
+     "start": 9.85,
+     "duration": 0.3,
+     "actorUid": "sis",
+     "expressionId": "expression.sister.neutral"
+    },
+    {
+     "id": "e3t1_bo9",
+     "track": "body",
+     "start": 9.85,
+     "duration": 0.3,
+     "actorUid": "sis",
+     "poseId": "char.sister.pose_talk_explain"
+    },
+    {
+     "id": "e3t1_di10",
+     "track": "dialogue",
+     "start": 9.85,
+     "duration": 4.2,
+     "actorUid": "sis",
+     "text": "Que nadie grite. La recepcionista nos ha saludado como siempre."
+    },
+    {
+     "id": "e3t1_fa11",
+     "track": "face",
+     "start": 14.4,
+     "duration": 0.3,
+     "actorUid": "rey",
+     "expressionId": "expression.reynaldo.enfado"
+    },
+    {
+     "id": "e3t1_bo12",
+     "track": "body",
+     "start": 14.4,
+     "duration": 0.3,
+     "actorUid": "rey",
+     "poseId": "char.reynaldo.pose_arms_crossed"
+    },
+    {
+     "id": "e3t1_di13",
+     "track": "dialogue",
+     "start": 14.4,
+     "duration": 3.8,
+     "actorUid": "rey",
+     "text": "Esto no viene en el convenio. Lo estoy consultando."
+    },
+    {
+     "id": "e3t1_bo14",
+     "track": "body",
+     "start": 18.55,
+     "duration": 0.3,
+     "actorUid": "jefe",
+     "poseId": "char.jefe.pose_neutral_3q_right"
+    },
+    {
+     "id": "e3t1_di15",
+     "track": "dialogue",
+     "start": 18.55,
+     "duration": 2.0,
+     "actorUid": "jefe",
+     "text": "¿Qué pasó el viernes?"
+    },
+    {
+     "id": "e3t1_di16",
+     "track": "dialogue",
+     "start": 20.9,
+     "duration": 2.0,
+     "actorUid": "sis",
+     "text": "El parche de Usu."
+    },
+    {
+     "id": "e3t1_fa17",
+     "track": "face",
+     "start": 23.25,
+     "duration": 0.3,
+     "actorUid": "jefe",
+     "expressionId": "expression.jefe.neutral"
+    },
+    {
+     "id": "e3t1_di18",
+     "track": "dialogue",
+     "start": 23.25,
+     "duration": 1.3,
+     "actorUid": "jefe",
+     "text": "¿Qué parche?"
+    },
+    {
+     "id": "e3t1_di19",
+     "track": "dialogue",
+     "start": 24.9,
+     "duration": 3.5,
+     "actorUid": "jefe",
+     "text": "Eso… se lo preguntaré al Jefe del pasado."
+    },
+    {
+     "id": "e3t1_fa20",
+     "track": "face",
+     "start": 28.75,
+     "duration": 0.3,
+     "actorUid": "usu",
+     "expressionId": "expression.usu.alegria"
+    },
+    {
+     "id": "e3t1_bo21",
+     "track": "body",
+     "start": 28.75,
+     "duration": 0.3,
+     "actorUid": "usu",
+     "poseId": "char.usu.pose_talk_emphasis"
+    },
+    {
+     "id": "e3t1_di22",
+     "track": "dialogue",
+     "start": 28.75,
+     "duration": 2.0,
+     "actorUid": "usu",
+     "text": "[excited] ¡Yo sé cómo comprobarlo!"
+    },
+    {
+     "id": "e3t1_fa23",
+     "track": "face",
+     "start": 31.1,
+     "duration": 0.3,
+     "actorUid": "sis",
+     "expressionId": "expression.sister.enfado"
+    },
+    {
+     "id": "e3t1_bo24",
+     "track": "body",
+     "start": 31.1,
+     "duration": 0.3,
+     "actorUid": "sis",
+     "poseId": "char.sister.pose_pointing"
+    },
+    {
+     "id": "e3t1_di25",
+     "track": "dialogue",
+     "start": 31.1,
+     "duration": 1.3,
+     "actorUid": "sis",
+     "text": "Usu, no."
+    },
+    {
+     "id": "e3t1_mo26",
+     "track": "mouth",
+     "start": 0,
+     "duration": 34.0,
+     "actorUid": "rey",
+     "mode": "auto"
+    },
+    {
+     "id": "e3t1_mo27",
+     "track": "mouth",
+     "start": 0,
+     "duration": 34.0,
+     "actorUid": "sis",
+     "mode": "auto"
+    },
+    {
+     "id": "e3t1_mo28",
+     "track": "mouth",
+     "start": 0,
+     "duration": 34.0,
+     "actorUid": "jefe",
+     "mode": "auto"
+    },
+    {
+     "id": "e3t1_mo29",
+     "track": "mouth",
+     "start": 0,
+     "duration": 34.0,
+     "actorUid": "usu",
+     "mode": "auto"
+    },
+    {
+     "id": "e3t1_mo30",
+     "track": "mouth",
+     "start": 0,
+     "duration": 34.0,
+     "actorUid": "bar",
+     "mode": "auto"
+    }
+   ]
+  },
+  {
+   "id": "e3t2",
+   "name": "Los dragones",
+   "duration": 18.4,
+   "backgroundId": "bg_sala_servidores",
+   "actors": [
+    {
+     "uid": "usu",
+     "characterId": "usu",
+     "poseId": "char.usu.pose_neutral_front",
+     "x": 540,
+     "y": 1820,
+     "scale": 0.95,
+     "zIndex": 2,
+     "expressionId": "expression.usu.neutral"
+    }
+   ],
+   "events": [
+    {
+     "id": "e3t2_sf1",
+     "track": "sfx",
+     "start": 0.3,
+     "duration": 3,
+     "soundId": "sfx_servidor"
+    },
+    {
+     "id": "e3t2_bo2",
+     "track": "body",
+     "start": 0.3,
+     "duration": 0.3,
+     "actorUid": "usu",
+     "poseId": "char.usu.pose_talk_explain"
+    },
+    {
+     "id": "e3t2_di3",
+     "track": "dialogue",
+     "start": 0.3,
+     "duration": 4.2,
+     "actorUid": "usu",
+     "text": "A ver, grandullón. Incidencia cuatro mil doce. Tú y yo."
+    },
+    {
+     "id": "e3t2_bo4",
+     "track": "body",
+     "start": 4.85,
+     "duration": 0.3,
+     "actorUid": "usu",
+     "poseId": "char.usu.pose_pointing"
+    },
+    {
+     "id": "e3t2_sc5",
+     "track": "screen",
+     "start": 5.15,
+     "duration": 0.5,
+     "effect": "flash",
+     "color": "#ffffff"
+    },
+    {
+     "id": "e3t2_sf6",
+     "track": "sfx",
+     "start": 5.15,
+     "duration": 0.4,
+     "soundId": "sfx_pop"
+    },
+    {
+     "id": "e3t2_pr7",
+     "track": "props",
+     "start": 5.15,
+     "duration": 13.25,
+     "propId": "prop_draco",
+     "layer": "props-front",
+     "x": 270,
+     "y": 1050,
+     "scale": 1.1,
+     "enter": "pop",
+     "loop": "float"
+    },
+    {
+     "id": "e3t2_sf8",
+     "track": "sfx",
+     "start": 5.55,
+     "duration": 0.4,
+     "soundId": "sfx_pop"
+    },
+    {
+     "id": "e3t2_pr9",
+     "track": "props",
+     "start": 5.55,
+     "duration": 12.85,
+     "propId": "prop_humillos",
+     "layer": "props-front",
+     "x": 820,
+     "y": 1100,
+     "scale": 1.0,
+     "enter": "pop",
+     "loop": "float"
+    },
+    {
+     "id": "e3t2_fa10",
+     "track": "face",
+     "start": 5.55,
+     "duration": 0.3,
+     "actorUid": "usu",
+     "expressionId": "expression.usu.sorpresa"
+    },
+    {
+     "id": "e3t2_bo11",
+     "track": "body",
+     "start": 5.55,
+     "duration": 0.6,
+     "actorUid": "usu",
+     "fx": "jump"
+    },
+    {
+     "id": "e3t2_bo12",
+     "track": "body",
+     "start": 6.35,
+     "duration": 0.3,
+     "actorUid": "usu",
+     "poseId": "char.usu.pose_reaction"
+    },
+    {
+     "id": "e3t2_di13",
+     "track": "dialogue",
+     "start": 6.35,
+     "duration": 2.8,
+     "actorUid": "usu",
+     "text": "…¿Draco? ¿Humillos? ¡Pero si erais imaginarios!"
+    },
+    {
+     "id": "e3t2_fa14",
+     "track": "face",
+     "start": 9.5,
+     "duration": 0.3,
+     "actorUid": "usu",
+     "expressionId": "expression.usu.alegria"
+    },
+    {
+     "id": "e3t2_bo15",
+     "track": "body",
+     "start": 9.5,
+     "duration": 0.3,
+     "actorUid": "usu",
+     "poseId": "char.usu.pose_talk_emphasis"
+    },
+    {
+     "id": "e3t2_di16",
+     "track": "dialogue",
+     "start": 9.5,
+     "duration": 3.8,
+     "actorUid": "usu",
+     "text": "[excited] Vale. Pues ya que estáis: la cuatro mil doce."
+    },
+    {
+     "id": "e3t2_sf17",
+     "track": "sfx",
+     "start": 13.65,
+     "duration": 0.6,
+     "soundId": "sfx_whoosh"
+    },
+    {
+     "id": "e3t2_sc18",
+     "track": "screen",
+     "start": 13.65,
+     "duration": 0.6,
+     "effect": "flash",
+     "color": "#40c057"
+    },
+    {
+     "id": "e3t2_sf19",
+     "track": "sfx",
+     "start": 13.65,
+     "duration": 0.6,
+     "soundId": "sfx_ding"
+    },
+    {
+     "id": "e3t2_fa20",
+     "track": "face",
+     "start": 14.45,
+     "duration": 0.3,
+     "actorUid": "usu",
+     "expressionId": "expression.usu.risa"
+    },
+    {
+     "id": "e3t2_bo21",
+     "track": "body",
+     "start": 14.45,
+     "duration": 0.3,
+     "actorUid": "usu",
+     "poseId": "char.usu.pose_arms_crossed"
+    },
+    {
+     "id": "e3t2_di22",
+     "track": "dialogue",
+     "start": 14.45,
+     "duration": 2.4,
+     "actorUid": "usu",
+     "text": "Incidencia cerrada. Por mis dragones."
+    },
+    {
+     "id": "e3t2_mo23",
+     "track": "mouth",
+     "start": 0,
+     "duration": 18.4,
+     "actorUid": "usu",
+     "mode": "auto"
+    }
+   ]
+  },
+  {
+   "id": "e3t3",
+   "name": "El Director",
+   "duration": 28.8,
+   "backgroundId": "bg_despacho_director",
+   "actors": [
+    {
+     "uid": "rey",
+     "characterId": "reynaldo",
+     "poseId": "char.reynaldo.pose_neutral_3q_right",
+     "x": 310,
+     "y": 1650,
+     "scale": 0.68,
+     "zIndex": 1,
+     "expressionId": "expression.reynaldo.neutral"
+    },
+    {
+     "uid": "sis",
+     "characterId": "sister",
+     "poseId": "char.sister.pose_neutral_3q_left",
+     "x": 770,
+     "y": 1650,
+     "scale": 0.68,
+     "zIndex": 1,
+     "expressionId": "expression.sister.neutral"
+    },
+    {
+     "uid": "jefe",
+     "characterId": "jefe",
+     "poseId": "char.jefe.pose_neutral_3q_right",
+     "x": 180,
+     "y": 1810,
+     "scale": 0.78,
+     "zIndex": 2,
+     "expressionId": "expression.jefe.neutral"
+    },
+    {
+     "uid": "usu",
+     "characterId": "usu",
+     "poseId": "char.usu.pose_neutral_front",
+     "x": 540,
+     "y": 1810,
+     "scale": 0.78,
+     "zIndex": 3,
+     "expressionId": "expression.usu.neutral"
+    },
+    {
+     "uid": "bar",
+     "characterId": "barbas",
+     "poseId": "char.barbas.pose_neutral_3q_left",
+     "x": 900,
+     "y": 1810,
+     "scale": 0.78,
+     "zIndex": 2,
+     "expressionId": "expression.barbas.neutral"
+    }
+   ],
+   "events": [
+    {
+     "id": "e3t3_di1",
+     "track": "dialogue",
+     "start": 0.3,
+     "duration": 4.9,
+     "text": "Ni una incidencia abierta en toda la empresa. ¿Cómo lo habéis hecho?",
+     "speakerName": "Director"
+    },
+    {
+     "id": "e3t3_bo2",
+     "track": "body",
+     "start": 5.55,
+     "duration": 0.3,
+     "actorUid": "sis",
+     "poseId": "char.sister.pose_talk_explain"
+    },
+    {
+     "id": "e3t3_di3",
+     "track": "dialogue",
+     "start": 5.55,
+     "duration": 6.4,
+     "actorUid": "sis",
+     "text": "Usu cerró la cuatro mil doce. Y el Jefe arregló anoche toda la red de facturación."
+    },
+    {
+     "id": "e3t3_fa4",
+     "track": "face",
+     "start": 12.3,
+     "duration": 0.3,
+     "actorUid": "jefe",
+     "expressionId": "expression.jefe.sorpresa"
+    },
+    {
+     "id": "e3t3_bo5",
+     "track": "body",
+     "start": 12.3,
+     "duration": 0.3,
+     "actorUid": "jefe",
+     "poseId": "char.jefe.pose_reaction"
+    },
+    {
+     "id": "e3t3_di6",
+     "track": "dialogue",
+     "start": 12.3,
+     "duration": 1.2,
+     "actorUid": "jefe",
+     "text": "¿Yo?"
+    },
+    {
+     "id": "e3t3_fa7",
+     "track": "face",
+     "start": 13.85,
+     "duration": 0.3,
+     "actorUid": "bar",
+     "expressionId": "expression.barbas.risa"
+    },
+    {
+     "id": "e3t3_di8",
+     "track": "dialogue",
+     "start": 13.85,
+     "duration": 5.3,
+     "actorUid": "bar",
+     "text": "Tú, Jefe. Tres horas. Con todo el amor del mundo: eres un crack."
+    },
+    {
+     "id": "e3t3_fa9",
+     "track": "face",
+     "start": 19.5,
+     "duration": 0.3,
+     "actorUid": "jefe",
+     "expressionId": "expression.jefe.neutral"
+    },
+    {
+     "id": "e3t3_bo10",
+     "track": "body",
+     "start": 19.5,
+     "duration": 0.3,
+     "actorUid": "jefe",
+     "poseId": "char.jefe.pose_neutral_3q_right"
+    },
+    {
+     "id": "e3t3_di11",
+     "track": "dialogue",
+     "start": 19.5,
+     "duration": 3.5,
+     "actorUid": "jefe",
+     "text": "Eso se lo preguntaré al Jefe del pasado."
+    },
+    {
+     "id": "e3t3_fa12",
+     "track": "face",
+     "start": 23.35,
+     "duration": 0.3,
+     "actorUid": "rey",
+     "expressionId": "expression.reynaldo.enfado"
+    },
+    {
+     "id": "e3t3_bo13",
+     "track": "body",
+     "start": 23.35,
+     "duration": 0.3,
+     "actorUid": "rey",
+     "poseId": "char.reynaldo.pose_arms_crossed"
+    },
+    {
+     "id": "e3t3_di14",
+     "track": "dialogue",
+     "start": 23.35,
+     "duration": 3.5,
+     "actorUid": "rey",
+     "text": "Y conste que ha sido en horario laboral."
+    },
+    {
+     "id": "e3t3_mo15",
+     "track": "mouth",
+     "start": 0,
+     "duration": 28.8,
+     "actorUid": "rey",
+     "mode": "auto"
+    },
+    {
+     "id": "e3t3_mo16",
+     "track": "mouth",
+     "start": 0,
+     "duration": 28.8,
+     "actorUid": "sis",
+     "mode": "auto"
+    },
+    {
+     "id": "e3t3_mo17",
+     "track": "mouth",
+     "start": 0,
+     "duration": 28.8,
+     "actorUid": "jefe",
+     "mode": "auto"
+    },
+    {
+     "id": "e3t3_mo18",
+     "track": "mouth",
+     "start": 0,
+     "duration": 28.8,
+     "actorUid": "usu",
+     "mode": "auto"
+    },
+    {
+     "id": "e3t3_mo19",
+     "track": "mouth",
+     "start": 0,
+     "duration": 28.8,
+     "actorUid": "bar",
+     "mode": "auto"
+    }
+   ]
+  }
+ ]
+}

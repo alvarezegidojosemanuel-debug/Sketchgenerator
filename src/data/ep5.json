@@ -1,0 +1,611 @@
+{
+ "schemaVersion": "pocket-1",
+ "catalogVersion": "v8-assets-1",
+ "metadata": {
+  "title": "Ep. 5 · La nueva normalidad",
+  "language": "es-ES",
+  "approxDuration": 62.4,
+  "idea": "En el bar ponen en común sus habilidades y deciden investigar; Draco y Humillos queman los platos.",
+  "wishlist": [
+   "bar definitivo",
+   "aura del camarero",
+   "platitos (normales y chamuscados)",
+   "calle de noche"
+  ]
+ },
+ "canvas": {
+  "width": 1080,
+  "height": 1920
+ },
+ "takes": [
+  {
+   "id": "e5t1",
+   "name": "En el bar",
+   "duration": 32.6,
+   "backgroundId": "bg_bar",
+   "actors": [
+    {
+     "uid": "rey",
+     "characterId": "reynaldo",
+     "poseId": "char.reynaldo.pose_neutral_3q_right",
+     "x": 310,
+     "y": 1650,
+     "scale": 0.68,
+     "zIndex": 1,
+     "expressionId": "expression.reynaldo.neutral"
+    },
+    {
+     "uid": "sis",
+     "characterId": "sister",
+     "poseId": "char.sister.pose_neutral_3q_left",
+     "x": 770,
+     "y": 1650,
+     "scale": 0.68,
+     "zIndex": 1,
+     "expressionId": "expression.sister.neutral"
+    },
+    {
+     "uid": "jefe",
+     "characterId": "jefe",
+     "poseId": "char.jefe.pose_neutral_3q_right",
+     "x": 180,
+     "y": 1810,
+     "scale": 0.78,
+     "zIndex": 2,
+     "expressionId": "expression.jefe.neutral"
+    },
+    {
+     "uid": "usu",
+     "characterId": "usu",
+     "poseId": "char.usu.pose_neutral_front",
+     "x": 540,
+     "y": 1810,
+     "scale": 0.78,
+     "zIndex": 3,
+     "expressionId": "expression.usu.neutral"
+    },
+    {
+     "uid": "bar",
+     "characterId": "barbas",
+     "poseId": "char.barbas.pose_neutral_3q_left",
+     "x": 900,
+     "y": 1810,
+     "scale": 0.78,
+     "zIndex": 2,
+     "expressionId": "expression.barbas.neutral"
+    }
+   ],
+   "events": [
+    {
+     "id": "e5t1_di1",
+     "track": "dialogue",
+     "start": 0.3,
+     "duration": 1.7,
+     "text": "¿Lo de siempre?",
+     "speakerName": "Camarero"
+    },
+    {
+     "id": "e5t1_fa2",
+     "track": "face",
+     "start": 2.35,
+     "duration": 0.3,
+     "actorUid": "bar",
+     "expressionId": "expression.barbas.alegria"
+    },
+    {
+     "id": "e5t1_di3",
+     "track": "dialogue",
+     "start": 2.35,
+     "duration": 3.8,
+     "actorUid": "bar",
+     "text": "Lo de siempre, con todo el amor del mundo."
+    },
+    {
+     "id": "e5t1_fa4",
+     "track": "face",
+     "start": 6.5,
+     "duration": 0.3,
+     "actorUid": "rey",
+     "expressionId": "expression.reynaldo.alegria"
+    },
+    {
+     "id": "e5t1_bo5",
+     "track": "body",
+     "start": 6.5,
+     "duration": 0.3,
+     "actorUid": "rey",
+     "poseId": "char.reynaldo.pose_arms_crossed"
+    },
+    {
+     "id": "e5t1_di6",
+     "track": "dialogue",
+     "start": 6.5,
+     "duration": 3.5,
+     "actorUid": "rey",
+     "text": "Hoy he recuperado doce euros. Y mi dignidad."
+    },
+    {
+     "id": "e5t1_fa7",
+     "track": "face",
+     "start": 10.35,
+     "duration": 0.3,
+     "actorUid": "sis",
+     "expressionId": "expression.sister.alegria"
+    },
+    {
+     "id": "e5t1_bo8",
+     "track": "body",
+     "start": 10.35,
+     "duration": 0.3,
+     "actorUid": "sis",
+     "poseId": "char.sister.pose_talk_explain"
+    },
+    {
+     "id": "e5t1_di9",
+     "track": "dialogue",
+     "start": 10.35,
+     "duration": 3.5,
+     "actorUid": "sis",
+     "text": "Yo he ordenado una casa entera sin tocarla."
+    },
+    {
+     "id": "e5t1_fa10",
+     "track": "face",
+     "start": 14.2,
+     "duration": 0.3,
+     "actorUid": "bar",
+     "expressionId": "expression.barbas.risa"
+    },
+    {
+     "id": "e5t1_di11",
+     "track": "dialogue",
+     "start": 14.2,
+     "duration": 4.9,
+     "actorUid": "bar",
+     "text": "A mí mi cuñado me quiere. Me da un poco de miedo."
+    },
+    {
+     "id": "e5t1_fa12",
+     "track": "face",
+     "start": 19.45,
+     "duration": 0.3,
+     "actorUid": "usu",
+     "expressionId": "expression.usu.alegria"
+    },
+    {
+     "id": "e5t1_bo13",
+     "track": "body",
+     "start": 19.45,
+     "duration": 0.3,
+     "actorUid": "usu",
+     "poseId": "char.usu.pose_talk_emphasis"
+    },
+    {
+     "id": "e5t1_di14",
+     "track": "dialogue",
+     "start": 19.45,
+     "duration": 3.1,
+     "actorUid": "usu",
+     "text": "Yo he creado un pulpo guardia urbano."
+    },
+    {
+     "id": "e5t1_fa15",
+     "track": "face",
+     "start": 22.9,
+     "duration": 0.3,
+     "actorUid": "jefe",
+     "expressionId": "expression.jefe.tristeza"
+    },
+    {
+     "id": "e5t1_di16",
+     "track": "dialogue",
+     "start": 22.9,
+     "duration": 2.4,
+     "actorUid": "jefe",
+     "text": "Yo he… no me acuerdo."
+    },
+    {
+     "id": "e5t1_di17",
+     "track": "dialogue",
+     "start": 25.65,
+     "duration": 3.1,
+     "actorUid": "sis",
+     "text": "Arreglaste el wifi de tu edificio, Jefe."
+    },
+    {
+     "id": "e5t1_fa18",
+     "track": "face",
+     "start": 29.1,
+     "duration": 0.3,
+     "actorUid": "jefe",
+     "expressionId": "expression.jefe.alegria"
+    },
+    {
+     "id": "e5t1_bo19",
+     "track": "body",
+     "start": 29.1,
+     "duration": 0.3,
+     "actorUid": "jefe",
+     "poseId": "char.jefe.pose_talk_emphasis"
+    },
+    {
+     "id": "e5t1_di20",
+     "track": "dialogue",
+     "start": 29.1,
+     "duration": 2.0,
+     "actorUid": "jefe",
+     "text": "¿Veis? Soy un crack."
+    },
+    {
+     "id": "e5t1_mo21",
+     "track": "mouth",
+     "start": 0,
+     "duration": 32.6,
+     "actorUid": "rey",
+     "mode": "auto"
+    },
+    {
+     "id": "e5t1_mo22",
+     "track": "mouth",
+     "start": 0,
+     "duration": 32.6,
+     "actorUid": "sis",
+     "mode": "auto"
+    },
+    {
+     "id": "e5t1_mo23",
+     "track": "mouth",
+     "start": 0,
+     "duration": 32.6,
+     "actorUid": "jefe",
+     "mode": "auto"
+    },
+    {
+     "id": "e5t1_mo24",
+     "track": "mouth",
+     "start": 0,
+     "duration": 32.6,
+     "actorUid": "usu",
+     "mode": "auto"
+    },
+    {
+     "id": "e5t1_mo25",
+     "track": "mouth",
+     "start": 0,
+     "duration": 32.6,
+     "actorUid": "bar",
+     "mode": "auto"
+    }
+   ]
+  },
+  {
+   "id": "e5t2",
+   "name": "El plan",
+   "duration": 29.8,
+   "backgroundId": "bg_bar",
+   "actors": [
+    {
+     "uid": "rey",
+     "characterId": "reynaldo",
+     "poseId": "char.reynaldo.pose_neutral_3q_right",
+     "x": 310,
+     "y": 1650,
+     "scale": 0.68,
+     "zIndex": 1,
+     "expressionId": "expression.reynaldo.neutral"
+    },
+    {
+     "uid": "sis",
+     "characterId": "sister",
+     "poseId": "char.sister.pose_neutral_3q_left",
+     "x": 770,
+     "y": 1650,
+     "scale": 0.68,
+     "zIndex": 1,
+     "expressionId": "expression.sister.neutral"
+    },
+    {
+     "uid": "jefe",
+     "characterId": "jefe",
+     "poseId": "char.jefe.pose_neutral_3q_right",
+     "x": 180,
+     "y": 1810,
+     "scale": 0.78,
+     "zIndex": 2,
+     "expressionId": "expression.jefe.neutral"
+    },
+    {
+     "uid": "usu",
+     "characterId": "usu",
+     "poseId": "char.usu.pose_neutral_front",
+     "x": 540,
+     "y": 1810,
+     "scale": 0.78,
+     "zIndex": 3,
+     "expressionId": "expression.usu.neutral"
+    },
+    {
+     "uid": "bar",
+     "characterId": "barbas",
+     "poseId": "char.barbas.pose_neutral_3q_left",
+     "x": 900,
+     "y": 1810,
+     "scale": 0.78,
+     "zIndex": 2,
+     "expressionId": "expression.barbas.neutral"
+    }
+   ],
+   "events": [
+    {
+     "id": "e5t2_bo1",
+     "track": "body",
+     "start": 0.3,
+     "duration": 0.3,
+     "actorUid": "jefe",
+     "poseId": "char.jefe.pose_talk_explain"
+    },
+    {
+     "id": "e5t2_di2",
+     "track": "dialogue",
+     "start": 0.3,
+     "duration": 2.8,
+     "actorUid": "jefe",
+     "text": "Propongo investigar qué nos está pasando."
+    },
+    {
+     "id": "e5t2_fa3",
+     "track": "face",
+     "start": 3.45,
+     "duration": 0.3,
+     "actorUid": "rey",
+     "expressionId": "expression.reynaldo.enfado"
+    },
+    {
+     "id": "e5t2_bo4",
+     "track": "body",
+     "start": 3.45,
+     "duration": 0.3,
+     "actorUid": "rey",
+     "poseId": "char.reynaldo.pose_arms_crossed"
+    },
+    {
+     "id": "e5t2_di5",
+     "track": "dialogue",
+     "start": 3.45,
+     "duration": 1.7,
+     "actorUid": "rey",
+     "text": "En horario laboral."
+    },
+    {
+     "id": "e5t2_fa6",
+     "track": "face",
+     "start": 5.5,
+     "duration": 0.3,
+     "actorUid": "jefe",
+     "expressionId": "expression.jefe.sorpresa"
+    },
+    {
+     "id": "e5t2_bo7",
+     "track": "body",
+     "start": 5.5,
+     "duration": 0.3,
+     "actorUid": "jefe",
+     "poseId": "char.jefe.pose_reaction"
+    },
+    {
+     "id": "e5t2_di8",
+     "track": "dialogue",
+     "start": 5.5,
+     "duration": 2.4,
+     "actorUid": "jefe",
+     "text": "Muy bien. ¿Qué estaba proponiendo?"
+    },
+    {
+     "id": "e5t2_fa9",
+     "track": "face",
+     "start": 8.25,
+     "duration": 0.3,
+     "actorUid": "sis",
+     "expressionId": "expression.sister.alegria"
+    },
+    {
+     "id": "e5t2_di10",
+     "track": "dialogue",
+     "start": 8.25,
+     "duration": 1.7,
+     "actorUid": "sis",
+     "text": "Lo tengo apuntado."
+    },
+    {
+     "id": "e5t2_fa11",
+     "track": "face",
+     "start": 10.3,
+     "duration": 0.3,
+     "actorUid": "bar",
+     "expressionId": "expression.barbas.risa"
+    },
+    {
+     "id": "e5t2_bo12",
+     "track": "body",
+     "start": 10.3,
+     "duration": 0.3,
+     "actorUid": "bar",
+     "poseId": "char.barbas.pose_talk_emphasis"
+    },
+    {
+     "id": "e5t2_di13",
+     "track": "dialogue",
+     "start": 10.3,
+     "duration": 3.8,
+     "actorUid": "bar",
+     "text": "Por los Puñetos. Con todo el amor del mundo."
+    },
+    {
+     "id": "e5t2_sf14",
+     "track": "sfx",
+     "start": 14.45,
+     "duration": 0.5,
+     "soundId": "sfx_ding"
+    },
+    {
+     "id": "e5t2_fa15",
+     "track": "face",
+     "start": 14.45,
+     "duration": 0.3,
+     "actorUid": "usu",
+     "expressionId": "expression.usu.alegria"
+    },
+    {
+     "id": "e5t2_bo16",
+     "track": "body",
+     "start": 14.45,
+     "duration": 0.3,
+     "actorUid": "usu",
+     "poseId": "char.usu.pose_talk_explain"
+    },
+    {
+     "id": "e5t2_di17",
+     "track": "dialogue",
+     "start": 14.45,
+     "duration": 3.1,
+     "actorUid": "usu",
+     "text": "Y dos platitos para Draco y Humillos."
+    },
+    {
+     "id": "e5t2_pr18",
+     "track": "props",
+     "start": 17.9,
+     "duration": 11.9,
+     "propId": "prop_cafe",
+     "layer": "props-front",
+     "x": 470,
+     "y": 1560,
+     "scale": 0.7
+    },
+    {
+     "id": "e5t2_pr19",
+     "track": "props",
+     "start": 17.9,
+     "duration": 11.9,
+     "propId": "prop_cafe",
+     "layer": "props-front",
+     "x": 610,
+     "y": 1560,
+     "scale": 0.7
+    },
+    {
+     "id": "e5t2_sf20",
+     "track": "sfx",
+     "start": 18.5,
+     "duration": 0.4,
+     "soundId": "sfx_pop"
+    },
+    {
+     "id": "e5t2_pr21",
+     "track": "props",
+     "start": 18.5,
+     "duration": 11.3,
+     "propId": "prop_draco",
+     "layer": "props-front",
+     "x": 300,
+     "y": 1300,
+     "scale": 1.3,
+     "enter": "pop",
+     "loop": "float"
+    },
+    {
+     "id": "e5t2_pr22",
+     "track": "props",
+     "start": 18.5,
+     "duration": 11.3,
+     "propId": "prop_humillos",
+     "layer": "props-front",
+     "x": 800,
+     "y": 1320,
+     "scale": 1.2,
+     "enter": "pop",
+     "loop": "float"
+    },
+    {
+     "id": "e5t2_di23",
+     "track": "dialogue",
+     "start": 19.5,
+     "duration": 2.8,
+     "text": "…¿Quién me ha quemado los platos?",
+     "speakerName": "Camarero"
+    },
+    {
+     "id": "e5t2_fa24",
+     "track": "face",
+     "start": 22.65,
+     "duration": 0.3,
+     "actorUid": "usu",
+     "expressionId": "expression.usu.risa"
+    },
+    {
+     "id": "e5t2_bo25",
+     "track": "body",
+     "start": 22.65,
+     "duration": 0.3,
+     "actorUid": "usu",
+     "poseId": "char.usu.pose_arms_crossed"
+    },
+    {
+     "id": "e5t2_di26",
+     "track": "dialogue",
+     "start": 22.65,
+     "duration": 3.8,
+     "actorUid": "usu",
+     "text": "Humillos. No se le puede llevar a ningún sitio."
+    },
+    {
+     "id": "e5t2_di27",
+     "track": "dialogue",
+     "start": 27.1,
+     "duration": 1.2,
+     "text": "Continuará."
+    },
+    {
+     "id": "e5t2_mo28",
+     "track": "mouth",
+     "start": 0,
+     "duration": 29.8,
+     "actorUid": "rey",
+     "mode": "auto"
+    },
+    {
+     "id": "e5t2_mo29",
+     "track": "mouth",
+     "start": 0,
+     "duration": 29.8,
+     "actorUid": "sis",
+     "mode": "auto"
+    },
+    {
+     "id": "e5t2_mo30",
+     "track": "mouth",
+     "start": 0,
+     "duration": 29.8,
+     "actorUid": "jefe",
+     "mode": "auto"
+    },
+    {
+     "id": "e5t2_mo31",
+     "track": "mouth",
+     "start": 0,
+     "duration": 29.8,
+     "actorUid": "usu",
+     "mode": "auto"
+    },
+    {
+     "id": "e5t2_mo32",
+     "track": "mouth",
+     "start": 0,
+     "duration": 29.8,
+     "actorUid": "bar",
+     "mode": "auto"
+    }
+   ]
+  }
+ ]
+}

@@ -64,6 +64,8 @@ export const DialogueEvent = z.object({
   actorUid: id.optional(),
   /** Sin actorUid: voz de este personaje (characterId) fuera de cuadro o dibujado como objeto; si falta, narrador. */
   voiceOf: id.optional(),
+  /** Sin actorUid ni voiceOf: secundario que habla en off (p. ej. «Director», «Camarero»), con su propia voz en el reparto. */
+  speakerName: z.string().min(1).max(40).optional(),
   text: z.string().min(1).max(LIMITS.maxTextLength),
   voice: VoiceSettings.optional(),
 });

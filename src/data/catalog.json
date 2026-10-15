@@ -6057,6 +6057,30 @@
    "width": 520,
    "height": 900,
    "src": "/assets/punetos/props/prop_usu_humano.webp"
+  },
+  {
+   "id": "prop_draco",
+   "label": "Draco (dragón verde, provisional)",
+   "width": 300,
+   "height": 220,
+   "src": "/assets/placeholder/props/prop_draco.svg",
+   "placeholder": true
+  },
+  {
+   "id": "prop_humillos",
+   "label": "Humillos (dragón naranja, provisional)",
+   "width": 260,
+   "height": 240,
+   "src": "/assets/placeholder/props/prop_humillos.svg",
+   "placeholder": true
+  },
+  {
+   "id": "prop_pulpo",
+   "label": "Pulpo guardia de otro mundo (provisional)",
+   "width": 280,
+   "height": 300,
+   "src": "/assets/placeholder/props/prop_pulpo.svg",
+   "placeholder": true
   }
  ]
 }

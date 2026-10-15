@@ -8,6 +8,11 @@ import demoUsuReyRaw from "@/data/sketch-usu-reynaldo.json";
 import demoFxRaw from "@/data/sketch-interacciones.json";
 import demoBsodRaw from "@/data/sketch-pantallazo.json";
 import demoOrigenRaw from "@/data/sketch-origen.json";
+import ep1Raw from "@/data/ep1.json";
+import ep2Raw from "@/data/ep2.json";
+import ep3Raw from "@/data/ep3.json";
+import ep4Raw from "@/data/ep4.json";
+import ep5Raw from "@/data/ep5.json";
 import type { PocketProject } from "@/lib/schema/pocket";
 import { validateProject, type Issue } from "@/lib/schema/validate";
 import { faceStore, libraryStore, newProjectId, projectStore, type LibraryItem } from "@/lib/storage/projects";
@@ -25,6 +30,11 @@ export const DEMOS = {
   interacciones: demoFxRaw,
   pantallazo: demoBsodRaw,
   origen: demoOrigenRaw,
+  ep1: ep1Raw,
+  ep2: ep2Raw,
+  ep3: ep3Raw,
+  ep4: ep4Raw,
+  ep5: ep5Raw,
 } as const;
 
 export function demoProject(which: keyof typeof DEMOS = "usu-jefe"): PocketProject {

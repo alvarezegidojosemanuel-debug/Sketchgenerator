@@ -297,6 +297,11 @@
                       "maxLength": 80,
                       "pattern": "^[A-Za-z0-9_.:-]+$"
                     },
+                    "speakerName": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 40
+                    },
                     "text": {
                       "type": "string",
                       "minLength": 1,

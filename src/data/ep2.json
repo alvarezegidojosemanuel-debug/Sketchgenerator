@@ -1,0 +1,664 @@
+{
+ "schemaVersion": "pocket-1",
+ "catalogVersion": "v8-assets-1",
+ "metadata": {
+  "title": "Ep. 2 · El parche",
+  "language": "es-ES",
+  "approxDuration": 53.5,
+  "idea": "Usu prepara el parche de noche; el viernes a las 17:59 lo aplica y llega el pantallazo azul.",
+  "wishlist": [
+   "Usu humano de espaldas iluminado de noche",
+   "Reynaldo con abrigo",
+   "segundo fotograma de teclear"
+  ]
+ },
+ "canvas": {
+  "width": 1080,
+  "height": 1920
+ },
+ "takes": [
+  {
+   "id": "e2t1",
+   "name": "Miércoles, 23:00",
+   "duration": 12.7,
+   "backgroundId": "bg_oficina_noche",
+   "actors": [],
+   "events": [
+    {
+     "id": "e2t1_di1",
+     "track": "dialogue",
+     "start": 0.3,
+     "duration": 2.4,
+     "text": "Miércoles. Once de la noche."
+    },
+    {
+     "id": "e2t1_sf2",
+     "track": "sfx",
+     "start": 3.05,
+     "duration": 2.5,
+     "soundId": "sfx_teclado",
+     "volume": 0.6
+    },
+    {
+     "id": "e2t1_di3",
+     "track": "dialogue",
+     "start": 3.05,
+     "duration": 4.9,
+     "text": "Draco, pásame el destornillador. Humillos, tú no, que te comes los cables.",
+     "voiceOf": "usu"
+    },
+    {
+     "id": "e2t1_di4",
+     "track": "dialogue",
+     "start": 8.3,
+     "duration": 2.8,
+     "text": "[whispers] El viernes lo arreglamos. Los tres.",
+     "voiceOf": "usu"
+    },
+    {
+     "id": "e2t1_pr5",
+     "track": "props",
+     "start": 0.0,
+     "duration": 12.7,
+     "propId": "prop_sister_espaldas_teclea",
+     "layer": "props-front",
+     "x": 102,
+     "y": 975,
+     "scale": 0.312,
+     "zIndex": 1,
+     "loop": "type"
+    },
+    {
+     "id": "e2t1_pr6",
+     "track": "props",
+     "start": 0.0,
+     "duration": 12.7,
+     "propId": "prop_reynaldo_espaldas_teclea",
+     "layer": "props-front",
+     "x": 427,
+     "y": 1028,
+     "scale": 0.319,
+     "zIndex": 2,
+     "loop": "type"
+    },
+    {
+     "id": "e2t1_pr7",
+     "track": "props",
+     "start": 0.0,
+     "duration": 12.7,
+     "propId": "prop_barbas_espaldas_teclea",
+     "layer": "props-front",
+     "x": 782,
+     "y": 1090,
+     "scale": 0.331,
+     "zIndex": 3,
+     "loop": "type"
+    },
+    {
+     "id": "e2t1_pr8",
+     "track": "props",
+     "start": 0.0,
+     "duration": 12.7,
+     "propId": "prop_jefe_espaldas_teclea",
+     "layer": "props-front",
+     "x": 83,
+     "y": 1622,
+     "scale": 0.775,
+     "zIndex": 4,
+     "loop": "type"
+    },
+    {
+     "id": "e2t1_pr9",
+     "track": "props",
+     "start": 0.0,
+     "duration": 2.95,
+     "propId": "prop_usu_espaldas_teclea",
+     "layer": "props-front",
+     "x": 575,
+     "y": 1848,
+     "scale": 0.875,
+     "zIndex": 5,
+     "loop": "type"
+    },
+    {
+     "id": "e2t1_pr10",
+     "track": "props",
+     "start": 2.95,
+     "duration": 5.1,
+     "propId": "prop_usu_espaldas_habla",
+     "layer": "props-front",
+     "x": 579,
+     "y": 1848,
+     "scale": 0.916,
+     "zIndex": 5
+    },
+    {
+     "id": "e2t1_pr11",
+     "track": "props",
+     "start": 8.05,
+     "duration": 0.15,
+     "propId": "prop_usu_espaldas_teclea",
+     "layer": "props-front",
+     "x": 575,
+     "y": 1848,
+     "scale": 0.875,
+     "zIndex": 5,
+     "loop": "type"
+    },
+    {
+     "id": "e2t1_pr12",
+     "track": "props",
+     "start": 8.2,
+     "duration": 3.0,
+     "propId": "prop_usu_espaldas_habla",
+     "layer": "props-front",
+     "x": 579,
+     "y": 1848,
+     "scale": 0.916,
+     "zIndex": 5
+    },
+    {
+     "id": "e2t1_pr13",
+     "track": "props",
+     "start": 11.2,
+     "duration": 1.5,
+     "propId": "prop_usu_espaldas_teclea",
+     "layer": "props-front",
+     "x": 575,
+     "y": 1848,
+     "scale": 0.875,
+     "zIndex": 5,
+     "loop": "type"
+    }
+   ]
+  },
+  {
+   "id": "e2t2",
+   "name": "El servidor",
+   "duration": 8.8,
+   "backgroundId": "bg_sala_servidores",
+   "actors": [],
+   "events": [
+    {
+     "id": "e2t2_sf1",
+     "track": "sfx",
+     "start": 0.3,
+     "duration": 3,
+     "soundId": "sfx_servidor"
+    },
+    {
+     "id": "e2t2_pr2",
+     "track": "props",
+     "start": 0.3,
+     "duration": 8.5,
+     "propId": "prop_usu_humano",
+     "layer": "props-front",
+     "x": 540,
+     "y": 1880,
+     "scale": 1.1
+    },
+    {
+     "id": "e2t2_di3",
+     "track": "dialogue",
+     "start": 0.3,
+     "duration": 2.0,
+     "text": "Jueves. Sala de servidores."
+    },
+    {
+     "id": "e2t2_sc4",
+     "track": "screen",
+     "start": 2.65,
+     "duration": 0.5,
+     "effect": "shake"
+    },
+    {
+     "id": "e2t2_di5",
+     "track": "dialogue",
+     "start": 2.65,
+     "duration": 1.3,
+     "text": "[sighs] Brrrrr… clonc.",
+     "speakerName": "Servidor"
+    },
+    {
+     "id": "e2t2_di6",
+     "track": "dialogue",
+     "start": 4.3,
+     "duration": 2.4,
+     "actorUid": "usu",
+     "text": "Tranquilo, grandullón. Mañana te curo."
+    }
+   ]
+  },
+  {
+   "id": "e2t3",
+   "name": "Viernes, 17:59",
+   "duration": 32.0,
+   "backgroundId": "bg_oficina_soporte",
+   "actors": [],
+   "events": [
+    {
+     "id": "e2t3_sf1",
+     "track": "sfx",
+     "start": 0.3,
+     "duration": 2,
+     "soundId": "sfx_teclado",
+     "volume": 0.6
+    },
+    {
+     "id": "e2t3_di2",
+     "track": "dialogue",
+     "start": 0.3,
+     "duration": 2.4,
+     "text": "Viernes. Seis menos un minuto."
+    },
+    {
+     "id": "e2t3_di3",
+     "track": "dialogue",
+     "start": 3.05,
+     "duration": 5.3,
+     "text": "Yo a las seis ficho. Ni un segundo más. Artículo de mi convenio.",
+     "voiceOf": "reynaldo"
+    },
+    {
+     "id": "e2t3_di4",
+     "track": "dialogue",
+     "start": 8.7,
+     "duration": 1.3,
+     "text": "[excited] Parche aplicado.",
+     "voiceOf": "usu"
+    },
+    {
+     "id": "e2t3_di5",
+     "track": "dialogue",
+     "start": 10.35,
+     "duration": 3.1,
+     "text": "¿Un viernes? ¿A las seis menos uno?",
+     "voiceOf": "barbas"
+    },
+    {
+     "id": "e2t3_sc6",
+     "track": "screen",
+     "start": 13.8,
+     "duration": 0.5,
+     "effect": "shake"
+    },
+    {
+     "id": "e2t3_sc7",
+     "track": "screen",
+     "start": 13.8,
+     "duration": 2.8,
+     "effect": "bluescreen",
+     "text": "Tu equipo se ha puñetizado."
+    },
+    {
+     "id": "e2t3_sf8",
+     "track": "sfx",
+     "start": 13.8,
+     "duration": 2.2,
+     "soundId": "sfx_pantallazo"
+    },
+    {
+     "id": "e2t3_sc9",
+     "track": "screen",
+     "start": 16.8,
+     "duration": 0.25,
+     "effect": "flash",
+     "color": "#2a6bff"
+    },
+    {
+     "id": "e2t3_di10",
+     "track": "dialogue",
+     "start": 17.3,
+     "duration": 3.5,
+     "text": "…¿Alguien más se ha visto la mano… azul?",
+     "voiceOf": "reynaldo"
+    },
+    {
+     "id": "e2t3_di11",
+     "track": "dialogue",
+     "start": 21.15,
+     "duration": 1.2,
+     "text": "No.",
+     "voiceOf": "sister"
+    },
+    {
+     "id": "e2t3_di12",
+     "track": "dialogue",
+     "start": 22.5,
+     "duration": 1.2,
+     "text": "No.",
+     "voiceOf": "barbas"
+    },
+    {
+     "id": "e2t3_di13",
+     "track": "dialogue",
+     "start": 23.85,
+     "duration": 1.2,
+     "text": "No.",
+     "voiceOf": "jefe"
+    },
+    {
+     "id": "e2t3_di14",
+     "track": "dialogue",
+     "start": 25.2,
+     "duration": 1.2,
+     "text": "No.",
+     "voiceOf": "usu"
+    },
+    {
+     "id": "e2t3_pr15",
+     "track": "props",
+     "start": 0.0,
+     "duration": 21.05,
+     "propId": "prop_sister_espaldas_teclea",
+     "layer": "props-front",
+     "x": 102,
+     "y": 975,
+     "scale": 0.312,
+     "zIndex": 1,
+     "loop": "type"
+    },
+    {
+     "id": "e2t3_pr16",
+     "track": "props",
+     "start": 21.05,
+     "duration": 1.4,
+     "propId": "prop_sister_espaldas_explica",
+     "layer": "props-front",
+     "x": 108,
+     "y": 975,
+     "scale": 0.263,
+     "zIndex": 1
+    },
+    {
+     "id": "e2t3_pr17",
+     "track": "props",
+     "start": 22.45,
+     "duration": 5.15,
+     "propId": "prop_sister_espaldas_teclea",
+     "layer": "props-front",
+     "x": 102,
+     "y": 975,
+     "scale": 0.312,
+     "zIndex": 1,
+     "loop": "type"
+    },
+    {
+     "id": "e2t3_pr18",
+     "track": "props",
+     "start": 27.6,
+     "duration": 4.4,
+     "propId": "prop_sister_espaldas_explica",
+     "layer": "props-front",
+     "x": 108,
+     "y": 975,
+     "scale": 0.263,
+     "zIndex": 1
+    },
+    {
+     "id": "e2t3_pr19",
+     "track": "props",
+     "start": 0.0,
+     "duration": 2.95,
+     "propId": "prop_reynaldo_espaldas_teclea",
+     "layer": "props-front",
+     "x": 427,
+     "y": 1028,
+     "scale": 0.319,
+     "zIndex": 2,
+     "loop": "type"
+    },
+    {
+     "id": "e2t3_pr20",
+     "track": "props",
+     "start": 2.95,
+     "duration": 5.5,
+     "propId": "prop_reynaldo_espaldas_hombros",
+     "layer": "props-front",
+     "x": 418,
+     "y": 1028,
+     "scale": 0.304,
+     "zIndex": 2
+    },
+    {
+     "id": "e2t3_pr21",
+     "track": "props",
+     "start": 8.45,
+     "duration": 8.75,
+     "propId": "prop_reynaldo_espaldas_teclea",
+     "layer": "props-front",
+     "x": 427,
+     "y": 1028,
+     "scale": 0.319,
+     "zIndex": 2,
+     "loop": "type"
+    },
+    {
+     "id": "e2t3_pr22",
+     "track": "props",
+     "start": 17.2,
+     "duration": 3.7,
+     "propId": "prop_reynaldo_espaldas_hombros",
+     "layer": "props-front",
+     "x": 418,
+     "y": 1028,
+     "scale": 0.304,
+     "zIndex": 2
+    },
+    {
+     "id": "e2t3_pr23",
+     "track": "props",
+     "start": 20.9,
+     "duration": 11.1,
+     "propId": "prop_reynaldo_espaldas_teclea",
+     "layer": "props-front",
+     "x": 427,
+     "y": 1028,
+     "scale": 0.319,
+     "zIndex": 2,
+     "loop": "type"
+    },
+    {
+     "id": "e2t3_pr24",
+     "track": "props",
+     "start": 0.0,
+     "duration": 10.25,
+     "propId": "prop_barbas_espaldas_teclea",
+     "layer": "props-front",
+     "x": 782,
+     "y": 1090,
+     "scale": 0.331,
+     "zIndex": 3,
+     "loop": "type"
+    },
+    {
+     "id": "e2t3_pr25",
+     "track": "props",
+     "start": 10.25,
+     "duration": 3.3,
+     "propId": "prop_barbas_espaldas_habla",
+     "layer": "props-front",
+     "x": 781,
+     "y": 1090,
+     "scale": 0.351,
+     "zIndex": 3
+    },
+    {
+     "id": "e2t3_pr26",
+     "track": "props",
+     "start": 13.55,
+     "duration": 8.85,
+     "propId": "prop_barbas_espaldas_teclea",
+     "layer": "props-front",
+     "x": 782,
+     "y": 1090,
+     "scale": 0.331,
+     "zIndex": 3,
+     "loop": "type"
+    },
+    {
+     "id": "e2t3_pr27",
+     "track": "props",
+     "start": 22.4,
+     "duration": 1.4,
+     "propId": "prop_barbas_espaldas_habla",
+     "layer": "props-front",
+     "x": 781,
+     "y": 1090,
+     "scale": 0.351,
+     "zIndex": 3
+    },
+    {
+     "id": "e2t3_pr28",
+     "track": "props",
+     "start": 23.8,
+     "duration": 4.4,
+     "propId": "prop_barbas_espaldas_teclea",
+     "layer": "props-front",
+     "x": 782,
+     "y": 1090,
+     "scale": 0.331,
+     "zIndex": 3,
+     "loop": "type"
+    },
+    {
+     "id": "e2t3_pr29",
+     "track": "props",
+     "start": 28.2,
+     "duration": 3.8,
+     "propId": "prop_barbas_espaldas_habla",
+     "layer": "props-front",
+     "x": 781,
+     "y": 1090,
+     "scale": 0.351,
+     "zIndex": 3
+    },
+    {
+     "id": "e2t3_pr30",
+     "track": "props",
+     "start": 0.0,
+     "duration": 23.75,
+     "propId": "prop_jefe_espaldas_teclea",
+     "layer": "props-front",
+     "x": 83,
+     "y": 1622,
+     "scale": 0.775,
+     "zIndex": 4,
+     "loop": "type"
+    },
+    {
+     "id": "e2t3_pr31",
+     "track": "props",
+     "start": 23.75,
+     "duration": 1.4,
+     "propId": "prop_jefe_espaldas_senala",
+     "layer": "props-front",
+     "x": 69,
+     "y": 1622,
+     "scale": 0.806,
+     "zIndex": 4
+    },
+    {
+     "id": "e2t3_pr32",
+     "track": "props",
+     "start": 25.15,
+     "duration": 3.65,
+     "propId": "prop_jefe_espaldas_teclea",
+     "layer": "props-front",
+     "x": 83,
+     "y": 1622,
+     "scale": 0.775,
+     "zIndex": 4,
+     "loop": "type"
+    },
+    {
+     "id": "e2t3_pr33",
+     "track": "props",
+     "start": 28.8,
+     "duration": 3.2,
+     "propId": "prop_jefe_espaldas_senala",
+     "layer": "props-front",
+     "x": 69,
+     "y": 1622,
+     "scale": 0.806,
+     "zIndex": 4
+    },
+    {
+     "id": "e2t3_pr34",
+     "track": "props",
+     "start": 0.0,
+     "duration": 8.6,
+     "propId": "prop_usu_espaldas_teclea",
+     "layer": "props-front",
+     "x": 575,
+     "y": 1848,
+     "scale": 0.875,
+     "zIndex": 5,
+     "loop": "type"
+    },
+    {
+     "id": "e2t3_pr35",
+     "track": "props",
+     "start": 8.6,
+     "duration": 1.5,
+     "propId": "prop_usu_espaldas_habla",
+     "layer": "props-front",
+     "x": 579,
+     "y": 1848,
+     "scale": 0.916,
+     "zIndex": 5
+    },
+    {
+     "id": "e2t3_pr36",
+     "track": "props",
+     "start": 10.1,
+     "duration": 15.0,
+     "propId": "prop_usu_espaldas_teclea",
+     "layer": "props-front",
+     "x": 575,
+     "y": 1848,
+     "scale": 0.875,
+     "zIndex": 5,
+     "loop": "type"
+    },
+    {
+     "id": "e2t3_pr37",
+     "track": "props",
+     "start": 25.1,
+     "duration": 1.4,
+     "propId": "prop_usu_espaldas_habla",
+     "layer": "props-front",
+     "x": 579,
+     "y": 1848,
+     "scale": 0.916,
+     "zIndex": 5
+    },
+    {
+     "id": "e2t3_pr38",
+     "track": "props",
+     "start": 26.5,
+     "duration": 2.9,
+     "propId": "prop_usu_espaldas_teclea",
+     "layer": "props-front",
+     "x": 575,
+     "y": 1848,
+     "scale": 0.875,
+     "zIndex": 5,
+     "loop": "type"
+    },
+    {
+     "id": "e2t3_pr39",
+     "track": "props",
+     "start": 29.4,
+     "duration": 2.6,
+     "propId": "prop_usu_espaldas_habla",
+     "layer": "props-front",
+     "x": 579,
+     "y": 1848,
+     "scale": 0.916,
+     "zIndex": 5
+    }
+   ]
+  }
+ ]
+}

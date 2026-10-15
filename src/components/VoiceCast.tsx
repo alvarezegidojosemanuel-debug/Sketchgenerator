@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { findCharacter } from "@/lib/catalog";
-import { castFor, castIds, findPiperVoice, NARRATOR_ID, speakerCharacterId, PIPER_VOICES, type CastEntry } from "@/lib/voice/catalog";
+import { castFor, castIds, castLabel, findPiperVoice, speakerCharacterId, PIPER_VOICES, type CastEntry } from "@/lib/voice/catalog";
 import { previewVoice, type Progress } from "@/lib/voice/piper";
 import type { PocketState } from "./usePocket";
 import { Card, Field, Stepper } from "./ui";
@@ -23,7 +23,7 @@ export function VoiceCast({ s }: { s: PocketState }) {
     });
 
   const sampleLine = (cid: string) =>
-    project.takes.flatMap((t) => t.events.filter((e) => e.track === "dialogue" && speakerCharacterId(t, e.actorUid, (e as { voiceOf?: string }).voiceOf) === cid)).map((e) => (e as { text: string }).text)[0] ??
+    project.takes.flatMap((t) => t.events.filter((e) => e.track === "dialogue" && speakerCharacterId(t, e.actorUid, (e as { voiceOf?: string }).voiceOf, (e as { speakerName?: string }).speakerName) === cid)).map((e) => (e as { text: string }).text)[0] ??
     "Hola, soy yo. ¿Qué tal suena mi voz?";
 
   const test = async (cid: string) => {
@@ -48,7 +48,7 @@ export function VoiceCast({ s }: { s: PocketState }) {
         return (
           <div key={cid} className="cast-row">
             <div className="cast-head">
-              <b>{cid === NARRATOR_ID ? "Narrador (voz en off)" : findCharacter(catalog, cid)?.name ?? cid}</b>
+              <b>{castLabel(cid) ?? findCharacter(catalog, cid)?.name ?? cid}</b>
               <button type="button" className="btn btn-small btn-secondary" disabled={busy !== null} onClick={() => test(cid)}>
                 {busy === cid ? "…" : "▶ Probar"}
               </button>

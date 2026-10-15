@@ -154,6 +154,7 @@ Emociones genéricas: ${[...catalog.emotions].sort().join(", ")}
 Tipos de evento (campo "track"):
 - "dialogue": "text" (máx ${LIMITS.maxTextLength} caracteres; frases cortas), "voice" opcional { "rate": 0.5-2, "pitch": 0-2 }. Puedes añadir UNA acotación de voz entre corchetes y en inglés al principio de la frase para dar intención: [laughs], [sighs], [whispers], [shouts], [excited], [sarcastic], [nervous], [angry], [crying]. Ej.: "[sighs] Otra vez lunes."
     Sin "actorUid" = NARRADOR (voz en off de documental, nadie mueve la boca). Úsalo con moderación: intros, saltos de tiempo, remates.
+    Sin "actorUid" pero con "speakerName": "Director" (o "Camarero", "Vecina"…) = secundario que habla EN OFF con su propia voz (no aparece en pantalla).
     Sin "actorUid" pero con "voiceOf": characterId = habla ese personaje con su voz SIN estar en escena como actor (fuera de cuadro, o dibujado como objeto, p. ej. de espaldas).
 - "body": "poseId" opcional (pose del mismo personaje), "x"/"y"/"scale" opcionales (destino del movimiento), "ease": "linear" | "inOut" | "instant".
 - "face": "expressionId" (expresión DEL MISMO personaje; cambia cejas, ojos y boca a la vez y se mantiene hasta el siguiente "face").

@@ -52,15 +52,30 @@ export const DEFAULT_CAST: Record<string, CastEntry> = {
 export const NARRATOR_ID = "narrador";
 
 /** Personajes que necesitan voz en el proyecto (+ narrador si hay voz en off). */
-export function castIds(project: { takes: { actors: { characterId: string }[]; events: { track: string; actorUid?: string; voiceOf?: string }[] }[] }): string[] {
+export function castIds(project: { takes: { actors: { characterId: string }[]; events: { track: string; actorUid?: string; voiceOf?: string; speakerName?: string }[] }[] }): string[] {
   const ids = new Set(project.takes.flatMap((t) => t.actors.map((a) => a.characterId)));
-  for (const t of project.takes) for (const e of t.events) if (e.track === "dialogue" && !e.actorUid) ids.add(e.voiceOf ?? NARRATOR_ID);
+  for (const t of project.takes) for (const e of t.events) if (e.track === "dialogue" && !e.actorUid) ids.add(e.voiceOf ?? (e.speakerName ? extraId(e.speakerName) : NARRATOR_ID));
   return [...ids];
 }
 
+/** Clave de reparto de un secundario en off («Director» → "extra_director"). */
+export function extraId(name: string): string {
+  return "extra_" + name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "");
+}
+
+/** Nombre visible de una clave de reparto que no es un personaje del catálogo. */
+export function castLabel(id: string): string | undefined {
+  if (id === NARRATOR_ID) return "Narrador (voz en off)";
+  if (id.startsWith("extra_")) {
+    const n = id.slice(6).replace(/_/g, " ");
+    return n.charAt(0).toUpperCase() + n.slice(1) + " (en off)";
+  }
+  return undefined;
+}
+
 /** characterId de la voz que dice un diálogo. */
-export function speakerCharacterId(take: { actors: { uid: string; characterId: string }[] }, actorUid: string | undefined, voiceOf?: string): string {
-  if (!actorUid) return voiceOf ?? NARRATOR_ID;
+export function speakerCharacterId(take: { actors: { uid: string; characterId: string }[] }, actorUid: string | undefined, voiceOf?: string, speakerName?: string): string {
+  if (!actorUid) return voiceOf ?? (speakerName ? extraId(speakerName) : NARRATOR_ID);
   return take.actors.find((a) => a.uid === actorUid)?.characterId ?? "";
 }
 

@@ -173,7 +173,7 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
       case "dialogue": {
         if (!active) break;
         if (!e.actorUid) {
-          const who = e.voiceOf ? findCharacter(catalog, e.voiceOf)?.name ?? e.voiceOf : "Narrador";
+          const who = e.voiceOf ? findCharacter(catalog, e.voiceOf)?.name ?? e.voiceOf : e.speakerName ?? "Narrador";
           subtitles.push({ eventId: e.id, actorUid: "", speaker: who, text: stripAudioTags(e.text) });
           break;
         }

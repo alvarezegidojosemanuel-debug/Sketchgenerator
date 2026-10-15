@@ -1,0 +1,675 @@
+{
+ "schemaVersion": "pocket-1",
+ "catalogVersion": "v8-assets-1",
+ "metadata": {
+  "title": "Ep. 1 · Antes",
+  "language": "es-ES",
+  "approxDuration": 67.7,
+  "idea": "Presentación del equipo humano y la incidencia fantasma que el Director exige cerrar antes del viernes.",
+  "wishlist": [
+   "mañana de cada uno en casa / portal (presentación)",
+   "Director humano (de pie)",
+   "monitor con el correo del Director"
+  ]
+ },
+ "canvas": {
+  "width": 1080,
+  "height": 1920
+ },
+ "takes": [
+  {
+   "id": "e1t1",
+   "name": "La incidencia fantasma",
+   "duration": 35.3,
+   "backgroundId": "bg_oficina_manana",
+   "actors": [],
+   "events": [
+    {
+     "id": "e1t1_sf1",
+     "track": "sfx",
+     "start": 0.3,
+     "duration": 3,
+     "soundId": "sfx_teclado",
+     "volume": 0.5
+    },
+    {
+     "id": "e1t1_di2",
+     "track": "dialogue",
+     "start": 0.3,
+     "duration": 5.6,
+     "text": "Departamento de soporte. Cinco personas. Y una incidencia que no hay manera de cerrar."
+    },
+    {
+     "id": "e1t1_di3",
+     "track": "dialogue",
+     "start": 6.25,
+     "duration": 4.9,
+     "text": "La cuatro mil doce se ha vuelto a abrir. Sola. Otra vez.",
+     "voiceOf": "sister"
+    },
+    {
+     "id": "e1t1_di4",
+     "track": "dialogue",
+     "start": 11.5,
+     "duration": 5.3,
+     "text": "Yo la cerré ayer a las seis menos uno. Consta en el registro.",
+     "voiceOf": "reynaldo"
+    },
+    {
+     "id": "e1t1_di5",
+     "track": "dialogue",
+     "start": 17.15,
+     "duration": 6.4,
+     "text": "Igual es que le caemos bien. Te lo digo con todo el amor del mundo, ¿eh?",
+     "voiceOf": "barbas"
+    },
+    {
+     "id": "e1t1_di6",
+     "track": "dialogue",
+     "start": 23.9,
+     "duration": 4.2,
+     "text": "O el servidor tiene sentimientos. Se lo pregunto a Draco.",
+     "voiceOf": "usu"
+    },
+    {
+     "id": "e1t1_sf7",
+     "track": "sfx",
+     "start": 28.45,
+     "duration": 0.6,
+     "soundId": "sfx_ding"
+    },
+    {
+     "id": "e1t1_di8",
+     "track": "dialogue",
+     "start": 28.85,
+     "duration": 4.9,
+     "text": "Equipo de soporte: si la incidencia sigue abierta el viernes, habrá cambios.",
+     "speakerName": "Director"
+    },
+    {
+     "id": "e1t1_pr9",
+     "track": "props",
+     "start": 0.0,
+     "duration": 6.15,
+     "propId": "prop_sister_espaldas_teclea",
+     "layer": "props-front",
+     "x": 102,
+     "y": 975,
+     "scale": 0.312,
+     "zIndex": 1,
+     "loop": "type"
+    },
+    {
+     "id": "e1t1_pr10",
+     "track": "props",
+     "start": 6.15,
+     "duration": 5.1,
+     "propId": "prop_sister_espaldas_explica",
+     "layer": "props-front",
+     "x": 108,
+     "y": 975,
+     "scale": 0.263,
+     "zIndex": 1
+    },
+    {
+     "id": "e1t1_pr11",
+     "track": "props",
+     "start": 11.25,
+     "duration": 24.05,
+     "propId": "prop_sister_espaldas_teclea",
+     "layer": "props-front",
+     "x": 102,
+     "y": 975,
+     "scale": 0.312,
+     "zIndex": 1,
+     "loop": "type"
+    },
+    {
+     "id": "e1t1_pr12",
+     "track": "props",
+     "start": 0.0,
+     "duration": 11.4,
+     "propId": "prop_reynaldo_espaldas_teclea",
+     "layer": "props-front",
+     "x": 427,
+     "y": 1028,
+     "scale": 0.319,
+     "zIndex": 2,
+     "loop": "type"
+    },
+    {
+     "id": "e1t1_pr13",
+     "track": "props",
+     "start": 11.4,
+     "duration": 5.5,
+     "propId": "prop_reynaldo_espaldas_hombros",
+     "layer": "props-front",
+     "x": 418,
+     "y": 1028,
+     "scale": 0.304,
+     "zIndex": 2
+    },
+    {
+     "id": "e1t1_pr14",
+     "track": "props",
+     "start": 16.9,
+     "duration": 18.4,
+     "propId": "prop_reynaldo_espaldas_teclea",
+     "layer": "props-front",
+     "x": 427,
+     "y": 1028,
+     "scale": 0.319,
+     "zIndex": 2,
+     "loop": "type"
+    },
+    {
+     "id": "e1t1_pr15",
+     "track": "props",
+     "start": 0.0,
+     "duration": 17.05,
+     "propId": "prop_barbas_espaldas_teclea",
+     "layer": "props-front",
+     "x": 782,
+     "y": 1090,
+     "scale": 0.331,
+     "zIndex": 3,
+     "loop": "type"
+    },
+    {
+     "id": "e1t1_pr16",
+     "track": "props",
+     "start": 17.05,
+     "duration": 6.6,
+     "propId": "prop_barbas_espaldas_habla",
+     "layer": "props-front",
+     "x": 781,
+     "y": 1090,
+     "scale": 0.351,
+     "zIndex": 3
+    },
+    {
+     "id": "e1t1_pr17",
+     "track": "props",
+     "start": 23.65,
+     "duration": 11.65,
+     "propId": "prop_barbas_espaldas_teclea",
+     "layer": "props-front",
+     "x": 782,
+     "y": 1090,
+     "scale": 0.331,
+     "zIndex": 3,
+     "loop": "type"
+    },
+    {
+     "id": "e1t1_pr18",
+     "track": "props",
+     "start": 0.0,
+     "duration": 35.3,
+     "propId": "prop_jefe_espaldas_teclea",
+     "layer": "props-front",
+     "x": 83,
+     "y": 1622,
+     "scale": 0.775,
+     "zIndex": 4,
+     "loop": "type"
+    },
+    {
+     "id": "e1t1_pr19",
+     "track": "props",
+     "start": 0.0,
+     "duration": 23.8,
+     "propId": "prop_usu_espaldas_teclea",
+     "layer": "props-front",
+     "x": 575,
+     "y": 1848,
+     "scale": 0.875,
+     "zIndex": 5,
+     "loop": "type"
+    },
+    {
+     "id": "e1t1_pr20",
+     "track": "props",
+     "start": 23.8,
+     "duration": 4.4,
+     "propId": "prop_usu_espaldas_habla",
+     "layer": "props-front",
+     "x": 579,
+     "y": 1848,
+     "scale": 0.916,
+     "zIndex": 5
+    },
+    {
+     "id": "e1t1_pr21",
+     "track": "props",
+     "start": 28.2,
+     "duration": 7.1,
+     "propId": "prop_usu_espaldas_teclea",
+     "layer": "props-front",
+     "x": 575,
+     "y": 1848,
+     "scale": 0.875,
+     "zIndex": 5,
+     "loop": "type"
+    }
+   ]
+  },
+  {
+   "id": "e1t2",
+   "name": "El viernes",
+   "duration": 32.4,
+   "backgroundId": "bg_oficina_manana",
+   "actors": [],
+   "events": [
+    {
+     "id": "e1t2_di1",
+     "track": "dialogue",
+     "start": 0.3,
+     "duration": 1.7,
+     "text": "¿Cambios? ¿Qué cambios?",
+     "voiceOf": "jefe"
+    },
+    {
+     "id": "e1t2_di2",
+     "track": "dialogue",
+     "start": 2.35,
+     "duration": 7.4,
+     "text": "Jefe, lo ha dicho con un tonito… Con todo el amor del mundo: yo iría a hablar con él.",
+     "voiceOf": "barbas"
+    },
+    {
+     "id": "e1t2_di3",
+     "track": "dialogue",
+     "start": 10.1,
+     "duration": 1.7,
+     "text": "[angry] ¡Voy ahora mismo!",
+     "voiceOf": "jefe"
+    },
+    {
+     "id": "e1t2_sf4",
+     "track": "sfx",
+     "start": 12.15,
+     "duration": 0.6,
+     "soundId": "sfx_whoosh"
+    },
+    {
+     "id": "e1t2_di5",
+     "track": "dialogue",
+     "start": 12.15,
+     "duration": 5.6,
+     "text": "Jefe, la reunión con él es el viernes. Te lo apunté en tres sitios.",
+     "voiceOf": "sister"
+    },
+    {
+     "id": "e1t2_di6",
+     "track": "dialogue",
+     "start": 18.1,
+     "duration": 1.3,
+     "text": "¿Qué reunión?",
+     "voiceOf": "jefe"
+    },
+    {
+     "id": "e1t2_di7",
+     "track": "dialogue",
+     "start": 20.05,
+     "duration": 3.1,
+     "text": "Tranquilos. Lo arreglo yo. Con un parche.",
+     "voiceOf": "usu"
+    },
+    {
+     "id": "e1t2_di8",
+     "track": "dialogue",
+     "start": 23.5,
+     "duration": 1.2,
+     "text": "No.",
+     "voiceOf": "sister"
+    },
+    {
+     "id": "e1t2_di9",
+     "track": "dialogue",
+     "start": 24.85,
+     "duration": 1.2,
+     "text": "No.",
+     "voiceOf": "reynaldo"
+    },
+    {
+     "id": "e1t2_di10",
+     "track": "dialogue",
+     "start": 26.2,
+     "duration": 1.2,
+     "text": "No.",
+     "voiceOf": "barbas"
+    },
+    {
+     "id": "e1t2_di11",
+     "track": "dialogue",
+     "start": 28.0,
+     "duration": 2.0,
+     "text": "Ya lo he empezado.",
+     "voiceOf": "usu"
+    },
+    {
+     "id": "e1t2_sf12",
+     "track": "sfx",
+     "start": 30.35,
+     "duration": 1.1,
+     "soundId": "sfx_fracaso"
+    },
+    {
+     "id": "e1t2_pr13",
+     "track": "props",
+     "start": 0.0,
+     "duration": 12.05,
+     "propId": "prop_sister_espaldas_teclea",
+     "layer": "props-front",
+     "x": 102,
+     "y": 975,
+     "scale": 0.312,
+     "zIndex": 1,
+     "loop": "type"
+    },
+    {
+     "id": "e1t2_pr14",
+     "track": "props",
+     "start": 12.05,
+     "duration": 5.8,
+     "propId": "prop_sister_espaldas_explica",
+     "layer": "props-front",
+     "x": 108,
+     "y": 975,
+     "scale": 0.263,
+     "zIndex": 1
+    },
+    {
+     "id": "e1t2_pr15",
+     "track": "props",
+     "start": 17.85,
+     "duration": 5.55,
+     "propId": "prop_sister_espaldas_teclea",
+     "layer": "props-front",
+     "x": 102,
+     "y": 975,
+     "scale": 0.312,
+     "zIndex": 1,
+     "loop": "type"
+    },
+    {
+     "id": "e1t2_pr16",
+     "track": "props",
+     "start": 23.4,
+     "duration": 1.4,
+     "propId": "prop_sister_espaldas_explica",
+     "layer": "props-front",
+     "x": 108,
+     "y": 975,
+     "scale": 0.263,
+     "zIndex": 1
+    },
+    {
+     "id": "e1t2_pr17",
+     "track": "props",
+     "start": 24.8,
+     "duration": 7.6,
+     "propId": "prop_sister_espaldas_teclea",
+     "layer": "props-front",
+     "x": 102,
+     "y": 975,
+     "scale": 0.312,
+     "zIndex": 1,
+     "loop": "type"
+    },
+    {
+     "id": "e1t2_pr18",
+     "track": "props",
+     "start": 0.0,
+     "duration": 24.75,
+     "propId": "prop_reynaldo_espaldas_teclea",
+     "layer": "props-front",
+     "x": 427,
+     "y": 1028,
+     "scale": 0.319,
+     "zIndex": 2,
+     "loop": "type"
+    },
+    {
+     "id": "e1t2_pr19",
+     "track": "props",
+     "start": 24.75,
+     "duration": 1.4,
+     "propId": "prop_reynaldo_espaldas_hombros",
+     "layer": "props-front",
+     "x": 418,
+     "y": 1028,
+     "scale": 0.304,
+     "zIndex": 2
+    },
+    {
+     "id": "e1t2_pr20",
+     "track": "props",
+     "start": 26.15,
+     "duration": 6.25,
+     "propId": "prop_reynaldo_espaldas_teclea",
+     "layer": "props-front",
+     "x": 427,
+     "y": 1028,
+     "scale": 0.319,
+     "zIndex": 2,
+     "loop": "type"
+    },
+    {
+     "id": "e1t2_pr21",
+     "track": "props",
+     "start": 0.0,
+     "duration": 2.25,
+     "propId": "prop_barbas_espaldas_teclea",
+     "layer": "props-front",
+     "x": 782,
+     "y": 1090,
+     "scale": 0.331,
+     "zIndex": 3,
+     "loop": "type"
+    },
+    {
+     "id": "e1t2_pr22",
+     "track": "props",
+     "start": 2.25,
+     "duration": 7.6,
+     "propId": "prop_barbas_espaldas_habla",
+     "layer": "props-front",
+     "x": 781,
+     "y": 1090,
+     "scale": 0.351,
+     "zIndex": 3
+    },
+    {
+     "id": "e1t2_pr23",
+     "track": "props",
+     "start": 9.85,
+     "duration": 16.25,
+     "propId": "prop_barbas_espaldas_teclea",
+     "layer": "props-front",
+     "x": 782,
+     "y": 1090,
+     "scale": 0.331,
+     "zIndex": 3,
+     "loop": "type"
+    },
+    {
+     "id": "e1t2_pr24",
+     "track": "props",
+     "start": 26.1,
+     "duration": 1.4,
+     "propId": "prop_barbas_espaldas_habla",
+     "layer": "props-front",
+     "x": 781,
+     "y": 1090,
+     "scale": 0.351,
+     "zIndex": 3
+    },
+    {
+     "id": "e1t2_pr25",
+     "track": "props",
+     "start": 27.5,
+     "duration": 4.9,
+     "propId": "prop_barbas_espaldas_teclea",
+     "layer": "props-front",
+     "x": 782,
+     "y": 1090,
+     "scale": 0.331,
+     "zIndex": 3,
+     "loop": "type"
+    },
+    {
+     "id": "e1t2_pr26",
+     "track": "props",
+     "start": 0.0,
+     "duration": 0.2,
+     "propId": "prop_jefe_espaldas_teclea",
+     "layer": "props-front",
+     "x": 83,
+     "y": 1622,
+     "scale": 0.775,
+     "zIndex": 4,
+     "loop": "type"
+    },
+    {
+     "id": "e1t2_pr27",
+     "track": "props",
+     "start": 0.2,
+     "duration": 1.9,
+     "propId": "prop_jefe_espaldas_senala",
+     "layer": "props-front",
+     "x": 69,
+     "y": 1622,
+     "scale": 0.806,
+     "zIndex": 4
+    },
+    {
+     "id": "e1t2_pr28",
+     "track": "props",
+     "start": 2.1,
+     "duration": 7.9,
+     "propId": "prop_jefe_espaldas_teclea",
+     "layer": "props-front",
+     "x": 83,
+     "y": 1622,
+     "scale": 0.775,
+     "zIndex": 4,
+     "loop": "type"
+    },
+    {
+     "id": "e1t2_pr29",
+     "track": "props",
+     "start": 10.0,
+     "duration": 1.9,
+     "propId": "prop_jefe_espaldas_senala",
+     "layer": "props-front",
+     "x": 69,
+     "y": 1622,
+     "scale": 0.806,
+     "zIndex": 4
+    },
+    {
+     "id": "e1t2_pr30",
+     "track": "props",
+     "start": 11.9,
+     "duration": 6.1,
+     "propId": "prop_jefe_espaldas_teclea",
+     "layer": "props-front",
+     "x": 83,
+     "y": 1622,
+     "scale": 0.775,
+     "zIndex": 4,
+     "loop": "type"
+    },
+    {
+     "id": "e1t2_pr31",
+     "track": "props",
+     "start": 18.0,
+     "duration": 1.5,
+     "propId": "prop_jefe_espaldas_senala",
+     "layer": "props-front",
+     "x": 69,
+     "y": 1622,
+     "scale": 0.806,
+     "zIndex": 4
+    },
+    {
+     "id": "e1t2_pr32",
+     "track": "props",
+     "start": 19.5,
+     "duration": 12.9,
+     "propId": "prop_jefe_espaldas_teclea",
+     "layer": "props-front",
+     "x": 83,
+     "y": 1622,
+     "scale": 0.775,
+     "zIndex": 4,
+     "loop": "type"
+    },
+    {
+     "id": "e1t2_pr33",
+     "track": "props",
+     "start": 0.0,
+     "duration": 19.95,
+     "propId": "prop_usu_espaldas_teclea",
+     "layer": "props-front",
+     "x": 575,
+     "y": 1848,
+     "scale": 0.875,
+     "zIndex": 5,
+     "loop": "type"
+    },
+    {
+     "id": "e1t2_pr34",
+     "track": "props",
+     "start": 19.95,
+     "duration": 3.3,
+     "propId": "prop_usu_espaldas_habla",
+     "layer": "props-front",
+     "x": 579,
+     "y": 1848,
+     "scale": 0.916,
+     "zIndex": 5
+    },
+    {
+     "id": "e1t2_pr35",
+     "track": "props",
+     "start": 23.25,
+     "duration": 4.65,
+     "propId": "prop_usu_espaldas_teclea",
+     "layer": "props-front",
+     "x": 575,
+     "y": 1848,
+     "scale": 0.875,
+     "zIndex": 5,
+     "loop": "type"
+    },
+    {
+     "id": "e1t2_pr36",
+     "track": "props",
+     "start": 27.9,
+     "duration": 2.2,
+     "propId": "prop_usu_espaldas_habla",
+     "layer": "props-front",
+     "x": 579,
+     "y": 1848,
+     "scale": 0.916,
+     "zIndex": 5
+    },
+    {
+     "id": "e1t2_pr37",
+     "track": "props",
+     "start": 30.1,
+     "duration": 2.3,
+     "propId": "prop_usu_espaldas_teclea",
+     "layer": "props-front",
+     "x": 575,
+     "y": 1848,
+     "scale": 0.875,
+     "zIndex": 5,
+     "loop": "type"
+    }
+   ]
+  }
+ ]
+}

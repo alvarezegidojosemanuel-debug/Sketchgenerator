@@ -428,7 +428,7 @@ const PRESENCE_LABEL: Record<string, string> = { fade: "fundido", pop: "pop", fl
 
 function summary(e: PocketEvent, s: PocketState): string {
   switch (e.track) {
-    case "dialogue": return `${e.actorUid ? "" : e.voiceOf ? `🔈 ${s.catalog.characters.find((c) => c.id === e.voiceOf)?.name ?? e.voiceOf}: ` : "🎙️ "}“${e.text}”`;
+    case "dialogue": return `${e.actorUid ? "" : e.voiceOf ? `🔈 ${s.catalog.characters.find((c) => c.id === e.voiceOf)?.name ?? e.voiceOf}: ` : e.speakerName ? `🔈 ${e.speakerName}: ` : "🎙️ "}“${e.text}”`;
     case "body": return [
       e.appear ? `▶ entra (${PRESENCE_LABEL[e.appear]})` : e.disappear ? `⏏ sale (${PRESENCE_LABEL[e.disappear]})` : "",
       e.poseId ? s.catalog.characters.flatMap((c) => c.poses).find((p) => p.id === e.poseId)?.label : undefined,
@@ -463,8 +463,9 @@ function EventEditor({ s, take, ev, voices, t, onTransform, onSwap, onChange, on
             value={ev.actorUid ?? (ev.track === "dialogue" && ev.voiceOf ? `voz:${ev.voiceOf}` : "")}
             onChange={(e) =>
               onChange((x) => {
-                const o = x as { actorUid?: string; voiceOf?: string };
+                const o = x as { actorUid?: string; voiceOf?: string; speakerName?: string };
                 delete o.voiceOf;
+                if (e.target.value) delete o.speakerName;
                 if (e.target.value.startsWith("voz:")) {
                   delete o.actorUid;
                   o.voiceOf = e.target.value.slice(4);
@@ -480,6 +481,11 @@ function EventEditor({ s, take, ev, voices, t, onTransform, onSwap, onChange, on
         </Field>
       )}
 
+      {ev.track === "dialogue" && !ev.actorUid && !ev.voiceOf && (
+        <Field label="Nombre del secundario en off" hint="Vacío = Narrador. Ej.: Director, Camarero (cada uno tendrá su voz en el reparto).">
+          <input type="text" maxLength={40} value={ev.speakerName ?? ""} onChange={(e) => onChange((x) => { if (x.track === "dialogue") x.speakerName = e.target.value || undefined; })} />
+        </Field>
+      )}
       {ev.track === "dialogue" && (
         <>
           <Field label="Texto" hint={`${ev.text.length}/${LIMITS.maxTextLength} · duración sugerida ${estimateSpeechDuration(ev.text)} s`}>

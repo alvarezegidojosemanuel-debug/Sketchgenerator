@@ -90,7 +90,14 @@ export function ProjectsScreen({ s }: { s: PocketState }) {
           ))}
         </ul>
         <div className="row">
-          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("origen"), "demo"); s.setTab("ver"); }}>
+          <p className="fine"><b>Serie · El origen</b></p>
+          {(["ep1", "ep2", "ep3", "ep4", "ep5"] as const).map((k, n) => (
+            <button key={k} type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject(k), "demo"); s.setTab("ver"); }}>
+              {["Ep. 1 · Antes", "Ep. 2 · El parche", "Ep. 3 · ¿Qué coño nos ha pasado?", "Ep. 4 · Fuera de la oficina", "Ep. 5 · La nueva normalidad"][n]}
+            </button>
+          ))}
+          <p className="fine"><b>Pruebas y demos</b></p>
+          <button type="button" className="btn btn-secondary" onClick={() => { s.replaceProject(demoProject("origen"), "demo"); s.setTab("ver"); }}>
             El origen de los puñetos
           </button>
           <button type="button" className="btn btn-secondary" onClick={() => { s.replaceProject(demoProject("usu-reynaldo"), "demo"); s.setTab("ver"); }}>
