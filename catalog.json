@@ -6039,6 +6039,11 @@
    "id": "bg_cielo_amanecer",
    "label": "Cielo al amanecer (título)",
    "src": "/assets/punetos/backgrounds/bg_cielo_amanecer.webp"
+  },
+  {
+   "id": "bg_complejo_dia",
+   "label": "Complejo · exterior de día (pantalla para la hora)",
+   "src": "/assets/punetos/backgrounds/bg_complejo_dia.webp"
   }
  ],
  "props": [
