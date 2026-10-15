@@ -1,0 +1,181 @@
+"use client";
+/**
+ * Exporta el proyecto a MP4 vertical 1080×1920 (H.264 + AAC) en el propio navegador, sin servidores:
+ * dibuja cada fotograma (drawFrame), mezcla voces y sonidos (OfflineAudioContext) y lo codifica con
+ * WebCodecs + mp4-muxer. Va más rápido que el tiempo real y el resultado es exacto fotograma a fotograma.
+ */
+import { ArrayBufferTarget, Muxer } from "mp4-muxer";
+import type { Catalog } from "@/lib/catalog/types";
+import type { PocketProject } from "@/lib/schema/pocket";
+import { evaluateTake, projectSchedule } from "@/lib/timeline/evaluate";
+import { projectImageUrls } from "@/lib/renderer/preload";
+import { levelAt } from "@/lib/voice/dsp";
+import { clipKey } from "@/lib/voice/fit";
+import type { Clip } from "@/lib/voice/piper";
+import { soundClip } from "@/lib/sfx/player";
+import { drawFrame, H, W, type ImageMap } from "./draw";
+
+export interface ExportProgress {
+  stage: "imagenes" | "audio" | "video" | "listo";
+  ratio: number;
+}
+
+const FPS = 30;
+const SR = 48000;
+
+export function exportSupported(): boolean {
+  return typeof window !== "undefined" && "VideoEncoder" in window && "AudioEncoder" in window && "VideoFrame" in window;
+}
+
+async function loadImages(urls: string[]): Promise<ImageMap> {
+  const map: ImageMap = new Map();
+  await Promise.all(
+    urls.map(async (src) => {
+      try {
+        const blob = await (await fetch(src)).blob();
+        map.set(src, await createImageBitmap(blob));
+      } catch {
+        // SVG (provisionales) y otros: vía <img>
+        const img = await new Promise<HTMLImageElement | null>((resolve) => {
+          const im = new Image();
+          im.onload = () => resolve(im);
+          im.onerror = () => resolve(null);
+          im.src = src;
+        });
+        if (img) map.set(src, img);
+      }
+    }),
+  );
+  return map;
+}
+
+/** Mezcla voces (clips) y efectos en una pista estéreo a 48 kHz. */
+async function mixAudio(project: PocketProject, catalog: Catalog, clips: Map<string, Clip> | null, total: number): Promise<AudioBuffer> {
+  const ctx = new OfflineAudioContext(2, Math.max(1, Math.ceil(total * SR)), SR);
+  const { slots } = projectSchedule(project);
+  const add = (clip: Clip, at: number, volume = 1) => {
+    const buf = ctx.createBuffer(1, clip.samples.length, clip.sampleRate);
+    buf.copyToChannel(new Float32Array(clip.samples), 0);
+    const src = ctx.createBufferSource();
+    src.buffer = buf;
+    const g = ctx.createGain();
+    g.gain.value = volume;
+    src.connect(g).connect(ctx.destination);
+    src.start(Math.max(0, at));
+  };
+  for (const s of slots) {
+    const take = project.takes[s.index];
+    for (const e of take.events) {
+      if (e.track === "dialogue") {
+        const c = clips?.get(clipKey(take.id, e.id));
+        if (c) add(c, s.offset + e.start);
+      } else if (e.track === "sfx") {
+        const c = await soundClip(catalog, e.soundId);
+        if (c) add(c, s.offset + e.start, e.volume ?? 1);
+      }
+    }
+  }
+  return ctx.startRendering();
+}
+
+function pickVideoCodec(): Promise<string | null> {
+  const candidates = ["avc1.640033", "avc1.640032", "avc1.4d0033", "avc1.4d0032", "avc1.42e033"];
+  return (async () => {
+    for (const codec of candidates) {
+      const r = await VideoEncoder.isConfigSupported({ codec, width: W, height: H, bitrate: 6_000_000, framerate: FPS }).catch(() => null);
+      if (r?.supported) return codec;
+    }
+    return null;
+  })();
+}
+
+export async function exportMp4(
+  project: PocketProject,
+  catalog: Catalog,
+  clips: Map<string, Clip> | null,
+  onProgress: (p: ExportProgress) => void,
+  signal?: AbortSignal,
+): Promise<Blob> {
+  if (!exportSupported()) throw new Error("Este navegador no puede exportar vídeo. Usa Chrome (ordenador o Android) o Safari actualizado.");
+  const { slots, total } = projectSchedule(project);
+
+  onProgress({ stage: "imagenes", ratio: 0 });
+  const images = await loadImages(projectImageUrls(project, catalog));
+
+  onProgress({ stage: "audio", ratio: 0 });
+  const audio = await mixAudio(project, catalog, clips, total);
+
+  const codec = await pickVideoCodec();
+  if (!codec) throw new Error("Este navegador no tiene codificador H.264 para 1080×1920.");
+  const audioCfg = { codec: "mp4a.40.2", sampleRate: SR, numberOfChannels: 2, bitrate: 160_000 };
+  const audioOk = (await AudioEncoder.isConfigSupported(audioCfg).catch(() => null))?.supported;
+
+  const muxer = new Muxer({
+    target: new ArrayBufferTarget(),
+    video: { codec: "avc", width: W, height: H, frameRate: FPS },
+    ...(audioOk ? { audio: { codec: "aac" as const, sampleRate: SR, numberOfChannels: 2 } } : {}),
+    fastStart: "in-memory",
+  });
+  let failure: unknown = null;
+  const venc = new VideoEncoder({ output: (c, m) => muxer.addVideoChunk(c, m), error: (e) => (failure = e) });
+  venc.configure({ codec, width: W, height: H, bitrate: 6_000_000, framerate: FPS, avc: { format: "avc" } });
+
+  // --- audio (en bloques de 1024 muestras)
+  if (audioOk) {
+    const aenc = new AudioEncoder({ output: (c, m) => muxer.addAudioChunk(c, m), error: (e) => (failure = e) });
+    aenc.configure(audioCfg);
+    const L = audio.getChannelData(0);
+    const R = audio.getChannelData(1);
+    const block = 1024;
+    for (let i = 0; i < L.length; i += block) {
+      const n = Math.min(block, L.length - i);
+      const data = new Float32Array(n * 2);
+      data.set(L.subarray(i, i + n), 0);
+      data.set(R.subarray(i, i + n), n);
+      const ad = new AudioData({ format: "f32-planar", sampleRate: SR, numberOfFrames: n, numberOfChannels: 2, timestamp: Math.round((i / SR) * 1e6), data });
+      aenc.encode(ad);
+      ad.close();
+    }
+    await aenc.flush();
+    aenc.close();
+  }
+
+  // --- vídeo
+  const canvas = new OffscreenCanvas(W, H);
+  const ctx = canvas.getContext("2d")!;
+  const frames = Math.ceil(total * FPS);
+  for (let i = 0; i < frames; i++) {
+    if (signal?.aborted) throw new Error("Exportación cancelada.");
+    if (failure) throw failure;
+    const g = i / FPS;
+    let slot = slots[slots.length - 1];
+    for (const s of slots) if (g < s.offset + s.duration) { slot = s; break; }
+    const take = project.takes[slot.index];
+    const t = Math.min(take.duration, g - slot.offset);
+    // boca según el volumen real de cada voz
+    const levels = new Map<string, number>();
+    if (clips) {
+      for (const e of take.events) {
+        if (e.track !== "dialogue" || !e.actorUid) continue;
+        const c = clips.get(clipKey(take.id, e.id));
+        if (c && t >= e.start && t < e.start + c.duration) levels.set(e.actorUid, Math.max(levels.get(e.actorUid) ?? 0, levelAt(c.env, t - e.start)));
+      }
+    }
+    const frame = evaluateTake(take, catalog, t, clips ? { levels } : {});
+    drawFrame(ctx, catalog, frame, images);
+    const vf = new VideoFrame(canvas, { timestamp: Math.round((i * 1e6) / FPS), duration: Math.round(1e6 / FPS) });
+    venc.encode(vf, { keyFrame: i % (FPS * 2) === 0 });
+    vf.close();
+    while (venc.encodeQueueSize > 8) await new Promise((r) => setTimeout(r, 5));
+    if (i % 10 === 0) {
+      onProgress({ stage: "video", ratio: i / frames });
+      await new Promise((r) => setTimeout(r, 0)); // dejar respirar a la interfaz
+    }
+  }
+  await venc.flush();
+  venc.close();
+  if (failure) throw failure;
+  muxer.finalize();
+  onProgress({ stage: "listo", ratio: 1 });
+  return new Blob([muxer.target.buffer], { type: "video/mp4" });
+}

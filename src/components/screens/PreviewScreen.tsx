@@ -8,6 +8,9 @@ import { clipKey, fitProjectToAudio } from "@/lib/voice/fit";
 import { generateLines, unlockAudio, type Clip, type Progress } from "@/lib/voice/piper";
 import { accessCode, elevenModel, generateElevenLines, type ElevenModel } from "@/lib/voice/elevenlabs";
 import { ElevenCast } from "../ElevenCast";
+import { exportMp4, type ExportProgress } from "@/lib/export/mp4";
+
+const EXPORT_LABEL: Record<ExportProgress["stage"], string> = { imagenes: "Cargando imágenes…", audio: "Mezclando audio…", video: "Creando vídeo…", listo: "Listo" };
 import { Stage } from "../Stage";
 import { usePlayer, type VoiceEngine } from "../usePlayer";
 import type { PocketState } from "../usePocket";
@@ -111,6 +114,34 @@ export function PreviewScreen({ s }: { s: PocketState }) {
     pl.play();
   };
 
+  const [exporting, setExporting] = useState<ExportProgress | null>(null);
+  const [video, setVideo] = useState<{ url: string; name: string; blob: Blob } | null>(null);
+  const doExport = async () => {
+    if (pl.playing) pl.pause();
+    setVoiceError(null);
+    if (usesClips && !ready && !(await prepare())) return;
+    try {
+      setExporting({ stage: "imagenes", ratio: 0 });
+      const blob = await exportMp4(playProject, catalog, usesClips ? liveClips : null, setExporting);
+      if (video) URL.revokeObjectURL(video.url);
+      const name = `${project.metadata.title.replace(/[^\p{L}\p{N} _-]+/gu, "").trim().replace(/\s+/g, "_") || "sketch"}.mp4`;
+      setVideo({ url: URL.createObjectURL(blob), name, blob });
+    } catch (e) {
+      setVoiceError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setExporting(null);
+    }
+  };
+  const shareVideo = async () => {
+    if (!video) return;
+    const file = new File([video.blob], video.name, { type: "video/mp4" });
+    try {
+      await navigator.share({ files: [file], title: project.metadata.title });
+    } catch {
+      /* cancelado */
+    }
+  };
+
   const fit = () => {
     if (!clips) return;
     const durations = new Map([...clips].map(([k, c]) => [k, c.duration]));
@@ -188,6 +219,23 @@ export function PreviewScreen({ s }: { s: PocketState }) {
         </div>
       )}
       {fitMsg && <p className="fine">✓ {fitMsg}</p>}
+      <div className="row">
+        <button type="button" className="btn btn-primary" disabled={exporting !== null || progress !== null} onClick={doExport}>
+          {exporting ? `🎬 ${EXPORT_LABEL[exporting.stage]} ${Math.round(exporting.ratio * 100)} %` : "🎬 Exportar MP4 (1080×1920)"}
+        </button>
+      </div>
+      {video && (
+        <div className="card">
+          <video src={video.url} controls playsInline style={{ width: "100%", maxHeight: "60vh", borderRadius: 12, background: "#000" }} />
+          <div className="row">
+            <a className="btn btn-secondary" href={video.url} download={video.name}>⬇ Descargar {video.name}</a>
+            {typeof navigator !== "undefined" && "share" in navigator && (
+              <button type="button" className="btn btn-secondary" onClick={shareVideo}>📤 Compartir</button>
+            )}
+          </div>
+          <p className="fine">{usesClips ? "Con las voces y sonidos del sketch." : "Sin voces (elige Piper o ElevenLabs para exportar con voz); con efectos de sonido."}</p>
+        </div>
+      )}
       <p className="fine">
         {usesClips
           ? "La boca sigue el volumen real de cada voz y la escena espera a que termine cada frase. «Ajustar diálogos» deja los bloques con la duración exacta de su voz."
