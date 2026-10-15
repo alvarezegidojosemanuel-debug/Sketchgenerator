@@ -37,8 +37,9 @@ export function TimelineLanes({ take, catalog, t, selectedId, onSeek, onSelect, 
   const W = Math.max(take.duration * pps, 200);
 
   const rows: { key: string; label: string; header?: boolean; events: PocketEvent[]; actorUid?: string }[] = [];
-  const propsEvents = take.events.filter((e) => e.track === "props");
-  rows.push({ key: "props", label: "Objetos", events: propsEvents });
+  rows.push({ key: "props", label: "Objetos", events: take.events.filter((e) => e.track === "props") });
+  rows.push({ key: "sfx", label: "Sonidos", events: take.events.filter((e) => e.track === "sfx") });
+  rows.push({ key: "screen", label: "Pantalla", events: take.events.filter((e) => e.track === "screen") });
   for (const a of [...take.actors].sort((x, y) => y.zIndex - x.zIndex)) {
     const name = findCharacter(catalog, a.characterId)?.name ?? a.characterId;
     rows.push({ key: `h_${a.uid}`, label: name, header: true, events: [], actorUid: a.uid });

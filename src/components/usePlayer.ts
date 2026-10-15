@@ -10,6 +10,7 @@ import { speak, stopSpeaking } from "@/lib/tts";
 import { levelAt } from "@/lib/voice/dsp";
 import { clipKey } from "@/lib/voice/fit";
 import { playClip, stopAllClips, type Clip } from "@/lib/voice/piper";
+import { playSound, preloadSounds } from "@/lib/sfx/player";
 
 export type VoiceEngine = "elevenlabs" | "piper" | "browser" | "off";
 
@@ -19,6 +20,8 @@ export function usePlayer(project: PocketProject, catalog: Catalog, opts: { engi
   const [holding, setHolding] = useState(false);
   const optsRef = useRef(opts);
   optsRef.current = opts;
+  const catalogRef = useRef(catalog);
+  catalogRef.current = catalog;
   const playerRef = useRef<Player | null>(null);
 
   if (!playerRef.current) {
@@ -50,6 +53,9 @@ export function usePlayer(project: PocketProject, catalog: Catalog, opts: { engi
           onStart: () => player.speechStarted(key),
           onEnd: () => player.speechEnded(key),
         });
+      },
+      onSfx: (e) => {
+        void playSound(catalogRef.current, e.soundId, e.volume ?? 1);
       },
       onInterrupt: () => {
         stopSpeaking();
@@ -99,7 +105,9 @@ export function usePlayer(project: PocketProject, catalog: Catalog, opts: { engi
     playing,
     holding,
     total: p.total,
-    play: () => {
+    play: async () => {
+      const ids = project.takes.flatMap((t) => t.events.flatMap((e) => (e.track === "sfx" ? [e.soundId] : [])));
+      if (ids.length) await preloadSounds(catalog, ids);
       p.play();
       setPlaying(true);
     },

@@ -77,6 +77,8 @@ export const BodyEvent = z.object({
   scale: scale.optional(),
   flip: z.boolean().optional(),
   ease: z.enum(["linear", "inOut", "instant"]).optional(),
+  /** Efecto corporal durante el evento: temblar o saltar. */
+  fx: z.enum(["shake", "jump"]).optional(),
 });
 
 export const FaceEvent = z.object({
@@ -117,6 +119,35 @@ export const PropsEvent = z.object({
   y: coordY,
   scale: scale.optional(),
   zIndex: zIndex.optional(),
+  rot: z.number().finite().min(-180).max(180).optional(),
+  flip: z.boolean().optional(),
+  /** Cómo aparece / desaparece. */
+  enter: z.enum(["none", "pop", "fade", "slide"]).optional(),
+  exit: z.enum(["none", "pop", "fade", "slide"]).optional(),
+  /** Animación mientras está visible (vibrar, latir, parpadear, flotar, girar). */
+  loop: z.enum(["none", "shake", "pulse", "blink", "float", "spin"]).optional(),
+  /** Desplazamiento: va de (x,y) a (toX,toY) durante el evento. */
+  toX: coordX.optional(),
+  toY: coordY.optional(),
+  /** Dentro de un bocadillo de pensamiento sobre este actor (x/y se ignoran). */
+  bubbleOf: id.optional(),
+});
+
+export const SfxEvent = z.object({
+  ...eventBase,
+  track: z.literal("sfx"),
+  soundId: id,
+  volume: z.number().finite().min(0).max(1).optional(),
+  actorUid: id.optional(),
+});
+
+export const ScreenEvent = z.object({
+  ...eventBase,
+  track: z.literal("screen"),
+  /** flash = destello de color (alarma), shake = temblor de cámara, darken = oscurecer. */
+  effect: z.enum(["flash", "shake", "darken"]),
+  color: z.string().regex(/^#[0-9a-fA-F]{6}$/).optional(),
+  actorUid: id.optional(),
 });
 
 export const PocketEvent = z.discriminatedUnion("track", [
@@ -126,6 +157,8 @@ export const PocketEvent = z.discriminatedUnion("track", [
   MouthEvent,
   EyesEvent,
   PropsEvent,
+  SfxEvent,
+  ScreenEvent,
 ]);
 
 export const Actor = z.object({
@@ -179,6 +212,8 @@ export const PocketProject = z.object({
     voices: z.record(id, CastEntry).optional(),
     /** Reparto de voces ElevenLabs por personaje. */
     elevenVoices: z.record(id, ElevenCast).optional(),
+    /** Objetos, escenarios o sonidos que el guionista habría querido usar y no existen (para crearlos). */
+    wishlist: z.array(z.string().max(120)).max(12).optional(),
   }),
   canvas: z.object({ width: z.literal(1080), height: z.literal(1920) }),
   takes: z.array(Take).min(1).max(LIMITS.maxTakes),
@@ -191,13 +226,15 @@ export type FaceEvent = z.infer<typeof FaceEvent>;
 export type MouthEvent = z.infer<typeof MouthEvent>;
 export type EyesEvent = z.infer<typeof EyesEvent>;
 export type PropsEvent = z.infer<typeof PropsEvent>;
+export type SfxEvent = z.infer<typeof SfxEvent>;
+export type ScreenEvent = z.infer<typeof ScreenEvent>;
 export type PocketEvent = z.infer<typeof PocketEvent>;
 export type Actor = z.infer<typeof Actor>;
 export type Take = z.infer<typeof Take>;
 export type PocketProject = z.infer<typeof PocketProject>;
 export type Track = PocketEvent["track"];
 
-export const TRACKS: Track[] = ["dialogue", "body", "face", "mouth", "eyes", "props"];
+export const TRACKS: Track[] = ["dialogue", "body", "face", "mouth", "eyes", "props", "sfx", "screen"];
 
 /** Orden de capas de profundidad del renderer. */
 export const DEPTH_LAYERS = ["background", "props-back", "actors", "props-front"] as const;

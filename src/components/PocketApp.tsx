@@ -7,14 +7,14 @@ import { GenerateScreen } from "./screens/GenerateScreen";
 import { PreviewScreen } from "./screens/PreviewScreen";
 import { EditScreen } from "./screens/EditScreen";
 import { ProjectsScreen } from "./screens/ProjectsScreen";
-import { FaceScreen } from "./screens/FaceScreen";
+import { ResourcesScreen } from "./screens/ResourcesScreen";
 
 const TABS: { id: Tab; label: string; icon: string }[] = [
   { id: "idea", label: "Idea", icon: "💡" },
   { id: "generar", label: "Generar", icon: "✨" },
   { id: "ver", label: "Ver", icon: "▶" },
   { id: "editar", label: "Editar", icon: "✎" },
-  { id: "caras", label: "Caras", icon: "🙂" },
+  { id: "caras", label: "Recursos", icon: "🧰" },
   { id: "proyectos", label: "Proyectos", icon: "🗂" },
 ];
 
@@ -36,7 +36,7 @@ export function PocketApp() {
         {s.tab === "generar" && <GenerateScreen s={s} />}
         {s.tab === "ver" && <PreviewScreen s={s} />}
         {s.tab === "editar" && <EditScreen s={s} />}
-        {s.tab === "caras" && <FaceScreen s={s} />}
+        {s.tab === "caras" && <ResourcesScreen s={s} />}
         {s.tab === "proyectos" && <ProjectsScreen s={s} />}
       </main>
       <nav className="tabbar" aria-label="Secciones">

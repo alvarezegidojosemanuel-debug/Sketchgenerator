@@ -36,9 +36,14 @@ export interface PropLayout {
   width: number;
   height: number;
   z: number;
+  rot: number;
+  opacity: number;
+  flip: boolean;
+  bubble?: { cx: number; cy: number; w: number; h: number; tailX: number; tailY: number };
 }
 
 export interface StageLayout {
+  screen: FrameState["screen"];
   background?: string;
   propsBack: PropLayout[];
   actors: ActorLayout[];
@@ -52,7 +57,7 @@ function layoutProp(catalog: Catalog, p: PropState, base: number): PropLayout | 
   if (!prop) return null;
   const w = prop.width * p.scale;
   const h = prop.height * p.scale;
-  return { key: p.key, src: prop.src, left: p.x - w / 2, top: p.y - h, width: w, height: h, z: base + p.zIndex };
+  return { key: p.key, src: prop.src, left: p.x - w / 2, top: p.y - h, width: w, height: h, z: base + p.zIndex, rot: p.rot, opacity: p.opacity, flip: p.flip, bubble: p.bubble };
 }
 
 export function layoutActor(catalog: Catalog, a: ActorState): ActorLayout {
@@ -75,8 +80,8 @@ function layoutActorPose(catalog: Catalog, a: ActorState): ActorLayout {
     uid: a.uid,
     z: Z.actors + a.zIndex,
     pose,
-    left: a.x - pw / 2,
-    top: a.y - ph,
+    left: a.x + a.offX - pw / 2,
+    top: a.y + a.offY - ph,
     scale: a.scale * (pose?.displayScale ?? 1),
     flip: a.flip,
     speaking: a.speaking,
@@ -104,6 +109,7 @@ function layoutActorPose(catalog: Catalog, a: ActorState): ActorLayout {
 
 export function layoutFrame(catalog: Catalog, frame: FrameState): StageLayout {
   return {
+    screen: frame.screen,
     background: frame.backgroundId ? findBackground(catalog, frame.backgroundId)?.src : undefined,
     propsBack: frame.props.filter((p) => p.layer === "props-back").map((p) => layoutProp(catalog, p, Z.propsBack)).filter((x): x is PropLayout => !!x),
     actors: frame.actors.map((a) => layoutActor(catalog, a)),

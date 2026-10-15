@@ -58,6 +58,8 @@ const TRACK_ALIASES: Record<string, string> = {
   mouth: "mouth", boca: "mouth",
   eyes: "eyes", ojos: "eyes", gaze: "eyes", mirada: "eyes",
   props: "props", prop: "props", objeto: "props", objetos: "props",
+  sfx: "sfx", sonido: "sfx", sonidos: "sfx", sound: "sfx", efecto_sonido: "sfx", audio: "sfx",
+  screen: "screen", pantalla: "screen", camara: "screen", "cámara": "screen", efecto: "screen",
 };
 
 const NUMERIC_KEYS = new Set(["start", "duration", "x", "y", "scale", "zIndex", "gazeX", "gazeY", "dx", "dy", "rate", "pitch", "approxDuration"]);
@@ -301,6 +303,14 @@ export function normalizeRaw(input: unknown, catalog: Catalog, warnings: Issue[]
             e.expressionId = expression?.id;
           }
         }
+        if (e.track === "sfx" && e.soundId !== undefined) {
+          const sid = matchById(catalog.sounds ?? [], e.soundId) ?? matchById(catalog.sounds ?? [], `sfx_${String(e.soundId)}`);
+          if (sid && sid !== e.soundId) {
+            warnings.push({ path: `${ep}.soundId`, message: `"${String(e.soundId)}" → "${sid}"` });
+            e.soundId = sid;
+          }
+          if (e.duration === undefined) e.duration = (catalog.sounds ?? []).find((x) => x.id === e.soundId)?.duration ?? 1;
+        }
         if (e.track === "props" && e.propId !== undefined) {
           const pid = matchById(catalog.props, e.propId);
           if (pid && pid !== e.propId) {
@@ -398,6 +408,14 @@ export function checkSemantics(project: Project, catalog: Catalog): Issue[] {
         case "props":
           if (!catalog.props.some((p) => p.id === e.propId)) {
             errors.push({ path: `${ep}.propId`, message: `objeto "${e.propId}" no existe en el catálogo` });
+          }
+          if (e.bubbleOf && !actorChar.has(e.bubbleOf)) {
+            errors.push({ path: `${ep}.bubbleOf`, message: `actor "${e.bubbleOf}" no existe en esta toma` });
+          }
+          break;
+        case "sfx":
+          if (!(catalog.sounds ?? []).some((x) => x.id === e.soundId)) {
+            errors.push({ path: `${ep}.soundId`, message: `sonido "${e.soundId}" no existe en el catálogo` });
           }
           break;
       }

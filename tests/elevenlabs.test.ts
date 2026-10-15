@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { createElevenState, elevenStatus, handleTts, handleVoices, type ElevenEnv } from "@/lib/server/elevenlabs";
+import { createElevenState, elevenStatus, handleSfx, handleTts, handleVoices, type ElevenEnv } from "@/lib/server/elevenlabs";
 import { stripAudioTags } from "@/lib/voice/tags";
 import { evaluateTake } from "@/lib/timeline/evaluate";
 import { validateProject } from "@/lib/schema/validate";
@@ -82,5 +82,20 @@ describe("voces de España", () => {
     const cast = autoCast(voices, ["usu", "sister"]);
     expect(cast.usu.voiceId).toBe("Madrid00001");
     expect(cast.sister.voiceId).toBe("Sevilla0001");
+  });
+});
+
+describe("ElevenLabs: efectos de sonido", () => {
+  it("exige el código, valida la petición y cuenta contra el tope diario", async () => {
+    const { f, deps } = setup();
+    const big = { ...env, ELEVENLABS_DAILY_CHARS: "1000", ELEVENLABS_RATE_PER_IP: "10" };
+    expect((await handleSfx({ text: "teléfono antiguo", duration: 2 }, "ip", "mal", big, deps)).status).toBe(401);
+    expect((await handleSfx({ text: "x", duration: 2 }, "ip", "puñetos-2026", big, deps)).status).toBe(400);
+    expect((await handleSfx({ text: "rugido de dragón", duration: 30 }, "ip", "puñetos-2026", big, deps)).status).toBe(400);
+    expect(f).not.toHaveBeenCalled();
+    const r = await handleSfx({ text: "rugido de dragón", duration: 2 }, "ip", "puñetos-2026", big, deps);
+    expect(r.status).toBe(200);
+    expect(String((f.mock.calls[0] as unknown as [string])[0])).toContain("/v1/sound-generation");
+    expect(elevenStatus(big, deps.state, deps.now()).usedToday).toBe(200);
   });
 });

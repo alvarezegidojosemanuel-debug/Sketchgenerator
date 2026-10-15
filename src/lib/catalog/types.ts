@@ -132,6 +132,7 @@ export interface Background {
   label: string;
   src: string;
   placeholder?: boolean;
+  user?: boolean;
 }
 
 export interface Prop {
@@ -141,6 +142,18 @@ export interface Prop {
   width: number;
   height: number;
   placeholder?: boolean;
+  user?: boolean;
+}
+
+export interface Sound {
+  id: string;
+  label: string;
+  /** URL del audio, o "synth:<nombre>" para los sonidos sintetizados incluidos. */
+  src: string;
+  /** Duración aproximada (s). */
+  duration: number;
+  builtin?: boolean;
+  user?: boolean;
 }
 
 export interface Catalog {
@@ -157,6 +170,7 @@ export interface Catalog {
   characters: Character[];
   backgrounds: Background[];
   props: Prop[];
+  sounds?: Sound[];
 }
 
 /** Calibraciones y prefabs guardados por el usuario (IndexedDB / archivo exportado). */

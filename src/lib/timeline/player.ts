@@ -1,4 +1,4 @@
-import type { DialogueEvent, PocketProject } from "@/lib/schema/pocket";
+import type { DialogueEvent, PocketProject, SfxEvent } from "@/lib/schema/pocket";
 import { locate, projectSchedule } from "./evaluate";
 
 export interface PlayerCallbacks {
@@ -9,6 +9,8 @@ export interface PlayerCallbacks {
    * (speechStarted / speechEnded con la misma clave) antes de pasar del final del bloque.
    */
   onDialogue?: (e: DialogueEvent, takeIndex: number, key: string) => boolean | void;
+  /** Se dispara una vez cuando el cabezal cruza el inicio de un sonido. */
+  onSfx?: (e: SfxEvent, takeIndex: number) => void;
   /** Cambio de toma, pausa o fin: el consumidor debe detener la voz. */
   onInterrupt?: () => void;
   onEnd?: () => void;
@@ -194,6 +196,7 @@ export class Player {
   };
 
   private fireDialogues(prev: number, next: number) {
+    this.fireSfx(prev, next);
     if (!this.cb.onDialogue) return;
     const { slots } = projectSchedule(this.project);
     for (const s of slots) {
@@ -208,6 +211,19 @@ export class Player {
           this.pending.set(key, { actorUid: e.actorUid, endGlobal: g + e.duration, firedAt: this.clock.now(), startedAt: null, done: false });
           if (!this.cb.onDialogue(e, s.index, key)) this.pending.delete(key);
         }
+      }
+    }
+  }
+
+  private fireSfx(prev: number, next: number) {
+    if (!this.cb.onSfx) return;
+    const { slots } = projectSchedule(this.project);
+    for (const s of slots) {
+      if (s.offset > next || s.offset + s.duration < prev) continue;
+      for (const e of this.project.takes[s.index].events) {
+        if (e.track !== "sfx") continue;
+        const g = s.offset + e.start;
+        if (g > prev && g <= next) this.cb.onSfx(e, s.index);
       }
     }
   }

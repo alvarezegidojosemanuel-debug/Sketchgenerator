@@ -7,7 +7,8 @@ import { LIMITS } from "@/lib/schema/pocket";
 import { estimateSpeechDuration } from "@/lib/schema/validate";
 import { evaluateTake, sortedEvents } from "@/lib/timeline/evaluate";
 import { listVoices, onVoicesReady, speak, stopSpeaking } from "@/lib/tts";
-import { previewVoice } from "@/lib/voice/piper";
+import { previewVoice, unlockAudio } from "@/lib/voice/piper";
+import { playSound } from "@/lib/sfx/player";
 import { Stage } from "../Stage";
 import { HeadPreview } from "../HeadPreview";
 import { TimelineLanes } from "../TimelineLanes";
@@ -16,7 +17,7 @@ import type { Catalog } from "@/lib/catalog/types";
 import type { PocketState } from "../usePocket";
 import { Card, Field, IssueList, Stepper } from "../ui";
 
-const TRACK_LABEL: Record<Track, string> = { dialogue: "💬 Diálogo", body: "🧍 Cuerpo", face: "🙂 Cara", mouth: "👄 Boca", eyes: "👀 Ojos", props: "📦 Objeto" };
+const TRACK_LABEL: Record<Track, string> = { dialogue: "💬 Diálogo", body: "🧍 Cuerpo", face: "🙂 Cara", mouth: "👄 Boca", eyes: "👀 Ojos", props: "📦 Objeto", sfx: "🔊 Sonido", screen: "🎬 Pantalla" };
 const r1 = (n: number) => Math.round(n * 10) / 10;
 
 function uniqueId(take: Take, prefix: string) {
@@ -74,7 +75,7 @@ export function EditScreen({ s }: { s: PocketState }) {
 
   const addEvent = (track: Track) => {
     const uid = selActor ?? take.actors[0]?.uid;
-    if (!uid && track !== "props") return;
+    if (!uid && track !== "props" && track !== "sfx" && track !== "screen") return;
     const actor = take.actors.find((a) => a.uid === uid);
     const ch = actor ? findCharacter(catalog, actor.characterId) : undefined;
     const start = r1(Math.min(t, Math.max(0, take.duration - 0.5)));
@@ -98,7 +99,15 @@ export function EditScreen({ s }: { s: PocketState }) {
         ev = { id, track, actorUid: uid!, start, duration: fit(take.duration - start), mode: "auto" };
         break;
       case "props":
-        ev = { id, track, propId: catalog.props[0].id, layer: "props-front", x: 540, y: 1500, start, duration: fit(2) };
+        ev = { id, track, propId: catalog.props[0].id, layer: "props-front", x: 540, y: 1500, start, duration: fit(2), enter: "pop", exit: "fade" };
+        break;
+      case "sfx": {
+        const snd = catalog.sounds?.[0];
+        ev = { id, track, soundId: snd?.id ?? "sfx_pop", start, duration: fit(snd?.duration ?? 1) };
+        break;
+      }
+      case "screen":
+        ev = { id, track, effect: "flash", color: "#ff2a2a", start, duration: fit(1.5) };
         break;
     }
     editTake((tk) => tk.events.push(ev));
@@ -169,7 +178,7 @@ export function EditScreen({ s }: { s: PocketState }) {
         }
       >
         <div className="add-row">
-          {(["dialogue", "body", "face", "eyes", "props", "mouth"] as Track[]).map((tr) => (
+          {(["dialogue", "body", "face", "eyes", "props", "sfx", "screen", "mouth"] as Track[]).map((tr) => (
             <button key={tr} type="button" className="btn btn-small" onClick={() => addEvent(tr)} disabled={take.events.length >= LIMITS.maxEventsPerTake}>
               ＋ {TRACK_LABEL[tr]}
             </button>
@@ -342,6 +351,10 @@ export function EditScreen({ s }: { s: PocketState }) {
   );
 }
 
+const LOOP_LABEL: Record<string, string> = { none: "Quieto", shake: "Vibrar", pulse: "Latir", blink: "Parpadear", float: "Flotar", spin: "Girar" };
+const ENTER_LABEL: Record<string, string> = { none: "De golpe", pop: "Pop", fade: "Fundido", slide: "Deslizar" };
+const SCREEN_LABEL: Record<string, string> = { flash: "Destello", shake: "Temblor", darken: "Oscurecer" };
+
 function summary(e: PocketEvent, s: PocketState): string {
   switch (e.track) {
     case "dialogue": return `“${e.text}”`;
@@ -349,7 +362,9 @@ function summary(e: PocketEvent, s: PocketState): string {
     case "face": return s.catalog.characters.flatMap((c) => c.expressions).find((x) => x.id === e.expressionId)?.label ?? e.expressionId ?? "";
     case "eyes": return `mirada ${e.gazeX.toFixed(1)}, ${e.gazeY.toFixed(1)}`;
     case "mouth": return e.mode;
-    case "props": return e.layer === "props-back" ? "detrás" : "delante";
+    case "props": return [s.catalog.props.find((p) => p.id === e.propId)?.label, e.bubbleOf ? "💭" : "", e.loop && e.loop !== "none" ? LOOP_LABEL[e.loop] : ""].filter(Boolean).join(" · ");
+    case "sfx": return s.catalog.sounds?.find((x) => x.id === e.soundId)?.label ?? e.soundId;
+    case "screen": return SCREEN_LABEL[e.effect];
   }
 }
 
@@ -430,6 +445,11 @@ function EventEditor({ s, take, ev, voices, onChange, onDelete }: { s: PocketSta
                 <option value="">(mantener)</option><option value="0">Derecha</option><option value="1">Izquierda</option>
               </select>
             </Field>
+            <Field label="Efecto">
+              <select value={ev.fx ?? ""} onChange={(e) => onChange((x) => { if (x.track === "body") x.fx = (e.target.value || undefined) as "shake" | "jump" | undefined; })}>
+                <option value="">Ninguno</option><option value="jump">Saltar (susto)</option><option value="shake">Temblar</option>
+              </select>
+            </Field>
           </div>
         </>
       )}
@@ -487,8 +507,67 @@ function EventEditor({ s, take, ev, voices, onChange, onDelete }: { s: PocketSta
             <Field label="X"><Stepper value={ev.x} step={20} min={-LIMITS.margin} max={1080 + LIMITS.margin} onChange={(v) => onChange((x) => { if (x.track === "props") x.x = v; })} /></Field>
             <Field label="Y (base)"><Stepper value={ev.y} step={20} min={0} max={1920 + LIMITS.margin} onChange={(v) => onChange((x) => { if (x.track === "props") x.y = v; })} /></Field>
             <Field label="Escala"><Stepper value={ev.scale ?? 1} step={0.1} min={LIMITS.minScale} max={LIMITS.maxScale} onChange={(v) => onChange((x) => { if (x.track === "props") x.scale = v; })} /></Field>
+            <Field label="Giro (°)"><Stepper value={ev.rot ?? 0} step={15} min={-180} max={180} onChange={(v) => onChange((x) => { if (x.track === "props") x.rot = v || undefined; })} /></Field>
+            <Field label="Aparece">
+              <select value={ev.enter ?? "none"} onChange={(e) => onChange((x) => { if (x.track === "props") x.enter = e.target.value as "none"; })}>
+                {Object.entries(ENTER_LABEL).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
+              </select>
+            </Field>
+            <Field label="Desaparece">
+              <select value={ev.exit ?? "none"} onChange={(e) => onChange((x) => { if (x.track === "props") x.exit = e.target.value as "none"; })}>
+                {Object.entries(ENTER_LABEL).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
+              </select>
+            </Field>
+            <Field label="Mientras está">
+              <select value={ev.loop ?? "none"} onChange={(e) => onChange((x) => { if (x.track === "props") x.loop = e.target.value as "none"; })}>
+                {Object.entries(LOOP_LABEL).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
+              </select>
+            </Field>
+            <Field label="En bocadillo de">
+              <select value={ev.bubbleOf ?? ""} onChange={(e) => onChange((x) => { if (x.track === "props") x.bubbleOf = e.target.value || undefined; })}>
+                <option value="">(no: en la escena)</option>
+                {take.actors.map((a) => <option key={a.uid} value={a.uid}>💭 {findCharacter(catalog, a.characterId)?.name}</option>)}
+              </select>
+            </Field>
           </div>
+          <label className="switch">
+            <input type="checkbox" checked={ev.toX !== undefined} onChange={(e) => onChange((x) => { if (x.track !== "props") return; if (e.target.checked) { x.toX = x.x + 300; x.toY = x.y; } else { delete x.toX; delete x.toY; } })} />
+            <span>Moverse durante el evento</span>
+          </label>
+          {ev.toX !== undefined && (
+            <div className="grid2">
+              <Field label="Hasta X"><Stepper value={ev.toX} step={20} min={-LIMITS.margin} max={1080 + LIMITS.margin} onChange={(v) => onChange((x) => { if (x.track === "props") x.toX = v; })} /></Field>
+              <Field label="Hasta Y"><Stepper value={ev.toY ?? ev.y} step={20} min={0} max={1920 + LIMITS.margin} onChange={(v) => onChange((x) => { if (x.track === "props") x.toY = v; })} /></Field>
+            </div>
+          )}
         </>
+      )}
+
+      {ev.track === "sfx" && (
+        <div className="grid2">
+          <Field label="Sonido">
+            <select value={ev.soundId} onChange={(e) => onChange((x) => { if (x.track === "sfx") { x.soundId = e.target.value; const d = catalog.sounds?.find((z) => z.id === e.target.value)?.duration; if (d) x.duration = Math.min(d, take.duration - x.start); } })}>
+              {(catalog.sounds ?? []).map((x) => <option key={x.id} value={x.id}>{x.user ? "★ " : ""}{x.label}</option>)}
+            </select>
+          </Field>
+          <Field label="Volumen"><Stepper value={ev.volume ?? 1} step={0.1} min={0} max={1} onChange={(v) => onChange((x) => { if (x.track === "sfx") x.volume = v; })} /></Field>
+          <button type="button" className="btn btn-secondary" onClick={async () => { await unlockAudio(); void playSound(catalog, ev.soundId, ev.volume ?? 1); }}>▶ Escuchar</button>
+        </div>
+      )}
+
+      {ev.track === "screen" && (
+        <div className="grid2">
+          <Field label="Efecto">
+            <select value={ev.effect} onChange={(e) => onChange((x) => { if (x.track === "screen") x.effect = e.target.value as "flash"; })}>
+              {Object.entries(SCREEN_LABEL).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
+            </select>
+          </Field>
+          {ev.effect === "flash" && (
+            <Field label="Color">
+              <input type="color" value={ev.color ?? "#ff2a2a"} onChange={(e) => onChange((x) => { if (x.track === "screen") x.color = e.target.value; })} />
+            </Field>
+          )}
+        </div>
       )}
 
       <button type="button" className="btn btn-danger" onClick={onDelete}>Borrar evento</button>

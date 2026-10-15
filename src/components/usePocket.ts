@@ -5,9 +5,10 @@ import { applyOverrides, catalog as defaultCatalog } from "@/lib/catalog";
 import type { FaceOverrides } from "@/lib/catalog/types";
 import demoRaw from "@/data/sketch-demo.json";
 import demoUsuReyRaw from "@/data/sketch-usu-reynaldo.json";
+import demoFxRaw from "@/data/sketch-interacciones.json";
 import type { PocketProject } from "@/lib/schema/pocket";
 import { validateProject, type Issue } from "@/lib/schema/validate";
-import { faceStore, newProjectId, projectStore } from "@/lib/storage/projects";
+import { faceStore, libraryStore, newProjectId, projectStore, type LibraryItem } from "@/lib/storage/projects";
 import { salvageOverrides } from "@/lib/face/overrides";
 import type { SketchIntent } from "@/lib/generator/prompt";
 
@@ -19,6 +20,7 @@ const INTENT_KEY = "pocket:intent";
 export const DEMOS = {
   "usu-reynaldo": demoUsuReyRaw,
   "usu-jefe": demoRaw,
+  interacciones: demoFxRaw,
 } as const;
 
 export function demoProject(which: keyof typeof DEMOS = "usu-jefe"): PocketProject {
@@ -46,7 +48,46 @@ export function usePocket() {
   const [storageError, setStorageError] = useState<string | null>(null);
   const [faceTarget, setFaceTarget] = useState<{ characterId: string; poseId: string; expressionId?: string } | null>(null);
   const [localFace, setLocalFace] = useState<FaceOverrides | null>(null);
-  const catalog = useMemo(() => applyOverrides(defaultCatalog, localFace), [localFace]);
+  const [library, setLibrary] = useState<LibraryItem[]>([]);
+  const libUrls = useRef(new Map<string, { blob: Blob; url: string }>());
+  const urlOf = (it: LibraryItem) => {
+    const cur = libUrls.current.get(it.id);
+    if (cur && cur.blob === it.blob) return cur.url;
+    if (cur) URL.revokeObjectURL(cur.url);
+    const url = URL.createObjectURL(it.blob);
+    libUrls.current.set(it.id, { blob: it.blob, url });
+    return url;
+  };
+  const catalog = useMemo(() => {
+    const c = applyOverrides(defaultCatalog, localFace);
+    const props = library.filter((x) => x.kind === "prop").map((x) => ({ id: x.id, label: x.label, src: urlOf(x), width: x.width, height: x.height, user: true }));
+    const bgs = library.filter((x) => x.kind === "background").map((x) => ({ id: x.id, label: x.label, src: urlOf(x), user: true }));
+    const snd = library.filter((x) => x.kind === "sound").map((x) => ({ id: x.id, label: x.label, src: urlOf(x), duration: x.duration ?? 1, user: true }));
+    return {
+      ...c,
+      sounds: [...(defaultCatalog.sounds ?? []), ...snd],
+      // los recursos propios van primero; los provisionales detrás
+      props: [...props, ...c.props],
+      backgrounds: [...bgs, ...c.backgrounds],
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [localFace, library]);
+
+  useEffect(() => {
+    libraryStore
+      .list()
+      .then((items) => setLibrary(items.sort((a, b) => a.createdAt - b.createdAt)))
+      .catch(() => {});
+  }, []);
+
+  const saveLibraryItem = useCallback(async (item: LibraryItem) => {
+    await libraryStore.put(item);
+    setLibrary((l) => [...l.filter((x) => x.id !== item.id), item].sort((a, b) => a.createdAt - b.createdAt));
+  }, []);
+  const removeLibraryItem = useCallback(async (id: string) => {
+    await libraryStore.remove(id);
+    setLibrary((l) => l.filter((x) => x.id !== id));
+  }, []);
   const loaded = useRef(false);
   const dirty = useRef(false);
 
@@ -145,7 +186,7 @@ export function usePocket() {
   const validation = useMemo(() => validateProject(project, catalog), [project, catalog]);
   const issues: Issue[] = validation.errors;
 
-  return { tab, setTab, intent, setIntent, project, projectId, replaceProject, editProject, issues, saveState, storageError, catalog, localFace, saveFace, faceTarget, setFaceTarget };
+  return { tab, setTab, intent, setIntent, project, projectId, replaceProject, editProject, issues, saveState, storageError, catalog, localFace, saveFace, faceTarget, setFaceTarget, library, saveLibraryItem, removeLibraryItem };
 }
 
 export type PocketState = ReturnType<typeof usePocket>;

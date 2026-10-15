@@ -9,7 +9,8 @@ const DB_NAME = "punetos-pocket";
 const STORE = "projects";
 const FACE_STORE = "face";
 const CLIP_STORE = "voiceClips";
-const VERSION = 3;
+const LIB_STORE = "library";
+const VERSION = 4;
 
 export interface StoredProject {
   id: string;
@@ -27,6 +28,7 @@ function open(): Promise<IDBDatabase> {
       if (!db.objectStoreNames.contains(STORE)) db.createObjectStore(STORE, { keyPath: "id" });
       if (!db.objectStoreNames.contains(FACE_STORE)) db.createObjectStore(FACE_STORE);
       if (!db.objectStoreNames.contains(CLIP_STORE)) db.createObjectStore(CLIP_STORE);
+      if (!db.objectStoreNames.contains(LIB_STORE)) db.createObjectStore(LIB_STORE, { keyPath: "id" });
     };
     req.onsuccess = () => resolve(req.result);
     req.onerror = () => reject(req.error);
@@ -78,4 +80,26 @@ export const clipCache = {
   get: (key: string) => tx<{ samples: Float32Array; sampleRate: number } | undefined>("readonly", (s) => s.get(key) as IDBRequest<{ samples: Float32Array; sampleRate: number } | undefined>, CLIP_STORE),
   put: (key: string, v: { samples: Float32Array; sampleRate: number }) => tx("readwrite", (s) => s.put(v, key), CLIP_STORE),
   clear: () => tx("readwrite", (s) => s.clear(), CLIP_STORE),
+};
+
+/** Recursos propios (objetos, escenarios, sonidos) guardados en este dispositivo. */
+export interface LibraryItem {
+  id: string;
+  kind: "prop" | "background" | "sound";
+  label: string;
+  blob: Blob;
+  /** Tamaño en escena (px del lienzo 1080×1920) para objetos; tamaño original para escenarios. */
+  width: number;
+  height: number;
+  /** Duración (s) para sonidos. */
+  duration?: number;
+  createdAt: number;
+  /** Descripción usada para generarlo (si se generó). */
+  prompt?: string;
+}
+
+export const libraryStore = {
+  list: () => tx<LibraryItem[]>("readonly", (s) => s.getAll() as IDBRequest<LibraryItem[]>, LIB_STORE),
+  put: (item: LibraryItem) => tx("readwrite", (s) => s.put(item), LIB_STORE),
+  remove: (id: string) => tx("readwrite", (s) => s.delete(id), LIB_STORE),
 };

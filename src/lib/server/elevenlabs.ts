@@ -162,3 +162,46 @@ export async function handleTts(body: unknown, ip: string, code: string | null, 
     clearTimeout(timer);
   }
 }
+
+const SfxBody = z.object({
+  text: z.string().min(2).max(300),
+  duration: z.number().min(0.5).max(10).optional(),
+});
+
+/** Coste aproximado contado contra el tope diario por cada efecto generado. */
+export const SFX_CHAR_COST = 200;
+
+export async function handleSfx(body: unknown, ip: string, code: string | null, env: ElevenEnv, deps: { fetch: typeof fetch; now: () => number; state: ElevenState }): Promise<Res> {
+  const g = gate(env, code);
+  if (g) return g;
+  const p = SfxBody.safeParse(body);
+  if (!p.success) return { status: 400, json: { error: "bad_request", message: "Descripción de sonido no válida (2–300 caracteres, 0,5–10 s)." } };
+  const cfg = elevenConfig(env);
+  const now = deps.now();
+  const hits = (deps.state.perIp.get(ip) ?? []).filter((t) => now - t < WINDOW_MS);
+  if (hits.length >= cfg.ratePerIp) return { status: 429, json: { error: "rate_limited", message: "Demasiadas peticiones seguidas." } };
+  const today = new Date(now).toISOString().slice(0, 10);
+  if (deps.state.day !== today) {
+    deps.state.day = today;
+    deps.state.chars = 0;
+  }
+  if (deps.state.chars + SFX_CHAR_COST > cfg.dailyChars) return { status: 429, json: { error: "daily_cap", message: "Tope diario alcanzado." } };
+  hits.push(now);
+  deps.state.perIp.set(ip, hits);
+  deps.state.chars += SFX_CHAR_COST;
+  try {
+    const r = await deps.fetch(`${ELEVEN_API}/v1/sound-generation?output_format=mp3_44100_128`, {
+      method: "POST",
+      headers: { "xi-api-key": env.ELEVENLABS_API_KEY!, "content-type": "application/json", accept: "audio/mpeg" },
+      body: JSON.stringify({ text: p.data.text, duration_seconds: p.data.duration, prompt_influence: 0.5 }),
+    });
+    if (!r.ok) {
+      deps.state.chars -= SFX_CHAR_COST;
+      return { status: r.status === 429 ? 429 : 502, json: { error: "upstream", message: `ElevenLabs respondió ${r.status} (¿permiso «Efectos de sonido» en la clave?).` } };
+    }
+    return { status: 200, audio: await r.arrayBuffer() };
+  } catch {
+    deps.state.chars -= SFX_CHAR_COST;
+    return { status: 504, json: { error: "timeout", message: "ElevenLabs no respondió." } };
+  }
+}

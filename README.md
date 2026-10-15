@@ -116,6 +116,19 @@ Licencias, comprobadas en el MODEL_CARD de cada voz (`rhasspy/piper-voices` v1.0
 
 La pantalla Ver muestra el texto de crédito que hay que poner en la publicación cuando el reparto usa una voz con atribución. El fonemizador espeak-ng es GPL-3.0: se carga como programa aparte y no afecta al audio que generas.
 
+## Objetos, escenarios, sonidos e interacciones
+
+- **Recursos → Objetos / Escenarios / Sonidos**: escribe qué necesitas, copia el *prompt de imagen* y pégalo en ChatGPT junto con la *imagen de referencia* (para que copie el estilo). Descarga el PNG y súbelo eligiendo su tamaño (diminuto, pequeño, mediano, grande, enorme). El fondo blanco se puede quitar automáticamente. Los escenarios se ajustan a 1080×1920.
+- Sonidos integrados gratis (sintetizados): `sfx_telefono`, `sfx_alarma`, `sfx_pop`, `sfx_whoosh`, `sfx_ding`, `sfx_boing`, `sfx_golpe`, `sfx_fracaso`. Puedes generar más con ElevenLabs (la clave necesita el permiso «Efectos de sonido»; cada sonido cuenta 200 caracteres del tope diario) o subir tus MP3.
+- La biblioteca vive en el dispositivo (IndexedDB). «Exportar paquete de recursos» la pasa a otro móvil u ordenador.
+- Interacciones en el JSON / editor:
+  - `props`: `enter`/`exit` (`pop`, `fade`, `slide`), `loop` (`shake`, `pulse`, `blink`, `float`, `spin`), `toX`/`toY` (movimiento), `rot`, `flip`, `bubbleOf` (dentro de un bocadillo de pensamiento sobre un actor).
+  - `sfx`: `soundId`, `volume`.
+  - `screen`: `flash` (con `color`), `shake`, `darken`.
+  - `body.fx`: `jump`, `shake`.
+- Si ChatGPT echa en falta un recurso, lo pone en `metadata.wishlist` y aparece en Recursos como «Este sketch pediría…».
+- Demo: Proyectos → «Demo: interacciones».
+
 ## Contrato JSON `pocket-1` (formato definitivo del generador)
 
 Mira `schema/pocket.schema.json` y `examples/sketch-demo.json`. En resumen: `metadata`, `catalogVersion`, `canvas` (1080×1920), y `takes[]`, cada una con `id`, `duration`, `backgroundId`, `actors[]` (`uid`, `characterId`, `poseId`, `x`, `y` en los pies, `scale`, `zIndex`) y `events[]` (`id`, `track`, `actorUid`, `start`, `duration`).

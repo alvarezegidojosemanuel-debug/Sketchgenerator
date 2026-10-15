@@ -111,7 +111,8 @@ export function buildPrompt(intent: SketchIntent, catalog: Catalog): PromptResul
   const takesHint = intent.duration <= 15 ? "1 o 2 tomas" : intent.duration <= 30 ? "2 a 4 tomas" : "3 a 6 tomas";
 
   const backgrounds = sortById(catalog.backgrounds).map((b) => `${b.id} (${b.label})`).join(", ");
-  const props = sortById(catalog.props).map((p) => `${p.id} (${p.label})`).join(", ");
+  const props = sortById(catalog.props).map((p) => `${p.id} (${p.label}, ${p.height} px de alto)`).join(", ");
+  const sounds = sortById(catalog.sounds ?? []).map((x) => `${x.id} (${x.label}, ${x.duration} s)`).join(", ");
 
   const example = JSON.stringify(buildExample(catalog, chars, bgId));
 
@@ -129,14 +130,15 @@ Escribe un sketch y devuélvelo como UN ÚNICO OBJETO JSON válido. Sin Markdown
 Personajes:
 ${chars.map(characterBlock).join("\n")}
 Fondos (backgroundId): ${backgrounds}
-Objetos (propId): ${props}
+Objetos (propId; "y" = donde apoya su base): ${props}
+Sonidos (soundId): ${sounds || "(ninguno)"}
 Emociones genéricas: ${[...catalog.emotions].sort().join(", ")}
 
 ## Contrato JSON "${SCHEMA_VERSION}"
 {
   "schemaVersion": "${SCHEMA_VERSION}",
   "catalogVersion": "${catalog.catalogVersion}",
-  "metadata": { "title": string, "language": "es-ES", "approxDuration": number },
+  "metadata": { "title": string, "language": "es-ES", "approxDuration": number, "wishlist": [string] opcional },
   "canvas": { "width": 1080, "height": 1920 },
   "takes": [ {
     "id": string único, "name": string, "duration": segundos (>0, máx ${LIMITS.maxTakeDuration}),
@@ -151,7 +153,19 @@ Tipos de evento (campo "track"):
 - "face": "expressionId" (expresión DEL MISMO personaje; cambia cejas, ojos y boca a la vez y se mantiene hasta el siguiente "face").
 - "eyes": "gazeX", "gazeY" entre -1 y 1 (mirada: -1 izquierda/arriba, 1 derecha/abajo).
 - "mouth": "mode": "auto" (la boca se anima sola durante los diálogos con las bocas de la expresión actual; normalmente no hace falta).
-- "props": "propId", "layer": "props-back" | "props-front", "x", "y", "scale" opcional; visible durante su duración; "actorUid" opcional.
+- "props": objeto visible durante su duración. "propId", "layer": "props-back" | "props-front", "x", "y" (base del objeto), "scale" opcional, "rot" (grados) opcional, "flip" opcional.
+    Animación: "enter"/"exit": "pop" | "fade" | "slide" | "none"; "loop": "shake" (vibrar) | "pulse" (latir) | "blink" (parpadear) | "float" (flotar) | "spin" (girar) | "none";
+    "toX"/"toY" para que se mueva de (x,y) a (toX,toY) durante el evento; "bubbleOf": uid de un actor → aparece DENTRO de un bocadillo de pensamiento sobre su cabeza (imaginación, deseos, recuerdos; x/y se ignoran).
+    Para que un personaje "sostenga" un objeto: ponlo delante ("props-front") a la altura de su mano (x ±120 del actor, y ≈ actor.y − 300×scale).
+- "sfx": sonido. "soundId", "volume" 0–1 opcional; "duration" ≈ la del sonido. Añade sonidos en los momentos clave (teléfono, alarma, golpe, aparición…).
+- "screen": efecto de pantalla. "effect": "flash" (destello de color; "color": "#ff2a2a") | "shake" (temblor de cámara) | "darken" (oscurecer); sin actorUid.
+- En "body" puedes añadir "fx": "jump" (salto de susto) | "shake" (temblar) durante el evento.
+
+Recetas (combínalas con diálogos y reacciones):
+- Teléfono que suena: props(móvil, "loop":"shake") + sfx(sfx_telefono) a la vez; luego el personaje reacciona (face sorpresa, body fx "jump").
+- Alarma: screen("flash", "#ff2a2a") + sfx(sfx_alarma) + body fx "shake" en quien se asusta.
+- Algo imaginario (p. ej. dragones de Usu): props con "bubbleOf":"<uid de Usu>", "enter":"pop", "loop":"float" + sfx(sfx_pop) al aparecer.
+- Idea brillante: sfx(sfx_ding) + face alegría. Fracaso / remate: sfx(sfx_fracaso) + face tristeza. Golpe: screen "shake" + sfx(sfx_golpe).
 
 ## Reglas estrictas
 1. Responde solo con el objeto JSON. Debe ser JSON.parse-able: comillas dobles, sin comas finales.
@@ -166,6 +180,7 @@ Tipos de evento (campo "track"):
    Para que dos personajes se miren usa poses 3/4 ("..._3q_right" a la izquierda, "..._3q_left" a la derecha) o "flip".
 6. No solapes dos diálogos del mismo actor. Encadena acciones: reacción (face/body) justo antes o después de cada frase.
 7. Máximo ${LIMITS.maxActorsPerTake} actores y ${LIMITS.maxEventsPerTake} eventos por toma. Nada de HTML, código ni URLs en los textos.
+8. Si al sketch le vendría bien un objeto, escenario o sonido que NO está en el catálogo, NO lo inventes en los eventos: descríbelo en "metadata.wishlist" (lista de frases cortas, p. ej. "dragón pequeño verde volando", "sonido de puerta que chirría") y usa el sketch sin él.
 
 ## Ejemplo breve (válido, solo ilustrativo; tu sketch debe ser más largo)
 ${example}`;

@@ -1,5 +1,6 @@
 import type { Catalog } from "@/lib/catalog/types";
-import { findCharacter, findExpression } from "@/lib/catalog";
+import { findCharacter, findExpression, findPose, findProp } from "@/lib/catalog";
+import { bodyFx, propAnim, screenFx, type PropAnim, type ScreenFx } from "./fx";
 import { stripAudioTags } from "@/lib/voice/tags";
 import type { DialogueEvent, PocketEvent, PocketProject, PropsEvent, Take } from "@/lib/schema/pocket";
 
@@ -20,6 +21,9 @@ export interface ActorState {
   /** Boca concreta de este frame (lip-sync con las bocas "talk" de la expresión); undefined = reposo. */
   mouthAssetId: string | undefined;
   mouthMode: "auto" | "calibrated";
+  /** Desplazamiento temporal por efecto corporal (saltar, temblar). */
+  offX: number;
+  offY: number;
   /** Transición suave: pose anterior y mezcla 0→1 de la nueva (fundido). */
   prevPoseId?: string;
   poseMix: number;
@@ -38,6 +42,11 @@ export interface PropState {
   y: number;
   scale: number;
   zIndex: number;
+  rot: number;
+  opacity: number;
+  flip: boolean;
+  /** Bocadillo de pensamiento: el objeto se dibuja centrado en (x, y) dentro de una nube. */
+  bubble?: { cx: number; cy: number; w: number; h: number; tailX: number; tailY: number };
 }
 
 export interface Subtitle {
@@ -52,6 +61,9 @@ export interface FrameState {
   actors: ActorState[];
   props: PropState[];
   subtitles: Subtitle[];
+  screen: ScreenFx;
+  /** Sonidos que deberían estar sonando en t (para exportar / depurar). */
+  sounds: { eventId: string; soundId: string; offset: number; volume: number }[];
 }
 
 const clamp01 = (v: number) => (v < 0 ? 0 : v > 1 ? 1 : v);
@@ -132,6 +144,8 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
       mouthAssetId: undefined,
       poseMix: 1,
       exprMix: 1,
+      offX: 0,
+      offY: 0,
       mouthMode: "auto",
       mouthDx: 0,
       mouthDy: 0,
@@ -140,6 +154,8 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
   const props: PropState[] = [];
   const subtitles: Subtitle[] = [];
   const talkIndex = new Map<string, number>();
+  const screen: ScreenFx = {};
+  const sounds: FrameState["sounds"] = [];
 
   for (const e of sortedEvents(take)) {
     if (t < e.start) continue;
@@ -177,6 +193,11 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
         if (e.x !== undefined) st.x = lerp(st.x, e.x, p);
         if (e.y !== undefined) st.y = lerp(st.y, e.y, p);
         if (e.scale !== undefined) st.scale = lerp(st.scale, e.scale, p);
+        if (e.fx) {
+          const o = bodyFx(e, t);
+          st.offX += o.dx;
+          st.offY += o.dy;
+        }
         break;
       }
       case "face":
@@ -200,17 +221,29 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
         st.mouthDx = e.mode === "calibrated" ? e.dx ?? 0 : 0;
         st.mouthDy = e.mode === "calibrated" ? e.dy ?? 0 : 0;
         break;
-      case "props":
+      case "props": {
         if (!active) break;
+        const a = propAnim(e, t);
         props.push({
           key: e.id,
           propId: e.propId,
-          layer: e.layer,
-          x: e.x,
-          y: e.y,
-          scale: e.scale ?? 1,
-          zIndex: e.zIndex ?? 0,
-        });
+          layer: e.bubbleOf ? "props-front" : e.layer,
+          x: e.x + a.dx,
+          y: e.y + a.dy,
+          scale: (e.scale ?? 1) * a.scale,
+          zIndex: (e.zIndex ?? 0) + (e.bubbleOf ? 50 : 0),
+          rot: a.rot,
+          opacity: a.opacity,
+          flip: e.flip ?? false,
+          ...(e.bubbleOf ? { bubble: { cx: 0, cy: 0, w: 0, h: 0, tailX: 0, tailY: 0 }, bubbleOf: e.bubbleOf, baseScale: e.scale ?? 1, anim: a } : {}),
+        } as PropState);
+        break;
+      }
+      case "sfx":
+        if (active) sounds.push({ eventId: e.id, soundId: e.soundId, offset: t - e.start, volume: e.volume ?? 1 });
+        break;
+      case "screen":
+        screenFx(e, t, screen);
         break;
     }
   }
@@ -255,11 +288,34 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
     if (ex?.talk.length) st.mouthAssetId = ex.talk[k % ex.talk.length];
   }
 
+  // Bocadillos de pensamiento: encima de la cabeza del actor (hacia donde mira).
+  for (const pr of props as (PropState & { bubbleOf?: string; baseScale?: number; anim?: PropAnim })[]) {
+    if (!pr.bubbleOf) continue;
+    const st = actors.get(pr.bubbleOf);
+    const prop = findProp(catalog, pr.propId);
+    if (!st || !prop) continue;
+    const pose = findPose(catalog, st.characterId, st.poseId);
+    const h = (pose?.height ?? 600) * (pose?.displayScale ?? 1) * st.scale;
+    const side = st.flip ? -1 : 1;
+    const headTop = st.y + st.offY - h;
+    const w = prop.width * (pr.baseScale ?? 1) + 120;
+    const bh = prop.height * (pr.baseScale ?? 1) + 100;
+    const cx = Math.max(w / 2 + 10, Math.min(1080 - w / 2 - 10, st.x + st.offX + side * 150 * st.scale));
+    const cy = Math.max(bh / 2 + 10, headTop - bh / 2 - 60);
+    const dx = pr.anim?.dx ?? 0;
+    const dy = pr.anim?.dy ?? 0;
+    pr.x = cx + dx;
+    pr.y = cy + prop.height * pr.scale * 0.5 + dy; // y = base del objeto
+    pr.bubble = { cx, cy, w, h: bh, tailX: st.x + st.offX + side * 40 * st.scale, tailY: headTop + 10 };
+  }
+
   return {
     backgroundId: take.backgroundId,
     actors: [...actors.values()].sort((a, b) => a.zIndex - b.zIndex),
     props: props.sort((a, b) => a.zIndex - b.zIndex),
     subtitles,
+    screen,
+    sounds,
   };
 }
 

@@ -1,5 +1,6 @@
 import rawCatalog from "@/data/catalog.json";
 import rawOverrides from "@/data/face-overrides.json";
+import { BUILTIN_SOUNDS } from "@/lib/sfx/synth";
 import type { Catalog, Character, ExpressionPrefab, FaceAsset, FaceOverrides, Pose } from "./types";
 
 export type * from "./types";
@@ -39,8 +40,12 @@ export function applyOverrides(c: Catalog, ...layers: (FaceOverrides | null | un
   return out;
 }
 
-/** Catálogo por defecto (base + overrides del repositorio). La app añade los locales del usuario. */
-export const catalog: Catalog = applyOverrides(baseCatalog, repoOverrides);
+/** Catálogo por defecto (base + overrides del repositorio + sonidos incluidos). La app añade los locales del usuario. */
+export const catalog: Catalog = { ...applyOverrides(baseCatalog, repoOverrides), sounds: BUILTIN_SOUNDS };
+
+export function findSound(c: Catalog, id: string) {
+  return c.sounds?.find((x) => x.id === id);
+}
 
 export function isPlaceholderCatalog(c: Catalog): boolean {
   return c.source.kind === "placeholder";

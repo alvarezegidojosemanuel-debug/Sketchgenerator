@@ -258,3 +258,16 @@ textarea.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; fon
 .progress { position: relative; height: 30px; border-radius: 8px; background: var(--bg); border: 1px solid var(--line); overflow: hidden; }
 .progress > div { position: absolute; inset: 0 auto 0 0; background: color-mix(in srgb, var(--accent) 45%, transparent); transition: width .2s; }
 .progress > span { position: relative; z-index: 1; display: flex; align-items: center; height: 100%; padding: 0 10px; font-size: 13px; }
+.lib-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+.lib-item { display: flex; flex-direction: column; gap: 6px; padding: 8px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel-2); min-width: 0; }
+.lib-item img { width: 100%; aspect-ratio: 1; object-fit: contain; background: repeating-conic-gradient(#ffffff10 0% 25%, transparent 0% 50%) 50% / 16px 16px; border-radius: 8px; }
+.lib-item img.bg { aspect-ratio: 9 / 16; object-fit: cover; }
+.lib-item code { font-size: 11px; }
+.lib-item small { color: var(--muted); }
+.lib-item input, .lib-item select { min-height: 38px; font-size: 14px; padding: 6px 8px; }
+.wish { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.wish li { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.tl-bar.track-sfx { background: #22d3ee; }
+.tl-bar.track-screen { background: #f87171; }
+.track-sfx { border-left-color: #22d3ee; }
+.track-screen { border-left-color: #f87171; }
