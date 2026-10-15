@@ -1,10 +1,12 @@
 /** Universo PUÑETOS: lo que el guionista (ChatGPT) debe respetar en todos los sketches. */
 
-export const UNIVERSE = `Los PUÑETOS son el equipo de soporte técnico de una empresa tecnológica. Eran humanos hasta el «Pantallazo Cero»:
-un viernes a las 17:59, Usu lanzó su «Parche Definitivo» para acabar con todos los tickets y salvar al equipo; el sistema cayó con un
-pantallazo azul gigante y los cinco quedaron «puñetizados» (azules, con gafas que ya no se quitan y la mochila siempre encima).
-Siguen trabajando en soporte porque son los únicos que entienden los sistemas; la empresa los necesita pero prefiere no enseñarlos.
-El humor nace de las situaciones de oficina y de cómo son ellos, nunca de burlarse de los usuarios ni de ningún colectivo.`;
+export const UNIVERSE = `PUÑETOS: cinco compañeros del equipo de soporte técnico de una empresa tecnológica (Usu, Reynaldo, Sister, Barbas y Jefe).
+Eran humanos hasta que Usu aplicó un parche y apareció un pantallazo azul. Desde entonces ELLOS SE VEN como Puñetos (piel azul brillante,
+cuerpo de gominola, mismos rasgos y personalidad), pero PARA TODOS LOS DEMÁS SIGUEN SIENDO HUMANOS NORMALES: nadie más nota nada.
+Qué hizo realmente el parche es un misterio: no lo expliques ni lo resuelvas. Su vida sigue (trabajo, casa, bares, calle).
+El Jefe (su jefe de equipo) y el Director (otro personaje, directivo de la empresa) son personas distintas.
+El humor nace de las situaciones y de cómo son ellos (contradicciones, relaciones, consecuencias inesperadas), no de insultos ni gritos,
+y nunca de burlarse de los usuarios ni de ningún colectivo. Sin parecidos con franquicias existentes.`;
 
 /** Personalidad y forma de hablar de cada personaje (clave = characterId). */
 export const PERSONALITIES: Record<string, string> = {
