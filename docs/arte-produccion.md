@@ -50,6 +50,8 @@ Genera UNA imagen cada vez y espera a que diga «siguiente». Dime siempre el n�
 
 ## 2. Personajes secundarios
 
+> **`PENDIENTE` — NO generar todavía.** Los secundarios se definirán con la historia de los 10 episodios. Lo de abajo es solo un borrador de ejemplo.
+
 **Cómo se hace cada personaje:**
 
 1. **Hoja de modelo.** La apruebas tú.
