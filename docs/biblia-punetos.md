@@ -141,7 +141,7 @@ Leyenda:
   4. Reynaldo: «Investigamos, pero en horario laboral.»
   5. Barbas brinda: «Por los Puñetos.»
 - **Remate:** Usu deja dos platitos «para Draco y Humillos». El camarero se los lleva y vuelve con **dos platitos vacíos y chamuscados**.
-- **Pregunta abierta:** ¿eran imaginarios?
+- **Pregunta abierta:** el camarero no ve a los dragones… pero ve los platos quemados.
 - **Escenas:** bar; calle de noche.
 
 ---
