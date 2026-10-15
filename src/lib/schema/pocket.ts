@@ -129,7 +129,7 @@ export const PropsEvent = z.object({
   enter: z.enum(["none", "pop", "fade", "slide"]).optional(),
   exit: z.enum(["none", "pop", "fade", "slide"]).optional(),
   /** Animación mientras está visible (vibrar, latir, parpadear, flotar, girar). */
-  loop: z.enum(["none", "shake", "pulse", "blink", "float", "spin"]).optional(),
+  loop: z.enum(["none", "shake", "pulse", "blink", "float", "spin", "type"]).optional(),
   /** Desplazamiento: va de (x,y) a (toX,toY) durante el evento. */
   toX: coordX.optional(),
   toY: coordY.optional(),

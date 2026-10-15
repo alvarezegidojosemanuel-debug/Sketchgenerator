@@ -72,6 +72,10 @@ export function propAnim(e: PropsEvent, t: number): PropAnim {
     case "spin":
       a.rot += local * 360;
       break;
+    case "type":
+      a.dx += Math.sin(local * 9) * 2;
+      a.dy -= Math.abs(Math.sin(local * 16)) * 5;
+      break;
     default:
       break;
   }

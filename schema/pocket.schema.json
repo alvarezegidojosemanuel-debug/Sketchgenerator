@@ -660,7 +660,8 @@
                         "pulse",
                         "blink",
                         "float",
-                        "spin"
+                        "spin",
+                        "type"
                       ]
                     },
                     "toX": {
