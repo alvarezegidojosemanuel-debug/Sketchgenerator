@@ -140,3 +140,31 @@ describe("ElevenLabs: conversación de una escena", () => {
     expect(elevenStatus(big, deps.state, deps.now()).usedToday).toBe(inputs[0].text.length + inputs[1].text.length);
   });
 });
+
+describe("ElevenLabs: casting de voces a medida", () => {
+  it("diseña voces con la descripción y guarda la elegida", async () => {
+    const { handleVoiceDesign, handleVoiceSave } = await import("@/lib/server/elevenlabs");
+    const design = () => new Response(JSON.stringify({ previews: [{ audio_base_64: "AAAA", generated_voice_id: "gen_abc123" }, { audio_base_64: "BBBB", generated_voice_id: "gen_def456" }] }), { status: 200 });
+    const save = () => new Response(JSON.stringify({ voice_id: "VoiceIdABC12345", name: "Puñetos · Barbas" }), { status: 200 });
+    const { f, deps } = setup([design, save]);
+    const big = { ...env, ELEVENLABS_DAILY_CHARS: "5000", ELEVENLABS_RATE_PER_IP: "10" };
+    const body = { description: "Hombre de 45 años, voz grave de bonachón pícaro.", text: "x".repeat(120) };
+    expect((await handleVoiceDesign(body, "ip", "mal", big, deps)).status).toBe(401);
+    expect((await handleVoiceDesign({ ...body, text: "corta" }, "ip", "puñetos-2026", big, deps)).status).toBe(400);
+    const r = await handleVoiceDesign(body, "ip", "puñetos-2026", big, deps);
+    expect(r.status).toBe(200);
+    expect(r.json?.previews).toEqual([{ id: "gen_abc123", audio: "AAAA" }, { id: "gen_def456", audio: "BBBB" }]);
+    expect(String((f.mock.calls[0] as unknown as [string])[0])).toContain("/v1/text-to-voice/design");
+    const sv = await handleVoiceSave({ name: "Puñetos · Barbas", description: body.description, generatedVoiceId: "gen_abc123" }, "puñetos-2026", big, deps);
+    expect(sv.json).toEqual({ voiceId: "VoiceIdABC12345", name: "Puñetos · Barbas" });
+    const sent = JSON.parse(String((f.mock.calls[1] as unknown as [string, RequestInit])[1].body));
+    expect(sent).toMatchObject({ generated_voice_id: "gen_abc123", voice_name: "Puñetos · Barbas" });
+  });
+  it("las frases de prueba de todos los personajes cumplen el mínimo de ElevenLabs", async () => {
+    const { CASTING } = await import("@/lib/voice/casting");
+    for (const [cid, p] of Object.entries(CASTING)) {
+      expect(p.sample.length, cid).toBeGreaterThanOrEqual(100);
+      expect(p.description.length, cid).toBeGreaterThanOrEqual(20);
+    }
+  });
+});

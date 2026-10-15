@@ -138,6 +138,7 @@ export function ElevenCast({ s, model, onModel, code, onCode }: Props) {
               <Field label="Voz">
                 <select value={c?.voiceId ?? ""} onChange={(e) => set(cid, { voiceId: e.target.value, name: voices.find((x) => x.id === e.target.value)?.name })}>
                   {!c && <option value="">Elige…</option>}
+                  {c && !voices.some((x) => x.id === c.voiceId) && <option value={c.voiceId}>🎭 {c.name ?? "Voz a medida"}</option>}
                   {voices.map((x) => (
                     <option key={x.id} value={x.id}>
                       {isSpainVoice(x) ? "🇪🇸 " : ""}

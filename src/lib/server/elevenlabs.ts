@@ -250,6 +250,81 @@ export async function handleDialogue(body: unknown, ip: string, code: string | n
   }
 }
 
+const DesignBody = z.object({
+  description: z.string().min(20).max(1000),
+  text: z.string().min(100).max(1000),
+  model: z.enum(["eleven_ttv_v3", "eleven_multilingual_ttv_v2"]).optional(),
+});
+
+/** Casting: crea voces nuevas a partir de una descripción (ElevenLabs «voice design»). Devuelve 2–3 muestras. */
+export async function handleVoiceDesign(body: unknown, ip: string, code: string | null, env: ElevenEnv, deps: { fetch: typeof fetch; now: () => number; state: ElevenState }): Promise<Res> {
+  const g = gate(env, code);
+  if (g) return g;
+  const p = DesignBody.safeParse(body);
+  if (!p.success) return { status: 400, json: { error: "bad_request", message: "Descripción (20–1000 caracteres) y frase de prueba (100–1000) obligatorias." } };
+  const cfg = elevenConfig(env);
+  const now = deps.now();
+  const today = new Date(now).toISOString().slice(0, 10);
+  if (deps.state.day !== today) {
+    deps.state.day = today;
+    deps.state.chars = 0;
+  }
+  const cost = p.data.text.length;
+  if (deps.state.chars + cost > cfg.dailyChars) return { status: 429, json: { error: "daily_cap", message: "Tope diario alcanzado." } };
+  const hits = (deps.state.perIp.get(ip) ?? []).filter((t) => now - t < WINDOW_MS);
+  if (hits.length >= cfg.ratePerIp) return { status: 429, json: { error: "rate_limited", message: "Demasiadas peticiones seguidas." } };
+  hits.push(now);
+  deps.state.perIp.set(ip, hits);
+  deps.state.chars += cost;
+  try {
+    const r = await deps.fetch(`${ELEVEN_API}/v1/text-to-voice/design?output_format=mp3_44100_128`, {
+      method: "POST",
+      headers: { "xi-api-key": env.ELEVENLABS_API_KEY!, "content-type": "application/json" },
+      body: JSON.stringify({ voice_description: p.data.description, text: p.data.text, model_id: p.data.model ?? "eleven_ttv_v3" }),
+    });
+    if (!r.ok) {
+      deps.state.chars -= cost;
+      const detail = (await r.text().catch(() => "")).slice(0, 300);
+      return { status: r.status === 429 ? 429 : 502, json: { error: "upstream", message: `ElevenLabs respondió ${r.status} al diseñar la voz (¿permiso de «Text to Voice» / voces en la clave?). ${detail}` } };
+    }
+    const raw = (await r.json()) as { previews?: { audio_base_64?: string; audio_base64?: string; generated_voice_id?: string; duration_secs?: number }[] };
+    const previews = (raw.previews ?? [])
+      .map((v) => ({ id: v.generated_voice_id ?? "", audio: v.audio_base_64 ?? v.audio_base64 ?? "" }))
+      .filter((v) => /^[A-Za-z0-9_-]{4,80}$/.test(v.id) && v.audio);
+    if (!previews.length) return { status: 502, json: { error: "upstream", message: "ElevenLabs no devolvió muestras." } };
+    return { status: 200, json: { previews } };
+  } catch {
+    deps.state.chars -= cost;
+    return { status: 504, json: { error: "timeout", message: "ElevenLabs no respondió a tiempo." } };
+  }
+}
+
+const SaveVoiceBody = z.object({
+  name: z.string().min(1).max(60),
+  description: z.string().min(20).max(1000),
+  generatedVoiceId: z.string().regex(/^[A-Za-z0-9_-]{4,80}$/),
+});
+
+/** Guarda en la cuenta la muestra elegida del casting y devuelve su voice_id. */
+export async function handleVoiceSave(body: unknown, code: string | null, env: ElevenEnv, deps: { fetch: typeof fetch }): Promise<Res> {
+  const g = gate(env, code);
+  if (g) return g;
+  const p = SaveVoiceBody.safeParse(body);
+  if (!p.success) return { status: 400, json: { error: "bad_request", message: "Datos de la voz no válidos." } };
+  const r = await deps.fetch(`${ELEVEN_API}/v1/text-to-voice`, {
+    method: "POST",
+    headers: { "xi-api-key": env.ELEVENLABS_API_KEY!, "content-type": "application/json" },
+    body: JSON.stringify({ voice_name: p.data.name, voice_description: p.data.description, generated_voice_id: p.data.generatedVoiceId }),
+  });
+  if (!r.ok) {
+    const detail = (await r.text().catch(() => "")).slice(0, 300);
+    return { status: 502, json: { error: "upstream", message: `ElevenLabs respondió ${r.status} al guardar la voz (¿hueco libre de voces en tu plan?). ${detail}` } };
+  }
+  const raw = (await r.json()) as { voice_id?: string; name?: string };
+  if (!raw.voice_id || !/^[A-Za-z0-9]{8,40}$/.test(raw.voice_id)) return { status: 502, json: { error: "upstream", message: "ElevenLabs no devolvió el id de la voz." } };
+  return { status: 200, json: { voiceId: raw.voice_id, name: raw.name ?? p.data.name } };
+}
+
 const SfxBody = z.object({
   text: z.string().min(2).max(300),
   duration: z.number().min(0.5).max(10).optional(),

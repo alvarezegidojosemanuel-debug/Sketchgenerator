@@ -8,6 +8,7 @@ import { clipKey, fitProjectToAudio } from "@/lib/voice/fit";
 import { generateLines, unlockAudio, type Clip, type Progress } from "@/lib/voice/piper";
 import { accessCode, elevenModel, generateElevenDialogue, generateElevenLines, type ElevenModel } from "@/lib/voice/elevenlabs";
 import { ElevenCast } from "../ElevenCast";
+import { VoiceCasting } from "../VoiceCasting";
 import { exportMp4, lastExportAudio, lastExportCodec, type ExportProgress } from "@/lib/export/mp4";
 
 const EXPORT_LABEL: Record<ExportProgress["stage"], string> = { imagenes: "Cargando imágenes…", audio: "Mezclando audio…", video: "Creando vídeo…", listo: "Listo" };
@@ -259,6 +260,7 @@ export function PreviewScreen({ s }: { s: PocketState }) {
       )}
       {engine === "piper" && <VoiceCast s={s} />}
       {engine === "elevenlabs" && <ElevenCast s={s} model={model} onModel={setModel} code={code} onCode={setCode} />}
+      {engine === "elevenlabs" && code && <VoiceCasting s={s} code={code} />}
       <button type="button" className="btn btn-secondary btn-block" onClick={() => s.setTab("editar")}>
         ✎ Editar este sketch
       </button>
