@@ -343,3 +343,20 @@ Y quizá alguien está usando el complejo, el parche y a NODO para un plan que n
 - la sexta conexión;
 - los seres y los secundarios;
 - los límites exactos de los poderes.
+
+---
+
+## Decisiones del creador (octubre de 2026, tras la revisión)
+1. **Arranque del Ep1:** flash-forward de los Puñetos en una situación complicada; después empieza el capítulo con los humanos.
+2. **NODO antes y después del parche:**
+   - **Antes:** pantallas y megafonía con frases solo «un pelín raras».
+   - **Después:** los cinco la oyen pensar en voz alta.
+3. **La voz desconocida** del Ep2 provoca la avería del Ep3 y le sugiere a Usu la idea del parche.
+4. **NODO y Sister:**
+   - Sister no quiere nada con Usu.
+   - Los celos de NODO son infundados, fruto de sus inseguridades.
+   - No hay pelea entre ellas.
+5. **El Ep9** es contenido de continuidad («relleno»), en minisketches.
+6. **El villano oculto:** pistas muy sutiles y varios candidatos.
+
+La escaleta detallada está en [`escaleta-t1-v4.md`](escaleta-t1-v4.md).

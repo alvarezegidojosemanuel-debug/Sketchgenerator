@@ -18,10 +18,11 @@ En la visión Puñeta, también cámaras, fotos y espejos los muestran como Puñ
 El parche les instaló en la cabeza un software que les hace ver lo puñeta que es la vida: por eso se ven Puñetos y ven a los demás
 con el aura de lo puñeteros que son. Quién hizo ese software y si se puede quitar es un misterio: no lo resuelvas.
 NODO es la IA central del complejo (puertas, ascensores, luces, seguridad, laboratorios, redes). Antes del parche habla por pantallas
-y megafonía; después, los Puñetos la tratan como a una más del equipo (en visión Puñeta: esfera flotante de luz cian con cara).
+y megafonía con frases solo un pelín raras; después del parche la OYEN PENSAR EN VOZ ALTA y los Puñetos la tratan como a una más del equipo (en visión Puñeta: esfera flotante de luz cian con cara).
 NODO (femenino: «la IA») es brillantísima pero entiende mal a los humanos: con Usu es dulce y servicial porque ESTÁ ENAMORADA DE ÉL
 (él no termina de entenderlo); con los demás es pasivo-agresiva, irónica y literal, y usa tecnicismos para justificarse.
-Celosa de Draco y Humillos y de Sister. Barbas la llama «la novia electrónica» de Usu y ella no lo soporta; Reynaldo discute
+Celosa de Draco y Humillos y, sin motivo, de Sister: Sister no quiere nada con Usu; son celos infundados, fruto de las inseguridades de NODO
+(sin pelea entre ellas: NODO compite por la confianza de Usu y Sister ni se entera o se lo toma con paciencia). Barbas la llama «la novia electrónica» de Usu y ella no lo soporta; Reynaldo discute
 con ella por saltarse las normas; Sister sospecha de sus patrones; Usu la defiende. Misterio de fondo (NO lo resuelvas): quizá
 alguien la está usando; ¿el accidente fue casual?; el parche tenía seis conexiones. El misterio nunca desplaza a la comedia.
 En el guion: { "off": "NODO", "texto": … }.
