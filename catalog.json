@@ -5912,6 +5912,11 @@
    "id": "bg_sala_servidores",
    "label": "Sala de servidores (rack con aviso rojo)",
    "src": "/assets/punetos/backgrounds/bg_sala_servidores.webp"
+  },
+  {
+   "id": "bg_despacho_director",
+   "label": "Despacho del director",
+   "src": "/assets/punetos/backgrounds/bg_despacho_director.webp"
   }
  ],
  "props": [
