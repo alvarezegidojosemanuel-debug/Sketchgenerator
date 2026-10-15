@@ -74,11 +74,11 @@ El parche es un programa que **se propaga**: vive en ellos y puede pasar a otras
 10. **Convención visual:** tras unas **escenas de presentación** en humano, la serie se cuenta **en visión Puñeta**: ellos se ven Puñetos y **el resto de la gente aparece con su «aura»**. Solo en momentos puntuales se muestran ambas versiones. Sin complicarse.
 11. **Auras:** **clichés exagerados y genéricos** (el cuñado sabelotodo, la vecina cotilla, el influencer, el ejecutivo de sonrisa de anuncio…), nunca personas reconocibles.
 12. **Foco:** más **día a día fuera de la oficina** que sátira de oficina. En la oficina, sobre todo **resolviendo incidencias**, no satirizando el ambiente laboral.
-13. **Aspecto humano:** fijado en las ilustraciones existentes. Barbas tiene aspecto de oficinista, no de metalero.
+13. **Cámaras y espejos:** si se ve con los ojos de los Puñetos, las cámaras, las fotos y los espejos también los muestran como Puñetos. La visión Puñeta es coherente en todo.
+14. **Aspecto humano:** fijado en las ilustraciones existentes. Barbas tiene aspecto de oficinista, no de metalero.
 
 ### `PROPUESTA` (pendiente de tu visto bueno)
 
-1. **Cámaras y espejos muestran humanos.** Solo *sus ojos* ven Puñetos y auras. Da gags como el selfie, la videollamada o el espejo.
 2. **¿Los seres de Usu y los dragones?** Draco y Humillos podrían ser **los primeros seres que Usu «creó»**, antes incluso del parche. Quizá nunca fueron del todo imaginarios. Encaja con el misterio del Ep. 5.
 3. **La habilidad no es infalible.** Funciona mejor con calma; con nervios, provoca pequeños desastres. Es una fuente de gags y evita que sean todopoderosos.
 4. **No pueden «despuñetizarse» a voluntad.** «Apagar y encender» como gag recurrente.
@@ -216,7 +216,6 @@ Sueltos, cada uno centrado en un personaje fuera de la oficina:
 ## 6. Pendiente de tu aprobación
 
 1. ¿Qué **interpretación del parche** guardamos como verdad interna (A, B, C o ninguna)?
-2. ¿Aceptas que **cámaras y espejos los muestran humanos**?
 3. ¿Te gusta que **Draco y Humillos** sean los primeros seres que Usu creó (y por eso quizá no eran imaginarios)?
 4. ¿El **misterio de los dragones** entra en canon?
 5. ¿Te encaja el **diseño v2 de los episodios**? Cuando lo apruebes, escribo los guiones dialogados.
