@@ -55,10 +55,13 @@ export function propAnim(e: PropsEvent, t: number): PropAnim {
   if (e.exit && e.exit !== "none" && remain < exitDur) applyTransition(e.exit, remain / exitDur, a);
   // animación continua
   switch (e.loop) {
-    case "shake":
-      a.dx += Math.sin(local * 70) * 7;
-      a.rot += Math.sin(local * 55) * 7;
+    case "shake": {
+      // vibración de móvil: zumbido corto y rápido, a ráfagas (como el timbre)
+      const on = local % 1.3 < 0.9 ? 1 : 0;
+      a.dx += Math.sin(local * 150) * 2.5 * on;
+      a.rot += Math.sin(local * 110) * 2 * on;
       break;
+    }
     case "pulse":
       a.scale *= 1 + 0.09 * Math.sin(local * 9);
       break;

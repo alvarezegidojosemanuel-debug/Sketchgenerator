@@ -157,7 +157,7 @@ Tipos de evento (campo "track"):
 - "mouth": "mode": "auto" (la boca se anima sola durante los diálogos con las bocas de la expresión actual; normalmente no hace falta).
 - "props": objeto visible durante su duración. "propId", "layer": "props-back" | "props-front", "x", "y" (base del objeto), "scale" opcional, "rot" (grados) opcional, "flip" opcional.
     Animación: "enter"/"exit": "pop" | "fade" | "slide" | "none"; "loop": "shake" (vibrar) | "pulse" (latir) | "blink" (parpadear) | "float" (flotar) | "spin" (girar) | "type" (teclear, p. ej. un personaje de espaldas dibujado como objeto) | "none";
-    "toX"/"toY" para que se mueva de (x,y) a (toX,toY) durante el evento; "bubbleOf": uid de un actor → aparece DENTRO de un bocadillo de pensamiento sobre su cabeza (imaginación, deseos, recuerdos; x/y se ignoran).
+    "altPropId" (+ "altEvery" s) alterna con otro objeto como animación de 2 fotogramas (p. ej. manos arriba/abajo tecleando); "toX"/"toY" para que se mueva de (x,y) a (toX,toY) durante el evento; "bubbleOf": uid de un actor → aparece DENTRO de un bocadillo de pensamiento sobre su cabeza (imaginación, deseos, recuerdos; x/y se ignoran).
     Para que un personaje "sostenga" un objeto: ponlo delante ("props-front") a la altura de su mano (x ±120 del actor, y ≈ actor.y − 300×scale).
 - "sfx": sonido. "soundId", "volume" 0–1 opcional; "duration" ≈ la del sonido. Añade sonidos en los momentos clave (teléfono, alarma, golpe, aparición…).
 - "screen": efecto de pantalla. "effect": "flash" (destello de color; "color": "#ff2a2a") | "shake" (temblor de cámara) | "darken" (oscurecer); sin actorUid.

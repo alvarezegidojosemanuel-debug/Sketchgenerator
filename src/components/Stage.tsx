@@ -141,6 +141,7 @@ function PropImg({ p }: { p: PropLayout }) {
   return (
     <>
       {p.bubble && <ThoughtBubble b={p.bubble} z={p.z - 1} opacity={p.opacity} />}
+      {p.altSrc && <img src={p.altSrc} alt="" aria-hidden style={{ display: "none" }} />}
       <img
         className="layer"
         src={p.src}

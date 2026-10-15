@@ -135,6 +135,9 @@ export const PropsEvent = z.object({
   /** Desplazamiento: va de (x,y) a (toX,toY) durante el evento. */
   toX: coordX.optional(),
   toY: coordY.optional(),
+  /** Animación de 2 fotogramas: alterna propId ↔ altPropId cada altEvery segundos (p. ej. manos tecleando). */
+  altPropId: id.optional(),
+  altEvery: z.number().finite().min(0.05).max(2).optional(),
   /** Dentro de un bocadillo de pensamiento sobre este actor (x/y se ignoran). */
   bubbleOf: id.optional(),
 });

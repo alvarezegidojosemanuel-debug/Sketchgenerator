@@ -429,6 +429,9 @@ export function checkSemantics(project: Project, catalog: Catalog): Issue[] {
           if (!catalog.props.some((p) => p.id === e.propId)) {
             errors.push({ path: `${ep}.propId`, message: `objeto "${e.propId}" no existe en el catálogo` });
           }
+          if (e.altPropId && !catalog.props.some((p) => p.id === e.altPropId)) {
+            errors.push({ path: `${ep}.altPropId`, message: `objeto "${e.altPropId}" no existe en el catálogo` });
+          }
           if (e.bubbleOf && !actorChar.has(e.bubbleOf)) {
             errors.push({ path: `${ep}.bubbleOf`, message: `actor "${e.bubbleOf}" no existe en esta toma` });
           }

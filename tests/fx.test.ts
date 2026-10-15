@@ -95,3 +95,21 @@ describe("quitar fondo blanco", () => {
     expect(d[(10 * w + 10) * 4 + 3]).toBe(255);
   });
 });
+
+describe("vibración y fotogramas", () => {
+  const base = { id: "p", track: "props" as const, propId: "prop_movil", layer: "props-front" as const, x: 100, y: 100, start: 0, duration: 3 };
+  it("la vibración del móvil es pequeña y va a ráfagas", () => {
+    const e = { ...base, loop: "shake" as const };
+    let max = 0;
+    for (let t = 0; t < 0.9; t += 0.01) max = Math.max(max, Math.abs(propAnim(e, t).dx), Math.abs(propAnim(e, t).rot));
+    expect(max).toBeLessThanOrEqual(3);
+    expect(propAnim(e, 1.1).dx).toBe(0);
+  });
+  it("altPropId alterna los fotogramas", async () => {
+    const { evaluateTake } = await import("@/lib/timeline/evaluate");
+    const take = { id: "t", duration: 3, backgroundId: null, actors: [], events: [{ ...base, altPropId: "prop_cafe", altEvery: 0.2 }] };
+    expect(evaluateTake(take, catalog, 0.1).props[0].propId).toBe("prop_movil");
+    expect(evaluateTake(take, catalog, 0.3).props[0].propId).toBe("prop_cafe");
+    expect(evaluateTake(take, catalog, 0.5).props[0].propId).toBe("prop_movil");
+  });
+});

@@ -39,6 +39,8 @@ export interface PropLayout {
   rot: number;
   opacity: number;
   flip: boolean;
+  /** Imagen del otro fotograma (se precarga oculta para que no parpadee). */
+  altSrc?: string;
   bubble?: { cx: number; cy: number; w: number; h: number; tailX: number; tailY: number };
 }
 
@@ -57,7 +59,7 @@ function layoutProp(catalog: Catalog, p: PropState, base: number): PropLayout | 
   if (!prop) return null;
   const w = prop.width * p.scale;
   const h = prop.height * p.scale;
-  return { key: p.key, src: prop.src, left: p.x - w / 2, top: p.y - h, width: w, height: h, z: base + p.zIndex, rot: p.rot, opacity: p.opacity, flip: p.flip, bubble: p.bubble };
+  return { key: p.key, src: prop.src, left: p.x - w / 2, top: p.y - h, width: w, height: h, z: base + p.zIndex, rot: p.rot, opacity: p.opacity, flip: p.flip, bubble: p.bubble, altSrc: p.altPropId ? findProp(catalog, p.altPropId)?.src : undefined };
 }
 
 export function layoutActor(catalog: Catalog, a: ActorState): ActorLayout {

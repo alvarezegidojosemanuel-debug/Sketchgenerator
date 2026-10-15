@@ -647,6 +647,17 @@ function EventEditor({ s, take, ev, voices, t, onTransform, onSwap, onChange, on
                 {Object.entries(LOOP_LABEL).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
               </select>
             </Field>
+            <Field label="Alternar con (2 fotogramas)">
+              <select value={ev.altPropId ?? ""} onChange={(e) => onChange((x) => { if (x.track === "props") x.altPropId = e.target.value || undefined; })}>
+                <option value="">(no)</option>
+                {catalog.props.filter((p) => p.id !== ev.propId).map((p) => <option key={p.id} value={p.id}>{p.label}</option>)}
+              </select>
+            </Field>
+            {ev.altPropId && (
+              <Field label="Cambio cada (s)">
+                <Stepper value={ev.altEvery ?? 0.16} step={0.02} min={0.05} max={2} onChange={(v) => onChange((x) => { if (x.track === "props") x.altEvery = v; })} />
+              </Field>
+            )}
             <Field label="En bocadillo de">
               <select value={ev.bubbleOf ?? ""} onChange={(e) => onChange((x) => { if (x.track === "props") x.bubbleOf = e.target.value || undefined; })}>
                 <option value="">(no: en la escena)</option>

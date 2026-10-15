@@ -48,6 +48,8 @@ export interface PropState {
   rot: number;
   opacity: number;
   flip: boolean;
+  /** Otro fotograma de la animación (para precargarlo). */
+  altPropId?: string;
   /** Bocadillo de pensamiento: el objeto se dibuja centrado en (x, y) dentro de una nube. */
   bubble?: { cx: number; cy: number; w: number; h: number; tailX: number; tailY: number };
 }
@@ -247,9 +249,11 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
       case "props": {
         if (!active) break;
         const a = propAnim(e, t);
+        const frame2 = e.altPropId && Math.floor((t - e.start) / (e.altEvery ?? 0.16)) % 2 === 1;
         props.push({
           key: e.id,
-          propId: e.propId,
+          propId: frame2 ? e.altPropId! : e.propId,
+          altPropId: e.altPropId ? (frame2 ? e.propId : e.altPropId) : undefined,
           layer: e.bubbleOf ? "props-front" : e.layer,
           x: e.x + a.dx,
           y: e.y + a.dy,
