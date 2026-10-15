@@ -67,3 +67,14 @@ export function transformEvents(take: Take, from: PropsEvent, toPropId: string, 
     ],
   };
 }
+
+/** Cambio seco de un objeto por otro en el mismo sitio (p. ej. de teclear a encogerse de hombros). */
+export function swapEvents(from: PropsEvent, toPropId: string, at: number, id: string): { from: PropsEvent; add: PropsEvent } | null {
+  const end = from.start + from.duration;
+  if (at <= from.start + 0.05 || at >= end - 0.05) return null;
+  const r = (n: number) => Math.round(n * 100) / 100;
+  return {
+    from: { ...from, duration: r(at - from.start), exit: undefined },
+    add: { ...from, id, propId: toPropId, start: r(at), duration: r(end - at), enter: undefined },
+  };
+}

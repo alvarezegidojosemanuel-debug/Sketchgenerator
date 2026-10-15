@@ -85,3 +85,14 @@ describe("transformar objeto", () => {
     expect(after).toMatchObject({ x: 300, y: 1700, scale: 1.2 });
   });
 });
+
+describe("cambiar objeto", () => {
+  it("parte el evento en el cursor sin huecos ni transiciones", async () => {
+    const { swapEvents } = await import("@/lib/timeline/desk");
+    const from = { id: "h1", track: "props" as const, propId: "prop_maletin", layer: "props-front" as const, x: 300, y: 1700, start: 1, duration: 5, enter: "fade" as const, exit: "fade" as const };
+    const r2 = swapEvents(from, "prop_cafe", 3, "sw1")!;
+    expect(r2.from).toMatchObject({ start: 1, duration: 2, enter: "fade", exit: undefined });
+    expect(r2.add).toMatchObject({ propId: "prop_cafe", start: 3, duration: 3, x: 300, enter: undefined, exit: "fade" });
+    expect(swapEvents(from, "prop_cafe", 1, "x")).toBeNull();
+  });
+});
