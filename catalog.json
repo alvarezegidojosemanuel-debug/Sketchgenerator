@@ -6061,29 +6061,29 @@
   {
    "id": "prop_jefe_neutro",
    "label": "Jefe humano · de pie, neutro",
-   "width": 374,
+   "width": 357,
    "height": 900,
    "src": "/assets/punetos/props/prop_jefe_neutro.webp"
   },
   {
    "id": "prop_jefe_neutro_boca",
    "label": "Jefe humano · de pie, neutro (boca abierta)",
-   "width": 374,
+   "width": 357,
    "height": 900,
    "src": "/assets/punetos/props/prop_jefe_neutro_boca.webp"
   },
   {
    "id": "prop_jefe_explica",
    "label": "Jefe humano · explicando",
-   "width": 438,
-   "height": 898,
+   "width": 485,
+   "height": 891,
    "src": "/assets/punetos/props/prop_jefe_explica.webp"
   },
   {
    "id": "prop_jefe_explica_boca",
    "label": "Jefe humano · explicando (boca abierta)",
-   "width": 438,
-   "height": 898,
+   "width": 485,
+   "height": 891,
    "src": "/assets/punetos/props/prop_jefe_explica_boca.webp"
   },
   {
