@@ -267,6 +267,10 @@ export function normalizeRaw(input: unknown, catalog: Catalog, warnings: Issue[]
           warnings.push({ path: `${ep}.start`, message: "faltaba; se asume 0" });
         }
         if ((e.track === "mouth") && e.mode === undefined) e.mode = "auto";
+        // Narrador: ChatGPT a veces pone actorUid "narrador" / null en la voz en off.
+        if (e.track === "dialogue" && (e.actorUid === null || (typeof e.actorUid === "string" && /^(narrador|narrator|voz ?en ?off|voiceover|off)$/i.test(e.actorUid) && !actorChars.has(e.actorUid)))) {
+          delete e.actorUid;
+        }
 
         const ch = typeof e.actorUid === "string" ? actorChars.get(e.actorUid) : undefined;
         if (ch && e.track === "body" && e.poseId !== undefined) {

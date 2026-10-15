@@ -65,8 +65,9 @@ export function layoutActor(catalog: Catalog, a: ActorState): ActorLayout {
   if (a.prevPoseId && a.poseMix < 1) {
     // Fundido sin transparencia en el centro: cada pose se mantiene opaca la mitad del fundido.
     main.opacity = Math.min(1, 2 * a.poseMix);
-    main.ghost = { ...layoutActorPose(catalog, { ...a, poseId: a.prevPoseId, prevPoseId: undefined }), opacity: Math.min(1, 2 * (1 - a.poseMix)) };
+    main.ghost = { ...layoutActorPose(catalog, { ...a, poseId: a.prevPoseId, prevPoseId: undefined }), opacity: Math.min(1, 2 * (1 - a.poseMix)) * a.visible };
   }
+  main.opacity *= a.visible;
   return main;
 }
 
@@ -82,7 +83,7 @@ function layoutActorPose(catalog: Catalog, a: ActorState): ActorLayout {
     pose,
     left: a.x + a.offX - pw / 2,
     top: a.y + a.offY - ph,
-    scale: a.scale * (pose?.displayScale ?? 1),
+    scale: a.scale * (pose?.displayScale ?? 1) * a.presenceScale,
     flip: a.flip,
     speaking: a.speaking,
     opacity: 1,
@@ -107,12 +108,15 @@ function layoutActorPose(catalog: Catalog, a: ActorState): ActorLayout {
   };
 }
 
-export function layoutFrame(catalog: Catalog, frame: FrameState): StageLayout {
+/** showHidden: en edición, los actores fuera de escena se ven como fantasmas para poder colocarlos. */
+export function layoutFrame(catalog: Catalog, frame: FrameState, opts: { showHidden?: boolean } = {}): StageLayout {
   return {
     screen: frame.screen,
     background: frame.backgroundId ? findBackground(catalog, frame.backgroundId)?.src : undefined,
     propsBack: frame.props.filter((p) => p.layer === "props-back").map((p) => layoutProp(catalog, p, Z.propsBack)).filter((x): x is PropLayout => !!x),
-    actors: frame.actors.map((a) => layoutActor(catalog, a)),
+    actors: frame.actors
+      .filter((a) => a.visible > 0 || opts.showHidden)
+      .map((a) => layoutActor(catalog, opts.showHidden ? { ...a, visible: Math.max(0.25, a.visible), presenceScale: a.visible > 0 ? a.presenceScale : 1 } : a)),
     propsFront: frame.props.filter((p) => p.layer === "props-front").map((p) => layoutProp(catalog, p, Z.propsFront)).filter((x): x is PropLayout => !!x),
   };
 }

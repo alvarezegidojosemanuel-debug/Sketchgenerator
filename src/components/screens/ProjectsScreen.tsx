@@ -99,6 +99,9 @@ export function ProjectsScreen({ s }: { s: PocketState }) {
           <button type="button" className="btn btn-ghost" onClick={() => { s.replaceProject(demoProject("interacciones"), "demo"); s.setTab("ver"); }}>
             Demo: interacciones (móvil, alarma, bocadillo)
           </button>
+          <button type="button" className="btn btn-ghost" onClick={() => { s.replaceProject(demoProject("pantallazo"), "demo"); s.setTab("ver"); }}>
+            Demo: El Pantallazo Cero (narrador, escritorio, transformación)
+          </button>
         </div>
       </Card>
     </div>

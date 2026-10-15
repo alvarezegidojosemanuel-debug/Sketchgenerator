@@ -208,7 +208,7 @@ export class Player {
           const key = `${s.index}:${e.id}`;
           // Se registra ANTES de lanzar la voz: un motor que empieza al instante (audio ya generado)
           // llama a speechStarted dentro de onDialogue.
-          this.pending.set(key, { actorUid: e.actorUid, endGlobal: g + e.duration, firedAt: this.clock.now(), startedAt: null, done: false });
+          this.pending.set(key, { actorUid: e.actorUid ?? "", endGlobal: g + e.duration, firedAt: this.clock.now(), startedAt: null, done: false });
           if (!this.cb.onDialogue(e, s.index, key)) this.pending.delete(key);
         }
       }

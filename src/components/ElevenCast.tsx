@@ -1,5 +1,7 @@
 "use client";
 
+import { castIds, NARRATOR_ID } from "@/lib/voice/catalog";
+
 import { useEffect, useState } from "react";
 import { findCharacter } from "@/lib/catalog";
 import {
@@ -35,7 +37,7 @@ export function ElevenCast({ s, model, onModel, code, onCode }: Props) {
   const [voices, setVoices] = useState<ElevenVoice[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [draftCode, setDraftCode] = useState(code);
-  const chars = [...new Set(project.takes.flatMap((t) => t.actors.map((a) => a.characterId)))];
+  const chars = castIds(project);
   const cast = project.metadata.elevenVoices ?? {};
 
   useEffect(() => {
@@ -125,7 +127,7 @@ export function ElevenCast({ s, model, onModel, code, onCode }: Props) {
           return (
             <div key={cid} className="cast-row">
               <div className="cast-head">
-                <b>{findCharacter(catalog, cid)?.name ?? cid}</b>
+                <b>{cid === NARRATOR_ID ? "Narrador (voz en off)" : findCharacter(catalog, cid)?.name ?? cid}</b>
                 <button type="button" className="btn btn-small btn-secondary" disabled={!v?.preview} onClick={() => playVoicePreview(v?.preview ?? "")}>
                   ▶ Muestra (gratis)
                 </button>

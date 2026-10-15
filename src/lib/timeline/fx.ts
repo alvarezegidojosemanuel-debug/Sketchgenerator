@@ -83,6 +83,7 @@ export function bodyFx(e: BodyEvent, t: number): { dx: number; dy: number } {
   const local = t - e.start;
   if (!e.fx || local < 0 || local > e.duration) return { dx: 0, dy: 0 };
   if (e.fx === "shake") return { dx: Math.sin(local * 60) * 9, dy: 0 };
+  if (e.fx === "type") return { dx: Math.sin(local * 9) * 2, dy: -Math.abs(Math.sin(local * 16)) * 5 };
   const p = local / e.duration;
   return { dx: 0, dy: -Math.sin(Math.PI * p) * 140 };
 }
@@ -91,6 +92,27 @@ export interface ScreenFx {
   flash?: { color: string; alpha: number };
   shake?: { dx: number; dy: number };
   darken?: number;
+  /** Pantallazo azul a pantalla completa con texto. */
+  bluescreen?: { alpha: number; text: string };
+}
+
+export type Presence = NonNullable<BodyEvent["appear"]>;
+/** Duración de una entrada / salida de escena (s). */
+export const PRESENCE_TIME = 0.4;
+
+/** Opacidad y escala de un actor que entra (p: 0→1) o sale (p: 1→0) de escena. */
+export function presence(kind: Presence, p: number): { opacity: number; scale: number } {
+  p = clamp01(p);
+  switch (kind) {
+    case "pop":
+      return { opacity: clamp01(p * 3), scale: Math.max(0.01, easeOutBack(p)) };
+    case "fade":
+      return { opacity: p, scale: 1 };
+    case "flash":
+      return { opacity: clamp01(p * 2), scale: 1 + (1 - p) * 0.15 };
+    default:
+      return { opacity: p >= 1 ? 1 : p > 0 ? 1 : 0, scale: 1 };
+  }
 }
 
 export function screenFx(e: ScreenEvent, t: number, acc: ScreenFx) {
@@ -106,6 +128,9 @@ export function screenFx(e: ScreenEvent, t: number, acc: ScreenFx) {
       break;
     case "darken":
       acc.darken = 0.55 * edge;
+      break;
+    case "bluescreen":
+      acc.bluescreen = { alpha: clamp01(Math.min(local, e.duration - local) / 0.08), text: e.text ?? "Tu equipo se ha puñetizado." };
       break;
   }
 }

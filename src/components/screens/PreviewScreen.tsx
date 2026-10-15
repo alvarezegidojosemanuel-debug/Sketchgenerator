@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { projectSchedule } from "@/lib/timeline/evaluate";
 import { ttsSupported } from "@/lib/tts";
-import { attributionsFor } from "@/lib/voice/catalog";
+import { attributionsFor, castIds, speakerCharacterId } from "@/lib/voice/catalog";
 import { clipKey, fitProjectToAudio } from "@/lib/voice/fit";
 import { generateLines, unlockAudio, type Clip, type Progress } from "@/lib/voice/piper";
 import { accessCode, elevenModel, generateElevenLines, type ElevenModel } from "@/lib/voice/elevenlabs";
@@ -57,8 +57,8 @@ export function PreviewScreen({ s }: { s: PocketState }) {
         t.events
           .filter((e) => e.track === "dialogue")
           .map((e) => {
-            const d = e as { id: string; text: string; actorUid: string; voice?: { rate?: number } };
-            return { key: clipKey(t.id, d.id), text: d.text, characterId: t.actors.find((a) => a.uid === d.actorUid)?.characterId ?? "", rate: d.voice?.rate };
+            const d = e as { id: string; text: string; actorUid?: string; voice?: { rate?: number } };
+            return { key: clipKey(t.id, d.id), text: d.text, characterId: speakerCharacterId(t, d.actorUid), rate: d.voice?.rate };
           }),
       ),
     [project],
@@ -110,7 +110,7 @@ export function PreviewScreen({ s }: { s: PocketState }) {
     setFitMsg(changed ? `${changed} diálogo(s) ajustados a su voz; lo que venía detrás se ha desplazado.` : "Los diálogos ya coinciden con sus voces.");
   };
 
-  const credits = attributionsFor(project.metadata.voices ?? {}, [...new Set(project.takes.flatMap((t) => t.actors.map((a) => a.characterId)))]);
+  const credits = attributionsFor(project.metadata.voices ?? {}, castIds(project));
 
   return (
     <div className="screen screen-stage">

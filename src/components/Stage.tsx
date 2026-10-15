@@ -34,7 +34,7 @@ export function Stage({ catalog, frame, showSubtitles = true, selectedUid, onSel
     return () => ro.disconnect();
   }, []);
 
-  const layout = layoutFrame(catalog, frame);
+  const layout = layoutFrame(catalog, frame, { showHidden: !!onMoveActor });
   const actorState = new Map(frame.actors.map((a) => [a.uid, a]));
 
   const onPointerDown = (uid: string) => (e: React.PointerEvent) => {
@@ -109,6 +109,7 @@ export function Stage({ catalog, frame, showSubtitles = true, selectedUid, onSel
           {layout.screen.flash ? (
             <div className="layer" style={{ left: 0, top: 0, width: W, height: H, zIndex: 8001, background: layout.screen.flash.color, opacity: layout.screen.flash.alpha }} />
           ) : null}
+          {layout.screen.bluescreen ? <BlueScreen b={layout.screen.bluescreen} /> : null}
           {showSubtitles && frame.subtitles.length > 0 && (
             <div className="subtitles">
               {frame.subtitles.map((s) => (
@@ -120,6 +121,17 @@ export function Stage({ catalog, frame, showSubtitles = true, selectedUid, onSel
           )}
         </div>
       </div>
+    </div>
+  );
+}
+
+/** Pantallazo azul a pantalla completa (estilo error de sistema). */
+function BlueScreen({ b }: { b: { alpha: number; text: string } }) {
+  return (
+    <div className="layer bluescreen" style={{ left: 0, top: 0, width: W, height: H, zIndex: 8500, opacity: b.alpha }}>
+      <div className="bluescreen-face">:(</div>
+      <p className="bluescreen-text">{b.text}</p>
+      <p className="bluescreen-small">Se ha producido un error y hemos tenido que reiniciar a los empleados.<br />Código de detención: PUÑETIZACIÓN_IRREVERSIBLE</p>
     </div>
   );
 }

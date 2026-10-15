@@ -14,12 +14,14 @@ describe("sonidos sintetizados", () => {
       const x = synthSamples(s.src.replace("synth:", ""))!;
       expect(x.length).toBeGreaterThan(1000);
       let peak = 0;
-      for (const v of x) {
-        expect(Number.isFinite(v)).toBe(true);
-        peak = Math.max(peak, Math.abs(v));
+      let finite = true;
+      for (let i = 0; i < x.length; i++) {
+        if (!Number.isFinite(x[i])) finite = false;
+        else if (Math.abs(x[i]) > peak) peak = Math.abs(x[i]);
       }
+      expect(finite, s.id).toBe(true);
       expect(peak).toBeGreaterThan(0.05);
-      expect(peak).toBeLessThanOrEqual(1);
+      expect(peak, s.id).toBeLessThanOrEqual(1);
     }
   });
 });

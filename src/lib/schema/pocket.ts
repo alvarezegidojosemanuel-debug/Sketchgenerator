@@ -60,7 +60,8 @@ const eventBase = {
 export const DialogueEvent = z.object({
   ...eventBase,
   track: z.literal("dialogue"),
-  actorUid: id,
+  /** Sin actorUid = narrador (voz en off, sin personaje en escena). */
+  actorUid: id.optional(),
   text: z.string().min(1).max(LIMITS.maxTextLength),
   voice: VoiceSettings.optional(),
 });
@@ -77,8 +78,11 @@ export const BodyEvent = z.object({
   scale: scale.optional(),
   flip: z.boolean().optional(),
   ease: z.enum(["linear", "inOut", "instant"]).optional(),
-  /** Efecto corporal durante el evento: temblar o saltar. */
-  fx: z.enum(["shake", "jump"]).optional(),
+  /** Efecto corporal durante el evento: temblar, saltar o teclear. */
+  fx: z.enum(["shake", "jump", "type"]).optional(),
+  /** Entrar en escena (aparece) o salir (desaparece) al inicio del evento. */
+  appear: z.enum(["cut", "fade", "pop", "flash"]).optional(),
+  disappear: z.enum(["cut", "fade", "pop", "flash"]).optional(),
 });
 
 export const FaceEvent = z.object({
@@ -144,9 +148,10 @@ export const SfxEvent = z.object({
 export const ScreenEvent = z.object({
   ...eventBase,
   track: z.literal("screen"),
-  /** flash = destello de color (alarma), shake = temblor de cámara, darken = oscurecer. */
-  effect: z.enum(["flash", "shake", "darken"]),
+  /** flash = destello de color (alarma), shake = temblor de cámara, darken = oscurecer, bluescreen = pantallazo azul con texto. */
+  effect: z.enum(["flash", "shake", "darken", "bluescreen"]),
   color: z.string().regex(/^#[0-9a-fA-F]{6}$/).optional(),
+  text: z.string().max(120).optional(),
   actorUid: id.optional(),
 });
 
@@ -171,6 +176,8 @@ export const Actor = z.object({
   zIndex: zIndex.default(0),
   flip: z.boolean().optional(),
   expressionId: id.optional(),
+  /** Empieza fuera de escena (invisible) hasta un evento body con "appear". */
+  hidden: z.boolean().optional(),
 });
 
 export const Take = z.object({

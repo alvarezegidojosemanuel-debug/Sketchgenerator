@@ -45,7 +45,24 @@ export const DEFAULT_CAST: Record<string, CastEntry> = {
   sister: { voiceId: "es_ES-sharvard-medium", speaker: 1, pitch: 1.04, speed: 1.02 },
   barbas: { voiceId: "es_ES-davefx-medium", pitch: 0.86, speed: 0.95 },
   jefe: { voiceId: "es_ES-sharvard-medium", speaker: 0, pitch: 0.88, speed: 0.95 },
+  narrador: { voiceId: "es_ES-davefx-medium", pitch: 0.94, speed: 0.92 },
 };
+
+/** Clave de reparto del narrador (diálogos sin actorUid). */
+export const NARRATOR_ID = "narrador";
+
+/** Personajes que necesitan voz en el proyecto (+ narrador si hay voz en off). */
+export function castIds(project: { takes: { actors: { characterId: string }[]; events: { track: string; actorUid?: string }[] }[] }): string[] {
+  const ids = [...new Set(project.takes.flatMap((t) => t.actors.map((a) => a.characterId)))];
+  if (project.takes.some((t) => t.events.some((e) => e.track === "dialogue" && !e.actorUid))) ids.push(NARRATOR_ID);
+  return ids;
+}
+
+/** characterId de la voz que dice un diálogo. */
+export function speakerCharacterId(take: { actors: { uid: string; characterId: string }[] }, actorUid: string | undefined): string {
+  if (!actorUid) return NARRATOR_ID;
+  return take.actors.find((a) => a.uid === actorUid)?.characterId ?? "";
+}
 
 export function findPiperVoice(id: string): PiperVoice | undefined {
   return PIPER_VOICES.find((v) => v.id === id);

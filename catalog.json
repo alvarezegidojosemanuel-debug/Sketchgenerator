@@ -5934,6 +5934,14 @@
    "height": 170,
    "src": "/assets/placeholder/props/prop_maletin.svg",
    "placeholder": true
+  },
+  {
+   "id": "prop_escritorio",
+   "label": "Escritorio con ordenador",
+   "width": 720,
+   "height": 540,
+   "src": "/assets/placeholder/props/prop_escritorio.svg",
+   "placeholder": true
   }
  ]
 }

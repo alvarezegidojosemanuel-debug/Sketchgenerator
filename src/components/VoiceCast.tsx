@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { findCharacter } from "@/lib/catalog";
-import { castFor, findPiperVoice, PIPER_VOICES, type CastEntry } from "@/lib/voice/catalog";
+import { castFor, castIds, findPiperVoice, NARRATOR_ID, speakerCharacterId, PIPER_VOICES, type CastEntry } from "@/lib/voice/catalog";
 import { previewVoice, type Progress } from "@/lib/voice/piper";
 import type { PocketState } from "./usePocket";
 import { Card, Field, Stepper } from "./ui";
@@ -13,7 +13,7 @@ export function VoiceCast({ s }: { s: PocketState }) {
   const [busy, setBusy] = useState<string | null>(null);
   const [progress, setProgress] = useState<Progress | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const chars = [...new Set(project.takes.flatMap((t) => t.actors.map((a) => a.characterId)))];
+  const chars = castIds(project);
   const cast = project.metadata.voices;
 
   const set = (cid: string, patch: Partial<CastEntry>) =>
@@ -23,7 +23,7 @@ export function VoiceCast({ s }: { s: PocketState }) {
     });
 
   const sampleLine = (cid: string) =>
-    project.takes.flatMap((t) => t.events.filter((e) => e.track === "dialogue" && t.actors.find((a) => a.uid === e.actorUid)?.characterId === cid)).map((e) => (e as { text: string }).text)[0] ??
+    project.takes.flatMap((t) => t.events.filter((e) => e.track === "dialogue" && speakerCharacterId(t, e.actorUid) === cid)).map((e) => (e as { text: string }).text)[0] ??
     "Hola, soy yo. ¿Qué tal suena mi voz?";
 
   const test = async (cid: string) => {
@@ -48,7 +48,7 @@ export function VoiceCast({ s }: { s: PocketState }) {
         return (
           <div key={cid} className="cast-row">
             <div className="cast-head">
-              <b>{findCharacter(catalog, cid)?.name ?? cid}</b>
+              <b>{cid === NARRATOR_ID ? "Narrador (voz en off)" : findCharacter(catalog, cid)?.name ?? cid}</b>
               <button type="button" className="btn btn-small btn-secondary" disabled={busy !== null} onClick={() => test(cid)}>
                 {busy === cid ? "…" : "▶ Probar"}
               </button>

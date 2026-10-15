@@ -143,12 +143,13 @@ Emociones genéricas: ${[...catalog.emotions].sort().join(", ")}
   "takes": [ {
     "id": string único, "name": string, "duration": segundos (>0, máx ${LIMITS.maxTakeDuration}),
     "backgroundId": ID de fondo o null,
-    "actors": [ { "uid": string único en la toma, "characterId", "poseId" (del mismo personaje), "x": 0-1080 (centro), "y": 0-1920 (pies; suelo ≈ 1780), "scale": 0.7-1.2, "zIndex": entero, "flip": boolean opcional (espejo), "expressionId" inicial } ],
-    "events": [ { "id": string único, "track": ..., "actorUid": uid de un actor de ESTA toma, "start": >= 0, "duration": > 0, ...campos del tipo } ]
+    "actors": [ { "uid": string único en la toma, "characterId", "poseId" (del mismo personaje), "x": 0-1080 (centro), "y": 0-1920 (pies; suelo ≈ 1780), "scale": 0.7-1.2, "zIndex": entero, "flip": boolean opcional (espejo), "expressionId" inicial, "hidden": true opcional (empieza fuera de escena) } ],
+    "events": [ { "id": string único, "track": ..., "actorUid": uid de un actor de ESTA toma (en "dialogue" se omite para el NARRADOR), "start": >= 0, "duration": > 0, ...campos del tipo } ]
   } ]
 }
 Tipos de evento (campo "track"):
 - "dialogue": "text" (máx ${LIMITS.maxTextLength} caracteres; frases cortas), "voice" opcional { "rate": 0.5-2, "pitch": 0-2 }. Puedes añadir UNA acotación de voz entre corchetes y en inglés al principio de la frase para dar intención: [laughs], [sighs], [whispers], [shouts], [excited], [sarcastic], [nervous], [angry], [crying]. Ej.: "[sighs] Otra vez lunes."
+    Sin "actorUid" = NARRADOR (voz en off de documental, nadie mueve la boca). Úsalo con moderación: intros, saltos de tiempo, remates.
 - "body": "poseId" opcional (pose del mismo personaje), "x"/"y"/"scale" opcionales (destino del movimiento), "ease": "linear" | "inOut" | "instant".
 - "face": "expressionId" (expresión DEL MISMO personaje; cambia cejas, ojos y boca a la vez y se mantiene hasta el siguiente "face").
 - "eyes": "gazeX", "gazeY" entre -1 y 1 (mirada: -1 izquierda/arriba, 1 derecha/abajo).
@@ -159,12 +160,16 @@ Tipos de evento (campo "track"):
     Para que un personaje "sostenga" un objeto: ponlo delante ("props-front") a la altura de su mano (x ±120 del actor, y ≈ actor.y − 300×scale).
 - "sfx": sonido. "soundId", "volume" 0–1 opcional; "duration" ≈ la del sonido. Añade sonidos en los momentos clave (teléfono, alarma, golpe, aparición…).
 - "screen": efecto de pantalla. "effect": "flash" (destello de color; "color": "#ff2a2a") | "shake" (temblor de cámara) | "darken" (oscurecer); sin actorUid.
-- En "body" puedes añadir "fx": "jump" (salto de susto) | "shake" (temblar) durante el evento.
+- "screen" también admite "effect": "bluescreen" + "text" (pantallazo azul a pantalla completa, como un error del sistema; máx. 120 caracteres).
+- En "body" puedes añadir "fx": "jump" (salto de susto) | "shake" (temblar) | "type" (teclear en el ordenador) durante el evento.
+- En "body", "appear": "fade" | "pop" | "flash" | "cut" hace ENTRAR en escena a un actor con "hidden": true; "disappear" (mismos valores) lo hace salir.
 
 Recetas (combínalas con diálogos y reacciones):
 - Teléfono que suena: props(móvil, "loop":"shake") + sfx(sfx_telefono) a la vez; luego el personaje reacciona (face sorpresa, body fx "jump").
 - Alarma: screen("flash", "#ff2a2a") + sfx(sfx_alarma) + body fx "shake" en quien se asusta.
 - Algo imaginario (p. ej. dragones de Usu): props con "bubbleOf":"<uid de Usu>", "enter":"pop", "loop":"float" + sfx(sfx_pop) al aparecer.
+- Trabajando en su escritorio: si hay un objeto escritorio en el catálogo, ponlo en "props-front" con x = actor.x − 60, y = actor.y + 12 y "scale" para que mida ≈ 0,9 × la altura del personaje (≈ 600 px × su scale); tapa de la cintura para abajo y la cara sigue visible. Teclear: body fx "type" + sfx(sfx_teclado).
+- Transformación (humano → puñeto): imagen del humano como objeto en la posición del actor (mismo x, y = actor.y) con "exit": "fade"; el actor con "hidden": true; a la vez screen("bluescreen") + sfx(sfx_pantallazo); al terminar el pantallazo, body "appear": "flash".
 - Idea brillante: sfx(sfx_ding) + face alegría. Fracaso / remate: sfx(sfx_fracaso) + face tristeza. Golpe: screen "shake" + sfx(sfx_golpe).
 
 ## Reglas estrictas

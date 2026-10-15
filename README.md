@@ -128,6 +128,11 @@ La pantalla Ver muestra el texto de crédito que hay que poner en la publicació
   - `body.fx`: `jump`, `shake`.
 - Si ChatGPT echa en falta un recurso, lo pone en `metadata.wishlist` y aparece en Recursos como «Este sketch pediría…».
 - Demo: Proyectos → «Demo: interacciones».
+- **Narrador (voz en off):** un diálogo sin personaje («🎙️ Narrador» en el editor, o sin `actorUid` en el JSON). Tiene su propia voz en el reparto.
+- **Entrar / salir de escena:** marca el personaje como «Empieza fuera de escena» (`hidden: true`) y hazlo entrar con un evento de cuerpo `appear` (`fade`, `pop`, `flash`, `cut`); `disappear` lo hace salir.
+- **Escritorio:** en Editar → personaje → «🪑 Sentar en escritorio» coloca el escritorio delante, a su escala (tapa de la cintura para abajo; cara y boca siguen a la vista). «⌨️ Teclear aquí» añade el gesto `fx: "type"` + `sfx_teclado`.
+- **Pantallazo azul:** `screen` con `effect: "bluescreen"` y `text`. Sonido `sfx_pantallazo`.
+- **Transformación humano → puñeto:** imagen del humano como objeto en la posición del actor con `exit: "fade"`, pantallazo + sonido y el actor entrando con `appear: "flash"`. Demo: «El Pantallazo Cero».
 
 ## Contrato JSON `pocket-1` (formato definitivo del generador)
 

@@ -6,6 +6,7 @@ import type { FaceOverrides } from "@/lib/catalog/types";
 import demoRaw from "@/data/sketch-demo.json";
 import demoUsuReyRaw from "@/data/sketch-usu-reynaldo.json";
 import demoFxRaw from "@/data/sketch-interacciones.json";
+import demoBsodRaw from "@/data/sketch-pantallazo.json";
 import type { PocketProject } from "@/lib/schema/pocket";
 import { validateProject, type Issue } from "@/lib/schema/validate";
 import { faceStore, libraryStore, newProjectId, projectStore, type LibraryItem } from "@/lib/storage/projects";
@@ -21,6 +22,7 @@ export const DEMOS = {
   "usu-reynaldo": demoUsuReyRaw,
   "usu-jefe": demoRaw,
   interacciones: demoFxRaw,
+  pantallazo: demoBsodRaw,
 } as const;
 
 export function demoProject(which: keyof typeof DEMOS = "usu-jefe"): PocketProject {

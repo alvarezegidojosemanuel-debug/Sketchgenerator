@@ -271,3 +271,8 @@ textarea.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; fon
 .tl-bar.track-screen { background: #f87171; }
 .track-sfx { border-left-color: #22d3ee; }
 .track-screen { border-left-color: #f87171; }
+
+.bluescreen { background: #1565d8; color: #fff; padding: 360px 90px 0; box-sizing: border-box; font-family: "Segoe UI", system-ui, sans-serif; pointer-events: none; }
+.bluescreen-face { font-size: 260px; line-height: 1; margin-bottom: 70px; }
+.bluescreen-text { font-size: 72px; line-height: 1.2; margin: 0 0 60px; }
+.bluescreen-small { font-size: 36px; line-height: 1.4; opacity: .85; margin: 0; }

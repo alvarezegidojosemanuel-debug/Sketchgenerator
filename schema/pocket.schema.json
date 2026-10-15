@@ -245,6 +245,9 @@
                   "minLength": 1,
                   "maxLength": 80,
                   "pattern": "^[A-Za-z0-9_.:-]+$"
+                },
+                "hidden": {
+                  "type": "boolean"
                 }
               },
               "required": [
@@ -318,7 +321,6 @@
                     "start",
                     "duration",
                     "track",
-                    "actorUid",
                     "text"
                   ]
                 },
@@ -385,7 +387,26 @@
                       "type": "string",
                       "enum": [
                         "shake",
-                        "jump"
+                        "jump",
+                        "type"
+                      ]
+                    },
+                    "appear": {
+                      "type": "string",
+                      "enum": [
+                        "cut",
+                        "fade",
+                        "pop",
+                        "flash"
+                      ]
+                    },
+                    "disappear": {
+                      "type": "string",
+                      "enum": [
+                        "cut",
+                        "fade",
+                        "pop",
+                        "flash"
                       ]
                     }
                   },
@@ -743,12 +764,17 @@
                       "enum": [
                         "flash",
                         "shake",
-                        "darken"
+                        "darken",
+                        "bluescreen"
                       ]
                     },
                     "color": {
                       "type": "string",
                       "pattern": "^#[0-9a-fA-F]{6}$"
+                    },
+                    "text": {
+                      "type": "string",
+                      "maxLength": 120
                     },
                     "actorUid": {
                       "type": "string",

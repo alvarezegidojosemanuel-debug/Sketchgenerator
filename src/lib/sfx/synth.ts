@@ -137,6 +137,52 @@ const fracaso: Gen = () => {
   return out;
 };
 
+/** Generador pseudoaleatorio determinista (mismo sonido siempre). */
+function rng(seed: number) {
+  return () => {
+    seed = (seed * 1664525 + 1013904223) >>> 0;
+    return seed / 4294967296;
+  };
+}
+
+/** Tecleo: clics de teclas a ritmo irregular, con alguna barra espaciadora. */
+const teclado: Gen = () => {
+  const n = len(3);
+  const out = new Float32Array(n);
+  const r = rng(7);
+  let t = 0.03;
+  while (t < 2.9) {
+    const big = r() < 0.12;
+    const i0 = len(t);
+    const m = len(big ? 0.045 : 0.025);
+    const f = big ? 900 : 2200 + r() * 1800;
+    const amp = (big ? 0.5 : 0.32) * (0.7 + r() * 0.3);
+    for (let i = 0; i < m && i0 + i < n; i++) {
+      const p = i / m;
+      out[i0 + i] += amp * ((r() * 2 - 1) * 0.6 + 0.4 * Math.sin((2 * Math.PI * f * i) / SR)) * Math.pow(1 - p, 3);
+    }
+    t += 0.06 + r() * 0.12 + (r() < 0.08 ? 0.3 : 0);
+  }
+  return out;
+};
+
+/** Pantallazo: chispazo eléctrico + apagón descendente. */
+const pantallazo: Gen = () => {
+  const n = len(2.2);
+  const out = new Float32Array(n);
+  const r = rng(11);
+  let ph = 0;
+  for (let i = 0; i < n; i++) {
+    const t = i / SR;
+    const spark = t < 0.35 ? (r() * 2 - 1) * (Math.floor(t * 40) % 2 ? 0.5 : 0.15) * (1 - t / 0.35) : 0;
+    const f = 180 * Math.pow(0.25, t / 2.2) + 30;
+    ph += (2 * Math.PI * f) / SR;
+    const saw = 2 * ((ph / (2 * Math.PI)) % 1) - 1;
+    out[i] = spark + 0.3 * saw * Math.min(1, t / 0.02) * (1 - t / 2.2);
+  }
+  return out;
+};
+
 const GENERATORS: Record<string, { label: string; gen: Gen }> = {
   telefono: { label: "Teléfono sonando", gen: telefono },
   alarma: { label: "Alarma / sirena", gen: alarma },
@@ -146,6 +192,8 @@ const GENERATORS: Record<string, { label: string; gen: Gen }> = {
   boing: { label: "Boing", gen: boing },
   golpe: { label: "Golpe", gen: golpe },
   fracaso: { label: "Tachán triste (fracaso)", gen: fracaso },
+  teclado: { label: "Tecleo en el ordenador", gen: teclado },
+  pantallazo: { label: "Pantallazo (chispazo y apagón)", gen: pantallazo },
 };
 
 const cache = new Map<string, Float32Array>();

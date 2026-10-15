@@ -13,6 +13,7 @@ import { Stage } from "../Stage";
 import { HeadPreview } from "../HeadPreview";
 import { TimelineLanes } from "../TimelineLanes";
 import { arrangeTake } from "@/lib/timeline/arrange";
+import { deskFor, guessDesk, typingEvents } from "@/lib/timeline/desk";
 import type { Catalog } from "@/lib/catalog/types";
 import type { PocketState } from "../usePocket";
 import { Card, Field, IssueList, Stepper } from "../ui";
@@ -61,6 +62,8 @@ export function EditScreen({ s }: { s: PocketState }) {
     });
 
   const selectedEvent = take.events.find((e) => e.id === selEvent);
+  const [deskPick, setDeskId] = useState<string | null>(null);
+  const deskId = deskPick && catalog.props.some((p) => p.id === deskPick) ? deskPick : guessDesk(catalog)?.id ?? catalog.props[0]?.id ?? "";
 
   /** Arrastre: si hay un evento body seleccionado edita su destino; si no, la posición base del actor. */
   const onMoveActor = (uid: string, x: number, y: number) => {
@@ -328,6 +331,40 @@ export function EditScreen({ s }: { s: PocketState }) {
             </button>
             <div className="row">
               <label className="switch"><input type="checkbox" checked={!!selA.flip} onChange={(e) => editActor(selA.uid, (a) => { a.flip = e.target.checked || undefined; })} /><span>Mirar a la izquierda (espejo)</span></label>
+              <label className="switch"><input type="checkbox" checked={!!selA.hidden} onChange={(e) => editActor(selA.uid, (a) => { a.hidden = e.target.checked || undefined; })} /><span>Empieza fuera de escena (entra con un evento de cuerpo)</span></label>
+            </div>
+            <div className="row">
+              <select className="chip-select" value={deskId} onChange={(e) => setDeskId(e.target.value)} aria-label="Objeto escritorio">
+                {catalog.props.map((p) => <option key={p.id} value={p.id}>{p.label}</option>)}
+              </select>
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => {
+                  const ev = deskFor(catalog, take, selA, deskId, uniqueId(take, "desk"));
+                  if (!ev) return;
+                  editTake((tk) => {
+                    tk.events = tk.events.filter((e) => !(e.track === "props" && e.actorUid === selA.uid && e.propId === deskId));
+                    tk.events.push(ev);
+                  });
+                  setSelEvent(ev.id);
+                }}
+              >
+                🪑 Sentar en escritorio
+              </button>
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => {
+                  const start = r1(Math.min(t, Math.max(0, take.duration - 0.5)));
+                  const a = uniqueId(take, "type");
+                  const evs = typingEvents(selA, start, r1(Math.max(0.5, Math.min(3, take.duration - start))), [a, a + "_sfx"]);
+                  editTake((tk) => tk.events.push(...evs));
+                  setSelEvent(a);
+                }}
+              >
+                ⌨️ Teclear aquí
+              </button>
               <button
                 type="button"
                 className="btn btn-danger"
@@ -353,12 +390,19 @@ export function EditScreen({ s }: { s: PocketState }) {
 
 const LOOP_LABEL: Record<string, string> = { none: "Quieto", shake: "Vibrar", pulse: "Latir", blink: "Parpadear", float: "Flotar", spin: "Girar" };
 const ENTER_LABEL: Record<string, string> = { none: "De golpe", pop: "Pop", fade: "Fundido", slide: "Deslizar" };
-const SCREEN_LABEL: Record<string, string> = { flash: "Destello", shake: "Temblor", darken: "Oscurecer" };
+const SCREEN_LABEL: Record<string, string> = { flash: "Destello", shake: "Temblor", darken: "Oscurecer", bluescreen: "Pantallazo azul" };
+const FX_LABEL: Record<string, string> = { jump: "Saltar (susto)", shake: "Temblar", type: "Teclear" };
+const PRESENCE_LABEL: Record<string, string> = { fade: "fundido", pop: "pop", flash: "destello", cut: "de golpe" };
 
 function summary(e: PocketEvent, s: PocketState): string {
   switch (e.track) {
-    case "dialogue": return `“${e.text}”`;
-    case "body": return [e.poseId ? s.catalog.characters.flatMap((c) => c.poses).find((p) => p.id === e.poseId)?.label : undefined, e.x !== undefined ? `→ ${Math.round(e.x)},${Math.round(e.y ?? 0)}` : ""].filter(Boolean).join(" ");
+    case "dialogue": return `${e.actorUid ? "" : "🎙️ "}“${e.text}”`;
+    case "body": return [
+      e.appear ? `▶ entra (${PRESENCE_LABEL[e.appear]})` : e.disappear ? `⏏ sale (${PRESENCE_LABEL[e.disappear]})` : "",
+      e.poseId ? s.catalog.characters.flatMap((c) => c.poses).find((p) => p.id === e.poseId)?.label : undefined,
+      e.x !== undefined ? `→ ${Math.round(e.x)},${Math.round(e.y ?? 0)}` : "",
+      e.fx ? FX_LABEL[e.fx] : "",
+    ].filter(Boolean).join(" ");
     case "face": return s.catalog.characters.flatMap((c) => c.expressions).find((x) => x.id === e.expressionId)?.label ?? e.expressionId ?? "";
     case "eyes": return `mirada ${e.gazeX.toFixed(1)}, ${e.gazeY.toFixed(1)}`;
     case "mouth": return e.mode;
@@ -380,10 +424,20 @@ function EventEditor({ s, take, ev, voices, onChange, onDelete }: { s: PocketSta
         <Field label="Inicio (s)"><Stepper value={ev.start} step={0.1} min={0} max={maxStart} onChange={(v) => onChange((e) => { e.start = v; })} /></Field>
         <Field label="Duración (s)"><Stepper value={ev.duration} step={0.1} min={0.1} max={LIMITS.maxTakeDuration} onChange={(v) => onChange((e) => { e.duration = v; })} /></Field>
       </div>
-      {ev.actorUid !== undefined && ev.track !== "props" && (
-        <Field label="Personaje">
-          <select value={ev.actorUid} onChange={(e) => onChange((x) => { (x as { actorUid: string }).actorUid = e.target.value; })}>
+      {(ev.actorUid !== undefined || ev.track === "dialogue") && ev.track !== "props" && (
+        <Field label={ev.track === "dialogue" ? "Quién habla" : "Personaje"}>
+          <select
+            value={ev.actorUid ?? ""}
+            onChange={(e) =>
+              onChange((x) => {
+                const o = x as { actorUid?: string };
+                if (e.target.value) o.actorUid = e.target.value;
+                else delete o.actorUid;
+              })
+            }
+          >
             {take.actors.map((a) => <option key={a.uid} value={a.uid}>{findCharacter(catalog, a.characterId)?.name} ({a.uid})</option>)}
+            {ev.track === "dialogue" && <option value="">🎙️ Narrador (voz en off)</option>}
           </select>
         </Field>
       )}
@@ -446,8 +500,28 @@ function EventEditor({ s, take, ev, voices, onChange, onDelete }: { s: PocketSta
               </select>
             </Field>
             <Field label="Efecto">
-              <select value={ev.fx ?? ""} onChange={(e) => onChange((x) => { if (x.track === "body") x.fx = (e.target.value || undefined) as "shake" | "jump" | undefined; })}>
-                <option value="">Ninguno</option><option value="jump">Saltar (susto)</option><option value="shake">Temblar</option>
+              <select value={ev.fx ?? ""} onChange={(e) => onChange((x) => { if (x.track === "body") x.fx = (e.target.value || undefined) as "shake" | "jump" | "type" | undefined; })}>
+                <option value="">Ninguno</option>
+                {Object.entries(FX_LABEL).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
+              </select>
+            </Field>
+            <Field label="Entrar / salir de escena">
+              <select
+                value={ev.appear ? `in:${ev.appear}` : ev.disappear ? `out:${ev.disappear}` : ""}
+                onChange={(e) =>
+                  onChange((x) => {
+                    if (x.track !== "body") return;
+                    const [dir, kind] = e.target.value.split(":") as [string, "fade" | "pop" | "flash" | "cut"];
+                    delete x.appear;
+                    delete x.disappear;
+                    if (dir === "in") x.appear = kind;
+                    if (dir === "out") x.disappear = kind;
+                  })
+                }
+              >
+                <option value="">(sigue igual)</option>
+                {Object.entries(PRESENCE_LABEL).map(([k, v]) => <option key={`in${k}`} value={`in:${k}`}>Entra · {v}</option>)}
+                {Object.entries(PRESENCE_LABEL).map(([k, v]) => <option key={`out${k}`} value={`out:${k}`}>Sale · {v}</option>)}
               </select>
             </Field>
           </div>
@@ -565,6 +639,11 @@ function EventEditor({ s, take, ev, voices, onChange, onDelete }: { s: PocketSta
           {ev.effect === "flash" && (
             <Field label="Color">
               <input type="color" value={ev.color ?? "#ff2a2a"} onChange={(e) => onChange((x) => { if (x.track === "screen") x.color = e.target.value; })} />
+            </Field>
+          )}
+          {ev.effect === "bluescreen" && (
+            <Field label="Texto del pantallazo">
+              <input type="text" maxLength={120} placeholder="Tu equipo se ha puñetizado." value={ev.text ?? ""} onChange={(e) => onChange((x) => { if (x.track === "screen") x.text = e.target.value || undefined; })} />
             </Field>
           )}
         </div>

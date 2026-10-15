@@ -1,6 +1,6 @@
 import type { Catalog } from "@/lib/catalog/types";
 import { findCharacter, findExpression, findPose, findProp } from "@/lib/catalog";
-import { bodyFx, propAnim, screenFx, type PropAnim, type ScreenFx } from "./fx";
+import { bodyFx, presence, propAnim, screenFx, PRESENCE_TIME, type PropAnim, type ScreenFx } from "./fx";
 import { stripAudioTags } from "@/lib/voice/tags";
 import type { DialogueEvent, PocketEvent, PocketProject, PropsEvent, Take } from "@/lib/schema/pocket";
 
@@ -32,6 +32,9 @@ export interface ActorState {
   exprMix: number;
   mouthDx: number;
   mouthDy: number;
+  /** Presencia en escena (entradas / salidas): 0 = fuera, 1 = dentro. */
+  visible: number;
+  presenceScale: number;
 }
 
 export interface PropState {
@@ -149,6 +152,8 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
       mouthMode: "auto",
       mouthDx: 0,
       mouthDy: 0,
+      visible: a.hidden ? 0 : 1,
+      presenceScale: 1,
     });
   }
   const props: PropState[] = [];
@@ -164,7 +169,12 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
     const st = e.actorUid ? actors.get(e.actorUid) : undefined;
     switch (e.track) {
       case "dialogue": {
-        if (!st || !active) break;
+        if (!active) break;
+        if (!e.actorUid) {
+          subtitles.push({ eventId: e.id, actorUid: "", speaker: "Narrador", text: stripAudioTags(e.text) });
+          break;
+        }
+        if (!st) break;
         subtitles.push({
           eventId: e.id,
           actorUid: e.actorUid,
@@ -193,6 +203,18 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
         if (e.x !== undefined) st.x = lerp(st.x, e.x, p);
         if (e.y !== undefined) st.y = lerp(st.y, e.y, p);
         if (e.scale !== undefined) st.scale = lerp(st.scale, e.scale, p);
+        const change = e.appear ?? e.disappear;
+        if (change) {
+          const T = change === "cut" ? 0 : Math.min(PRESENCE_TIME, e.duration);
+          const k = T ? clamp01((t - e.start) / T) : 1;
+          const pr = presence(change, e.appear ? k : 1 - k);
+          st.visible = pr.opacity;
+          st.presenceScale = pr.scale;
+          if (change === "flash" && k < 1) {
+            const alpha = 0.85 * (1 - k);
+            if (!screen.flash || screen.flash.alpha < alpha) screen.flash = { color: "#ffffff", alpha };
+          }
+        }
         if (e.fx) {
           const o = bodyFx(e, t);
           st.offX += o.dx;
