@@ -9,7 +9,7 @@ import { generateLines, unlockAudio, type Clip, type Progress } from "@/lib/voic
 import { accessCode, elevenModel, generateElevenDialogue, generateElevenLines, type ElevenModel } from "@/lib/voice/elevenlabs";
 import { ElevenCast } from "../ElevenCast";
 import { VoiceCasting } from "../VoiceCasting";
-import { exportMp4, lastExportAudio, lastExportCodec, type ExportProgress } from "@/lib/export/mp4";
+import { exportAudioWav, exportMp4, lastExportAudio, lastExportCodec, type ExportProgress } from "@/lib/export/mp4";
 
 const EXPORT_LABEL: Record<ExportProgress["stage"], string> = { imagenes: "Cargando imágenes…", audio: "Mezclando audio…", video: "Creando vídeo…", listo: "Listo" };
 import { Stage } from "../Stage";
@@ -120,16 +120,34 @@ export function PreviewScreen({ s }: { s: PocketState }) {
   const [exporting, setExporting] = useState<ExportProgress | null>(null);
   const [video, setVideo] = useState<{ url: string; name: string; blob: Blob; codec: string | null; audio: string | null } | null>(null);
   const [exportError, setExportError] = useState<string | null>(null);
-  const doExport = async () => {
+  const doExport = async (quality: "alta" | "ligero" = "alta") => {
     if (pl.playing) pl.pause();
     setExportError(null);
     if (usesClips && !ready && !(await prepare())) return;
     try {
       setExporting({ stage: "imagenes", ratio: 0 });
-      const blob = await exportMp4(playProject, catalog, usesClips ? liveClips : null, setExporting);
+      const blob = await exportMp4(playProject, catalog, usesClips ? liveClips : null, setExporting, undefined, quality);
       if (video) URL.revokeObjectURL(video.url);
-      const name = `${project.metadata.title.replace(/[^\p{L}\p{N} _-]+/gu, "").trim().replace(/\s+/g, "_") || "sketch"}.mp4`;
+      const name = `${quality === "ligero" ? "ligero_" : ""}${project.metadata.title.replace(/[^\p{L}\p{N} _-]+/gu, "").trim().replace(/\s+/g, "_") || "sketch"}.mp4`;
       setVideo({ url: URL.createObjectURL(blob), name, blob, codec: lastExportCodec, audio: lastExportAudio });
+    } catch (e) {
+      setExportError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setExporting(null);
+    }
+  };
+  const doExportAudio = async () => {
+    if (pl.playing) pl.pause();
+    setExportError(null);
+    if (usesClips && !ready && !(await prepare())) return;
+    try {
+      setExporting({ stage: "audio", ratio: 0 });
+      const blob = await exportAudioWav(playProject, catalog, usesClips ? liveClips : null);
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = `${project.metadata.title.replace(/[^\p{L}\p{N} _-]+/gu, "").trim().replace(/\s+/g, "_") || "sketch"}_audio.wav`;
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(a.href), 60_000);
     } catch (e) {
       setExportError(e instanceof Error ? e.message : String(e));
     } finally {
@@ -224,8 +242,14 @@ export function PreviewScreen({ s }: { s: PocketState }) {
       )}
       {fitMsg && <p className="fine">✓ {fitMsg}</p>}
       <div className="row">
-        <button type="button" className="btn btn-primary" disabled={exporting !== null || progress !== null} onClick={doExport}>
+        <button type="button" className="btn btn-primary" disabled={exporting !== null || progress !== null} onClick={() => doExport("alta")}>
           {exporting ? `🎬 ${EXPORT_LABEL[exporting.stage]} ${Math.round(exporting.ratio * 100)} %` : "🎬 Exportar MP4 (1080×1920)"}
+        </button>
+        <button type="button" className="btn btn-secondary" disabled={exporting !== null || progress !== null} onClick={() => doExport("ligero")}>
+          📱 MP4 ligero (para compartir)
+        </button>
+        <button type="button" className="btn btn-secondary" disabled={exporting !== null || progress !== null} onClick={doExportAudio}>
+          🔊 Solo audio (WAV)
         </button>
       </div>
       {exportError && <p className="error-text">No se pudo exportar el vídeo: {exportError}</p>}
