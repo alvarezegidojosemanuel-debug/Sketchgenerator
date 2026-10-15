@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { applyOverrides, catalog as defaultCatalog } from "@/lib/catalog";
 import type { FaceOverrides } from "@/lib/catalog/types";
+import { withFixedCast } from "@/lib/voice/fixedCast";
 import demoRaw from "@/data/sketch-demo.json";
 import demoUsuReyRaw from "@/data/sketch-usu-reynaldo.json";
 import demoFxRaw from "@/data/sketch-interacciones.json";
@@ -136,7 +137,7 @@ export function usePocket() {
         .get(lastId)
         .then((rec) => {
           if (rec) {
-            setProjectState(rec.project);
+            setProjectState(withFixedCast(rec.project));
             setProjectId(rec.id);
           }
         })
@@ -155,7 +156,7 @@ export function usePocket() {
   /** Sustituye el proyecto (importación/carga). Crea un borrador nuevo salvo que se indique id. */
   const replaceProject = useCallback((p: PocketProject, id?: string) => {
     const nid = id ?? newProjectId();
-    setProjectState(p);
+    setProjectState(withFixedCast(p));
     setProjectId(nid);
     dirty.current = id === undefined;
     safeLocal(() => localStorage.setItem(LAST_ID_KEY, nid), undefined);

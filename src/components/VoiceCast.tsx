@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { findCharacter } from "@/lib/catalog";
+import { rememberPiper } from "@/lib/voice/fixedCast";
 import { castFor, castIds, castLabel, findPiperVoice, speakerCharacterId, PIPER_VOICES, type CastEntry } from "@/lib/voice/catalog";
 import { previewVoice, type Progress } from "@/lib/voice/piper";
 import type { PocketState } from "./usePocket";
@@ -19,7 +20,9 @@ export function VoiceCast({ s }: { s: PocketState }) {
   const set = (cid: string, patch: Partial<CastEntry>) =>
     editProject((p) => {
       const cur = castFor(cid, p.metadata.voices);
-      p.metadata.voices = { ...(p.metadata.voices ?? {}), [cid]: { ...cur, ...patch } };
+      const next = { ...cur, ...patch };
+      p.metadata.voices = { ...(p.metadata.voices ?? {}), [cid]: next };
+      rememberPiper(cid, next); // queda fijada para todos los proyectos
     });
 
   const sampleLine = (cid: string) =>

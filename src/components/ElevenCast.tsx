@@ -1,6 +1,7 @@
 "use client";
 
 import { castIds, castLabel } from "@/lib/voice/catalog";
+import { rememberEleven } from "@/lib/voice/fixedCast";
 
 import { useEffect, useState } from "react";
 import { findCharacter } from "@/lib/catalog";
@@ -70,7 +71,9 @@ export function ElevenCast({ s, model, onModel, code, onCode }: Props) {
   const set = (cid: string, patch: Partial<ElevenCastEntry>) =>
     editProject((p) => {
       const cur = p.metadata.elevenVoices?.[cid] ?? { voiceId: voices?.[0]?.id ?? "", ...DEFAULT_ELEVEN };
-      p.metadata.elevenVoices = { ...(p.metadata.elevenVoices ?? {}), [cid]: { ...cur, ...patch } };
+      const next = { ...cur, ...patch };
+      p.metadata.elevenVoices = { ...(p.metadata.elevenVoices ?? {}), [cid]: next };
+      rememberEleven(cid, next); // queda fijada para todos los proyectos
     });
 
   if (status && !status.enabled) {
