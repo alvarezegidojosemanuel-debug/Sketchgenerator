@@ -9,6 +9,7 @@ import demoUsuReyRaw from "@/data/sketch-usu-reynaldo.json";
 import demoFxRaw from "@/data/sketch-interacciones.json";
 import demoBsodRaw from "@/data/sketch-pantallazo.json";
 import demoOrigenRaw from "@/data/sketch-origen.json";
+import pruebaHumanosRaw from "@/data/prueba-humanos.json";
 import ep1Raw from "@/data/ep1.json";
 import ep2Raw from "@/data/ep2.json";
 import ep3Raw from "@/data/ep3.json";
@@ -31,6 +32,7 @@ export const DEMOS = {
   interacciones: demoFxRaw,
   pantallazo: demoBsodRaw,
   origen: demoOrigenRaw,
+  "prueba-humanos": pruebaHumanosRaw,
   ep1: ep1Raw,
   ep2: ep2Raw,
   ep3: ep3Raw,

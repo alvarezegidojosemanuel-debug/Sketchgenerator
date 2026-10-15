@@ -66,3 +66,14 @@ describe("estatura de los humanos", () => {
     expect(poseScale(catalog, "sister", puneto)).toBe(puneto.displayScale);
   });
 });
+
+describe("proyecto de prueba de humanos", () => {
+  it("se monta y valida, con Jefe y Usu de frente en sistemas", async () => {
+    const raw = (await import("@/data/prueba-humanos.json")).default;
+    const r = validateProject(structuredClone(raw), catalog);
+    expect(r.errors).toEqual([]);
+    const tk = r.project!.takes[1];
+    expect(tk.backgroundId).toBe("bg_sistemas");
+    expect(tk.actors.map((a) => a.poseId)).toEqual(["char.jefe.pose_h_neutro", "char.usu.pose_h_neutro"]);
+  });
+});
