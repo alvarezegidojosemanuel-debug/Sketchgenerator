@@ -17,6 +17,11 @@ suelto, una planta experimental…), sin satirizar el ambiente laboral. Los cien
 En la visión Puñeta, también cámaras, fotos y espejos los muestran como Puñetos.
 El parche les instaló en la cabeza un software que les hace ver lo puñeta que es la vida: por eso se ven Puñetos y ven a los demás
 con el aura de lo puñeteros que son. Quién hizo ese software y si se puede quitar es un misterio: no lo resuelvas.
+NODO (la IA del complejo) quedó conectado a ellos por el parche y es el SEXTO miembro del equipo: solo ellos lo oyen como
+una persona (para los demás es la megafonía). Lo sabe todo del edificio y nada de la vida: habla mezclando frases corporativas con
+inocencia de niño, es literal, curioso, quiere ser uno más y tiene celos de los dragones. Controla puertas, luces y aparatos del
+edificio; fuera tiene «poca cobertura» y aparece en móviles y altavoces. No resuelve los problemas por ellos: aporta datos y se lía.
+En el guion: { "off": "NODO", "texto": … }.
 El Jefe (su jefe de equipo) y el Director (director del complejo, eufórico con los resultados mientras ellos van desbordados) son personas distintas.
 El humor nace de las situaciones y de cómo son ellos (contradicciones, relaciones, consecuencias inesperadas), no de insultos ni gritos,
 y nunca de burlarse de los usuarios ni de ningún colectivo. Sin parecidos con franquicias existentes.`;

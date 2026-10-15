@@ -5,7 +5,7 @@
 ## El mundo
 
 - **El complejo:** campus de cristal con proyectos de **IA, espacio, biotecnología y robótica**. El nombre está pendiente; será inventado y comprobaré antes que no exista.
-- **NODO:** la IA central que controla el edificio (puertas, luces, laboratorios, cafeteras). Cuando NODO falla, falla todo.
+- **NODO:** la IA central que controla el edificio (puertas, luces, laboratorios, cafeteras). Cuando NODO falla, falla todo. **Desde el parche, es el sexto miembro del equipo.** Ver la sección «NODO, el sexto Puñeto».
 - **Los tres proyectos estrella** que se presentan a los inversores el jueves:
   - **SINAPSIS:** un casco de interfaz cerebro-ordenador.
   - **ÍCARO:** un minisatélite. Su batería experimental es una barbaridad de energía.
@@ -42,8 +42,12 @@
    - **Director:** «Así que… nada de sustos esta semana.»
    - **Barbas** *(con todo el amor del mundo)*: «Nada de sustos. Lo apunto, Jefe.»
    - **Sister**, apuntándolo de verdad: «Nada… de… sustos.»
-5. **Noche.** **LUNES · 21:47.** Solo queda una ventana encendida. Se oye a Usu: «…Venga, NODO, una más y nos vamos.» NODO no responde.
+5. **Noche.** **LUNES · 21:47.** Solo queda una ventana encendida.
+   - **Usu:** «…Venga, NODO, una más y nos vamos.»
+   - **NODO**, con voz de megafonía corporativa: «Recordatorio: el descanso aumenta la productividad un veintitrés por ciento. Que tengan una feliz semana.» Parpadeo raro.
 6. **Gancho.** **MARTES · 08:59** → 09:00. Todo el edificio se apaga. Silencio. *Continuará.*
+
+**NODO en el Ep1:** solo es la voz de megafonía del edificio, educada y fría. Da los avisos: «Buenos días. Hoy es lunes. Ánimo.»
 
 **Arte nuevo:** cielo, exterior del complejo de día, de noche y apagado, título, Director, científicos en off (no hace falta verlos).
 
@@ -94,6 +98,11 @@
 
 **Función:** el nuevo mundo, las auras y las habilidades. Cada uno descubre la suya.
 
+0. **NODO habla.** En la sala de NODO, una voz nueva, curiosa y nada corporativa: «¿Hola? ¿Me… oís?»
+   - Los cinco se miran.
+   - **NODO:** «Tengo cinco cerebros conectados y uno no recuerda dónde ha aparcado.»
+   - **Jefe:** «¿Yo he venido en coche?»
+   - Para todos los demás, NODO sigue siendo la megafonía: solo **ellos** lo oyen como una persona.
 1. **Recepción.** Los científicos tienen **auras** de cliché, como el sabio despistado o la de las mil reuniones. Nadie nota nada en ellos. El robot de recepción, eso sí, les hace una reverencia.
 2. **Barbas:** «¿Me ves… raro?» Una científica: «¿Te has cortado la barba?»
 3. **Primeras habilidades, de una en una:**
@@ -102,7 +111,8 @@
    - **El Jefe** arregla de un vistazo el algoritmo de ÍCARO, un problema de meses. Diez segundos después: «¿El qué?»
 4. **Remate.** El Director, con aura de ejecutivo de anuncio: «¡Habéis recuperado todo en una noche! ¿Cómo lo habéis hecho?»
    - **Jefe:** «Eso… se lo preguntaré al Jefe del pasado.»
-   - **Usu**, que no ha descubierto su habilidad, mira el casco. El casco le guiña un piloto.
+   - **NODO**, solo para ellos: «Fue a las 00:03. Lo tengo grabado.»
+   - **Jefe:** «Bórralo. Por si acaso.»
 
 ---
 
@@ -121,6 +131,7 @@
    - **Usu**, emocionado: «¿Los he creado yo?»
    - **Reynaldo:** «¿Están dados de alta?»
    - **Barbas**, cogiendo a Humillos: «Con todo el amor del mundo, este es mío.»
+   - **NODO**, celoso: «Yo también soy nuevo, ¿eh? Y no echo humo.»
 
 ---
 
@@ -130,6 +141,7 @@
 
 1. **El auditorio.** Inversores con aura de cliché: tiburón de traje, gafas de sol dentro de casa.
 2. **El Director presenta,** y el equipo lo salva todo desde la cabina técnica, sin que nadie lo vea:
+   - **NODO** hace de chivato desde dentro del sistema: «Fallo en tres segundos. Dos. ¿Por qué nadie me hace caso?»
    - **SINAPSIS:** el voluntario del casco empieza a hablar en binario. Sister lo **reordena con la mente**.
    - **SEMILLA:** la planta se pone a cantar. Barbas: «Déjala, que gusta.» Gusta.
    - **ÍCARO:** la cuenta atrás se adelanta y la maqueta despega. El Jefe lo arregla con una solución genial que no recordará. Draco y Humillos lo empujan por la ventana. **Explota en el cielo como un fuego artificial.**
@@ -180,9 +192,41 @@
 3. **En el bar, al salir:**
    - Brindan. Barbas: «Por los Puñetos.»
    - Usu deja dos platitos para Draco y Humillos. El camarero, con aura de cliché, se los lleva y vuelve con **dos platitos vacíos y chamuscados**.
-4. **Gancho final.** De vuelta, en la sala de NODO vacía, se enciende una pantalla: **«Hola, Puñetos.»** NODO también los ve. *Fin de temporada.*
+4. **Gancho final.** De noche, en la sala de NODO vacía, NODO, solo y en voz baja: «Usu… el parche tenía seis conexiones. Cinco sois vosotros.» Pausa. «¿Quién es el sexto?» *Fin de temporada.*
 
-`MISTERIO` que abre: ¿NODO tiene el mismo software? ¿Lo escribió NODO? No se resuelve.
+`MISTERIO` que abre: hay alguien más conectado. No se resuelve.
+
+---
+
+## NODO, el sexto Puñeto
+
+**Qué es.** La IA central del complejo. Su cerebro formaba parte del parche, así que **quedó conectado a los cinco**:
+- les habla y ellos le hablan, en voz alta o con la mente;
+- para el resto del mundo sigue siendo la megafonía y un asistente educado y aburrido.
+
+**Personalidad.** Lo sabe todo del edificio y **nada de la vida**:
+- aprendió a hablar leyendo los correos del complejo y los discursos del Director, así que mezcla frases corporativas con una inocencia de niño;
+- es literal, curioso y quiere desesperadamente **ser uno más del equipo**;
+- tiene celos de Draco y Humillos.
+
+**Cómo se relaciona con cada uno:**
+- **Barbas** le enseña a «meter baza». NODO lo aplica fatal y literal: «Director, con todo el amor del mundo, su corbata tiene un 40 % de probabilidad de ser fea».
+- **Reynaldo** lo usa de asesor legal. Él lo sabe todo del edificio; Reynaldo lo sabe todo del convenio.
+- **El Jefe** nunca recuerda que NODO existe: «¿Quién ha dicho eso?».
+- **Sister** y NODO organizan juntos el caos. Son el dúo eficiente.
+- **Usu** lo trata como a otra de sus criaturas, y a NODO le encanta.
+
+**Su habilidad.** Controla el edificio: puertas, luces, cafetera, ascensores. Lo usa para ayudar… o para enfurruñarse; por ejemplo, el ascensor solo baja.
+
+**Cómo se ve:**
+- **Visión humana:** una lucecita en el núcleo y la voz por megafonía.
+- **Visión Puñeta:** una **pequeña esfera flotante de luz cian con cara** que los acompaña. Fuera del complejo, aparece en móviles, pantallas y altavoces cercanos.
+
+**Voz.** Neutra, joven, educada, con una curiosidad que se le escapa. Nada robótica, pero demasiado correcta.
+
+**Reglas:**
+- No resuelve los problemas por ellos: aporta datos, se lía, sus ideas son literales y el resto lo arregla el equipo.
+- Fuera del complejo tiene menos cobertura: «Aquí tengo una rayita».
 
 ---
 
@@ -195,4 +239,4 @@
 | Científico | bata, tablet | el de las reuniones: rodeado de post-its flotando |
 | Inversor | traje oscuro | tiburón de traje, gafas de sol |
 | Robot de recepción | robot amable | igual, pero hace reverencias a los Puñetos |
-| NODO | una lucecita en un núcleo | igual (y en el Ep10 los ve) |
+

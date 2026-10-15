@@ -53,6 +53,9 @@ OBJETOS
 17. taza_sistemas — taza de café blanca humeante.
 18. posit — pósit amarillo grande, en blanco, un poco arrugado.
 
+NODO (la IA, para los episodios 4 en adelante; adelántala si quieres)
+19b. nodo — una pequeña esfera flotante de luz cian brillante, del tamaño de un balón, con una cara sencilla y expresiva (dos ojos ovalados y una boca de luz), aire curioso y simpático. Sin brazos. NADA parecido a robots o IAs de películas conocidas.
+
 TÍTULO
 19. titulo_punetos — la palabra «PUÑETOS» en letras gordas de gominola azul brillante (el mismo azul y brillo que la piel de los Puñetos), con contorno negro grueso, ligeramente en arco, sobre fondo blanco liso. Que se lea perfectamente, con la Ñ bien clara.
 ```

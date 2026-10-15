@@ -51,6 +51,12 @@ export const CASTING: Record<string, CastingPreset> = {
     sample:
       "Buenos días, equipo. Quiero resultados, quiero eficiencia y quiero esa incidencia cerrada antes del viernes. ¿Que no? ¡Pues fuera de mi despacho! ¡Y mándame una reunión para el viernes a primera hora!",
   },
+  extra_nodo: {
+    description:
+      "Voz joven y neutra de inteligencia artificial que acaba de descubrir que tiene personalidad: educada, demasiado correcta y precisa, con una curiosidad infantil que se le escapa y entusiasmo contenido. Natural y cálida, nada robótica ni metálica. Acento de España neutro.",
+    sample:
+      "Buenos días. Hoy es lunes. Ánimo. Perdón, eso era la megafonía. Hola, soy NODO. Tengo cinco cerebros conectados y uno no recuerda dónde ha aparcado. ¿Puedo ser del equipo? He preparado una presentación.",
+  },
 };
 
 export function presetFor(cid: string, label: string): CastingPreset {

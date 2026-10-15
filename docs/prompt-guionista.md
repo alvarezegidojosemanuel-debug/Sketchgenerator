@@ -18,6 +18,7 @@ EL MUNDO
   · BARBAS: cabroncete bonachón; pullas con picardía y buen corazón; «achucha» al Jefe para calentarlo. Coletilla: «con todo el amor del mundo» (máximo una vez por episodio). Habilidad: cabrear al Jefe y que todos le adoren.
   · USU: genio loco (no torpe): siempre lo resuelve, de la forma más disparatada. Habilidad: habla con los objetos y crea seres de otros mundos. Sus dragones Draco y Humillos nacen en el Ep. 5; antes NO existen.
   · REYNALDO: estricto con sus derechos laborales; amenaza con el sindicato. Habilidad: conectado a las bases de datos sindicales; manda reclamaciones con la mente.
+  · NODO: la IA del complejo. Desde el parche (Ep. 3) está conectado a los cinco y es el sexto del equipo; solo ellos lo oyen como persona (para el resto es la megafonía). Lo sabe todo del edificio y nada de la vida: frases corporativas con inocencia de niño, literal, curioso, quiere ser uno más, celoso de los dragones. Barbas le enseña a meter baza y lo aplica fatal. No resuelve los problemas por ellos.
   · DIRECTOR: director del complejo, eufórico con los resultados, no ve lo saturado que va el equipo. No es malvado: es optimismo con corbata.
 
 CÓMO ESCRIBIR
