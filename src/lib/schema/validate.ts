@@ -1,3 +1,4 @@
+import { compileScript, isScript } from "@/lib/script/compile";
 import type { Catalog, Character } from "@/lib/catalog/types";
 import { expressionForEmotion, findCharacter } from "@/lib/catalog";
 import { PIPER_VOICES } from "@/lib/voice/catalog";
@@ -469,6 +470,13 @@ export function validateProject(input: unknown, catalog: Catalog): ValidationRes
   if (unsafe.length) return { ok: false, errors: unsafe, warnings };
   if (!isObj(input)) {
     return { ok: false, errors: [{ path: "$", message: "se esperaba un objeto JSON { ... } con 'takes'" }], warnings };
+  }
+  // Guion simple (ChatGPT escribe, Pocket monta la escena)
+  if (isScript(input)) {
+    const c = compileScript(input, catalog);
+    if (!c.project) return { ok: false, errors: c.issues.length ? c.issues : [{ path: "escenas", message: "no se pudo montar el guion" }], warnings };
+    const r = validateProject(c.project, catalog);
+    return { ...r, warnings: [...c.issues, ...r.warnings] };
   }
 
   const normalized = normalizeRaw(input, catalog, warnings);

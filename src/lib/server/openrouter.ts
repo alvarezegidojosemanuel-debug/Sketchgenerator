@@ -14,7 +14,8 @@
  */
 import { z } from "zod";
 import type { Catalog } from "@/lib/catalog/types";
-import { buildPrompt, DURATIONS } from "@/lib/generator/prompt";
+import { DURATIONS } from "@/lib/generator/prompt";
+import { buildScriptPrompt } from "@/lib/generator/scriptPrompt";
 
 export interface GenerateEnv {
   OPENROUTER_ENABLED?: string;
@@ -146,7 +147,7 @@ export async function handleGenerate(body: unknown, ip: string, env: GenerateEnv
   if (!parsed.success) {
     return { status: 400, body: { error: "bad_request", message: "Petición no válida: se esperaba { intent: { idea, duration, characterIds, tone, backgroundId } }." } };
   }
-  const { prompt } = buildPrompt(parsed.data.intent, deps.catalog);
+  const { prompt } = buildScriptPrompt(parsed.data.intent, deps.catalog);
   if (prompt.length > cfg.maxPromptChars) {
     return { status: 413, body: { error: "prompt_too_large", message: `El prompt (${prompt.length} caracteres) supera el máximo de ${cfg.maxPromptChars}.` } };
   }

@@ -76,7 +76,7 @@ describe("/api/generate", () => {
     expect(r.body.content).toBe('{"takes":[]}');
     const calls = fetchMock.mock.calls as unknown as [string, RequestInit?][];
     const sent = JSON.parse(String(calls[1][1]!.body));
-    expect(sent.messages[0].content).toContain("PUÑETOS Pocket");
+    expect(sent.messages[0].content).toContain("puñetos-guion-1"); // el servidor pide el guion simple
     expect((calls[1][1]!.headers as Record<string, string>).Authorization).toBe("Bearer sk-test");
   });
 

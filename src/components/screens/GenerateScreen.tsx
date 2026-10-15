@@ -1,5 +1,6 @@
 "use client";
 
+import { buildScriptPrompt } from "@/lib/generator/scriptPrompt";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { buildPrompt } from "@/lib/generator/prompt";
 import { importProjectText, parseJsonText, type ImportOutcome } from "@/lib/import-export";
@@ -18,7 +19,9 @@ interface ApiStatus {
 
 export function GenerateScreen({ s }: { s: PocketState }) {
   const { intent, catalog } = s;
-  const { prompt, warnings } = useMemo(() => buildPrompt(intent, catalog), [intent, catalog]);
+  // Por defecto ChatGPT escribe solo el guion y Pocket monta la escena; el formato avanzado (JSON completo) queda como opción.
+  const [advanced, setAdvanced] = useState(false);
+  const { prompt, warnings } = useMemo(() => (advanced ? buildPrompt(intent, catalog) : buildScriptPrompt(intent, catalog)), [intent, catalog, advanced]);
   const [copied, setCopied] = useState<"ok" | "fail" | null>(null);
   const [showPrompt, setShowPrompt] = useState(false);
   const [jsonText, setJsonText] = useState("");
@@ -111,10 +114,14 @@ export function GenerateScreen({ s }: { s: PocketState }) {
     <div className="screen">
       <Card title="Prompt para ChatGPT" tone="accent" right={<span className="badge badge-free">0 € de API</span>}>
         <ol className="steps">
-          <li>Copia el prompt (lleva el catálogo real de IDs y el contrato JSON).</li>
+          <li>Copia el prompt: ChatGPT escribirá <b>solo el guion</b> (quién dice qué, emociones, pausas, efectos).</li>
           <li>Pégalo en ChatGPT u otro modelo que uses.</li>
-          <li>Copia la respuesta JSON y pégala abajo en <b>Importar JSON</b>.</li>
+          <li>Copia su respuesta y pégala abajo en <b>Importar</b>: Pocket monta la escena solo.</li>
         </ol>
+        <label className="switch">
+          <input type="checkbox" checked={advanced} onChange={(e) => setAdvanced(e.target.checked)} />
+          <span>Formato avanzado (ChatGPT escribe también tiempos y posiciones)</span>
+        </label>
         {warnings.length > 0 && <IssueList notes={warnings} />}
         <button type="button" className="btn btn-primary btn-block" onClick={copy}>
           {copied === "ok" ? "✓ Copiado" : copied === "fail" ? "Selecciona y copia manualmente ↓" : "📋 Copiar prompt"}
