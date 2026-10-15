@@ -711,6 +711,12 @@
                       "minimum": 0.05,
                       "maximum": 2
                     },
+                    "talkOf": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80,
+                      "pattern": "^[A-Za-z0-9_.:-]+$"
+                    },
                     "bubbleOf": {
                       "type": "string",
                       "minLength": 1,

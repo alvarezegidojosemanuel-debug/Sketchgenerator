@@ -173,6 +173,9 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
   const screen: ScreenFx = {};
   const eyesUntil = new Map<string, number>();
   const sounds: FrameState["sounds"] = [];
+  /** Personajes con la boca abierta ahora (para los objetos con talkOf: humanos dibujados como objeto). */
+  const voiceOpen = new Set<string>();
+  const talkProps: { pr: PropState; talkOf: string; open: string; closed: string }[] = [];
 
   // Lo que viene en los próximos segundos se monta ya (invisible): en el móvil, una imagen recién creada
   // tarda unos fotogramas en pintarse aunque esté descargada; así el cambio es solo de opacidad.
@@ -195,6 +198,7 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
       case "dialogue": {
         if (!active) break;
         if (!e.actorUid) {
+          if (e.voiceOf && !opts.live && !opts.levels && mouthFlap(e, t)) voiceOpen.add(e.voiceOf);
           const who = e.voiceOf ? findCharacter(catalog, e.voiceOf)?.name ?? e.voiceOf : e.speakerName ?? "Narrador";
           subtitles.push({ eventId: e.id, actorUid: "", voiceOf: e.voiceOf, speaker: who, text: stripAudioTags(e.text) });
           break;
@@ -272,8 +276,8 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
       case "props": {
         if (!active) break;
         const a = propAnim(e, t);
-        const frame2 = e.altPropId && Math.floor((t - e.start) / (e.altEvery ?? 0.16)) % 2 === 1;
-        props.push({
+        const frame2 = e.altPropId && !e.talkOf && Math.floor((t - e.start) / (e.altEvery ?? 0.16)) % 2 === 1;
+        const pr = {
           key: e.id,
           propId: frame2 ? e.altPropId! : e.propId,
           altPropId: e.altPropId ? (frame2 ? e.propId : e.altPropId) : undefined,
@@ -286,7 +290,9 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
           opacity: a.opacity,
           flip: e.flip ?? false,
           ...(e.bubbleOf ? { bubble: { cx: 0, cy: 0, w: 0, h: 0, tailX: 0, tailY: 0 }, bubbleOf: e.bubbleOf, baseScale: e.scale ?? 1, anim: a } : {}),
-        } as PropState);
+        } as PropState;
+        props.push(pr);
+        if (e.talkOf && e.altPropId) talkProps.push({ pr, talkOf: e.talkOf, open: e.altPropId, closed: e.propId });
         break;
       }
       case "sfx":
@@ -301,6 +307,10 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
   const levelDriven = new Set<string>();
   if (opts.levels) {
     for (const [uid, level] of opts.levels) {
+      if (uid.startsWith("voice:")) {
+        if (level > MOUTH_THRESHOLD) voiceOpen.add(uid.slice(6));
+        continue;
+      }
       const st = actors.get(uid);
       if (!st) continue;
       st.speaking = true;
@@ -319,6 +329,10 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
   if (opts.live) {
     for (const [uid, elapsed] of opts.live) {
       if (levelDriven.has(uid)) continue;
+      if (uid.startsWith("voice:")) {
+        if (!opts.levels?.has(uid) && liveMouthOpen(elapsed)) voiceOpen.add(uid.slice(6));
+        continue;
+      }
       const st = actors.get(uid);
       if (!st) continue;
       st.speaking = true;
@@ -336,6 +350,11 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
     if (k === undefined) continue;
     const ex = st.expressionId ? findExpression(catalog, st.characterId, st.expressionId) : undefined;
     if (ex?.talk.length) st.mouthAssetId = ex.talk[k % ex.talk.length];
+  }
+  for (const { pr, talkOf, open, closed } of talkProps) {
+    const isOpen = voiceOpen.has(talkOf);
+    pr.propId = isOpen ? open : closed;
+    pr.altPropId = isOpen ? closed : open;
   }
 
   // Bocadillos de pensamiento: encima de la cabeza del actor (hacia donde mira).

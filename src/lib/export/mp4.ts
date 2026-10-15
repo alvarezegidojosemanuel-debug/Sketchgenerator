@@ -184,9 +184,11 @@ export async function exportMp4(
     const levels = new Map<string, number>();
     if (clips) {
       for (const e of take.events) {
-        if (e.track !== "dialogue" || !e.actorUid) continue;
+        if (e.track !== "dialogue") continue;
+        const who = e.actorUid ?? (e.voiceOf ? `voice:${e.voiceOf}` : undefined);
+        if (!who) continue;
         const c = clips.get(clipKey(take.id, e.id));
-        if (c && t >= e.start && t < e.start + c.duration) levels.set(e.actorUid, Math.max(levels.get(e.actorUid) ?? 0, levelAt(c.env, t - e.start)));
+        if (c && t >= e.start && t < e.start + c.duration) levels.set(who, Math.max(levels.get(who) ?? 0, levelAt(c.env, t - e.start)));
       }
     }
     const frame = evaluateTake(take, catalog, t, clips ? { levels } : {});

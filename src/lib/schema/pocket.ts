@@ -140,6 +140,8 @@ export const PropsEvent = z.object({
   /** Animación de 2 fotogramas: alterna propId ↔ altPropId cada altEvery segundos (p. ej. manos tecleando). */
   altPropId: id.optional(),
   altEvery: z.number().finite().min(0.05).max(2).optional(),
+  /** Boca sincronizada: muestra altPropId (boca abierta) solo mientras habla este personaje (characterId). */
+  talkOf: id.optional(),
   /** Dentro de un bocadillo de pensamiento sobre este actor (x/y se ignoran). */
   bubbleOf: id.optional(),
 });

@@ -112,4 +112,19 @@ describe("vibración y fotogramas", () => {
     expect(evaluateTake(take, catalog, 0.3).props[0].propId).toBe("prop_cafe");
     expect(evaluateTake(take, catalog, 0.5).props[0].propId).toBe("prop_movil");
   });
+  it("talkOf: la boca abierta solo mientras habla ese personaje (voz real y sin voz)", async () => {
+    const { evaluateTake } = await import("@/lib/timeline/evaluate");
+    const ev = { ...base, propId: "prop_jefe_neutro", altPropId: "prop_jefe_neutro_boca", talkOf: "jefe" };
+    const line = { id: "d", track: "dialogue" as const, voiceOf: "jefe", text: "¿Qué reunión? No sé de qué me hablas.", start: 1, duration: 1.5 };
+    const take = { id: "t", duration: 3, backgroundId: null, actors: [], events: [ev, line] };
+    expect(evaluateTake(take, catalog, 0.5).props[0].propId).toBe("prop_jefe_neutro");
+    const during = new Set<string>();
+    for (let t = 1.02; t < 2.5; t += 0.03) during.add(evaluateTake(take, catalog, t).props[0].propId);
+    expect(during.has("prop_jefe_neutro_boca")).toBe(true);
+    expect(evaluateTake(take, catalog, 2.8).props[0].propId).toBe("prop_jefe_neutro");
+    // con voz real manda el volumen
+    expect(evaluateTake(take, catalog, 1.2, { levels: new Map([["voice:jefe", 0.9]]) }).props[0].propId).toBe("prop_jefe_neutro_boca");
+    expect(evaluateTake(take, catalog, 1.2, { levels: new Map([["voice:jefe", 0]]) }).props[0].propId).toBe("prop_jefe_neutro");
+    expect(evaluateTake(take, catalog, 1.2, { levels: new Map([["voice:sister", 0.9]]) }).props[0].propId).toBe("prop_jefe_neutro");
+  });
 });

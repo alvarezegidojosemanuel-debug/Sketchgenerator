@@ -6059,6 +6059,132 @@
    "src": "/assets/punetos/props/prop_usu_humano.webp"
   },
   {
+   "id": "prop_jefe_neutro",
+   "label": "Jefe humano · de pie, neutro",
+   "width": 374,
+   "height": 900,
+   "src": "/assets/punetos/props/prop_jefe_neutro.webp"
+  },
+  {
+   "id": "prop_jefe_neutro_boca",
+   "label": "Jefe humano · de pie, neutro (boca abierta)",
+   "width": 374,
+   "height": 900,
+   "src": "/assets/punetos/props/prop_jefe_neutro_boca.webp"
+  },
+  {
+   "id": "prop_jefe_explica",
+   "label": "Jefe humano · explicando",
+   "width": 438,
+   "height": 898,
+   "src": "/assets/punetos/props/prop_jefe_explica.webp"
+  },
+  {
+   "id": "prop_jefe_explica_boca",
+   "label": "Jefe humano · explicando (boca abierta)",
+   "width": 438,
+   "height": 898,
+   "src": "/assets/punetos/props/prop_jefe_explica_boca.webp"
+  },
+  {
+   "id": "prop_jefe_confundido",
+   "label": "Jefe humano · confundido, rascándose",
+   "width": 402,
+   "height": 900,
+   "src": "/assets/punetos/props/prop_jefe_confundido.webp"
+  },
+  {
+   "id": "prop_jefe_confundido_boca",
+   "label": "Jefe humano · confundido, rascándose (boca abierta)",
+   "width": 402,
+   "height": 900,
+   "src": "/assets/punetos/props/prop_jefe_confundido_boca.webp"
+  },
+  {
+   "id": "prop_jefe_panico",
+   "label": "Jefe humano · pánico, manos en la cabeza",
+   "width": 438,
+   "height": 835,
+   "src": "/assets/punetos/props/prop_jefe_panico.webp"
+  },
+  {
+   "id": "prop_jefe_panico_boca",
+   "label": "Jefe humano · pánico, manos en la cabeza (boca abierta)",
+   "width": 438,
+   "height": 835,
+   "src": "/assets/punetos/props/prop_jefe_panico_boca.webp"
+  },
+  {
+   "id": "prop_jefe_camina",
+   "label": "Jefe humano · caminando enfadado",
+   "width": 467,
+   "height": 810,
+   "src": "/assets/punetos/props/prop_jefe_camina.webp"
+  },
+  {
+   "id": "prop_jefe_camina_boca",
+   "label": "Jefe humano · caminando enfadado (boca abierta)",
+   "width": 467,
+   "height": 810,
+   "src": "/assets/punetos/props/prop_jefe_camina_boca.webp"
+  },
+  {
+   "id": "prop_jefe_entra",
+   "label": "Jefe humano · entrando, saludando",
+   "width": 456,
+   "height": 839,
+   "src": "/assets/punetos/props/prop_jefe_entra.webp"
+  },
+  {
+   "id": "prop_jefe_entra_boca",
+   "label": "Jefe humano · entrando, saludando (boca abierta)",
+   "width": 456,
+   "height": 839,
+   "src": "/assets/punetos/props/prop_jefe_entra_boca.webp"
+  },
+  {
+   "id": "prop_jefe_sorprendido",
+   "label": "Jefe humano · sorprendido, retrocede",
+   "width": 420,
+   "height": 711,
+   "src": "/assets/punetos/props/prop_jefe_sorprendido.webp"
+  },
+  {
+   "id": "prop_jefe_sorprendido_boca",
+   "label": "Jefe humano · sorprendido, retrocede (boca abierta)",
+   "width": 420,
+   "height": 711,
+   "src": "/assets/punetos/props/prop_jefe_sorprendido_boca.webp"
+  },
+  {
+   "id": "prop_jefe_sentado_habla",
+   "label": "Jefe humano · sentado hablando (con mesa)",
+   "width": 474,
+   "height": 688,
+   "src": "/assets/punetos/props/prop_jefe_sentado_habla.webp"
+  },
+  {
+   "id": "prop_jefe_sentado_habla_boca",
+   "label": "Jefe humano · sentado hablando (con mesa) (boca abierta)",
+   "width": 474,
+   "height": 688,
+   "src": "/assets/punetos/props/prop_jefe_sentado_habla_boca.webp"
+  },
+  {
+   "id": "prop_jefe_sentado_cansado",
+   "label": "Jefe humano · sentado cansado (con mesa)",
+   "width": 456,
+   "height": 645,
+   "src": "/assets/punetos/props/prop_jefe_sentado_cansado.webp"
+  },
+  {
+   "id": "prop_jefe_sentado_cansado_boca",
+   "label": "Jefe humano · sentado cansado (con mesa) (boca abierta)",
+   "width": 456,
+   "height": 645,
+   "src": "/assets/punetos/props/prop_jefe_sentado_cansado_boca.webp"
+  },
+  {
    "id": "prop_draco",
    "label": "Draco (dragón verde, provisional)",
    "width": 300,

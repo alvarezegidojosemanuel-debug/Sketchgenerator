@@ -664,7 +664,22 @@ function EventEditor({ s, take, ev, voices, t, onTransform, onSwap, onChange, on
                 {catalog.props.filter((p) => p.id !== ev.propId).map((p) => <option key={p.id} value={p.id}>{p.label}</option>)}
               </select>
             </Field>
-            {ev.altPropId && (
+            <Field label="Mueve la boca con la voz de">
+              <select
+                value={ev.talkOf ?? ""}
+                onChange={(e) =>
+                  onChange((x) => {
+                    if (x.track !== "props") return;
+                    x.talkOf = e.target.value || undefined;
+                    if (x.talkOf && !x.altPropId && catalog.props.some((p) => p.id === `${x.propId}_boca`)) x.altPropId = `${x.propId}_boca`;
+                  })
+                }
+              >
+                <option value="">(no)</option>
+                {catalog.characters.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
+              </select>
+            </Field>
+            {ev.altPropId && !ev.talkOf && (
               <Field label="Cambio cada (s)">
                 <Stepper value={ev.altEvery ?? 0.16} step={0.02} min={0.05} max={2} onChange={(v) => onChange((x) => { if (x.track === "props") x.altEvery = v; })} />
               </Field>
