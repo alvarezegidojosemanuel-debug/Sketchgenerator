@@ -4,7 +4,7 @@
  "metadata": {
   "title": "Ep. 3 · ¿Qué coño nos ha pasado?",
   "language": "es-ES",
-  "approxDuration": 77.2,
+  "approxDuration": 75.1,
   "idea": "Primer día en visión Puñeta: se ven azules, Usu descubre sus poderes y nacen Draco y Humillos.",
   "wishlist": [
    "Draco y Humillos definitivos",
@@ -20,7 +20,7 @@
   {
    "id": "e3t1",
    "name": "Lunes",
-   "duration": 31.4,
+   "duration": 30.7,
    "backgroundId": "bg_oficina_manana",
    "actors": [
     {
@@ -396,7 +396,7 @@
      "id": "e3t1_mo39",
      "track": "mouth",
      "start": 0,
-     "duration": 31.4,
+     "duration": 30.7,
      "actorUid": "rey",
      "mode": "auto"
     },
@@ -404,7 +404,7 @@
      "id": "e3t1_mo40",
      "track": "mouth",
      "start": 0,
-     "duration": 31.4,
+     "duration": 30.7,
      "actorUid": "sis",
      "mode": "auto"
     },
@@ -412,7 +412,7 @@
      "id": "e3t1_mo41",
      "track": "mouth",
      "start": 0,
-     "duration": 31.4,
+     "duration": 30.7,
      "actorUid": "jefe",
      "mode": "auto"
     },
@@ -420,7 +420,7 @@
      "id": "e3t1_mo42",
      "track": "mouth",
      "start": 0,
-     "duration": 31.4,
+     "duration": 30.7,
      "actorUid": "usu",
      "mode": "auto"
     },
@@ -428,7 +428,7 @@
      "id": "e3t1_mo43",
      "track": "mouth",
      "start": 0,
-     "duration": 31.4,
+     "duration": 30.7,
      "actorUid": "bar",
      "mode": "auto"
     }
@@ -437,7 +437,7 @@
   {
    "id": "e3t2",
    "name": "Los dragones",
-   "duration": 19.8,
+   "duration": 19.1,
    "backgroundId": "bg_sala_servidores",
    "actors": [
     {
@@ -502,7 +502,7 @@
      "id": "e3t2_pr7",
      "track": "props",
      "start": 4.75,
-     "duration": 15.05,
+     "duration": 14.35,
      "propId": "prop_draco",
      "layer": "props-front",
      "x": 270,
@@ -522,7 +522,7 @@
      "id": "e3t2_pr9",
      "track": "props",
      "start": 5.15,
-     "duration": 14.65,
+     "duration": 13.95,
      "propId": "prop_humillos",
      "layer": "props-front",
      "x": 820,
@@ -661,7 +661,7 @@
      "id": "e3t2_mo26",
      "track": "mouth",
      "start": 0,
-     "duration": 19.8,
+     "duration": 19.1,
      "actorUid": "usu",
      "mode": "auto"
     }
@@ -670,7 +670,7 @@
   {
    "id": "e3t3",
    "name": "El Director",
-   "duration": 26.0,
+   "duration": 25.3,
    "backgroundId": "bg_despacho_director",
    "actors": [
     {
@@ -841,7 +841,7 @@
      "id": "e3t3_mo15",
      "track": "mouth",
      "start": 0,
-     "duration": 26.0,
+     "duration": 25.3,
      "actorUid": "rey",
      "mode": "auto"
     },
@@ -849,7 +849,7 @@
      "id": "e3t3_mo16",
      "track": "mouth",
      "start": 0,
-     "duration": 26.0,
+     "duration": 25.3,
      "actorUid": "sis",
      "mode": "auto"
     },
@@ -857,7 +857,7 @@
      "id": "e3t3_mo17",
      "track": "mouth",
      "start": 0,
-     "duration": 26.0,
+     "duration": 25.3,
      "actorUid": "jefe",
      "mode": "auto"
     },
@@ -865,7 +865,7 @@
      "id": "e3t3_mo18",
      "track": "mouth",
      "start": 0,
-     "duration": 26.0,
+     "duration": 25.3,
      "actorUid": "usu",
      "mode": "auto"
     },
@@ -873,7 +873,7 @@
      "id": "e3t3_mo19",
      "track": "mouth",
      "start": 0,
-     "duration": 26.0,
+     "duration": 25.3,
      "actorUid": "bar",
      "mode": "auto"
     }

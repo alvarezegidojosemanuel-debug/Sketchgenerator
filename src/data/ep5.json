@@ -4,7 +4,7 @@
  "metadata": {
   "title": "Ep. 5 · La nueva normalidad",
   "language": "es-ES",
-  "approxDuration": 56.5,
+  "approxDuration": 55.1,
   "idea": "En el bar ponen en común sus habilidades y deciden investigar; Draco y Humillos queman los platos.",
   "wishlist": [
    "bar definitivo",
@@ -21,7 +21,7 @@
   {
    "id": "e5t1",
    "name": "En el bar",
-   "duration": 29.7,
+   "duration": 29.0,
    "backgroundId": "bg_bar",
    "actors": [
     {
@@ -240,7 +240,7 @@
      "id": "e5t1_mo21",
      "track": "mouth",
      "start": 0,
-     "duration": 29.7,
+     "duration": 29.0,
      "actorUid": "rey",
      "mode": "auto"
     },
@@ -248,7 +248,7 @@
      "id": "e5t1_mo22",
      "track": "mouth",
      "start": 0,
-     "duration": 29.7,
+     "duration": 29.0,
      "actorUid": "sis",
      "mode": "auto"
     },
@@ -256,7 +256,7 @@
      "id": "e5t1_mo23",
      "track": "mouth",
      "start": 0,
-     "duration": 29.7,
+     "duration": 29.0,
      "actorUid": "jefe",
      "mode": "auto"
     },
@@ -264,7 +264,7 @@
      "id": "e5t1_mo24",
      "track": "mouth",
      "start": 0,
-     "duration": 29.7,
+     "duration": 29.0,
      "actorUid": "usu",
      "mode": "auto"
     },
@@ -272,7 +272,7 @@
      "id": "e5t1_mo25",
      "track": "mouth",
      "start": 0,
-     "duration": 29.7,
+     "duration": 29.0,
      "actorUid": "bar",
      "mode": "auto"
     }
@@ -281,7 +281,7 @@
   {
    "id": "e5t2",
    "name": "El plan",
-   "duration": 26.8,
+   "duration": 26.1,
    "backgroundId": "bg_bar",
    "actors": [
     {
@@ -475,7 +475,7 @@
      "id": "e5t2_pr18",
      "track": "props",
      "start": 16.0,
-     "duration": 10.8,
+     "duration": 10.1,
      "propId": "prop_cafe",
      "layer": "props-front",
      "x": 470,
@@ -486,7 +486,7 @@
      "id": "e5t2_pr19",
      "track": "props",
      "start": 16.0,
-     "duration": 10.8,
+     "duration": 10.1,
      "propId": "prop_cafe",
      "layer": "props-front",
      "x": 610,
@@ -504,7 +504,7 @@
      "id": "e5t2_pr21",
      "track": "props",
      "start": 16.6,
-     "duration": 10.2,
+     "duration": 9.5,
      "propId": "prop_draco",
      "layer": "props-front",
      "x": 300,
@@ -517,7 +517,7 @@
      "id": "e5t2_pr22",
      "track": "props",
      "start": 16.6,
-     "duration": 10.2,
+     "duration": 9.5,
      "propId": "prop_humillos",
      "layer": "props-front",
      "x": 800,
@@ -569,7 +569,7 @@
      "id": "e5t2_mo28",
      "track": "mouth",
      "start": 0,
-     "duration": 26.8,
+     "duration": 26.1,
      "actorUid": "rey",
      "mode": "auto"
     },
@@ -577,7 +577,7 @@
      "id": "e5t2_mo29",
      "track": "mouth",
      "start": 0,
-     "duration": 26.8,
+     "duration": 26.1,
      "actorUid": "sis",
      "mode": "auto"
     },
@@ -585,7 +585,7 @@
      "id": "e5t2_mo30",
      "track": "mouth",
      "start": 0,
-     "duration": 26.8,
+     "duration": 26.1,
      "actorUid": "jefe",
      "mode": "auto"
     },
@@ -593,7 +593,7 @@
      "id": "e5t2_mo31",
      "track": "mouth",
      "start": 0,
-     "duration": 26.8,
+     "duration": 26.1,
      "actorUid": "usu",
      "mode": "auto"
     },
@@ -601,7 +601,7 @@
      "id": "e5t2_mo32",
      "track": "mouth",
      "start": 0,
-     "duration": 26.8,
+     "duration": 26.1,
      "actorUid": "bar",
      "mode": "auto"
     }

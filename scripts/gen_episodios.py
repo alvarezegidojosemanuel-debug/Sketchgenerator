@@ -115,7 +115,7 @@ class Take:
     def screen(self, effect, dur, **k):
         self.add('screen', dur, effect=effect, **k)
 
-    def build(self, tail=1.2):
+    def build(self, tail=0.5):
         dur = round(self.t + tail, 1)
         ev = list(self.ev)
         for a in self.actors:

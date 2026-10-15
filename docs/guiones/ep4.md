@@ -1,6 +1,6 @@
 # Ep. 4 · Fuera de la oficina
 
-_Cada uno descubre su habilidad en su día a día, rodeado de auras-cliché._ · ≈ 79.7 s
+_Cada uno descubre su habilidad en su día a día, rodeado de auras-cliché._ · ≈ 76.2 s
 
 ## Escena 1 · Reynaldo · El banco
 **BANCO (provisional)** — visión Puñeta

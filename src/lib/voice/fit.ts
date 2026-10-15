@@ -12,7 +12,9 @@ export const clipKey = (takeId: string, eventId: string) => `${takeId}:${eventId
 export function fitTakeToAudio(take: Take, durations: Map<string, number>, gap = 0.12): { take: Take; changed: number } {
   const t: Take = structuredClone(take);
   const origEnd = take.events.reduce((m, e) => Math.max(m, e.start + e.duration), 0);
-  const tail = Math.max(0.3, take.duration - origEnd);
+  const tail = Math.max(0, take.duration - origEnd);
+  // lo que llegaba hasta el final de la toma tiene que seguir llegando hasta el nuevo final
+  const toEnd = new Set(t.events.filter((e) => e.start + e.duration >= take.duration - 1e-3).map((e) => e.id));
   let changed = 0;
   const dialogues = t.events.filter((e) => e.track === "dialogue").sort((a, b) => a.start - b.start);
   for (const d of dialogues) {
@@ -34,6 +36,7 @@ export function fitTakeToAudio(take: Take, durations: Map<string, number>, gap =
   }
   const maxEnd = t.events.reduce((m, e) => Math.max(m, e.start + e.duration), 0);
   t.duration = Math.min(LIMITS.maxTakeDuration, Math.max(0.5, Math.round((maxEnd + tail) * 100) / 100));
+  for (const e of t.events) if (toEnd.has(e.id) && e.track !== "dialogue") e.duration = Math.max(0.05, Math.round((t.duration - e.start) * 100) / 100);
   return { take: t, changed };
 }
 

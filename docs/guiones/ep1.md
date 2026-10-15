@@ -1,6 +1,6 @@
 # Ep. 1 · Antes
 
-_Presentación del equipo humano y la incidencia fantasma que el Director exige cerrar antes del viernes._ · ≈ 74.0 s
+_Presentación del equipo humano y la incidencia fantasma que el Director exige cerrar antes del viernes._ · ≈ 71.2 s
 
 ## Escena 1 · La incidencia fantasma
 **OFICINA DE SOPORTE · MAÑANA** — humanos de espaldas

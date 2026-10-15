@@ -58,6 +58,13 @@ describe("con voces reales nadie desaparece", () => {
             }
             expect(f.actors.every((a) => a.visible > 0 || tk.actors.find((x) => x.uid === a.uid)?.hidden)).toBe(true);
           }
+          // hasta el último fotograma: quien estaba al final de la toma original sigue estando
+          const orig = p.takes.find((x) => x.id === tk.id)!;
+          const endOf = (take: typeof tk, t: number) =>
+            new Set(evaluateTake(take, catalog, t).props.filter((x) => x.propId.includes("_espaldas_") && x.opacity > 0.5).map((x) => x.propId.split("_")[1]));
+          const before = endOf(orig, orig.duration - 0.02);
+          const after = endOf(tk, tk.duration - 0.02);
+          expect([...after].sort(), `${tk.id} final ×${factor}`).toEqual([...before].sort());
         }
       }
     });

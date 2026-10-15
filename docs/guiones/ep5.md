@@ -1,6 +1,6 @@
 # Ep. 5 · La nueva normalidad
 
-_En el bar ponen en común sus habilidades y deciden investigar; Draco y Humillos queman los platos._ · ≈ 56.5 s
+_En el bar ponen en común sus habilidades y deciden investigar; Draco y Humillos queman los platos._ · ≈ 55.1 s
 
 ## Escena 1 · En el bar
 **BAR (provisional)** — visión Puñeta

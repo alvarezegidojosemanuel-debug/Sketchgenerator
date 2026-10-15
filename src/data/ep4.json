@@ -4,7 +4,7 @@
  "metadata": {
   "title": "Ep. 4 · Fuera de la oficina",
   "language": "es-ES",
-  "approxDuration": 79.7,
+  "approxDuration": 76.2,
   "idea": "Cada uno descubre su habilidad en su día a día, rodeado de auras-cliché.",
   "wishlist": [
    "banco con ventanilla",
@@ -24,7 +24,7 @@
   {
    "id": "e4t1",
    "name": "Reynaldo · El banco",
-   "duration": 16.7,
+   "duration": 16.0,
    "backgroundId": "bg_oficina",
    "actors": [
     {
@@ -152,7 +152,7 @@
      "id": "e4t1_mo15",
      "track": "mouth",
      "start": 0,
-     "duration": 16.7,
+     "duration": 16.0,
      "actorUid": "rey",
      "mode": "auto"
     }
@@ -161,7 +161,7 @@
   {
    "id": "e4t2",
    "name": "Sister · La casa",
-   "duration": 12.5,
+   "duration": 11.8,
    "backgroundId": "bg_salon",
    "actors": [
     {
@@ -240,7 +240,7 @@
      "id": "e4t2_pr8",
      "track": "props",
      "start": 6.8,
-     "duration": 5.7,
+     "duration": 5.0,
      "propId": "prop_papeles",
      "layer": "props-back",
      "x": 300,
@@ -263,7 +263,7 @@
      "id": "e4t2_pr10",
      "track": "props",
      "start": 6.8,
-     "duration": 5.7,
+     "duration": 5.0,
      "propId": "prop_cafe",
      "layer": "props-back",
      "x": 160,
@@ -286,7 +286,7 @@
      "id": "e4t2_pr12",
      "track": "props",
      "start": 6.8,
-     "duration": 5.7,
+     "duration": 5.0,
      "propId": "prop_maletin",
      "layer": "props-back",
      "x": 380,
@@ -309,7 +309,7 @@
      "id": "e4t2_pr14",
      "track": "props",
      "start": 6.8,
-     "duration": 5.7,
+     "duration": 5.0,
      "propId": "prop_planta",
      "layer": "props-back",
      "x": 520,
@@ -402,7 +402,7 @@
      "id": "e4t2_mo24",
      "track": "mouth",
      "start": 0,
-     "duration": 12.5,
+     "duration": 11.8,
      "actorUid": "sis",
      "mode": "auto"
     }
@@ -411,7 +411,7 @@
   {
    "id": "e4t3",
    "name": "Barbas · El cuñado",
-   "duration": 20.2,
+   "duration": 19.5,
    "backgroundId": "bg_cocina",
    "actors": [
     {
@@ -502,7 +502,7 @@
      "id": "e4t3_mo10",
      "track": "mouth",
      "start": 0,
-     "duration": 20.2,
+     "duration": 19.5,
      "actorUid": "bar",
      "mode": "auto"
     }
@@ -511,7 +511,7 @@
   {
    "id": "e4t4",
    "name": "Usu · El semáforo",
-   "duration": 15.9,
+   "duration": 15.2,
    "backgroundId": "bg_calle",
    "actors": [
     {
@@ -584,7 +584,7 @@
      "id": "e4t4_pr8",
      "track": "props",
      "start": 7.3,
-     "duration": 8.6,
+     "duration": 7.9,
      "propId": "prop_pulpo",
      "layer": "props-front",
      "x": 780,
@@ -636,7 +636,7 @@
      "id": "e4t4_mo14",
      "track": "mouth",
      "start": 0,
-     "duration": 15.9,
+     "duration": 15.2,
      "actorUid": "usu",
      "mode": "auto"
     }
@@ -645,7 +645,7 @@
   {
    "id": "e4t5",
    "name": "Jefe · El rellano",
-   "duration": 14.4,
+   "duration": 13.7,
    "backgroundId": "bg_salon",
    "actors": [
     {
@@ -728,7 +728,7 @@
      "id": "e4t5_mo9",
      "track": "mouth",
      "start": 0,
-     "duration": 14.4,
+     "duration": 13.7,
      "actorUid": "jefe",
      "mode": "auto"
     }
