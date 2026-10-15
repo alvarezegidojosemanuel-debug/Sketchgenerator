@@ -11,9 +11,9 @@ _Primer día en visión Puñeta: se ven azules, Usu descubre sus poderes y nacen
 - **JEFE:** ¿Decir qué?
 - **REYNALDO _(enfadado)_:** Que somos azules, Jefe.
 - **JEFE _(sorprendido)_:** …Anda.
-- **BARBAS _(contento)_:** Yo lo vi el viernes. No dije nada por no preocuparos.
+- **BARBAS _(contento)_:** [mischievously] Yo lo vi el viernes. No dije nada… por no preocuparos.
 - **SISTER:** Gritaste en el ascensor, Barbas.
-- **BARBAS _(riéndose)_:** Con todo el amor del mundo.
+- **BARBAS _(riéndose)_:** [chuckles] Con todo el amor del mundo.
 - **USU _(contento)_:** [excited] ¡Lo sabía! ¡El parche funciona!
 - **USU _(serio)_:** …Que el parche funciona. Con interrogación.
 

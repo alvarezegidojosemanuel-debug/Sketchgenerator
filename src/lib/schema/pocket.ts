@@ -226,6 +226,8 @@ export const ElevenCast = z.object({
   similarity: z.number().min(0).max(1),
   style: z.number().min(0).max(1),
   speed: z.number().min(0.7).max(1.2),
+  /** Modelo propio de este personaje (p. ej. v3 para un tono más exagerado con acotaciones). */
+  model: z.enum(["eleven_multilingual_v2", "eleven_v3", "eleven_flash_v2_5"]).optional(),
 });
 
 export const PocketProject = z.object({

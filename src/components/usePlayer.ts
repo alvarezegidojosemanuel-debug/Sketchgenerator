@@ -11,6 +11,7 @@ import { levelAt } from "@/lib/voice/dsp";
 import { clipKey } from "@/lib/voice/fit";
 import { playClip, stopAllClips, type Clip } from "@/lib/voice/piper";
 import { playSound, preloadSounds } from "@/lib/sfx/player";
+import { preloadProject } from "@/lib/renderer/preload";
 
 export type VoiceEngine = "elevenlabs" | "piper" | "browser" | "off";
 
@@ -67,6 +68,7 @@ export function usePlayer(project: PocketProject, catalog: Catalog, opts: { engi
 
   useEffect(() => {
     playerRef.current!.setProject(project);
+    void preloadProject(project, catalogRef.current); // calentar la caché nada más abrir el proyecto
   }, [project]);
 
   useEffect(() => {
@@ -107,7 +109,7 @@ export function usePlayer(project: PocketProject, catalog: Catalog, opts: { engi
     total: p.total,
     play: async () => {
       const ids = project.takes.flatMap((t) => t.events.flatMap((e) => (e.track === "sfx" ? [e.soundId] : [])));
-      if (ids.length) await preloadSounds(catalog, ids);
+      await Promise.all([ids.length ? preloadSounds(catalog, ids) : Promise.resolve(), preloadProject(project, catalog)]);
       p.play();
       setPlaying(true);
     },

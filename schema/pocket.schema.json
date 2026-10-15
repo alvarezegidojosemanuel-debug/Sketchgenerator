@@ -114,6 +114,14 @@
                 "type": "number",
                 "minimum": 0.7,
                 "maximum": 1.2
+              },
+              "model": {
+                "type": "string",
+                "enum": [
+                  "eleven_multilingual_v2",
+                  "eleven_v3",
+                  "eleven_flash_v2_5"
+                ]
               }
             },
             "required": [

@@ -38,6 +38,7 @@ class Take:
         self.actors = []
         self.back = back
         self.back_beats = []  # (quien, desde, hasta, variante)
+        self.absent = []  # (quien, desde, hasta): fuera de su silla
         if solo:
             uid, x, y, s, pose = solo
             self._actor(uid, x, y, s, 2, pose)
@@ -70,6 +71,8 @@ class Take:
             self.pose(who, pose)
         if who == 'narr':
             self.add('dialogue', d, text=text)
+        elif isinstance(who, tuple) and who[0] == 'voz':
+            self.add('dialogue', d, text=text, voiceOf=who[1])
         elif isinstance(who, tuple):
             self.add('dialogue', d, text=text, speakerName=who[1])
         elif self.back and who in SEAT:
@@ -140,14 +143,29 @@ class Take:
                 t = b
             if t < dur:
                 segs.append((t, dur, 'teclea'))
+            # fuera de su sitio: se recortan esos tramos
+            for who2, fa, fb in self.absent:
+                if who2 != who:
+                    continue
+                cut = []
+                for a, b, var in segs:
+                    if b <= fa or a >= fb:
+                        cut.append((a, b, var))
+                        continue
+                    if a < fa:
+                        cut.append((a, fa, var))
+                    if b > fb:
+                        cut.append((fb, b, var))
+                segs = cut
             for a, b, var in segs:
+                a, b = round(a, 2), round(b, 2)  # extremos redondeados una sola vez: sin huecos entre tramos
                 if b - a < 0.05:
                     continue
                 base = CHAIR[f'{who}_espaldas_teclea']
                 v = CHAIR[f'{who}_espaldas_{var}']
                 s2 = s * base[1] / v[1]
                 px = round(x + base[0] * s - v[0] * s2)
-                p = dict(id=self._id('pr'), track='props', start=round(a, 2), duration=round(b - a, 2), propId=f'prop_{who}_espaldas_{var}',
+                p = dict(id=self._id('pr'), track='props', start=a, duration=round(b - a, 2), propId=f'prop_{who}_espaldas_{var}',
                          layer='props-front', x=px, y=y, scale=round(s2, 3), zIndex=SEAT_Z[who])
                 if var == 'teclea':
                     p['loop'] = 'type'
@@ -170,27 +188,40 @@ t1.sfx('sfx_teclado', 3, 0.5)
 t1.say('narr', 'Departamento de soporte. Cinco personas. Y una incidencia que no hay manera de cerrar.')
 t1.say('sister', 'La cuatro mil doce se ha vuelto a abrir. Sola. Otra vez.')
 t1.say('reynaldo', 'Yo la cerré ayer a las seis menos uno. Consta en el registro.')
-t1.say('barbas', 'Igual es que le caemos bien.')
+t1.say('barbas', '[mischievously] Igual es que le caemos bien.')
 t1.say('usu', 'O el servidor tiene sentimientos.', gap=0.2)
 t1.sfx('sfx_ding', 0.6)
 t1.wait(0.4)
 t1.say(('off', 'Director'), 'Equipo de soporte: si la incidencia sigue abierta el viernes, habrá cambios.')
-t2 = Take('e1t2', 'El viernes', 'bg_oficina_manana', back=True)
+t2 = Take('e1t2', 'Barbas calienta al Jefe', 'bg_oficina_manana', back=True)
 t2.say('jefe', '¿Cambios? ¿Qué cambios?', gap=0.2)
-t2.say('barbas', 'Yo no digo nada, Jefe. Pero lo ha dicho mirando tu silla.', gap=0.5)
+t2.say('barbas', '[mischievously] Yo no digo nada, Jefe… pero lo ha dicho mirando tu silla.', gap=0.5)
 t2.say('jefe', '…¿Mi silla?', gap=0.25)
-t2.say('barbas', 'Con todo el amor del mundo.', gap=0.15)
-t2.say('jefe', '[angry] ¡Voy ahora mismo!', gap=0.1)
+t2.say('barbas', '[chuckles] Con todo el amor del mundo, ¿eh?', gap=0.15)
+t2.say('jefe', '[angry] ¡Ahora mismo voy a hablar con él!', gap=0.1)
 t2.sfx('sfx_whoosh', 0.6)
-t2.wait(1.2)
-t2.say('sister', 'La reunión con él es el viernes, Jefe. Te lo he apuntado en la mano.', gap=0.5)
-t2.say('jefe', '…Pone «no grites».', gap=0.8)
-t2.say('usu', 'Tranquilos. Lo arreglo yo. Con un parche.', gap=0.15)
-t2.chorus(['sister', 'reynaldo', 'barbas', 'jefe'], 'No.', gap=0.7)
-t2.say('usu', 'Ya lo he empezado.', gap=0.2)
-t2.sfx('sfx_fracaso', 1.1)
-t2.wait(0.8)
-EP1 = project('Ep. 1 · Antes', 'Presentación del equipo humano y la incidencia fantasma que el Director exige cerrar antes del viernes.', [t1, t2],
+t2.absent.append(('jefe', t2.t, 99))
+t2.wait(0.9)
+t2.say('barbas', '[chuckles] Tres, dos, uno…', gap=0.6)
+t3 = Take('e1t3', 'El despacho', 'bg_despacho_director')
+t3.sfx('sfx_golpe', 0.4)
+t3.say(('voz', 'jefe'), 'Director, sobre esos «cambios»…', gap=0.1)
+t3.screen('shake', 0.4)
+t3.say(('off', 'Director'), '[shouts] ¡Fuera de mi despacho! ¡Y mándame una reunión para el viernes!', gap=0.3)
+t3.sfx('sfx_golpe', 0.4)
+t3.wait(0.6)
+t4 = Take('e1t4', 'La reunión', 'bg_oficina_manana', back=True)
+t4.absent.append(('jefe', 0, 1.0))
+t4.wait(1.1)
+t4.say('sister', 'Reunión con el Director, el viernes a las diez. Apuntada.', gap=0.4)
+t4.say('jefe', '¿Qué reunión?', gap=0.7)
+t4.say('barbas', '[mischievously] La tuya, Jefe. Con todo el amor del mundo.', gap=0.6)
+t4.say('usu', 'Tranquilos. Lo arreglo yo. Con un parche.', gap=0.15)
+t4.chorus(['sister', 'reynaldo', 'barbas', 'jefe'], 'No.', gap=0.7)
+t4.say('usu', 'Ya lo he empezado.', gap=0.2)
+t4.sfx('sfx_fracaso', 1.1)
+t4.wait(0.8)
+EP1 = project('Ep. 1 · Antes', 'Presentación del equipo humano y la incidencia fantasma que el Director exige cerrar antes del viernes.', [t1, t2, t3, t4],
               ['mañana de cada uno en casa / portal (presentación)', 'Director humano (de pie)', 'monitor con el correo del Director'])
 
 # ================================================================= EP. 2 · EL PARCHE
@@ -246,9 +277,9 @@ t1.pose('jefe', 'reaction')
 t1.face('jefe', 'sorpresa')
 t1.wait(0.6)
 t1.say('jefe', '…Anda.', gap=0.6)
-t1.say('bar', 'Yo lo vi el viernes. No dije nada por no preocuparos.', expr='alegria', gap=0.2)
+t1.say('bar', '[mischievously] Yo lo vi el viernes. No dije nada… por no preocuparos.', expr='alegria', gap=0.2)
 t1.say('sis', 'Gritaste en el ascensor, Barbas.', gap=0.15)
-t1.say('bar', 'Con todo el amor del mundo.', expr='risa', gap=0.6)
+t1.say('bar', '[chuckles] Con todo el amor del mundo.', expr='risa', gap=0.6)
 t1.say('usu', '[excited] ¡Lo sabía! ¡El parche funciona!', expr='alegria', pose='talk_emphasis', gap=0.1)
 # todos se giran hacia Usu
 for u in ('rey', 'sis', 'jefe', 'bar'):

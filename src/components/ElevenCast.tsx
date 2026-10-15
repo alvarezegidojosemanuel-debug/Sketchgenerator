@@ -158,6 +158,13 @@ export function ElevenCast({ s, model, onModel, code, onCode }: Props) {
                   <Field label="Velocidad">
                     <Stepper value={c.speed} step={0.05} min={0.7} max={1.2} onChange={(x) => set(cid, { speed: x })} />
                   </Field>
+                  <Field label="Modelo de este personaje" hint="v3 entiende acotaciones como [chuckles] o [mischievously]: más exagerado.">
+                    <select value={c.model ?? ""} onChange={(e) => set(cid, { model: (e.target.value || undefined) as ElevenCastEntry["model"] })}>
+                      <option value="">(el general)</option>
+                      <option value="eleven_v3">v3 · expresivo</option>
+                      <option value="eleven_multilingual_v2">Multilingual v2 · natural</option>
+                    </select>
+                  </Field>
                 </div>
               )}
             </div>

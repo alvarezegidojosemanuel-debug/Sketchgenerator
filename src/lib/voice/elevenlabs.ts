@@ -98,7 +98,7 @@ export async function generateElevenLines(
   lines: LineRequest[],
   cast: Record<string, ElevenCastEntry> | undefined,
   code: string,
-  model: ElevenModel,
+  globalModel: ElevenModel,
   onProgress?: (p: Progress) => void,
 ): Promise<Map<string, Clip>> {
   const out = new Map<string, Clip>();
@@ -109,9 +109,11 @@ export async function generateElevenLines(
     const take = l.key.slice(0, l.key.indexOf(":"));
     const prevL = lines[i - 2]?.key.startsWith(take + ":") ? lines[i - 2].text : undefined;
     const nextL = lines[i]?.key.startsWith(take + ":") ? lines[i].text : undefined;
-    const ctx = model === "eleven_v3" ? {} : { previousText: prevL ? stripAudioTags(prevL).slice(0, 400) : undefined, nextText: nextL ? stripAudioTags(nextL).slice(0, 400) : undefined };
     const c = cast?.[l.characterId];
     if (!c) throw new Error(`Falta la voz ElevenLabs de «${l.characterId}» en el reparto.`);
+    const model = c.model ?? globalModel;
+    const ctx: { previousText?: string; nextText?: string } =
+      model === "eleven_v3" ? {} : { previousText: prevL ? stripAudioTags(prevL).slice(0, 400) : undefined, nextText: nextL ? stripAudioTags(nextL).slice(0, 400) : undefined };
     const text = model === "eleven_v3" ? l.text.trim() : stripAudioTags(l.text);
     const speed = Math.min(1.2, Math.max(0.7, c.speed * (l.rate ?? 1)));
     const ck = `el2|${model}|${c.voiceId}|${c.stability}|${c.similarity}|${c.style}|${speed.toFixed(2)}|${text}|${ctx.previousText ?? ""}|${ctx.nextText ?? ""}`;
