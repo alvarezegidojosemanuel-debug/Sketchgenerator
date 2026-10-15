@@ -54,3 +54,15 @@ describe("humanos de frente (poses dibujadas enteras)", () => {
     expect(r2.project!.takes[0].actors.every((a) => !a.poseId.includes("pose_h_"))).toBe(true);
   });
 });
+
+describe("estatura de los humanos", () => {
+  it("las poses humanas se escalan por la estatura (ref. 1,84 m); las de Puñeto no", async () => {
+    const { poseScale, findPose } = await import("@/lib/catalog");
+    const flat = { ...findPose(catalog, "jefe", "char.jefe.pose_h_neutro")!, displayScale: 1 };
+    expect(poseScale(catalog, "jefe", flat)).toBe(1);
+    expect(poseScale(catalog, "sister", flat)).toBeCloseTo(170 / 184);
+    expect(poseScale(catalog, "barbas", flat)).toBeCloseTo(187 / 184);
+    const puneto = findPose(catalog, "sister", "char.sister.pose_neutral_front")!;
+    expect(poseScale(catalog, "sister", puneto)).toBe(puneto.displayScale);
+  });
+});

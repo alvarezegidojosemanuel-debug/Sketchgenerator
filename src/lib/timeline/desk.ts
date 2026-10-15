@@ -1,12 +1,12 @@
 /** Recetas de escena: personaje trabajando en su escritorio. */
 import type { Catalog, Prop } from "@/lib/catalog/types";
-import { findPose, findProp } from "@/lib/catalog";
+import { findPose, findProp, poseScale } from "@/lib/catalog";
 import type { Actor, PocketEvent, PropsEvent, Take } from "@/lib/schema/pocket";
 
 /** Altura en el lienzo (px) de un actor con su pose base. */
 export function actorHeight(catalog: Catalog, a: Actor): number {
   const pose = findPose(catalog, a.characterId, a.poseId);
-  return (pose?.height ?? 600) * (pose?.displayScale ?? 1) * (a.scale ?? 1);
+  return (pose?.height ?? 600) * poseScale(catalog, a.characterId, pose) * (a.scale ?? 1);
 }
 
 /** Objeto que parece un escritorio (el del usuario primero). */

@@ -127,6 +127,8 @@ export interface Character {
   defaultVoice: { pitch: number; rate: number };
   /** false para Usu y Jefe: las gafas de sol están dibujadas en el cuerpo. */
   hasEyes: boolean;
+  /** Estatura real (cm). Escala las poses humanas dibujadas enteras respecto a 184 cm (Jefe y Usu). */
+  heightCm?: number;
   poses: Pose[];
   face: { eyes: FaceAsset[]; brows: FaceAsset[]; mouths: FaceAsset[] };
   expressions: ExpressionPrefab[];

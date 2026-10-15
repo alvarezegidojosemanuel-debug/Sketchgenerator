@@ -59,6 +59,16 @@ export function findPose(c: Catalog, characterId: string, poseId: string): Pose 
   return findCharacter(c, characterId)?.poses.find((p) => p.id === poseId);
 }
 
+/** Estatura de referencia de las láminas de poses humanas (todas se dibujan igual de altas). */
+export const REF_HEIGHT_CM = 184;
+
+/** Escala de dibujo de una pose: displayScale × estatura del personaje (solo poses humanas «flat»). */
+export function poseScale(c: Catalog, characterId: string, pose: Pose | undefined): number {
+  if (!pose) return 1;
+  const h = pose.flat ? findCharacter(c, characterId)?.heightCm : undefined;
+  return pose.displayScale * (h ? h / REF_HEIGHT_CM : 1);
+}
+
 export function findExpression(c: Catalog, characterId: string, expressionId: string): ExpressionPrefab | undefined {
   return findCharacter(c, characterId)?.expressions.find((e) => e.id === expressionId);
 }

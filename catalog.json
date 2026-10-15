@@ -36,6 +36,7 @@
     "rate": 1.05
    },
    "hasEyes": false,
+   "heightCm": 184,
    "poses": [
     {
      "id": "char.usu.pose_neutral_front",
@@ -1275,6 +1276,7 @@
     "rate": 1.0
    },
    "hasEyes": true,
+   "heightCm": 170,
    "poses": [
     {
      "id": "char.reynaldo.pose_neutral_front",
@@ -2686,6 +2688,7 @@
     "rate": 1.05
    },
    "hasEyes": true,
+   "heightCm": 170,
    "poses": [
     {
      "id": "char.sister.pose_neutral_front",
@@ -3987,6 +3990,7 @@
     "rate": 0.95
    },
    "hasEyes": true,
+   "heightCm": 187,
    "poses": [
     {
      "id": "char.barbas.pose_neutral_front",
@@ -5213,6 +5217,7 @@
     "rate": 0.95
    },
    "hasEyes": false,
+   "heightCm": 184,
    "poses": [
     {
      "id": "char.jefe.pose_neutral_front",

@@ -3,7 +3,7 @@
  * sin tener que programarlo evento a evento. Funciones puras de t (reproducibles).
  */
 import type { Catalog } from "@/lib/catalog/types";
-import { findCharacter, findPose } from "@/lib/catalog";
+import { findCharacter, findPose, poseScale } from "@/lib/catalog";
 import type { CameraEvent, DialogueEvent, Take } from "@/lib/schema/pocket";
 import type { ActorState } from "./evaluate";
 
@@ -112,7 +112,7 @@ const WIDE: CameraState = { zoom: 1, cx: 540, cy: 960 };
 
 function actorHeight(catalog: Catalog, a: ActorState): number {
   const pose = findPose(catalog, a.characterId, a.poseId);
-  return (pose?.height ?? 600) * (pose?.displayScale ?? 1) * a.scale;
+  return (pose?.height ?? 600) * poseScale(catalog, a.characterId, pose) * a.scale;
 }
 
 function frameShot(catalog: Catalog, shot: CameraEvent["shot"], a: ActorState | undefined, zoomOverride?: number): CameraState {

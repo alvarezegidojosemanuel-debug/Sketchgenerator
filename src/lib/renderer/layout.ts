@@ -1,5 +1,5 @@
 import type { Catalog, Pose } from "@/lib/catalog/types";
-import { findBackground, findCharacter, findExpression, findPose, findProp } from "@/lib/catalog";
+import { findBackground, findCharacter, findExpression, findPose, findProp, poseScale } from "@/lib/catalog";
 import type { ActorState, FrameState, PropState } from "@/lib/timeline/evaluate";
 import { layoutFace, type FaceLayer } from "./face";
 
@@ -93,7 +93,7 @@ function layoutActorPose(catalog: Catalog, a: ActorState): ActorLayout {
     pose,
     left: a.x + a.offX - pw / 2,
     top: a.y + a.offY - ph,
-    scale: a.scale * (pose?.displayScale ?? 1) * a.presenceScale,
+    scale: a.scale * poseScale(catalog, a.characterId, pose) * a.presenceScale,
     flip: a.flip,
     speaking: a.speaking,
     opacity: 1,

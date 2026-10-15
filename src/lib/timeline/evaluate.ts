@@ -1,5 +1,5 @@
 import type { Catalog } from "@/lib/catalog/types";
-import { findCharacter, findExpression, findPose, findProp } from "@/lib/catalog";
+import { findCharacter, findExpression, findPose, findProp, poseScale } from "@/lib/catalog";
 import { bodyFx, presence, propAnim, screenFx, PRESENCE_TIME, type PropAnim, type ScreenFx } from "./fx";
 import { stripAudioTags } from "@/lib/voice/tags";
 import { applyLife, cameraAt, type CameraState } from "./life";
@@ -364,7 +364,7 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
     const prop = findProp(catalog, pr.propId);
     if (!st || !prop) continue;
     const pose = findPose(catalog, st.characterId, st.poseId);
-    const h = (pose?.height ?? 600) * (pose?.displayScale ?? 1) * st.scale;
+    const h = (pose?.height ?? 600) * poseScale(catalog, st.characterId, pose) * st.scale;
     const side = st.flip ? -1 : 1;
     const headTop = st.y + st.offY - h;
     const w = prop.width * (pr.baseScale ?? 1) + 120;
