@@ -5907,6 +5907,11 @@
    "id": "bg_oficina_noche",
    "label": "Oficina de soporte de noche (5 puestos, vista por detrás)",
    "src": "/assets/punetos/backgrounds/bg_oficina_noche.webp"
+  },
+  {
+   "id": "bg_sala_servidores",
+   "label": "Sala de servidores (rack con aviso rojo)",
+   "src": "/assets/punetos/backgrounds/bg_sala_servidores.webp"
   }
  ],
  "props": [
