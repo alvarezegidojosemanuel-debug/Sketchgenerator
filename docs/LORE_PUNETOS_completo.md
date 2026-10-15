@@ -231,6 +231,19 @@
 - **Aura:** ejecutivo de anuncio, con dientes brillantes y una sonrisa enorme.
 - **Voz** `PROPUESTA`: engolada y segura de alto directivo. Si se quiere, con un aire de «padrino» descrito como arquetipo, sin imitar a ningún actor.
 
+### Secundarios con nombre `PROPUESTA`
+Fichas completas, con aspecto, aura y poses, en [`arte-produccion.md`](arte-produccion.md):
+
+- **Ramiro Velasco**, el Director.
+- **Dra. Matilde Ferrer**, de SEMILLA: genio despistado que habla con sus plantas.
+- **Íñigo Salas**, de ÍCARO: hiperactivo, lo cuenta todo como una cuenta atrás.
+- **Lucía Bermejo**, de SINAPSIS: perfeccionista, siempre entre reuniones.
+- **BRUNO**, el robot de recepción que abraza.
+- **Victoria Lamas**, la inversora.
+- **Pablo**, el becario que trae todas las peticiones.
+- **Toni**, el cuñado de Barbas.
+- **Manolo**, el camarero.
+
 ### Otros personajes recurrentes `PROPUESTA`
 
 | Personaje | Visión humana | Aura (visión Puñeta) |
