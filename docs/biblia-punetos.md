@@ -40,7 +40,7 @@ Leyenda:
    - **Jefe:** líder noble y querido, el «papi» del equipo. Increíblemente inteligente pero desastre y olvidadizo; cuando le piden recordar algo: «Eso se lo preguntaré al Jefe del pasado». Se enfada con facilidad con quien quiere molestar a su equipo.
    - **Sister:** inteligente, organizada, muy buena y dulce. Defiende a muerte a su equipo; protege y ayuda al Jefe para que sus despistes no tengan consecuencias.
    - **Barbas:** noble, muy trabajador, puede con lo que le echen. Sentido de la justicia muy agudo y mucho humor; siempre hace bromas. Para no confrontar él a otros equipos, «achucha» al Jefe hasta calentarlo y que vaya este como un miura. Mete baza, pero **todo lo dice y lo hace «con todo el amor del mundo»** (su coletilla).
-   - **Usu:** loquísimo. Siempre lo resuelve todo, pero de la forma más disparatada posible. Tiene mascotas imaginarias, los dragones **Draco** y **Humillos**, a los que da de desayunar; cuando le pides algo a veces te dice que se lo pases a sus dragones, al que tenga libre en ese momento.
+   - **Usu:** loquísimo. Siempre lo resuelve todo, pero de la forma más disparatada posible. Sus dragones **Draco** y **Humillos** **no existen antes del parche**: son los primeros seres que crea, mientras resuelve su primera incidencia Puñeta (Ep. 3). Desde entonces le acompañan y, cuando le pides algo, a veces te dice que se lo pases a sus dragones, al que tenga libre.
    - **Reynaldo:** trabajador, con un sentido agudo de sus derechos laborales; no deja que nada se salga de las normas. No le pidas que haga horas si no quieres que vaya al sindicato.
 8. **Habilidad:** desde el pantallazo **conectan con los sistemas**: pueden resolver incidencias «mágicamente» (tocar una máquina, pensar en ella, hablarle…). Por eso son **mejores en su trabajo que nunca**, aunque no pueden explicar cómo.
    **Cada habilidad exagera los rasgos de su personaje:**
@@ -58,7 +58,6 @@ Leyenda:
 
 ### `PROPUESTA` (pendiente de tu visto bueno)
 
-2. **¿Los seres de Usu y los dragones?** Draco y Humillos podrían ser **los primeros seres que Usu «creó»**, antes incluso del parche. Quizá nunca fueron del todo imaginarios. Encaja con el misterio del Ep. 5.
 3. **La habilidad no es infalible.** Funciona mejor con calma; con nervios, provoca pequeños desastres. Es una fuente de gags y evita que sean todopoderosos.
 4. **No pueden «despuñetizarse» a voluntad.** «Apagar y encender» como gag recurrente.
 5. **Entre ellos se ven Puñetos siempre.** El grupo es su ancla.
@@ -69,7 +68,6 @@ Leyenda:
 - Si hay más gente que ve lo mismo o que conecta con los sistemas.
 - Si se puede repetir, revertir o contagiar.
 - Por qué ese parche y no otro.
-- Si los dragones de Usu eran imaginarios… *(ver Ep. 5)*.
 - Si querrían volver atrás, sabiendo que perderían la habilidad.
 
 ---
@@ -91,7 +89,6 @@ Leyenda:
      - Sister le escribe: «Las llaves, en el bolsillo izquierdo»;
      - Reynaldo ficha a las 8:00:00 exactas;
      - Barbas hace reír al del quiosco;
-     - Usu desayuna con dos tazones más «para Draco y Humillos».
   2. En la oficina, la incidencia fantasma se reabre sola una y otra vez.
   3. Correo del Director. Barbas: «Jefe, ¿has visto lo que pide este hombre?» El Jefe se levanta como un miura.
   4. Sister le recuerda en voz baja que el viernes es pasado mañana.
@@ -100,9 +97,9 @@ Leyenda:
 
 ### Ep. 2 · «El parche»
 
-- **Sinopsis:** Usu prepara el parche de noche con «ayuda» de Draco y Humillos.
+- **Sinopsis:** Usu prepara el parche de noche, solo.
 - **Beats:**
-  1. Usu de noche con los dragones en el bocadillo.
+  1. Usu de noche, solo, con el parche.
   2. El servidor hace ruido y suelta humo.
   3. Reynaldo se niega a quedarse: «Artículo 34».
   4. Viernes, 17:59: Reynaldo ya con el abrigo.
@@ -194,6 +191,4 @@ Sueltos, cada uno centrado en un personaje fuera de la oficina:
 
 ## 6. Pendiente de tu aprobación
 
-3. ¿Te gusta que **Draco y Humillos** sean los primeros seres que Usu creó (y por eso quizá no eran imaginarios)?
-4. ¿El **misterio de los dragones** entra en canon?
 5. ¿Te encaja el **diseño v2 de los episodios**? Cuando lo apruebes, escribo los guiones dialogados.

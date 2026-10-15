@@ -4,7 +4,7 @@
  "metadata": {
   "title": "Ep. 2 · El parche",
   "language": "es-ES",
-  "approxDuration": 53.5,
+  "approxDuration": 47.8,
   "idea": "Usu prepara el parche de noche; el viernes a las 17:59 lo aplica y llega el pantallazo azul.",
   "wishlist": [
    "Usu humano de espaldas iluminado de noche",
@@ -20,7 +20,7 @@
   {
    "id": "e2t1",
    "name": "Miércoles, 23:00",
-   "duration": 12.7,
+   "duration": 7.0,
    "backgroundId": "bg_oficina_noche",
    "actors": [],
    "events": [
@@ -43,23 +43,15 @@
      "id": "e2t1_di3",
      "track": "dialogue",
      "start": 3.05,
-     "duration": 4.9,
-     "text": "Draco, pásame el destornillador. Humillos, tú no, que te comes los cables.",
+     "duration": 2.4,
+     "text": "[whispers] El viernes te arreglo. Palabra.",
      "voiceOf": "usu"
     },
     {
-     "id": "e2t1_di4",
-     "track": "dialogue",
-     "start": 8.3,
-     "duration": 2.8,
-     "text": "[whispers] El viernes lo arreglamos. Los tres.",
-     "voiceOf": "usu"
-    },
-    {
-     "id": "e2t1_pr5",
+     "id": "e2t1_pr4",
      "track": "props",
      "start": 0.0,
-     "duration": 12.7,
+     "duration": 7.0,
      "propId": "prop_sister_espaldas_teclea",
      "layer": "props-front",
      "x": 102,
@@ -69,10 +61,10 @@
      "loop": "type"
     },
     {
-     "id": "e2t1_pr6",
+     "id": "e2t1_pr5",
      "track": "props",
      "start": 0.0,
-     "duration": 12.7,
+     "duration": 7.0,
      "propId": "prop_reynaldo_espaldas_teclea",
      "layer": "props-front",
      "x": 427,
@@ -82,10 +74,10 @@
      "loop": "type"
     },
     {
-     "id": "e2t1_pr7",
+     "id": "e2t1_pr6",
      "track": "props",
      "start": 0.0,
-     "duration": 12.7,
+     "duration": 7.0,
      "propId": "prop_barbas_espaldas_teclea",
      "layer": "props-front",
      "x": 782,
@@ -95,10 +87,10 @@
      "loop": "type"
     },
     {
-     "id": "e2t1_pr8",
+     "id": "e2t1_pr7",
      "track": "props",
      "start": 0.0,
-     "duration": 12.7,
+     "duration": 7.0,
      "propId": "prop_jefe_espaldas_teclea",
      "layer": "props-front",
      "x": 83,
@@ -108,7 +100,7 @@
      "loop": "type"
     },
     {
-     "id": "e2t1_pr9",
+     "id": "e2t1_pr8",
      "track": "props",
      "start": 0.0,
      "duration": 2.95,
@@ -121,10 +113,10 @@
      "loop": "type"
     },
     {
-     "id": "e2t1_pr10",
+     "id": "e2t1_pr9",
      "track": "props",
      "start": 2.95,
-     "duration": 5.1,
+     "duration": 2.6,
      "propId": "prop_usu_espaldas_habla",
      "layer": "props-front",
      "x": 579,
@@ -133,35 +125,10 @@
      "zIndex": 5
     },
     {
-     "id": "e2t1_pr11",
+     "id": "e2t1_pr10",
      "track": "props",
-     "start": 8.05,
-     "duration": 0.15,
-     "propId": "prop_usu_espaldas_teclea",
-     "layer": "props-front",
-     "x": 575,
-     "y": 1848,
-     "scale": 0.875,
-     "zIndex": 5,
-     "loop": "type"
-    },
-    {
-     "id": "e2t1_pr12",
-     "track": "props",
-     "start": 8.2,
-     "duration": 3.0,
-     "propId": "prop_usu_espaldas_habla",
-     "layer": "props-front",
-     "x": 579,
-     "y": 1848,
-     "scale": 0.916,
-     "zIndex": 5
-    },
-    {
-     "id": "e2t1_pr13",
-     "track": "props",
-     "start": 11.2,
-     "duration": 1.5,
+     "start": 5.55,
+     "duration": 1.45,
      "propId": "prop_usu_espaldas_teclea",
      "layer": "props-front",
      "x": 575,

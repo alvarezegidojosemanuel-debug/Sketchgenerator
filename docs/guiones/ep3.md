@@ -1,6 +1,6 @@
 # Ep. 3 · ¿Qué coño nos ha pasado?
 
-_Primer día en visión Puñeta: se ven azules, Usu descubre sus poderes y nacen Draco y Humillos._ · ≈ 81.2 s
+_Primer día en visión Puñeta: se ven azules, Usu descubre sus poderes y nacen Draco y Humillos._ · ≈ 84.2 s
 
 ## Escena 1 · Lunes
 **OFICINA DE SOPORTE · MAÑANA** — visión Puñeta
@@ -25,7 +25,8 @@ _Primer día en visión Puñeta: se ven azules, Usu descubre sus poderes y nacen
 - _[aparece draco]_
 - _[aparece humillos]_
 - _[USU da un salto]_
-- **USU _(sorprendido)_:** …¿Draco? ¿Humillos? ¡Pero si erais imaginarios!
+- **USU _(sorprendido)_:** …¿Y vosotros de dónde salís?
+- **USU _(contento)_:** Tú te llamas Draco. Y tú… Humillos.
 - **USU _(contento)_:** [excited] Vale. Pues ya que estáis: la cuatro mil doce.
 - _[destello]_
 - **USU _(riéndose)_:** Incidencia cerrada. Por mis dragones.

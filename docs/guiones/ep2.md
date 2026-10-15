@@ -1,13 +1,12 @@
 # Ep. 2 · El parche
 
-_Usu prepara el parche de noche; el viernes a las 17:59 lo aplica y llega el pantallazo azul._ · ≈ 53.5 s
+_Usu prepara el parche de noche; el viernes a las 17:59 lo aplica y llega el pantallazo azul._ · ≈ 47.8 s
 
 ## Escena 1 · Miércoles, 23:00
 **OFICINA DE SOPORTE · NOCHE** — humanos de espaldas
 
 - **NARRADOR:** Miércoles. Once de la noche.
-- **USU:** Draco, pásame el destornillador. Humillos, tú no, que te comes los cables.
-- **USU:** [whispers] El viernes lo arreglamos. Los tres.
+- **USU:** [whispers] El viernes te arreglo. Palabra.
 
 ## Escena 2 · El servidor
 **SALA DE SERVIDORES** — humanos de espaldas

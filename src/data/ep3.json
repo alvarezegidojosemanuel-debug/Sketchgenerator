@@ -4,7 +4,7 @@
  "metadata": {
   "title": "Ep. 3 · ¿Qué coño nos ha pasado?",
   "language": "es-ES",
-  "approxDuration": 81.2,
+  "approxDuration": 84.2,
   "idea": "Primer día en visión Puñeta: se ven azules, Usu descubre sus poderes y nacen Draco y Humillos.",
   "wishlist": [
    "Draco y Humillos definitivos",
@@ -319,7 +319,7 @@
   {
    "id": "e3t2",
    "name": "Los dragones",
-   "duration": 18.4,
+   "duration": 21.4,
    "backgroundId": "bg_sala_servidores",
    "actors": [
     {
@@ -384,7 +384,7 @@
      "id": "e3t2_pr7",
      "track": "props",
      "start": 5.15,
-     "duration": 13.25,
+     "duration": 16.25,
      "propId": "prop_draco",
      "layer": "props-front",
      "x": 270,
@@ -404,7 +404,7 @@
      "id": "e3t2_pr9",
      "track": "props",
      "start": 5.55,
-     "duration": 12.85,
+     "duration": 15.85,
      "propId": "prop_humillos",
      "layer": "props-front",
      "x": 820,
@@ -441,14 +441,14 @@
      "id": "e3t2_di13",
      "track": "dialogue",
      "start": 6.35,
-     "duration": 2.8,
+     "duration": 2.4,
      "actorUid": "usu",
-     "text": "…¿Draco? ¿Humillos? ¡Pero si erais imaginarios!"
+     "text": "…¿Y vosotros de dónde salís?"
     },
     {
      "id": "e3t2_fa14",
      "track": "face",
-     "start": 9.5,
+     "start": 9.1,
      "duration": 0.3,
      "actorUid": "usu",
      "expressionId": "expression.usu.alegria"
@@ -456,70 +456,94 @@
     {
      "id": "e3t2_bo15",
      "track": "body",
-     "start": 9.5,
+     "start": 9.1,
+     "duration": 0.3,
+     "actorUid": "usu",
+     "poseId": "char.usu.pose_talk_explain"
+    },
+    {
+     "id": "e3t2_di16",
+     "track": "dialogue",
+     "start": 9.1,
+     "duration": 3.1,
+     "actorUid": "usu",
+     "text": "Tú te llamas Draco. Y tú… Humillos."
+    },
+    {
+     "id": "e3t2_fa17",
+     "track": "face",
+     "start": 12.55,
+     "duration": 0.3,
+     "actorUid": "usu",
+     "expressionId": "expression.usu.alegria"
+    },
+    {
+     "id": "e3t2_bo18",
+     "track": "body",
+     "start": 12.55,
      "duration": 0.3,
      "actorUid": "usu",
      "poseId": "char.usu.pose_talk_emphasis"
     },
     {
-     "id": "e3t2_di16",
+     "id": "e3t2_di19",
      "track": "dialogue",
-     "start": 9.5,
+     "start": 12.55,
      "duration": 3.8,
      "actorUid": "usu",
      "text": "[excited] Vale. Pues ya que estáis: la cuatro mil doce."
     },
     {
-     "id": "e3t2_sf17",
+     "id": "e3t2_sf20",
      "track": "sfx",
-     "start": 13.65,
+     "start": 16.7,
      "duration": 0.6,
      "soundId": "sfx_whoosh"
     },
     {
-     "id": "e3t2_sc18",
+     "id": "e3t2_sc21",
      "track": "screen",
-     "start": 13.65,
+     "start": 16.7,
      "duration": 0.6,
      "effect": "flash",
      "color": "#40c057"
     },
     {
-     "id": "e3t2_sf19",
+     "id": "e3t2_sf22",
      "track": "sfx",
-     "start": 13.65,
+     "start": 16.7,
      "duration": 0.6,
      "soundId": "sfx_ding"
     },
     {
-     "id": "e3t2_fa20",
+     "id": "e3t2_fa23",
      "track": "face",
-     "start": 14.45,
+     "start": 17.5,
      "duration": 0.3,
      "actorUid": "usu",
      "expressionId": "expression.usu.risa"
     },
     {
-     "id": "e3t2_bo21",
+     "id": "e3t2_bo24",
      "track": "body",
-     "start": 14.45,
+     "start": 17.5,
      "duration": 0.3,
      "actorUid": "usu",
      "poseId": "char.usu.pose_arms_crossed"
     },
     {
-     "id": "e3t2_di22",
+     "id": "e3t2_di25",
      "track": "dialogue",
-     "start": 14.45,
+     "start": 17.5,
      "duration": 2.4,
      "actorUid": "usu",
      "text": "Incidencia cerrada. Por mis dragones."
     },
     {
-     "id": "e3t2_mo23",
+     "id": "e3t2_mo26",
      "track": "mouth",
      "start": 0,
-     "duration": 18.4,
+     "duration": 21.4,
      "actorUid": "usu",
      "mode": "auto"
     }

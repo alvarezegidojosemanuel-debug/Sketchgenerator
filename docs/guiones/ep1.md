@@ -1,6 +1,6 @@
 # Ep. 1 · Antes
 
-_Presentación del equipo humano y la incidencia fantasma que el Director exige cerrar antes del viernes._ · ≈ 67.7 s
+_Presentación del equipo humano y la incidencia fantasma que el Director exige cerrar antes del viernes._ · ≈ 65.9 s
 
 ## Escena 1 · La incidencia fantasma
 **OFICINA DE SOPORTE · MAÑANA** — humanos de espaldas
@@ -9,7 +9,7 @@ _Presentación del equipo humano y la incidencia fantasma que el Director exige 
 - **SISTER:** La cuatro mil doce se ha vuelto a abrir. Sola. Otra vez.
 - **REYNALDO:** Yo la cerré ayer a las seis menos uno. Consta en el registro.
 - **BARBAS:** Igual es que le caemos bien. Te lo digo con todo el amor del mundo, ¿eh?
-- **USU:** O el servidor tiene sentimientos. Se lo pregunto a Draco.
+- **USU:** O el servidor tiene sentimientos.
 - **DIRECTOR _(en off)_:** Equipo de soporte: si la incidencia sigue abierta el viernes, habrá cambios.
 
 ## Escena 2 · El viernes
