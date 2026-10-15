@@ -57,104 +57,115 @@ El parche es un programa que **se propaga**: vive en ellos y puede pasar a otras
 4. **Para los demás siguen siendo humanos normales.**
 5. Su vida sigue: trabajo, familia, casa, bares, calle.
 6. **Jefe** y **Director** son personajes distintos.
-7. **Personalidades** (dadas por el creador en conversación):
-   - **Jefe:** líder noble y querido, el «papi» del equipo. Brillante pero desastre y olvidadizo: «Eso se lo preguntaré al Jefe del pasado». Embiste como un miura contra quien molesta a su equipo.
-   - **Sister:** inteligente, organizada, dulce. Defiende al equipo a muerte y tapa los despistes del Jefe.
-   - **Barbas:** noble y currante, muy justo y muy bromista. «Calienta» al Jefe para que sea él quien vaya a pelear con otros equipos.
-   - **Usu:** genio loco que lo resuelve todo de la forma más disparatada. Tiene dragones imaginarios, **Draco** y **Humillos**, a los que da de desayunar: «pásaselo a mis dragones, al que esté libre».
-   - **Reynaldo:** trabajador con un sentido agudísimo de sus derechos laborales. Normas, convenio, «voy al sindicato».
-8. **Aspecto humano:** fijado en las ilustraciones existentes. Barbas tiene aspecto de oficinista, no de metalero.
+7. **Personalidades:**
+   - **Jefe:** líder noble y querido, el «papi» del equipo. Increíblemente inteligente pero desastre y olvidadizo; cuando le piden recordar algo: «Eso se lo preguntaré al Jefe del pasado». Se enfada con facilidad con quien quiere molestar a su equipo.
+   - **Sister:** inteligente, organizada, muy buena y dulce. Defiende a muerte a su equipo; protege y ayuda al Jefe para que sus despistes no tengan consecuencias.
+   - **Barbas:** noble, muy trabajador, puede con lo que le echen. Sentido de la justicia muy agudo y mucho humor; siempre hace bromas. Para no confrontar él a otros equipos, «achucha» al Jefe hasta calentarlo y que vaya este como un miura.
+   - **Usu:** loquísimo. Siempre lo resuelve todo, pero de la forma más disparatada posible. Tiene mascotas imaginarias, los dragones **Draco** y **Humillos**, a los que da de desayunar; cuando le pides algo a veces te dice que se lo pases a sus dragones, al que tenga libre en ese momento.
+   - **Reynaldo:** trabajador, con un sentido agudo de sus derechos laborales; no deja que nada se salga de las normas. No le pidas que haga horas si no quieres que vaya al sindicato.
+8. **Habilidad:** desde el pantallazo **conectan con los sistemas**: pueden resolver incidencias «mágicamente» (tocar una máquina, pensar en ella, hablarle…). Por eso son **mejores en su trabajo que nunca**, aunque no pueden explicar cómo.
+9. **Usan la habilidad también fuera de la oficina** (cajeros, coches, semáforos, electrodomésticos, móviles…), lo que permite **historias individuales** de cada uno en su día a día.
+10. **Convención visual:** tras unas **escenas de presentación** en humano, la serie se cuenta **en visión Puñeta**: ellos se ven Puñetos y **el resto de la gente aparece con su «aura»**. Solo en momentos puntuales se muestran ambas versiones. Sin complicarse.
+11. **Auras:** **clichés exagerados y genéricos** (el cuñado sabelotodo, la vecina cotilla, el influencer, el ejecutivo de sonrisa de anuncio…), nunca personas reconocibles.
+12. **Foco:** más **día a día fuera de la oficina** que sátira de oficina. En la oficina, sobre todo **resolviendo incidencias**, no satirizando el ambiente laboral.
+13. **Aspecto humano:** fijado en las ilustraciones existentes. Barbas tiene aspecto de oficinista, no de metalero.
 
-> ⚠️ El encargo dice que las personalidades «aún deben definirse», pero me las diste en esta conversación. Las trato como canon. **Confírmamelo.**
+### `PROPUESTA` (pendiente de tu visto bueno)
 
-### `PROPUESTA` (reglas para que los sketches no se contradigan)
-
-1. **Cámaras y espejos muestran humanos.** Las fotos, el vídeo y los espejos los enseñan humanos; solo *sus ojos* ven Puñetos. Da gags inmediatos: el selfie, la videollamada, el espejo del baño.
-2. **La visión es permanente pero no uniforme.** Con estrés o cerca de pantallas se intensifica: ven más detalles de los demás. Con calma casi no ven auras.
-3. **Las «auras» de otras personas** son una caricatura de su interior, no un monstruo: el Director, por ejemplo, ve «más grande» su sonrisa y su reloj. Siempre cómicas, nunca crueles.
-4. **No pueden «despuñetizarse» a voluntad.** Intentarlo es un gag recurrente (reiniciar, dormir, «apagar y encender»).
-5. **Entre ellos se ven Puñetos siempre.** Es su ancla: el grupo es el único sitio donde «se ven de verdad».
+1. **Cámaras y espejos muestran humanos.** Solo *sus ojos* ven Puñetos y auras. Da gags como el selfie, la videollamada o el espejo.
+2. **La habilidad tiene «personalidad» según quién la use**:
+   - **Usu:** arregla las cosas de formas absurdas (el semáforo se pone de colores nuevos).
+   - **Reynaldo:** las máquinas le obedecen «según normativa».
+   - **Sister:** a ella se le ordenan solas.
+   - **Barbas:** a él le cuentan chistes.
+   - **Jefe:** a veces olvida qué les ha pedido.
+3. **La habilidad no es infalible.** Funciona mejor con calma; con nervios, provoca pequeños desastres. Es una fuente de gags y evita que sean todopoderosos.
+4. **No pueden «despuñetizarse» a voluntad.** «Apagar y encender» como gag recurrente.
+5. **Entre ellos se ven Puñetos siempre.** El grupo es su ancla.
 
 ### `MISTERIO SIN RESOLVER`
 
 - Qué hace realmente el parche (A, B o C).
-- Si hay más gente que ve lo mismo.
+- Si hay más gente que ve lo mismo o que conecta con los sistemas.
 - Si se puede repetir, revertir o contagiar.
 - Por qué ese parche y no otro.
 - Si los dragones de Usu eran imaginarios… *(ver Ep. 5)*.
-- Si todos querrán volver atrás cuando entiendan lo que implica.
+- Si querrían volver atrás, sabiendo que perderían la habilidad.
 
 ---
 
-## 3. Los cinco primeros episodios (diseño)
+## 3. Los cinco primeros episodios (diseño v2)
 
-- **Duración:** 60–90 s cada uno, el formato que mejor funciona en redes, con un remate fuerte al final.
-- **Rodaje:** con lo que ya tenemos (oficina de mañana, tarde y noche; sala de servidores; despacho; pasillo; humanos de espaldas; Puñetos de frente con sus 50 poses).
-- **Cómo se alterna «visión humana» y «visión Puñeta»:** con el **mismo plano** cortando entre la imagen humana y el personaje Puñeta, con un pequeño *glitch* de transición.
+- **Duración:** 60–90 s cada uno, con un remate fuerte.
+- **Los Ep. 1 y 2** se cuentan en humano (presentación).
+- **Del Ep. 3 en adelante,** visión Puñeta con auras.
+- **En la oficina** solo resuelven incidencias; las historias crecen **fuera**.
 
-### Ep. 1 · «Soporte» (humanos)
+### Ep. 1 · «Antes» (humanos)
 
-- **Sinopsis:** una mañana cualquiera del equipo. Llega una **incidencia fantasma** que nadie consigue cerrar: el servidor la reabre sola cada vez.
-- **Conflicto:** el Director exige que esté resuelta **el viernes** «o habrá cambios en soporte».
+- **Sinopsis:** presentación rápida de los cinco por cómo son, en su día a día y en el trabajo. Llega una **incidencia fantasma** que nadie consigue cerrar.
+- **Conflicto:** el Director exige que esté resuelta **el viernes**.
 - **Beats:**
-  1. Abren los tickets absurdos (el ratón boca abajo, imprimir internet). Sirven para presentarlos por cómo trabajan, sin fichas.
-  2. Reynaldo cierra uno a las 18:00 en punto: «Artículo 34».
-  3. Llega el correo del Director. Barbas calienta al Jefe y el Jefe embiste hacia el despacho.
-  4. En el pasillo, Sister lo frena y le recuerda que llevan una semana con la incidencia fantasma.
-  5. Usu, mirando la pantalla: «Lo arreglo yo. Con un parche.»
-- **Remate:** todos a la vez: «No.» Usu: «Ya lo he empezado.»
-- **Escenas:** oficina de mañana (espaldas), despacho del director, pasillo.
+  1. Mañana de cada uno, un plano por personaje:
+     - el Jefe sale de casa y vuelve tres veces porque se olvida algo;
+     - Sister le escribe: «Las llaves, en el bolsillo izquierdo»;
+     - Reynaldo ficha a las 8:00:00 exactas;
+     - Barbas hace reír al del quiosco;
+     - Usu desayuna con dos tazones más «para Draco y Humillos».
+  2. En la oficina, la incidencia fantasma se reabre sola una y otra vez.
+  3. Correo del Director. Barbas: «Jefe, ¿has visto lo que pide este hombre?» El Jefe se levanta como un miura.
+  4. Sister le recuerda en voz baja que el viernes es pasado mañana.
+- **Remate:** Usu: «Lo arreglo yo. Con un parche.» Todos: «No.» Usu: «Ya lo he empezado.»
+- **Escenas:** calle o portal; oficina de mañana (espaldas); monitor con el correo.
 
-### Ep. 2 · «El parche de Usu»
+### Ep. 2 · «El parche»
 
-- **Sinopsis:** semana de presión. Usu prepara el parche de noche, «con ayuda» de Draco y Humillos.
-- **Conflicto:** Reynaldo se niega a hacer horas; el Jefe olvida que el plazo es el viernes y Sister se lo recuerda cada día.
+- **Sinopsis:** Usu prepara el parche de noche con «ayuda» de Draco y Humillos.
 - **Beats:**
-  1. Usu de noche hablando con sus dragones, que salen en el bocadillo.
+  1. Usu de noche con los dragones en el bocadillo.
   2. El servidor hace ruido y suelta humo.
-  3. Viernes, 17:59: Reynaldo ya con el abrigo puesto.
-  4. Usu: «Parche aplicado.» Barbas: «¿Un viernes? ¿A las seis menos uno?»
-  5. Pantallazo azul.
-- **Primera anomalía:** se recuperan; todo parece normal. Reynaldo se mira la mano un segundo y la ve **azul** (un *glitch*), y vuelve a ser normal.
-- **Remate:** «¿Alguien más…?» Los cinco a la vez: «No.» Silencio. Uno a uno levantan la mano.
-- **Escenas:** oficina de noche, sala de servidores, oficina al atardecer.
+  3. Reynaldo se niega a quedarse: «Artículo 34».
+  4. Viernes, 17:59: Reynaldo ya con el abrigo.
+  5. Usu: «Parche aplicado.» Barbas: «¿Un viernes? ¿A las seis menos uno?»
+  6. Pantallazo azul.
+- **Primera anomalía:** Reynaldo ve su mano **azul** un segundo.
+- **Remate:** «¿Alguien más…?» «No.» Silencio. Uno a uno levantan la mano.
+- **Escenas:** oficina de noche; sala de servidores; oficina al atardecer.
 - **Ya animado en buena parte:** «El origen de los puñetos».
 
 ### Ep. 3 · «¿Qué coño nos ha pasado?»
 
-- **Sinopsis:** lunes. Se ven **Puñetos** entre ellos y entran en pánico en silencio. El resto de la oficina los trata como siempre.
-- **Conflicto:** comprobarlo sin que nadie piense que se han vuelto locos.
+- **Sinopsis:** lunes. Se ven Puñetos y ven a todos los demás con **aura**. Nadie nota nada.
 - **Beats:**
-  1. Barbas a la recepcionista: «¿Me ves… raro?» Ella: «¿Te has cortado la barba?»
-  2. Selfie de grupo: en la foto salen **humanos** (regla propuesta 1).
-  3. Reynaldo consulta si «verse azul» cuenta como accidente laboral.
-  4. El Jefe no recuerda el viernes: «Se lo preguntaré al Jefe del pasado.» Sister le enseña la foto.
-- **Remate:** el Director entra, los mira uno a uno y dice: «Buen trabajo con la incidencia. Ha desaparecido.» Se va. Usu: «…¿Y nosotros?»
-- **Escenas:** oficina de mañana, puñetos de frente, plano «foto».
+  1. Entrada a la oficina: la recepcionista tiene aura de *cliché*. Barbas: «¿Me ves… raro?» «¿Te has cortado la barba?»
+  2. La incidencia fantasma sigue abierta. Usu apoya la mano en el servidor sin querer… y **se resuelve sola**. Las lucecitas se ponen verdes.
+  3. Prueban: Sister mira la impresora atascada y la impresora se arregla. Reynaldo: «Esto no está en mi categoría profesional.»
+- **Remate:** el Director (aura de ejecutivo de anuncio) los felicita: «Ni una incidencia abierta. ¿Cómo lo habéis hecho?» Jefe: «Eso… se lo preguntaré al Jefe del pasado.»
+- **Escenas:** oficina de mañana (en visión Puñeta, de frente); sala de servidores; despacho.
 
-### Ep. 4 · «La gente por dentro»
+### Ep. 4 · «Fuera de la oficina» (historias individuales)
 
-- **Sinopsis:** empiezan a ver el **aura** de los demás.
-- **Conflicto:** malentendidos al tratar a la gente según lo que ven.
-- **Beats:**
-  1. El Director, en la visión Puñeta, es diminuto dentro de un traje enorme. Sister se apiada y le habla con dulzura; él no entiende nada.
-  2. La de Contabilidad se ve como un erizo; Barbas le habla con miedo.
-  3. Usu asegura que lo que ven es verdad (teoría B) y Reynaldo que es un fallo de software (teoría A).
-- **Pista:** el «erizo» de Contabilidad resulta que *sí* estaba saboteando los tickets de soporte.
-- **Remate:** el Jefe se mira en el espejo del baño y se ve humano. Suspira aliviado… y el reflejo le guiña un ojo.
-- **Escenas:** pasillo, despacho, aseo (nuevo).
+- **Sinopsis:** cada uno descubre que la habilidad funciona en su vida diaria, rodeado de auras-cliché.
+- **Beats** (minisketches encadenados):
+  - **Reynaldo:** en la cola del banco, el cajero automático le pide «pausa reglamentaria».
+  - **Sister:** la caja de autopago del súper se ordena sola. La señora de detrás (aura de vecina cotilla) lo ve todo.
+  - **Barbas:** en la comida familiar, el cuñado sabelotodo (aura de cuñado) explica cómo arreglar la tele. Barbas la mira y la tele le cambia de canal al cuñado.
+  - **Usu:** el semáforo se pone de un color que no existe.
+- **Remate:** el Jefe le pide al asistente del móvil que le recuerde algo. El móvil contesta: «Eso se lo preguntaré al Jefe del pasado.»
+- **Escenas:** banco, supermercado, salón, calle.
 
 ### Ep. 5 · «La nueva normalidad»
 
-- **Sinopsis:** la vida sigue: van al bar, vuelven a casa y deciden investigar sin obsesionarse.
+- **Sinopsis:** en el bar ponen en común lo que les pasa y deciden investigarlo… sin dejar de disfrutarlo.
 - **Beats:**
-  1. En el bar, el camarero (aura de pulpo, sirve cuatro cañas a la vez) les pregunta «lo de siempre».
-  2. Plan del Jefe para investigar, que olvida a los diez segundos.
-  3. Reynaldo: «Investigamos, pero en horario laboral.»
-  4. Barbas brinda: «Por los Puñetos.»
-- **Remate:** Usu deja dos platitos de desayuno en la barra «para Draco y Humillos». El camarero los mira, se los lleva… y vuelve con **dos platitos vacíos y chamuscados**.
+  1. El camarero (aura de cliché) sirve «lo de siempre».
+  2. Cada uno cuenta su día.
+  3. Plan del Jefe para investigar, que olvida a los diez segundos; Sister lo tiene apuntado.
+  4. Reynaldo: «Investigamos, pero en horario laboral.»
+  5. Barbas brinda: «Por los Puñetos.»
+- **Remate:** Usu deja dos platitos «para Draco y Humillos». El camarero se los lleva y vuelve con **dos platitos vacíos y chamuscados**.
 - **Pregunta abierta:** ¿eran imaginarios?
-- **Escenas:** bar (nuevo), calle (nueva).
+- **Escenas:** bar; calle de noche.
 
 ---
 
@@ -164,49 +175,47 @@ El parche es un programa que **se propaga**: vive en ellos y puede pasar a otras
 
 - **Escenarios:** oficina de mañana, tarde y noche; sala de servidores; despacho del director.
 - **Personajes:** humanos de espaldas (11 posturas); Usu y Reynaldo humanos de pie; Puñetos de frente (5 × 10 poses con caras).
-- **Objetos:** escritorio, móvil, taza.
-- **Sonidos:** 10, incluidos teclado y pantallazo.
+- **Sonidos:** 10.
 
 | Ep. | Nuevo que hace falta |
 |---|---|
-| 1 | Pasillo con puerta (n.º 5, en curso). Director humano de pie (hablando / enfadado). Jefe humano embistiendo (de lado). Sister humana frenando. Pósit y monitor de primer plano (para el correo). |
-| 2 | Usu de noche de espaldas. Draco y Humillos. Reynaldo con abrigo (sentado y de pie). Segundo fotograma de teclear. Versiones Puñeto de espaldas. |
-| 3 | Recepcionista humana. «Foto de grupo» humana (los cinco de frente). Puñetos en poses de pánico (ya hay *reaction*). |
-| 4 | Director «por dentro» (diminuto en traje enorme). Mujer de Contabilidad humana y su versión erizo. Aseo con espejo. Jefe humano frente al espejo. |
-| 5 | Bar (escenario). Camarero humano y su versión pulpo. Cañas, platitos (normales y chamuscados). Calle de noche. |
+| 1 | Calle / portal (escenario). Humanos de pie de los cinco (faltan Jefe, Sister y Barbas). Monitor de primer plano (correo). Draco y Humillos. Tazones de desayuno. |
+| 2 | Usu de noche. Reynaldo con abrigo. Segundo fotograma de teclear. Pasillo (n.º 5). |
+| 3 | **Auras:** recepcionista y Director (ejecutivo de anuncio). Impresora. |
+| 4 | Escenarios: banco con cajero, supermercado con autopago, salón familiar, calle con semáforo. **Auras:** vecina cotilla, cuñado sabelotodo. |
+| 5 | Bar (escenario). **Aura:** camarero. Cañas, platitos (normales y chamuscados). |
 
-**Funciones de Pocket que piden los episodios:**
+**Auras:** se dibujan como Puñetos de «otro tipo», con el mismo estilo de gominola pero de otros colores y con el cliché exagerado en la forma. Si van a hablar y poner caras, mejor con **cara lisa** para usar las capas de Pocket.
 
-- *glitch* de transición entre visión humana y Puñeta;
+**Funciones de Pocket:**
+
+- *glitch* de transición (para el paso a visión Puñeta, que ahora es puntual);
 - cámara / zoom;
-- texto sobre objetos (correo, pósit);
-- brillo por objeto (escenas de noche);
+- texto sobre objetos;
+- brillo por objeto (noche);
 - exportar a MP4.
 
 ---
 
 ## 5. Líneas de sketches posteriores
 
-Sueltos, pero profundizan el lore:
+Sueltos, cada uno centrado en un personaje fuera de la oficina:
 
-1. **«El selfie»:** cada foto los muestra humanos y cada uno odia su cara humana.
-2. **«Cena familiar»:** la suegra de Barbas tiene aura de… (a decidir) y él no puede dejar de mirarla.
-3. **«Videollamada»:** en la cámara salen humanos; en su pantalla, Puñetos. Reynaldo exige que conste en acta.
-4. **«El nuevo»:** llega un becario y el equipo duda si «lo ve» o no.
-5. **«Reinicio»:** Usu intenta apagarse y encenderse a sí mismo, literalmente.
-6. **«Formación obligatoria»:** curso de recursos humanos sobre «diversidad de percepción».
-7. **«El Jefe del pasado»:** el Jefe encuentra notas de su yo humano y no entiende ninguna.
+1. **Jefe · «La compra»:** la lista de la compra se la recuerda la nevera… a su manera.
+2. **Sister · «La boda»:** organiza la boda de una amiga hablando con el sonido, las luces y el DJ (aura de DJ).
+3. **Barbas · «El gimnasio»:** la cinta de correr le cuenta chistes y él no puede parar de reír.
+4. **Usu · «Desayuno de dragones»:** la tostadora y la cafetera se pelean por servir a Draco y Humillos.
+5. **Reynaldo · «Domingo»:** el robot aspirador se declara en huelga y Reynaldo media.
+6. **Todos · «El coche»:** viaje en coche en el que cada uno le pide algo distinto al GPS.
+7. **Todos · «Incidencia imposible»:** en la oficina, una incidencia que solo se arregla si los cinco «conectan» a la vez.
 8. **«Los dragones»:** Draco y Humillos empiezan a dejar pruebas.
 
 ---
 
 ## 6. Pendiente de tu aprobación
 
-1. ¿Confirmas las **personalidades** como canon?
-2. ¿Qué **interpretación del parche** guardamos como verdad interna (A, B, C o ninguna)?
-3. ¿Aceptas la regla **«cámaras y espejos muestran humanos»**?
-4. ¿Te gustan las **auras** del Ep. 4 (Director diminuto, Contabilidad erizo, camarero pulpo)?
-5. ¿El **remate de los dragones** del Ep. 5 entra en canon como misterio?
-6. Mis ideas anteriores (el Jefe olvidó renovar el mantenimiento, amenaza de externalizar) **quedan como `PROPUESTA`** y he quitado la de «la empresa los esconde», que contradice el canon.
-
-Cuando apruebes el diseño, escribo los **guiones dialogados** de cada episodio: personaje, emoción, movimiento y cortes de escena, listos para Pocket y ElevenLabs.
+1. ¿Qué **interpretación del parche** guardamos como verdad interna (A, B, C o ninguna)?
+2. ¿Aceptas que **cámaras y espejos los muestran humanos**?
+3. ¿Te gusta que la **habilidad cambie según el personaje**?
+4. ¿El **misterio de los dragones** entra en canon?
+5. ¿Te encaja el **diseño v2 de los episodios**? Cuando lo apruebes, escribo los guiones dialogados.
