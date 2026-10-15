@@ -6319,8 +6319,8 @@
   {
    "id": "bg_sistemas",
    "label": "Sistemas · open space (de día)",
-   "actorScale": 0.9,
-   "actorY": 1620,
+   "actorScale": 1.02,
+   "actorY": 1680,
    "src": "/assets/punetos/backgrounds/bg_sistemas.webp"
   }
  ],
