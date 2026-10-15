@@ -13,7 +13,7 @@ import { Stage } from "../Stage";
 import { HeadPreview } from "../HeadPreview";
 import { TimelineLanes } from "../TimelineLanes";
 import { arrangeTake } from "@/lib/timeline/arrange";
-import { deskFor, guessDesk, typingEvents } from "@/lib/timeline/desk";
+import { deskFor, guessDesk, transformEvents, typingEvents } from "@/lib/timeline/desk";
 import type { Catalog } from "@/lib/catalog/types";
 import type { PocketState } from "../usePocket";
 import { Card, Field, IssueList, Stepper } from "../ui";
@@ -62,6 +62,25 @@ export function EditScreen({ s }: { s: PocketState }) {
     });
 
   const selectedEvent = take.events.find((e) => e.id === selEvent);
+
+  /** Transformación: el objeto se convierte en otro en el mismo sitio, con pantallazo y destello. */
+  const transformProp = (eventId: string, toPropId: string) => {
+    const from = take.events.find((e) => e.id === eventId);
+    if (!from || from.track !== "props" || !toPropId) return;
+    const at = r1(Math.max(from.start, Math.min(t, take.duration - 0.8)));
+    const used = new Set(take.events.map((e) => e.id));
+    const newId = (p: string) => {
+      let i = 1;
+      while (used.has(`${p}${i}`)) i++;
+      used.add(`${p}${i}`);
+      return `${p}${i}`;
+    };
+    const r = transformEvents(take, from, toPropId, at, newId);
+    editTake((tk) => {
+      tk.events = tk.events.map((e) => (e.id === eventId ? r.from : e));
+      tk.events.push(...r.add);
+    });
+  };
   const [deskPick, setDeskId] = useState<string | null>(null);
   const deskId = deskPick && catalog.props.some((p) => p.id === deskPick) ? deskPick : guessDesk(catalog)?.id ?? catalog.props[0]?.id ?? "";
 
@@ -208,7 +227,7 @@ export function EditScreen({ s }: { s: PocketState }) {
                   <span className="ev-actor">{selectedEvent.track === "props" ? catalog.props.find((p) => p.id === selectedEvent.propId)?.label : actorName(selectedEvent.actorUid)}</span>
                   <span className="ev-sum">{summary(selectedEvent, s)}</span>
                 </div>
-                <EventEditor s={s} take={take} ev={selectedEvent} voices={voices} onChange={(fn) => editEvent(selectedEvent.id, fn)} onDelete={() => { editTake((tk) => { tk.events = tk.events.filter((x) => x.id !== selectedEvent.id); }); setSelEvent(null); }} />
+                <EventEditor s={s} take={take} ev={selectedEvent} voices={voices} t={t} onTransform={(to) => transformProp(selectedEvent.id, to)} onChange={(fn) => editEvent(selectedEvent.id, fn)} onDelete={() => { editTake((tk) => { tk.events = tk.events.filter((x) => x.id !== selectedEvent.id); }); setSelEvent(null); }} />
               </div>
             )}
           </>
@@ -224,7 +243,7 @@ export function EditScreen({ s }: { s: PocketState }) {
                   <span className="ev-actor">{e.track === "props" ? catalog.props.find((p) => p.id === e.propId)?.label : actorName(e.actorUid)}</span>
                   <span className="ev-sum">{summary(e, s)}</span>
                 </button>
-                {open && <EventEditor s={s} take={take} ev={e} voices={voices} onChange={(fn) => editEvent(e.id, fn)} onDelete={() => { editTake((tk) => { tk.events = tk.events.filter((x) => x.id !== e.id); }); setSelEvent(null); }} />}
+                {open && <EventEditor s={s} take={take} ev={e} voices={voices} t={t} onTransform={(to) => transformProp(e.id, to)} onChange={(fn) => editEvent(e.id, fn)} onDelete={() => { editTake((tk) => { tk.events = tk.events.filter((x) => x.id !== e.id); }); setSelEvent(null); }} />}
               </li>
             );
           })}
@@ -412,7 +431,8 @@ function summary(e: PocketEvent, s: PocketState): string {
   }
 }
 
-function EventEditor({ s, take, ev, voices, onChange, onDelete }: { s: PocketState; take: Take; ev: PocketEvent; voices: SpeechSynthesisVoice[]; onChange: (fn: (e: PocketEvent) => void) => void; onDelete: () => void }) {
+function EventEditor({ s, take, ev, voices, t, onTransform, onChange, onDelete }: { s: PocketState; take: Take; ev: PocketEvent; voices: SpeechSynthesisVoice[]; t: number; onTransform: (toPropId: string) => void; onChange: (fn: (e: PocketEvent) => void) => void; onDelete: () => void }) {
+  const [toProp, setToProp] = useState("");
   const { catalog } = s;
   const actor = take.actors.find((a) => a.uid === ev.actorUid);
   const ch = actor ? findCharacter(catalog, actor.characterId) : undefined;
@@ -567,6 +587,15 @@ function EventEditor({ s, take, ev, voices, onChange, onDelete }: { s: PocketSta
 
       {ev.track === "props" && (
         <>
+          <div className="row">
+            <select className="chip-select" value={toProp} onChange={(e) => setToProp(e.target.value)} aria-label="Transformar en">
+              <option value="">✨ Transformar en…</option>
+              {catalog.props.filter((p) => p.id !== ev.propId).map((p) => <option key={p.id} value={p.id}>{p.label}</option>)}
+            </select>
+            <button type="button" className="btn btn-secondary" disabled={!toProp} onClick={() => { onTransform(toProp); setToProp(""); }}>
+              ✨ Transformar en {t.toFixed(1)} s
+            </button>
+          </div>
           <div className="grid2">
             <Field label="Objeto">
               <select value={ev.propId} onChange={(e) => onChange((x) => { if (x.track === "props") x.propId = e.target.value; })}>

@@ -46,3 +46,24 @@ export function typingEvents(actor: Actor, start: number, dur: number, ids: [str
     { id: ids[1], track: "sfx", soundId: "sfx_teclado", start, duration: Math.min(dur, 3), volume: 0.7 },
   ];
 }
+
+/**
+ * Transformación de un objeto en otro en el mismo sitio (p. ej. humano de espaldas → puñeto de espaldas):
+ * pantallazo azul + sonido desde `at`, y al terminar el pantallazo el cambio con destello blanco.
+ */
+export function transformEvents(take: Take, from: PropsEvent, toPropId: string, at: number, newId: (p: string) => string): { from: PropsEvent; add: PocketEvent[] } {
+  const bs = Math.min(2, Math.max(0.6, take.duration - at - 0.6));
+  const swap = Math.round((at + bs) * 10) / 10;
+  const end = take.duration;
+  const before: PropsEvent = { ...from, duration: Math.max(0.2, Math.round((swap + 0.3 - from.start) * 10) / 10), exit: "fade" };
+  const after: PropsEvent = { ...from, id: newId("tr"), propId: toPropId, start: swap, duration: Math.max(0.2, Math.round((end - swap) * 10) / 10), enter: "fade", exit: undefined };
+  return {
+    from: before,
+    add: [
+      { id: newId("bs"), track: "screen", effect: "bluescreen", start: at, duration: bs },
+      { id: newId("bss"), track: "sfx", soundId: "sfx_pantallazo", start: at, duration: Math.min(2.2, end - at) },
+      after,
+      { id: newId("fl"), track: "screen", effect: "flash", color: "#ffffff", start: swap, duration: Math.min(0.5, Math.max(0.1, end - swap)) },
+    ],
+  };
+}

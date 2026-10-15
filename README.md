@@ -132,6 +132,7 @@ La pantalla Ver muestra el texto de crédito que hay que poner en la publicació
 - **Entrar / salir de escena:** marca el personaje como «Empieza fuera de escena» (`hidden: true`) y hazlo entrar con un evento de cuerpo `appear` (`fade`, `pop`, `flash`, `cut`); `disappear` lo hace salir.
 - **Escritorio:** en Editar → personaje → «🪑 Sentar en escritorio» coloca el escritorio delante, a su escala (tapa de la cintura para abajo; cara y boca siguen a la vista). «⌨️ Teclear aquí» añade el gesto `fx: "type"` + `sfx_teclado`.
 - **Pantallazo azul:** `screen` con `effect: "bluescreen"` y `text`. Sonido `sfx_pantallazo`.
+- **✨ Transformar (en el editor de un objeto):** elige en qué se convierte y se crea el pantallazo, el sonido y el cambio con destello en el mismo sitio y a la misma escala, en el instante del cursor.
 - **Transformación humano → puñeto:** imagen del humano como objeto en la posición del actor con `exit: "fade"`, pantallazo + sonido y el actor entrando con `appear: "flash"`. Demo: «El Pantallazo Cero».
 
 ## Contrato JSON `pocket-1` (formato definitivo del generador)

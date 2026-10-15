@@ -65,3 +65,23 @@ describe("narrador en JSON de ChatGPT", () => {
     expect((rr.project!.takes[0].events[0] as { actorUid?: string }).actorUid).toBeUndefined();
   });
 });
+
+describe("transformar objeto", () => {
+  it("pantallazo, cambio en el mismo sitio con destello y validación correcta", async () => {
+    const { transformEvents } = await import("@/lib/timeline/desk");
+    const p = structuredClone(r.project!);
+    const tk = p.takes[0];
+    const from = { id: "h1", track: "props" as const, propId: "prop_maletin", layer: "props-front" as const, x: 300, y: 1700, scale: 1.2, start: 0, duration: tk.duration };
+    let n = 0;
+    const res = transformEvents(tk, from, "prop_cafe", 4, (x) => `${x}_${++n}`);
+    tk.events.push(res.from, ...res.add);
+    const rr = validateProject(p, catalog);
+    expect(rr.errors).toEqual([]);
+    const at = (t: number) => evaluateTake(tk, catalog, t).props.filter((x) => x.propId === "prop_maletin" || x.propId === "prop_cafe").map((x) => x.propId);
+    expect(at(3)).toEqual(["prop_maletin"]);
+    expect(evaluateTake(tk, catalog, 5).screen.bluescreen).toBeTruthy();
+    expect(at(10)).toEqual(["prop_cafe"]);
+    const after = res.add.find((e) => e.track === "props")!;
+    expect(after).toMatchObject({ x: 300, y: 1700, scale: 1.2 });
+  });
+});
