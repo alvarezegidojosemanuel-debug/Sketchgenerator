@@ -102,11 +102,11 @@ describe("demo El origen", () => {
     const raw = (await import("@/data/sketch-origen.json")).default;
     const ro = validateProject(structuredClone(raw), catalog);
     expect(ro.errors).toEqual([]);
-    const t1 = ro.project!.takes[0];
+    const t1 = ro.project!.takes[2];
     const f = evaluateTake(t1, catalog, 4);
     expect(f.subtitles[0].speaker).toBe("Sister");
     expect(castIds(ro.project!)).toEqual(expect.arrayContaining(["sister", "reynaldo", "usu", "barbas", "narrador"]));
-    const t2 = ro.project!.takes[1];
+    const t2 = ro.project!.takes[3];
     expect(layoutFrame(catalog, evaluateTake(t2, catalog, 1)).actors.length).toBe(5);
   });
 });
