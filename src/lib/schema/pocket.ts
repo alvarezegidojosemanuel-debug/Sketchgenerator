@@ -162,6 +162,17 @@ export const ScreenEvent = z.object({
   actorUid: id.optional(),
 });
 
+/** Cámara: corte seco a un plano (general, medio o primer plano de un actor, o un punto con zoom). */
+export const CameraEvent = z.object({
+  ...eventBase,
+  track: z.literal("camera"),
+  shot: z.enum(["wide", "medium", "close"]),
+  actorUid: id.optional(),
+  x: coordX.optional(),
+  y: coordY.optional(),
+  zoom: z.number().finite().min(1).max(3).optional(),
+});
+
 export const PocketEvent = z.discriminatedUnion("track", [
   DialogueEvent,
   BodyEvent,
@@ -171,6 +182,7 @@ export const PocketEvent = z.discriminatedUnion("track", [
   PropsEvent,
   SfxEvent,
   ScreenEvent,
+  CameraEvent,
 ]);
 
 export const Actor = z.object({
@@ -192,6 +204,8 @@ export const Take = z.object({
   name: z.string().max(LIMITS.maxTitleLength).optional(),
   duration: positive.max(LIMITS.maxTakeDuration),
   backgroundId: id.nullable(),
+  /** "auto": planos automáticos (general / medio / primer plano en el remate) si no hay eventos de cámara. */
+  camera: z.enum(["fixed", "auto"]).optional(),
   actors: z.array(Actor).max(LIMITS.maxActorsPerTake),
   events: z.array(PocketEvent).max(LIMITS.maxEventsPerTake),
 });
@@ -242,13 +256,14 @@ export type EyesEvent = z.infer<typeof EyesEvent>;
 export type PropsEvent = z.infer<typeof PropsEvent>;
 export type SfxEvent = z.infer<typeof SfxEvent>;
 export type ScreenEvent = z.infer<typeof ScreenEvent>;
+export type CameraEvent = z.infer<typeof CameraEvent>;
 export type PocketEvent = z.infer<typeof PocketEvent>;
 export type Actor = z.infer<typeof Actor>;
 export type Take = z.infer<typeof Take>;
 export type PocketProject = z.infer<typeof PocketProject>;
 export type Track = PocketEvent["track"];
 
-export const TRACKS: Track[] = ["dialogue", "body", "face", "mouth", "eyes", "props", "sfx", "screen"];
+export const TRACKS: Track[] = ["dialogue", "body", "face", "mouth", "eyes", "props", "sfx", "screen", "camera"];
 
 /** Orden de capas de profundidad del renderer. */
 export const DEPTH_LAYERS = ["background", "props-back", "actors", "props-front"] as const;

@@ -110,3 +110,22 @@ describe("demo El origen", () => {
     expect(layoutFrame(catalog, evaluateTake(t2, catalog, 1)).actors.length).toBe(5);
   });
 });
+
+describe("vida automática y cámara", () => {
+  it("los que escuchan miran a quien habla y la cámara corta a primer plano en el remate", async () => {
+    const ep3 = (await import("@/data/ep3.json")).default;
+    const ro = validateProject(structuredClone(ep3), catalog);
+    expect(ro.errors).toEqual([]);
+    const take = ro.project!.takes[0];
+    const line = take.events.find((e) => e.track === "dialogue" && e.actorUid === "rey")!;
+    const f = evaluateTake(take, catalog, line.start + 0.6);
+    const sis = f.actors.find((a) => a.uid === "sis")!; // Sister (x 770) mira a Reynaldo (x 310): a la izquierda
+    const rey = f.actors.find((a) => a.uid === "rey")!;
+    expect(Math.sign(sis.gazeX)).toBe(Math.sign(rey.x - sis.x) * (sis.flip ? -1 : 1));
+    expect(f.camera.zoom).toBeGreaterThanOrEqual(1);
+    const last = take.events.filter((e) => e.track === "dialogue").at(-1)!;
+    const fl = evaluateTake(take, catalog, last.start + 0.3);
+    expect(fl.camera.zoom).toBeGreaterThan(1.5);
+    expect(evaluateTake(take, catalog, 0.1).camera.zoom).toBe(1);
+  });
+});

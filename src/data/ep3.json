@@ -4,7 +4,7 @@
  "metadata": {
   "title": "Ep. 3 · ¿Qué coño nos ha pasado?",
   "language": "es-ES",
-  "approxDuration": 84.2,
+  "approxDuration": 85.1,
   "idea": "Primer día en visión Puñeta: se ven azules, Usu descubre sus poderes y nacen Draco y Humillos.",
   "wishlist": [
    "Draco y Humillos definitivos",
@@ -20,7 +20,7 @@
   {
    "id": "e3t1",
    "name": "Lunes",
-   "duration": 34.0,
+   "duration": 34.9,
    "backgroundId": "bg_oficina_manana",
    "actors": [
     {
@@ -78,243 +78,362 @@
     {
      "id": "e3t1_di1",
      "track": "dialogue",
-     "start": 0.3,
-     "duration": 1.2,
-     "text": "Lunes."
-    },
-    {
-     "id": "e3t1_fa2",
-     "track": "face",
-     "start": 1.85,
-     "duration": 0.3,
+     "start": 0.7,
+     "duration": 1.3,
      "actorUid": "bar",
-     "expressionId": "expression.barbas.sorpresa"
+     "text": "Buenos días."
     },
     {
-     "id": "e3t1_fa3",
-     "track": "face",
-     "start": 1.85,
-     "duration": 0.3,
-     "actorUid": "jefe",
-     "expressionId": "expression.jefe.sorpresa"
-    },
-    {
-     "id": "e3t1_bo4",
-     "track": "body",
-     "start": 1.85,
-     "duration": 0.3,
-     "actorUid": "jefe",
-     "poseId": "char.jefe.pose_pointing"
-    },
-    {
-     "id": "e3t1_di5",
+     "id": "e3t1_di2",
      "track": "dialogue",
-     "start": 1.85,
-     "duration": 1.7,
-     "actorUid": "jefe",
-     "text": "Barbas… estás azul."
+     "start": 2.25,
+     "duration": 1.3,
+     "actorUid": "sis",
+     "text": "Buenos días."
     },
     {
-     "id": "e3t1_fa6",
-     "track": "face",
-     "start": 3.9,
-     "duration": 0.3,
+     "id": "e3t1_ey3",
+     "track": "eyes",
+     "start": 3.75,
+     "duration": 0.8,
+     "actorUid": "jefe",
+     "gazeX": 0.7,
+     "gazeY": 0
+    },
+    {
+     "id": "e3t1_ey4",
+     "track": "eyes",
+     "start": 3.75,
+     "duration": 0.8,
      "actorUid": "bar",
-     "expressionId": "expression.barbas.risa"
+     "gazeX": -0.7,
+     "gazeY": 0
     },
     {
-     "id": "e3t1_di7",
-     "track": "dialogue",
-     "start": 3.9,
-     "duration": 5.6,
+     "id": "e3t1_ey5",
+     "track": "eyes",
+     "start": 3.75,
+     "duration": 0.8,
+     "actorUid": "sis",
+     "gazeX": -0.7,
+     "gazeY": 0
+    },
+    {
+     "id": "e3t1_ey6",
+     "track": "eyes",
+     "start": 3.75,
+     "duration": 0.8,
+     "actorUid": "rey",
+     "gazeX": 0.7,
+     "gazeY": 0
+    },
+    {
+     "id": "e3t1_ey7",
+     "track": "eyes",
+     "start": 3.75,
+     "duration": 0.8,
+     "actorUid": "usu",
+     "gazeX": 0.7,
+     "gazeY": 0
+    },
+    {
+     "id": "e3t1_ey8",
+     "track": "eyes",
+     "start": 4.75,
+     "duration": 0.8,
+     "actorUid": "jefe",
+     "gazeX": 0.7,
+     "gazeY": 0
+    },
+    {
+     "id": "e3t1_ey9",
+     "track": "eyes",
+     "start": 4.75,
+     "duration": 0.8,
+     "actorUid": "sis",
+     "gazeX": -0.7,
+     "gazeY": 0
+    },
+    {
+     "id": "e3t1_ey10",
+     "track": "eyes",
+     "start": 4.75,
+     "duration": 0.8,
+     "actorUid": "rey",
+     "gazeX": 0.7,
+     "gazeY": 0
+    },
+    {
+     "id": "e3t1_ey11",
+     "track": "eyes",
+     "start": 4.75,
+     "duration": 0.8,
      "actorUid": "bar",
-     "text": "Tú también, Jefe. Te lo digo con todo el amor del mundo: te favorece."
+     "gazeX": -0.7,
+     "gazeY": 0
     },
     {
-     "id": "e3t1_fa8",
+     "id": "e3t1_fa12",
      "track": "face",
-     "start": 9.85,
-     "duration": 0.3,
-     "actorUid": "sis",
-     "expressionId": "expression.sister.neutral"
-    },
-    {
-     "id": "e3t1_bo9",
-     "track": "body",
-     "start": 9.85,
-     "duration": 0.3,
-     "actorUid": "sis",
-     "poseId": "char.sister.pose_talk_explain"
-    },
-    {
-     "id": "e3t1_di10",
-     "track": "dialogue",
-     "start": 9.85,
-     "duration": 4.2,
-     "actorUid": "sis",
-     "text": "Que nadie grite. La recepcionista nos ha saludado como siempre."
-    },
-    {
-     "id": "e3t1_fa11",
-     "track": "face",
-     "start": 14.4,
+     "start": 5.75,
      "duration": 0.3,
      "actorUid": "rey",
      "expressionId": "expression.reynaldo.enfado"
     },
     {
-     "id": "e3t1_bo12",
+     "id": "e3t1_bo13",
      "track": "body",
-     "start": 14.4,
+     "start": 5.75,
      "duration": 0.3,
      "actorUid": "rey",
      "poseId": "char.reynaldo.pose_arms_crossed"
     },
     {
-     "id": "e3t1_di13",
+     "id": "e3t1_di14",
      "track": "dialogue",
-     "start": 14.4,
-     "duration": 3.8,
+     "start": 5.75,
+     "duration": 3.1,
      "actorUid": "rey",
-     "text": "Esto no viene en el convenio. Lo estoy consultando."
-    },
-    {
-     "id": "e3t1_bo14",
-     "track": "body",
-     "start": 18.55,
-     "duration": 0.3,
-     "actorUid": "jefe",
-     "poseId": "char.jefe.pose_neutral_3q_right"
+     "text": "Vale. ¿Lo decimos o no lo decimos?"
     },
     {
      "id": "e3t1_di15",
      "track": "dialogue",
-     "start": 18.55,
-     "duration": 2.0,
+     "start": 9.0,
+     "duration": 1.3,
      "actorUid": "jefe",
-     "text": "¿Qué pasó el viernes?"
+     "text": "¿Decir qué?"
     },
     {
      "id": "e3t1_di16",
      "track": "dialogue",
-     "start": 20.9,
+     "start": 10.5,
      "duration": 2.0,
-     "actorUid": "sis",
-     "text": "El parche de Usu."
+     "actorUid": "rey",
+     "text": "Que somos azules, Jefe."
     },
     {
-     "id": "e3t1_fa17",
-     "track": "face",
-     "start": 23.25,
+     "id": "e3t1_bo17",
+     "track": "body",
+     "start": 13.0,
      "duration": 0.3,
      "actorUid": "jefe",
-     "expressionId": "expression.jefe.neutral"
+     "poseId": "char.jefe.pose_reaction"
     },
     {
-     "id": "e3t1_di18",
-     "track": "dialogue",
-     "start": 23.25,
-     "duration": 1.3,
+     "id": "e3t1_fa18",
+     "track": "face",
+     "start": 13.0,
+     "duration": 0.3,
      "actorUid": "jefe",
-     "text": "¿Qué parche?"
+     "expressionId": "expression.jefe.sorpresa"
     },
     {
      "id": "e3t1_di19",
      "track": "dialogue",
-     "start": 24.9,
-     "duration": 3.5,
+     "start": 13.6,
+     "duration": 1.2,
      "actorUid": "jefe",
-     "text": "Eso… se lo preguntaré al Jefe del pasado."
+     "text": "…Anda."
     },
     {
      "id": "e3t1_fa20",
      "track": "face",
-     "start": 28.75,
+     "start": 15.4,
+     "duration": 0.3,
+     "actorUid": "bar",
+     "expressionId": "expression.barbas.alegria"
+    },
+    {
+     "id": "e3t1_di21",
+     "track": "dialogue",
+     "start": 15.4,
+     "duration": 4.6,
+     "actorUid": "bar",
+     "text": "Yo lo vi el viernes. No dije nada por no preocuparos."
+    },
+    {
+     "id": "e3t1_di22",
+     "track": "dialogue",
+     "start": 20.2,
+     "duration": 2.4,
+     "actorUid": "sis",
+     "text": "Gritaste en el ascensor, Barbas."
+    },
+    {
+     "id": "e3t1_fa23",
+     "track": "face",
+     "start": 22.75,
+     "duration": 0.3,
+     "actorUid": "bar",
+     "expressionId": "expression.barbas.risa"
+    },
+    {
+     "id": "e3t1_di24",
+     "track": "dialogue",
+     "start": 22.75,
+     "duration": 2.8,
+     "actorUid": "bar",
+     "text": "Con todo el amor del mundo."
+    },
+    {
+     "id": "e3t1_fa25",
+     "track": "face",
+     "start": 26.15,
      "duration": 0.3,
      "actorUid": "usu",
      "expressionId": "expression.usu.alegria"
     },
     {
-     "id": "e3t1_bo21",
+     "id": "e3t1_bo26",
      "track": "body",
-     "start": 28.75,
+     "start": 26.15,
      "duration": 0.3,
      "actorUid": "usu",
      "poseId": "char.usu.pose_talk_emphasis"
     },
     {
-     "id": "e3t1_di22",
+     "id": "e3t1_di27",
      "track": "dialogue",
-     "start": 28.75,
-     "duration": 2.0,
+     "start": 26.15,
+     "duration": 2.4,
      "actorUid": "usu",
-     "text": "[excited] ¡Yo sé cómo comprobarlo!"
+     "text": "[excited] ¡Lo sabía! ¡El parche funciona!"
     },
     {
-     "id": "e3t1_fa23",
+     "id": "e3t1_ey28",
+     "track": "eyes",
+     "start": 28.65,
+     "duration": 2.4,
+     "actorUid": "rey",
+     "gazeX": 0.7,
+     "gazeY": 0
+    },
+    {
+     "id": "e3t1_ey29",
+     "track": "eyes",
+     "start": 28.65,
+     "duration": 2.4,
+     "actorUid": "sis",
+     "gazeX": -0.7,
+     "gazeY": 0
+    },
+    {
+     "id": "e3t1_ey30",
+     "track": "eyes",
+     "start": 28.65,
+     "duration": 2.4,
+     "actorUid": "jefe",
+     "gazeX": 0.7,
+     "gazeY": 0
+    },
+    {
+     "id": "e3t1_ey31",
+     "track": "eyes",
+     "start": 28.65,
+     "duration": 2.4,
+     "actorUid": "bar",
+     "gazeX": -0.7,
+     "gazeY": 0
+    },
+    {
+     "id": "e3t1_fa32",
      "track": "face",
-     "start": 31.1,
+     "start": 28.65,
+     "duration": 0.3,
+     "actorUid": "rey",
+     "expressionId": "expression.reynaldo.enfado"
+    },
+    {
+     "id": "e3t1_fa33",
+     "track": "face",
+     "start": 28.65,
      "duration": 0.3,
      "actorUid": "sis",
      "expressionId": "expression.sister.enfado"
     },
     {
-     "id": "e3t1_bo24",
-     "track": "body",
-     "start": 31.1,
+     "id": "e3t1_fa34",
+     "track": "face",
+     "start": 28.65,
      "duration": 0.3,
-     "actorUid": "sis",
-     "poseId": "char.sister.pose_pointing"
+     "actorUid": "jefe",
+     "expressionId": "expression.jefe.enfado"
     },
     {
-     "id": "e3t1_di25",
+     "id": "e3t1_fa35",
+     "track": "face",
+     "start": 28.65,
+     "duration": 0.3,
+     "actorUid": "bar",
+     "expressionId": "expression.barbas.sorpresa"
+    },
+    {
+     "id": "e3t1_fa36",
+     "track": "face",
+     "start": 29.95,
+     "duration": 0.3,
+     "actorUid": "usu",
+     "expressionId": "expression.usu.neutral"
+    },
+    {
+     "id": "e3t1_bo37",
+     "track": "body",
+     "start": 29.95,
+     "duration": 0.3,
+     "actorUid": "usu",
+     "poseId": "char.usu.pose_neutral_front"
+    },
+    {
+     "id": "e3t1_di38",
      "track": "dialogue",
-     "start": 31.1,
-     "duration": 1.3,
-     "actorUid": "sis",
-     "text": "Usu, no."
+     "start": 30.35,
+     "duration": 2.8,
+     "actorUid": "usu",
+     "text": "…Que el parche funciona. Con interrogación."
     },
     {
-     "id": "e3t1_mo26",
+     "id": "e3t1_mo39",
      "track": "mouth",
      "start": 0,
-     "duration": 34.0,
+     "duration": 34.9,
      "actorUid": "rey",
      "mode": "auto"
     },
     {
-     "id": "e3t1_mo27",
+     "id": "e3t1_mo40",
      "track": "mouth",
      "start": 0,
-     "duration": 34.0,
+     "duration": 34.9,
      "actorUid": "sis",
      "mode": "auto"
     },
     {
-     "id": "e3t1_mo28",
+     "id": "e3t1_mo41",
      "track": "mouth",
      "start": 0,
-     "duration": 34.0,
+     "duration": 34.9,
      "actorUid": "jefe",
      "mode": "auto"
     },
     {
-     "id": "e3t1_mo29",
+     "id": "e3t1_mo42",
      "track": "mouth",
      "start": 0,
-     "duration": 34.0,
+     "duration": 34.9,
      "actorUid": "usu",
      "mode": "auto"
     },
     {
-     "id": "e3t1_mo30",
+     "id": "e3t1_mo43",
      "track": "mouth",
      "start": 0,
-     "duration": 34.0,
+     "duration": 34.9,
      "actorUid": "bar",
      "mode": "auto"
     }
-   ]
+   ],
+   "camera": "auto"
   },
   {
    "id": "e3t2",

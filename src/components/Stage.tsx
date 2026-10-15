@@ -36,6 +36,9 @@ export function Stage({ catalog, frame, showSubtitles = true, selectedUid, onSel
 
   const layout = layoutFrame(catalog, frame, { showHidden: !!onMoveActor });
   const actorState = new Map(frame.actors.map((a) => [a.uid, a]));
+  // En edición se ve siempre el plano general (para colocar y arrastrar sin zoom).
+  const cam = onMoveActor || !frame.camera ? { zoom: 1, cx: W / 2, cy: H / 2 } : frame.camera;
+  const camTransform = cam.zoom > 1.001 ? `scale(${cam.zoom}) translate(${-(cam.cx - W / 2 / cam.zoom)}px, ${-(cam.cy - H / 2 / cam.zoom)}px)` : undefined;
 
   const onPointerDown = (uid: string) => (e: React.PointerEvent) => {
     if (!onMoveActor && !onSelectActor) return;
@@ -68,6 +71,10 @@ export function Stage({ catalog, frame, showSubtitles = true, selectedUid, onSel
           onPointerUp={onPointerUp}
           onPointerCancel={onPointerUp}
         >
+          <div
+            className="layer stage-camera"
+            style={{ left: 0, top: 0, width: W, height: H, transformOrigin: "0 0", transform: camTransform }}
+          >
           {layout.background ? (
             <img className="layer" src={layout.background} alt="" draggable={false} style={{ left: 0, top: 0, width: W, height: H, zIndex: 0, objectFit: "cover" }} />
           ) : (
@@ -105,6 +112,7 @@ export function Stage({ catalog, frame, showSubtitles = true, selectedUid, onSel
           {layout.propsFront.map((p) => (
             <PropImg key={p.key} p={p} />
           ))}
+          </div>
           {layout.screen.darken ? <div className="layer" style={{ left: 0, top: 0, width: W, height: H, zIndex: 8000, background: "#000", opacity: layout.screen.darken }} /> : null}
           {layout.screen.flash ? (
             <div className="layer" style={{ left: 0, top: 0, width: W, height: H, zIndex: 8001, background: layout.screen.flash.color, opacity: layout.screen.flash.alpha }} />

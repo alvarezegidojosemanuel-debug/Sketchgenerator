@@ -18,7 +18,7 @@ import type { Catalog } from "@/lib/catalog/types";
 import type { PocketState } from "../usePocket";
 import { Card, Field, IssueList, Stepper } from "../ui";
 
-const TRACK_LABEL: Record<Track, string> = { dialogue: "💬 Diálogo", body: "🧍 Cuerpo", face: "🙂 Cara", mouth: "👄 Boca", eyes: "👀 Ojos", props: "📦 Objeto", sfx: "🔊 Sonido", screen: "🎬 Pantalla" };
+const TRACK_LABEL: Record<Track, string> = { dialogue: "💬 Diálogo", body: "🧍 Cuerpo", face: "🙂 Cara", mouth: "👄 Boca", eyes: "👀 Ojos", props: "📦 Objeto", sfx: "🔊 Sonido", screen: "🎬 Pantalla", camera: "🎥 Cámara" };
 const r1 = (n: number) => Math.round(n * 10) / 10;
 
 function uniqueId(take: Take, prefix: string) {
@@ -279,6 +279,10 @@ export function EditScreen({ s }: { s: PocketState }) {
             {catalog.backgrounds.map((b) => <option key={b.id} value={b.id}>{b.label}</option>)}
           </select>
         </Field>
+        <label className="switch">
+          <input type="checkbox" checked={take.camera === "auto"} onChange={(e) => editTake((tk) => { tk.camera = e.target.checked ? "auto" : undefined; })} />
+          <span>🎥 Cámara automática (plano medio de quien habla, primer plano en el remate)</span>
+        </label>
         <button
           type="button"
           className="btn btn-danger"
@@ -441,6 +445,7 @@ function summary(e: PocketEvent, s: PocketState): string {
     case "props": return [s.catalog.props.find((p) => p.id === e.propId)?.label, e.bubbleOf ? "💭" : "", e.loop && e.loop !== "none" ? LOOP_LABEL[e.loop] : ""].filter(Boolean).join(" · ");
     case "sfx": return s.catalog.sounds?.find((x) => x.id === e.soundId)?.label ?? e.soundId;
     case "screen": return SCREEN_LABEL[e.effect];
+    case "camera": return { wide: "Plano general", medium: "Plano medio", close: "Primer plano" }[e.shot] + (e.actorUid ? ` · ${e.actorUid}` : "");
   }
 }
 

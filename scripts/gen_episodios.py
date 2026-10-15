@@ -30,8 +30,8 @@ def est(text):
 
 
 class Take:
-    def __init__(self, tid, name, bg, punetos=(), solo=None, back=False):
-        self.id, self.name, self.bg = tid, name, bg
+    def __init__(self, tid, name, bg, punetos=(), solo=None, back=False, camera=None):
+        self.id, self.name, self.bg, self.camera = tid, name, bg, camera
         self.t = 0.3
         self.ev = []
         self.n = 0
@@ -85,6 +85,13 @@ class Take:
     def pose(self, uid, pose, start=None):
         self.add('body', 0.3, start, actorUid=uid, poseId=f'char.{CHARS[uid]}.pose_{pose}')
 
+    def look(self, uid, at_uid, dur=0.8):
+        """Mirada puntual (en silencio) de uid hacia at_uid."""
+        me = next(a for a in self.actors if a['uid'] == uid)
+        to = next(a for a in self.actors if a['uid'] == at_uid)
+        d = 1 if to['x'] > me['x'] else -1
+        self.add('eyes', dur, actorUid=uid, gazeX=0.7 * d, gazeY=0)
+
     def fx(self, uid, fx, dur=0.6):
         self.add('body', dur, actorUid=uid, fx=fx)
 
@@ -107,7 +114,10 @@ class Take:
         for e in ev:  # nada se sale de la toma
             if e['start'] + e['duration'] > dur:
                 e['duration'] = round(max(0.1, dur - e['start']), 2)
-        return dict(id=self.id, name=self.name, duration=dur, backgroundId=self.bg, actors=self.actors, events=ev)
+        tk = dict(id=self.id, name=self.name, duration=dur, backgroundId=self.bg, actors=self.actors, events=ev)
+        if self.camera:
+            tk['camera'] = self.camera
+        return tk
 
     def _back_props(self, dur):
         out = []
@@ -214,20 +224,37 @@ EP2 = project('Ep. 2 · El parche', 'Usu prepara el parche de noche; el viernes 
               ['Usu humano de espaldas iluminado de noche', 'Reynaldo con abrigo', 'segundo fotograma de teclear'])
 
 # ================================================================= EP. 3 · ¿QUÉ COÑO NOS HA PASADO?
-t1 = Take('e3t1', 'Lunes', 'bg_oficina_manana', punetos=ALL5)
-t1.say('narr', 'Lunes.')
-t1.face('bar', 'sorpresa')
+t1 = Take('e3t1', 'Lunes', 'bg_oficina_manana', punetos=ALL5, camera='auto')
+# Idea: todos se ven azules y nadie se atreve a decirlo… hasta que Usu se delata solo.
+t1.wait(0.4)
+t1.say('bar', 'Buenos días.', gap=0.25)
+t1.say('sis', 'Buenos días.', gap=0.2)
+# silencio incómodo: miradas cruzadas
+t1.look('jefe', 'bar'); t1.look('bar', 'jefe'); t1.look('sis', 'rey'); t1.look('rey', 'usu'); t1.look('usu', 'sis')
+t1.wait(1.0)
+t1.look('jefe', 'sis'); t1.look('sis', 'jefe'); t1.look('rey', 'bar'); t1.look('bar', 'usu')
+t1.wait(1.0)
+t1.say('rey', 'Vale. ¿Lo decimos o no lo decimos?', expr='enfado', pose='arms_crossed', gap=0.15)
+t1.say('jefe', '¿Decir qué?', gap=0.2)
+t1.say('rey', 'Que somos azules, Jefe.', gap=0.5)
+t1.pose('jefe', 'reaction')
 t1.face('jefe', 'sorpresa')
-t1.say('jefe', 'Barbas… estás azul.', pose='pointing')
-t1.say('bar', 'Tú también, Jefe. Te lo digo con todo el amor del mundo: te favorece.', expr='risa')
-t1.say('sis', 'Que nadie grite. La recepcionista nos ha saludado como siempre.', expr='neutral', pose='talk_explain')
-t1.say('rey', 'Esto no viene en el convenio. Lo estoy consultando.', expr='enfado', pose='arms_crossed')
-t1.say('jefe', '¿Qué pasó el viernes?', pose='neutral_3q_right')
-t1.say('sis', 'El parche de Usu.')
-t1.say('jefe', '¿Qué parche?', expr='neutral')
-t1.say('jefe', 'Eso… se lo preguntaré al Jefe del pasado.')
-t1.say('usu', '[excited] ¡Yo sé cómo comprobarlo!', expr='alegria', pose='talk_emphasis')
-t1.say('sis', 'Usu, no.', expr='enfado', pose='pointing')
+t1.wait(0.6)
+t1.say('jefe', '…Anda.', gap=0.6)
+t1.say('bar', 'Yo lo vi el viernes. No dije nada por no preocuparos.', expr='alegria', gap=0.2)
+t1.say('sis', 'Gritaste en el ascensor, Barbas.', gap=0.15)
+t1.say('bar', 'Con todo el amor del mundo.', expr='risa', gap=0.6)
+t1.say('usu', '[excited] ¡Lo sabía! ¡El parche funciona!', expr='alegria', pose='talk_emphasis', gap=0.1)
+# todos se giran hacia Usu
+for u in ('rey', 'sis', 'jefe', 'bar'):
+    t1.look(u, 'usu', 2.4)
+t1.face('rey', 'enfado'); t1.face('sis', 'enfado'); t1.face('jefe', 'enfado'); t1.face('bar', 'sorpresa')
+t1.wait(1.3)
+t1.face('usu', 'neutral')
+t1.pose('usu', 'neutral_front')
+t1.wait(0.4)
+t1.say('usu', '…Que el parche funciona. Con interrogación.', gap=0.2)
+t1.wait(0.4)
 t2 = Take('e3t2', 'Los dragones', 'bg_sala_servidores', solo=('usu', 540, 1820, 0.95, 'neutral_front'))
 t2.sfx('sfx_servidor', 3)
 t2.say('usu', 'A ver, grandullón. Incidencia cuatro mil doce. Tú y yo.', pose='talk_explain')

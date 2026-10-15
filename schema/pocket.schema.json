@@ -191,6 +191,13 @@
               }
             ]
           },
+          "camera": {
+            "type": "string",
+            "enum": [
+              "fixed",
+              "auto"
+            ]
+          },
           "actors": {
             "maxItems": 8,
             "type": "array",
@@ -812,6 +819,65 @@
                     "duration",
                     "track",
                     "effect"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80,
+                      "pattern": "^[A-Za-z0-9_.:-]+$"
+                    },
+                    "start": {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    "duration": {
+                      "type": "number",
+                      "exclusiveMinimum": 0
+                    },
+                    "track": {
+                      "type": "string",
+                      "const": "camera"
+                    },
+                    "shot": {
+                      "type": "string",
+                      "enum": [
+                        "wide",
+                        "medium",
+                        "close"
+                      ]
+                    },
+                    "actorUid": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80,
+                      "pattern": "^[A-Za-z0-9_.:-]+$"
+                    },
+                    "x": {
+                      "type": "number",
+                      "minimum": -600,
+                      "maximum": 1680
+                    },
+                    "y": {
+                      "type": "number",
+                      "minimum": -600,
+                      "maximum": 2520
+                    },
+                    "zoom": {
+                      "type": "number",
+                      "minimum": 1,
+                      "maximum": 3
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "start",
+                    "duration",
+                    "track",
+                    "shot"
                   ]
                 }
               ]

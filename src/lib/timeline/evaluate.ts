@@ -2,6 +2,7 @@ import type { Catalog } from "@/lib/catalog/types";
 import { findCharacter, findExpression, findPose, findProp } from "@/lib/catalog";
 import { bodyFx, presence, propAnim, screenFx, PRESENCE_TIME, type PropAnim, type ScreenFx } from "./fx";
 import { stripAudioTags } from "@/lib/voice/tags";
+import { applyLife, cameraAt, type CameraState } from "./life";
 import type { DialogueEvent, PocketEvent, PocketProject, PropsEvent, Take } from "@/lib/schema/pocket";
 
 export interface ActorState {
@@ -67,6 +68,8 @@ export interface FrameState {
   props: PropState[];
   subtitles: Subtitle[];
   screen: ScreenFx;
+  /** Encuadre de cámara (zoom 1 = plano general). */
+  camera: CameraState;
   /** Sonidos que deberían estar sonando en t (para exportar / depurar). */
   sounds: { eventId: string; soundId: string; offset: number; volume: number }[];
 }
@@ -101,6 +104,8 @@ export function mouthFlap(e: DialogueEvent, t: number): boolean {
 }
 
 export interface EvaluateOptions {
+  /** Vida automática (mirar al que habla, respirar, asentir). Por defecto sí. */
+  life?: boolean;
   /**
    * Voz real sonando: actor → segundos que lleva hablando. Si se pasa, la boca la marca el
    * audio (se mueve solo mientras suena y se cierra cuando acaba), no la duración del bloque.
@@ -162,6 +167,7 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
   const subtitles: Subtitle[] = [];
   const talkIndex = new Map<string, number>();
   const screen: ScreenFx = {};
+  const eyesUntil = new Map<string, number>();
   const sounds: FrameState["sounds"] = [];
 
   for (const e of sortedEvents(take)) {
@@ -235,6 +241,7 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
         break;
       case "eyes": {
         if (!st) break;
+        eyesUntil.set(st.uid, Math.max(eyesUntil.get(st.uid) ?? -1, e.start + e.duration));
         const p = clamp01((t - e.start) / Math.min(e.duration, 0.25));
         st.gazeX = lerp(st.gazeX, e.gazeX, p);
         st.gazeY = lerp(st.gazeY, e.gazeY, p);
@@ -336,7 +343,11 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
     pr.bubble = { cx, cy, w, h: bh, tailX: st.x + st.offX + side * 40 * st.scale, tailY: headTop + 10 };
   }
 
+  if (opts.life !== false) applyLife(take, catalog, t, actors, eyesUntil);
+  const camera = cameraAt(take, catalog, t, actors);
+
   return {
+    camera,
     backgroundId: take.backgroundId,
     actors: [...actors.values()].sort((a, b) => a.zIndex - b.zIndex),
     props: props.sort((a, b) => a.zIndex - b.zIndex),

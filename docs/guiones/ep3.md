@@ -1,21 +1,21 @@
 # Ep. 3 · ¿Qué coño nos ha pasado?
 
-_Primer día en visión Puñeta: se ven azules, Usu descubre sus poderes y nacen Draco y Humillos._ · ≈ 84.2 s
+_Primer día en visión Puñeta: se ven azules, Usu descubre sus poderes y nacen Draco y Humillos._ · ≈ 85.1 s
 
 ## Escena 1 · Lunes
 **OFICINA DE SOPORTE · MAÑANA** — visión Puñeta
 
-- **NARRADOR:** Lunes.
-- **JEFE _(sorprendido)_:** Barbas… estás azul.
-- **BARBAS _(riéndose)_:** Tú también, Jefe. Te lo digo con todo el amor del mundo: te favorece.
-- **SISTER _(seria)_:** Que nadie grite. La recepcionista nos ha saludado como siempre.
-- **REYNALDO _(enfadado)_:** Esto no viene en el convenio. Lo estoy consultando.
-- **JEFE _(sorprendido)_:** ¿Qué pasó el viernes?
-- **SISTER _(seria)_:** El parche de Usu.
-- **JEFE _(serio)_:** ¿Qué parche?
-- **JEFE _(serio)_:** Eso… se lo preguntaré al Jefe del pasado.
-- **USU _(contento)_:** [excited] ¡Yo sé cómo comprobarlo!
-- **SISTER _(enfadada)_:** Usu, no.
+- **BARBAS:** Buenos días.
+- **SISTER:** Buenos días.
+- **REYNALDO _(enfadado)_:** Vale. ¿Lo decimos o no lo decimos?
+- **JEFE:** ¿Decir qué?
+- **REYNALDO _(enfadado)_:** Que somos azules, Jefe.
+- **JEFE _(sorprendido)_:** …Anda.
+- **BARBAS _(contento)_:** Yo lo vi el viernes. No dije nada por no preocuparos.
+- **SISTER:** Gritaste en el ascensor, Barbas.
+- **BARBAS _(riéndose)_:** Con todo el amor del mundo.
+- **USU _(contento)_:** [excited] ¡Lo sabía! ¡El parche funciona!
+- **USU _(serio)_:** …Que el parche funciona. Con interrogación.
 
 ## Escena 2 · Los dragones
 **SALA DE SERVIDORES** — visión Puñeta
