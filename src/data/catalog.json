@@ -6315,6 +6315,11 @@
    "id": "bg_complejo_dia",
    "label": "Complejo · exterior de día (pantalla para la hora)",
    "src": "/assets/punetos/backgrounds/bg_complejo_dia.webp"
+  },
+  {
+   "id": "bg_sistemas",
+   "label": "Sistemas · open space (de día)",
+   "src": "/assets/punetos/backgrounds/bg_sistemas.webp"
   }
  ],
  "props": [
