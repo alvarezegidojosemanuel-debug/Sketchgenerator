@@ -27,6 +27,8 @@ export interface ActorState {
   offY: number;
   /** Transición suave: pose anterior y mezcla 0→1 de la nueva (fundido). */
   prevPoseId?: string;
+  /** Poses que van a usarse en breve: se montan invisibles para que el cambio no parpadee. */
+  upcomingPoses?: string[];
   poseMix: number;
   /** Fundido de expresión. */
   prevExpressionId?: string;
@@ -172,6 +174,18 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
   const eyesUntil = new Map<string, number>();
   const sounds: FrameState["sounds"] = [];
 
+  // Lo que viene en los próximos segundos se monta ya (invisible): en el móvil, una imagen recién creada
+  // tarda unos fotogramas en pintarse aunque esté descargada; así el cambio es solo de opacidad.
+  const AHEAD = 2;
+  for (const e of take.events) {
+    if (e.start <= t || e.start - t > AHEAD) continue;
+    if (e.track === "props" && !e.bubbleOf) {
+      props.push({ key: e.id, propId: e.propId, layer: e.layer, x: e.x, y: e.y, scale: e.scale ?? 1, zIndex: e.zIndex ?? 0, rot: e.rot ?? 0, opacity: 0.001, flip: e.flip ?? false });
+    } else if (e.track === "body" && e.poseId && e.actorUid) {
+      const st = actors.get(e.actorUid);
+      if (st) (st.upcomingPoses ??= []).push(e.poseId);
+    }
+  }
   for (const e of sortedEvents(take)) {
     if (t < e.start) continue;
     const end = e.start + e.duration;

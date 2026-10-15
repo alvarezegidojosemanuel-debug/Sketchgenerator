@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { projectSchedule } from "@/lib/timeline/evaluate";
+import { evaluateTake, projectSchedule } from "@/lib/timeline/evaluate";
 import { ttsSupported } from "@/lib/tts";
 import { attributionsFor, castIds, speakerCharacterId } from "@/lib/voice/catalog";
 import { clipKey, fitProjectToAudio } from "@/lib/voice/fit";
@@ -81,6 +81,10 @@ export function PreviewScreen({ s }: { s: PocketState }) {
   const pl = usePlayer(playProject, catalog, { engine, clips: liveClips });
   const { slots } = projectSchedule(playProject);
   const take = playProject.takes[pl.pos.takeIndex];
+  // Los últimos 2 s de una toma: la siguiente se prepara invisible (evita el «fogonazo» en el corte en el móvil).
+  const nextTake = playProject.takes[pl.pos.takeIndex + 1];
+  const nearCut = !!take && !!nextTake && take.duration - pl.pos.t < 2;
+  const nextFrame = useMemo(() => (nearCut && nextTake ? evaluateTake(nextTake, catalog, 0.6) : undefined), [nearCut, nextTake, catalog]);
 
   const prepare = async (): Promise<boolean> => {
     setVoiceError(null);
@@ -130,7 +134,7 @@ export function PreviewScreen({ s }: { s: PocketState }) {
         </span>
       </div>
       {s.issues.length > 0 && <IssueList errors={s.issues} max={3} />}
-      <Stage catalog={catalog} frame={pl.frame} showSubtitles={subs} />
+      <Stage catalog={catalog} frame={pl.frame} showSubtitles={subs} preload={nextFrame} />
       <div className="transport">
         <button type="button" className="btn btn-round btn-primary" onClick={onPlay} disabled={progress !== null} aria-label={pl.playing ? "Pausar" : "Reproducir"}>
           {pl.playing ? "❚❚" : "▶"}

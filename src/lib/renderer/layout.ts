@@ -26,6 +26,9 @@ export interface ActorLayout {
   faceMix: number;
   /** Pose anterior en fundido (se dibuja debajo con opacidad 1 - opacity). */
   ghost?: ActorLayout;
+  /** Poses que entrarán en breve, montadas con opacidad 0 (para que no parpadeen al cambiar). */
+  pre?: ActorLayout[];
+  poseId: string;
 }
 
 export interface PropLayout {
@@ -70,6 +73,8 @@ export function layoutActor(catalog: Catalog, a: ActorState): ActorLayout {
     main.ghost = { ...layoutActorPose(catalog, { ...a, poseId: a.prevPoseId, prevPoseId: undefined }), opacity: Math.min(1, 2 * (1 - a.poseMix)) * a.visible };
   }
   main.opacity *= a.visible;
+  const pre = [...new Set(a.upcomingPoses ?? [])].filter((p) => p !== a.poseId && p !== a.prevPoseId);
+  if (pre.length) main.pre = pre.map((poseId) => ({ ...layoutActorPose(catalog, { ...a, poseId, prevPoseId: undefined }), opacity: 0 }));
   return main;
 }
 
@@ -81,6 +86,7 @@ function layoutActorPose(catalog: Catalog, a: ActorState): ActorLayout {
   const expression = a.expressionId ? findExpression(catalog, a.characterId, a.expressionId) : undefined;
   return {
     uid: a.uid,
+    poseId: a.poseId,
     z: Z.actors + a.zIndex,
     pose,
     left: a.x + a.offX - pw / 2,

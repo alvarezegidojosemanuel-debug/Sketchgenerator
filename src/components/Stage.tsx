@@ -15,12 +15,14 @@ interface Props {
   onSelectActor?: (uid: string) => void;
   onMoveActor?: (uid: string, x: number, y: number) => void;
   maxHeight?: string;
+  /** Escena que viene a continuación: se pinta invisible para que el corte no parpadee. */
+  preload?: FrameState;
 }
 
 const W = 1080;
 const H = 1920;
 
-export function Stage({ catalog, frame, showSubtitles = true, selectedUid, onSelectActor, onMoveActor, maxHeight = "64vh" }: Props) {
+export function Stage({ catalog, frame, showSubtitles = true, selectedUid, onSelectActor, onMoveActor, maxHeight = "64vh", preload }: Props) {
   const box = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(0.3);
   const drag = useRef<{ uid: string; sx: number; sy: number; ox: number; oy: number } | null>(null);
@@ -93,6 +95,7 @@ export function Stage({ catalog, frame, showSubtitles = true, selectedUid, onSel
           onPointerUp={onPointerUp}
           onPointerCancel={onPointerUp}
         >
+          {preload && <PreloadLayer catalog={catalog} frame={preload} />}
           <div
             className="layer stage-camera"
             style={{ left: 0, top: 0, width: W, height: H, transformOrigin: "0 0", transform: camTransform }}
@@ -105,13 +108,20 @@ export function Stage({ catalog, frame, showSubtitles = true, selectedUid, onSel
           {layout.propsBack.map((p) => (
             <PropImg key={p.key} p={p} />
           ))}
-          {layout.actors.flatMap((a) => (a.ghost ? [{ ...a.ghost, uid: a.uid + "__ghost", z: a.z }, a] : [a])).map((a) => {
+          {layout.actors
+            .flatMap((a) => [
+              // Cada pose es un elemento estable (clave = actor + pose): al cambiar de pose solo cambia la opacidad.
+              ...(a.pre ?? []).map((x) => ({ ...x, role: "pre" as const })),
+              ...(a.ghost ? [{ ...a.ghost, z: a.z, role: "ghost" as const }] : []),
+              { ...a, role: "main" as const },
+            ])
+            .map((a) => {
             const pw = a.pose?.width ?? 400;
             const ph = a.pose?.height ?? 600;
-            const ghost = a.uid.endsWith("__ghost");
+            const ghost = a.role !== "main";
             return (
               <div
-                key={a.uid}
+                key={`${a.uid}:${a.poseId}`}
                 data-uid={ghost ? undefined : a.uid}
                 className={`layer actor${!ghost && selectedUid === a.uid ? " selected" : ""}`}
                 onPointerDown={ghost ? undefined : onPointerDown(a.uid)}
@@ -121,7 +131,8 @@ export function Stage({ catalog, frame, showSubtitles = true, selectedUid, onSel
                   width: pw,
                   height: ph,
                   zIndex: a.z,
-                  opacity: a.opacity < 1 ? a.opacity : undefined,
+                  // las poses «pre» van a opacidad casi cero (no cero) para que el navegador las pinte ya
+                  opacity: a.role === "pre" ? 0.001 : a.opacity < 1 ? a.opacity : undefined,
                   pointerEvents: ghost ? "none" : undefined,
                   transform: `scale(${a.flip ? -a.scale : a.scale}, ${a.scale})`,
                   cursor: onMoveActor ? "grab" : undefined,
@@ -157,6 +168,22 @@ export function Stage({ catalog, frame, showSubtitles = true, selectedUid, onSel
           )}
         </div>
       </div>
+    </div>
+  );
+}
+
+/** Escena siguiente pintada a opacidad casi cero (descodifica sus imágenes antes del corte). */
+function PreloadLayer({ catalog, frame }: { catalog: Catalog; frame: FrameState }) {
+  const l = layoutFrame(catalog, frame);
+  return (
+    <div className="layer" aria-hidden style={{ left: 0, top: 0, width: W, height: H, opacity: 0.001, pointerEvents: "none" }}>
+      {l.background && <img className="layer" src={l.background} alt="" style={{ left: 0, top: 0, width: W, height: H, objectFit: "cover" }} />}
+      {[...l.propsBack, ...l.propsFront].map((p) => <img key={p.key} className="layer" src={p.src} alt="" style={{ left: p.left, top: p.top, width: p.width, height: p.height }} />)}
+      {l.actors.map((a) => (
+        <div key={a.uid} className="layer actor" style={{ left: a.left, top: a.top, width: a.pose?.width ?? 400, height: a.pose?.height ?? 600, transform: `scale(${a.scale})` }}>
+          <FigureBody a={a} />
+        </div>
+      ))}
     </div>
   );
 }
