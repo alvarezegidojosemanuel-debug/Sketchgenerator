@@ -65,3 +65,13 @@ describe("grupos de personajes en una toma", () => {
     expect(new Set(arranged.takes[0].actors.map((a) => a.x)).size).toBe(5);
   });
 });
+
+describe("universo en el prompt", () => {
+  it("incluye el lore y la personalidad de los personajes elegidos", async () => {
+    const { loreBlock } = await import("@/lib/generator/lore");
+    const b = loreBlock(["jefe", "usu"]);
+    expect(b).toMatch(/Jefe del pasado/);
+    expect(b).toMatch(/Draco/);
+    expect(b).not.toMatch(/sindicato/);
+  });
+});

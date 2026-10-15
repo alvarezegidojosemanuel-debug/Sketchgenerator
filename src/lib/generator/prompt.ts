@@ -1,3 +1,4 @@
+import { loreBlock } from "./lore";
 import type { Catalog, Character } from "@/lib/catalog/types";
 import { LIMITS, SCHEMA_VERSION, type PocketProject } from "@/lib/schema/pocket";
 
@@ -125,6 +126,9 @@ Escribe un sketch y devuélvelo como UN ÚNICO OBJETO JSON válido. Sin Markdown
 - Tono: ${tone}.
 - Personajes (usa SOLO estos): ${chars.map((c) => c.name).join(", ")}.
 - Escenario: ${bgId ? `"${bgId}" en todas las tomas salvo que la historia exija otro del catálogo` : "elige del catálogo el que mejor encaje"}.
+
+## Universo
+${loreBlock(chars.map((c) => c.id))}
 
 ## Catálogo (versión ${catalog.catalogVersion}). Usa EXACTAMENTE estos IDs; cualquier otro será rechazado.
 Personajes:
