@@ -60,10 +60,16 @@ El parche es un programa que **se propaga**: vive en ellos y puede pasar a otras
 7. **Personalidades:**
    - **Jefe:** líder noble y querido, el «papi» del equipo. Increíblemente inteligente pero desastre y olvidadizo; cuando le piden recordar algo: «Eso se lo preguntaré al Jefe del pasado». Se enfada con facilidad con quien quiere molestar a su equipo.
    - **Sister:** inteligente, organizada, muy buena y dulce. Defiende a muerte a su equipo; protege y ayuda al Jefe para que sus despistes no tengan consecuencias.
-   - **Barbas:** noble, muy trabajador, puede con lo que le echen. Sentido de la justicia muy agudo y mucho humor; siempre hace bromas. Para no confrontar él a otros equipos, «achucha» al Jefe hasta calentarlo y que vaya este como un miura.
+   - **Barbas:** noble, muy trabajador, puede con lo que le echen. Sentido de la justicia muy agudo y mucho humor; siempre hace bromas. Para no confrontar él a otros equipos, «achucha» al Jefe hasta calentarlo y que vaya este como un miura. Mete baza, pero **todo lo dice y lo hace «con todo el amor del mundo»** (su coletilla).
    - **Usu:** loquísimo. Siempre lo resuelve todo, pero de la forma más disparatada posible. Tiene mascotas imaginarias, los dragones **Draco** y **Humillos**, a los que da de desayunar; cuando le pides algo a veces te dice que se lo pases a sus dragones, al que tenga libre en ese momento.
    - **Reynaldo:** trabajador, con un sentido agudo de sus derechos laborales; no deja que nada se salga de las normas. No le pidas que haga horas si no quieres que vaya al sindicato.
 8. **Habilidad:** desde el pantallazo **conectan con los sistemas**: pueden resolver incidencias «mágicamente» (tocar una máquina, pensar en ella, hablarle…). Por eso son **mejores en su trabajo que nunca**, aunque no pueden explicar cómo.
+   **Cada habilidad exagera los rasgos de su personaje:**
+   - **Usu:** puede **interactuar con los objetos** y **crear seres de otros mundos**, que usa para solucionar problemas. Genio loco en la realidad; en Puñeto, su locura se materializa.
+   - **Barbas:** tiene la habilidad de **cabrear al Jefe** y, a la vez, de **que todos le quieran muchísimo**. Todo «con todo el amor del mundo».
+   - **Sister:** **ordena todo con la mente**: se reorganiza una casa, una oficina, la información.
+   - **Reynaldo:** está **conectado con las bases de datos de los sindicatos**: consulta legalidades, pone denuncias y envía correos con su propia voluntad.
+   - **Jefe:** **resuelve todo lo supercomplicado**… y luego **nunca se acuerda**. Si le preguntas, no sabe de qué le hablas.
 9. **Usan la habilidad también fuera de la oficina** (cajeros, coches, semáforos, electrodomésticos, móviles…), lo que permite **historias individuales** de cada uno en su día a día.
 10. **Convención visual:** tras unas **escenas de presentación** en humano, la serie se cuenta **en visión Puñeta**: ellos se ven Puñetos y **el resto de la gente aparece con su «aura»**. Solo en momentos puntuales se muestran ambas versiones. Sin complicarse.
 11. **Auras:** **clichés exagerados y genéricos** (el cuñado sabelotodo, la vecina cotilla, el influencer, el ejecutivo de sonrisa de anuncio…), nunca personas reconocibles.
@@ -73,12 +79,7 @@ El parche es un programa que **se propaga**: vive en ellos y puede pasar a otras
 ### `PROPUESTA` (pendiente de tu visto bueno)
 
 1. **Cámaras y espejos muestran humanos.** Solo *sus ojos* ven Puñetos y auras. Da gags como el selfie, la videollamada o el espejo.
-2. **La habilidad tiene «personalidad» según quién la use**:
-   - **Usu:** arregla las cosas de formas absurdas (el semáforo se pone de colores nuevos).
-   - **Reynaldo:** las máquinas le obedecen «según normativa».
-   - **Sister:** a ella se le ordenan solas.
-   - **Barbas:** a él le cuentan chistes.
-   - **Jefe:** a veces olvida qué les ha pedido.
+2. **¿Los seres de Usu y los dragones?** Draco y Humillos podrían ser **los primeros seres que Usu «creó»**, antes incluso del parche. Quizá nunca fueron del todo imaginarios. Encaja con el misterio del Ep. 5.
 3. **La habilidad no es infalible.** Funciona mejor con calma; con nervios, provoca pequeños desastres. Es una fuente de gags y evita que sean todopoderosos.
 4. **No pueden «despuñetizarse» a voluntad.** «Apagar y encender» como gag recurrente.
 5. **Entre ellos se ven Puñetos siempre.** El grupo es su ancla.
@@ -147,12 +148,12 @@ El parche es un programa que **se propaga**: vive en ellos y puede pasar a otras
 
 - **Sinopsis:** cada uno descubre que la habilidad funciona en su vida diaria, rodeado de auras-cliché.
 - **Beats** (minisketches encadenados):
-  - **Reynaldo:** en la cola del banco, el cajero automático le pide «pausa reglamentaria».
-  - **Sister:** la caja de autopago del súper se ordena sola. La señora de detrás (aura de vecina cotilla) lo ve todo.
-  - **Barbas:** en la comida familiar, el cuñado sabelotodo (aura de cuñado) explica cómo arreglar la tele. Barbas la mira y la tele le cambia de canal al cuñado.
-  - **Usu:** el semáforo se pone de un color que no existe.
-- **Remate:** el Jefe le pide al asistente del móvil que le recuerde algo. El móvil contesta: «Eso se lo preguntaré al Jefe del pasado.»
-- **Escenas:** banco, supermercado, salón, calle.
+  - **Reynaldo:** en el banco, el empleado (aura de cliché de ventanilla) le cobra una comisión. Reynaldo cierra los ojos: consulta la normativa, redacta la reclamación y la envía con la mente. Suena el teléfono del banco: comisión devuelta, con disculpas.
+  - **Sister:** visita a su amiga en una casa hecha un desastre. Sister respira hondo y **todo vuela a su sitio con la mente**, incluidos los cajones, las fotos y el calendario. La amiga (aura de cliché caótico) solo ve que «qué bien huele».
+  - **Barbas:** en la comida familiar, el cuñado sabelotodo (aura de cuñado) le lleva la contraria en todo. Barbas le contesta «con todo el amor del mundo». Al postre, el cuñado le abraza llorando y le cede la última croqueta.
+  - **Usu:** el semáforo se estropea y se forma un atasco. Usu **crea un ser de otro mundo** (un pulpo luminoso de tres ojos) que dirige el tráfico con ocho brazos. Los conductores (auras) solo ven «a un guardia muy eficiente».
+- **Remate:** el Jefe arregla sin querer el wifi de todo el edificio de su vecino, un problema imposible. El vecino: «¡Gracias! ¿Cómo lo has hecho?» Jefe: «¿El qué?»
+- **Escenas:** banco, casa desordenada, salón familiar, cruce con semáforo, rellano.
 
 ### Ep. 5 · «La nueva normalidad»
 
@@ -216,6 +217,6 @@ Sueltos, cada uno centrado en un personaje fuera de la oficina:
 
 1. ¿Qué **interpretación del parche** guardamos como verdad interna (A, B, C o ninguna)?
 2. ¿Aceptas que **cámaras y espejos los muestran humanos**?
-3. ¿Te gusta que la **habilidad cambie según el personaje**?
+3. ¿Te gusta que **Draco y Humillos** sean los primeros seres que Usu creó (y por eso quizá no eran imaginarios)?
 4. ¿El **misterio de los dragones** entra en canon?
 5. ¿Te encaja el **diseño v2 de los episodios**? Cuando lo apruebes, escribo los guiones dialogados.
