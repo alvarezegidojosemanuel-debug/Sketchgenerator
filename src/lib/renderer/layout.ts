@@ -29,6 +29,8 @@ export interface ActorLayout {
   /** Poses que entrarán en breve, montadas con opacidad 0 (para que no parpadeen al cambiar). */
   pre?: ActorLayout[];
   poseId: string;
+  /** Pose «flat» hablando: imagen con la boca abierta encima de la cerrada. */
+  talkOpen?: boolean;
 }
 
 export interface PropLayout {
@@ -97,11 +99,12 @@ function layoutActorPose(catalog: Catalog, a: ActorState): ActorLayout {
     opacity: 1,
     faceMix: a.prevExpressionId && a.exprMix < 1 ? a.exprMix : 1,
     faceFrom:
-      ch && pose && a.prevExpressionId && a.exprMix < 1
+      ch && pose && !pose.flat && a.prevExpressionId && a.exprMix < 1
         ? layoutFace({ character: ch, pose, expression: findExpression(catalog, a.characterId, a.prevExpressionId), gazeX: a.gazeX, gazeY: a.gazeY, mouthDx: a.mouthDx, mouthDy: a.mouthDy })
         : undefined,
+    talkOpen: pose?.flat && pose.talkSrc ? a.mouthOpen : undefined,
     face:
-      ch && pose
+      ch && pose && !pose.flat
         ? layoutFace({
             character: ch,
             pose,

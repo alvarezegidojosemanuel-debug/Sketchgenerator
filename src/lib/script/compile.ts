@@ -57,6 +57,17 @@ const POSE_ALIAS: Record<string, string> = {
   brazos_cruzados: "arms_crossed", cruzado: "arms_crossed", arms_crossed: "arms_crossed",
   reacciona: "reaction", reaccion: "reaction", reaction: "reaction",
   camina_izquierda: "walk_small_left", camina_derecha: "walk_small_right",
+  confundido: "confundido", confusa: "confundido", confundida: "confundido", duda: "confundido",
+  panico: "panico", desesperado: "panico", desesperada: "panico",
+  sorprendido: "sorprendido", sorprendida: "sorprendido", retrocede: "sorprendido",
+  camina: "camina", andando: "camina", entra: "entra", saluda: "entra",
+  sentado: "sentado_habla", sentado_habla: "sentado_habla", cansado: "sentado_cansado", sentado_cansado: "sentado_cansado",
+};
+/** Vista «humanos» (de frente, poses dibujadas enteras): equivalencias de las poses de los Puñetos. */
+const HUMAN_POSE: Record<string, string> = {
+  neutral_front: "neutro", neutral_3q_left: "neutro", neutral_3q_right: "neutro",
+  talk_explain: "explica", talk_emphasis: "explica", pointing: "explica", arms_crossed: "neutro",
+  reaction: "sorprendido", walk_small_left: "camina", walk_small_right: "camina",
 };
 const SOUND_ALIAS: Record<string, string> = { telefono: "sfx_telefono", alarma: "sfx_alarma", pop: "sfx_pop", whoosh: "sfx_whoosh", ding: "sfx_ding", boing: "sfx_boing", golpe: "sfx_golpe", fracaso: "sfx_fracaso", teclado: "sfx_teclado", pantallazo: "sfx_pantallazo", servidor: "sfx_servidor", explosion: "sfx_explosion", portazo: "sfx_golpe" };
 
@@ -85,6 +96,8 @@ class SceneBuilder {
     readonly back: boolean,
     readonly cast: string[],
     readonly catalog: Catalog,
+    /** Humanos de frente (poses «flat» pose_h_*). */
+    readonly human = false,
   ) {}
 
   nid(p: string) {
@@ -105,7 +118,7 @@ class SceneBuilder {
     return ch?.expressions.some((e) => e.id === id) ? id : ch?.fallbackExpressionId;
   }
   pose(cid: string, key: string) {
-    const id = `char.${cid}.pose_${key}`;
+    const id = this.human ? `char.${cid}.pose_h_${HUMAN_POSE[key] ?? key}` : `char.${cid}.pose_${key}`;
     const ch = this.catalog.characters.find((c) => c.id === cid);
     return ch?.poses.some((p) => p.id === id) ? id : undefined;
   }
@@ -224,14 +237,18 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
     const sc = sc0;
     const bg = bgId(sc.lugar ?? sc.escenario ?? sc.fondo, `${p}.lugar`);
     const cast = [...new Set(((Array.isArray(sc.personajes) ? sc.personajes : []) as unknown[]).map((c, i) => charId(c, `${p}.personajes[${i}]`)).filter((c): c is string => !!c))];
-    const wantsBack = norm(String(sc.vista ?? "")).startsWith("espalda") || norm(String(sc.vista ?? "")) === "humanos";
+    const vista = norm(String(sc.vista ?? ""));
+    // «humanos»: de frente con sus poses humanas si todos las tienen; si no, de espaldas en la oficina (como antes)
+    const hasHuman = (cid: string) => !!catalog.characters.find((c) => c.id === cid)?.poses.some((x) => x.id === `char.${cid}.pose_h_neutro`);
+    const human = vista.startsWith("human") && cast.length > 0 && cast.every(hasHuman);
+    const wantsBack = vista.startsWith("espalda") || (vista.startsWith("human") && !human);
     const back = wantsBack && !!bg && OFFICE_BGS.includes(bg);
-    const b = new SceneBuilder(`s${si + 1}`, back, cast, catalog);
+    const b = new SceneBuilder(`s${si + 1}`, back, cast, catalog, human);
     if (!back) {
       const slots = groupLayout(cast.length);
       cast.forEach((cid, i) => {
         const sl = slots[i];
-        const pose = sl.x < 470 ? "neutral_3q_right" : sl.x > 610 ? "neutral_3q_left" : "neutral_front";
+        const pose = human ? "h_neutro" : sl.x < 470 ? "neutral_3q_right" : sl.x > 610 ? "neutral_3q_left" : "neutral_front";
         b.actors.push({ uid: cid, characterId: cid, poseId: `char.${cid}.pose_${pose}`, x: sl.x, y: sl.y, scale: sl.scale, zIndex: sl.zIndex, expressionId: b.expr(cid, "neutral") });
       });
     }

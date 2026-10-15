@@ -11,6 +11,8 @@ export function FigureBody({ a, highlight }: { a: ActorLayout; highlight?: FaceS
   return (
     <>
       {a.pose ? <img src={a.pose.src} alt="" draggable={false} width={pw} height={ph} /> : <div className="missing">?</div>}
+      {/* boca abierta siempre montada (casi invisible) para que al hablar no parpadee */}
+      {a.pose?.talkSrc && <img src={a.pose.talkSrc} alt="" draggable={false} width={pw} height={ph} style={{ position: "absolute", left: 0, top: 0, opacity: a.talkOpen ? 1 : 0.001 }} />}
       {a.faceFrom && <FaceLayers layers={a.faceFrom} opacity={1 - a.faceMix} />}
       <FaceLayers layers={a.face} opacity={a.faceMix} highlight={highlight} />
     </>

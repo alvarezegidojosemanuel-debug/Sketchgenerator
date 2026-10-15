@@ -19,8 +19,8 @@ describe("catálogo V8: carga de recursos reales", () => {
     expect(catalog.source.kind).toBe("v8-library-index");
     expect(catalog.characters.map((c) => c.id)).toEqual(["usu", "reynaldo", "sister", "barbas", "jefe"]);
     for (const c of catalog.characters) {
-      expect(c.poses).toHaveLength(10);
-      for (const p of c.poses) {
+      expect(c.poses.filter((p) => !p.flat)).toHaveLength(10);
+      for (const p of c.poses.filter((p) => !p.flat)) {
         expect(p.id).toBe(`char.${c.id}.${p.key}`);
         expect(fs.existsSync(fileOf(p.src)), p.src).toBe(true);
         expect(p.displayScale).toBeGreaterThan(1);
@@ -44,7 +44,7 @@ describe("catálogo V8: carga de recursos reales", () => {
 
   it("no presenta calibraciones como terminadas: rigs estimados y prefabs en borrador", () => {
     for (const c of catalog.characters) {
-      for (const p of c.poses) expect(p.rig?.status).toBe("estimated");
+      for (const p of c.poses.filter((p) => !p.flat)) expect(p.rig?.status).toBe("estimated");
       for (const e of c.expressions) expect(e.status).toBe("draft");
     }
   });
@@ -219,7 +219,7 @@ describe("estabilidad al hablar (bocas y ojos siempre en el mismo sitio)", () =>
   it("todas las bocas de lip-sync comparten el ancla (labio superior) de la boca en reposo, en todas las poses", () => {
     let checked = 0;
     for (const ch of catalog.characters) {
-      for (const pose of ch.poses) {
+      for (const pose of ch.poses.filter((p) => !p.flat)) {
         for (const e of ch.expressions) {
           const rest = layoutFace({ character: ch, pose, expression: e }).find((l) => l.slot === "mouth")!;
           for (const m of e.talk) {
@@ -240,7 +240,7 @@ describe("estabilidad al hablar (bocas y ojos siempre en el mismo sitio)", () =>
 
   it("los ojos quedan anclados al mismo punto en todas las expresiones de una pose", () => {
     for (const ch of catalog.characters.filter((c) => c.hasEyes)) {
-      for (const pose of ch.poses) {
+      for (const pose of ch.poses.filter((p) => !p.flat)) {
         const ref = layoutFace({ character: ch, pose, expression: ch.expressions[0] });
         for (const e of ch.expressions) {
           const lay = layoutFace({ character: ch, pose, expression: e });
@@ -255,7 +255,7 @@ describe("estabilidad al hablar (bocas y ojos siempre en el mismo sitio)", () =>
   it("cada pose tiene rig para todos sus huecos y el tamaño de las piezas es coherente entre poses", () => {
     for (const ch of catalog.characters) {
       const front = ch.poses.find((p) => p.key === "pose_neutral_front")!;
-      for (const pose of ch.poses) {
+      for (const pose of ch.poses.filter((p) => !p.flat)) {
         const slots = ch.hasEyes ? ["eyeL", "eyeR", "browL", "browR", "mouth"] : ["browL", "browR", "mouth"];
         for (const s of slots) expect(pose.rig?.[s as "mouth"], `${pose.id}.${s}`).toBeDefined();
         // boca: misma escala que la frontal corregida por el tamaño de dibujo de cada hoja

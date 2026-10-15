@@ -101,7 +101,7 @@ function drawActor(ctx: Ctx, a: ActorLayout, images: ImageMap) {
   ctx.translate(a.left + pw / 2, a.top + ph);
   ctx.scale(a.flip ? -a.scale : a.scale, a.scale);
   ctx.translate(-pw / 2, -ph);
-  const body = images.get(a.pose.src);
+  const body = images.get(a.talkOpen && a.pose.talkSrc ? a.pose.talkSrc : a.pose.src);
   if (body) ctx.drawImage(body, 0, 0, pw, ph);
   const base = ctx.globalAlpha;
   if (a.faceFrom && a.faceMix < 1) drawFace(ctx, a.faceFrom, base * (1 - a.faceMix), images);

@@ -15,12 +15,12 @@ export function projectImageUrls(project: PocketProject, catalog: Catalog): stri
     const chars = new Map(take.actors.map((a) => [a.uid, a.characterId]));
     for (const a of take.actors) {
       const p = findPose(catalog, a.characterId, a.poseId);
-      if (p) urls.add(p.src);
+      if (p) { urls.add(p.src); if (p.talkSrc) urls.add(p.talkSrc); }
     }
     for (const e of take.events) {
       if (e.track === "body" && e.poseId && e.actorUid) {
         const p = findPose(catalog, chars.get(e.actorUid) ?? "", e.poseId);
-        if (p) urls.add(p.src);
+        if (p) { urls.add(p.src); if (p.talkSrc) urls.add(p.talkSrc); }
       }
       if (e.track === "props") {
         for (const id of [e.propId, e.altPropId]) {

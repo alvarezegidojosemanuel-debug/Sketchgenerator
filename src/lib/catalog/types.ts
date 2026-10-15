@@ -48,6 +48,12 @@ export interface Pose {
   displayScale: number;
   facing: "front" | "left" | "right";
   rig?: FaceRig;
+  /** Pose dibujada entera (con la cara incluida, sin capas faciales): humanos y poses de ChatGPT. */
+  flat?: boolean;
+  /** Misma pose con la boca abierta (pose «flat»): se muestra mientras el personaje habla. */
+  talkSrc?: string;
+  /** Aspecto: «humano» (antes del parche) o «puneto». Sin valor = Puñeto. */
+  look?: "humano" | "puneto";
 }
 
 export interface FaceAsset {

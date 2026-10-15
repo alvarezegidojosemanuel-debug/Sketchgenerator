@@ -1,0 +1,56 @@
+import { describe, expect, it } from "vitest";
+import { catalog } from "@/lib/catalog";
+import { validateProject } from "@/lib/schema/validate";
+import { evaluateTake } from "@/lib/timeline/evaluate";
+import { layoutActor } from "@/lib/renderer/layout";
+
+const guion = {
+  formato: "puñetos-guion-1",
+  titulo: "Prueba humanos",
+  escenas: [
+    {
+      nombre: "Despacho",
+      lugar: "bg_oficina_manana",
+      vista: "humanos",
+      personajes: ["Jefe"],
+      pasos: [
+        { dice: "Jefe", texto: "Tranquilos, equipo, que esto lo tenemos todo controlado desde primera hora." },
+        { dice: "Jefe", texto: "¿Qué reunión?", gesto: "confundido" },
+      ],
+    },
+  ],
+};
+
+describe("humanos de frente (poses dibujadas enteras)", () => {
+  const r = validateProject(structuredClone(guion), catalog);
+  const tk = r.project!.takes[0];
+
+  it("la vista «humanos» usa sus poses humanas, no las de Puñeto", () => {
+    expect(r.errors).toEqual([]);
+    expect(tk.actors[0].poseId).toBe("char.jefe.pose_h_neutro");
+    const poses = tk.events.filter((e) => e.track === "body").map((e) => (e as { poseId?: string }).poseId);
+    expect(poses).toContain("char.jefe.pose_h_explica");
+    expect(poses).toContain("char.jefe.pose_h_confundido");
+  });
+
+  it("sin capas de cara y con la boca abierta solo al hablar", () => {
+    const line = tk.events.find((e) => e.track === "dialogue")!;
+    const quiet = layoutActor(catalog, evaluateTake(tk, catalog, 0.1).actors[0]);
+    expect(quiet.face).toEqual([]);
+    expect(quiet.talkOpen).toBe(false);
+    const open = new Set<boolean | undefined>();
+    for (let t = line.start + 0.02; t < line.start + line.duration; t += 0.03) open.add(layoutActor(catalog, evaluateTake(tk, catalog, t).actors[0]).talkOpen);
+    expect(open.has(true)).toBe(true);
+    // con voz real manda el volumen
+    const lv = (v: number) => layoutActor(catalog, evaluateTake(tk, catalog, line.start + 0.2, { levels: new Map([["jefe", v]]) }).actors[0]).talkOpen;
+    expect(lv(0.9)).toBe(true);
+    expect(lv(0)).toBe(false);
+  });
+
+  it("si falta algún personaje humano, vuelve a la vista de espaldas", () => {
+    const g = structuredClone(guion);
+    g.escenas[0].personajes = ["Jefe", "Barbas"];
+    const r2 = validateProject(g, catalog);
+    expect(r2.project!.takes[0].actors.every((a) => !a.poseId.includes("pose_h_"))).toBe(true);
+  });
+});
