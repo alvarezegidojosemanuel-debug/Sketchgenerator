@@ -6034,6 +6034,11 @@
    "id": "bg_despacho_director",
    "label": "Despacho del director",
    "src": "/assets/punetos/backgrounds/bg_despacho_director.webp"
+  },
+  {
+   "id": "bg_cielo_amanecer",
+   "label": "Cielo al amanecer (título)",
+   "src": "/assets/punetos/backgrounds/bg_cielo_amanecer.webp"
   }
  ],
  "props": [
