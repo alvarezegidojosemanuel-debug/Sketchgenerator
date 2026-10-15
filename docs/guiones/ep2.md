@@ -1,6 +1,6 @@
 # Ep. 2 · El parche
 
-_Usu prepara el parche de noche; el viernes a las 17:59 lo aplica y llega el pantallazo azul._ · ≈ 40.6 s
+_Usu prepara el parche de noche; el viernes a las 17:59 lo aplica, explota el servidor y llega el pantallazo azul._ · ≈ 46.5 s
 
 ## Escena 1 · Miércoles, 23:00
 **OFICINA DE SOPORTE · NOCHE** — humanos de espaldas
@@ -22,9 +22,18 @@ _Usu prepara el parche de noche; el viernes a las 17:59 lo aplica y llega el pan
 - **NARRADOR:** Viernes. Seis menos un minuto.
 - **REYNALDO:** Yo a las seis ficho. Ni un segundo más. Artículo de mi convenio.
 - **USU:** [excited] Parche aplicado.
-- **BARBAS:** ¿Un viernes? ¿A las seis menos uno?
+- **BARBAS:** [mischievously] ¿Un viernes? ¿A las seis menos uno?
 - _[tiembla la pantalla]_
+
+## Escena 4 · ¡BUM!
+**SALA DE SERVIDORES** — humanos de espaldas
+
+- _[¡BUM! EXPLOTA]_
 - _[PANTALLAZO AZUL]_
+
+## Escena 5 · Después
+**OFICINA DE SOPORTE · ATARDECER** — humanos de espaldas
+
 - _[destello]_
 - **REYNALDO:** …¿Alguien más se ha visto la mano… azul?
 - **SISTER:** No.

@@ -166,6 +166,7 @@ Tipos de evento (campo "track"):
     Para que un personaje "sostenga" un objeto: ponlo delante ("props-front") a la altura de su mano (x ±120 del actor, y ≈ actor.y − 300×scale).
 - "sfx": sonido. "soundId", "volume" 0–1 opcional; "duration" ≈ la del sonido. Añade sonidos en los momentos clave (teléfono, alarma, golpe, aparición…).
 - "screen": efecto de pantalla. "effect": "flash" (destello de color; "color": "#ff2a2a") | "shake" (temblor de cámara) | "darken" (oscurecer); sin actorUid.
+- "screen" con "effect": "explosion" + "x", "y" (dónde, px del lienzo), "size" (0.3–3) y "text" opcional (onomatopeya, p. ej. "¡BUM!"): explosión de cómic con fuego, metralla y humo; acompáñala de sfx(sfx_explosion).
 - "screen" también admite "effect": "bluescreen" + "text" (pantallazo azul a pantalla completa, como un error del sistema; máx. 120 caracteres).
 - En "body" puedes añadir "fx": "jump" (salto de susto) | "shake" (temblar) | "type" (teclear en el ordenador) durante el evento.
 - En "body", "appear": "fade" | "pop" | "flash" | "cut" hace ENTRAR en escena a un actor con "hidden": true; "disappear" (mismos valores) lo hace salir.

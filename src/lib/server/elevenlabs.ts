@@ -168,6 +168,88 @@ export async function handleTts(body: unknown, ip: string, code: string | null, 
   }
 }
 
+const DialogueBody = z.object({
+  inputs: z
+    .array(z.object({ text: z.string().min(1).max(MAX_LINE_CHARS), voiceId: z.string().regex(/^[A-Za-z0-9]{8,40}$/) }))
+    .min(1)
+    .max(40),
+  stability: z.number().min(0).max(1).optional(),
+});
+
+export interface DialogueSegment {
+  index: number;
+  start: number;
+  end: number;
+}
+
+/**
+ * Diálogo completo de una escena en UNA petición (ElevenLabs «text to dialogue», modelo v3): las frases se
+ * entonan respondiéndose unas a otras. Devuelve el audio (base64) y dónde empieza y acaba cada frase.
+ */
+export async function handleDialogue(body: unknown, ip: string, code: string | null, env: ElevenEnv, deps: { fetch: typeof fetch; now: () => number; state: ElevenState }): Promise<Res> {
+  const g = gate(env, code);
+  if (g) return g;
+  const p = DialogueBody.safeParse(body);
+  if (!p.success) return { status: 400, json: { error: "bad_request", message: "Diálogo no válido (1–40 frases, máx. 400 caracteres cada una)." } };
+  const chars = p.data.inputs.reduce((n, i) => n + i.text.length, 0);
+  const cfg = elevenConfig(env);
+  const now = deps.now();
+  const hits = (deps.state.perIp.get(ip) ?? []).filter((t) => now - t < WINDOW_MS);
+  if (hits.length >= cfg.ratePerIp) return { status: 429, json: { error: "rate_limited", message: "Demasiadas peticiones seguidas; espera unos minutos." } };
+  const today = new Date(now).toISOString().slice(0, 10);
+  if (deps.state.day !== today) {
+    deps.state.day = today;
+    deps.state.chars = 0;
+  }
+  if (deps.state.chars + chars > cfg.dailyChars) return { status: 429, json: { error: "daily_cap", message: `Tope diario de ${cfg.dailyChars} caracteres alcanzado (ELEVENLABS_DAILY_CHARS).` } };
+  hits.push(now);
+  deps.state.perIp.set(ip, hits);
+  deps.state.chars += chars;
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 120_000);
+  try {
+    const r = await deps.fetch(`${ELEVEN_API}/v1/text-to-dialogue/with-timestamps?output_format=mp3_44100_128`, {
+      method: "POST",
+      signal: ctrl.signal,
+      headers: { "xi-api-key": env.ELEVENLABS_API_KEY!, "content-type": "application/json" },
+      body: JSON.stringify({
+        inputs: p.data.inputs.map((i) => ({ text: i.text, voice_id: i.voiceId })),
+        model_id: "eleven_v3",
+        ...(p.data.stability !== undefined ? { settings: { stability: p.data.stability } } : {}),
+      }),
+    });
+    if (!r.ok) {
+      deps.state.chars -= chars;
+      const detail = await r.text().catch(() => "");
+      const quota = r.status === 401 && /quota|credit/i.test(detail);
+      return { status: r.status === 429 || quota ? 429 : 502, json: { error: quota ? "quota" : "upstream", message: quota ? "Se acabaron los créditos de ElevenLabs." : `ElevenLabs respondió ${r.status} al diálogo.` } };
+    }
+    const raw = (await r.json()) as {
+      audio_base64?: string;
+      voice_segments?: { start_time_seconds?: number; end_time_seconds?: number; dialogue_input_index?: number }[];
+    };
+    if (!raw.audio_base64) {
+      deps.state.chars -= chars;
+      return { status: 502, json: { error: "upstream", message: "ElevenLabs no devolvió audio del diálogo." } };
+    }
+    const segments: DialogueSegment[] = [];
+    for (const v of raw.voice_segments ?? []) {
+      if (typeof v.dialogue_input_index !== "number" || typeof v.start_time_seconds !== "number" || typeof v.end_time_seconds !== "number") continue;
+      const cur = segments.find((x) => x.index === v.dialogue_input_index);
+      if (cur) {
+        cur.start = Math.min(cur.start, v.start_time_seconds);
+        cur.end = Math.max(cur.end, v.end_time_seconds);
+      } else segments.push({ index: v.dialogue_input_index, start: v.start_time_seconds, end: v.end_time_seconds });
+    }
+    return { status: 200, json: { audio: raw.audio_base64, segments } };
+  } catch {
+    deps.state.chars -= chars;
+    return { status: 504, json: { error: "timeout", message: "ElevenLabs no respondió a tiempo." } };
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 const SfxBody = z.object({
   text: z.string().min(2).max(300),
   duration: z.number().min(0.5).max(10).optional(),

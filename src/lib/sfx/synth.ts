@@ -197,6 +197,26 @@ const servidor: Gen = () => {
   return out;
 };
 
+/** Explosión: estallido de ruido + retumbo grave que se apaga. */
+const explosion: Gen = () => {
+  const n = len(2.4);
+  const out = new Float32Array(n);
+  const r = rng(13);
+  let lp = 0;
+  for (let i = 0; i < n; i++) {
+    const t = i / SR;
+    const noise = r() * 2 - 1;
+    lp += (noise - lp) * (0.02 + 0.25 * Math.exp(-t * 6)); // se va oscureciendo
+    const boom = Math.sin(2 * Math.PI * (55 - 20 * t) * t) * Math.exp(-t * 2.2);
+    const crack = t < 0.08 ? noise * (1 - t / 0.08) : 0;
+    out[i] = (0.75 * lp * Math.exp(-t * 1.6) * 3 + 0.5 * boom + 0.6 * crack) * Math.min(1, t / 0.004);
+  }
+  let peak = 0;
+  for (let i = 0; i < n; i++) peak = Math.max(peak, Math.abs(out[i]));
+  for (let i = 0; i < n; i++) out[i] *= 0.95 / Math.max(1e-6, peak);
+  return out;
+};
+
 const GENERATORS: Record<string, { label: string; gen: Gen }> = {
   telefono: { label: "Teléfono sonando", gen: telefono },
   alarma: { label: "Alarma / sirena", gen: alarma },
@@ -209,6 +229,7 @@ const GENERATORS: Record<string, { label: string; gen: Gen }> = {
   teclado: { label: "Tecleo en el ordenador", gen: teclado },
   pantallazo: { label: "Pantallazo (chispazo y apagón)", gen: pantallazo },
   servidor: { label: "Servidor con ruido raro", gen: servidor },
+  explosion: { label: "Explosión", gen: explosion },
 };
 
 const cache = new Map<string, Float32Array>();

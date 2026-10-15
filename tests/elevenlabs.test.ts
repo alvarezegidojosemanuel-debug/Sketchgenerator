@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { createElevenState, elevenStatus, handleSfx, handleTts, handleVoices, type ElevenEnv } from "@/lib/server/elevenlabs";
+import { createElevenState, elevenStatus, handleDialogue, handleSfx, handleTts, handleVoices, type ElevenEnv } from "@/lib/server/elevenlabs";
 import { stripAudioTags } from "@/lib/voice/tags";
 import { evaluateTake } from "@/lib/timeline/evaluate";
 import { validateProject } from "@/lib/schema/validate";
@@ -97,5 +97,46 @@ describe("ElevenLabs: efectos de sonido", () => {
     expect(r.status).toBe(200);
     expect(String((f.mock.calls[0] as unknown as [string])[0])).toContain("/v1/sound-generation");
     expect(elevenStatus(big, deps.state, deps.now()).usedToday).toBe(200);
+  });
+});
+
+describe("ElevenLabs: conversación de una escena", () => {
+  it("exige el código, envía todas las frases juntas al modelo v3 y devuelve los tiempos por frase", async () => {
+    const reply = () =>
+      new Response(
+        JSON.stringify({
+          audio_base64: "AAAA",
+          voice_segments: [
+            { voice_id: "a", start_time_seconds: 0.1, end_time_seconds: 1.2, dialogue_input_index: 0 },
+            { voice_id: "b", start_time_seconds: 1.3, end_time_seconds: 2.0, dialogue_input_index: 1 },
+            { voice_id: "b", start_time_seconds: 2.0, end_time_seconds: 2.6, dialogue_input_index: 1 },
+          ],
+        }),
+        { status: 200, headers: { "content-type": "application/json" } },
+      );
+    const { f, deps } = setup([reply]);
+    const big = { ...env, ELEVENLABS_DAILY_CHARS: "1000", ELEVENLABS_RATE_PER_IP: "10" };
+    const inputs = [
+      { text: "¿Cambios?", voiceId: "JBFqnCBsd6RMkjVDRZzb" },
+      { text: "[mischievously] Yo no digo nada.", voiceId: "AZnzlk1XvdvUeBnXmlld" },
+    ];
+    expect((await handleDialogue({ inputs }, "ip", "mal", big, deps)).status).toBe(401);
+    expect((await handleDialogue({ inputs: [] }, "ip", "puñetos-2026", big, deps)).status).toBe(400);
+    expect(f).not.toHaveBeenCalled();
+    const r = await handleDialogue({ inputs }, "ip", "puñetos-2026", big, deps);
+    expect(r.status).toBe(200);
+    const [url, init] = f.mock.calls[0] as unknown as [string, RequestInit];
+    expect(url).toContain("/v1/text-to-dialogue/with-timestamps");
+    const sent = JSON.parse(String(init.body));
+    expect(sent.model_id).toBe("eleven_v3");
+    expect(sent.inputs).toEqual([
+      { text: "¿Cambios?", voice_id: "JBFqnCBsd6RMkjVDRZzb" },
+      { text: "[mischievously] Yo no digo nada.", voice_id: "AZnzlk1XvdvUeBnXmlld" },
+    ]);
+    expect(r.json?.segments).toEqual([
+      { index: 0, start: 0.1, end: 1.2 },
+      { index: 1, start: 1.3, end: 2.6 },
+    ]);
+    expect(elevenStatus(big, deps.state, deps.now()).usedToday).toBe(inputs[0].text.length + inputs[1].text.length);
   });
 });

@@ -242,21 +242,31 @@ t3.sfx('sfx_teclado', 2, 0.6)
 t3.say('narr', 'Viernes. Seis menos un minuto.')
 t3.say('reynaldo', 'Yo a las seis ficho. Ni un segundo más. Artículo de mi convenio.')
 t3.say('usu', '[excited] Parche aplicado.')
-t3.say('barbas', '¿Un viernes? ¿A las seis menos uno?')
-t3.screen('shake', 0.5)
-t3.screen('bluescreen', 2.8, text='Tu equipo se ha puñetizado.')
-t3.sfx('sfx_pantallazo', 2.2)
-t3.wait(3.0)
-t3.screen('flash', 0.25, color='#2a6bff')
-t3.wait(0.5)
-t3.say('reynaldo', '…¿Alguien más se ha visto la mano… azul?')
-t3.chorus(['sister', 'barbas', 'jefe', 'usu'], 'No.', gap=1.4)
+t3.say('barbas', '[mischievously] ¿Un viernes? ¿A las seis menos uno?', gap=0.2)
+t3.sfx('sfx_servidor', 1.2)
+t3.screen('shake', 0.8)
+t3.wait(0.9)
+# corte a la sala de servidores: ¡BUM!
+tx = Take('e2t3b', '¡BUM!', 'bg_sala_servidores')
+tx.sfx('sfx_servidor', 0.7)
+tx.wait(0.6)
+tx.screen('explosion', 1.9, x=555, y=700, size=1.25, text='¡BUM!')
+tx.sfx('sfx_explosion', 2.4)
+tx.wait(1.6)
+tx.screen('bluescreen', 2.8, text='Tu equipo se ha puñetizado.')
+tx.sfx('sfx_pantallazo', 2.2)
+tx.wait(2.9)
+t3b = Take('e2t3c', 'Después', 'bg_oficina_soporte', back=True)
+t3b.screen('flash', 0.25, color='#2a6bff')
+t3b.wait(0.6)
+t3b.say('reynaldo', '…¿Alguien más se ha visto la mano… azul?')
+t3b.chorus(['sister', 'barbas', 'jefe', 'usu'], 'No.', gap=1.4)
 # uno a uno «levantan la mano»
 for who in ('sister', 'barbas', 'jefe', 'usu'):
-    t3.back_beats.append((who, t3.t, t3.t + 30, TALK[who]))
-    t3.wait(0.6)
-t3.wait(0.8)
-EP2 = project('Ep. 2 · El parche', 'Usu prepara el parche de noche; el viernes a las 17:59 lo aplica y llega el pantallazo azul.', [t1, t2, t3],
+    t3b.back_beats.append((who, t3b.t, t3b.t + 30, TALK[who]))
+    t3b.wait(0.6)
+t3b.wait(0.8)
+EP2 = project('Ep. 2 · El parche', 'Usu prepara el parche de noche; el viernes a las 17:59 lo aplica, explota el servidor y llega el pantallazo azul.', [t1, t2, t3, tx, t3b],
               ['Usu humano de espaldas iluminado de noche', 'Reynaldo con abrigo', 'segundo fotograma de teclear'])
 
 # ================================================================= EP. 3 · ¿QUÉ COÑO NOS HA PASADO?
@@ -451,7 +461,7 @@ for i, ep in enumerate([EP1, EP2, EP3, EP4, EP5], 1):
                     who = 'NARRADOR'
                 out.append(f"- **{who}:** {e['text']}")
             elif tr == 'screen':
-                out.append(f"- _[{ {'bluescreen': 'PANTALLAZO AZUL', 'flash': 'destello', 'shake': 'tiembla la pantalla', 'darken': 'oscurece'}[e['effect']] }]_")
+                out.append(f"- _[{ {'bluescreen': 'PANTALLAZO AZUL', 'flash': 'destello', 'shake': 'tiembla la pantalla', 'darken': 'oscurece', 'explosion': '¡BUM! EXPLOTA'}[e['effect']] }]_")
             elif tr == 'props' and e.get('enter') == 'pop':
                 out.append(f"- _[aparece {e['propId'].replace('prop_', '')}]_")
             elif tr == 'body' and e.get('fx') == 'jump':

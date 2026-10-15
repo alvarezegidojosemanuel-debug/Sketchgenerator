@@ -156,7 +156,11 @@ export const ScreenEvent = z.object({
   ...eventBase,
   track: z.literal("screen"),
   /** flash = destello de color (alarma), shake = temblor de cámara, darken = oscurecer, bluescreen = pantallazo azul con texto. */
-  effect: z.enum(["flash", "shake", "darken", "bluescreen"]),
+  effect: z.enum(["flash", "shake", "darken", "bluescreen", "explosion"]),
+  /** Explosión: dónde (px del lienzo) y tamaño. */
+  x: coordX.optional(),
+  y: coordY.optional(),
+  size: z.number().finite().min(0.3).max(3).optional(),
   color: z.string().regex(/^#[0-9a-fA-F]{6}$/).optional(),
   text: z.string().max(120).optional(),
   actorUid: id.optional(),

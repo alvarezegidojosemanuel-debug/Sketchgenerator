@@ -803,8 +803,24 @@
                         "flash",
                         "shake",
                         "darken",
-                        "bluescreen"
+                        "bluescreen",
+                        "explosion"
                       ]
+                    },
+                    "x": {
+                      "type": "number",
+                      "minimum": -600,
+                      "maximum": 1680
+                    },
+                    "y": {
+                      "type": "number",
+                      "minimum": -600,
+                      "maximum": 2520
+                    },
+                    "size": {
+                      "type": "number",
+                      "minimum": 0.3,
+                      "maximum": 3
                     },
                     "color": {
                       "type": "string",

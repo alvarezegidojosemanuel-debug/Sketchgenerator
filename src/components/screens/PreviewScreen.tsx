@@ -6,7 +6,7 @@ import { ttsSupported } from "@/lib/tts";
 import { attributionsFor, castIds, speakerCharacterId } from "@/lib/voice/catalog";
 import { clipKey, fitProjectToAudio } from "@/lib/voice/fit";
 import { generateLines, unlockAudio, type Clip, type Progress } from "@/lib/voice/piper";
-import { accessCode, elevenModel, generateElevenLines, type ElevenModel } from "@/lib/voice/elevenlabs";
+import { accessCode, elevenModel, generateElevenDialogue, generateElevenLines, type ElevenModel } from "@/lib/voice/elevenlabs";
 import { ElevenCast } from "../ElevenCast";
 import { exportMp4, lastExportAudio, lastExportCodec, type ExportProgress } from "@/lib/export/mp4";
 
@@ -94,7 +94,9 @@ export function PreviewScreen({ s }: { s: PocketState }) {
     try {
       const m =
         engine === "elevenlabs"
-          ? await generateElevenLines(lines, project.metadata.elevenVoices, code, model, setProgress)
+          ? model === "dialogue_v3"
+            ? await generateElevenDialogue(lines, project.metadata.elevenVoices, code, setProgress)
+            : await generateElevenLines(lines, project.metadata.elevenVoices, code, model, setProgress)
           : await generateLines(lines, project.metadata.voices, setProgress);
       setClips(m);
       setClipsSig(sig);

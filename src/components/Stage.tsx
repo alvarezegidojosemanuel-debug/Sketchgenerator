@@ -5,6 +5,7 @@ import type { Catalog } from "@/lib/catalog/types";
 import type { FrameState } from "@/lib/timeline/evaluate";
 import { layoutFrame, type PropLayout } from "@/lib/renderer/layout";
 import { FigureBody } from "./ActorFigure";
+import { drawExplosion, type ExplosionState } from "@/lib/renderer/explosion";
 
 interface Props {
   catalog: Catalog;
@@ -145,6 +146,7 @@ export function Stage({ catalog, frame, showSubtitles = true, selectedUid, onSel
           {layout.propsFront.map((p) => (
             <PropImg key={p.key} p={p} />
           ))}
+          {layout.screen.explosions?.length ? <ExplosionCanvas list={layout.screen.explosions} /> : null}
           </div>
           {layout.screen.darken ? <div className="layer" style={{ left: 0, top: 0, width: W, height: H, zIndex: 8000, background: "#000", opacity: layout.screen.darken }} /> : null}
           {layout.screen.flash ? (
@@ -170,6 +172,19 @@ export function Stage({ catalog, frame, showSubtitles = true, selectedUid, onSel
       </div>
     </div>
   );
+}
+
+/** Explosiones de cómic (mismo dibujo que en el MP4). */
+function ExplosionCanvas({ list }: { list: ExplosionState[] }) {
+  const ref = useRef<HTMLCanvasElement>(null);
+  useEffect(() => {
+    const c = ref.current;
+    const ctx = c?.getContext("2d");
+    if (!c || !ctx) return;
+    ctx.clearRect(0, 0, W, H);
+    for (const e of list) drawExplosion(ctx, e);
+  });
+  return <canvas ref={ref} width={W} height={H} className="layer" style={{ left: 0, top: 0, width: W, height: H, zIndex: 7000 }} />;
 }
 
 /** Escena siguiente pintada a opacidad casi cero (descodifica sus imágenes antes del corte). */

@@ -426,7 +426,7 @@ export function EditScreen({ s }: { s: PocketState }) {
 
 const LOOP_LABEL: Record<string, string> = { none: "Quieto", shake: "Vibrar", pulse: "Latir", blink: "Parpadear", float: "Flotar", spin: "Girar", type: "Teclear (de espaldas)" };
 const ENTER_LABEL: Record<string, string> = { none: "De golpe", pop: "Pop", fade: "Fundido", slide: "Deslizar" };
-const SCREEN_LABEL: Record<string, string> = { flash: "Destello", shake: "Temblor", darken: "Oscurecer", bluescreen: "Pantallazo azul" };
+const SCREEN_LABEL: Record<string, string> = { flash: "Destello", shake: "Temblor", darken: "Oscurecer", bluescreen: "Pantallazo azul", explosion: "💥 Explosión" };
 const FX_LABEL: Record<string, string> = { jump: "Saltar (susto)", shake: "Temblar", type: "Teclear" };
 const PRESENCE_LABEL: Record<string, string> = { fade: "fundido", pop: "pop", flash: "destello", cut: "de golpe" };
 

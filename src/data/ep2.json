@@ -4,8 +4,8 @@
  "metadata": {
   "title": "Ep. 2 · El parche",
   "language": "es-ES",
-  "approxDuration": 40.6,
-  "idea": "Usu prepara el parche de noche; el viernes a las 17:59 lo aplica y llega el pantallazo azul.",
+  "approxDuration": 46.5,
+  "idea": "Usu prepara el parche de noche; el viernes a las 17:59 lo aplica, explota el servidor y llega el pantallazo azul.",
   "wishlist": [
    "Usu humano de espaldas iluminado de noche",
    "Reynaldo con abrigo",
@@ -199,7 +199,7 @@
   {
    "id": "e2t3",
    "name": "Viernes, 17:59",
-   "duration": 26.2,
+   "duration": 14.4,
    "backgroundId": "bg_oficina_soporte",
    "actors": [],
    "events": [
@@ -239,84 +239,28 @@
      "track": "dialogue",
      "start": 9.35,
      "duration": 2.8,
-     "text": "¿Un viernes? ¿A las seis menos uno?",
+     "text": "[mischievously] ¿Un viernes? ¿A las seis menos uno?",
      "voiceOf": "barbas"
     },
     {
-     "id": "e2t3_sc6",
-     "track": "screen",
-     "start": 12.5,
-     "duration": 0.5,
-     "effect": "shake"
+     "id": "e2t3_sf6",
+     "track": "sfx",
+     "start": 12.35,
+     "duration": 1.2,
+     "soundId": "sfx_servidor"
     },
     {
      "id": "e2t3_sc7",
      "track": "screen",
-     "start": 12.5,
-     "duration": 2.8,
-     "effect": "bluescreen",
-     "text": "Tu equipo se ha puñetizado."
+     "start": 12.35,
+     "duration": 0.8,
+     "effect": "shake"
     },
     {
-     "id": "e2t3_sf8",
-     "track": "sfx",
-     "start": 12.5,
-     "duration": 2.2,
-     "soundId": "sfx_pantallazo"
-    },
-    {
-     "id": "e2t3_sc9",
-     "track": "screen",
-     "start": 15.5,
-     "duration": 0.25,
-     "effect": "flash",
-     "color": "#2a6bff"
-    },
-    {
-     "id": "e2t3_di10",
-     "track": "dialogue",
-     "start": 16.0,
-     "duration": 3.1,
-     "text": "…¿Alguien más se ha visto la mano… azul?",
-     "voiceOf": "reynaldo"
-    },
-    {
-     "id": "e2t3_di11",
-     "track": "dialogue",
-     "start": 19.45,
-     "duration": 0.7,
-     "text": "No.",
-     "voiceOf": "sister"
-    },
-    {
-     "id": "e2t3_di12",
-     "track": "dialogue",
-     "start": 19.51,
-     "duration": 0.7,
-     "text": "No.",
-     "voiceOf": "barbas"
-    },
-    {
-     "id": "e2t3_di13",
-     "track": "dialogue",
-     "start": 19.57,
-     "duration": 0.7,
-     "text": "No.",
-     "voiceOf": "jefe"
-    },
-    {
-     "id": "e2t3_di14",
-     "track": "dialogue",
-     "start": 19.63,
-     "duration": 0.7,
-     "text": "No.",
-     "voiceOf": "usu"
-    },
-    {
-     "id": "e2t3_pr15",
+     "id": "e2t3_pr8",
      "track": "props",
      "start": 0.0,
-     "duration": 19.35,
+     "duration": 14.4,
      "propId": "prop_sister_espaldas_teclea",
      "layer": "props-front",
      "x": 102,
@@ -326,44 +270,7 @@
      "loop": "type"
     },
     {
-     "id": "e2t3_pr16",
-     "track": "props",
-     "start": 19.35,
-     "duration": 0.9,
-     "propId": "prop_sister_espaldas_explica",
-     "layer": "props-front",
-     "x": 108,
-     "y": 975,
-     "scale": 0.263,
-     "zIndex": 1
-    },
-    {
-     "id": "e2t3_pr17",
-     "track": "props",
-     "start": 20.25,
-     "duration": 1.54,
-     "propId": "prop_sister_espaldas_teclea",
-     "layer": "props-front",
-     "x": 102,
-     "y": 975,
-     "scale": 0.312,
-     "zIndex": 1,
-     "loop": "type"
-    },
-    {
-     "id": "e2t3_pr18",
-     "track": "props",
-     "start": 21.79,
-     "duration": 4.41,
-     "propId": "prop_sister_espaldas_explica",
-     "layer": "props-front",
-     "x": 108,
-     "y": 975,
-     "scale": 0.263,
-     "zIndex": 1
-    },
-    {
-     "id": "e2t3_pr19",
+     "id": "e2t3_pr9",
      "track": "props",
      "start": 0.0,
      "duration": 2.65,
@@ -376,7 +283,7 @@
      "loop": "type"
     },
     {
-     "id": "e2t3_pr20",
+     "id": "e2t3_pr10",
      "track": "props",
      "start": 2.65,
      "duration": 5.0,
@@ -388,10 +295,10 @@
      "zIndex": 2
     },
     {
-     "id": "e2t3_pr21",
+     "id": "e2t3_pr11",
      "track": "props",
      "start": 7.65,
-     "duration": 8.25,
+     "duration": 6.75,
      "propId": "prop_reynaldo_espaldas_teclea",
      "layer": "props-front",
      "x": 427,
@@ -401,32 +308,7 @@
      "loop": "type"
     },
     {
-     "id": "e2t3_pr22",
-     "track": "props",
-     "start": 15.9,
-     "duration": 3.3,
-     "propId": "prop_reynaldo_espaldas_hombros",
-     "layer": "props-front",
-     "x": 418,
-     "y": 1028,
-     "scale": 0.304,
-     "zIndex": 2
-    },
-    {
-     "id": "e2t3_pr23",
-     "track": "props",
-     "start": 19.2,
-     "duration": 7.0,
-     "propId": "prop_reynaldo_espaldas_teclea",
-     "layer": "props-front",
-     "x": 427,
-     "y": 1028,
-     "scale": 0.319,
-     "zIndex": 2,
-     "loop": "type"
-    },
-    {
-     "id": "e2t3_pr24",
+     "id": "e2t3_pr12",
      "track": "props",
      "start": 0.0,
      "duration": 9.25,
@@ -439,7 +321,7 @@
      "loop": "type"
     },
     {
-     "id": "e2t3_pr25",
+     "id": "e2t3_pr13",
      "track": "props",
      "start": 9.25,
      "duration": 3.0,
@@ -451,10 +333,10 @@
      "zIndex": 3
     },
     {
-     "id": "e2t3_pr26",
+     "id": "e2t3_pr14",
      "track": "props",
      "start": 12.25,
-     "duration": 7.16,
+     "duration": 2.15,
      "propId": "prop_barbas_espaldas_teclea",
      "layer": "props-front",
      "x": 782,
@@ -464,47 +346,10 @@
      "loop": "type"
     },
     {
-     "id": "e2t3_pr27",
-     "track": "props",
-     "start": 19.41,
-     "duration": 0.9,
-     "propId": "prop_barbas_espaldas_habla",
-     "layer": "props-front",
-     "x": 781,
-     "y": 1090,
-     "scale": 0.351,
-     "zIndex": 3
-    },
-    {
-     "id": "e2t3_pr28",
-     "track": "props",
-     "start": 20.31,
-     "duration": 2.08,
-     "propId": "prop_barbas_espaldas_teclea",
-     "layer": "props-front",
-     "x": 782,
-     "y": 1090,
-     "scale": 0.331,
-     "zIndex": 3,
-     "loop": "type"
-    },
-    {
-     "id": "e2t3_pr29",
-     "track": "props",
-     "start": 22.39,
-     "duration": 3.81,
-     "propId": "prop_barbas_espaldas_habla",
-     "layer": "props-front",
-     "x": 781,
-     "y": 1090,
-     "scale": 0.351,
-     "zIndex": 3
-    },
-    {
-     "id": "e2t3_pr30",
+     "id": "e2t3_pr15",
      "track": "props",
      "start": 0.0,
-     "duration": 19.47,
+     "duration": 14.4,
      "propId": "prop_jefe_espaldas_teclea",
      "layer": "props-front",
      "x": 83,
@@ -514,44 +359,7 @@
      "loop": "type"
     },
     {
-     "id": "e2t3_pr31",
-     "track": "props",
-     "start": 19.47,
-     "duration": 0.9,
-     "propId": "prop_jefe_espaldas_senala",
-     "layer": "props-front",
-     "x": 69,
-     "y": 1622,
-     "scale": 0.806,
-     "zIndex": 4
-    },
-    {
-     "id": "e2t3_pr32",
-     "track": "props",
-     "start": 20.37,
-     "duration": 2.62,
-     "propId": "prop_jefe_espaldas_teclea",
-     "layer": "props-front",
-     "x": 83,
-     "y": 1622,
-     "scale": 0.775,
-     "zIndex": 4,
-     "loop": "type"
-    },
-    {
-     "id": "e2t3_pr33",
-     "track": "props",
-     "start": 22.99,
-     "duration": 3.21,
-     "propId": "prop_jefe_espaldas_senala",
-     "layer": "props-front",
-     "x": 69,
-     "y": 1622,
-     "scale": 0.806,
-     "zIndex": 4
-    },
-    {
-     "id": "e2t3_pr34",
+     "id": "e2t3_pr16",
      "track": "props",
      "start": 0.0,
      "duration": 7.8,
@@ -564,7 +372,7 @@
      "loop": "type"
     },
     {
-     "id": "e2t3_pr35",
+     "id": "e2t3_pr17",
      "track": "props",
      "start": 7.8,
      "duration": 1.3,
@@ -576,10 +384,317 @@
      "zIndex": 5
     },
     {
-     "id": "e2t3_pr36",
+     "id": "e2t3_pr18",
      "track": "props",
      "start": 9.1,
-     "duration": 10.43,
+     "duration": 5.3,
+     "propId": "prop_usu_espaldas_teclea",
+     "layer": "props-front",
+     "x": 575,
+     "y": 1848,
+     "scale": 0.875,
+     "zIndex": 5,
+     "loop": "type"
+    }
+   ]
+  },
+  {
+   "id": "e2t3b",
+   "name": "¡BUM!",
+   "duration": 6.6,
+   "backgroundId": "bg_sala_servidores",
+   "actors": [],
+   "events": [
+    {
+     "id": "e2t3b_sf1",
+     "track": "sfx",
+     "start": 0.3,
+     "duration": 0.7,
+     "soundId": "sfx_servidor"
+    },
+    {
+     "id": "e2t3b_sc2",
+     "track": "screen",
+     "start": 0.9,
+     "duration": 1.9,
+     "effect": "explosion",
+     "x": 555,
+     "y": 700,
+     "size": 1.25,
+     "text": "¡BUM!"
+    },
+    {
+     "id": "e2t3b_sf3",
+     "track": "sfx",
+     "start": 0.9,
+     "duration": 2.4,
+     "soundId": "sfx_explosion"
+    },
+    {
+     "id": "e2t3b_sc4",
+     "track": "screen",
+     "start": 2.5,
+     "duration": 2.8,
+     "effect": "bluescreen",
+     "text": "Tu equipo se ha puñetizado."
+    },
+    {
+     "id": "e2t3b_sf5",
+     "track": "sfx",
+     "start": 2.5,
+     "duration": 2.2,
+     "soundId": "sfx_pantallazo"
+    }
+   ]
+  },
+  {
+   "id": "e2t3c",
+   "name": "Después",
+   "duration": 11.1,
+   "backgroundId": "bg_oficina_soporte",
+   "actors": [],
+   "events": [
+    {
+     "id": "e2t3c_sc1",
+     "track": "screen",
+     "start": 0.3,
+     "duration": 0.25,
+     "effect": "flash",
+     "color": "#2a6bff"
+    },
+    {
+     "id": "e2t3c_di2",
+     "track": "dialogue",
+     "start": 0.9,
+     "duration": 3.1,
+     "text": "…¿Alguien más se ha visto la mano… azul?",
+     "voiceOf": "reynaldo"
+    },
+    {
+     "id": "e2t3c_di3",
+     "track": "dialogue",
+     "start": 4.35,
+     "duration": 0.7,
+     "text": "No.",
+     "voiceOf": "sister"
+    },
+    {
+     "id": "e2t3c_di4",
+     "track": "dialogue",
+     "start": 4.41,
+     "duration": 0.7,
+     "text": "No.",
+     "voiceOf": "barbas"
+    },
+    {
+     "id": "e2t3c_di5",
+     "track": "dialogue",
+     "start": 4.47,
+     "duration": 0.7,
+     "text": "No.",
+     "voiceOf": "jefe"
+    },
+    {
+     "id": "e2t3c_di6",
+     "track": "dialogue",
+     "start": 4.53,
+     "duration": 0.7,
+     "text": "No.",
+     "voiceOf": "usu"
+    },
+    {
+     "id": "e2t3c_pr7",
+     "track": "props",
+     "start": 0.0,
+     "duration": 4.25,
+     "propId": "prop_sister_espaldas_teclea",
+     "layer": "props-front",
+     "x": 102,
+     "y": 975,
+     "scale": 0.312,
+     "zIndex": 1,
+     "loop": "type"
+    },
+    {
+     "id": "e2t3c_pr8",
+     "track": "props",
+     "start": 4.25,
+     "duration": 0.9,
+     "propId": "prop_sister_espaldas_explica",
+     "layer": "props-front",
+     "x": 108,
+     "y": 975,
+     "scale": 0.263,
+     "zIndex": 1
+    },
+    {
+     "id": "e2t3c_pr9",
+     "track": "props",
+     "start": 5.15,
+     "duration": 1.54,
+     "propId": "prop_sister_espaldas_teclea",
+     "layer": "props-front",
+     "x": 102,
+     "y": 975,
+     "scale": 0.312,
+     "zIndex": 1,
+     "loop": "type"
+    },
+    {
+     "id": "e2t3c_pr10",
+     "track": "props",
+     "start": 6.69,
+     "duration": 4.41,
+     "propId": "prop_sister_espaldas_explica",
+     "layer": "props-front",
+     "x": 108,
+     "y": 975,
+     "scale": 0.263,
+     "zIndex": 1
+    },
+    {
+     "id": "e2t3c_pr11",
+     "track": "props",
+     "start": 0.0,
+     "duration": 0.8,
+     "propId": "prop_reynaldo_espaldas_teclea",
+     "layer": "props-front",
+     "x": 427,
+     "y": 1028,
+     "scale": 0.319,
+     "zIndex": 2,
+     "loop": "type"
+    },
+    {
+     "id": "e2t3c_pr12",
+     "track": "props",
+     "start": 0.8,
+     "duration": 3.3,
+     "propId": "prop_reynaldo_espaldas_hombros",
+     "layer": "props-front",
+     "x": 418,
+     "y": 1028,
+     "scale": 0.304,
+     "zIndex": 2
+    },
+    {
+     "id": "e2t3c_pr13",
+     "track": "props",
+     "start": 4.1,
+     "duration": 7.0,
+     "propId": "prop_reynaldo_espaldas_teclea",
+     "layer": "props-front",
+     "x": 427,
+     "y": 1028,
+     "scale": 0.319,
+     "zIndex": 2,
+     "loop": "type"
+    },
+    {
+     "id": "e2t3c_pr14",
+     "track": "props",
+     "start": 0.0,
+     "duration": 4.31,
+     "propId": "prop_barbas_espaldas_teclea",
+     "layer": "props-front",
+     "x": 782,
+     "y": 1090,
+     "scale": 0.331,
+     "zIndex": 3,
+     "loop": "type"
+    },
+    {
+     "id": "e2t3c_pr15",
+     "track": "props",
+     "start": 4.31,
+     "duration": 0.9,
+     "propId": "prop_barbas_espaldas_habla",
+     "layer": "props-front",
+     "x": 781,
+     "y": 1090,
+     "scale": 0.351,
+     "zIndex": 3
+    },
+    {
+     "id": "e2t3c_pr16",
+     "track": "props",
+     "start": 5.21,
+     "duration": 2.08,
+     "propId": "prop_barbas_espaldas_teclea",
+     "layer": "props-front",
+     "x": 782,
+     "y": 1090,
+     "scale": 0.331,
+     "zIndex": 3,
+     "loop": "type"
+    },
+    {
+     "id": "e2t3c_pr17",
+     "track": "props",
+     "start": 7.29,
+     "duration": 3.81,
+     "propId": "prop_barbas_espaldas_habla",
+     "layer": "props-front",
+     "x": 781,
+     "y": 1090,
+     "scale": 0.351,
+     "zIndex": 3
+    },
+    {
+     "id": "e2t3c_pr18",
+     "track": "props",
+     "start": 0.0,
+     "duration": 4.37,
+     "propId": "prop_jefe_espaldas_teclea",
+     "layer": "props-front",
+     "x": 83,
+     "y": 1622,
+     "scale": 0.775,
+     "zIndex": 4,
+     "loop": "type"
+    },
+    {
+     "id": "e2t3c_pr19",
+     "track": "props",
+     "start": 4.37,
+     "duration": 0.9,
+     "propId": "prop_jefe_espaldas_senala",
+     "layer": "props-front",
+     "x": 69,
+     "y": 1622,
+     "scale": 0.806,
+     "zIndex": 4
+    },
+    {
+     "id": "e2t3c_pr20",
+     "track": "props",
+     "start": 5.27,
+     "duration": 2.62,
+     "propId": "prop_jefe_espaldas_teclea",
+     "layer": "props-front",
+     "x": 83,
+     "y": 1622,
+     "scale": 0.775,
+     "zIndex": 4,
+     "loop": "type"
+    },
+    {
+     "id": "e2t3c_pr21",
+     "track": "props",
+     "start": 7.89,
+     "duration": 3.21,
+     "propId": "prop_jefe_espaldas_senala",
+     "layer": "props-front",
+     "x": 69,
+     "y": 1622,
+     "scale": 0.806,
+     "zIndex": 4
+    },
+    {
+     "id": "e2t3c_pr22",
+     "track": "props",
+     "start": 0.0,
+     "duration": 4.43,
      "propId": "prop_usu_espaldas_teclea",
      "layer": "props-front",
      "x": 575,
@@ -589,9 +704,9 @@
      "loop": "type"
     },
     {
-     "id": "e2t3_pr37",
+     "id": "e2t3c_pr23",
      "track": "props",
-     "start": 19.53,
+     "start": 4.43,
      "duration": 0.9,
      "propId": "prop_usu_espaldas_habla",
      "layer": "props-front",
@@ -601,9 +716,9 @@
      "zIndex": 5
     },
     {
-     "id": "e2t3_pr38",
+     "id": "e2t3c_pr24",
      "track": "props",
-     "start": 20.43,
+     "start": 5.33,
      "duration": 3.16,
      "propId": "prop_usu_espaldas_teclea",
      "layer": "props-front",
@@ -614,9 +729,9 @@
      "loop": "type"
     },
     {
-     "id": "e2t3_pr39",
+     "id": "e2t3c_pr25",
      "track": "props",
-     "start": 23.59,
+     "start": 8.49,
      "duration": 2.61,
      "propId": "prop_usu_espaldas_habla",
      "layer": "props-front",

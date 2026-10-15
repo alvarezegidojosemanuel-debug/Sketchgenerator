@@ -1,5 +1,6 @@
 /** Animaciones de objetos, efectos corporales y de pantalla (funciones puras de t). */
 import type { BodyEvent, PropsEvent, ScreenEvent } from "@/lib/schema/pocket";
+import type { ExplosionState } from "@/lib/renderer/explosion";
 
 export interface PropAnim {
   dx: number;
@@ -101,6 +102,8 @@ export interface ScreenFx {
   darken?: number;
   /** Pantallazo azul a pantalla completa con texto. */
   bluescreen?: { alpha: number; text: string };
+  /** Explosiones activas (bola de fuego, metralla, humo, «¡BUM!»). */
+  explosions?: ExplosionState[];
 }
 
 export type Presence = NonNullable<BodyEvent["appear"]>;
@@ -136,6 +139,18 @@ export function screenFx(e: ScreenEvent, t: number, acc: ScreenFx) {
     case "darken":
       acc.darken = 0.55 * edge;
       break;
+    case "explosion": {
+      let seed = 7;
+      for (const ch of e.id) seed = (seed * 31 + ch.charCodeAt(0)) >>> 0;
+      (acc.explosions ??= []).push({ x: e.x ?? 540, y: e.y ?? 1100, local, seed, text: e.text ?? "¡BUM!", scale: e.size ?? 1 });
+      // destello blanco y temblor fuerte al principio
+      if (local < 0.25) acc.flash = { color: "#ffffff", alpha: 0.85 * (1 - local / 0.25) };
+      if (local < 0.7) {
+        const f = 1 - local / 0.7;
+        acc.shake = { dx: Math.sin(local * 61) * 34 * f, dy: Math.cos(local * 53) * 26 * f };
+      }
+      break;
+    }
     case "bluescreen":
       acc.bluescreen = { alpha: clamp01(Math.min(local, e.duration - local) / 0.08), text: e.text ?? "Tu equipo se ha puñetizado." };
       break;
