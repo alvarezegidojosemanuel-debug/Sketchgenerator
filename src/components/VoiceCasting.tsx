@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { findCharacter } from "@/lib/catalog";
 import { castIds, castLabel } from "@/lib/voice/catalog";
-import { designVoices, presetFor, saveDesignedVoice, type DesignPreview } from "@/lib/voice/casting";
+import { designVoices, presetFor, saveDesignedVoice, type DesignModel, type DesignPreview } from "@/lib/voice/casting";
 import { DEFAULT_ELEVEN } from "@/lib/voice/elevenlabs";
 import { rememberEleven } from "@/lib/voice/fixedCast";
 import type { PocketState } from "./usePocket";
@@ -20,6 +20,7 @@ export function VoiceCasting({ s, code, onSaved }: { s: PocketState; code: strin
   const [busy, setBusy] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [done, setDone] = useState<Record<string, string>>({});
+  const [model, setModel] = useState<DesignModel>("eleven_ttv_v3");
   const label = (cid: string) => castLabel(cid)?.replace(" (en off)", "").replace(" (voz en off)", "") ?? findCharacter(catalog, cid)?.name ?? cid;
 
   const create = async (cid: string) => {
@@ -28,7 +29,7 @@ export function VoiceCasting({ s, code, onSaved }: { s: PocketState; code: strin
     setError(null);
     try {
       setPreviews((x) => ({ ...x, [cid]: [] }));
-      const list = await designVoices(code, desc[cid] ?? p.description, sample[cid] ?? p.sample);
+      const list = await designVoices(code, desc[cid] ?? p.description, sample[cid] ?? p.sample, model);
       setPreviews((x) => ({ ...x, [cid]: list }));
     } catch (e) {
       setError(e instanceof Error ? e.message : String(e));
@@ -68,6 +69,12 @@ export function VoiceCasting({ s, code, onSaved }: { s: PocketState; code: strin
         Pocket describe a ElevenLabs cómo es cada personaje y crea <b>voces nuevas solo para él</b>. Escucha las muestras (dicen una frase suya) y elige una: se
         guarda en tu cuenta y queda fija. Cada intento gasta unos 150–250 caracteres. Necesita que la clave tenga permiso de voces (escritura).
       </p>
+      <Field label="Motor de diseño" hint="v3 exagera más (caricaturas, personajes de dibujos); v2 da voces más naturales y realistas. Si no sale lo que buscas, prueba el otro.">
+        <select value={model} onChange={(e) => setModel(e.target.value as DesignModel)}>
+          <option value="eleven_ttv_v3">v3 · expresivo / caricatura</option>
+          <option value="eleven_multilingual_ttv_v2">v2 · natural / realista</option>
+        </select>
+      </Field>
       {error && <p className="error-text">{error}</p>}
       {ids.map((cid) => {
         const p = presetFor(cid, label(cid));

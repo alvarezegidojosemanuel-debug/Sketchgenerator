@@ -23,9 +23,9 @@ export const CASTING: Record<string, CastingPreset> = {
   },
   barbas: {
     description:
-      "Hombre español de unos 45 años. Voz grave, redonda y cálida de bonachón grandote, con retintín pícaro y media sonrisa: el típico compañero cabroncete con buen corazón que suelta pullas con cariño. Ritmo pausado, se ríe por lo bajo. Acento de España, nada de locutor.",
+      "Hombre español corpulento de unos 45 años, voz de dibujo animado: grave, ancha y redonda, un poco tapada y nasal, como de mofletes grandes. Habla despacio y arrastrando las palabras, con tono de buenazo ingenuo y algo bobalicón, pero con picardía: suelta pullas con una risita tonta por lo bajo. Respira fuerte y resopla entre frases. Muy expresivo, nada de locutor.",
     sample:
-      "Yo no digo nada, Jefe… pero lo ha dicho mirando tu silla. Ja, ja. Que no, hombre, que es broma. Aunque yo que tú iría a hablar con él ya mismo. Te lo digo con todo el amor del mundo, ¿eh?",
+      "Ehhh… yo no digo nada, Jefe, ¿eh? Je, je, je. Pero lo ha dicho mirando tu silla. Uff… Que no, hombre, que es broma. Bueno… un poquito no es broma. Te lo digo con todo el amor del mundo, ¿eh? Je, je.",
   },
   usu: {
     description:
@@ -67,8 +67,10 @@ export interface DesignPreview {
   audio: string;
 }
 
-export async function designVoices(code: string, description: string, text: string): Promise<DesignPreview[]> {
-  const r = await fetch("/api/voice/design", { method: "POST", headers: { "content-type": "application/json", "x-pocket-code": code }, body: JSON.stringify({ description, text }) });
+export type DesignModel = "eleven_ttv_v3" | "eleven_multilingual_ttv_v2";
+
+export async function designVoices(code: string, description: string, text: string, model: DesignModel = "eleven_ttv_v3"): Promise<DesignPreview[]> {
+  const r = await fetch("/api/voice/design", { method: "POST", headers: { "content-type": "application/json", "x-pocket-code": code }, body: JSON.stringify({ description, text, model }) });
   const j = (await r.json().catch(() => ({}))) as { previews?: DesignPreview[]; message?: string };
   if (!r.ok || !j.previews) throw new Error(j.message ?? `Error ${r.status}`);
   return j.previews;
