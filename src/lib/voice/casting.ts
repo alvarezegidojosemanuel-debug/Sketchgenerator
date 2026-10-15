@@ -43,7 +43,7 @@ export const CASTING: Record<string, CastingPreset> = {
     description:
       "Narrador español de unos 50 años, voz grave y elegante de documental, con un toque irónico, ritmo pausado y dramático. Acento de España neutro.",
     sample:
-      "Viernes. Seis menos un minuto. En el departamento de soporte nadie sospechaba que, en sesenta segundos, todo iba a cambiar para siempre. Bueno… casi todo. La cafetera seguía sin funcionar.",
+      "Viernes. Seis menos un minuto. En el departamento de sistemas nadie sospechaba que, en sesenta segundos, todo iba a cambiar para siempre. Bueno… casi todo. La cafetera seguía sin funcionar.",
   },
   extra_director: {
     description:

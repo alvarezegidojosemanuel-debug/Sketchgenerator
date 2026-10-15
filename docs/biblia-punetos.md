@@ -1,4 +1,6 @@
-# PUÑETOS · Biblia del universo (v2)
+# PUÑETOS · Biblia del universo (v3)
+
+> **v3:** el escenario pasa a ser un **complejo tecnológico privado y puntero** (IA, espacio, biotecnología, robótica) y ellos son su equipo de **sistemas**. La temporada de 10 episodios está en [`temporada-1.md`](temporada-1.md) y sustituye al diseño v2 de la sección 3.
 
 Encargo de origen: [`fuentes/LORE_PUNETOS_encargo.md`](fuentes/LORE_PUNETOS_encargo.md).
 
@@ -8,7 +10,7 @@ Leyenda:
 - **`PROPUESTA`** — idea de Claude pendiente de aprobación.
 - **`MISTERIO`** — se deja abierto a propósito.
 
-> **Resumen.** Cinco técnicos de soporte sufren un pantallazo azul provocado por un parche de Usu y empiezan a verse como Puñetos. El resto del mundo los sigue viendo humanos. Quizá no han cambiado de cuerpo, sino que han empezado a ver una dimensión de la realidad que los demás desconocen.
+> **Resumen.** Cinco técnicos de sistemas sufren un pantallazo azul provocado por un parche de Usu y empiezan a verse como Puñetos. El resto del mundo los sigue viendo humanos. Quizá no han cambiado de cuerpo, sino que han empezado a ver una dimensión de la realidad que los demás desconocen.
 
 ---
 
@@ -27,8 +29,8 @@ Leyenda:
 
 ### `CANON`
 
-1. Los cinco eran **humanos** del equipo de soporte técnico de una empresa tecnológica.
-2. **Usu** aplicó un **parche** y apareció un **pantallazo azul**.
+1. Los cinco eran **humanos** del equipo de **sistemas** de un complejo tecnológico puntero (no es un call center ni una empresa de software).
+2. Durante la gran incidencia (NODO, la IA central, caído a días de los inversores), **Usu** aplicó un **parche** con el casco SINAPSIS, NODO y la batería de ÍCARO, y apareció un **pantallazo azul**.
 3. Desde entonces **ellos se ven como Puñetos**:
    - piel azul intensa y brillante;
    - cuerpo achaparrado de gominola;
@@ -72,7 +74,7 @@ Leyenda:
 
 ---
 
-## 3. Los cinco primeros episodios (diseño v2)
+## 3. Los cinco primeros episodios (diseño v2 — SUSTITUIDO por [`temporada-1.md`](temporada-1.md))
 
 - **Duración:** 60–90 s cada uno, con un remate fuerte.
 - **Los Ep. 1 y 2** se cuentan en humano (presentación).

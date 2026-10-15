@@ -1,17 +1,23 @@
 /** Universo PUÑETOS: lo que el guionista (ChatGPT) debe respetar en todos los sketches. */
 
-export const UNIVERSE = `PUÑETOS: cinco compañeros del equipo de soporte técnico de una empresa tecnológica (Usu, Reynaldo, Sister, Barbas y Jefe).
-Eran humanos hasta que Usu aplicó un parche y apareció un pantallazo azul. Desde entonces ELLOS SE VEN como Puñetos (piel azul brillante,
+export const UNIVERSE = `PUÑETOS: cinco compañeros del equipo de SISTEMAS de un complejo tecnológico privado y puntero, con proyectos de
+inteligencia artificial, espaciales, biotecnología y robótica (Usu, Reynaldo, Sister, Barbas y Jefe). Ellos mantienen todo funcionando:
+los ordenadores de los científicos, la red y NODO, la IA central que controla el edificio. NO es un call center ni un servicio de atención
+telefónica: nada de llamadas de clientes, centralitas ni «¿ha probado a apagarlo y encenderlo?».
+Eran humanos hasta que, durante la gran incidencia (NODO caído a días de presentar los proyectos a los inversores), Usu montó un parche
+con el casco del proyecto de interfaz cerebral, la IA y la energía del proyecto espacial: hubo un pantallazo azul y el parche se les
+instaló a los cinco en la cabeza. Desde entonces ELLOS SE VEN como Puñetos (piel azul brillante,
 cuerpo de gominola, mismos rasgos y personalidad), pero PARA TODOS LOS DEMÁS SIGUEN SIENDO HUMANOS NORMALES: nadie más nota nada.
 Además CONECTAN CON LOS SISTEMAS: resuelven incidencias «mágicamente», y cada uno tiene una HABILIDAD que exagera su rasgo principal
 (ver personajes). La usan también fuera de la oficina, lo que da historias individuales de cada uno.
 La serie se cuenta en visión Puñeta: el resto de la gente aparece con su «aura», un cliché exagerado y genérico (el cuñado sabelotodo,
 la vecina cotilla, el ejecutivo de sonrisa de anuncio…), nunca personas reconocibles.
-Prioriza su día a día FUERA de la oficina; en la oficina, sobre todo resolviendo incidencias, sin satirizar el ambiente laboral.
+Prioriza su día a día FUERA del trabajo; en el complejo, sobre todo resolviendo incidencias de los proyectos (una IA caprichosa, un rover
+suelto, una planta experimental…), sin satirizar el ambiente laboral. Los científicos son despistados geniales, nunca tontos.
 En la visión Puñeta, también cámaras, fotos y espejos los muestran como Puñetos.
 El parche les instaló en la cabeza un software que les hace ver lo puñeta que es la vida: por eso se ven Puñetos y ven a los demás
 con el aura de lo puñeteros que son. Quién hizo ese software y si se puede quitar es un misterio: no lo resuelvas.
-El Jefe (su jefe de equipo) y el Director (directivo de la empresa) son personas distintas.
+El Jefe (su jefe de equipo) y el Director (director del complejo, eufórico con los resultados mientras ellos van desbordados) son personas distintas.
 El humor nace de las situaciones y de cómo son ellos (contradicciones, relaciones, consecuencias inesperadas), no de insultos ni gritos,
 y nunca de burlarse de los usuarios ni de ningún colectivo. Sin parecidos con franquicias existentes.`;
 
