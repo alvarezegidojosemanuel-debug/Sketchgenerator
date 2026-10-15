@@ -38,7 +38,7 @@ export function fitTakeToAudio(take: Take, durations: Map<string, number>, gap =
 export function fitProjectToAudio(project: PocketProject, durations: Map<string, number>): { project: PocketProject; changed: number } {
   let changed = 0;
   const takes = project.takes.map((tk) => {
-    const r = fitTakeToAudio(tk, durations);
+    const r = fitTakeToAudio(tk, durations, 0.04);
     changed += r.changed;
     return r.take;
   });

@@ -28,7 +28,10 @@ describe("DSP de voz", () => {
     const x = new Float32Array(sr * 2);
     x.set(sine(220, 0.5, sr), sr / 2);
     const t = trimSilence(x, sr);
-    expect(t.length).toBeLessThan(sr * 0.7);
+    expect(t.length).toBeLessThan(sr * 0.8);
+    // no se come la cola: deja margen detrás y termina en silencio (fundido, sin corte seco)
+    expect(t.length).toBeGreaterThan(sr * 0.65);
+    expect(Math.abs(t[t.length - 1])).toBeLessThan(1e-3);
     const wav = new DataView(encodeWav(t, sr));
     expect(String.fromCharCode(wav.getUint8(0), wav.getUint8(1), wav.getUint8(2), wav.getUint8(3))).toBe("RIFF");
     expect(wav.getUint32(24, true)).toBe(sr);
@@ -61,9 +64,9 @@ describe("ajustar diálogos a la voz real", () => {
     expect(changed).toBe(1);
     const t2 = project.takes[0];
     const nd1 = t2.events.find((e) => e.id === "t1_d1")!;
-    expect(nd1.duration).toBeCloseTo(d1.duration + 1.5 + 0.12, 2);
+    expect(nd1.duration).toBeCloseTo(d1.duration + 1.5 + 0.04, 2);
     for (const [id, start] of after) {
-      expect(t2.events.find((e) => e.id === id)!.start).toBeCloseTo(start + 1.62, 2);
+      expect(t2.events.find((e) => e.id === id)!.start).toBeCloseTo(start + 1.54, 2);
     }
     expect(t2.duration).toBeGreaterThan(take.duration);
     expect(validateProject(project, catalog).errors).toEqual([]);

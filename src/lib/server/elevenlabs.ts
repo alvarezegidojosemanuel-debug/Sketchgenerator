@@ -104,6 +104,9 @@ const TtsBody = z.object({
     style: z.number().min(0).max(1),
     speed: z.number().min(0.7).max(1.2),
   }),
+  /** Frases vecinas (solo contexto de entonación; no se leen ni se cobran). */
+  previousText: z.string().max(400).optional(),
+  nextText: z.string().max(400).optional(),
 });
 
 export async function handleTts(body: unknown, ip: string, code: string | null, env: ElevenEnv, deps: { fetch: typeof fetch; now: () => number; state: ElevenState }): Promise<Res> {
@@ -111,7 +114,7 @@ export async function handleTts(body: unknown, ip: string, code: string | null, 
   if (g) return g;
   const p = TtsBody.safeParse(body);
   if (!p.success) return { status: 400, json: { error: "bad_request", message: "Petición de voz no válida." } };
-  const { text, voiceId, model, settings } = p.data;
+  const { text, voiceId, model, settings, previousText, nextText } = p.data;
   const cfg = elevenConfig(env);
   const now = deps.now();
   const hits = (deps.state.perIp.get(ip) ?? []).filter((t) => now - t < WINDOW_MS);
@@ -139,6 +142,8 @@ export async function handleTts(body: unknown, ip: string, code: string | null, 
         text,
         model_id: model,
         language_code: model === "eleven_v3" ? undefined : "es",
+        previous_text: model === "eleven_v3" ? undefined : previousText,
+        next_text: model === "eleven_v3" ? undefined : nextText,
         voice_settings: { stability: settings.stability, similarity_boost: settings.similarity, style: settings.style, use_speaker_boost: true, speed: settings.speed },
       }),
     });

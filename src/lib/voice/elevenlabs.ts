@@ -57,7 +57,8 @@ export async function listElevenVoices(code: string): Promise<ElevenVoice[]> {
   return j.voices as ElevenVoice[];
 }
 
-export const DEFAULT_ELEVEN = { stability: 0.4, similarity: 0.8, style: 0.35, speed: 1 };
+/** Ajustes naturales: más estabilidad y poco «estilo» (el estilo alto suena teatral, como un anuncio). */
+export const DEFAULT_ELEVEN = { stability: 0.5, similarity: 0.8, style: 0.1, speed: 1 };
 
 /** Voz con acento de España según sus etiquetas (castellano, peninsular, Madrid, andaluz…). */
 export function isSpainVoice(v: ElevenVoice): boolean {
@@ -104,18 +105,23 @@ export async function generateElevenLines(
   let i = 0;
   for (const l of lines) {
     i++;
+    // contexto: frase anterior y siguiente de la misma toma, para que la entonación encadene
+    const take = l.key.slice(0, l.key.indexOf(":"));
+    const prevL = lines[i - 2]?.key.startsWith(take + ":") ? lines[i - 2].text : undefined;
+    const nextL = lines[i]?.key.startsWith(take + ":") ? lines[i].text : undefined;
+    const ctx = model === "eleven_v3" ? {} : { previousText: prevL ? stripAudioTags(prevL).slice(0, 400) : undefined, nextText: nextL ? stripAudioTags(nextL).slice(0, 400) : undefined };
     const c = cast?.[l.characterId];
     if (!c) throw new Error(`Falta la voz ElevenLabs de «${l.characterId}» en el reparto.`);
     const text = model === "eleven_v3" ? l.text.trim() : stripAudioTags(l.text);
     const speed = Math.min(1.2, Math.max(0.7, c.speed * (l.rate ?? 1)));
-    const ck = `el|${model}|${c.voiceId}|${c.stability}|${c.similarity}|${c.style}|${speed.toFixed(2)}|${text}`;
+    const ck = `el2|${model}|${c.voiceId}|${c.stability}|${c.similarity}|${c.style}|${speed.toFixed(2)}|${text}|${ctx.previousText ?? ""}|${ctx.nextText ?? ""}`;
     let hit = await clipCache.get(ck).catch(() => undefined);
     if (!hit) {
       onProgress?.({ stage: "generate", label: `ElevenLabs: frase ${i}/${lines.length}`, ratio: (i - 1) / lines.length });
       const r = await fetch("/api/voice/tts", {
         method: "POST",
         headers: { "content-type": "application/json", "x-pocket-code": code },
-        body: JSON.stringify({ text, voiceId: c.voiceId, model, settings: { stability: c.stability, similarity: c.similarity, style: c.style, speed } }),
+        body: JSON.stringify({ text, voiceId: c.voiceId, model, settings: { stability: c.stability, similarity: c.similarity, style: c.style, speed }, ...ctx }),
       });
       if (!r.ok) {
         const j = await r.json().catch(() => ({}));

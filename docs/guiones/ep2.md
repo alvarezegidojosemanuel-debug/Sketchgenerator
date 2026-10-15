@@ -1,6 +1,6 @@
 # Ep. 2 · El parche
 
-_Usu prepara el parche de noche; el viernes a las 17:59 lo aplica y llega el pantallazo azul._ · ≈ 47.8 s
+_Usu prepara el parche de noche; el viernes a las 17:59 lo aplica y llega el pantallazo azul._ · ≈ 40.6 s
 
 ## Escena 1 · Miércoles, 23:00
 **OFICINA DE SOPORTE · NOCHE** — humanos de espaldas

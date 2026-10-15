@@ -38,6 +38,28 @@ export function Stage({ catalog, frame, showSubtitles = true, selectedUid, onSel
   const actorState = new Map(frame.actors.map((a) => [a.uid, a]));
   // En edición se ve siempre el plano general (para colocar y arrastrar sin zoom).
   const cam = onMoveActor || !frame.camera ? { zoom: 1, cx: W / 2, cy: H / 2 } : frame.camera;
+  // Quién habla: bocadillo de cómic sobre su cabeza (en pantalla). Narrador y voces en off: subtítulo abajo.
+  const toScreen = (x: number, y: number) => ({ x: (x - (cam.cx - W / 2 / cam.zoom)) * cam.zoom, y: (y - (cam.cy - H / 2 / cam.zoom)) * cam.zoom });
+  const bubbles: { id: string; left: number; top: number; width: number; tailX: number; text: string }[] = [];
+  const offscreen: typeof frame.subtitles = [];
+  for (const sub of frame.subtitles) {
+    const a = sub.actorUid ? layout.actors.find((x) => x.uid === sub.actorUid) : undefined;
+    // personaje dibujado como objeto (p. ej. de espaldas en su silla): el bocadillo sale sobre esa imagen
+    const asProp = !a && sub.voiceOf ? [...layout.propsFront, ...layout.propsBack].find((p) => p.src.includes(`prop_${sub.voiceOf}_`)) : undefined;
+    let head: { x: number; y: number };
+    if (a && a.pose) head = toScreen(a.left + a.pose.width / 2, a.top + a.pose.height * (1 - a.scale));
+    else if (asProp) head = toScreen(asProp.left + asProp.width / 2, asProp.top);
+    else {
+      offscreen.push(sub);
+      continue;
+    }
+    const width = Math.min(620, 140 + sub.text.length * 15);
+    const lines = Math.ceil((sub.text.length * 22) / (width - 60));
+    const h = 40 + lines * 50;
+    const left = Math.max(24, Math.min(W - 24 - width, head.x - width / 2));
+    const top = Math.max(24, head.y - h - 46 - bubbles.filter((b) => Math.abs(b.left - left) < width).length * (h + 20));
+    bubbles.push({ id: sub.eventId, left, top, width, tailX: Math.max(30, Math.min(width - 60, head.x - left - 15)), text: sub.text });
+  }
   const camTransform = cam.zoom > 1.001 ? `scale(${cam.zoom}) translate(${-(cam.cx - W / 2 / cam.zoom)}px, ${-(cam.cy - H / 2 / cam.zoom)}px)` : undefined;
 
   const onPointerDown = (uid: string) => (e: React.PointerEvent) => {
@@ -118,9 +140,15 @@ export function Stage({ catalog, frame, showSubtitles = true, selectedUid, onSel
             <div className="layer" style={{ left: 0, top: 0, width: W, height: H, zIndex: 8001, background: layout.screen.flash.color, opacity: layout.screen.flash.alpha }} />
           ) : null}
           {layout.screen.bluescreen ? <BlueScreen b={layout.screen.bluescreen} /> : null}
-          {showSubtitles && frame.subtitles.length > 0 && (
+          {showSubtitles && bubbles.map((b) => (
+            <div key={b.id} className="speech-bubble" style={{ left: b.left, top: b.top, width: b.width }}>
+              <p>{b.text}</p>
+              <span className="speech-tail" style={{ left: b.tailX }} />
+            </div>
+          ))}
+          {showSubtitles && offscreen.length > 0 && (
             <div className="subtitles">
-              {frame.subtitles.map((s) => (
+              {offscreen.map((s) => (
                 <p key={s.eventId}>
                   <b>{s.speaker}:</b> {s.text}
                 </p>

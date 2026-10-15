@@ -70,9 +70,17 @@ export function PreviewScreen({ s }: { s: PocketState }) {
   );
   const ready = !usesClips || (clips !== null && clipsSig === sig);
 
-  const pl = usePlayer(project, catalog, { engine, clips: clipsSig === sig ? clips : null });
-  const { slots } = projectSchedule(project);
-  const take = project.takes[pl.pos.takeIndex];
+  // Con voces generadas, la reproducción usa la duración REAL de cada frase (sin huecos ni esperas):
+  // se conserva la pausa que pide el guion entre frases, pero no la estimación de duración.
+  const liveClips = clipsSig === sig ? clips : null;
+  const playProject = useMemo(() => {
+    if (!usesClips || !liveClips) return project;
+    const durations = new Map([...liveClips].map(([k, c]) => [k, c.duration]));
+    return fitProjectToAudio(project, durations).project;
+  }, [project, liveClips, usesClips]);
+  const pl = usePlayer(playProject, catalog, { engine, clips: liveClips });
+  const { slots } = projectSchedule(playProject);
+  const take = playProject.takes[pl.pos.takeIndex];
 
   const prepare = async (): Promise<boolean> => {
     setVoiceError(null);

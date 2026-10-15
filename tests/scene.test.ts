@@ -122,10 +122,11 @@ describe("vida automática y cámara", () => {
     const sis = f.actors.find((a) => a.uid === "sis")!; // Sister (x 770) mira a Reynaldo (x 310): a la izquierda
     const rey = f.actors.find((a) => a.uid === "rey")!;
     expect(Math.sign(sis.gazeX)).toBe(Math.sign(rey.x - sis.x) * (sis.flip ? -1 : 1));
-    expect(f.camera.zoom).toBeGreaterThanOrEqual(1);
+    // cámara automática (si la toma la pide): primer plano en el remate
+    const auto = { ...take, camera: "auto" as const };
     const last = take.events.filter((e) => e.track === "dialogue").at(-1)!;
-    const fl = evaluateTake(take, catalog, last.start + 0.3);
-    expect(fl.camera.zoom).toBeGreaterThan(1.5);
-    expect(evaluateTake(take, catalog, 0.1).camera.zoom).toBe(1);
+    expect(evaluateTake(auto, catalog, last.start + 0.3).camera.zoom).toBeGreaterThan(1.5);
+    expect(evaluateTake(auto, catalog, 0.1).camera.zoom).toBe(1);
+    expect(f.camera.zoom).toBe(1);
   });
 });

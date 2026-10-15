@@ -58,6 +58,8 @@ export interface PropState {
 export interface Subtitle {
   eventId: string;
   actorUid: string;
+  /** Personaje que habla sin ser actor (p. ej. dibujado de espaldas como objeto). */
+  voiceOf?: string;
   speaker: string;
   text: string;
 }
@@ -180,7 +182,7 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
         if (!active) break;
         if (!e.actorUid) {
           const who = e.voiceOf ? findCharacter(catalog, e.voiceOf)?.name ?? e.voiceOf : e.speakerName ?? "Narrador";
-          subtitles.push({ eventId: e.id, actorUid: "", speaker: who, text: stripAudioTags(e.text) });
+          subtitles.push({ eventId: e.id, actorUid: "", voiceOf: e.voiceOf, speaker: who, text: stripAudioTags(e.text) });
           break;
         }
         if (!st) break;

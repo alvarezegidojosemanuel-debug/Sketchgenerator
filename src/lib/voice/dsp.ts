@@ -54,13 +54,33 @@ export function levelAt(env: Float32Array, seconds: number, fps = ENVELOPE_FPS):
 }
 
 /** Recorta silencios al principio y al final (deja un margen pequeño). */
-export function trimSilence(samples: Float32Array, sampleRate: number, threshold = 0.01, padSeconds = 0.05): Float32Array {
+/**
+ * Quita el silencio de los extremos SIN comerse la cola de la voz: decide por energía (ventanas de 10 ms),
+ * deja margen (30 ms delante, 180 ms detrás) y hace fundidos cortos para que no haya «clic» ni corte seco.
+ */
+export function trimSilence(samples: Float32Array, sampleRate: number, threshold = 0.006, startPad = 0.03, endPad = 0.18): Float32Array {
+  const win = Math.max(1, Math.round(sampleRate * 0.01));
+  const n = Math.ceil(samples.length / win);
+  const rms = new Float32Array(n);
+  for (let w = 0; w < n; w++) {
+    let s = 0;
+    const end = Math.min(samples.length, (w + 1) * win);
+    for (let i = w * win; i < end; i++) s += samples[i] * samples[i];
+    rms[w] = Math.sqrt(s / Math.max(1, end - w * win));
+  }
   let a = 0;
-  let b = samples.length - 1;
-  while (a < samples.length && Math.abs(samples[a]) < threshold) a++;
-  while (b > a && Math.abs(samples[b]) < threshold) b--;
-  const pad = Math.round(padSeconds * sampleRate);
-  return samples.slice(Math.max(0, a - pad), Math.min(samples.length, b + pad));
+  let b = n - 1;
+  while (a < n && rms[a] < threshold) a++;
+  while (b > a && rms[b] < threshold) b--;
+  if (a >= n) return samples.slice();
+  const i0 = Math.max(0, a * win - Math.round(startPad * sampleRate));
+  const i1 = Math.min(samples.length, (b + 1) * win + Math.round(endPad * sampleRate));
+  const out = samples.slice(i0, i1);
+  const fin = Math.min(out.length, Math.round(sampleRate * 0.008));
+  for (let i = 0; i < fin; i++) out[i] *= i / fin;
+  const fout = Math.min(out.length, Math.round(sampleRate * 0.12));
+  for (let i = 0; i < fout; i++) out[out.length - 1 - i] *= i / fout;
+  return out;
 }
 
 export function encodeWav(samples: Float32Array, sampleRate: number): ArrayBuffer {

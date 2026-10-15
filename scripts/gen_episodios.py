@@ -26,7 +26,7 @@ GROUP = {  # (x, y, escala, z, pose inicial)
 
 def est(text):
     words = len(re.sub(r'\[[^\]]*\]', '', text).split())
-    return round(max(1.2, words * 0.36 + 0.6), 1)
+    return round(max(0.6, words * 0.34 + 0.4), 1)
 
 
 class Take:
@@ -84,6 +84,14 @@ class Take:
 
     def pose(self, uid, pose, start=None):
         self.add('body', 0.3, start, actorUid=uid, poseId=f'char.{CHARS[uid]}.pose_{pose}')
+
+    def chorus(self, whos, text, gap=0.4):
+        """Varios dicen lo mismo a la vez (pequeño desfase natural), sin turnarse."""
+        t0 = self.t
+        for k, who in enumerate(whos):
+            self.t = t0 + 0.06 * k
+            self.say(who, text, gap=0)
+        self.t = t0 + est(text) + 0.06 * len(whos) + gap
 
     def look(self, uid, at_uid, dur=0.8):
         """Mirada puntual (en silencio) de uid hacia at_uid."""
@@ -162,24 +170,24 @@ t1.sfx('sfx_teclado', 3, 0.5)
 t1.say('narr', 'Departamento de soporte. Cinco personas. Y una incidencia que no hay manera de cerrar.')
 t1.say('sister', 'La cuatro mil doce se ha vuelto a abrir. Sola. Otra vez.')
 t1.say('reynaldo', 'Yo la cerré ayer a las seis menos uno. Consta en el registro.')
-t1.say('barbas', 'Igual es que le caemos bien. Te lo digo con todo el amor del mundo, ¿eh?')
-t1.say('usu', 'O el servidor tiene sentimientos.')
+t1.say('barbas', 'Igual es que le caemos bien.')
+t1.say('usu', 'O el servidor tiene sentimientos.', gap=0.2)
 t1.sfx('sfx_ding', 0.6)
 t1.wait(0.4)
 t1.say(('off', 'Director'), 'Equipo de soporte: si la incidencia sigue abierta el viernes, habrá cambios.')
 t2 = Take('e1t2', 'El viernes', 'bg_oficina_manana', back=True)
-t2.say('jefe', '¿Cambios? ¿Qué cambios?')
-t2.say('barbas', 'Jefe, lo ha dicho con un tonito… Con todo el amor del mundo: yo iría a hablar con él.')
-t2.say('jefe', '[angry] ¡Voy ahora mismo!')
+t2.say('jefe', '¿Cambios? ¿Qué cambios?', gap=0.2)
+t2.say('barbas', 'Yo no digo nada, Jefe. Pero lo ha dicho mirando tu silla.', gap=0.5)
+t2.say('jefe', '…¿Mi silla?', gap=0.25)
+t2.say('barbas', 'Con todo el amor del mundo.', gap=0.15)
+t2.say('jefe', '[angry] ¡Voy ahora mismo!', gap=0.1)
 t2.sfx('sfx_whoosh', 0.6)
-t2.say('sister', 'Jefe, la reunión con él es el viernes. Te lo apunté en tres sitios.')
-t2.say('jefe', '¿Qué reunión?')
-t2.wait(0.3)
-t2.say('usu', 'Tranquilos. Lo arreglo yo. Con un parche.')
-t2.say('sister', 'No.', gap=0.15)
-t2.say('reynaldo', 'No.', gap=0.15)
-t2.say('barbas', 'No.', gap=0.6)
-t2.say('usu', 'Ya lo he empezado.')
+t2.wait(1.2)
+t2.say('sister', 'La reunión con él es el viernes, Jefe. Te lo he apuntado en la mano.', gap=0.5)
+t2.say('jefe', '…Pone «no grites».', gap=0.8)
+t2.say('usu', 'Tranquilos. Lo arreglo yo. Con un parche.', gap=0.15)
+t2.chorus(['sister', 'reynaldo', 'barbas', 'jefe'], 'No.', gap=0.7)
+t2.say('usu', 'Ya lo he empezado.', gap=0.2)
 t2.sfx('sfx_fracaso', 1.1)
 t2.wait(0.8)
 EP1 = project('Ep. 1 · Antes', 'Presentación del equipo humano y la incidencia fantasma que el Director exige cerrar antes del viernes.', [t1, t2],
@@ -211,10 +219,7 @@ t3.wait(3.0)
 t3.screen('flash', 0.25, color='#2a6bff')
 t3.wait(0.5)
 t3.say('reynaldo', '…¿Alguien más se ha visto la mano… azul?')
-t3.say('sister', 'No.', gap=0.15)
-t3.say('barbas', 'No.', gap=0.15)
-t3.say('jefe', 'No.', gap=0.15)
-t3.say('usu', 'No.', gap=1.2)
+t3.chorus(['sister', 'barbas', 'jefe', 'usu'], 'No.', gap=1.4)
 # uno a uno «levantan la mano»
 for who in ('sister', 'barbas', 'jefe', 'usu'):
     t3.back_beats.append((who, t3.t, t3.t + 30, TALK[who]))
@@ -224,7 +229,7 @@ EP2 = project('Ep. 2 · El parche', 'Usu prepara el parche de noche; el viernes 
               ['Usu humano de espaldas iluminado de noche', 'Reynaldo con abrigo', 'segundo fotograma de teclear'])
 
 # ================================================================= EP. 3 · ¿QUÉ COÑO NOS HA PASADO?
-t1 = Take('e3t1', 'Lunes', 'bg_oficina_manana', punetos=ALL5, camera='auto')
+t1 = Take('e3t1', 'Lunes', 'bg_oficina_manana', punetos=ALL5)
 # Idea: todos se ven azules y nadie se atreve a decirlo… hasta que Usu se delata solo.
 t1.wait(0.4)
 t1.say('bar', 'Buenos días.', gap=0.25)

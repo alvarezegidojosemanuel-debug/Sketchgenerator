@@ -276,3 +276,8 @@ textarea.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; fon
 .bluescreen-face { font-size: 260px; line-height: 1; margin-bottom: 70px; }
 .bluescreen-text { font-size: 72px; line-height: 1.2; margin: 0 0 60px; }
 .bluescreen-small { font-size: 36px; line-height: 1.4; opacity: .85; margin: 0; }
+
+.speech-bubble { position: absolute; z-index: 9000; background: #fff; color: #111; border: 6px solid #111; border-radius: 40px; padding: 18px 30px; box-sizing: border-box; pointer-events: none; box-shadow: 0 6px 0 rgba(0,0,0,.18); }
+.speech-bubble p { margin: 0; font-size: 42px; line-height: 1.18; font-weight: 600; text-align: center; }
+.speech-tail { position: absolute; bottom: -34px; width: 0; height: 0; border-left: 18px solid transparent; border-right: 18px solid transparent; border-top: 34px solid #111; }
+.speech-tail::after { content: ""; position: absolute; left: -11px; top: -42px; border-left: 11px solid transparent; border-right: 11px solid transparent; border-top: 22px solid #fff; }

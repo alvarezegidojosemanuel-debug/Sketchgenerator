@@ -4,7 +4,7 @@
  "metadata": {
   "title": "Ep. 3 · ¿Qué coño nos ha pasado?",
   "language": "es-ES",
-  "approxDuration": 85.1,
+  "approxDuration": 77.2,
   "idea": "Primer día en visión Puñeta: se ven azules, Usu descubre sus poderes y nacen Draco y Humillos.",
   "wishlist": [
    "Draco y Humillos definitivos",
@@ -20,7 +20,7 @@
   {
    "id": "e3t1",
    "name": "Lunes",
-   "duration": 34.9,
+   "duration": 31.4,
    "backgroundId": "bg_oficina_manana",
    "actors": [
     {
@@ -79,22 +79,22 @@
      "id": "e3t1_di1",
      "track": "dialogue",
      "start": 0.7,
-     "duration": 1.3,
+     "duration": 1.1,
      "actorUid": "bar",
      "text": "Buenos días."
     },
     {
      "id": "e3t1_di2",
      "track": "dialogue",
-     "start": 2.25,
-     "duration": 1.3,
+     "start": 2.05,
+     "duration": 1.1,
      "actorUid": "sis",
      "text": "Buenos días."
     },
     {
      "id": "e3t1_ey3",
      "track": "eyes",
-     "start": 3.75,
+     "start": 3.35,
      "duration": 0.8,
      "actorUid": "jefe",
      "gazeX": 0.7,
@@ -103,7 +103,7 @@
     {
      "id": "e3t1_ey4",
      "track": "eyes",
-     "start": 3.75,
+     "start": 3.35,
      "duration": 0.8,
      "actorUid": "bar",
      "gazeX": -0.7,
@@ -112,7 +112,7 @@
     {
      "id": "e3t1_ey5",
      "track": "eyes",
-     "start": 3.75,
+     "start": 3.35,
      "duration": 0.8,
      "actorUid": "sis",
      "gazeX": -0.7,
@@ -121,7 +121,7 @@
     {
      "id": "e3t1_ey6",
      "track": "eyes",
-     "start": 3.75,
+     "start": 3.35,
      "duration": 0.8,
      "actorUid": "rey",
      "gazeX": 0.7,
@@ -130,7 +130,7 @@
     {
      "id": "e3t1_ey7",
      "track": "eyes",
-     "start": 3.75,
+     "start": 3.35,
      "duration": 0.8,
      "actorUid": "usu",
      "gazeX": 0.7,
@@ -139,7 +139,7 @@
     {
      "id": "e3t1_ey8",
      "track": "eyes",
-     "start": 4.75,
+     "start": 4.35,
      "duration": 0.8,
      "actorUid": "jefe",
      "gazeX": 0.7,
@@ -148,7 +148,7 @@
     {
      "id": "e3t1_ey9",
      "track": "eyes",
-     "start": 4.75,
+     "start": 4.35,
      "duration": 0.8,
      "actorUid": "sis",
      "gazeX": -0.7,
@@ -157,7 +157,7 @@
     {
      "id": "e3t1_ey10",
      "track": "eyes",
-     "start": 4.75,
+     "start": 4.35,
      "duration": 0.8,
      "actorUid": "rey",
      "gazeX": 0.7,
@@ -166,7 +166,7 @@
     {
      "id": "e3t1_ey11",
      "track": "eyes",
-     "start": 4.75,
+     "start": 4.35,
      "duration": 0.8,
      "actorUid": "bar",
      "gazeX": -0.7,
@@ -175,7 +175,7 @@
     {
      "id": "e3t1_fa12",
      "track": "face",
-     "start": 5.75,
+     "start": 5.35,
      "duration": 0.3,
      "actorUid": "rey",
      "expressionId": "expression.reynaldo.enfado"
@@ -183,7 +183,7 @@
     {
      "id": "e3t1_bo13",
      "track": "body",
-     "start": 5.75,
+     "start": 5.35,
      "duration": 0.3,
      "actorUid": "rey",
      "poseId": "char.reynaldo.pose_arms_crossed"
@@ -191,31 +191,31 @@
     {
      "id": "e3t1_di14",
      "track": "dialogue",
-     "start": 5.75,
-     "duration": 3.1,
+     "start": 5.35,
+     "duration": 2.8,
      "actorUid": "rey",
      "text": "Vale. ¿Lo decimos o no lo decimos?"
     },
     {
      "id": "e3t1_di15",
      "track": "dialogue",
-     "start": 9.0,
-     "duration": 1.3,
+     "start": 8.3,
+     "duration": 1.1,
      "actorUid": "jefe",
      "text": "¿Decir qué?"
     },
     {
      "id": "e3t1_di16",
      "track": "dialogue",
-     "start": 10.5,
-     "duration": 2.0,
+     "start": 9.6,
+     "duration": 1.8,
      "actorUid": "rey",
      "text": "Que somos azules, Jefe."
     },
     {
      "id": "e3t1_bo17",
      "track": "body",
-     "start": 13.0,
+     "start": 11.9,
      "duration": 0.3,
      "actorUid": "jefe",
      "poseId": "char.jefe.pose_reaction"
@@ -223,7 +223,7 @@
     {
      "id": "e3t1_fa18",
      "track": "face",
-     "start": 13.0,
+     "start": 11.9,
      "duration": 0.3,
      "actorUid": "jefe",
      "expressionId": "expression.jefe.sorpresa"
@@ -231,15 +231,15 @@
     {
      "id": "e3t1_di19",
      "track": "dialogue",
-     "start": 13.6,
-     "duration": 1.2,
+     "start": 12.5,
+     "duration": 0.7,
      "actorUid": "jefe",
      "text": "…Anda."
     },
     {
      "id": "e3t1_fa20",
      "track": "face",
-     "start": 15.4,
+     "start": 13.8,
      "duration": 0.3,
      "actorUid": "bar",
      "expressionId": "expression.barbas.alegria"
@@ -247,23 +247,23 @@
     {
      "id": "e3t1_di21",
      "track": "dialogue",
-     "start": 15.4,
-     "duration": 4.6,
+     "start": 13.8,
+     "duration": 4.1,
      "actorUid": "bar",
      "text": "Yo lo vi el viernes. No dije nada por no preocuparos."
     },
     {
      "id": "e3t1_di22",
      "track": "dialogue",
-     "start": 20.2,
-     "duration": 2.4,
+     "start": 18.1,
+     "duration": 2.1,
      "actorUid": "sis",
      "text": "Gritaste en el ascensor, Barbas."
     },
     {
      "id": "e3t1_fa23",
      "track": "face",
-     "start": 22.75,
+     "start": 20.35,
      "duration": 0.3,
      "actorUid": "bar",
      "expressionId": "expression.barbas.risa"
@@ -271,15 +271,15 @@
     {
      "id": "e3t1_di24",
      "track": "dialogue",
-     "start": 22.75,
-     "duration": 2.8,
+     "start": 20.35,
+     "duration": 2.4,
      "actorUid": "bar",
      "text": "Con todo el amor del mundo."
     },
     {
      "id": "e3t1_fa25",
      "track": "face",
-     "start": 26.15,
+     "start": 23.35,
      "duration": 0.3,
      "actorUid": "usu",
      "expressionId": "expression.usu.alegria"
@@ -287,7 +287,7 @@
     {
      "id": "e3t1_bo26",
      "track": "body",
-     "start": 26.15,
+     "start": 23.35,
      "duration": 0.3,
      "actorUid": "usu",
      "poseId": "char.usu.pose_talk_emphasis"
@@ -295,15 +295,15 @@
     {
      "id": "e3t1_di27",
      "track": "dialogue",
-     "start": 26.15,
-     "duration": 2.4,
+     "start": 23.35,
+     "duration": 2.1,
      "actorUid": "usu",
      "text": "[excited] ¡Lo sabía! ¡El parche funciona!"
     },
     {
      "id": "e3t1_ey28",
      "track": "eyes",
-     "start": 28.65,
+     "start": 25.55,
      "duration": 2.4,
      "actorUid": "rey",
      "gazeX": 0.7,
@@ -312,7 +312,7 @@
     {
      "id": "e3t1_ey29",
      "track": "eyes",
-     "start": 28.65,
+     "start": 25.55,
      "duration": 2.4,
      "actorUid": "sis",
      "gazeX": -0.7,
@@ -321,7 +321,7 @@
     {
      "id": "e3t1_ey30",
      "track": "eyes",
-     "start": 28.65,
+     "start": 25.55,
      "duration": 2.4,
      "actorUid": "jefe",
      "gazeX": 0.7,
@@ -330,7 +330,7 @@
     {
      "id": "e3t1_ey31",
      "track": "eyes",
-     "start": 28.65,
+     "start": 25.55,
      "duration": 2.4,
      "actorUid": "bar",
      "gazeX": -0.7,
@@ -339,7 +339,7 @@
     {
      "id": "e3t1_fa32",
      "track": "face",
-     "start": 28.65,
+     "start": 25.55,
      "duration": 0.3,
      "actorUid": "rey",
      "expressionId": "expression.reynaldo.enfado"
@@ -347,7 +347,7 @@
     {
      "id": "e3t1_fa33",
      "track": "face",
-     "start": 28.65,
+     "start": 25.55,
      "duration": 0.3,
      "actorUid": "sis",
      "expressionId": "expression.sister.enfado"
@@ -355,7 +355,7 @@
     {
      "id": "e3t1_fa34",
      "track": "face",
-     "start": 28.65,
+     "start": 25.55,
      "duration": 0.3,
      "actorUid": "jefe",
      "expressionId": "expression.jefe.enfado"
@@ -363,7 +363,7 @@
     {
      "id": "e3t1_fa35",
      "track": "face",
-     "start": 28.65,
+     "start": 25.55,
      "duration": 0.3,
      "actorUid": "bar",
      "expressionId": "expression.barbas.sorpresa"
@@ -371,7 +371,7 @@
     {
      "id": "e3t1_fa36",
      "track": "face",
-     "start": 29.95,
+     "start": 26.85,
      "duration": 0.3,
      "actorUid": "usu",
      "expressionId": "expression.usu.neutral"
@@ -379,7 +379,7 @@
     {
      "id": "e3t1_bo37",
      "track": "body",
-     "start": 29.95,
+     "start": 26.85,
      "duration": 0.3,
      "actorUid": "usu",
      "poseId": "char.usu.pose_neutral_front"
@@ -387,8 +387,8 @@
     {
      "id": "e3t1_di38",
      "track": "dialogue",
-     "start": 30.35,
-     "duration": 2.8,
+     "start": 27.25,
+     "duration": 2.4,
      "actorUid": "usu",
      "text": "…Que el parche funciona. Con interrogación."
     },
@@ -396,7 +396,7 @@
      "id": "e3t1_mo39",
      "track": "mouth",
      "start": 0,
-     "duration": 34.9,
+     "duration": 31.4,
      "actorUid": "rey",
      "mode": "auto"
     },
@@ -404,7 +404,7 @@
      "id": "e3t1_mo40",
      "track": "mouth",
      "start": 0,
-     "duration": 34.9,
+     "duration": 31.4,
      "actorUid": "sis",
      "mode": "auto"
     },
@@ -412,7 +412,7 @@
      "id": "e3t1_mo41",
      "track": "mouth",
      "start": 0,
-     "duration": 34.9,
+     "duration": 31.4,
      "actorUid": "jefe",
      "mode": "auto"
     },
@@ -420,7 +420,7 @@
      "id": "e3t1_mo42",
      "track": "mouth",
      "start": 0,
-     "duration": 34.9,
+     "duration": 31.4,
      "actorUid": "usu",
      "mode": "auto"
     },
@@ -428,17 +428,16 @@
      "id": "e3t1_mo43",
      "track": "mouth",
      "start": 0,
-     "duration": 34.9,
+     "duration": 31.4,
      "actorUid": "bar",
      "mode": "auto"
     }
-   ],
-   "camera": "auto"
+   ]
   },
   {
    "id": "e3t2",
    "name": "Los dragones",
-   "duration": 21.4,
+   "duration": 19.8,
    "backgroundId": "bg_sala_servidores",
    "actors": [
     {
@@ -472,14 +471,14 @@
      "id": "e3t2_di3",
      "track": "dialogue",
      "start": 0.3,
-     "duration": 4.2,
+     "duration": 3.8,
      "actorUid": "usu",
      "text": "A ver, grandullón. Incidencia cuatro mil doce. Tú y yo."
     },
     {
      "id": "e3t2_bo4",
      "track": "body",
-     "start": 4.85,
+     "start": 4.45,
      "duration": 0.3,
      "actorUid": "usu",
      "poseId": "char.usu.pose_pointing"
@@ -487,7 +486,7 @@
     {
      "id": "e3t2_sc5",
      "track": "screen",
-     "start": 5.15,
+     "start": 4.75,
      "duration": 0.5,
      "effect": "flash",
      "color": "#ffffff"
@@ -495,15 +494,15 @@
     {
      "id": "e3t2_sf6",
      "track": "sfx",
-     "start": 5.15,
+     "start": 4.75,
      "duration": 0.4,
      "soundId": "sfx_pop"
     },
     {
      "id": "e3t2_pr7",
      "track": "props",
-     "start": 5.15,
-     "duration": 16.25,
+     "start": 4.75,
+     "duration": 15.05,
      "propId": "prop_draco",
      "layer": "props-front",
      "x": 270,
@@ -515,15 +514,15 @@
     {
      "id": "e3t2_sf8",
      "track": "sfx",
-     "start": 5.55,
+     "start": 5.15,
      "duration": 0.4,
      "soundId": "sfx_pop"
     },
     {
      "id": "e3t2_pr9",
      "track": "props",
-     "start": 5.55,
-     "duration": 15.85,
+     "start": 5.15,
+     "duration": 14.65,
      "propId": "prop_humillos",
      "layer": "props-front",
      "x": 820,
@@ -535,7 +534,7 @@
     {
      "id": "e3t2_fa10",
      "track": "face",
-     "start": 5.55,
+     "start": 5.15,
      "duration": 0.3,
      "actorUid": "usu",
      "expressionId": "expression.usu.sorpresa"
@@ -543,7 +542,7 @@
     {
      "id": "e3t2_bo11",
      "track": "body",
-     "start": 5.55,
+     "start": 5.15,
      "duration": 0.6,
      "actorUid": "usu",
      "fx": "jump"
@@ -551,7 +550,7 @@
     {
      "id": "e3t2_bo12",
      "track": "body",
-     "start": 6.35,
+     "start": 5.95,
      "duration": 0.3,
      "actorUid": "usu",
      "poseId": "char.usu.pose_reaction"
@@ -559,15 +558,15 @@
     {
      "id": "e3t2_di13",
      "track": "dialogue",
-     "start": 6.35,
-     "duration": 2.4,
+     "start": 5.95,
+     "duration": 2.1,
      "actorUid": "usu",
      "text": "…¿Y vosotros de dónde salís?"
     },
     {
      "id": "e3t2_fa14",
      "track": "face",
-     "start": 9.1,
+     "start": 8.4,
      "duration": 0.3,
      "actorUid": "usu",
      "expressionId": "expression.usu.alegria"
@@ -575,7 +574,7 @@
     {
      "id": "e3t2_bo15",
      "track": "body",
-     "start": 9.1,
+     "start": 8.4,
      "duration": 0.3,
      "actorUid": "usu",
      "poseId": "char.usu.pose_talk_explain"
@@ -583,15 +582,15 @@
     {
      "id": "e3t2_di16",
      "track": "dialogue",
-     "start": 9.1,
-     "duration": 3.1,
+     "start": 8.4,
+     "duration": 2.8,
      "actorUid": "usu",
      "text": "Tú te llamas Draco. Y tú… Humillos."
     },
     {
      "id": "e3t2_fa17",
      "track": "face",
-     "start": 12.55,
+     "start": 11.55,
      "duration": 0.3,
      "actorUid": "usu",
      "expressionId": "expression.usu.alegria"
@@ -599,7 +598,7 @@
     {
      "id": "e3t2_bo18",
      "track": "body",
-     "start": 12.55,
+     "start": 11.55,
      "duration": 0.3,
      "actorUid": "usu",
      "poseId": "char.usu.pose_talk_emphasis"
@@ -607,22 +606,22 @@
     {
      "id": "e3t2_di19",
      "track": "dialogue",
-     "start": 12.55,
-     "duration": 3.8,
+     "start": 11.55,
+     "duration": 3.5,
      "actorUid": "usu",
      "text": "[excited] Vale. Pues ya que estáis: la cuatro mil doce."
     },
     {
      "id": "e3t2_sf20",
      "track": "sfx",
-     "start": 16.7,
+     "start": 15.4,
      "duration": 0.6,
      "soundId": "sfx_whoosh"
     },
     {
      "id": "e3t2_sc21",
      "track": "screen",
-     "start": 16.7,
+     "start": 15.4,
      "duration": 0.6,
      "effect": "flash",
      "color": "#40c057"
@@ -630,14 +629,14 @@
     {
      "id": "e3t2_sf22",
      "track": "sfx",
-     "start": 16.7,
+     "start": 15.4,
      "duration": 0.6,
      "soundId": "sfx_ding"
     },
     {
      "id": "e3t2_fa23",
      "track": "face",
-     "start": 17.5,
+     "start": 16.2,
      "duration": 0.3,
      "actorUid": "usu",
      "expressionId": "expression.usu.risa"
@@ -645,7 +644,7 @@
     {
      "id": "e3t2_bo24",
      "track": "body",
-     "start": 17.5,
+     "start": 16.2,
      "duration": 0.3,
      "actorUid": "usu",
      "poseId": "char.usu.pose_arms_crossed"
@@ -653,8 +652,8 @@
     {
      "id": "e3t2_di25",
      "track": "dialogue",
-     "start": 17.5,
-     "duration": 2.4,
+     "start": 16.2,
+     "duration": 2.1,
      "actorUid": "usu",
      "text": "Incidencia cerrada. Por mis dragones."
     },
@@ -662,7 +661,7 @@
      "id": "e3t2_mo26",
      "track": "mouth",
      "start": 0,
-     "duration": 21.4,
+     "duration": 19.8,
      "actorUid": "usu",
      "mode": "auto"
     }
@@ -671,7 +670,7 @@
   {
    "id": "e3t3",
    "name": "El Director",
-   "duration": 28.8,
+   "duration": 26.0,
    "backgroundId": "bg_despacho_director",
    "actors": [
     {
@@ -730,14 +729,14 @@
      "id": "e3t3_di1",
      "track": "dialogue",
      "start": 0.3,
-     "duration": 4.9,
+     "duration": 4.5,
      "text": "Ni una incidencia abierta en toda la empresa. ¿Cómo lo habéis hecho?",
      "speakerName": "Director"
     },
     {
      "id": "e3t3_bo2",
      "track": "body",
-     "start": 5.55,
+     "start": 5.15,
      "duration": 0.3,
      "actorUid": "sis",
      "poseId": "char.sister.pose_talk_explain"
@@ -745,15 +744,15 @@
     {
      "id": "e3t3_di3",
      "track": "dialogue",
-     "start": 5.55,
-     "duration": 6.4,
+     "start": 5.15,
+     "duration": 5.8,
      "actorUid": "sis",
      "text": "Usu cerró la cuatro mil doce. Y el Jefe arregló anoche toda la red de facturación."
     },
     {
      "id": "e3t3_fa4",
      "track": "face",
-     "start": 12.3,
+     "start": 11.3,
      "duration": 0.3,
      "actorUid": "jefe",
      "expressionId": "expression.jefe.sorpresa"
@@ -761,7 +760,7 @@
     {
      "id": "e3t3_bo5",
      "track": "body",
-     "start": 12.3,
+     "start": 11.3,
      "duration": 0.3,
      "actorUid": "jefe",
      "poseId": "char.jefe.pose_reaction"
@@ -769,15 +768,15 @@
     {
      "id": "e3t3_di6",
      "track": "dialogue",
-     "start": 12.3,
-     "duration": 1.2,
+     "start": 11.3,
+     "duration": 0.7,
      "actorUid": "jefe",
      "text": "¿Yo?"
     },
     {
      "id": "e3t3_fa7",
      "track": "face",
-     "start": 13.85,
+     "start": 12.35,
      "duration": 0.3,
      "actorUid": "bar",
      "expressionId": "expression.barbas.risa"
@@ -785,15 +784,15 @@
     {
      "id": "e3t3_di8",
      "track": "dialogue",
-     "start": 13.85,
-     "duration": 5.3,
+     "start": 12.35,
+     "duration": 4.8,
      "actorUid": "bar",
      "text": "Tú, Jefe. Tres horas. Con todo el amor del mundo: eres un crack."
     },
     {
      "id": "e3t3_fa9",
      "track": "face",
-     "start": 19.5,
+     "start": 17.5,
      "duration": 0.3,
      "actorUid": "jefe",
      "expressionId": "expression.jefe.neutral"
@@ -801,7 +800,7 @@
     {
      "id": "e3t3_bo10",
      "track": "body",
-     "start": 19.5,
+     "start": 17.5,
      "duration": 0.3,
      "actorUid": "jefe",
      "poseId": "char.jefe.pose_neutral_3q_right"
@@ -809,15 +808,15 @@
     {
      "id": "e3t3_di11",
      "track": "dialogue",
-     "start": 19.5,
-     "duration": 3.5,
+     "start": 17.5,
+     "duration": 3.1,
      "actorUid": "jefe",
      "text": "Eso se lo preguntaré al Jefe del pasado."
     },
     {
      "id": "e3t3_fa12",
      "track": "face",
-     "start": 23.35,
+     "start": 20.95,
      "duration": 0.3,
      "actorUid": "rey",
      "expressionId": "expression.reynaldo.enfado"
@@ -825,7 +824,7 @@
     {
      "id": "e3t3_bo13",
      "track": "body",
-     "start": 23.35,
+     "start": 20.95,
      "duration": 0.3,
      "actorUid": "rey",
      "poseId": "char.reynaldo.pose_arms_crossed"
@@ -833,8 +832,8 @@
     {
      "id": "e3t3_di14",
      "track": "dialogue",
-     "start": 23.35,
-     "duration": 3.5,
+     "start": 20.95,
+     "duration": 3.1,
      "actorUid": "rey",
      "text": "Y conste que ha sido en horario laboral."
     },
@@ -842,7 +841,7 @@
      "id": "e3t3_mo15",
      "track": "mouth",
      "start": 0,
-     "duration": 28.8,
+     "duration": 26.0,
      "actorUid": "rey",
      "mode": "auto"
     },
@@ -850,7 +849,7 @@
      "id": "e3t3_mo16",
      "track": "mouth",
      "start": 0,
-     "duration": 28.8,
+     "duration": 26.0,
      "actorUid": "sis",
      "mode": "auto"
     },
@@ -858,7 +857,7 @@
      "id": "e3t3_mo17",
      "track": "mouth",
      "start": 0,
-     "duration": 28.8,
+     "duration": 26.0,
      "actorUid": "jefe",
      "mode": "auto"
     },
@@ -866,7 +865,7 @@
      "id": "e3t3_mo18",
      "track": "mouth",
      "start": 0,
-     "duration": 28.8,
+     "duration": 26.0,
      "actorUid": "usu",
      "mode": "auto"
     },
@@ -874,7 +873,7 @@
      "id": "e3t3_mo19",
      "track": "mouth",
      "start": 0,
-     "duration": 28.8,
+     "duration": 26.0,
      "actorUid": "bar",
      "mode": "auto"
     }
