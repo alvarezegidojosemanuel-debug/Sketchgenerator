@@ -1,5 +1,7 @@
 # PUÑETOS · Biblia del universo (v3)
 
+> ⚠️ **SUSTITUIDO** por [`BIBLIA_PUNETOS_v4.md`](BIBLIA_PUNETOS_v4.md) (biblia del creador). Se conserva como histórico; en caso de duda, manda la v4.
+
 > **v3:** el escenario pasa a ser un **complejo tecnológico privado y puntero** (IA, espacio, biotecnología, robótica) y ellos son su equipo de **sistemas**. La temporada de 10 episodios está en [`temporada-1.md`](temporada-1.md) y sustituye al diseño v2 de la sección 3.
 
 Encargo de origen: [`fuentes/LORE_PUNETOS_encargo.md`](fuentes/LORE_PUNETOS_encargo.md).

@@ -1,5 +1,7 @@
 # PUÑETOS · El lore completo (v3)
 
+> ⚠️ **SUSTITUIDO** por [`BIBLIA_PUNETOS_v4.md`](BIBLIA_PUNETOS_v4.md) (biblia del creador). Se conserva como histórico; en caso de duda, manda la v4.
+
 > Documento único con **todo lo que sabemos del mundo**: premisa, reglas, personajes, NODO, la temporada 1 de 10 episodios, el tono, las líneas rojas y la producción. Está pensado para revisarlo de una sentada y para dárselo a cualquier IA o persona que vaya a escribir guiones.
 >
 > **Leyenda:**

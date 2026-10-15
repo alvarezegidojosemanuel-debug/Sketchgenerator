@@ -1,5 +1,7 @@
 # PUÑETOS · Temporada 1 (10 episodios) — escaleta v3
 
+> ⚠️ **SUSTITUIDO** por [`BIBLIA_PUNETOS_v4.md`](BIBLIA_PUNETOS_v4.md) (biblia del creador). Se conserva como histórico; en caso de duda, manda la v4.
+
 > Sustituye al «diseño v2» de la biblia. Escenario nuevo: **un complejo tecnológico privado y puntero**. Ya no es una empresa de software ni un call center.
 
 ## El mundo

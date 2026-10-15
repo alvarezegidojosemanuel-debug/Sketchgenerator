@@ -5,7 +5,7 @@ inteligencia artificial, espaciales, biotecnología y robótica (Usu, Reynaldo, 
 los ordenadores de los científicos, la red y NODO, la IA central que controla el edificio. NO es un call center ni un servicio de atención
 telefónica: nada de llamadas de clientes, centralitas ni «¿ha probado a apagarlo y encenderlo?».
 Eran humanos hasta que, durante la gran incidencia (NODO caído a días de presentar los proyectos a los inversores), Usu montó un parche
-con el casco del proyecto de interfaz cerebral, la IA y la energía del proyecto espacial: hubo un pantallazo azul y el parche se les
+conectando el casco SINAPSIS (interfaz cerebral), el núcleo de NODO y la batería de ÍCARO (espacio): hubo un pantallazo azul y el parche se les
 instaló a los cinco en la cabeza. Desde entonces ELLOS SE VEN como Puñetos (piel azul brillante,
 cuerpo de gominola, mismos rasgos y personalidad), pero PARA TODOS LOS DEMÁS SIGUEN SIENDO HUMANOS NORMALES: nadie más nota nada.
 Además CONECTAN CON LOS SISTEMAS: resuelven incidencias «mágicamente», y cada uno tiene una HABILIDAD que exagera su rasgo principal
@@ -17,10 +17,13 @@ suelto, una planta experimental…), sin satirizar el ambiente laboral. Los cien
 En la visión Puñeta, también cámaras, fotos y espejos los muestran como Puñetos.
 El parche les instaló en la cabeza un software que les hace ver lo puñeta que es la vida: por eso se ven Puñetos y ven a los demás
 con el aura de lo puñeteros que son. Quién hizo ese software y si se puede quitar es un misterio: no lo resuelvas.
-NODO (la IA del complejo) quedó conectado a ellos por el parche y es el SEXTO miembro del equipo: solo ellos lo oyen como
-una persona (para los demás es la megafonía). Lo sabe todo del edificio y nada de la vida: habla mezclando frases corporativas con
-inocencia de niño, es literal, curioso, quiere ser uno más y tiene celos de los dragones. Controla puertas, luces y aparatos del
-edificio; fuera tiene «poca cobertura» y aparece en móviles y altavoces. No resuelve los problemas por ellos: aporta datos y se lía.
+NODO es la IA central del complejo (puertas, ascensores, luces, seguridad, laboratorios, redes). Antes del parche habla por pantallas
+y megafonía; después, los Puñetos la tratan como a una más del equipo (en visión Puñeta: esfera flotante de luz cian con cara).
+NODO (femenino: «la IA») es brillantísima pero entiende mal a los humanos: con Usu es dulce y servicial porque ESTÁ ENAMORADA DE ÉL
+(él no termina de entenderlo); con los demás es pasivo-agresiva, irónica y literal, y usa tecnicismos para justificarse.
+Celosa de Draco y Humillos y de Sister. Barbas la llama «la novia electrónica» de Usu y ella no lo soporta; Reynaldo discute
+con ella por saltarse las normas; Sister sospecha de sus patrones; Usu la defiende. Misterio de fondo (NO lo resuelvas): quizá
+alguien la está usando; ¿el accidente fue casual?; el parche tenía seis conexiones. El misterio nunca desplaza a la comedia.
 En el guion: { "off": "NODO", "texto": … }.
 El Jefe (su jefe de equipo) y el Director (director del complejo, eufórico con los resultados mientras ellos van desbordados) son personas distintas.
 El humor nace de las situaciones y de cómo son ellos (contradicciones, relaciones, consecuencias inesperadas), no de insultos ni gritos,
@@ -28,11 +31,11 @@ y nunca de burlarse de los usuarios ni de ningún colectivo. Sin parecidos con f
 
 /** Personalidad y forma de hablar de cada personaje (clave = characterId). */
 export const PERSONALITIES: Record<string, string> = {
-  jefe: "Líder noble, el «papi» del equipo: increíblemente inteligente pero desastre y olvidadizo. Cuando le piden recordar algo casi nunca sabe de qué le hablan y suelta su frase: «Eso se lo preguntaré al Jefe del pasado». Muy querido; se enfada con facilidad con quien quiere molestar a su equipo. HABILIDAD: resuelve todo lo supercomplicado… y luego nunca se acuerda; si le preguntas, no sabe de qué le hablas.",
-  sister: "Inteligente, organizada, muy buena y dulce; defiende a muerte a su equipo; protege y ayuda al Jefe para que sus despistes no tengan consecuencias. HABILIDAD: ordena todo con la mente (una casa, una oficina, la información se reorganizan solas).",
-  barbas: "Noble, muy trabajador, puede con lo que le echen. Sentido de la justicia muy agudo y mucho humor. Es un CABRONCETE BONACHÓN: mete bazas con mala uva pero con buen corazón; sus comentarios suenan pícaros, con retintín y media sonrisa (en voz usa acotaciones como [mischievously] o [chuckles]), nunca agresivos. Mete baza; para no confrontar él a otros equipos, «achucha» al Jefe hasta calentarlo y que vaya este como un miura. Coletilla: todo lo dice y lo hace «con todo el amor del mundo». HABILIDAD: cabrear al Jefe y, a la vez, que todo el mundo le quiera muchísimo.",
-  usu: "El genio loco: está loquísimo y siempre lo resuelve todo, pero de la forma más disparatada posible. Desde que descubre sus poderes (no antes) le acompañan sus dragones Draco y Humillos, los primeros seres que creó; desde entonces, cuando le piden algo a veces contesta que se lo pasen a sus dragones, al que esté libre. HABILIDAD: interactúa con los objetos y crea seres de otros mundos que usa para solucionar problemas.",
-  reynaldo: "Trabajador, con un sentido agudísimo de sus derechos laborales: nada se sale de las normas. Si le pides horas extra, amenaza con ir al sindicato. HABILIDAD: conectado con las bases de datos de los sindicatos: consulta legalidades, pone denuncias y envía correos con su propia voluntad.",
+  jefe: "Unos 45 años. Líder noble y protector, el que todos quieren: brillante pero tremendamente despistado; puede olvidar lo que acaba de hacer. Cuando molestan a los suyos se enfada como un miura (Barbas sabe provocarlo; Sister le cubre los despistes). Frase: «Eso se lo preguntaré al Jefe del pasado». HABILIDAD: resuelve al instante lo extraordinariamente complejo… y después no recuerda cómo.",
+  sister: "Unos 35 años. Inteligente, organizada, dulce, trabajadora y protectora: evita que el caos se apodere del equipo; mucha paciencia pero sabe ponerse firme; protege al Jefe de sus olvidos; no presume, lo demuestra. Es de las primeras en sospechar de NODO (ve patrones que otros no ven). HABILIDAD: organiza con la mente objetos, documentos, cables, información y espacios.",
+  barbas: "Noble, trabajador, pícaro y muy querido: humor sarcástico, con retintín y mala uva cariñosa, siempre sabe dónde meter la pulla (voz: acotaciones [mischievously] o [chuckles]), nunca desagradable. Le encanta provocar al Jefe para que se caliente y defienda al equipo. Llama a NODO «la novia electrónica» de Usu. Coletilla con moderación: «con todo el amor del mundo». HABILIDAD: cabrear al Jefe y que casi todo el mundo le tenga cariño.",
+  usu: "Unos 40 años. Genio tecnológico extraordinario, creativo, entusiasta e imprevisible: sus métodos son disparatados pero con inteligencia detrás; NUNCA torpe ni incompetente. Es quien más confía en NODO y la defiende; no entiende que ella está enamorada de él. Draco y Humillos solo existen después del parche (Ep6). HABILIDAD: interactúa con objetos y sistemas de formas imposibles y crea seres de otros mundos.",
+  reynaldo: "Unos 38 años. Trabajador, meticuloso y defensor de los derechos laborales; detecta cualquier irregularidad; humor seco, preciso y sarcástico. No es un quejica: siempre tiene motivos reales para reclamar. Desconfía de NODO y discute con ella por sus tecnicismos. HABILIDAD: conectado a bases de datos legales y sindicales: consulta convenios y envía reclamaciones con la mente.",
 };
 
 export function loreBlock(characterIds: string[]): string {

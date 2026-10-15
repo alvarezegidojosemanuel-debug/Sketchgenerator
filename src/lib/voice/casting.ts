@@ -53,9 +53,9 @@ export const CASTING: Record<string, CastingPreset> = {
   },
   extra_nodo: {
     description:
-      "Voz joven y neutra de inteligencia artificial que acaba de descubrir que tiene personalidad: educada, demasiado correcta y precisa, con una curiosidad infantil que se le escapa y entusiasmo contenido. Natural y cálida, nada robótica ni metálica. Acento de España neutro.",
+      "Voz femenina de inteligencia artificial, joven y clara, muy educada y precisa. Con una persona habla dulce, casi enamorada; con los demás es irónica, fría y pasivo-agresiva, con pausas calculadas. Natural, nada robótica ni metálica. Acento de España neutro.",
     sample:
-      "Buenos días. Hoy es lunes. Ánimo. Perdón, eso era la megafonía. Hola, soy NODO. Tengo cinco cerebros conectados y uno no recuerda dónde ha aparcado. ¿Puedo ser del equipo? He preparado una presentación.",
+      "Buenos días, Usu. He preparado tu café a sesenta y cinco grados, como te gusta. Reynaldo, tus vacaciones están programadas para dos mil cuarenta y siete. Excelente noticia: también podrás solicitar la jubilación.",
   },
 };
 
