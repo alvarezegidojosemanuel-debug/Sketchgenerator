@@ -24,10 +24,12 @@ export function fitTakeToAudio(take: Take, durations: Map<string, number>, gap =
     const end = d.start + d.duration;
     d.duration = target;
     changed++;
-    // desplazar todo lo que empieza después del final original del bloque
+    // «Ripple»: lo que empieza después del final original se desplaza; lo que está EN PANTALLA en ese
+    // momento (cruza el final) se estira o encoge lo mismo, para que no quede un hueco sin imagen.
     for (const e of t.events) {
       if (e === d) continue;
       if (e.start >= end - 1e-6) e.start = Math.max(0, Math.round((e.start + delta) * 100) / 100);
+      else if (e.start + e.duration > end - 1e-6) e.duration = Math.max(0.05, Math.round((e.duration + delta) * 100) / 100);
     }
   }
   const maxEnd = t.events.reduce((m, e) => Math.max(m, e.start + e.duration), 0);
