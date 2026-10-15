@@ -13,7 +13,7 @@ Regla de tono: el humor sale de las situaciones de oficina y de cómo son ellos,
 | **Jefe** | Líder noble, el «papi» del equipo. Increíblemente inteligente pero desastre y olvidadizo. Muy querido; se enfada enseguida con quien molesta a su equipo y entonces embiste como un miura. | «Eso se lo preguntaré al Jefe del pasado.» |
 | **Sister** | Inteligente, organizada, dulce. Defiende a muerte al equipo y tapa los despistes del Jefe sin que nadie lo note. | Lleva la agenda del Jefe… y la suya. |
 | **Barbas** | Noble y currante, puede con todo. Sentido de la justicia muy agudo y mucho humor. Para no enfrentarse él, «calienta» al Jefe hasta que este sale disparado. | «Jefe, ¿has oído lo que han dicho de nosotros?» |
-| **Usu** | El genio loco: siempre lo resuelve todo, de la forma más disparatada posible. Tiene dos dragones imaginarios, Draco y Desdentado, a los que da de desayunar. | «Pásaselo a mis dragones. Al que esté libre.» |
+| **Usu** | El genio loco: siempre lo resuelve todo, de la forma más disparatada posible. Tiene dos dragones imaginarios, Draco y Humillos, a los que da de desayunar. | «Pásaselo a mis dragones. Al que esté libre.» |
 | **Reynaldo** | Trabajador, con un sentido agudísimo de sus derechos laborales. Nada se sale de las normas. | «Artículo 34 del convenio.» / «Voy al sindicato.» |
 
 ## Miniserie «El origen» (6 episodios de ~45 s)
@@ -30,7 +30,7 @@ La cadena que justifica la puñetización:
 
 - **Narrador:** «Departamento de soporte. Cinco personas. Tres mil incidencias abiertas.»
 - **Sister** cierra tickets a una velocidad imposible y deja un pósit en la pantalla del Jefe: «Renovar mantenimiento servidor. HOY.»
-- **Usu**, sin dejar de teclear: «Ese pásaselo a Draco. Desdentado está desayunando.»
+- **Usu**, sin dejar de teclear: «Ese pásaselo a Draco. Humillos está desayunando.»
 - **Reynaldo** mira el reloj: «Son las 18:00. Artículo 34 del convenio. Buenas tardes.»
 - **Barbas** al Jefe: «Jefe, los de Sistemas dicen que somos el departamento más lento de la empresa.» El Jefe se levanta como un miura y sale disparado.
 - **Remate:** el pósit de Sister se despega y cae a la papelera.
@@ -55,7 +55,7 @@ La cadena que justifica la puñetización:
 - Correo del director: «Si el servidor falla otra vez, soporte se externaliza el lunes.»
 - Barbas calienta al Jefe: «Jefe, dicen que unos de fuera lo harían mejor que nosotros.» El Jefe embiste hacia el despacho del director.
 - Sister detiene al Jefe en la puerta y le cuenta en voz baja lo del mantenimiento olvidado.
-- Usu, solo, de noche: «Draco, Desdentado… vamos a salvar al equipo.»
+- Usu, solo, de noche: «Draco, Humillos… vamos a salvar al equipo.»
 - **Remate:** en su monitor, «Parche Definitivo · versión 0.1».
 
 ### Ep. 5 · «Viernes, 17:59»
@@ -70,7 +70,7 @@ La cadena que justifica la puñetización:
 - Llegan a la oficina azules. Nadie de la empresa dice nada (o finge no notarlo).
 - El director: «El servidor va mejor que nunca. Soporte se queda.»
 - Jefe: «¿Ves? Todo controlado.» Sister le arregla la corbata.
-- Usu: «Los dragones también se han vuelto azules.» Bocadillo: Draco y Desdentado, azules.
+- Usu: «Los dragones también se han vuelto azules.» Bocadillo: Draco y Humillos, azules.
 - **Remate:** Reynaldo: «¿Esto cuenta como accidente laboral?»
 
 ## Recursos que piden los episodios
@@ -79,7 +79,7 @@ La cadena que justifica la puñetización:
 - **Objetos:**
   - pósit grande;
   - abrigo / Reynaldo con abrigo;
-  - dragones Draco y Desdentado (y su versión azul);
+  - dragones Draco y Humillos (y su versión azul);
   - monitor con «Parche Definitivo v0.1»;
   - correo del director en pantalla.
 - **Personajes:** director (humano, de frente). Segundo fotograma de cada humano tecleando (manos).
