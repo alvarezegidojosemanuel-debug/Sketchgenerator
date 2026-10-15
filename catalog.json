@@ -5902,6 +5902,11 @@
    "id": "bg_oficina_manana",
    "label": "Oficina de soporte por la mañana (5 puestos, vista por detrás)",
    "src": "/assets/punetos/backgrounds/bg_oficina_manana.webp"
+  },
+  {
+   "id": "bg_oficina_noche",
+   "label": "Oficina de soporte de noche (5 puestos, vista por detrás)",
+   "src": "/assets/punetos/backgrounds/bg_oficina_noche.webp"
   }
  ],
  "props": [
