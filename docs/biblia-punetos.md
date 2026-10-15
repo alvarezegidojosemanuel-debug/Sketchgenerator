@@ -12,37 +12,16 @@ Leyenda:
 
 ---
 
-## 1. Tres interpretaciones del parche
+## 1. Qué hizo el parche `CANON`
 
-Ninguna es canon. Las tres son compatibles con todo lo que se enseñe en los cinco primeros episodios, así que se puede elegir más adelante, o no elegir nunca.
+**El parche les instaló en la cabeza un software que les hace ver lo puñeta que es la vida.**
 
-### A · «Modo depuración» `PROPUESTA`
+- No cambió sus cuerpos ni el mundo: cambió **cómo lo ven** (es su visión, no una verdad objetiva).
+- Por eso **se ven a sí mismos como Puñetos** y ven a los demás con su **aura**: la caricatura de lo *puñetero* que es cada uno (el cuñado, la vecina cotilla…).
+- El mismo software es el que les **conecta con los sistemas** y les da sus **habilidades**.
+- El juego de palabras es el corazón de la serie: *Puñetos* ven *lo puñeta* que es todo.
 
-El parche no tocó el ordenador: les **actualizó a ellos**. Ahora ven el mundo como lo ve un técnico en modo *debug*, con la «capa de interfaz» de la realidad a la vista. Los Puñetos son cómo se representan ellos mismos en esa capa. Las demás personas tienen su propia representación, que muestra cómo funcionan por dentro.
-
-- **Gags:** fallos, «errores de renderizado» en la gente, reinicios, «se me ha colgado la visión».
-- **Pregunta de fondo:** ¿se puede hacer *rollback*?
-- **Riesgo:** puede volverse demasiado técnico. Hay que dosificarlo.
-
-### B · «La verdad oculta» `PROPUESTA`
-
-La dimensión Puñeta **existe**: todo el mundo tiene una forma Puñeta y el pantallazo solo les **abrió los ojos**. No se han transformado; siempre fueron así. Lo que ven en los demás («aura») es verdad, aunque grotesca.
-
-- **Gags:** descubrir cómo es de verdad el Director, la de recursos humanos, la propia familia.
-- **Pregunta de fondo:** si es verdad, ¿quieren dejar de verlo?
-- **Riesgo:** convierte cada personaje secundario en un «juicio moral». Hay que mantenerlo cómico, no cruel.
-
-### C · «La infección» `PROPUESTA`
-
-El parche es un programa que **se propaga**: vive en ellos y puede pasar a otras personas por pantallas, cables o cercanía al servidor. La visión Puñeta es un síntoma.
-
-- **Gags:** miedo a contagiar a la familia, alguien que empieza a «ver» cosas, la cuarentena.
-- **Pregunta de fondo:** ¿lo arreglan o lo extienden?
-- **Riesgo:** empuja la serie hacia «buscar la cura». Hay que usarlo como amenaza lejana.
-
-**Mi recomendación:** contar los cinco episodios mezclando **B** (lo que ven parece verdad) con pistas de **C** (quizá no son los únicos), sin confirmar nada. **A** puede ser la *teoría de Usu* dentro de la serie: así cada interpretación tiene un personaje que la defiende.
-
----
+`MISTERIO`: quién hizo ese software en realidad, si se puede desinstalar o actualizar, y si alguien más lo tiene instalado.
 
 ## 2. Reglas del mundo
 
@@ -86,7 +65,7 @@ El parche es un programa que **se propaga**: vive en ellos y puede pasar a otras
 
 ### `MISTERIO SIN RESOLVER`
 
-- Qué hace realmente el parche (A, B o C).
+- Quién hizo realmente el software y si se puede desinstalar, actualizar o instalar a otros.
 - Si hay más gente que ve lo mismo o que conecta con los sistemas.
 - Si se puede repetir, revertir o contagiar.
 - Por qué ese parche y no otro.
@@ -215,7 +194,6 @@ Sueltos, cada uno centrado en un personaje fuera de la oficina:
 
 ## 6. Pendiente de tu aprobación
 
-1. ¿Qué **interpretación del parche** guardamos como verdad interna (A, B, C o ninguna)?
 3. ¿Te gusta que **Draco y Humillos** sean los primeros seres que Usu creó (y por eso quizá no eran imaginarios)?
 4. ¿El **misterio de los dragones** entra en canon?
 5. ¿Te encaja el **diseño v2 de los episodios**? Cuando lo apruebes, escribo los guiones dialogados.

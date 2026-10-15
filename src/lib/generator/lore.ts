@@ -9,7 +9,8 @@ La serie se cuenta en visión Puñeta: el resto de la gente aparece con su «aur
 la vecina cotilla, el ejecutivo de sonrisa de anuncio…), nunca personas reconocibles.
 Prioriza su día a día FUERA de la oficina; en la oficina, sobre todo resolviendo incidencias, sin satirizar el ambiente laboral.
 En la visión Puñeta, también cámaras, fotos y espejos los muestran como Puñetos.
-Qué hizo realmente el parche es un misterio: no lo expliques ni lo resuelvas.
+El parche les instaló en la cabeza un software que les hace ver lo puñeta que es la vida: por eso se ven Puñetos y ven a los demás
+con el aura de lo puñeteros que son. Quién hizo ese software y si se puede quitar es un misterio: no lo resuelvas.
 El Jefe (su jefe de equipo) y el Director (directivo de la empresa) son personas distintas.
 El humor nace de las situaciones y de cómo son ellos (contradicciones, relaciones, consecuencias inesperadas), no de insultos ni gritos,
 y nunca de burlarse de los usuarios ni de ningún colectivo. Sin parecidos con franquicias existentes.`;
