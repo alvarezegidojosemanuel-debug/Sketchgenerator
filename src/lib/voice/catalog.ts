@@ -52,15 +52,15 @@ export const DEFAULT_CAST: Record<string, CastEntry> = {
 export const NARRATOR_ID = "narrador";
 
 /** Personajes que necesitan voz en el proyecto (+ narrador si hay voz en off). */
-export function castIds(project: { takes: { actors: { characterId: string }[]; events: { track: string; actorUid?: string }[] }[] }): string[] {
-  const ids = [...new Set(project.takes.flatMap((t) => t.actors.map((a) => a.characterId)))];
-  if (project.takes.some((t) => t.events.some((e) => e.track === "dialogue" && !e.actorUid))) ids.push(NARRATOR_ID);
-  return ids;
+export function castIds(project: { takes: { actors: { characterId: string }[]; events: { track: string; actorUid?: string; voiceOf?: string }[] }[] }): string[] {
+  const ids = new Set(project.takes.flatMap((t) => t.actors.map((a) => a.characterId)));
+  for (const t of project.takes) for (const e of t.events) if (e.track === "dialogue" && !e.actorUid) ids.add(e.voiceOf ?? NARRATOR_ID);
+  return [...ids];
 }
 
 /** characterId de la voz que dice un diálogo. */
-export function speakerCharacterId(take: { actors: { uid: string; characterId: string }[] }, actorUid: string | undefined): string {
-  if (!actorUid) return NARRATOR_ID;
+export function speakerCharacterId(take: { actors: { uid: string; characterId: string }[] }, actorUid: string | undefined, voiceOf?: string): string {
+  if (!actorUid) return voiceOf ?? NARRATOR_ID;
   return take.actors.find((a) => a.uid === actorUid)?.characterId ?? "";
 }
 

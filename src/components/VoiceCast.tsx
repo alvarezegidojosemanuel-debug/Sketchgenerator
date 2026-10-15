@@ -23,7 +23,7 @@ export function VoiceCast({ s }: { s: PocketState }) {
     });
 
   const sampleLine = (cid: string) =>
-    project.takes.flatMap((t) => t.events.filter((e) => e.track === "dialogue" && speakerCharacterId(t, e.actorUid) === cid)).map((e) => (e as { text: string }).text)[0] ??
+    project.takes.flatMap((t) => t.events.filter((e) => e.track === "dialogue" && speakerCharacterId(t, e.actorUid, (e as { voiceOf?: string }).voiceOf) === cid)).map((e) => (e as { text: string }).text)[0] ??
     "Hola, soy yo. ¿Qué tal suena mi voz?";
 
   const test = async (cid: string) => {

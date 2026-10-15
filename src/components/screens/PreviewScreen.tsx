@@ -57,8 +57,8 @@ export function PreviewScreen({ s }: { s: PocketState }) {
         t.events
           .filter((e) => e.track === "dialogue")
           .map((e) => {
-            const d = e as { id: string; text: string; actorUid?: string; voice?: { rate?: number } };
-            return { key: clipKey(t.id, d.id), text: d.text, characterId: speakerCharacterId(t, d.actorUid), rate: d.voice?.rate };
+            const d = e as { id: string; text: string; actorUid?: string; voiceOf?: string; voice?: { rate?: number } };
+            return { key: clipKey(t.id, d.id), text: d.text, characterId: speakerCharacterId(t, d.actorUid, d.voiceOf), rate: d.voice?.rate };
           }),
       ),
     [project],

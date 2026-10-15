@@ -96,3 +96,17 @@ describe("cambiar objeto", () => {
     expect(swapEvents(from, "prop_cafe", 1, "x")).toBeNull();
   });
 });
+
+describe("demo El origen", () => {
+  it("valida, usa voces de personajes sin actor y los puñetos entran en la toma 2", async () => {
+    const raw = (await import("@/data/sketch-origen.json")).default;
+    const ro = validateProject(structuredClone(raw), catalog);
+    expect(ro.errors).toEqual([]);
+    const t1 = ro.project!.takes[0];
+    const f = evaluateTake(t1, catalog, 4);
+    expect(f.subtitles[0].speaker).toBe("Sister");
+    expect(castIds(ro.project!)).toEqual(expect.arrayContaining(["sister", "reynaldo", "usu", "barbas", "narrador"]));
+    const t2 = ro.project!.takes[1];
+    expect(layoutFrame(catalog, evaluateTake(t2, catalog, 1)).actors.length).toBe(5);
+  });
+});

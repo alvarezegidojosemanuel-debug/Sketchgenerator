@@ -428,7 +428,7 @@ const PRESENCE_LABEL: Record<string, string> = { fade: "fundido", pop: "pop", fl
 
 function summary(e: PocketEvent, s: PocketState): string {
   switch (e.track) {
-    case "dialogue": return `${e.actorUid ? "" : "🎙️ "}“${e.text}”`;
+    case "dialogue": return `${e.actorUid ? "" : e.voiceOf ? `🔈 ${s.catalog.characters.find((c) => c.id === e.voiceOf)?.name ?? e.voiceOf}: ` : "🎙️ "}“${e.text}”`;
     case "body": return [
       e.appear ? `▶ entra (${PRESENCE_LABEL[e.appear]})` : e.disappear ? `⏏ sale (${PRESENCE_LABEL[e.disappear]})` : "",
       e.poseId ? s.catalog.characters.flatMap((c) => c.poses).find((p) => p.id === e.poseId)?.label : undefined,
@@ -460,17 +460,22 @@ function EventEditor({ s, take, ev, voices, t, onTransform, onSwap, onChange, on
       {(ev.actorUid !== undefined || ev.track === "dialogue") && ev.track !== "props" && (
         <Field label={ev.track === "dialogue" ? "Quién habla" : "Personaje"}>
           <select
-            value={ev.actorUid ?? ""}
+            value={ev.actorUid ?? (ev.track === "dialogue" && ev.voiceOf ? `voz:${ev.voiceOf}` : "")}
             onChange={(e) =>
               onChange((x) => {
-                const o = x as { actorUid?: string };
-                if (e.target.value) o.actorUid = e.target.value;
+                const o = x as { actorUid?: string; voiceOf?: string };
+                delete o.voiceOf;
+                if (e.target.value.startsWith("voz:")) {
+                  delete o.actorUid;
+                  o.voiceOf = e.target.value.slice(4);
+                } else if (e.target.value) o.actorUid = e.target.value;
                 else delete o.actorUid;
               })
             }
           >
             {take.actors.map((a) => <option key={a.uid} value={a.uid}>{findCharacter(catalog, a.characterId)?.name} ({a.uid})</option>)}
             {ev.track === "dialogue" && <option value="">🎙️ Narrador (voz en off)</option>}
+            {ev.track === "dialogue" && catalog.characters.map((c) => <option key={c.id} value={`voz:${c.id}`}>🔈 Voz de {c.name} (sin personaje en escena)</option>)}
           </select>
         </Field>
       )}

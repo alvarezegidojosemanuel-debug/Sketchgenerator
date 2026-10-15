@@ -271,6 +271,19 @@ export function normalizeRaw(input: unknown, catalog: Catalog, warnings: Issue[]
         if (e.track === "dialogue" && (e.actorUid === null || (typeof e.actorUid === "string" && /^(narrador|narrator|voz ?en ?off|voiceover|off)$/i.test(e.actorUid) && !actorChars.has(e.actorUid)))) {
           delete e.actorUid;
         }
+        // Voz de un personaje que no está como actor en la toma (p. ej. dibujado como objeto).
+        if (e.track === "dialogue" && typeof e.actorUid === "string" && !actorChars.has(e.actorUid)) {
+          const vc = matchCharacter(catalog, e.actorUid);
+          if (vc) {
+            warnings.push({ path: `${ep}.actorUid`, message: `"${e.actorUid}" no está en la toma; se usa como voz de ${vc.name} (voiceOf)` });
+            e.voiceOf = vc.id;
+            delete e.actorUid;
+          }
+        }
+        if (e.track === "dialogue" && e.voiceOf !== undefined) {
+          const vc = matchCharacter(catalog, e.voiceOf);
+          if (vc) e.voiceOf = vc.id;
+        }
 
         const ch = typeof e.actorUid === "string" ? actorChars.get(e.actorUid) : undefined;
         if (ch && e.track === "body" && e.poseId !== undefined) {
@@ -393,6 +406,9 @@ export function checkSemantics(project: Project, catalog: Catalog): Issue[] {
       if (e.actorUid !== undefined && !actorChar.has(e.actorUid)) {
         errors.push({ path: `${ep}.actorUid`, message: `actor "${e.actorUid}" no existe en esta toma` });
         return;
+      }
+      if (e.track === "dialogue" && e.voiceOf !== undefined && !findCharacter(catalog, e.voiceOf)) {
+        errors.push({ path: `${ep}.voiceOf`, message: `personaje "${e.voiceOf}" no existe en el catálogo` });
       }
       const charId = e.actorUid ? actorChar.get(e.actorUid) : undefined;
       const ch = charId ? findCharacter(catalog, charId) : undefined;

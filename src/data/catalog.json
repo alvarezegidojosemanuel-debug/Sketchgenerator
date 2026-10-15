@@ -5892,6 +5892,11 @@
    "label": "Salón",
    "src": "/assets/placeholder/backgrounds/bg_salon.svg",
    "placeholder": true
+  },
+  {
+   "id": "bg_oficina_soporte",
+   "label": "Oficina de soporte (5 puestos, vista por detrás)",
+   "src": "/assets/punetos/backgrounds/bg_oficina_soporte.webp"
   }
  ],
  "props": [
@@ -5938,10 +5943,100 @@
   {
    "id": "prop_escritorio",
    "label": "Escritorio con ordenador",
-   "width": 720,
-   "height": 540,
-   "src": "/assets/placeholder/props/prop_escritorio.svg",
-   "placeholder": true
+   "width": 908,
+   "height": 600,
+   "src": "/assets/punetos/props/prop_escritorio.webp"
+  },
+  {
+   "id": "prop_jefe_espaldas_teclea",
+   "label": "Jefe humano de espaldas (teclea)",
+   "width": 560,
+   "height": 800,
+   "src": "/assets/punetos/props/prop_jefe_espaldas_teclea.webp"
+  },
+  {
+   "id": "prop_sister_espaldas_teclea",
+   "label": "Sister humana de espaldas (teclea)",
+   "width": 440,
+   "height": 800,
+   "src": "/assets/punetos/props/prop_sister_espaldas_teclea.webp"
+  },
+  {
+   "id": "prop_barbas_espaldas_teclea",
+   "label": "Barbas humano de espaldas (teclea)",
+   "width": 589,
+   "height": 800,
+   "src": "/assets/punetos/props/prop_barbas_espaldas_teclea.webp"
+  },
+  {
+   "id": "prop_reynaldo_espaldas_teclea",
+   "label": "Reynaldo humano de espaldas (teclea)",
+   "width": 472,
+   "height": 800,
+   "src": "/assets/punetos/props/prop_reynaldo_espaldas_teclea.webp"
+  },
+  {
+   "id": "prop_usu_espaldas_teclea",
+   "label": "Usu humano de espaldas (teclea)",
+   "width": 555,
+   "height": 800,
+   "src": "/assets/punetos/props/prop_usu_espaldas_teclea.webp"
+  },
+  {
+   "id": "prop_jefe_espaldas_senala",
+   "label": "Jefe humano de espaldas (señala)",
+   "width": 582,
+   "height": 800,
+   "src": "/assets/punetos/props/prop_jefe_espaldas_senala.webp"
+  },
+  {
+   "id": "prop_sister_espaldas_senala",
+   "label": "Sister humana de espaldas (señala)",
+   "width": 498,
+   "height": 800,
+   "src": "/assets/punetos/props/prop_sister_espaldas_senala.webp"
+  },
+  {
+   "id": "prop_barbas_espaldas_habla",
+   "label": "Barbas humano de espaldas (habla)",
+   "width": 606,
+   "height": 800,
+   "src": "/assets/punetos/props/prop_barbas_espaldas_habla.webp"
+  },
+  {
+   "id": "prop_usu_espaldas_habla",
+   "label": "Usu humano de espaldas (habla)",
+   "width": 562,
+   "height": 800,
+   "src": "/assets/punetos/props/prop_usu_espaldas_habla.webp"
+  },
+  {
+   "id": "prop_sister_espaldas_explica",
+   "label": "Sister humana de espaldas (explica)",
+   "width": 534,
+   "height": 800,
+   "src": "/assets/punetos/props/prop_sister_espaldas_explica.webp"
+  },
+  {
+   "id": "prop_reynaldo_espaldas_hombros",
+   "label": "Reynaldo humano de espaldas (encoge los hombros)",
+   "width": 551,
+   "height": 800,
+   "src": "/assets/punetos/props/prop_reynaldo_espaldas_hombros.webp"
+  },
+  {
+   "id": "prop_reynaldo_humano",
+   "label": "Reynaldo humano (de pie)",
+   "width": 405,
+   "height": 900,
+   "src": "/assets/punetos/props/prop_reynaldo_humano.webp"
+  },
+  {
+   "id": "prop_usu_humano",
+   "label": "Usu humano (de pie)",
+   "width": 520,
+   "height": 900,
+   "src": "/assets/punetos/props/prop_usu_humano.webp"
   }
  ]
 }

@@ -1,0 +1,508 @@
+{
+  "schemaVersion": "pocket-1",
+  "catalogVersion": "v8-assets-1",
+  "metadata": {
+    "title": "El origen: Viernes 17:59",
+    "language": "es-ES",
+    "approxDuration": 26,
+    "idea": "Origen de los puñetos: el equipo de soporte trabaja un viernes a última hora y Usu lanza el Parche Definitivo.",
+    "wishlist": [
+      "versiones puñeto de espaldas en la silla (para transformar sin cortar)"
+    ]
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1920
+  },
+  "takes": [
+    {
+      "id": "take_1",
+      "name": "Viernes 17:59",
+      "duration": 17.0,
+      "backgroundId": "bg_oficina_soporte",
+      "actors": [],
+      "events": [
+        {
+          "id": "sister_0",
+          "track": "props",
+          "start": 0,
+          "duration": 3.6,
+          "propId": "prop_sister_espaldas_teclea",
+          "layer": "props-front",
+          "x": 102,
+          "y": 975,
+          "scale": 0.312,
+          "zIndex": 1,
+          "loop": "type"
+        },
+        {
+          "id": "sister_1",
+          "track": "props",
+          "start": 3.6,
+          "duration": 2.6,
+          "propId": "prop_sister_espaldas_explica",
+          "layer": "props-front",
+          "x": 108,
+          "y": 975,
+          "scale": 0.263,
+          "zIndex": 1
+        },
+        {
+          "id": "sister_2",
+          "track": "props",
+          "start": 6.2,
+          "duration": 10.8,
+          "propId": "prop_sister_espaldas_teclea",
+          "layer": "props-front",
+          "x": 102,
+          "y": 975,
+          "scale": 0.312,
+          "zIndex": 1,
+          "loop": "type"
+        },
+        {
+          "id": "reynaldo_0",
+          "track": "props",
+          "start": 0,
+          "duration": 6.2,
+          "propId": "prop_reynaldo_espaldas_teclea",
+          "layer": "props-front",
+          "x": 427,
+          "y": 1028,
+          "scale": 0.319,
+          "zIndex": 2,
+          "loop": "type"
+        },
+        {
+          "id": "reynaldo_1",
+          "track": "props",
+          "start": 6.2,
+          "duration": 2.2,
+          "propId": "prop_reynaldo_espaldas_hombros",
+          "layer": "props-front",
+          "x": 418,
+          "y": 1028,
+          "scale": 0.304,
+          "zIndex": 2
+        },
+        {
+          "id": "reynaldo_2",
+          "track": "props",
+          "start": 8.4,
+          "duration": 8.6,
+          "propId": "prop_reynaldo_espaldas_teclea",
+          "layer": "props-front",
+          "x": 427,
+          "y": 1028,
+          "scale": 0.319,
+          "zIndex": 2,
+          "loop": "type"
+        },
+        {
+          "id": "barbas_0",
+          "track": "props",
+          "start": 0,
+          "duration": 12.0,
+          "propId": "prop_barbas_espaldas_teclea",
+          "layer": "props-front",
+          "x": 782,
+          "y": 1090,
+          "scale": 0.331,
+          "zIndex": 3,
+          "loop": "type"
+        },
+        {
+          "id": "barbas_1",
+          "track": "props",
+          "start": 12.0,
+          "duration": 2.0,
+          "propId": "prop_barbas_espaldas_habla",
+          "layer": "props-front",
+          "x": 781,
+          "y": 1090,
+          "scale": 0.351,
+          "zIndex": 3
+        },
+        {
+          "id": "barbas_2",
+          "track": "props",
+          "start": 14.0,
+          "duration": 3.0,
+          "propId": "prop_barbas_espaldas_teclea",
+          "layer": "props-front",
+          "x": 782,
+          "y": 1090,
+          "scale": 0.331,
+          "zIndex": 3,
+          "loop": "type"
+        },
+        {
+          "id": "jefe_0",
+          "track": "props",
+          "start": 0,
+          "duration": 17.0,
+          "propId": "prop_jefe_espaldas_teclea",
+          "layer": "props-front",
+          "x": 83,
+          "y": 1622,
+          "scale": 0.775,
+          "zIndex": 4,
+          "loop": "type"
+        },
+        {
+          "id": "usu_0",
+          "track": "props",
+          "start": 0,
+          "duration": 8.6,
+          "propId": "prop_usu_espaldas_teclea",
+          "layer": "props-front",
+          "x": 575,
+          "y": 1848,
+          "scale": 0.875,
+          "zIndex": 5,
+          "loop": "type"
+        },
+        {
+          "id": "usu_1",
+          "track": "props",
+          "start": 8.6,
+          "duration": 3.2,
+          "propId": "prop_usu_espaldas_habla",
+          "layer": "props-front",
+          "x": 579,
+          "y": 1848,
+          "scale": 0.916,
+          "zIndex": 5
+        },
+        {
+          "id": "usu_2",
+          "track": "props",
+          "start": 11.8,
+          "duration": 5.2,
+          "propId": "prop_usu_espaldas_teclea",
+          "layer": "props-front",
+          "x": 575,
+          "y": 1848,
+          "scale": 0.875,
+          "zIndex": 5,
+          "loop": "type"
+        },
+        {
+          "id": "n1",
+          "track": "dialogue",
+          "start": 0.3,
+          "duration": 3.0,
+          "text": "Viernes. Seis menos un minuto. Departamento de soporte."
+        },
+        {
+          "id": "tec",
+          "track": "sfx",
+          "start": 0.2,
+          "duration": 3.0,
+          "soundId": "sfx_teclado",
+          "volume": 0.6
+        },
+        {
+          "id": "d_sis",
+          "track": "dialogue",
+          "start": 3.7,
+          "duration": 2.4,
+          "voiceOf": "sister",
+          "text": "¿Alguien sabe por qué el servidor hace ese ruido?"
+        },
+        {
+          "id": "d_rey",
+          "track": "dialogue",
+          "start": 6.3,
+          "duration": 1.9,
+          "voiceOf": "reynaldo",
+          "text": "[sighs] Ni idea. Yo solo cierro tickets."
+        },
+        {
+          "id": "d_usu",
+          "track": "dialogue",
+          "start": 8.7,
+          "duration": 2.9,
+          "voiceOf": "usu",
+          "text": "[excited] Tranquilos. Acabo de lanzar el Parche Definitivo."
+        },
+        {
+          "id": "ding",
+          "track": "sfx",
+          "start": 11.6,
+          "duration": 0.6,
+          "soundId": "sfx_ding"
+        },
+        {
+          "id": "d_bar",
+          "track": "dialogue",
+          "start": 12.1,
+          "duration": 1.8,
+          "voiceOf": "barbas",
+          "text": "¿Un viernes? ¿A las seis menos uno?"
+        },
+        {
+          "id": "bs",
+          "track": "screen",
+          "start": 14.2,
+          "duration": 2.8,
+          "effect": "bluescreen",
+          "text": "Tu equipo se ha puñetizado."
+        },
+        {
+          "id": "bss",
+          "track": "sfx",
+          "start": 14.2,
+          "duration": 2.2,
+          "soundId": "sfx_pantallazo"
+        },
+        {
+          "id": "shk",
+          "track": "screen",
+          "start": 14.0,
+          "duration": 0.5,
+          "effect": "shake"
+        }
+      ]
+    },
+    {
+      "id": "take_2",
+      "name": "Puñetizados",
+      "duration": 9.0,
+      "backgroundId": "bg_oficina_soporte",
+      "actors": [
+        {
+          "uid": "rey",
+          "characterId": "reynaldo",
+          "poseId": "char.reynaldo.pose_neutral_3q_right",
+          "x": 310,
+          "y": 1650,
+          "scale": 0.68,
+          "zIndex": 1,
+          "expressionId": "expression.reynaldo.neutral",
+          "hidden": true
+        },
+        {
+          "uid": "sis",
+          "characterId": "sister",
+          "poseId": "char.sister.pose_neutral_3q_left",
+          "x": 770,
+          "y": 1650,
+          "scale": 0.68,
+          "zIndex": 1,
+          "expressionId": "expression.sister.neutral",
+          "hidden": true
+        },
+        {
+          "uid": "jefe",
+          "characterId": "jefe",
+          "poseId": "char.jefe.pose_neutral_3q_right",
+          "x": 180,
+          "y": 1810,
+          "scale": 0.78,
+          "zIndex": 2,
+          "expressionId": "expression.jefe.neutral",
+          "hidden": true
+        },
+        {
+          "uid": "usu",
+          "characterId": "usu",
+          "poseId": "char.usu.pose_neutral_front",
+          "x": 540,
+          "y": 1810,
+          "scale": 0.78,
+          "zIndex": 3,
+          "expressionId": "expression.usu.neutral",
+          "hidden": true
+        },
+        {
+          "uid": "bar",
+          "characterId": "barbas",
+          "poseId": "char.barbas.pose_neutral_3q_left",
+          "x": 900,
+          "y": 1810,
+          "scale": 0.78,
+          "zIndex": 2,
+          "expressionId": "expression.barbas.neutral",
+          "hidden": true
+        }
+      ],
+      "events": [
+        {
+          "id": "rey_in",
+          "track": "body",
+          "start": 0.0,
+          "duration": 0.5,
+          "actorUid": "rey",
+          "appear": "flash"
+        },
+        {
+          "id": "sis_in",
+          "track": "body",
+          "start": 0.0,
+          "duration": 0.5,
+          "actorUid": "sis",
+          "appear": "flash"
+        },
+        {
+          "id": "jefe_in",
+          "track": "body",
+          "start": 0.0,
+          "duration": 0.5,
+          "actorUid": "jefe",
+          "appear": "flash"
+        },
+        {
+          "id": "usu_in",
+          "track": "body",
+          "start": 0.0,
+          "duration": 0.5,
+          "actorUid": "usu",
+          "appear": "flash"
+        },
+        {
+          "id": "bar_in",
+          "track": "body",
+          "start": 0.0,
+          "duration": 0.5,
+          "actorUid": "bar",
+          "appear": "flash"
+        },
+        {
+          "id": "fl_s",
+          "track": "sfx",
+          "start": 0.0,
+          "duration": 0.6,
+          "soundId": "sfx_whoosh"
+        },
+        {
+          "id": "rey_f",
+          "track": "face",
+          "start": 0.6,
+          "duration": 0.3,
+          "actorUid": "rey",
+          "expressionId": "expression.reynaldo.sorpresa"
+        },
+        {
+          "id": "sis_f",
+          "track": "face",
+          "start": 0.6,
+          "duration": 0.3,
+          "actorUid": "sis",
+          "expressionId": "expression.sister.sorpresa"
+        },
+        {
+          "id": "jefe_f",
+          "track": "face",
+          "start": 0.6,
+          "duration": 0.3,
+          "actorUid": "jefe",
+          "expressionId": "expression.jefe.sorpresa"
+        },
+        {
+          "id": "bar_f",
+          "track": "face",
+          "start": 0.6,
+          "duration": 0.3,
+          "actorUid": "bar",
+          "expressionId": "expression.barbas.sorpresa"
+        },
+        {
+          "id": "rey_sh",
+          "track": "body",
+          "start": 0.8,
+          "duration": 1.0,
+          "actorUid": "rey",
+          "fx": "shake"
+        },
+        {
+          "id": "bar_m",
+          "track": "mouth",
+          "start": 1.2,
+          "duration": 3,
+          "actorUid": "bar",
+          "mode": "auto"
+        },
+        {
+          "id": "bar_d",
+          "track": "dialogue",
+          "start": 1.3,
+          "duration": 1.6,
+          "actorUid": "bar",
+          "text": "[shouts] ¡Estamos AZULES!"
+        },
+        {
+          "id": "jefe_fe",
+          "track": "face",
+          "start": 3.1,
+          "duration": 0.3,
+          "actorUid": "jefe",
+          "expressionId": "expression.jefe.enfado"
+        },
+        {
+          "id": "jefe_p",
+          "track": "body",
+          "start": 3.1,
+          "duration": 0.3,
+          "actorUid": "jefe",
+          "poseId": "char.jefe.pose_pointing"
+        },
+        {
+          "id": "jefe_m",
+          "track": "mouth",
+          "start": 3.2,
+          "duration": 3,
+          "actorUid": "jefe",
+          "mode": "auto"
+        },
+        {
+          "id": "jefe_d",
+          "track": "dialogue",
+          "start": 3.3,
+          "duration": 1.6,
+          "actorUid": "jefe",
+          "text": "Usu. ¿Qué has hecho?"
+        },
+        {
+          "id": "usu_fe",
+          "track": "face",
+          "start": 5.1,
+          "duration": 0.3,
+          "actorUid": "usu",
+          "expressionId": "expression.usu.alegria"
+        },
+        {
+          "id": "usu_m",
+          "track": "mouth",
+          "start": 5.2,
+          "duration": 3,
+          "actorUid": "usu",
+          "mode": "auto"
+        },
+        {
+          "id": "usu_d",
+          "track": "dialogue",
+          "start": 5.3,
+          "duration": 2.2,
+          "actorUid": "usu",
+          "text": "Técnicamente… ya no hay tickets."
+        },
+        {
+          "id": "fr",
+          "track": "sfx",
+          "start": 7.7,
+          "duration": 1.1,
+          "soundId": "sfx_fracaso"
+        },
+        {
+          "id": "all",
+          "track": "face",
+          "start": 7.7,
+          "duration": 0.3,
+          "actorUid": "sis",
+          "expressionId": "expression.sister.enfado"
+        }
+      ]
+    }
+  ]
+}

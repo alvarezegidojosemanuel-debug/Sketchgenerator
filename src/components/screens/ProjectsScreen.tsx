@@ -90,6 +90,9 @@ export function ProjectsScreen({ s }: { s: PocketState }) {
           ))}
         </ul>
         <div className="row">
+          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("origen"), "demo"); s.setTab("ver"); }}>
+            El origen: Viernes 17:59
+          </button>
           <button type="button" className="btn btn-secondary" onClick={() => { s.replaceProject(demoProject("usu-reynaldo"), "demo"); s.setTab("ver"); }}>
             Demo: Usu + Reynaldo
           </button>
