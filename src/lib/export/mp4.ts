@@ -96,6 +96,7 @@ async function pickVideoCodec(): Promise<{ codec: string; mux: "avc" | "vp9" } |
 
 /** Códec usado en la última exportación (para avisar si no es H.264). */
 export let lastExportCodec: "avc" | "vp9" | null = null;
+export let lastExportAudio: "aac" | "opus" | null = null;
 
 export async function exportMp4(
   project: PocketProject,
@@ -117,13 +118,24 @@ export async function exportMp4(
   if (!picked) throw new Error("Este navegador no puede codificar vídeo 1080×1920. Prueba con Chrome.");
   const codec = picked.codec;
   lastExportCodec = picked.mux;
-  const audioCfg = { codec: "mp4a.40.2", sampleRate: SR, numberOfChannels: 2, bitrate: 160_000 };
-  const audioOk = (await AudioEncoder.isConfigSupported(audioCfg).catch(() => null))?.supported;
+  // AAC primero (lo estándar); si el navegador no lo tiene, Opus dentro del MP4.
+  let audioCfg: AudioEncoderConfig | null = null;
+  let audioMux: "aac" | "opus" = "aac";
+  for (const [codec, mux] of [["mp4a.40.2", "aac"], ["opus", "opus"]] as const) {
+    const cfg = { codec, sampleRate: SR, numberOfChannels: 2, bitrate: 160_000 };
+    if ((await AudioEncoder.isConfigSupported(cfg).catch(() => null))?.supported) {
+      audioCfg = cfg;
+      audioMux = mux;
+      break;
+    }
+  }
+  const audioOk = audioCfg !== null;
+  lastExportAudio = audioOk ? audioMux : null;
 
   const muxer = new Muxer({
     target: new ArrayBufferTarget(),
     video: { codec: picked.mux, width: W, height: H, frameRate: FPS },
-    ...(audioOk ? { audio: { codec: "aac" as const, sampleRate: SR, numberOfChannels: 2 } } : {}),
+    ...(audioOk ? { audio: { codec: audioMux, sampleRate: SR, numberOfChannels: 2 } } : {}),
     fastStart: "in-memory",
   });
   let failure: unknown = null;
@@ -133,7 +145,7 @@ export async function exportMp4(
   // --- audio (en bloques de 1024 muestras)
   if (audioOk) {
     const aenc = new AudioEncoder({ output: (c, m) => muxer.addAudioChunk(c, m), error: (e) => (failure = e) });
-    aenc.configure(audioCfg);
+    aenc.configure(audioCfg!);
     const L = audio.getChannelData(0);
     const R = audio.getChannelData(1);
     const block = 1024;

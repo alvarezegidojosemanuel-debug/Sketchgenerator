@@ -8,7 +8,7 @@ import { clipKey, fitProjectToAudio } from "@/lib/voice/fit";
 import { generateLines, unlockAudio, type Clip, type Progress } from "@/lib/voice/piper";
 import { accessCode, elevenModel, generateElevenLines, type ElevenModel } from "@/lib/voice/elevenlabs";
 import { ElevenCast } from "../ElevenCast";
-import { exportMp4, lastExportCodec, type ExportProgress } from "@/lib/export/mp4";
+import { exportMp4, lastExportAudio, lastExportCodec, type ExportProgress } from "@/lib/export/mp4";
 
 const EXPORT_LABEL: Record<ExportProgress["stage"], string> = { imagenes: "Cargando imágenes…", audio: "Mezclando audio…", video: "Creando vídeo…", listo: "Listo" };
 import { Stage } from "../Stage";
@@ -115,7 +115,7 @@ export function PreviewScreen({ s }: { s: PocketState }) {
   };
 
   const [exporting, setExporting] = useState<ExportProgress | null>(null);
-  const [video, setVideo] = useState<{ url: string; name: string; blob: Blob; codec: string | null } | null>(null);
+  const [video, setVideo] = useState<{ url: string; name: string; blob: Blob; codec: string | null; audio: string | null } | null>(null);
   const [exportError, setExportError] = useState<string | null>(null);
   const doExport = async () => {
     if (pl.playing) pl.pause();
@@ -126,7 +126,7 @@ export function PreviewScreen({ s }: { s: PocketState }) {
       const blob = await exportMp4(playProject, catalog, usesClips ? liveClips : null, setExporting);
       if (video) URL.revokeObjectURL(video.url);
       const name = `${project.metadata.title.replace(/[^\p{L}\p{N} _-]+/gu, "").trim().replace(/\s+/g, "_") || "sketch"}.mp4`;
-      setVideo({ url: URL.createObjectURL(blob), name, blob, codec: lastExportCodec });
+      setVideo({ url: URL.createObjectURL(blob), name, blob, codec: lastExportCodec, audio: lastExportAudio });
     } catch (e) {
       setExportError(e instanceof Error ? e.message : String(e));
     } finally {
@@ -235,7 +235,13 @@ export function PreviewScreen({ s }: { s: PocketState }) {
               <button type="button" className="btn btn-secondary" onClick={shareVideo}>📤 Compartir</button>
             )}
           </div>
-          {video.codec === "vp9" && <p className="fine">⚠️ Este navegador no tiene H.264: el vídeo va en VP9. Para subirlo a redes mejor expórtalo desde Chrome.</p>}
+          {(video.codec === "vp9" || video.audio !== "aac") && (
+            <p className="fine">
+              ⚠️ {video.audio === null ? "Este navegador no pudo codificar el audio: el vídeo va sin sonido. " : ""}
+              {video.codec === "vp9" || video.audio === "opus" ? "Este navegador no tiene H.264/AAC y usa VP9/Opus; algunas redes no lo aceptan. " : ""}
+              Para subirlo a redes, expórtalo desde Chrome en ordenador.
+            </p>
+          )}
           <p className="fine">{usesClips ? "Con las voces y sonidos del sketch." : "Sin voces (elige Piper o ElevenLabs para exportar con voz); con efectos de sonido."}</p>
         </div>
       )}
