@@ -12,7 +12,7 @@ def place(who,variant):
     s2=s*base[1]/v[1]
     return round(x+base[0]*s - v[0]*s2), y, round(s2,3)
 
-def back_take(tid,name,dur,beats,extra):
+def back_take(tid,name,dur,beats,extra,bg='bg_oficina_soporte'):
     """beats: lista de (quien, desde, hasta, variante) en la que cambian de postura; el resto teclea."""
     ev=[]
     def e(i,track,start,d,**k): ev.append(dict(id=i,track=track,start=round(start,2),duration=round(d,2),**k))
@@ -29,7 +29,7 @@ def back_take(tid,name,dur,beats,extra):
             if var=='teclea': p['loop']='type'
             e(f'{tid}_{who}_{k}','props',a,b-a,**p)
     for x in extra: x=dict(x); x['id']=f"{tid}_{x['id']}"; ev.append(x)
-    return dict(id=tid,name=name,duration=dur,backgroundId='bg_oficina_soporte',actors=[],events=ev)
+    return dict(id=tid,name=name,duration=dur,backgroundId=bg,actors=[],events=ev)
 
 def L(i,start,d,text,who=None): 
     x=dict(id=i,track='dialogue',start=start,duration=d,text=text)
@@ -49,7 +49,8 @@ t1=back_take('t1','Lunes, 9:02',16.0,
   L('d2',7.7,2.2,'[sighs] Ciérrala. Resuelta por el usuario.','reynaldo'),
   dict(id='mov',track='props',start=10.2,duration=5.8,propId='prop_movil',layer='props-front',x=335,y=1300,scale=0.5,zIndex=3,enter='pop',loop='shake'),
   S('tel',10.3,2.6,'sfx_telefono'),
-  L('d3',12.7,2.4,'[shouts] ¡Que nadie coja eso! Es Contabilidad.','jefe')])
+  L('d3',12.7,2.4,'[shouts] ¡Que nadie coja eso! Es Contabilidad.','jefe')],
+ bg='bg_oficina_manana')
 
 # Toma 2: miércoles, incidencia imposible
 t2=back_take('t2','Miércoles, 12:40',15.0,
@@ -60,7 +61,8 @@ t2=back_take('t2','Miércoles, 12:40',15.0,
   L('d3',7.5,1.8,'Usu. No.','sister'),
   L('d4',9.7,2.6,'Uno pequeñito. Para el viernes.','usu'),
   S('ding',12.4,0.6,'sfx_ding'),
-  L('n2',12.9,2.0,'No era pequeñito.')])
+  L('n2',12.9,2.0,'No era pequeñito.')],
+ bg='bg_oficina_manana')
 
 # Toma 3: viernes 17:59 (el Pantallazo)
 t3=back_take('t3','Viernes, 17:59',17.0,

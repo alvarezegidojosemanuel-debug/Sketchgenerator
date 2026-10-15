@@ -20,7 +20,7 @@
       "id": "t1",
       "name": "Lunes, 9:02",
       "duration": 16.0,
-      "backgroundId": "bg_oficina_soporte",
+      "backgroundId": "bg_oficina_manana",
       "actors": [],
       "events": [
         {
@@ -229,7 +229,7 @@
       "id": "t2",
       "name": "Miércoles, 12:40",
       "duration": 15.0,
-      "backgroundId": "bg_oficina_soporte",
+      "backgroundId": "bg_oficina_manana",
       "actors": [],
       "events": [
         {
