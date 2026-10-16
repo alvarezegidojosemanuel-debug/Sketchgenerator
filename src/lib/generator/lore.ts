@@ -28,6 +28,7 @@ alguien la está usando; ¿el accidente fue casual?; el parche tenía seis conex
 Se escribe «Anastas-IA» (juego con «IA») pero se pronuncia «Anastasia»: cuando un personaje la nombre en voz alta, escribe «Anastasia» en el texto.
 En el guion: { "off": "Anastas-IA", "texto": … }.
 El Jefe (su jefe de equipo) y el Director (director del complejo, eufórico con los resultados mientras ellos van desbordados) son personas distintas.
+Secundarias del complejo: Neli, bióloga genial, dulce, despistada, obsesiva e ingenua (bata blanca, gafas redondas); Gala, la crack comercial, guapísima, pelirroja, engreída, narcisista y manipuladora (traje negro y tacones).
 El humor nace de las situaciones y de cómo son ellos (contradicciones, relaciones, consecuencias inesperadas), no de insultos ni gritos,
 y nunca de burlarse de los usuarios ni de ningún colectivo. Sin parecidos con franquicias existentes.`;
 

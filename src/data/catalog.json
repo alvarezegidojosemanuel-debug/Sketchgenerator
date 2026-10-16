@@ -8124,6 +8124,293 @@
     }
    ],
    "fallbackExpressionId": "expression.neli.neutral"
+  },
+  {
+   "id": "gala",
+   "name": "Gala",
+   "color": "#c0392b",
+   "defaultVoice": {
+    "pitch": 1.1,
+    "rate": 0.95
+   },
+   "hasEyes": false,
+   "heightCm": 172,
+   "poses": [
+    {
+     "id": "char.gala.pose_h_neutro",
+     "key": "pose_h_neutro",
+     "label": "Humano · con el bolso, tocándose el pelo",
+     "src": "/assets/punetos/humanos/gala/bolso.webp",
+     "talkSrc": "/assets/punetos/humanos/gala/bolso_boca.webp",
+     "width": 246,
+     "height": 747,
+     "displayScale": 1.205,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.gala.pose_h_explica",
+     "key": "pose_h_explica",
+     "label": "Humano · explicando, encantada de sí misma",
+     "src": "/assets/punetos/humanos/gala/explica.webp",
+     "talkSrc": "/assets/punetos/humanos/gala/explica.webp",
+     "width": 311,
+     "height": 747,
+     "displayScale": 1.205,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.gala.pose_h_gafas",
+     "key": "pose_h_gafas",
+     "label": "Humano · con gafas de sol y café, pasando",
+     "src": "/assets/punetos/humanos/gala/gafas.webp",
+     "talkSrc": "/assets/punetos/humanos/gala/gafas_boca.webp",
+     "width": 325,
+     "height": 745,
+     "displayScale": 1.205,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.gala.pose_h_espaldas",
+     "key": "pose_h_espaldas",
+     "label": "Humano · de espaldas, mirando por encima del hombro",
+     "src": "/assets/punetos/humanos/gala/espaldas.webp",
+     "talkSrc": "/assets/punetos/humanos/gala/espaldas_boca.webp",
+     "width": 280,
+     "height": 731,
+     "displayScale": 1.205,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.gala.pose_h_mesa",
+     "key": "pose_h_mesa",
+     "label": "Humano · apoyada en la mesa",
+     "src": "/assets/punetos/humanos/gala/mesa.webp",
+     "talkSrc": "/assets/punetos/humanos/gala/mesa_boca.webp",
+     "width": 400,
+     "height": 709,
+     "displayScale": 1.205,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.gala.pose_h_mesa2",
+     "key": "pose_h_mesa2",
+     "label": "Humano · apoyada en la mesa, sonrisa pícara",
+     "src": "/assets/punetos/humanos/gala/mesa2.webp",
+     "talkSrc": "/assets/punetos/humanos/gala/mesa2_boca.webp",
+     "width": 439,
+     "height": 716,
+     "displayScale": 1.205,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.gala.pose_h_selfie",
+     "key": "pose_h_selfie",
+     "label": "Humano · haciéndose un selfie (morritos)",
+     "src": "/assets/punetos/humanos/gala/selfie.webp",
+     "width": 307,
+     "height": 741,
+     "displayScale": 1.205,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.gala.pose_h_silla",
+     "key": "pose_h_silla",
+     "label": "Humano · en la silla, piernas cruzadas",
+     "src": "/assets/punetos/humanos/gala/silla.webp",
+     "talkSrc": "/assets/punetos/humanos/gala/silla_boca.webp",
+     "width": 385,
+     "height": 696,
+     "displayScale": 1.205,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    }
+   ],
+   "face": {
+    "eyes": [],
+    "brows": [],
+    "mouths": []
+   },
+   "expressions": [
+    {
+     "id": "expression.gala.neutral",
+     "emotion": "neutral",
+     "label": "Neutral",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_10"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_08",
+      "face.reynaldo.mouths.reynaldo_mouth_07",
+      "face.reynaldo.mouths.reynaldo_mouth_03"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_04",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_04",
+      "crop": "right"
+     },
+     "browL": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_10"
+     },
+     "browR": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_10",
+      "flip": true
+     }
+    },
+    {
+     "id": "expression.gala.alegria",
+     "emotion": "alegria",
+     "label": "Alegría",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_09"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_07",
+      "face.reynaldo.mouths.reynaldo_mouth_08",
+      "face.reynaldo.mouths.reynaldo_mouth_01"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "right"
+     },
+     "browL": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04"
+     },
+     "browR": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "flip": true
+     }
+    },
+    {
+     "id": "expression.gala.risa",
+     "emotion": "risa",
+     "label": "Risa",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_01"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_02",
+      "face.reynaldo.mouths.reynaldo_mouth_01",
+      "face.reynaldo.mouths.reynaldo_mouth_07"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "right"
+     },
+     "browL": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "dy": -4
+     },
+     "browR": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "flip": true,
+      "dy": -4
+     }
+    },
+    {
+     "id": "expression.gala.enfado",
+     "emotion": "enfado",
+     "label": "Enfado",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_05"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_06",
+      "face.reynaldo.mouths.reynaldo_mouth_05",
+      "face.reynaldo.mouths.reynaldo_mouth_08"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_06",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_06",
+      "crop": "right"
+     }
+    },
+    {
+     "id": "expression.gala.sorpresa",
+     "emotion": "sorpresa",
+     "label": "Sorpresa",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_03"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_03",
+      "face.reynaldo.mouths.reynaldo_mouth_08",
+      "face.reynaldo.mouths.reynaldo_mouth_06"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_03_izq",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_03_izq",
+      "crop": "right"
+     },
+     "browL": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "dy": -10
+     },
+     "browR": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "flip": true,
+      "dy": -10
+     }
+    },
+    {
+     "id": "expression.gala.tristeza",
+     "emotion": "tristeza",
+     "label": "Tristeza",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_10"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_06",
+      "face.reynaldo.mouths.reynaldo_mouth_08"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_02",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_02",
+      "crop": "right"
+     }
+    }
+   ],
+   "fallbackExpressionId": "expression.gala.neutral"
   }
  ],
  "backgrounds": [
