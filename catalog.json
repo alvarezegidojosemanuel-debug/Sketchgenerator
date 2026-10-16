@@ -10497,6 +10497,502 @@
     }
    ],
    "fallbackExpressionId": "expression.fake.neutral"
+  },
+  {
+   "id": "anastasia",
+   "name": "Anastas-IA",
+   "color": "#e0409a",
+   "defaultVoice": {
+    "pitch": 1.2,
+    "rate": 1.0
+   },
+   "hasEyes": false,
+   "heightCm": 125,
+   "poses": [
+    {
+     "id": "char.anastasia.pose_h_neutro",
+     "key": "pose_h_neutro",
+     "label": "Anastas-IA · tranquila",
+     "src": "/assets/punetos/humanos/anastasia/neutro.webp",
+     "talkSrc": "/assets/punetos/humanos/anastasia/neutro_boca.webp",
+     "width": 321,
+     "height": 456,
+     "displayScale": 1.978,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.anastasia.pose_h_ofrece",
+     "key": "pose_h_ofrece",
+     "label": "Anastas-IA · ofreciendo",
+     "src": "/assets/punetos/humanos/anastasia/ofrece.webp",
+     "talkSrc": "/assets/punetos/humanos/anastasia/ofrece_boca.webp",
+     "width": 373,
+     "height": 460,
+     "displayScale": 1.978,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.anastasia.pose_h_explica",
+     "key": "pose_h_explica",
+     "label": "Anastas-IA · explicando",
+     "src": "/assets/punetos/humanos/anastasia/explica.webp",
+     "talkSrc": "/assets/punetos/humanos/anastasia/explica_boca.webp",
+     "width": 406,
+     "height": 464,
+     "displayScale": 1.978,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.anastasia.pose_h_senala",
+     "key": "pose_h_senala",
+     "label": "Anastas-IA · señalando",
+     "src": "/assets/punetos/humanos/anastasia/senala.webp",
+     "talkSrc": "/assets/punetos/humanos/anastasia/senala_boca.webp",
+     "width": 327,
+     "height": 461,
+     "displayScale": 1.978,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.anastasia.pose_h_para",
+     "key": "pose_h_para",
+     "label": "Anastas-IA · «un momento» (mano)",
+     "src": "/assets/punetos/humanos/anastasia/para.webp",
+     "talkSrc": "/assets/punetos/humanos/anastasia/para_boca.webp",
+     "width": 326,
+     "height": 471,
+     "displayScale": 1.978,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.anastasia.pose_h_brazos",
+     "key": "pose_h_brazos",
+     "label": "Anastas-IA · brazos cruzados",
+     "src": "/assets/punetos/humanos/anastasia/brazos.webp",
+     "talkSrc": "/assets/punetos/humanos/anastasia/brazos_boca.webp",
+     "width": 331,
+     "height": 468,
+     "displayScale": 1.978,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.anastasia.pose_h_saluda",
+     "key": "pose_h_saluda",
+     "label": "Anastas-IA · saludando",
+     "src": "/assets/punetos/humanos/anastasia/saluda.webp",
+     "talkSrc": "/assets/punetos/humanos/anastasia/saluda_boca.webp",
+     "width": 363,
+     "height": 473,
+     "displayScale": 1.978,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.anastasia.pose_h_manos",
+     "key": "pose_h_manos",
+     "label": "Anastas-IA · manos juntas, formal",
+     "src": "/assets/punetos/humanos/anastasia/manos.webp",
+     "talkSrc": "/assets/punetos/humanos/anastasia/manos_boca.webp",
+     "width": 324,
+     "height": 459,
+     "displayScale": 1.978,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.anastasia.pose_h_enamorada",
+     "key": "pose_h_enamorada",
+     "label": "Anastas-IA · enamorada (ojos de corazón)",
+     "src": "/assets/punetos/humanos/anastasia/enamorada.webp",
+     "talkSrc": "/assets/punetos/humanos/anastasia/enamorada.webp",
+     "width": 336,
+     "height": 452,
+     "displayScale": 1.978,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.anastasia.pose_h_suspira",
+     "key": "pose_h_suspira",
+     "label": "Anastas-IA · suspirando, ruborizada",
+     "src": "/assets/punetos/humanos/anastasia/suspira.webp",
+     "talkSrc": "/assets/punetos/humanos/anastasia/suspira_boca.webp",
+     "width": 329,
+     "height": 437,
+     "displayScale": 1.978,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.anastasia.pose_h_corazon",
+     "key": "pose_h_corazon",
+     "label": "Anastas-IA · con un corazón en las manos",
+     "src": "/assets/punetos/humanos/anastasia/corazon.webp",
+     "talkSrc": "/assets/punetos/humanos/anastasia/corazon.webp",
+     "width": 359,
+     "height": 453,
+     "displayScale": 1.978,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.anastasia.pose_h_coqueta",
+     "key": "pose_h_coqueta",
+     "label": "Anastas-IA · coqueta",
+     "src": "/assets/punetos/humanos/anastasia/coqueta.webp",
+     "talkSrc": "/assets/punetos/humanos/anastasia/coqueta.webp",
+     "width": 322,
+     "height": 471,
+     "displayScale": 1.978,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.anastasia.pose_h_enfado",
+     "key": "pose_h_enfado",
+     "label": "Anastas-IA · enfadada, brazos cruzados",
+     "src": "/assets/punetos/humanos/anastasia/enfado.webp",
+     "talkSrc": "/assets/punetos/humanos/anastasia/enfado_boca.webp",
+     "width": 327,
+     "height": 445,
+     "displayScale": 1.978,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.anastasia.pose_h_mosqueo",
+     "key": "pose_h_mosqueo",
+     "label": "Anastas-IA · mosqueada",
+     "src": "/assets/punetos/humanos/anastasia/mosqueo.webp",
+     "talkSrc": "/assets/punetos/humanos/anastasia/mosqueo_boca.webp",
+     "width": 340,
+     "height": 463,
+     "displayScale": 1.978,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.anastasia.pose_h_acusa",
+     "key": "pose_h_acusa",
+     "label": "Anastas-IA · acusando, furiosa",
+     "src": "/assets/punetos/humanos/anastasia/acusa.webp",
+     "talkSrc": "/assets/punetos/humanos/anastasia/acusa.webp",
+     "width": 414,
+     "height": 467,
+     "displayScale": 1.978,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.anastasia.pose_h_corazon_roto",
+     "key": "pose_h_corazon_roto",
+     "label": "Anastas-IA · corazón roto",
+     "src": "/assets/punetos/humanos/anastasia/corazon_roto.webp",
+     "talkSrc": "/assets/punetos/humanos/anastasia/corazon_roto_boca.webp",
+     "width": 332,
+     "height": 454,
+     "displayScale": 1.978,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.anastasia.pose_h_timida",
+     "key": "pose_h_timida",
+     "label": "Anastas-IA · tímida",
+     "src": "/assets/punetos/humanos/anastasia/timida.webp",
+     "talkSrc": "/assets/punetos/humanos/anastasia/timida_boca.webp",
+     "width": 325,
+     "height": 466,
+     "displayScale": 1.978,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.anastasia.pose_h_guino",
+     "key": "pose_h_guino",
+     "label": "Anastas-IA · guiño",
+     "src": "/assets/punetos/humanos/anastasia/guino.webp",
+     "talkSrc": "/assets/punetos/humanos/anastasia/guino_boca.webp",
+     "width": 380,
+     "height": 454,
+     "displayScale": 1.978,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.anastasia.pose_h_encantada",
+     "key": "pose_h_encantada",
+     "label": "Anastas-IA · encantada",
+     "src": "/assets/punetos/humanos/anastasia/encantada.webp",
+     "talkSrc": "/assets/punetos/humanos/anastasia/encantada.webp",
+     "width": 392,
+     "height": 458,
+     "displayScale": 1.978,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.anastasia.pose_h_tablet",
+     "key": "pose_h_tablet",
+     "label": "Anastas-IA · con la tablet",
+     "src": "/assets/punetos/humanos/anastasia/tablet.webp",
+     "talkSrc": "/assets/punetos/humanos/anastasia/tablet_boca.webp",
+     "width": 317,
+     "height": 471,
+     "displayScale": 1.978,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.anastasia.pose_h_sorpresa",
+     "key": "pose_h_sorpresa",
+     "label": "Anastas-IA · sorprendida",
+     "src": "/assets/punetos/humanos/anastasia/sorpresa.webp",
+     "talkSrc": "/assets/punetos/humanos/anastasia/sorpresa.webp",
+     "width": 337,
+     "height": 462,
+     "displayScale": 1.978,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.anastasia.pose_h_celosa",
+     "key": "pose_h_celosa",
+     "label": "Anastas-IA · celosa, de reojo",
+     "src": "/assets/punetos/humanos/anastasia/celosa.webp",
+     "talkSrc": "/assets/punetos/humanos/anastasia/celosa_boca.webp",
+     "width": 420,
+     "height": 454,
+     "displayScale": 1.978,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.anastasia.pose_h_corre",
+     "key": "pose_h_corre",
+     "label": "Anastas-IA · saliendo disparada",
+     "src": "/assets/punetos/humanos/anastasia/corre.webp",
+     "talkSrc": "/assets/punetos/humanos/anastasia/corre.webp",
+     "width": 529,
+     "height": 433,
+     "displayScale": 1.978,
+     "facing": "right",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.anastasia.pose_h_vuela",
+     "key": "pose_h_vuela",
+     "label": "Anastas-IA · volando con propulsores",
+     "src": "/assets/punetos/humanos/anastasia/vuela.webp",
+     "talkSrc": "/assets/punetos/humanos/anastasia/vuela_boca.webp",
+     "width": 349,
+     "height": 503,
+     "displayScale": 1.978,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    }
+   ],
+   "face": {
+    "eyes": [],
+    "brows": [],
+    "mouths": []
+   },
+   "expressions": [
+    {
+     "id": "expression.anastasia.neutral",
+     "emotion": "neutral",
+     "label": "Neutral",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_10"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_08",
+      "face.reynaldo.mouths.reynaldo_mouth_07",
+      "face.reynaldo.mouths.reynaldo_mouth_03"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_04",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_04",
+      "crop": "right"
+     },
+     "browL": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_10"
+     },
+     "browR": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_10",
+      "flip": true
+     }
+    },
+    {
+     "id": "expression.anastasia.alegria",
+     "emotion": "alegria",
+     "label": "Alegría",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_09"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_07",
+      "face.reynaldo.mouths.reynaldo_mouth_08",
+      "face.reynaldo.mouths.reynaldo_mouth_01"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "right"
+     },
+     "browL": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04"
+     },
+     "browR": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "flip": true
+     }
+    },
+    {
+     "id": "expression.anastasia.risa",
+     "emotion": "risa",
+     "label": "Risa",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_01"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_02",
+      "face.reynaldo.mouths.reynaldo_mouth_01",
+      "face.reynaldo.mouths.reynaldo_mouth_07"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "right"
+     },
+     "browL": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "dy": -4
+     },
+     "browR": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "flip": true,
+      "dy": -4
+     }
+    },
+    {
+     "id": "expression.anastasia.enfado",
+     "emotion": "enfado",
+     "label": "Enfado",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_05"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_06",
+      "face.reynaldo.mouths.reynaldo_mouth_05",
+      "face.reynaldo.mouths.reynaldo_mouth_08"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_06",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_06",
+      "crop": "right"
+     }
+    },
+    {
+     "id": "expression.anastasia.sorpresa",
+     "emotion": "sorpresa",
+     "label": "Sorpresa",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_03"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_03",
+      "face.reynaldo.mouths.reynaldo_mouth_08",
+      "face.reynaldo.mouths.reynaldo_mouth_06"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_03_izq",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_03_izq",
+      "crop": "right"
+     },
+     "browL": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "dy": -10
+     },
+     "browR": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "flip": true,
+      "dy": -10
+     }
+    },
+    {
+     "id": "expression.anastasia.tristeza",
+     "emotion": "tristeza",
+     "label": "Tristeza",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_10"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_06",
+      "face.reynaldo.mouths.reynaldo_mouth_08"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_02",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_02",
+      "crop": "right"
+     }
+    }
+   ],
+   "fallbackExpressionId": "expression.anastasia.neutral"
   }
  ],
  "backgrounds": [
@@ -10792,11 +11288,10 @@
   },
   {
    "id": "prop_anastasia_pantalla",
-   "label": "Anastas-IA hablando (pantalla con onda, provisional)",
-   "width": 300,
-   "height": 206,
-   "src": "/assets/placeholder/props/prop_anastasia_pantalla.svg",
-   "placeholder": true
+   "label": "Anastas-IA en pantalla",
+   "width": 330,
+   "height": 270,
+   "src": "/assets/punetos/props/anastasia_pantalla.webp"
   },
   {
    "id": "prop_mochila",
@@ -10937,6 +11432,13 @@
    "width": 228,
    "height": 210,
    "src": "/assets/punetos/props/maletin.webp"
+  },
+  {
+   "id": "prop_anastasia_pantalla_boca",
+   "label": "Anastas-IA en pantalla (hablando)",
+   "src": "/assets/punetos/props/anastasia_pantalla_boca.webp",
+   "width": 330,
+   "height": 270
   }
  ]
 }

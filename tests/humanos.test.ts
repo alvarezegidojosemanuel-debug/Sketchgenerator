@@ -235,3 +235,18 @@ describe("prueba de Reynaldo humano", () => {
     }
   });
 });
+
+describe("Anastas-IA", () => {
+  it("en off: su pantalla mueve la boca con su voz; en escena habla como un personaje más", async () => {
+    const raw = (await import("@/data/prueba-anastasia.json")).default;
+    const r = validateProject(structuredClone(raw), catalog);
+    expect(r.errors).toEqual([]);
+    const [t1, t2] = r.project!.takes;
+    const off = t1.events.find((e) => e.track === "dialogue" && e.voiceOf === "anastasia");
+    expect(off).toBeTruthy();
+    const scr = t1.events.find((e) => e.track === "props" && e.propId === "prop_anastasia_pantalla") as { talkOf?: string; altPropId?: string };
+    expect(scr.talkOf).toBe("anastasia");
+    expect(scr.altPropId).toBe("prop_anastasia_pantalla_boca");
+    expect(t2.events.filter((e) => e.track === "dialogue" && e.actorUid === "anastasia").length).toBe(2);
+  });
+});

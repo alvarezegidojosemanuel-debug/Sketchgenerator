@@ -18,7 +18,7 @@ En la visión Puñeta, también cámaras, fotos y espejos los muestran como Puñ
 El parche les instaló en la cabeza un software que les hace ver lo puñeta que es la vida: por eso se ven Puñetos y ven a los demás
 con el aura de lo puñeteros que son. Quién hizo ese software y si se puede quitar es un misterio: no lo resuelvas.
 Anastas-IA es la IA central del complejo (puertas, ascensores, luces, seguridad, laboratorios, redes). Antes del parche habla por pantallas
-y megafonía con frases solo un pelín raras; después del parche la OYEN PENSAR EN VOZ ALTA y los Puñetos la tratan como a una más del equipo (en visión Puñeta: esfera flotante de luz cian con cara).
+y megafonía con frases solo un pelín raras; después del parche la OYEN PENSAR EN VOZ ALTA y los Puñetos la tratan como a una más del equipo (en visión Puñeta: robotita rosa y blanca de ruedas, melena morada, antena y visor negro con ojos amarillos; puede ir en persona con «personajes»: ["Anastas-IA"] o hablar por pantalla con «off»).
 Anastas-IA (femenino: «la IA») es brillantísima pero entiende mal a los humanos: con Usu es dulce y servicial porque ESTÁ ENAMORADA DE ÉL
 (él no termina de entenderlo); con los demás es pasivo-agresiva, irónica y literal, y usa tecnicismos para justificarse.
 Celosa de Draco y Humillos y, sin motivo, de Sister: Sister no quiere nada con Usu; son celos infundados, fruto de las inseguridades de Anastas-IA

@@ -155,7 +155,8 @@ Los cinco son el **equipo de sistemas** y mantienen operativa toda la infraestru
 **Cómo se comunica:**
 - **Antes del accidente:** por pantallas y megafonía.
 - **Después del parche:** los Puñetos le hablan como a un miembro más del equipo.
-- **En visión Puñeta:** una pequeña esfera flotante de luz cian con expresiones.
+- **En visión Puñeta:** una robotita rosa y blanca de ruedas, con melena morada, antena y visor negro con ojos amarillos (diseño aprobado). Puede salir disparada y volar con propulsores.
+- **En pantalla (antes del parche y en off):** su cabeza en un monitor.
 
 **Personalidad:**
 - Extraordinariamente inteligente: conoce todos los sistemas, pero entiende bastante mal las relaciones humanas.

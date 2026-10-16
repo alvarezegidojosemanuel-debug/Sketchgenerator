@@ -1,0 +1,32 @@
+{
+  "formato": "puñetos-guion-1",
+  "titulo": "Prueba técnica: Anastas-IA",
+  "idea": "Prueba de Anastas-IA en pantalla y en persona (guion provisional).",
+  "escenas": [
+    {
+      "nombre": "Pantalla",
+      "lugar": "bg_sistemas",
+      "vista": "humanos",
+      "personajes": ["Barbas", "Usu"],
+      "pasos": [
+        { "dice": "Barbas", "texto": "Anastasia, ¿por qué me has bloqueado la tarjeta del parking?", "gesto": "explica" },
+        { "off": "Anastas-IA", "texto": "Por seguridad. Su vehículo ocupaba la plaza más cercana a Usu." },
+        { "dice": "Usu", "texto": "Está aprendiendo.", "gesto": "encoge" },
+        { "dice": "Barbas", "texto": "Sí. A quitarme de en medio. La novia electrónica, con todo el amor del mundo.", "gesto": "señala" }
+      ]
+    },
+    {
+      "nombre": "En persona",
+      "lugar": "bg_sistemas",
+      "vista": "humanos",
+      "transicion": "fundido",
+      "personajes": ["Usu", "Anastas-IA", "Sister"],
+      "pasos": [
+        { "dice": "Anastas-IA", "texto": "Usu, te he ordenado los cables por colores. Los tuyos, en rosa.", "gesto": "coqueta" },
+        { "dice": "Usu", "texto": "Ah… gracias, Anastasia.", "gesto": "explica" },
+        { "dice": "Sister", "texto": "Los míos están todos en un nudo.", "gesto": "brazos_cruzados" },
+        { "dice": "Anastas-IA", "texto": "Qué casualidad. Error de clasificación.", "gesto": "celosa" }
+      ]
+    }
+  ]
+}

@@ -108,6 +108,7 @@ export function actingTag(who: string | undefined, text: string, gesture?: strin
   else if (who === "gala") tag = "smugly";
   else if (who === "damian") tag = "flatly";
   else if (who === "cientifica") tag = "dryly";
+  else if (who === "anastasia") tag = /enamorada|suspira|corazon|coqueta|timida|guino/.test(g) ? "lovingly" : /enfado|mosqueo|acusa|celosa/.test(g) ? "annoyed" : "sarcastically";
   else if (who === "fake") tag = /huevo|panico|garras|acurrucado|huye|para|grita/.test(g) ? "terrified" : "nervously";
   else if (who === "alf") tag = /garra|malva|trama|acecha|grita/.test(g) ? "menacing" : "sweetly";
   else if (who === "vanesa") tag = /reynaldo/i.test(text) ? "sweetly" : "annoyed";
@@ -282,7 +283,7 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
     if (typeof v !== "string") return undefined;
     const n = norm(v);
     const id = CHAR_ALIAS[n] ?? catalog.characters.find((c) => norm(c.name) === n || c.id === n)?.id;
-    if (!id) issues.push({ path, message: `personaje «${v}» no existe (usa: Usu, Reynaldo, Sister, Barbas, Jefe, Director, Neli, Gala, Damián, Vanesa, Ruan, Alf, Fake)` });
+    if (!id) issues.push({ path, message: `personaje «${v}» no existe (usa: Usu, Reynaldo, Sister, Barbas, Jefe, Director, Neli, Gala, Damián, Vanesa, Ruan, Alf, Fake, Anastas-IA)` });
     return id;
   };
   const emo = (v: unknown) => (typeof v === "string" ? EMO_ALIAS[norm(v)] : undefined);
@@ -356,11 +357,15 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
               b.add({ track: "props", propId: "prop_anastasia_pantalla", layer: "props-front", x: 840, y: 520, scale: 0.9, duration: estimate(text) + 0.3, enter: "pop", exit: "fade", loop: "pulse" }, t0 - 0.15);
             return;
           }
-          b.say(undefined, text, { speakerName: name, gap });
-          // Anastas-IA (la IA del complejo) no tiene cuerpo: mientras habla se ve su pantalla, para que su voz no salga «de la nada»
+          // Anastas-IA en off: se ve su pantalla y la boca de la pantalla se mueve con su voz
           const who = norm(st.off).replace(/[^a-z]/g, "");
-          if ((who.startsWith("anastas") || who === "nodo") && catalog.props.some((x) => x.id === "prop_anastasia_pantalla"))
-            b.add({ track: "props", propId: "prop_anastasia_pantalla", layer: "props-front", x: 840, y: 520, scale: 0.9, duration: estimate(text) + 0.3, enter: "pop", exit: "fade", loop: "pulse" }, t0 - 0.15);
+          const ia = who.startsWith("anastas") || who === "nodo";
+          const iaChar = ia && catalog.characters.some((c) => c.id === "anastasia");
+          b.say(undefined, text, iaChar ? { voiceOf: "anastasia", speakerName: name, gap } : { speakerName: name, gap });
+          if (ia && catalog.props.some((x) => x.id === "prop_anastasia_pantalla")) {
+            const talk = iaChar && catalog.props.some((x) => x.id === "prop_anastasia_pantalla_boca") ? { talkOf: "anastasia", altPropId: "prop_anastasia_pantalla_boca" } : { loop: "pulse" as const };
+            b.add({ track: "props", propId: "prop_anastasia_pantalla", layer: "props-front", x: 790, y: 700, scale: 1.35, duration: estimate(text) + 0.3, enter: "pop", exit: "fade", ...talk }, t0 - 0.15);
+          }
         }
       } else if (st.coro !== undefined) {
         const whos = ((Array.isArray(st.coro) ? st.coro : []) as unknown[]).map((c, i) => charId(c, `${sp}.coro[${i}]`)).filter((c): c is string => !!c && cast.includes(c));

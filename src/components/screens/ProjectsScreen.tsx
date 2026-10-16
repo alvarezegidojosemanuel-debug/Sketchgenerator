@@ -97,6 +97,9 @@ export function ProjectsScreen({ s }: { s: PocketState }) {
           <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("jefe-del-pasado"), "demo"); s.setTab("ver"); }}>
             🆕 Sketch: El Jefe del pasado
           </button>
+          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("prueba-anastasia"), "demo"); s.setTab("ver"); }}>
+            🆕 Prueba: Anastas-IA (pantalla y en persona)
+          </button>
           <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("prueba-fake"), "demo"); s.setTab("ver"); }}>
             🆕 Prueba: Fake y el pienso de Barbas
           </button>
