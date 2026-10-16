@@ -40,7 +40,7 @@ const BACK_GESTURE: Record<string, Record<string, string>> = {
 };
 
 // ---------------------------------------------------------------- nombres tolerantes
-const CHAR_ALIAS: Record<string, string> = { usu: "usu", reynaldo: "reynaldo", rey: "reynaldo", sister: "sister", sis: "sister", barbas: "barbas", jefe: "jefe", el_jefe: "jefe" };
+const CHAR_ALIAS: Record<string, string> = { director: "director", el_director: "director", usu: "usu", reynaldo: "reynaldo", rey: "reynaldo", sister: "sister", sis: "sister", barbas: "barbas", jefe: "jefe", el_jefe: "jefe" };
 const EMO_ALIAS: Record<string, string> = {
   neutral: "neutral", serio: "neutral", seria: "neutral", normal: "neutral",
   alegria: "alegria", contento: "alegria", contenta: "alegria", feliz: "alegria", sonrie: "alegria",
@@ -275,7 +275,7 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
     if (typeof v !== "string") return undefined;
     const n = norm(v);
     const id = CHAR_ALIAS[n] ?? catalog.characters.find((c) => norm(c.name) === n || c.id === n)?.id;
-    if (!id) issues.push({ path, message: `personaje «${v}» no existe (usa: Usu, Reynaldo, Sister, Barbas, Jefe)` });
+    if (!id) issues.push({ path, message: `personaje «${v}» no existe (usa: Usu, Reynaldo, Sister, Barbas, Jefe, Director)` });
     return id;
   };
   const emo = (v: unknown) => (typeof v === "string" ? EMO_ALIAS[norm(v)] : undefined);

@@ -72,7 +72,7 @@ export function IdeaScreen({ s }: { s: PocketState }) {
 
       <Card title="Personajes">
         <div className="chips">
-          {catalog.characters.map((c) => {
+          {catalog.characters.filter((c) => c.face.mouths.length > 0).map((c) => {
             const on = intent.characterIds.includes(c.id);
             return (
               <button key={c.id} type="button" aria-pressed={on} className={`chip chip-char${on ? " on" : ""}`} style={{ ["--c" as string]: c.color }} onClick={() => toggleChar(c.id)}>

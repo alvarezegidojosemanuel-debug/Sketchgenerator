@@ -209,7 +209,7 @@ export function FaceScreen({ s }: { s: PocketState }) {
       )}
       <Card title="Personaje y pose">
         <div className="chips">
-          {catalog.characters.map((c) => (
+          {catalog.characters.filter((c) => c.face.mouths.length > 0).map((c) => (
             <button key={c.id} type="button" className={`chip${c.id === charId ? " on" : ""}`} onClick={() => { setCharId(c.id); setPoseId(c.poses[0].id); setExprId(c.expressions[0].id); }}>
               {c.name}
             </button>

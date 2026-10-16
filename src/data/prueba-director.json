@@ -1,0 +1,22 @@
+{
+  "formato": "puñetos-guion-1",
+  "titulo": "Prueba técnica: el Director",
+  "idea": "Prueba de las poses humanas del Director (guion provisional).",
+  "escenas": [
+    {
+      "nombre": "Sistemas",
+      "lugar": "bg_sistemas",
+      "vista": "humanos",
+      "personajes": ["Jefe", "Director", "Sister"],
+      "pasos": [
+        { "dice": "Director", "texto": "¿Quién ha reiniciado el servidor en mitad de mi presentación?", "gesto": "grita_senala" },
+        { "mira": "Jefe", "a": "Director" },
+        { "dice": "Jefe", "texto": "¿Yo? Eso se lo preguntaré al Jefe del pasado.", "gesto": "confundido" },
+        { "dice": "Sister", "texto": "Fue una actualización automática. La programó usted.", "gesto": "explica" },
+        { "quien": "Director", "gesto": "pensando" },
+        { "pausa": 0.8 },
+        { "dice": "Director", "texto": "Pues buen trabajo, equipo. Muy proactivo por mi parte.", "gesto": "explica" }
+      ]
+    }
+  ]
+}

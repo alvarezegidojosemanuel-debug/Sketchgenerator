@@ -17,8 +17,8 @@ const fileOf = (src: string) => path.join(root, "public", src);
 describe("catálogo V8: carga de recursos reales", () => {
   it("carga los cinco personajes con sus 10 poses reales", () => {
     expect(catalog.source.kind).toBe("v8-library-index");
-    expect(catalog.characters.map((c) => c.id)).toEqual(["usu", "reynaldo", "sister", "barbas", "jefe"]);
-    for (const c of catalog.characters) {
+    expect(catalog.characters.map((c) => c.id)).toEqual(["usu", "reynaldo", "sister", "barbas", "jefe", "director"]);
+    for (const c of catalog.characters.filter((c) => c.id !== "director")) {
       expect(c.poses.filter((p) => !p.flat)).toHaveLength(10);
       for (const p of c.poses.filter((p) => !p.flat)) {
         expect(p.id).toBe(`char.${c.id}.${p.key}`);
@@ -50,7 +50,8 @@ describe("catálogo V8: carga de recursos reales", () => {
   });
 
   it("cada prefab usa piezas reales del mismo personaje", () => {
-    for (const c of catalog.characters) {
+    // el Director solo existe en versión humana (poses dibujadas enteras, sin piezas de cara)
+    for (const c of catalog.characters.filter((c) => c.id !== "director")) {
       expect(c.expressions.map((e) => e.emotion)).toEqual(catalog.emotions);
       for (const e of c.expressions) {
         for (const s of FACE_SLOTS) {

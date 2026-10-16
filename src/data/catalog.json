@@ -7291,6 +7291,449 @@
     }
    ],
    "fallbackExpressionId": "expression.jefe.neutral"
+  },
+  {
+   "id": "director",
+   "name": "Director",
+   "color": "#7a1f1f",
+   "defaultVoice": {
+    "pitch": 0.85,
+    "rate": 1.0
+   },
+   "hasEyes": false,
+   "heightCm": 175,
+   "poses": [
+    {
+     "id": "char.director.pose_h_neutro",
+     "key": "pose_h_neutro",
+     "label": "Humano · de pie, mano en el bolsillo",
+     "src": "/assets/punetos/humanos/director/neutro.webp",
+     "talkSrc": "/assets/punetos/humanos/director/neutro_boca.webp",
+     "width": 378,
+     "height": 646,
+     "displayScale": 1.389,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.director.pose_h_grita_senala",
+     "key": "pose_h_grita_senala",
+     "label": "Humano · gritando y señalando",
+     "src": "/assets/punetos/humanos/director/grita_senala.webp",
+     "width": 412,
+     "height": 631,
+     "displayScale": 1.389,
+     "facing": "front",
+     "flat": true,
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/director/grita_senala.webp"
+    },
+    {
+     "id": "char.director.pose_h_espalda",
+     "key": "pose_h_espalda",
+     "label": "Humano · manos a la espalda",
+     "src": "/assets/punetos/humanos/director/espalda.webp",
+     "talkSrc": "/assets/punetos/humanos/director/espalda_boca.webp",
+     "width": 389,
+     "height": 650,
+     "displayScale": 1.389,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.director.pose_h_explica",
+     "key": "pose_h_explica",
+     "label": "Humano · explicando, palmas arriba",
+     "src": "/assets/punetos/humanos/director/explica.webp",
+     "talkSrc": "/assets/punetos/humanos/director/explica_boca.webp",
+     "width": 461,
+     "height": 634,
+     "displayScale": 1.389,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.director.pose_h_manos_espalda",
+     "key": "pose_h_manos_espalda",
+     "label": "Humano · manos a la espalda, serio",
+     "src": "/assets/punetos/humanos/director/espalda2.webp",
+     "talkSrc": "/assets/punetos/humanos/director/espalda2_boca.webp",
+     "width": 393,
+     "height": 714,
+     "displayScale": 1.261,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.director.pose_h_senala",
+     "key": "pose_h_senala",
+     "label": "Humano · señalando, serio",
+     "src": "/assets/punetos/humanos/director/senala.webp",
+     "talkSrc": "/assets/punetos/humanos/director/senala_boca.webp",
+     "width": 370,
+     "height": 685,
+     "displayScale": 1.261,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.director.pose_h_pensando",
+     "key": "pose_h_pensando",
+     "label": "Humano · pensando, mano en la barbilla",
+     "src": "/assets/punetos/humanos/director/pensando.webp",
+     "talkSrc": "/assets/punetos/humanos/director/pensando_boca.webp",
+     "width": 356,
+     "height": 692,
+     "displayScale": 1.261,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.director.pose_h_movil",
+     "key": "pose_h_movil",
+     "label": "Humano · con el móvil",
+     "src": "/assets/punetos/humanos/director/movil.webp",
+     "talkSrc": "/assets/punetos/humanos/director/movil_boca.webp",
+     "width": 385,
+     "height": 686,
+     "displayScale": 1.261,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.director.pose_h_grita",
+     "key": "pose_h_grita",
+     "label": "Humano · gritando, señala a cámara",
+     "src": "/assets/punetos/humanos/director/grita.webp",
+     "width": 414,
+     "height": 673,
+     "displayScale": 1.325,
+     "facing": "front",
+     "flat": true,
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/director/grita.webp"
+    },
+    {
+     "id": "char.director.pose_h_para",
+     "key": "pose_h_para",
+     "label": "Humano · ¡alto! (mano)",
+     "src": "/assets/punetos/humanos/director/para.webp",
+     "talkSrc": "/assets/punetos/humanos/director/para_boca.webp",
+     "width": 349,
+     "height": 679,
+     "displayScale": 1.325,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.director.pose_h_tapa_boca",
+     "key": "pose_h_tapa_boca",
+     "label": "Humano · manos juntas en la boca",
+     "src": "/assets/punetos/humanos/director/tapa_boca.webp",
+     "width": 370,
+     "height": 652,
+     "displayScale": 1.325,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.director.pose_h_lee",
+     "key": "pose_h_lee",
+     "label": "Humano · leyendo papeles",
+     "src": "/assets/punetos/humanos/director/lee.webp",
+     "talkSrc": "/assets/punetos/humanos/director/lee_boca.webp",
+     "width": 399,
+     "height": 658,
+     "displayScale": 1.325,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.director.pose_h_grita2",
+     "key": "pose_h_grita2",
+     "label": "Humano · gritando, señala a cámara",
+     "src": "/assets/punetos/humanos/director/grita2.webp",
+     "width": 381,
+     "height": 603,
+     "displayScale": 1.325,
+     "facing": "front",
+     "flat": true,
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/director/grita2.webp"
+    },
+    {
+     "id": "char.director.pose_h_brazos_arriba",
+     "key": "pose_h_brazos_arriba",
+     "label": "Humano · brazos arriba, desesperado",
+     "src": "/assets/punetos/humanos/director/brazos_arriba.webp",
+     "width": 454,
+     "height": 588,
+     "displayScale": 1.325,
+     "facing": "front",
+     "flat": true,
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/director/brazos_arriba.webp"
+    },
+    {
+     "id": "char.director.pose_h_puno",
+     "key": "pose_h_puno",
+     "label": "Humano · puño apretado, gritando",
+     "src": "/assets/punetos/humanos/director/puno.webp",
+     "width": 403,
+     "height": 568,
+     "displayScale": 1.325,
+     "facing": "front",
+     "flat": true,
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/director/puno.webp"
+    },
+    {
+     "id": "char.director.pose_h_telefono",
+     "key": "pose_h_telefono",
+     "label": "Humano · gritando al teléfono",
+     "src": "/assets/punetos/humanos/director/telefono.webp",
+     "width": 364,
+     "height": 591,
+     "displayScale": 1.325,
+     "facing": "front",
+     "flat": true,
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/director/telefono.webp"
+    },
+    {
+     "id": "char.director.pose_h_grita3",
+     "key": "pose_h_grita3",
+     "label": "Humano · gritando, señala",
+     "src": "/assets/punetos/humanos/director/grita3.webp",
+     "width": 380,
+     "height": 578,
+     "displayScale": 1.325,
+     "facing": "front",
+     "flat": true,
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/director/grita3.webp"
+    },
+    {
+     "id": "char.director.pose_h_punos_arriba",
+     "key": "pose_h_punos_arriba",
+     "label": "Humano · puños arriba, furioso",
+     "src": "/assets/punetos/humanos/director/punos_arriba.webp",
+     "width": 371,
+     "height": 625,
+     "displayScale": 1.325,
+     "facing": "front",
+     "flat": true,
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/director/punos_arriba.webp"
+    },
+    {
+     "id": "char.director.pose_h_furia",
+     "key": "pose_h_furia",
+     "label": "Humano · fuera de sí",
+     "src": "/assets/punetos/humanos/director/furia.webp",
+     "width": 417,
+     "height": 544,
+     "displayScale": 1.325,
+     "facing": "front",
+     "flat": true,
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/director/furia.webp"
+    },
+    {
+     "id": "char.director.pose_h_golpe_mesa",
+     "key": "pose_h_golpe_mesa",
+     "label": "Humano · golpe en la mesa",
+     "src": "/assets/punetos/humanos/director/golpe_mesa.webp",
+     "width": 440,
+     "height": 571,
+     "displayScale": 1.325,
+     "facing": "front",
+     "flat": true,
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/director/golpe_mesa.webp"
+    }
+   ],
+   "face": {
+    "eyes": [],
+    "brows": [],
+    "mouths": []
+   },
+   "expressions": [
+    {
+     "id": "expression.director.neutral",
+     "emotion": "neutral",
+     "label": "Neutral",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_10"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_08",
+      "face.reynaldo.mouths.reynaldo_mouth_07",
+      "face.reynaldo.mouths.reynaldo_mouth_03"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_04",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_04",
+      "crop": "right"
+     },
+     "browL": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_10"
+     },
+     "browR": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_10",
+      "flip": true
+     }
+    },
+    {
+     "id": "expression.director.alegria",
+     "emotion": "alegria",
+     "label": "Alegría",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_09"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_07",
+      "face.reynaldo.mouths.reynaldo_mouth_08",
+      "face.reynaldo.mouths.reynaldo_mouth_01"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "right"
+     },
+     "browL": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04"
+     },
+     "browR": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "flip": true
+     }
+    },
+    {
+     "id": "expression.director.risa",
+     "emotion": "risa",
+     "label": "Risa",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_01"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_02",
+      "face.reynaldo.mouths.reynaldo_mouth_01",
+      "face.reynaldo.mouths.reynaldo_mouth_07"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "right"
+     },
+     "browL": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "dy": -4
+     },
+     "browR": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "flip": true,
+      "dy": -4
+     }
+    },
+    {
+     "id": "expression.director.enfado",
+     "emotion": "enfado",
+     "label": "Enfado",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_05"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_06",
+      "face.reynaldo.mouths.reynaldo_mouth_05",
+      "face.reynaldo.mouths.reynaldo_mouth_08"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_06",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_06",
+      "crop": "right"
+     }
+    },
+    {
+     "id": "expression.director.sorpresa",
+     "emotion": "sorpresa",
+     "label": "Sorpresa",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_03"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_03",
+      "face.reynaldo.mouths.reynaldo_mouth_08",
+      "face.reynaldo.mouths.reynaldo_mouth_06"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_03_izq",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_03_izq",
+      "crop": "right"
+     },
+     "browL": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "dy": -10
+     },
+     "browR": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "flip": true,
+      "dy": -10
+     }
+    },
+    {
+     "id": "expression.director.tristeza",
+     "emotion": "tristeza",
+     "label": "Tristeza",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_10"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_06",
+      "face.reynaldo.mouths.reynaldo_mouth_08"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_02",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_02",
+      "crop": "right"
+     }
+    }
+   ],
+   "fallbackExpressionId": "expression.director.neutral"
   }
  ],
  "backgrounds": [

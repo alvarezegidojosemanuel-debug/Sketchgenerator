@@ -20,7 +20,7 @@ describe("montador de guiones", () => {
     expect(coro).toHaveLength(3);
     expect(Math.max(...coro.map((e) => e.start)) - Math.min(...coro.map((e) => e.start))).toBeLessThan(0.2); // a la vez
     expect(seats(tk.duration - 0.1).some((p) => p.startsWith("prop_jefe"))).toBe(false); // se fue
-    expect(tk.events.some((e) => e.track === "dialogue" && e.speakerName === "Director")).toBe(true);
+    expect(tk.events.some((e) => e.track === "dialogue" && (e.speakerName === "Director" || e.voiceOf === "director"))).toBe(true);
   });
   it("escena de puñetos: colocados en grupo, gestos, miradas y explosión con sonido", () => {
     const tk = r.project!.takes[1];
