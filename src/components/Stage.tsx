@@ -115,6 +115,7 @@ export function Stage({ catalog, frame, showSubtitles = true, selectedUid, onSel
               // Cada pose es un elemento estable (clave = actor + pose): al cambiar de pose solo cambia la opacidad.
               ...(a.pre ?? []).map((x) => ({ ...x, role: "pre" as const })),
               ...(a.ghost ? [{ ...a.ghost, z: a.z, role: "ghost" as const }] : []),
+              ...(a.turn ? [{ ...a.turn, z: a.z, role: "turn" as const }] : []),
               { ...a, role: "main" as const },
             ])
             .map((a) => {
@@ -123,7 +124,7 @@ export function Stage({ catalog, frame, showSubtitles = true, selectedUid, onSel
             const ghost = a.role !== "main";
             return (
               <div
-                key={`${a.uid}:${a.poseId}`}
+                key={`${a.uid}:${a.poseId}${a.role === "turn" ? ":giro" : ""}`}
                 data-uid={ghost ? undefined : a.uid}
                 className={`layer actor${!ghost && selectedUid === a.uid ? " selected" : ""}`}
                 onPointerDown={ghost ? undefined : onPointerDown(a.uid)}

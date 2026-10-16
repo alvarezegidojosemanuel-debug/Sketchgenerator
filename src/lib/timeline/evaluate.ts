@@ -45,6 +45,9 @@ export interface ActorState {
   /** Cabeza articulada: giro (grados, + = hacia la derecha del dibujo) y bajada (px). */
   headRot: number;
   headDy: number;
+  /** Media vuelta: lado anterior y mezcla 0→1 hacia el nuevo (fundido rápido entre los dos lados). */
+  turnFrom?: boolean;
+  turnMix?: number;
 }
 
 export interface PropState {

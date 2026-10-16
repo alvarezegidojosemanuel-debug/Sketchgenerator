@@ -51,6 +51,7 @@ export function drawFrame(ctx: Ctx, catalog: Catalog, frame: FrameState, images:
   };
   for (const a of layout.actors) {
     if (a.ghost) items.push({ z: a.z - 0.1, draw: lit(() => drawActor(ctx, a.ghost!, images)) });
+    if (a.turn) items.push({ z: a.z - 0.05, draw: lit(() => drawActor(ctx, a.turn!, images)) });
     items.push({ z: a.z, draw: lit(() => drawActor(ctx, a, images)) });
   }
   items.sort((x, y) => x.z - y.z).forEach((i) => i.draw());

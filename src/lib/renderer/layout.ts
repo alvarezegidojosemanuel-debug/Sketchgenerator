@@ -27,6 +27,8 @@ export interface ActorLayout {
   faceMix: number;
   /** Pose anterior en fundido (se dibuja debajo con opacidad 1 - opacity). */
   ghost?: ActorLayout;
+  /** Media vuelta: el mismo actor del lado anterior, desvaneciéndose. */
+  turn?: ActorLayout;
   /** Poses que entrarán en breve, montadas con opacidad 0 (para que no parpadeen al cambiar). */
   pre?: ActorLayout[];
   poseId: string;
@@ -83,6 +85,11 @@ export function layoutActor(catalog: Catalog, a: ActorState): ActorLayout {
     // Fundido sin transparencia en el centro: cada pose se mantiene opaca la mitad del fundido.
     main.opacity = Math.min(1, 2 * a.poseMix);
     main.ghost = { ...layoutActorPose(catalog, { ...a, poseId: a.prevPoseId, prevPoseId: undefined }), opacity: Math.min(1, 2 * (1 - a.poseMix)) * a.visible };
+  }
+  if (a.turnFrom !== undefined && a.turnMix !== undefined && a.turnMix < 1) {
+    // igual que el fundido de poses: cada lado se mantiene opaco la mitad del giro
+    main.turn = { ...layoutActorPose(catalog, { ...a, flip: a.turnFrom, prevPoseId: undefined }), opacity: Math.min(1, 2 * (1 - a.turnMix)) * a.visible };
+    main.opacity = Math.min(main.opacity, Math.min(1, 2 * a.turnMix));
   }
   main.opacity *= a.visible;
   const pre = [...new Set(a.upcomingPoses ?? [])].filter((p) => p !== a.poseId && p !== a.prevPoseId);
