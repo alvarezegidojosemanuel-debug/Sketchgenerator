@@ -71,6 +71,7 @@ export function applyLife(take: Take, catalog: Catalog, t: number, actors: Map<s
     a.sy *= 1 + b * 0.007;
     a.sx *= 1 - b * 0.004;
     a.skew += Math.sin((t / 5.3 + ph) * Math.PI * 2) * 0.6;
+    a.headRot += Math.sin((t / 4.1 + ph * 2) * Math.PI * 2) * 1.2;
   }
   // mirada al que habla
   const looks = lookTargets(take, t, actors);
@@ -101,6 +102,9 @@ export function applyLife(take: Take, catalog: Catalog, t: number, actors: Map<s
       const dir = other ? Math.sign(other.x - sp.x) : 0;
       const loud = /[!¡]/.test(l.text) ? 1.6 : 1;
       sp.skew += (-dir * 1.6 + Math.sin((t + ph * 3) * Math.PI * 2 * 0.85) * 1.8 * loud) * into;
+      // cabeza: se gira hacia quien escucha y acompaña la frase con cabeceos
+      sp.headRot += (dir * 3 + Math.sin((t + ph) * Math.PI * 2 * 1.15) * 3.2 * loud) * into;
+      sp.headDy += Math.abs(Math.sin((t + ph * 2) * Math.PI * 2 * 1.6)) * 3 * loud * into;
       const beat = Math.abs(Math.sin((t + ph) * Math.PI * 2 * 1.7));
       sp.sy *= 1 + beat * 0.012 * loud * into;
       sp.offX += Math.sin((t + ph * 3) * 2.2) * 2;
@@ -111,6 +115,9 @@ export function applyLife(take: Take, catalog: Catalog, t: number, actors: Map<s
       if (lis && k > 0 && k < 1) {
         lis.offY += Math.sin(Math.PI * k) * 7;
         lis.sy *= 1 - Math.sin(Math.PI * k) * 0.02;
+        // asentir: dos cabeceos cortos
+        lis.headDy += Math.max(0, Math.sin(Math.PI * 2 * k)) * 7;
+        lis.headRot += Math.sin(Math.PI * 2 * k) * 1.5;
       }
     }
     // el que escucha reacciona al empezar la frase del otro (pequeño respingo hacia atrás)
@@ -121,10 +128,15 @@ export function applyLife(take: Take, catalog: Catalog, t: number, actors: Map<s
         const dir = sp ? Math.sign(sp.x - lis.x) : 0;
         lis.skew += dir * 1.2 * Math.sin(Math.PI * k);
       }
+      // y mientras escucha, ladea la cabeza hacia quien habla
+      if (lis && sp && t >= l.start && t < end) lis.headRot += Math.sign(sp.x - lis.x) * 2.5 * clamp01((t - l.start) / 0.4);
     }
     if (l.actorUid !== prev) prev = l.actorUid;
   }
 }
+
+/** Límite del giro de cabeza (más allá se notaría el corte del cuello). */
+export const HEAD_MAX = 7;
 
 // ---------------------------------------------------------------- cámara
 

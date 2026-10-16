@@ -2,6 +2,7 @@ import type { Catalog, Pose } from "@/lib/catalog/types";
 import { findBackground, findCharacter, findExpression, findPose, findProp, poseScale } from "@/lib/catalog";
 import type { ActorState, FrameState, PropState } from "@/lib/timeline/evaluate";
 import { layoutFace, type FaceLayer } from "./face";
+import { HEAD_MAX } from "@/lib/timeline/life";
 
 /**
  * Traduce un FrameState a capas posicionadas en el lienzo 1080×1920
@@ -33,6 +34,9 @@ export interface ActorLayout {
   skew: number;
   sx: number;
   sy: number;
+  /** Cabeza articulada: giro (grados, ya en coordenadas del dibujo) y bajada en px. */
+  headRot: number;
+  headDy: number;
   /** Pose «flat» hablando: imagen con la boca abierta encima de la cerrada. */
   talkOpen?: boolean;
 }
@@ -111,6 +115,9 @@ function layoutActorPose(catalog: Catalog, a: ActorState): ActorLayout {
     skew: a.skew,
     sx: a.sx,
     sy: a.sy,
+    // el dibujo puede estar volteado: el giro se expresa en coordenadas del dibujo
+    headRot: Math.max(-HEAD_MAX, Math.min(HEAD_MAX, a.headRot)) * (a.flip ? -1 : 1),
+    headDy: a.headDy,
     talkOpen: pose?.flat && pose.talkSrc ? a.mouthOpen : undefined,
     face:
       ch && pose && !pose.flat

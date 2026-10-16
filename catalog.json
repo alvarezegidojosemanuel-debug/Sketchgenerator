@@ -4406,7 +4406,18 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/barbas/pulgar_boca.webp"
+     "talkSrc": "/assets/punetos/humanos/barbas/pulgar_boca.webp",
+     "bodySrc": "/assets/punetos/humanos/barbas/pulgar_body.webp",
+     "head": {
+      "src": "/assets/punetos/humanos/barbas/pulgar_head.webp",
+      "talkSrc": "/assets/punetos/humanos/barbas/pulgar_head_boca.webp",
+      "x": 57,
+      "y": 0,
+      "w": 188,
+      "h": 129,
+      "px": 94.5,
+      "py": 119
+     }
     },
     {
      "id": "char.barbas.pose_h_movil",
@@ -4419,7 +4430,18 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/barbas/movil_boca.webp"
+     "talkSrc": "/assets/punetos/humanos/barbas/movil_boca.webp",
+     "bodySrc": "/assets/punetos/humanos/barbas/movil_body.webp",
+     "head": {
+      "src": "/assets/punetos/humanos/barbas/movil_head.webp",
+      "talkSrc": "/assets/punetos/humanos/barbas/movil_head_boca.webp",
+      "x": 59,
+      "y": 0,
+      "w": 152,
+      "h": 109,
+      "px": 76.0,
+      "py": 99
+     }
     },
     {
      "id": "char.barbas.pose_h_explica",
@@ -4432,7 +4454,18 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/barbas/explica_boca.webp"
+     "talkSrc": "/assets/punetos/humanos/barbas/explica_boca.webp",
+     "bodySrc": "/assets/punetos/humanos/barbas/explica_body.webp",
+     "head": {
+      "src": "/assets/punetos/humanos/barbas/explica_head.webp",
+      "talkSrc": "/assets/punetos/humanos/barbas/explica_head_boca.webp",
+      "x": 84,
+      "y": 0,
+      "w": 150,
+      "h": 100,
+      "px": 75.5,
+      "py": 90
+     }
     },
     {
      "id": "char.barbas.pose_h_silla_relajado",
@@ -4482,7 +4515,18 @@
      "facing": "right",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/barbas/camina_boca.webp"
+     "talkSrc": "/assets/punetos/humanos/barbas/camina_boca.webp",
+     "bodySrc": "/assets/punetos/humanos/barbas/camina_body.webp",
+     "head": {
+      "src": "/assets/punetos/humanos/barbas/camina_head.webp",
+      "talkSrc": "/assets/punetos/humanos/barbas/camina_head_boca.webp",
+      "x": 141,
+      "y": 0,
+      "w": 165,
+      "h": 88,
+      "px": 83.0,
+      "py": 78
+     }
     },
     {
      "id": "char.barbas.pose_h_corre",
@@ -4520,7 +4564,18 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/barbas/para_boca.webp"
+     "talkSrc": "/assets/punetos/humanos/barbas/para_boca.webp",
+     "bodySrc": "/assets/punetos/humanos/barbas/para_body.webp",
+     "head": {
+      "src": "/assets/punetos/humanos/barbas/para_head.webp",
+      "talkSrc": "/assets/punetos/humanos/barbas/para_head_boca.webp",
+      "x": 68,
+      "y": 0,
+      "w": 197,
+      "h": 133,
+      "px": 99.0,
+      "py": 123
+     }
     },
     {
      "id": "char.barbas.pose_h_agobiado",
@@ -4546,7 +4601,18 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/barbas/abre_brazos_boca.webp"
+     "talkSrc": "/assets/punetos/humanos/barbas/abre_brazos_boca.webp",
+     "bodySrc": "/assets/punetos/humanos/barbas/abre_brazos_body.webp",
+     "head": {
+      "src": "/assets/punetos/humanos/barbas/abre_brazos_head.webp",
+      "talkSrc": "/assets/punetos/humanos/barbas/abre_brazos_head_boca.webp",
+      "x": 122,
+      "y": 0,
+      "w": 181,
+      "h": 123,
+      "px": 91.0,
+      "py": 113
+     }
     },
     {
      "id": "char.barbas.pose_h_susto",
@@ -4572,7 +4638,18 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/barbas/neutro_boca.webp"
+     "talkSrc": "/assets/punetos/humanos/barbas/neutro_boca.webp",
+     "bodySrc": "/assets/punetos/humanos/barbas/neutro_body.webp",
+     "head": {
+      "src": "/assets/punetos/humanos/barbas/neutro_head.webp",
+      "talkSrc": "/assets/punetos/humanos/barbas/neutro_head_boca.webp",
+      "x": 44,
+      "y": 0,
+      "w": 139,
+      "h": 100,
+      "px": 70.0,
+      "py": 90
+     }
     },
     {
      "id": "char.barbas.pose_h_brazos_cruzados",
@@ -4585,7 +4662,18 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/barbas/brazos_cruzados_boca.webp"
+     "talkSrc": "/assets/punetos/humanos/barbas/brazos_cruzados_boca.webp",
+     "bodySrc": "/assets/punetos/humanos/barbas/brazos_cruzados_body.webp",
+     "head": {
+      "src": "/assets/punetos/humanos/barbas/brazos_cruzados_head.webp",
+      "talkSrc": "/assets/punetos/humanos/barbas/brazos_cruzados_head_boca.webp",
+      "x": 46,
+      "y": 0,
+      "w": 150,
+      "h": 105,
+      "px": 75.5,
+      "py": 95
+     }
     },
     {
      "id": "char.barbas.pose_h_senala",
@@ -4598,7 +4686,18 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/barbas/senala_boca.webp"
+     "talkSrc": "/assets/punetos/humanos/barbas/senala_boca.webp",
+     "bodySrc": "/assets/punetos/humanos/barbas/senala_body.webp",
+     "head": {
+      "src": "/assets/punetos/humanos/barbas/senala_head.webp",
+      "talkSrc": "/assets/punetos/humanos/barbas/senala_head_boca.webp",
+      "x": 36,
+      "y": 0,
+      "w": 148,
+      "h": 89,
+      "px": 74.5,
+      "py": 79
+     }
     },
     {
      "id": "char.barbas.pose_h_encoge",
@@ -4611,7 +4710,18 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/barbas/encoge_boca.webp"
+     "talkSrc": "/assets/punetos/humanos/barbas/encoge_boca.webp",
+     "bodySrc": "/assets/punetos/humanos/barbas/encoge_body.webp",
+     "head": {
+      "src": "/assets/punetos/humanos/barbas/encoge_head.webp",
+      "talkSrc": "/assets/punetos/humanos/barbas/encoge_head_boca.webp",
+      "x": 89,
+      "y": 0,
+      "w": 139,
+      "h": 107,
+      "px": 70.0,
+      "py": 97
+     }
     },
     {
      "id": "char.barbas.pose_h_confundido",
@@ -4637,7 +4747,18 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/barbas/risa_boca.webp"
+     "talkSrc": "/assets/punetos/humanos/barbas/risa_boca.webp",
+     "bodySrc": "/assets/punetos/humanos/barbas/risa_body.webp",
+     "head": {
+      "src": "/assets/punetos/humanos/barbas/risa_head.webp",
+      "talkSrc": "/assets/punetos/humanos/barbas/risa_head_boca.webp",
+      "x": 49,
+      "y": 0,
+      "w": 181,
+      "h": 114,
+      "px": 91.0,
+      "py": 104
+     }
     },
     {
      "id": "char.barbas.pose_h_facepalm",

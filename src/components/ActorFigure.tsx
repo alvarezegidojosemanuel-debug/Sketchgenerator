@@ -12,9 +12,32 @@ export function FigureBody({ a, highlight }: { a: ActorLayout; highlight?: FaceS
     <>
       {/* sombra de contacto: «asienta» en el suelo a los personajes dibujados enteros */}
       {a.pose?.flat && <div className="contact-shadow" style={{ left: pw * 0.15, width: pw * 0.7, top: ph - pw * 0.06, height: pw * 0.12 }} />}
-      {a.pose ? <img src={a.pose.src} alt="" draggable={false} width={pw} height={ph} style={a.pose.flat ? { position: "relative" } : undefined} /> : <div className="missing">?</div>}
-      {/* boca abierta siempre montada (casi invisible) para que al hablar no parpadee */}
-      {a.pose?.talkSrc && <img src={a.pose.talkSrc} alt="" draggable={false} width={pw} height={ph} style={{ position: "absolute", left: 0, top: 0, opacity: a.talkOpen ? 1 : 0.001 }} />}
+      {a.pose?.head && a.pose.bodySrc ? (
+        <>
+          <img src={a.pose.bodySrc} alt="" draggable={false} width={pw} height={ph} style={{ position: "relative" }} />
+          {/* cabeza articulada: gira sobre el cuello; la boca abierta va dentro, siempre montada */}
+          <div
+            style={{
+              position: "absolute",
+              left: a.pose.head.x,
+              top: a.pose.head.y + a.headDy,
+              width: a.pose.head.w,
+              height: a.pose.head.h,
+              transformOrigin: `${a.pose.head.px}px ${a.pose.head.py}px`,
+              transform: a.headRot ? `rotate(${a.headRot.toFixed(2)}deg)` : undefined,
+            }}
+          >
+            <img src={a.pose.head.src} alt="" draggable={false} width={a.pose.head.w} height={a.pose.head.h} style={{ position: "absolute", left: 0, top: 0 }} />
+            {a.pose.head.talkSrc && <img src={a.pose.head.talkSrc} alt="" draggable={false} width={a.pose.head.w} height={a.pose.head.h} style={{ position: "absolute", left: 0, top: 0, opacity: a.talkOpen ? 1 : 0.001 }} />}
+          </div>
+        </>
+      ) : (
+        <>
+          {a.pose ? <img src={a.pose.src} alt="" draggable={false} width={pw} height={ph} style={a.pose.flat ? { position: "relative" } : undefined} /> : <div className="missing">?</div>}
+          {/* boca abierta siempre montada (casi invisible) para que al hablar no parpadee */}
+          {a.pose?.talkSrc && <img src={a.pose.talkSrc} alt="" draggable={false} width={pw} height={ph} style={{ position: "absolute", left: 0, top: 0, opacity: a.talkOpen ? 1 : 0.001 }} />}
+        </>
+      )}
       {a.faceFrom && <FaceLayers layers={a.faceFrom} opacity={1 - a.faceMix} />}
       <FaceLayers layers={a.face} opacity={a.faceMix} highlight={highlight} />
     </>

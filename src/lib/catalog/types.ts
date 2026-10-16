@@ -54,6 +54,19 @@ export interface Pose {
   talkSrc?: string;
   /** Aspecto: «humano» (antes del parche) o «puneto». Sin valor = Puñeto. */
   look?: "humano" | "puneto";
+  /** Cabeza articulada (pose «flat»): el cuerpo sin cabeza y la cabeza aparte, que gira sobre el cuello. */
+  bodySrc?: string;
+  head?: {
+    src: string;
+    talkSrc?: string;
+    /** Caja de la cabeza en px de la pose y pivote (cuello) dentro de esa caja. */
+    x: number;
+    y: number;
+    w: number;
+    h: number;
+    px: number;
+    py: number;
+  };
 }
 
 export interface FaceAsset {

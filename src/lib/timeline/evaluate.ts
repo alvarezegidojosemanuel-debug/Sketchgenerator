@@ -42,6 +42,9 @@ export interface ActorState {
   skew: number;
   sx: number;
   sy: number;
+  /** Cabeza articulada: giro (grados, + = hacia la derecha del dibujo) y bajada (px). */
+  headRot: number;
+  headDy: number;
 }
 
 export interface PropState {
@@ -181,6 +184,8 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
       skew: 0,
       sx: 1,
       sy: 1,
+      headRot: 0,
+      headDy: 0,
     });
   }
   const props: PropState[] = [];

@@ -155,3 +155,23 @@ describe("sketch «El Jefe del pasado»", () => {
     expect(tk.events.filter((e) => e.track === "props" && e.propId === "prop_anastasia_pantalla").length).toBe(2);
   });
 });
+
+describe("cabeza articulada (piloto Barbas)", () => {
+  it("la cabeza gira dentro de un límite mientras habla y al escuchar se ladea hacia quien habla", async () => {
+    const { layoutActor } = await import("@/lib/renderer/layout");
+    const raw = (await import("@/data/sketch-jefe-del-pasado.json")).default;
+    const tk = validateProject(structuredClone(raw), catalog).project!.takes[0];
+    const barbasLine = tk.events.filter((e) => e.track === "dialogue" && e.actorUid === "barbas").at(-1)!;
+    const rots = new Set<number>();
+    for (let t = barbasLine.start + 0.3; t < barbasLine.start + barbasLine.duration - 0.3; t += 0.1) {
+      const a = layoutActor(catalog, evaluateTake(tk, catalog, t).actors.find((x) => x.uid === "barbas")!);
+      expect(a.pose?.head).toBeTruthy();
+      expect(Math.abs(a.headRot)).toBeLessThanOrEqual(7);
+      rots.add(Math.round(a.headRot));
+    }
+    expect(rots.size).toBeGreaterThan(3);
+    // el Jefe no tiene cabeza articulada todavía: se dibuja como antes
+    const jefe = layoutActor(catalog, evaluateTake(tk, catalog, 1).actors.find((x) => x.uid === "jefe")!);
+    expect(jefe.pose?.head).toBeUndefined();
+  });
+});

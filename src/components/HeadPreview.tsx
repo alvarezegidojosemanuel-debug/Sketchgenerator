@@ -48,6 +48,8 @@ export function HeadPreview({ catalog, characterId, poseId, expressionId, mouthA
           skew: 0,
           sx: 1,
           sy: 1,
+          headRot: 0,
+          headDy: 0,
   };
   const lay = layoutActor(catalog, state);
   const slots = Object.values(pose.rig ?? {}).filter((v): v is { x: number; y: number; scale: number } => typeof v === "object" && v !== null && "x" in v);

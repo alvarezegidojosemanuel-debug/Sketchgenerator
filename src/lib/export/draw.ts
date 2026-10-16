@@ -125,8 +125,20 @@ function drawActor(ctx: Ctx, a: ActorLayout, images: ImageMap) {
     ctx.fillRect(pw * 0.15, ph - pw * 0.35, pw * 0.7, pw * 0.7);
     ctx.restore();
   }
-  const body = images.get(a.talkOpen && a.pose.talkSrc ? a.pose.talkSrc : a.pose.src);
+  const hd = a.pose.head && a.pose.bodySrc ? a.pose.head : undefined;
+  const body = images.get(hd ? a.pose.bodySrc! : a.talkOpen && a.pose.talkSrc ? a.pose.talkSrc : a.pose.src);
   if (body) ctx.drawImage(body, 0, 0, pw, ph);
+  if (hd) {
+    // cabeza articulada (igual que en el escenario: gira sobre el cuello)
+    const img = images.get(a.talkOpen && hd.talkSrc ? hd.talkSrc : hd.src);
+    if (img) {
+      ctx.save();
+      ctx.translate(hd.x + hd.px, hd.y + hd.py + a.headDy);
+      if (a.headRot) ctx.rotate((a.headRot * Math.PI) / 180);
+      ctx.drawImage(img, -hd.px, -hd.py, hd.w, hd.h);
+      ctx.restore();
+    }
+  }
   const base = ctx.globalAlpha;
   if (a.faceFrom && a.faceMix < 1) drawFace(ctx, a.faceFrom, base * (1 - a.faceMix), images);
   drawFace(ctx, a.face, base * a.faceMix, images);
