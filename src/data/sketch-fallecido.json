@@ -1,0 +1,95 @@
+{
+  "formato": "puñetos-guion-1",
+  "titulo": "El fallecido",
+  "idea": "El sistema de personal da a Usu por muerto y cada intento de arreglarlo lo empeora.",
+  "escenas": [
+    {
+      "nombre": "1 · El fallecimiento",
+      "lugar": "bg_sistemas",
+      "vista": "humanos",
+      "personajes": ["Usu", "Barbas", "Jefe"],
+      "pasos": [
+        { "sonido": "teclado" },
+        { "quien": "Usu", "gesto": "movil" },
+        { "quien": "Barbas", "gesto": "brazos_cruzados" },
+        { "entra": "Jefe" },
+        { "dice": "Barbas", "texto": "[mischievously] Jefe, tenemos un muerto.", "pausa_despues": 0.3 },
+        { "dice": "Jefe", "texto": "¿Cómo que un muerto?", "gesto": "sorprendido" },
+        { "dice": "Barbas", "texto": "El sistema de personal acaba de dar a Usu por fallecido.", "gesto": "señala" },
+        { "dice": "Usu", "texto": "Sí, me acaba de llegar el certificado.", "gesto": "movil" },
+        { "dice": "Jefe", "texto": "¡Pero si estás aquí!", "gesto": "explica" },
+        { "dice": "Usu", "texto": "Ya. Se lo he dicho, pero me pide que lo demuestre presencialmente.", "gesto": "encoge" },
+        { "dice": "Jefe", "texto": "¡Pues ve!" },
+        { "dice": "Usu", "texto": "No puedo. Tengo que pedir cita.", "pausa_despues": 0.3 },
+        { "dice": "Barbas", "texto": "Y los muertos no pueden pedir cita.", "gesto": "encoge", "pausa_despues": 0.6 }
+      ]
+    },
+    {
+      "nombre": "2 · El protocolo",
+      "lugar": "bg_sistemas",
+      "vista": "humanos",
+      "personajes": ["Usu", "Barbas", "Jefe"],
+      "pasos": [
+        { "dice": "Jefe", "texto": "[angry] ¡Esto es de locos! ¡Llamad a alguien!", "gesto": "panico" },
+        { "dice": "Usu", "texto": "Ya he encontrado el procedimiento de reincorporación.", "gesto": "movil" },
+        { "dice": "Jefe", "texto": "¡Perfecto!", "gesto": "explica" },
+        { "dice": "Usu", "texto": "Necesito una autorización firmada por el fallecido.", "pausa_despues": 0.4 },
+        { "mira": "Jefe", "a": "Usu" },
+        { "pausa": 0.8 },
+        { "dice": "Jefe", "texto": "[angry] ¡Pues fírmala, coño!", "gesto": "explica" },
+        { "dice": "Usu", "texto": "No puedo. Mi firma digital ha caducado.", "gesto": "encoge" },
+        { "dice": "Barbas", "texto": "[chuckles] Normal, hijo. Se te ha caducado hasta la vida.", "gesto": "señala" },
+        { "dice": "Jefe", "texto": "[angry] ¡Barbas, deja de tocar los cojones y ayúdale!", "gesto": "señala" },
+        { "dice": "Barbas", "texto": "Estoy ayudando. Le he solicitado tres días de duelo.", "gesto": "brazos_cruzados" },
+        { "dice": "Usu", "texto": "Me los han aprobado.", "gesto": "movil" },
+        { "dice": "Jefe", "texto": "¿¡A QUIÉN!?", "gesto": "sorprendido" },
+        { "dice": "Usu", "texto": "A mí.", "pausa_despues": 0.6 }
+      ]
+    },
+    {
+      "nombre": "3 · El entierro",
+      "lugar": "bg_sistemas",
+      "vista": "humanos",
+      "personajes": ["Usu", "Barbas", "Jefe"],
+      "pasos": [
+        { "sonido": "ding" },
+        { "dice": "Usu", "texto": "Hostia.", "gesto": "movil" },
+        { "dice": "Jefe", "texto": "¿Qué?" },
+        { "dice": "Usu", "texto": "La empresa ha enviado una corona de flores." },
+        { "dice": "Barbas", "texto": "[mischievously] Mira qué detalle. En diez años no le han dado ni un bolígrafo.", "gesto": "explica" },
+        { "dice": "Jefe", "texto": "[angry] ¡Esto hay que solucionarlo YA!", "gesto": "panico" },
+        { "dice": "Usu", "texto": "Tranquilo. He corregido el registro.", "gesto": "explica" },
+        { "dice": "Jefe", "texto": "¡Menos mal!" },
+        { "dice": "Usu", "texto": "He puesto que el fallecido eras tú.", "gesto": "encoge" },
+        { "quien": "Jefe", "gesto": "sorprendido" },
+        { "pausa": 1.2 },
+        { "dice": "Barbas", "texto": "Bueno, Jefe, ha sido un placer.", "gesto": "abre_brazos" },
+        { "dice": "Jefe", "texto": "[angry] ¡USU, QUITA ESO AHORA MISMO!", "gesto": "señala" },
+        { "dice": "Usu", "texto": "No puedo. Ya han cerrado tu cuenta.", "gesto": "encoge" },
+        { "dice": "Barbas", "texto": "Pues no le grites, Jefe. Que al difunto hay que respetarlo.", "gesto": "explica", "pausa_despues": 0.4 },
+        { "sonido": "telefono" }
+      ]
+    },
+    {
+      "nombre": "4 · La llamada",
+      "lugar": "bg_pasillo",
+      "vista": "humanos",
+      "personajes": ["Jefe"],
+      "pasos": [
+        { "dice": "Jefe", "texto": "¿Sí?", "gesto": "confundido" },
+        { "pausa": 1.0 },
+        { "dice": "Jefe", "texto": "[shouting] ¿¡CÓMO QUE ME LLAMÁIS DE LA FUNERARIA!?", "gesto": "panico", "pausa_despues": 0.4 }
+      ]
+    },
+    {
+      "nombre": "5 · El seguro",
+      "lugar": "bg_sistemas",
+      "vista": "humanos",
+      "personajes": ["Usu", "Barbas"],
+      "pasos": [
+        { "dice": "Barbas", "texto": "[whispers] Oye… ¿el seguro de vida cubre accidentes informáticos?", "gesto": "pensando", "pausa_despues": 0.8 },
+        { "efecto": "oscuro", "durante": 1.5 }
+      ]
+    }
+  ]
+}

@@ -91,6 +91,9 @@ export function ProjectsScreen({ s }: { s: PocketState }) {
         </ul>
         <div className="row">
           <p className="fine"><b>Nuevo · Humanos</b></p>
+          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("fallecido"), "demo"); s.setTab("ver"); }}>
+            🆕 Sketch: El fallecido
+          </button>
           <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("jefe-del-pasado"), "demo"); s.setTab("ver"); }}>
             🆕 Sketch: El Jefe del pasado
           </button>

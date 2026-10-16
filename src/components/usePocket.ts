@@ -12,6 +12,7 @@ import demoOrigenRaw from "@/data/sketch-origen.json";
 import pruebaHumanosRaw from "@/data/prueba-humanos.json";
 import lentejasRaw from "@/data/sketch-lentejas.json";
 import jefePasadoRaw from "@/data/sketch-jefe-del-pasado.json";
+import fallecidoRaw from "@/data/sketch-fallecido.json";
 import ep1Raw from "@/data/ep1.json";
 import ep2Raw from "@/data/ep2.json";
 import ep3Raw from "@/data/ep3.json";
@@ -37,6 +38,7 @@ export const DEMOS = {
   "prueba-humanos": pruebaHumanosRaw,
   lentejas: lentejasRaw,
   "jefe-del-pasado": jefePasadoRaw,
+  fallecido: fallecidoRaw,
   ep1: ep1Raw,
   ep2: ep2Raw,
   ep3: ep3Raw,
