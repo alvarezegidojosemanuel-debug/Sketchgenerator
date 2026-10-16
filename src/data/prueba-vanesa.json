@@ -1,0 +1,22 @@
+{
+  "formato": "puñetos-guion-1",
+  "titulo": "Prueba técnica: Vanesa",
+  "idea": "Prueba de las poses humanas de Vanesa (guion provisional).",
+  "escenas": [
+    {
+      "nombre": "Sistemas",
+      "lugar": "bg_sistemas",
+      "vista": "humanos",
+      "personajes": ["Jefe", "Vanesa", "Reynaldo"],
+      "pasos": [
+        { "dice": "Vanesa", "texto": "¡JEFE! Tres semanas sin fichar. ¡TRES!", "gesto": "senala" },
+        { "dice": "Jefe", "texto": "Eso se lo preguntaré al Jefe del pasado.", "gesto": "confundido" },
+        { "dice": "Vanesa", "texto": "¡El del pasado TAMPOCO fichó!", "gesto": "explica" },
+        { "mira": "Vanesa", "a": "Reynaldo" },
+        { "quien": "Vanesa", "gesto": "ilusion" },
+        { "dice": "Vanesa", "texto": "Ay, Reynaldo… tú sí que fichas bien.", "gesto": "boli" },
+        { "dice": "Reynaldo", "texto": "Esto… voy a consultarlo con el sindicato.", "gesto": "susto" }
+      ]
+    }
+  ]
+}

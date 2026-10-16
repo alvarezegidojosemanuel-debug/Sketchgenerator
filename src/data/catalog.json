@@ -9035,6 +9035,398 @@
     }
    ],
    "fallbackExpressionId": "expression.cientifica.neutral"
+  },
+  {
+   "id": "vanesa",
+   "name": "Vanesa",
+   "color": "#8a6d4f",
+   "defaultVoice": {
+    "pitch": 0.95,
+    "rate": 1.0
+   },
+   "hasEyes": false,
+   "heightCm": 158,
+   "poses": [
+    {
+     "id": "char.vanesa.pose_h_neutro",
+     "key": "pose_h_neutro",
+     "label": "Humano · brazos cruzados, con desdén",
+     "src": "/assets/punetos/humanos/vanesa/brazos.webp",
+     "talkSrc": "/assets/punetos/humanos/vanesa/brazos_boca.webp",
+     "width": 416,
+     "height": 949,
+     "displayScale": 0.952,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.vanesa.pose_h_brazos2",
+     "key": "pose_h_brazos2",
+     "label": "Humano · brazos cruzados, mirando por encima de las gafas",
+     "src": "/assets/punetos/humanos/vanesa/brazos2.webp",
+     "talkSrc": "/assets/punetos/humanos/vanesa/brazos2_boca.webp",
+     "width": 463,
+     "height": 956,
+     "displayScale": 0.952,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.vanesa.pose_h_explica",
+     "key": "pose_h_explica",
+     "label": "Humano · quejándose con los papeles",
+     "src": "/assets/punetos/humanos/vanesa/explica.webp",
+     "talkSrc": "/assets/punetos/humanos/vanesa/explica.webp",
+     "width": 496,
+     "height": 918,
+     "displayScale": 0.952,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.vanesa.pose_h_senala",
+     "key": "pose_h_senala",
+     "label": "Humano · señalando y gritando",
+     "src": "/assets/punetos/humanos/vanesa/senala.webp",
+     "talkSrc": "/assets/punetos/humanos/vanesa/senala.webp",
+     "width": 448,
+     "height": 920,
+     "displayScale": 0.952,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.vanesa.pose_h_carpeta",
+     "key": "pose_h_carpeta",
+     "label": "Humano · abrazada a la carpeta, desconfiada",
+     "src": "/assets/punetos/humanos/vanesa/carpeta.webp",
+     "talkSrc": "/assets/punetos/humanos/vanesa/carpeta_boca.webp",
+     "width": 398,
+     "height": 940,
+     "displayScale": 0.952,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.vanesa.pose_h_telefono",
+     "key": "pose_h_telefono",
+     "label": "Humano · al teléfono, harta",
+     "src": "/assets/punetos/humanos/vanesa/telefono.webp",
+     "talkSrc": "/assets/punetos/humanos/vanesa/telefono_boca.webp",
+     "width": 452,
+     "height": 930,
+     "displayScale": 0.952,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.vanesa.pose_h_telefono2",
+     "key": "pose_h_telefono2",
+     "label": "Humano · al teléfono, mano en la cadera",
+     "src": "/assets/punetos/humanos/vanesa/telefono2.webp",
+     "talkSrc": "/assets/punetos/humanos/vanesa/telefono2_boca.webp",
+     "width": 404,
+     "height": 930,
+     "displayScale": 0.952,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.vanesa.pose_h_mostrador",
+     "key": "pose_h_mostrador",
+     "label": "Humano · apoyada en el mostrador, aburrida",
+     "src": "/assets/punetos/humanos/vanesa/mostrador.webp",
+     "talkSrc": "/assets/punetos/humanos/vanesa/mostrador_boca.webp",
+     "width": 375,
+     "height": 940,
+     "displayScale": 0.952,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.vanesa.pose_h_silla_explica",
+     "key": "pose_h_silla_explica",
+     "label": "Humano · en la silla, quejándose",
+     "src": "/assets/punetos/humanos/vanesa/silla_explica.webp",
+     "talkSrc": "/assets/punetos/humanos/vanesa/silla_explica.webp",
+     "width": 390,
+     "height": 730,
+     "displayScale": 0.952,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.vanesa.pose_h_mesa",
+     "key": "pose_h_mesa",
+     "label": "Humano · en su mesa, gritando con el boli",
+     "src": "/assets/punetos/humanos/vanesa/mesa.webp",
+     "talkSrc": "/assets/punetos/humanos/vanesa/mesa.webp",
+     "width": 387,
+     "height": 575,
+     "displayScale": 0.952,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.vanesa.pose_h_silla_te",
+     "key": "pose_h_silla_te",
+     "label": "Humano · en la silla con su taza, gritando",
+     "src": "/assets/punetos/humanos/vanesa/silla_te.webp",
+     "talkSrc": "/assets/punetos/humanos/vanesa/silla_te.webp",
+     "width": 397,
+     "height": 741,
+     "displayScale": 0.952,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.vanesa.pose_h_silla_telefono",
+     "key": "pose_h_silla_telefono",
+     "label": "Humano · en la silla, gritando al teléfono",
+     "src": "/assets/punetos/humanos/vanesa/silla_telefono.webp",
+     "talkSrc": "/assets/punetos/humanos/vanesa/silla_telefono.webp",
+     "width": 357,
+     "height": 759,
+     "displayScale": 0.952,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.vanesa.pose_h_ilusion",
+     "key": "pose_h_ilusion",
+     "label": "Humano · ilusionada (cuando ve a Reynaldo)",
+     "src": "/assets/punetos/humanos/vanesa/ilusion.webp",
+     "talkSrc": "/assets/punetos/humanos/vanesa/ilusion_boca.webp",
+     "width": 369,
+     "height": 985,
+     "displayScale": 0.918,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.vanesa.pose_h_ofrece",
+     "key": "pose_h_ofrece",
+     "label": "Humano · encantadora, ofreciendo",
+     "src": "/assets/punetos/humanos/vanesa/ofrece.webp",
+     "talkSrc": "/assets/punetos/humanos/vanesa/ofrece.webp",
+     "width": 405,
+     "height": 983,
+     "displayScale": 0.918,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.vanesa.pose_h_boli",
+     "key": "pose_h_boli",
+     "label": "Humano · coqueta con el boli",
+     "src": "/assets/punetos/humanos/vanesa/boli.webp",
+     "talkSrc": "/assets/punetos/humanos/vanesa/boli.webp",
+     "width": 382,
+     "height": 960,
+     "displayScale": 0.918,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.vanesa.pose_h_abraza",
+     "key": "pose_h_abraza",
+     "label": "Humano · abrazando la carpeta, enamorada",
+     "src": "/assets/punetos/humanos/vanesa/abraza.webp",
+     "talkSrc": "/assets/punetos/humanos/vanesa/abraza.webp",
+     "width": 356,
+     "height": 979,
+     "displayScale": 0.918,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    }
+   ],
+   "face": {
+    "eyes": [],
+    "brows": [],
+    "mouths": []
+   },
+   "expressions": [
+    {
+     "id": "expression.vanesa.neutral",
+     "emotion": "neutral",
+     "label": "Neutral",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_10"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_08",
+      "face.reynaldo.mouths.reynaldo_mouth_07",
+      "face.reynaldo.mouths.reynaldo_mouth_03"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_04",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_04",
+      "crop": "right"
+     },
+     "browL": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_10"
+     },
+     "browR": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_10",
+      "flip": true
+     }
+    },
+    {
+     "id": "expression.vanesa.alegria",
+     "emotion": "alegria",
+     "label": "Alegría",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_09"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_07",
+      "face.reynaldo.mouths.reynaldo_mouth_08",
+      "face.reynaldo.mouths.reynaldo_mouth_01"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "right"
+     },
+     "browL": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04"
+     },
+     "browR": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "flip": true
+     }
+    },
+    {
+     "id": "expression.vanesa.risa",
+     "emotion": "risa",
+     "label": "Risa",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_01"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_02",
+      "face.reynaldo.mouths.reynaldo_mouth_01",
+      "face.reynaldo.mouths.reynaldo_mouth_07"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "right"
+     },
+     "browL": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "dy": -4
+     },
+     "browR": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "flip": true,
+      "dy": -4
+     }
+    },
+    {
+     "id": "expression.vanesa.enfado",
+     "emotion": "enfado",
+     "label": "Enfado",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_05"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_06",
+      "face.reynaldo.mouths.reynaldo_mouth_05",
+      "face.reynaldo.mouths.reynaldo_mouth_08"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_06",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_06",
+      "crop": "right"
+     }
+    },
+    {
+     "id": "expression.vanesa.sorpresa",
+     "emotion": "sorpresa",
+     "label": "Sorpresa",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_03"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_03",
+      "face.reynaldo.mouths.reynaldo_mouth_08",
+      "face.reynaldo.mouths.reynaldo_mouth_06"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_03_izq",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_03_izq",
+      "crop": "right"
+     },
+     "browL": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "dy": -10
+     },
+     "browR": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "flip": true,
+      "dy": -10
+     }
+    },
+    {
+     "id": "expression.vanesa.tristeza",
+     "emotion": "tristeza",
+     "label": "Tristeza",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_10"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_06",
+      "face.reynaldo.mouths.reynaldo_mouth_08"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_02",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_02",
+      "crop": "right"
+     }
+    }
+   ],
+   "fallbackExpressionId": "expression.vanesa.neutral"
   }
  ],
  "backgrounds": [

@@ -14,6 +14,7 @@ import lentejasRaw from "@/data/sketch-lentejas.json";
 import jefePasadoRaw from "@/data/sketch-jefe-del-pasado.json";
 import pruebaReyRaw from "@/data/prueba-reynaldo.json";
 import pruebaDirRaw from "@/data/prueba-director.json";
+import pruebaVanRaw from "@/data/prueba-vanesa.json";
 import fallecidoRaw from "@/data/sketch-fallecido.json";
 import ep1Raw from "@/data/ep1.json";
 import ep2Raw from "@/data/ep2.json";
@@ -42,6 +43,7 @@ export const DEMOS = {
   "jefe-del-pasado": jefePasadoRaw,
   "prueba-reynaldo": pruebaReyRaw,
   "prueba-director": pruebaDirRaw,
+  "prueba-vanesa": pruebaVanRaw,
   fallecido: fallecidoRaw,
   ep1: ep1Raw,
   ep2: ep2Raw,
