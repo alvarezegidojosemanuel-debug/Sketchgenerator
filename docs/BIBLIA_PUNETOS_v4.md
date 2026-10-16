@@ -71,6 +71,8 @@ Los cinco son el **equipo de sistemas** y mantienen operativa toda la infraestru
 - **Frase:** «Eso se lo preguntaré al Jefe del pasado».
 
 **Habilidad Puñeta:** resuelve casi al instante problemas extraordinariamente complejos… y después no recuerda cómo.
+- **El precio:** cada vez que resuelve algo gordo se le borra la memoria un rato; después va recordando… más o menos (y a veces mal).
+- **Software sí, hardware no:** es un crack con cualquier programa, pero si toca un cacharro físico, lo rompe.
 
 ### SISTER — La que mantiene unido al equipo (unos 35 años)
 **Diseño aprobado:**
@@ -85,6 +87,7 @@ Los cinco son el **equipo de sistemas** y mantienen operativa toda la infraestru
 - No presume: lo demuestra trabajando.
 
 **Habilidad Puñeta:** organiza con la mente objetos, documentos, cables, información y espacios enteros.
+- **El precio:** no soporta el desorden. Si ve algo desordenado, lo tiene que ordenar, sea lo que sea y sea de quien sea (la mesa del Director, el bocadillo de Barbas, los pelos del rabo de Fake). Su némesis es el segundo Fallido (ver secundarios).
 
 **Con Anastas-IA:**
 - Es de las primeras en sospechar que Anastas-IA no se comporta con normalidad, porque ve patrones que otros pasan por alto.
@@ -104,7 +107,8 @@ Los cinco son el **equipo de sistemas** y mantienen operativa toda la infraestru
 - Nunca actúa con verdadera maldad.
 - **Frase:** «Con todo el amor del mundo» (con moderación).
 
-**Habilidad Puñeta:** cabrear al Jefe y, a la vez, conseguir que casi todo el mundo le tenga cariño.
+**Habilidad Puñeta:** controla las máquinas… **pero solo cuando están rotas**. Una impresora atascada, un ascensor averiado o un robot estropeado le obedecen; en cuanto los arregla, dejan de hacerle caso (dilema perfecto: ¿la arreglo o la sigo usando?).
+- Además: provoca al Jefe para que se caliente y defienda al equipo, y se mete con Alf «con todo el amor del mundo».
 
 **Con Anastas-IA:**
 - Disfruta provocándola. Al ver su relación especial con Usu, empieza a llamarla **su novia electrónica**.
@@ -191,6 +195,8 @@ Los cinco son el **equipo de sistemas** y mantienen operativa toda la infraestru
 
 **Posible revelación:** Anastas-IA también es víctima. La identidad y los motivos del villano están pendientes.
 
+**Método (decisión del creador):** como en *Perdidos*: se siembran pistas y se improvisa de dónde viene todo según avance la serie. No hay respuesta cerrada. Pistas disponibles: Fake ve a los Puñetos; Damián lo intuye; Alf acabará sabiéndolo; Vanesa guarda secretos; la científica odia a Usu sin motivo conocido; el parche tenía seis conexiones.
+
 ## 7. El accidente del parche
 
 1. Durante una gran avería, Anastas-IA deja de funcionar correctamente: los sistemas fallan y la presentación de los proyectos peligra.
@@ -209,6 +215,22 @@ Los cinco son el **equipo de sistemas** y mantienen operativa toda la infraestru
   - Las usan dentro y fuera del complejo.
 - **El secreto:** nadie más sabe que se ven como Puñetos. Los demás no entienden por qué ahora resuelven problemas de forma aparentemente imposible.
 - **Punto de vista:** tras el accidente, la serie se cuenta mayoritariamente en visión Puñeta.
+
+## 8b. Límites de los poderes (decidido)
+
+Los poderes nunca salen gratis: la comedia está en lo que se tuerce.
+- **Jefe:** resuelve y olvida; recupera la memoria poco a poco y no del todo. Software sí; hardware que toca, hardware que rompe.
+- **Sister:** compulsión de ordenar todo lo que esté desordenado.
+- **Barbas:** solo controla máquinas rotas; si las arregla, pierde el control.
+- **Reynaldo (propuesta):** cuando se enfada, sus reclamaciones mentales se envían solas (y le llegan al Director a las 3 de la mañana).
+- **Usu (propuesta):** lo que crea no siempre desaparece; Draco y Humillos fueron solo los primeros.
+- **Regla general (propuesta):** el parche tira de la batería de ÍCARO; si baja la carga o cae la red, la visión Puñeta parpadea y los poderes fallan en el peor momento.
+
+**Quién sabe qué:**
+- La empresa **no sabe nada**: para todos siguen siendo humanos normales y nadie investiga.
+- **Fake** es el único que los **ve como Puñetos** (y nadie le cree, porque es medio conejo).
+- **Damián** lo intuye: sabe que algo ha cambiado en ellos.
+- **Alf** acabará descubriéndolo (gran giro para más adelante).
 
 ## 9. Draco y Humillos
 
@@ -239,9 +261,22 @@ Son los compañeros de otros departamentos que piden cosas a sistemas. Cada uno 
 
 - **Vanesa — administración (fichajes e informes).** Odia su trabajo y a todo el que entra por la puerta, y grita mucho. Se dice que guarda secretos de todo el complejo y que por eso nadie se atreve a despedirla (otra fuente de pistas falsas o verdaderas para el misterio). Está colada por Reynaldo, que le tiene pánico por los gritos: con él se vuelve dulce de golpe y eso le asusta todavía más. Odia al Jefe porque nunca ficha y le descuadra los informes («¿Eso se lo preguntaré al Jefe del pasado? ¡El del pasado TAMPOCO fichó!»). Su aura: un mostrador con ventanilla y un cartel de «CERRADO».
 - **Alf — ingeniero de ÍCARO (el cohete).** Bajito, poca cosa, cara de buena persona… y psicópata encubierto. Odia a los cinco con toda su alma porque se meten con él y le gastan bromas constantemente. El chiste: delante de ellos sonríe y dice «¡ja, ja, qué buena!»; en cuanto se dan la vuelta, se le escapa la cara de villano, las manos de garra y la risita, y nadie lo ve nunca (salvo el público y, a veces, Anastas-IA). Sus planes de venganza son ridículamente pequeños y siempre le salen al revés. Es el otro gran sospechoso del villano oculto (frente a Damián): demasiado obvio para serlo… o no. Su aura: una sombra con cuernos que sonríe cuando él sonríe.
-- **Fake «el Fallido» — exbecario de SEMILLA.** Víctima de un experimento fallido: mitad conejo, mitad humano (orejas, rabito, dientes). Buenazo y asustadizo; cuando se asusta, cacarea y pone huevos, cosa que ningún científico del complejo sabe explicar (y Neli quiere estudiar con demasiado entusiasmo). Barbas le trae pienso cada día porque cree sinceramente que le gusta, y Fake se lo come por no ofenderle. Sus huevos son el remate visual perfecto de cualquier susto. Su aura: ninguna, porque ya es así de verdad (los Puñetos no saben si lo ven con la visión o sin ella).
+- **Ruan — becario/técnico de laboratorio, «el sufrido».** El único que trabaja de verdad: todos le cargan el marrón (Neli le hace regar sus organismos, Damián lo usa de sujeto de pruebas, Gala le hace montar las demos, Vanesa le grita por fichajes que no son suyos). Optimista sin remedio: tiene una idea para cada problema y nadie le escucha; cuando le escuchan, se la apunta otro. Gag: cada vez que sale va más cargado o, justo cuando se sienta a descansar, llega otro encargo. Su aura: una pila de cajas que crece cada vez que alguien le habla.
+- **La científica (nombre y proyecto pendientes).** Terca, bastante vaga e increíblemente inteligente. **Odia a Usu** y nadie sabe por qué (se improvisará con el tiempo). Eso enfurece a Anastas-IA, que se venga en pequeño: su cafetera se rompe solo para ella, sus reservas de sala se cancelan, el ascensor no para en su planta. Usu ni se entera de que le odia.
+- **Fake «el Fallido» — exbecario de SEMILLA.** Víctima de un experimento fallido: mitad conejo, mitad humano (orejas, rabito, dientes). Buenazo y asustadizo; cuando se asusta, cacarea y pone huevos, cosa que ningún científico del complejo sabe explicar (y Neli quiere estudiar con demasiado entusiasmo). Barbas le trae pienso cada día porque cree sinceramente que le gusta, y Fake se lo come por no ofenderle. Sus huevos son el remate visual perfecto de cualquier susto. Su aura: ninguna, porque ya es así de verdad. **Es el único que ve a los cinco como Puñetos**, y nadie le cree.
+- **El segundo Fallido (nombre pendiente; sin diseño todavía).** Otra víctima de los experimentos: tiene las piernas donde van los brazos y los brazos donde van las piernas, los ojos donde la boca y la boca donde los ojos. Es el caos hecho persona: **la antítesis de Sister**, que se vuelve loca intentando «ordenarlo».
+
+**Relaciones clave:** Vanesa ♥ Reynaldo (que huye); Vanesa ✗ Jefe (no ficha); Barbas → pienso a Fake y pullas a Alf; Alf ✗ los cinco (en secreto); Gala ✗ Barbas (inmune a ella); la científica ✗ Usu → Anastas-IA ✗ la científica; Neli → quiere estudiar los huevos de Fake; Sister ✗ el segundo Fallido (desorden); todos → Ruan (le cargan el marrón).
 
 **Reglas:** máximo un secundario por sketch y nunca roba el remate a los cinco protagonistas. El humor sale de su choque con sistemas, no de reírse de cómo son.
+
+## 10c. Herramientas de guion (propuesta)
+
+- **Doble visión:** el mismo momento visto por ellos (auras, gominolas) y por la cámara de seguridad (cinco tíos mirando fijamente a un señor con traje). Ideal como remate.
+- **Lugares con chiste propio:** la máquina de café (siempre rota: territorio de Barbas), el ascensor (lo controla Anastas-IA), la ventanilla de Vanesa, el invernadero de SEMILLA (Neli y Fake), el hangar de ÍCARO (Alf y su cohete), la sala de servidores (su refugio y el núcleo de Anastas-IA), el despacho del Director.
+- **Formatos fijos:** «La incidencia del día» (ticket absurdo de un secundario → solución Puñeta → consecuencia), «Anastas-IA informa» (aviso pasivo-agresivo por megafonía, 15 s), «El Jefe del pasado», «La venganza de Alf» (trama al final de un episodio, le sale al revés en el siguiente).
+- **Gags recurrentes:** el Jefe no ficha; el pienso de Barbas va a más (ruedita, zanahorias, una cita); los huevos de Fake aparecen por todo el complejo; la novia electrónica; Vanesa se derrite con Reynaldo y él huye al sindicato.
+- **Los juegos dentro del mundo:** Usu programa minijuegos en los descansos (Cadena puede verse en una pantalla del fondo antes del lanzamiento).
 
 ## 11. Temporada 1 (10 episodios de 60–90 s)
 
@@ -347,16 +382,17 @@ Y quizá alguien está usando el complejo, el parche y a Anastas-IA para un plan
 - las auras;
 - Anastas-IA, enamorada de Usu;
 - Draco y Humillos después del parche;
-- el formato de cómic animado y las reglas de las poses.
+- el formato de cómic animado y las reglas de las poses;
+- los límites de los poderes y quién sabe qué (sección 8b);
+- los secundarios (sección 10b).
 
 **Pendiente:**
 - el nombre del complejo y la confirmación de los nombres de los proyectos;
 - la estructura final y los diálogos;
-- el villano oculto;
+- el villano oculto (se improvisa, estilo *Perdidos*);
 - si Anastas-IA es villana, víctima o ambas cosas;
 - la sexta conexión;
-- los seres y los secundarios;
-- los límites exactos de los poderes.
+- nombre y proyecto de la científica; nombre y diseño del segundo Fallido.
 
 ---
 
@@ -384,3 +420,5 @@ La escaleta detallada está en [`escaleta-t1-v4.md`](escaleta-t1-v4.md).
 9. **Cómo se usan las coletillas** (corrección del creador):
    - **«Con todo el amor del mundo» (Barbas):** se dice **justo después de soltar una crítica dura sobre alguien**, para lavarse la conciencia: «…que yo esto lo digo con todo el amor del mundo, ¿eh?, no lo digo por nada». Nunca como frase suelta.
    - **«Eso se lo preguntaré al Jefe del pasado» (Jefe):** cuando le preguntan si se acuerda de algo que hizo o dijo él mismo y **no tiene ni idea de qué le hablan**. Viene a ser «eso fue cosa del Jefe del pasado, yo no sé nada».
+
+10. **Límites de los poderes y secundarios** (octubre de 2026): ver secciones 8b y 10b. Fake es el único que ve a los Puñetos; Damián lo intuye; Alf lo descubrirá. La empresa no sabe nada. El misterio se improvisa sobre la marcha.
