@@ -76,6 +76,11 @@ const HUMAN_POSE: Record<string, string[]> = {
 };
 const SOUND_ALIAS: Record<string, string> = { telefono: "sfx_telefono", alarma: "sfx_alarma", pop: "sfx_pop", whoosh: "sfx_whoosh", ding: "sfx_ding", boing: "sfx_boing", golpe: "sfx_golpe", fracaso: "sfx_fracaso", teclado: "sfx_teclado", pantallazo: "sfx_pantallazo", servidor: "sfx_servidor", explosion: "sfx_explosion", portazo: "sfx_golpe" };
 
+const COMIC_FX: Record<string, "sudor" | "sorpresa" | "enfado" | "lineas" | "risa" | "onomatopeya"> = {
+  sudor: "sudor", gotas: "sudor", sorpresa: "sorpresa", susto: "sorpresa", enfado: "enfado", vena: "enfado", furia: "enfado",
+  lineas: "lineas", velocidad: "lineas", risa: "risa", ja: "risa", jaja: "risa", onomatopeya: "onomatopeya", zas: "onomatopeya",
+};
+
 export interface ScriptIssue {
   path: string;
   message: string;
@@ -122,6 +127,20 @@ class SceneBuilder {
     const ch = this.catalog.characters.find((c) => c.id === cid);
     return ch?.expressions.some((e) => e.id === id) ? id : ch?.fallbackExpressionId;
   }
+  /** Recurso de cómic automático según el gesto o la acotación (sudor en el pánico, «JA» en la risa…). */
+  comicAuto(who: string, gestureKey: string | undefined, text: string, at: number, d: number) {
+    if (this.back) return;
+    const g = gestureKey ?? "";
+    const kind =
+      /panico|agobiado|sentado_agobiado/.test(g) ? "sudor"
+      : /sorprendido|susto|reaction/.test(g) ? "sorpresa"
+      : /^(camina|corre)$/.test(g) ? "lineas"
+      : /^risa$/.test(g) || /\[(laughs|laughing)\]/i.test(text) ? "risa"
+      : /\[(angry|furious|shouting)\]/i.test(text) ? "enfado"
+      : undefined;
+    const dup = this.ev.some((e) => e.track === "screen" && e.effect === "comic" && e.kind === kind && e.actorUid === who && Math.abs(e.start - at) < 1.5);
+    if (kind && !dup) this.add({ track: "screen", effect: "comic", kind, actorUid: who, duration: Math.max(1.1, Math.min(2.2, d)) }, at);
+  }
   /** speaking: el personaje habla en esa pose → con humanos, solo poses que tienen boca abierta (talkSrc). */
   pose(cid: string, key: string, speaking = false) {
     const ch = this.catalog.characters.find((c) => c.id === cid);
@@ -150,6 +169,7 @@ class SceneBuilder {
         }
       }
       this.add({ track: "dialogue", actorUid: who, duration: d, text }, at);
+      this.comicAuto(who, opts.gesture, text, at, d);
     } else if (who && this.back && this.has(who)) {
       this.add({ track: "dialogue", voiceOf: who, duration: d, text }, at);
       const g = opts.gesture ? BACK_GESTURE[who]?.[norm(opts.gesture)] : undefined;
@@ -318,7 +338,10 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
       } else if (st.gesto !== undefined && st.quien !== undefined) {
         const who = charId(st.quien, `${sp}.quien`);
         const poseId = who ? b.pose(who, POSE_ALIAS[norm(String(st.gesto))] ?? norm(String(st.gesto))) : undefined;
-        if (who && poseId && !back) b.add({ track: "body", actorUid: who, duration: 0.3, poseId });
+        if (who && poseId && !back) {
+          b.add({ track: "body", actorUid: who, duration: 0.3, poseId });
+          b.comicAuto(who, POSE_ALIAS[norm(String(st.gesto))] ?? norm(String(st.gesto)), "", b.t, 1.4);
+        }
       } else if (st.sale !== undefined || st.entra !== undefined) {
         const entering = st.entra !== undefined;
         const who = charId(entering ? st.entra : st.sale, sp);
@@ -361,7 +384,10 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
           b.add({ track: "screen", effect: "shake", duration: 0.7 });
         } else if (ef === "oscuro" || ef === "apagon") {
           b.add({ track: "screen", effect: "darken", duration: Number(st.durante) || 2 });
-        } else issues.push({ path: `${sp}.efecto`, message: `efecto «${String(st.efecto)}» no existe (explosion, pantallazo, destello, temblor, oscuro)` });
+        } else if (COMIC_FX[ef]) {
+          // recursos de cómic sobre un personaje
+          b.add({ track: "screen", effect: "comic", kind: COMIC_FX[ef], ...(near ? { actorUid: near.uid } : {}), duration: Number(st.durante) || 1.6, ...(text ? { text } : {}) });
+        } else issues.push({ path: `${sp}.efecto`, message: `efecto «${String(st.efecto)}» no existe (explosion, pantallazo, destello, temblor, oscuro, sudor, sorpresa, enfado, lineas, risa, onomatopeya)` });
       } else if (st.objeto !== undefined) {
         const id = String(st.objeto);
         const prop = catalog.props.find((x) => x.id === id || norm(x.label) === norm(id));

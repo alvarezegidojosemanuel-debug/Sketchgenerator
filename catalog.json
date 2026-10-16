@@ -5851,7 +5851,7 @@
      "talkSrc": "/assets/punetos/humanos/jefe/sorprendido_boca.webp",
      "width": 399,
      "height": 692,
-     "displayScale": 1.364,
+     "displayScale": 1.214,
      "facing": "front",
      "flat": true,
      "look": "humano"
@@ -5864,7 +5864,7 @@
      "talkSrc": "/assets/punetos/humanos/jefe/camina_boca.webp",
      "width": 412,
      "height": 746,
-     "displayScale": 1.091,
+     "displayScale": 1.146,
      "facing": "right",
      "flat": true,
      "look": "humano"

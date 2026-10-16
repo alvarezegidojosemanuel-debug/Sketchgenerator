@@ -126,3 +126,18 @@ describe("sketch «Las lentejas»", () => {
     expect(tk.events.some((e) => e.track === "body" && e.poseId === "char.barbas.pose_h_risa")).toBe(true);
   });
 });
+
+describe("recursos de cómic", () => {
+  it("se ponen solos según el gesto (sudor, sorpresa, líneas, risa) y a mano con «efecto»", async () => {
+    const raw = (await import("@/data/sketch-lentejas.json")).default;
+    const tk = validateProject(structuredClone(raw), catalog).project!.takes[0];
+    const kinds = tk.events.filter((e) => e.track === "screen" && e.effect === "comic").map((e) => (e as { kind?: string }).kind);
+    expect(kinds).toEqual(expect.arrayContaining(["sorpresa", "lineas", "risa", "onomatopeya"]));
+    const ev = tk.events.find((e) => e.track === "screen" && (e as { kind?: string }).kind === "onomatopeya")!;
+    const f = evaluateTake(tk, catalog, ev.start + 0.4);
+    const c = f.screen.comics!.find((x) => x.kind === "onomatopeya")!;
+    const barbas = f.actors.find((a) => a.uid === "barbas")!;
+    expect(Math.abs(c.x - barbas.x)).toBeLessThan(40);
+    expect(c.y).toBeLessThan(barbas.y - 500);
+  });
+});

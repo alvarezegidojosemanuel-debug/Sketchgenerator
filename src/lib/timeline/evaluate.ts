@@ -404,6 +404,19 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
   }
 
   if (opts.life !== false) applyLife(take, catalog, t, actors, eyesUntil);
+  // recursos de cómic: sobre la cabeza de su actor, ya con la vida aplicada
+  if (screen.comicsPending) {
+    for (const c of screen.comicsPending) {
+      const st = c.actorUid ? actors.get(c.actorUid) : undefined;
+      if (c.actorUid && (!st || st.visible <= 0)) continue;
+      const pose = st ? findPose(catalog, st.characterId, st.poseId) : undefined;
+      const h = st ? (pose?.height ?? 600) * poseScale(catalog, st.characterId, pose) * st.scale : 900;
+      const x = st ? st.x + st.offX : 540;
+      const y = st ? st.y + st.offY - h * 0.88 : 700;
+      (screen.comics ??= []).push({ kind: c.kind, x, y, h, local: c.local, duration: c.duration, side: st?.flip ? -1 : 1, text: c.text });
+    }
+    delete screen.comicsPending;
+  }
   const camera = cameraAt(take, catalog, t, actors);
 
   return {

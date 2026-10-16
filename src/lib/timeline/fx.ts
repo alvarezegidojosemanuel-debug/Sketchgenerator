@@ -1,6 +1,7 @@
 /** Animaciones de objetos, efectos corporales y de pantalla (funciones puras de t). */
 import type { BodyEvent, PropsEvent, ScreenEvent } from "@/lib/schema/pocket";
 import type { ExplosionState } from "@/lib/renderer/explosion";
+import type { ComicKind, ComicState } from "@/lib/renderer/comic";
 
 export interface PropAnim {
   dx: number;
@@ -104,6 +105,10 @@ export interface ScreenFx {
   bluescreen?: { alpha: number; text: string };
   /** Explosiones activas (bola de fuego, metralla, humo, «¡BUM!»). */
   explosions?: ExplosionState[];
+  /** Recursos de cómic activos (ya colocados sobre la cabeza de su actor). */
+  comics?: ComicState[];
+  /** Pendientes de colocar (se resuelven con la posición final del actor). */
+  comicsPending?: { kind: ComicKind; actorUid?: string; local: number; duration: number; text?: string }[];
 }
 
 export type Presence = NonNullable<BodyEvent["appear"]>;
@@ -151,6 +156,9 @@ export function screenFx(e: ScreenEvent, t: number, acc: ScreenFx) {
       }
       break;
     }
+    case "comic":
+      (acc.comicsPending ??= []).push({ kind: e.kind ?? "sorpresa", actorUid: e.actorUid, local, duration: e.duration, text: e.text });
+      break;
     case "bluescreen":
       acc.bluescreen = { alpha: clamp01(Math.min(local, e.duration - local) / 0.08), text: e.text ?? "Tu equipo se ha puñetizado." };
       break;

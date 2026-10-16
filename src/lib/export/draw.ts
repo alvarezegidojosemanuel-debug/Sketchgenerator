@@ -7,6 +7,7 @@ import type { FrameState } from "@/lib/timeline/evaluate";
 import { layoutFrame, type ActorLayout, type PropLayout } from "@/lib/renderer/layout";
 import type { FaceLayer } from "@/lib/renderer/face";
 import { drawExplosion } from "@/lib/renderer/explosion";
+import { drawComic } from "@/lib/renderer/comic";
 
 export const W = 1080;
 export const H = 1920;
@@ -54,6 +55,7 @@ export function drawFrame(ctx: Ctx, catalog: Catalog, frame: FrameState, images:
   }
   items.sort((x, y) => x.z - y.z).forEach((i) => i.draw());
   for (const ex of layout.screen.explosions ?? []) drawExplosion(ctx, ex);
+  for (const c of layout.screen.comics ?? []) drawComic(ctx, c);
   ctx.restore();
 
   // --- capas de pantalla

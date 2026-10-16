@@ -367,3 +367,6 @@ La escaleta detallada está en [`escaleta-t1-v4.md`](escaleta-t1-v4.md).
    - Después vendrán **Usudokus** (el juego de Usu) y **Dopamine** (el de Barbas).
    - **VirusKill** y **DisorderDrive** son independientes: solo aparecen en cameos.
    - La conversión de los juegos se hará más adelante; ahora toca centrarse en los sketches.
+9. **Cómo se usan las coletillas** (corrección del creador):
+   - **«Con todo el amor del mundo» (Barbas):** se dice **justo después de soltar una crítica dura sobre alguien**, para lavarse la conciencia: «…que yo esto lo digo con todo el amor del mundo, ¿eh?, no lo digo por nada». Nunca como frase suelta.
+   - **«Eso se lo preguntaré al Jefe del pasado» (Jefe):** cuando le preguntan si se acuerda de algo que hizo o dijo él mismo y **no tiene ni idea de qué le hablan**. Viene a ser «eso fue cosa del Jefe del pasado, yo no sé nada».

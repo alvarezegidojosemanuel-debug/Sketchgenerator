@@ -810,7 +810,19 @@
                         "shake",
                         "darken",
                         "bluescreen",
-                        "explosion"
+                        "explosion",
+                        "comic"
+                      ]
+                    },
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "sudor",
+                        "sorpresa",
+                        "enfado",
+                        "lineas",
+                        "risa",
+                        "onomatopeya"
                       ]
                     },
                     "x": {

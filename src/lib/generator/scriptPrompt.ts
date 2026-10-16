@@ -51,6 +51,7 @@ ${loreBlock(chars.map((c) => c.id))}
 - Objetos (objeto): ${objetos}
 - Sonidos (sonido): ${sonidos}
 - Efectos (efecto): explosion (con "donde": personaje y "texto": onomatopeya), pantallazo (pantallazo azul), destello, temblor, oscuro.
+- Recursos de cómic (efecto + "donde": personaje): sudor, sorpresa, enfado, lineas (sale corriendo), risa, onomatopeya (con "texto", p. ej. "¡ZAS!"). Pocket ya pone solos el sudor en el pánico, la sorpresa al asustarse, las líneas al caminar o correr y los «JA» en la risa: úsalos a mano solo para rematar un momento.
 Si el sketch necesitaría algo que no existe (un lugar, un objeto, un personaje secundario visible…), NO lo inventes: descríbelo en "faltan": [frases cortas].
 
 ## Formato

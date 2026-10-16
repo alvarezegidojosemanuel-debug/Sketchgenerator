@@ -95,7 +95,7 @@ export function ProjectsScreen({ s }: { s: PocketState }) {
             🆕 Prueba: Jefe y Usu humanos en sistemas
           </button>
           <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("lentejas"), "demo"); s.setTab("ver"); }}>
-            🆕 Sketch: Las lentejas (Barbas, Jefe y Usu)
+            Prueba técnica: animación y cómic (guion provisional)
           </button>
           <p className="fine"><b>Serie · El origen</b></p>
           {(["ep1", "ep2", "ep3", "ep4", "ep5"] as const).map((k, n) => (
