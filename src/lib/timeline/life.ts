@@ -64,10 +64,13 @@ function nearest(uid: string, actors: Map<string, ActorState>): string | undefin
  * `eyesUntil`: hasta cuándo manda una mirada puesta a mano (no se pisa).
  */
 export function applyLife(take: Take, catalog: Catalog, t: number, actors: Map<string, ActorState>, eyesUntil: Map<string, number>) {
-  // respiración (sin deformar: un vaivén vertical de 2 px)
+  // respiración: el cuerpo se estira y encoge un poco y se mece despacio, con los pies quietos
   for (const a of actors.values()) {
     const ph = phase(a.uid);
-    a.offY += Math.sin((t / 3.4 + ph) * Math.PI * 2) * 2;
+    const b = Math.sin((t / 3.4 + ph) * Math.PI * 2);
+    a.sy *= 1 + b * 0.007;
+    a.sx *= 1 - b * 0.004;
+    a.skew += Math.sin((t / 5.3 + ph) * Math.PI * 2) * 0.6;
   }
   // mirada al que habla
   const looks = lookTargets(take, t, actors);
@@ -89,11 +92,35 @@ export function applyLife(take: Take, catalog: Catalog, t: number, actors: Map<s
   for (const l of lines) {
     const end = l.start + l.duration;
     const sp = actors.get(l.actorUid);
-    if (sp && t >= l.start && t < end) sp.offX += Math.sin((t + phase(l.actorUid) * 3) * 2.2) * 3;
+    if (sp && t >= l.start && t < end) {
+      // quien habla: se inclina hacia quien le escucha y «gesticula» con el cuerpo al ritmo de la frase
+      const ph = phase(l.actorUid);
+      const into = clamp01((t - l.start) / 0.3) * clamp01((end - t) / 0.3);
+      const to = looks.get(l.actorUid)?.target;
+      const other = to ? actors.get(to) : undefined;
+      const dir = other ? Math.sign(other.x - sp.x) : 0;
+      const loud = /[!¡]/.test(l.text) ? 1.6 : 1;
+      sp.skew += (-dir * 1.6 + Math.sin((t + ph * 3) * Math.PI * 2 * 0.85) * 1.8 * loud) * into;
+      const beat = Math.abs(Math.sin((t + ph) * Math.PI * 2 * 1.7));
+      sp.sy *= 1 + beat * 0.012 * loud * into;
+      sp.offX += Math.sin((t + ph * 3) * 2.2) * 2;
+    }
     if (prev && prev !== l.actorUid) {
       const lis = actors.get(prev);
       const k = (t - (end - 0.15)) / 0.4;
-      if (lis && k > 0 && k < 1) lis.offY += Math.sin(Math.PI * k) * 7;
+      if (lis && k > 0 && k < 1) {
+        lis.offY += Math.sin(Math.PI * k) * 7;
+        lis.sy *= 1 - Math.sin(Math.PI * k) * 0.02;
+      }
+    }
+    // el que escucha reacciona al empezar la frase del otro (pequeño respingo hacia atrás)
+    if (prev && prev !== l.actorUid) {
+      const lis = actors.get(prev);
+      const k = (t - l.start) / 0.35;
+      if (lis && k > 0 && k < 1) {
+        const dir = sp ? Math.sign(sp.x - lis.x) : 0;
+        lis.skew += dir * 1.2 * Math.sin(Math.PI * k);
+      }
     }
     if (l.actorUid !== prev) prev = l.actorUid;
   }
@@ -152,6 +179,31 @@ export function autoShots(take: Take): CameraEvent[] {
   return out;
 }
 
+/**
+ * Cámara «viva» por defecto (sin planos puestos): se acerca muy despacio durante la escena, se desliza
+ * hacia quien habla y en la última frase (el remate) da un pequeño empujón hacia el personaje.
+ */
+function livingCamera(take: Take, catalog: Catalog, t: number, actors: Map<string, ActorState>): CameraState {
+  const lines = actorLines(take);
+  if (!lines.length || take.duration < 2) return WIDE;
+  const slow = 1 + 0.05 * ease(clamp01(t / take.duration));
+  // centro: media suavizada de quien habla (se desliza, no corta)
+  let cx = 540;
+  let cy = 960;
+  for (const l of lines) {
+    const a = actors.get(l.actorUid);
+    if (!a || l.start > t) continue;
+    const k = ease(clamp01((t - l.start) / 0.8));
+    const tx = 540 + (a.x - 540) * 0.35;
+    const ty = 960 + (a.y - actorHeight(catalog, a) * 0.55 - 960) * 0.3;
+    cx += (tx - cx) * k;
+    cy += (ty - cy) * k;
+  }
+  const last = lines[lines.length - 1];
+  const punch = t >= last.start ? 0.12 * ease(clamp01((t - last.start) / 0.35)) : 0;
+  return clampCam({ zoom: slow + punch, cx, cy });
+}
+
 /** Encuadre en t: eventos de cámara de la toma (cortes secos) o automáticos si la toma lo pide. */
 export function cameraAt(take: Take, catalog: Catalog, t: number, actors: Map<string, ActorState>): CameraState {
   const manual = take.events.filter((e): e is CameraEvent => e.track === "camera");
@@ -161,7 +213,7 @@ export function cameraAt(take: Take, catalog: Catalog, t: number, actors: Map<st
     if (s.start <= t) cur = s;
     else break;
   }
-  if (!cur) return WIDE;
+  if (!cur) return take.camera === "fixed" ? WIDE : livingCamera(take, catalog, t, actors);
   if (cur.x !== undefined && cur.y !== undefined) return clampCam({ zoom: cur.zoom ?? 1.5, cx: cur.x, cy: cur.y });
   return frameShot(catalog, cur.shot, cur.actorUid ? actors.get(cur.actorUid) : undefined, cur.zoom);
 }

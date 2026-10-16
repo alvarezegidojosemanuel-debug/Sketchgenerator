@@ -38,6 +38,10 @@ export interface ActorState {
   /** Presencia en escena (entradas / salidas): 0 = fuera, 1 = dentro. */
   visible: number;
   presenceScale: number;
+  /** Animación «de goma» (pies fijos): inclinación en grados y estiramiento horizontal/vertical. */
+  skew: number;
+  sx: number;
+  sy: number;
 }
 
 export interface PropState {
@@ -174,6 +178,9 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
       mouthDy: 0,
       visible: a.hidden ? 0 : 1,
       presenceScale: 1,
+      skew: 0,
+      sx: 1,
+      sy: 1,
     });
   }
   const props: PropState[] = [];
@@ -230,6 +237,13 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
       case "body": {
         if (!st) break;
         if (e.poseId && e.poseId !== st.poseId) {
+          // estirar y encoger al cambiar de pose (anticipación + rebote), con los pies en el suelo
+          const k = (t - e.start) / 0.45;
+          if (k >= 0 && k < 1) {
+            const s = Math.sin(k * Math.PI * 2) * (1 - k) * 0.07;
+            st.sy *= 1 - s;
+            st.sx *= 1 + s * 0.7;
+          }
           st.prevPoseId = st.poseId;
           st.poseId = e.poseId;
           st.poseMix = clamp01((t - e.start) / Math.min(POSE_FADE, e.duration));

@@ -45,6 +45,9 @@ export function HeadPreview({ catalog, characterId, poseId, expressionId, mouthA
     expressionId, gazeX, gazeY, speaking: false, mouthOpen: Boolean(mouthAssetId), mouthAssetId, mouthMode: "auto", mouthDx: 0, mouthDy: 0, poseMix: 1, exprMix: 1, offX: 0, offY: 0,
           visible: 1,
           presenceScale: 1,
+          skew: 0,
+          sx: 1,
+          sy: 1,
   };
   const lay = layoutActor(catalog, state);
   const slots = Object.values(pose.rig ?? {}).filter((v): v is { x: number; y: number; scale: number } => typeof v === "object" && v !== null && "x" in v);

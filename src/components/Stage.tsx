@@ -136,7 +136,7 @@ export function Stage({ catalog, frame, showSubtitles = true, selectedUid, onSel
                   opacity: a.role === "pre" ? 0.001 : a.opacity < 1 ? a.opacity : undefined,
                   pointerEvents: ghost ? "none" : undefined,
                   filter: layout.actorLight,
-                  transform: `scale(${a.flip ? -a.scale : a.scale}, ${a.scale})`,
+                  transform: `${a.skew ? `skewX(${a.skew.toFixed(2)}deg) ` : ""}scale(${(a.flip ? -a.scale : a.scale) * a.sx}, ${a.scale * a.sy})`,
                   cursor: onMoveActor ? "grab" : undefined,
                 }}
               >

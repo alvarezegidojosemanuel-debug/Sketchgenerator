@@ -111,6 +111,11 @@ describe("demo El origen", () => {
   });
 });
 
+const GUION_GOMA = { formato: "puñetos-guion-1", escenas: [{ lugar: "bg_sistemas", vista: "humanos", personajes: ["Jefe", "Usu"], pasos: [
+  { dice: "Usu", texto: "Jefe, lo tengo clarísimo: esto lo arreglamos antes de comer, te lo prometo." },
+  { dice: "Jefe", texto: "¿Antes de comer?", gesto: "confundido" },
+] }] };
+
 describe("vida automática y cámara", () => {
   it("los que escuchan miran a quien habla y la cámara corta a primer plano en el remate", async () => {
     const ep3 = (await import("@/data/ep3.json")).default;
@@ -127,6 +132,20 @@ describe("vida automática y cámara", () => {
     const last = take.events.filter((e) => e.track === "dialogue").at(-1)!;
     expect(evaluateTake(auto, catalog, last.start + 0.3).camera.zoom).toBeGreaterThan(1.5);
     expect(evaluateTake(auto, catalog, 0.1).camera.zoom).toBe(1);
-    expect(f.camera.zoom).toBe(1);
+    // sin planos: cámara viva (acercamiento suave, nunca más de un 20 %); «fixed», quieta
+    expect(f.camera.zoom).toBeGreaterThanOrEqual(1);
+    expect(f.camera.zoom).toBeLessThan(1.2);
+    expect(evaluateTake(take, catalog, last.start + 0.5).camera.zoom).toBeGreaterThan(1.1);
+    expect(evaluateTake({ ...take, camera: "fixed" as const }, catalog, line.start + 0.6).camera.zoom).toBe(1);
+  });
+  it("animación de goma: quien habla se inclina y gesticula; al cambiar de pose estira y encoge", () => {
+    const tk = validateProject(structuredClone(GUION_GOMA), catalog).project!.takes[0];
+    const line = tk.events.find((e) => e.track === "dialogue")!;
+    const skews = new Set<number>();
+    for (let t = line.start + 0.3; t < line.start + line.duration - 0.3; t += 0.1) skews.add(Math.round(evaluateTake(tk, catalog, t).actors.find((a) => a.uid === line.actorUid)!.skew * 10));
+    expect(skews.size).toBeGreaterThan(3);
+    const body = tk.events.find((e) => e.track === "body" && e.poseId)!;
+    const a = evaluateTake(tk, catalog, body.start + 0.1).actors.find((x) => x.uid === body.actorUid)!;
+    expect(Math.abs(a.sy - 1)).toBeGreaterThan(0.01);
   });
 });
