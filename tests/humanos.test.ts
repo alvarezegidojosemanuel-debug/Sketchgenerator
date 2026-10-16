@@ -175,3 +175,17 @@ describe("cabeza articulada (piloto Barbas)", () => {
     expect(jefe.pose?.head).toBeUndefined();
   });
 });
+
+describe("se giran hacia quien hablan", () => {
+  it("quien habla mira a quien le escucha y quien escucha mira a quien habla", async () => {
+    const raw = (await import("@/data/sketch-jefe-del-pasado.json")).default;
+    const tk = validateProject(structuredClone(raw), catalog).project!.takes[0];
+    const last = tk.events.filter((e) => e.track === "dialogue" && e.actorUid === "barbas").at(-1)!;
+    const f = evaluateTake(tk, catalog, last.start + 0.6);
+    const b = f.actors.find((a) => a.uid === "barbas")!;
+    const j = f.actors.find((a) => a.uid === "jefe")!;
+    // Barbas habla al Jefe (a su izquierda): girado; el Jefe le mira (Barbas a su derecha): sin girar
+    expect(b.flip).toBe(j.x < b.x);
+    expect(j.flip).toBe(b.x < j.x);
+  });
+});

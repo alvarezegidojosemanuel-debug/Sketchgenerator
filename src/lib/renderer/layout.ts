@@ -116,7 +116,7 @@ function layoutActorPose(catalog: Catalog, a: ActorState): ActorLayout {
     sx: a.sx,
     sy: a.sy,
     // el dibujo puede estar volteado: el giro se expresa en coordenadas del dibujo
-    headRot: Math.max(-HEAD_MAX, Math.min(HEAD_MAX, a.headRot)) * (a.flip ? -1 : 1),
+    headRot: Math.max(-HEAD_MAX, Math.min(HEAD_MAX, a.headRot)) * (a.flip ? -1 : 1) + (pose?.head?.rot ?? 0),
     headDy: a.headDy,
     talkOpen: pose?.flat && pose.talkSrc ? a.mouthOpen : undefined,
     face:

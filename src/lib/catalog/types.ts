@@ -66,6 +66,8 @@ export interface Pose {
     h: number;
     px: number;
     py: number;
+    /** Giro base (grados, coordenadas del dibujo) para enderezar una cabeza dibujada mirando hacia arriba. */
+    rot?: number;
   };
 }
 

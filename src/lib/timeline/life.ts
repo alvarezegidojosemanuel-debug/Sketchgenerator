@@ -75,6 +75,24 @@ export function applyLife(take: Take, catalog: Catalog, t: number, actors: Map<s
   }
   // mirada al que habla
   const looks = lookTargets(take, t, actors);
+  // humanos dibujados enteros (todos mirando a la derecha del dibujo): se giran hacia quien les habla o a quien hablan
+  const TURN = 0.26;
+  for (const [uid, { target, since }] of looks) {
+    const me = actors.get(uid);
+    const other = actors.get(target);
+    const pose = me ? findPose(catalog, me.characterId, me.poseId) : undefined;
+    if (!me || !other || !pose?.flat || pose.facing !== "front" || other.x === me.x) continue;
+    const want = other.x < me.x;
+    const before = lookTargets(take, since - 0.01, actors).get(uid);
+    const prevOther = before ? actors.get(before.target) : undefined;
+    const was = prevOther && prevOther.x !== me.x ? prevOther.x < me.x : me.flip;
+    const k = (t - since) / TURN;
+    if (was !== want && k >= 0 && k < 1) {
+      // media vuelta de dibujo animado: se estrecha, cambia de lado y se ensancha
+      me.sx *= Math.max(0.12, Math.abs(Math.cos(k * Math.PI)));
+      me.flip = k < 0.5 ? was : want;
+    } else me.flip = want;
+  }
   for (const [uid, { target, since }] of looks) {
     const me = actors.get(uid);
     const other = actors.get(target);
