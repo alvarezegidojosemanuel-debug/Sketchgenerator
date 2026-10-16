@@ -185,14 +185,14 @@ class SceneBuilder {
     return d;
   }
 
-  build(name: string, bg: string | null, camera?: "auto"): Take {
+  build(name: string, bg: string | null, camera?: "auto", transition?: "cut" | "fade"): Take {
     const dur = Math.round((this.t + 0.5) * 10) / 10;
     const ev = [...this.ev];
     for (const a of this.actors) ev.push({ id: this.nid("mo"), track: "mouth", start: 0, duration: dur, actorUid: a.uid, mode: "auto" } as PocketEvent);
     if (this.back) ev.push(...this.backProps(dur));
     for (const e of ev) if (e.start + e.duration > dur) e.duration = Math.max(0.1, Math.round((dur - e.start) * 100) / 100);
     for (const a of this.actors) if (this.hiddenFrom.has(a.uid)) a.hidden = true;
-    return { id: this.id, name, duration: dur, backgroundId: bg, ...(camera ? { camera } : {}), actors: this.actors, events: ev };
+    return { id: this.id, name, duration: dur, backgroundId: bg, ...(camera ? { camera } : {}), ...(transition ? { transition } : {}), actors: this.actors, events: ev };
   }
 
   private backProps(dur: number): PocketEvent[] {
@@ -420,7 +420,9 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
         issues.push({ path: sp, message: "paso desconocido (usa dice, narrador, off, coro, pausa, mira, cara, gesto, entra, sale, salta, tiembla, sonido, efecto, objeto)" });
       }
     });
-    takes.push(b.build(typeof sc.nombre === "string" ? sc.nombre.slice(0, 120) : `Escena ${si + 1}`, bg, norm(String(sc.camara ?? "")) === "auto" ? "auto" : undefined));
+    // entre escenas, fundido rápido a negro (salvo «transicion»: «corte»)
+    const tr = norm(String(sc.transicion ?? "")).startsWith("corte") ? "cut" : "fade";
+    takes.push(b.build(typeof sc.nombre === "string" ? sc.nombre.slice(0, 120) : `Escena ${si + 1}`, bg, norm(String(sc.camara ?? "")) === "auto" ? "auto" : undefined, tr));
   });
   if (issues.some((i) => /no existe|no tiene|no válid/.test(i.message)) && !takes.length) return { issues };
   const total = takes.reduce((s, t) => s + t.duration, 0);

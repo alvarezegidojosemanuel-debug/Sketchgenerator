@@ -189,3 +189,14 @@ describe("se giran hacia quien hablan", () => {
     expect(j.flip).toBe(b.x < j.x);
   });
 });
+
+describe("transición entre tomas", () => {
+  it("las escenas de un guion entran y salen con un fundido rápido a negro", async () => {
+    const raw = (await import("@/data/sketch-fallecido.json")).default;
+    const tk = validateProject(structuredClone(raw), catalog).project!.takes[1];
+    expect(tk.transition).toBe("fade");
+    expect(evaluateTake(tk, catalog, 0.02).screen.darken).toBeGreaterThan(0.9);
+    expect(evaluateTake(tk, catalog, tk.duration / 2).screen.darken ?? 0).toBe(0);
+    expect(evaluateTake(tk, catalog, tk.duration - 0.02).screen.darken).toBeGreaterThan(0.9);
+  });
+});

@@ -20,7 +20,7 @@ export const LIMITS = {
   maxPropsPerTake: 12,
   maxEventsPerTake: 200,
   maxEventsTotal: 1500,
-  maxTakeDuration: 60,
+  maxTakeDuration: 180,
   maxTotalDuration: 180,
   maxTextLength: 280,
   maxTitleLength: 120,
@@ -214,6 +214,8 @@ export const Take = z.object({
   backgroundId: id.nullable(),
   /** "auto": planos automáticos (general / medio / primer plano en el remate) si no hay eventos de cámara. */
   camera: z.enum(["fixed", "auto"]).optional(),
+  /** Paso a la toma siguiente / desde la anterior: «fade» = fundido rápido a negro (0,3 s); sin valor = corte seco. */
+  transition: z.enum(["cut", "fade"]).optional(),
   actors: z.array(Actor).max(LIMITS.maxActorsPerTake),
   events: z.array(PocketEvent).max(LIMITS.maxEventsPerTake),
 });

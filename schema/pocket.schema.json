@@ -184,7 +184,7 @@
           "duration": {
             "type": "number",
             "exclusiveMinimum": 0,
-            "maximum": 60
+            "maximum": 180
           },
           "backgroundId": {
             "anyOf": [
@@ -204,6 +204,13 @@
             "enum": [
               "fixed",
               "auto"
+            ]
+          },
+          "transition": {
+            "type": "string",
+            "enum": [
+              "cut",
+              "fade"
             ]
           },
           "actors": {

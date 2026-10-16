@@ -426,6 +426,12 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
     delete screen.comicsPending;
   }
   const camera = cameraAt(take, catalog, t, actors);
+  if (take.transition === "fade") {
+    // fundido a negro al entrar y al salir de la toma (tapa el salto de plano entre tomas)
+    const F = 0.3;
+    const a = Math.max(0, 1 - t / F, 1 - (take.duration - t) / F);
+    if (a > 0) screen.darken = Math.max(screen.darken ?? 0, Math.min(1, a));
+  }
 
   return {
     camera,
