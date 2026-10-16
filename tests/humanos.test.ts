@@ -99,3 +99,18 @@ describe("boca de dos fotogramas con voz real", () => {
     expect(r.project!.takes[1].events.some((e) => e.track === "props" && e.propId === "prop_anastasia_pantalla")).toBe(true);
   });
 });
+
+describe("humanos: al hablar siempre con boca", () => {
+  it("si el gesto pedido no tiene boca abierta, usa otra pose que sí (para que mueva la boca)", () => {
+    const g = { formato: "puñetos-guion-1", escenas: [{ lugar: "bg_sistemas", vista: "humanos", personajes: ["Jefe", "Usu"], pasos: [
+      { dice: "Usu", texto: "No sé, yo solo lo he reenviado.", gesto: "encoge" },
+      { dice: "Usu", texto: "¡Ay!", gesto: "susto" },
+    ] }] };
+    const tk = validateProject(g, catalog).project!.takes[0];
+    for (const e of tk.events) {
+      if (e.track !== "body" || !e.poseId) continue;
+      const pose = catalog.characters.find((c) => c.id === "usu")!.poses.find((p) => p.id === e.poseId)!;
+      expect(pose.talkSrc, e.poseId).toBeTruthy();
+    }
+  });
+});

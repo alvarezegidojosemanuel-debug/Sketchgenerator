@@ -122,10 +122,16 @@ class SceneBuilder {
     const ch = this.catalog.characters.find((c) => c.id === cid);
     return ch?.expressions.some((e) => e.id === id) ? id : ch?.fallbackExpressionId;
   }
-  pose(cid: string, key: string) {
+  /** speaking: el personaje habla en esa pose → con humanos, solo poses que tienen boca abierta (talkSrc). */
+  pose(cid: string, key: string, speaking = false) {
     const ch = this.catalog.characters.find((c) => c.id === cid);
-    const ids = this.human ? (HUMAN_POSE[key] ?? [key]).map((k) => `char.${cid}.pose_h_${k}`) : [`char.${cid}.pose_${key}`];
-    return ids.find((id) => ch?.poses.some((p) => p.id === id));
+    if (!this.human) {
+      const id = `char.${cid}.pose_${key}`;
+      return ch?.poses.some((p) => p.id === id) ? id : undefined;
+    }
+    const keys = [...(HUMAN_POSE[key] ?? [key]), ...(speaking ? ["explica", "neutro"] : [])];
+    const ok = (k: string) => ch?.poses.find((p) => p.id === `char.${cid}.pose_h_${k}` && (!speaking || p.talkSrc));
+    return keys.map(ok).find(Boolean)?.id;
   }
 
   say(who: string | undefined, text: string, opts: { emo?: string; gesture?: string; gap?: number; voiceOf?: string; speakerName?: string; at?: number }) {
@@ -134,7 +140,7 @@ class SceneBuilder {
     if (who && !this.back && this.has(who)) {
       if (opts.emo) this.add({ track: "face", actorUid: who, duration: 0.3, expressionId: this.expr(who, opts.emo) }, at);
       const g = opts.gesture ?? (text.replace(/\[[^\]]*\]/g, "").split(/\s+/).length >= 7 ? "talk_explain" : undefined);
-      const poseId = g ? this.pose(who, g) : undefined;
+      const poseId = g ? this.pose(who, g, true) : undefined;
       if (poseId) {
         this.add({ track: "body", actorUid: who, duration: 0.3, poseId }, at);
         // vuelve a su pose al terminar (salvo gestos «de reacción» que se mantienen hasta el siguiente cambio)
