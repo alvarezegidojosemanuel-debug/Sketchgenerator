@@ -362,3 +362,8 @@ Y quizá alguien está usando el complejo, el parche y a Anastas-IA para un plan
 La escaleta detallada está en [`escaleta-t1-v4.md`](escaleta-t1-v4.md).
 
 7. **La IA se llama Anastas-IA** (antes NODO). Se pronuncia «Anastasia».
+8. **Juegos de la saga:**
+   - **Cadena** (puzle de operaciones con todo el equipo) **sale primero**: la temporada 1 debe empujar hacia él.
+   - Después vendrán **Usudokus** (el juego de Usu) y **Dopamine** (el de Barbas).
+   - **VirusKill** y **DisorderDrive** son independientes: solo aparecen en cameos.
+   - La conversión de los juegos se hará más adelante; ahora toca centrarse en los sketches.
