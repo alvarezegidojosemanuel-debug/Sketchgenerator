@@ -229,6 +229,16 @@ Los cinco son el **equipo de sistemas** y mantienen operativa toda la infraestru
   - En una crisis pasa de una sonrisa espectacular a gritar desesperado.
 - **Su papel:** no es un villano plano; es fuente de presión y de conflicto cómico.
 
+## 10b. Secundarios del complejo (propuesta de Claude, pendiente de aprobar)
+
+Son los compañeros de otros departamentos que piden cosas a sistemas. Cada uno está atado a un proyecto del complejo, así que genera incidencias con sentido y no sale de la nada.
+
+- **Neli — bióloga de SEMILLA.** Genial, dulce, despistada, obsesiva e ingenua. Se encariña con sus organismos como si fueran mascotas y pide cosas imposibles con toda la inocencia («¿podéis darle wifi al invernadero? Es que las plantas se aburren»). Es la causa natural de la *incidencia en SEMILLA* del Ep. 6: un experimento suyo se descontrola y Usu lo arregla creando a Draco y Humillos. Se lleva bien con Usu, porque los dos hablan con cosas que no hablan. Su aura (visión Puñeta): todo lo que toca brota flores.
+- **Gala — comercial estrella.** Guapísima, engreída, narcisista y manipuladora. Vende a los inversores funciones que todavía no existen, y sistemas tiene que hacerlas realidad antes del viernes. Es el motor del Ep. 7 (*Los inversores*): promete una demo imposible y, cuando sale bien gracias al equipo, se lleva el mérito junto al Director. Barbas es el único inmune a sus encantos y la pincha con sus pullas. Su aura: un foco y un espejo que la siguen a todas partes.
+- **Damián — investigador de SINAPSIS.** Extraño, sombrío, con un CI altísimo y ninguna empatía. Habla de las personas como de sistemas («Tu respuesta emocional es ineficiente»). Aparece justo después de algunas incidencias, sabe demasiadas cosas de Anastas-IA y su proyecto es una de las tres piezas del parche. Es **uno de los candidatos al villano oculto**: las pistas tienen que ser muy sutiles, y también puede que solo sea raro. Su aura: una nube negra con lluvia propia.
+
+**Reglas:** máximo un secundario por sketch y nunca roba el remate a los cinco protagonistas. El humor sale de su choque con sistemas, no de reírse de cómo son.
+
 ## 11. Temporada 1 (10 episodios de 60–90 s)
 
 La temporada combina historia continua con capítulos que tienen sus propios conflictos y remates.

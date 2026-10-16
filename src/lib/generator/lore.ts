@@ -28,7 +28,7 @@ alguien la está usando; ¿el accidente fue casual?; el parche tenía seis conex
 Se escribe «Anastas-IA» (juego con «IA») pero se pronuncia «Anastasia»: cuando un personaje la nombre en voz alta, escribe «Anastasia» en el texto.
 En el guion: { "off": "Anastas-IA", "texto": … }.
 El Jefe (su jefe de equipo) y el Director (director del complejo, eufórico con los resultados mientras ellos van desbordados) son personas distintas.
-Secundarias del complejo: Neli, bióloga genial, dulce, despistada, obsesiva e ingenua (bata blanca, gafas redondas); Gala, la crack comercial, guapísima, pelirroja, engreída, narcisista y manipuladora (traje negro y tacones); Damián, científico extraño y sombrío, con un CI altísimo y ninguna empatía (gordito, sin gafas, bata blanca y jersey negro de cuello alto).
+Secundarios del complejo (de otros departamentos; piden cosas a sistemas; máximo uno por sketch y nunca roban el remate): Neli, bióloga de SEMILLA, genial, dulce, despistada, obsesiva e ingenua, trata a sus organismos como mascotas y pide imposibles con inocencia; Gala, comercial estrella, guapísima, pelirroja, engreída, narcisista y manipuladora, vende a los inversores cosas que aún no existen y se apunta los méritos; Damián, investigador de SINAPSIS, extraño, sombrío, CI altísimo y cero empatía, habla de las personas como de sistemas (es uno de los posibles sospechosos del misterio: pistas muy sutiles, nunca confirmar).
 El humor nace de las situaciones y de cómo son ellos (contradicciones, relaciones, consecuencias inesperadas), no de insultos ni gritos,
 y nunca de burlarse de los usuarios ni de ningún colectivo. Sin parecidos con franquicias existentes.`;
 
