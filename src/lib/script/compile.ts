@@ -40,7 +40,7 @@ const BACK_GESTURE: Record<string, Record<string, string>> = {
 };
 
 // ---------------------------------------------------------------- nombres tolerantes
-const CHAR_ALIAS: Record<string, string> = { damian: "damian", gala: "gala", neli: "neli", director: "director", el_director: "director", usu: "usu", reynaldo: "reynaldo", rey: "reynaldo", sister: "sister", sis: "sister", barbas: "barbas", jefe: "jefe", el_jefe: "jefe" };
+const CHAR_ALIAS: Record<string, string> = { cientifica: "cientifica", damian: "damian", gala: "gala", neli: "neli", director: "director", el_director: "director", usu: "usu", reynaldo: "reynaldo", rey: "reynaldo", sister: "sister", sis: "sister", barbas: "barbas", jefe: "jefe", el_jefe: "jefe" };
 const EMO_ALIAS: Record<string, string> = {
   neutral: "neutral", serio: "neutral", seria: "neutral", normal: "neutral",
   alegria: "alegria", contento: "alegria", contenta: "alegria", feliz: "alegria", sonrie: "alegria",
@@ -107,6 +107,7 @@ export function actingTag(who: string | undefined, text: string, gesture?: strin
   else if (who === "neli") tag = "cheerfully";
   else if (who === "gala") tag = "smugly";
   else if (who === "damian") tag = "flatly";
+  else if (who === "cientifica") tag = "dryly";
   return tag ? `[${tag}] ${text}` : text;
 }
 

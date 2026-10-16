@@ -8748,6 +8748,293 @@
     }
    ],
    "fallbackExpressionId": "expression.damian.neutral"
+  },
+  {
+   "id": "cientifica",
+   "name": "Científica (nombre pendiente)",
+   "color": "#1f6f6a",
+   "defaultVoice": {
+    "pitch": 1.05,
+    "rate": 0.95
+   },
+   "hasEyes": false,
+   "heightCm": 168,
+   "poses": [
+    {
+     "id": "char.cientifica.pose_h_neutro",
+     "key": "pose_h_neutro",
+     "label": "Humano · brazos cruzados, de morros",
+     "src": "/assets/punetos/humanos/cientifica/brazos.webp",
+     "talkSrc": "/assets/punetos/humanos/cientifica/brazos_boca.webp",
+     "width": 393,
+     "height": 871,
+     "displayScale": 1.029,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.cientifica.pose_h_grita_senala",
+     "key": "pose_h_grita_senala",
+     "label": "Humano · señalando y gritando",
+     "src": "/assets/punetos/humanos/cientifica/grita_senala.webp",
+     "talkSrc": "/assets/punetos/humanos/cientifica/grita_senala.webp",
+     "width": 441,
+     "height": 876,
+     "displayScale": 1.029,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.cientifica.pose_h_jarras",
+     "key": "pose_h_jarras",
+     "label": "Humano · manos en la cadera, sonrisa de suficiencia",
+     "src": "/assets/punetos/humanos/cientifica/jarras.webp",
+     "talkSrc": "/assets/punetos/humanos/cientifica/jarras_boca.webp",
+     "width": 411,
+     "height": 869,
+     "displayScale": 1.029,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.cientifica.pose_h_para",
+     "key": "pose_h_para",
+     "label": "Humano · «ni hablar» (mano)",
+     "src": "/assets/punetos/humanos/cientifica/para.webp",
+     "talkSrc": "/assets/punetos/humanos/cientifica/para_boca.webp",
+     "width": 369,
+     "height": 887,
+     "displayScale": 1.029,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.cientifica.pose_h_tubo",
+     "key": "pose_h_tubo",
+     "label": "Humano · mirando un tubo de ensayo",
+     "src": "/assets/punetos/humanos/cientifica/tubo.webp",
+     "talkSrc": "/assets/punetos/humanos/cientifica/tubo_boca.webp",
+     "width": 394,
+     "height": 881,
+     "displayScale": 1.029,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.cientifica.pose_h_pensando",
+     "key": "pose_h_pensando",
+     "label": "Humano · pensando",
+     "src": "/assets/punetos/humanos/cientifica/pensando.webp",
+     "width": 359,
+     "height": 865,
+     "displayScale": 1.029,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.cientifica.pose_h_sorpresa",
+     "key": "pose_h_sorpresa",
+     "label": "Humano · sorpresa, manos arriba",
+     "src": "/assets/punetos/humanos/cientifica/sorpresa.webp",
+     "talkSrc": "/assets/punetos/humanos/cientifica/sorpresa.webp",
+     "width": 396,
+     "height": 853,
+     "displayScale": 1.029,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.cientifica.pose_h_taburete",
+     "key": "pose_h_taburete",
+     "label": "Humano · en el taburete con café",
+     "src": "/assets/punetos/humanos/cientifica/taburete.webp",
+     "talkSrc": "/assets/punetos/humanos/cientifica/taburete_boca.webp",
+     "width": 427,
+     "height": 723,
+     "displayScale": 1.029,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    }
+   ],
+   "face": {
+    "eyes": [],
+    "brows": [],
+    "mouths": []
+   },
+   "expressions": [
+    {
+     "id": "expression.cientifica.neutral",
+     "emotion": "neutral",
+     "label": "Neutral",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_10"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_08",
+      "face.reynaldo.mouths.reynaldo_mouth_07",
+      "face.reynaldo.mouths.reynaldo_mouth_03"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_04",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_04",
+      "crop": "right"
+     },
+     "browL": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_10"
+     },
+     "browR": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_10",
+      "flip": true
+     }
+    },
+    {
+     "id": "expression.cientifica.alegria",
+     "emotion": "alegria",
+     "label": "Alegría",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_09"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_07",
+      "face.reynaldo.mouths.reynaldo_mouth_08",
+      "face.reynaldo.mouths.reynaldo_mouth_01"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "right"
+     },
+     "browL": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04"
+     },
+     "browR": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "flip": true
+     }
+    },
+    {
+     "id": "expression.cientifica.risa",
+     "emotion": "risa",
+     "label": "Risa",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_01"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_02",
+      "face.reynaldo.mouths.reynaldo_mouth_01",
+      "face.reynaldo.mouths.reynaldo_mouth_07"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "right"
+     },
+     "browL": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "dy": -4
+     },
+     "browR": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "flip": true,
+      "dy": -4
+     }
+    },
+    {
+     "id": "expression.cientifica.enfado",
+     "emotion": "enfado",
+     "label": "Enfado",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_05"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_06",
+      "face.reynaldo.mouths.reynaldo_mouth_05",
+      "face.reynaldo.mouths.reynaldo_mouth_08"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_06",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_06",
+      "crop": "right"
+     }
+    },
+    {
+     "id": "expression.cientifica.sorpresa",
+     "emotion": "sorpresa",
+     "label": "Sorpresa",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_03"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_03",
+      "face.reynaldo.mouths.reynaldo_mouth_08",
+      "face.reynaldo.mouths.reynaldo_mouth_06"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_03_izq",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_03_izq",
+      "crop": "right"
+     },
+     "browL": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "dy": -10
+     },
+     "browR": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "flip": true,
+      "dy": -10
+     }
+    },
+    {
+     "id": "expression.cientifica.tristeza",
+     "emotion": "tristeza",
+     "label": "Tristeza",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_10"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_06",
+      "face.reynaldo.mouths.reynaldo_mouth_08"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_02",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_02",
+      "crop": "right"
+     }
+    }
+   ],
+   "fallbackExpressionId": "expression.cientifica.neutral"
   }
  ],
  "backgrounds": [
