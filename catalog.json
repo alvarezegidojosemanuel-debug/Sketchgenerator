@@ -6307,11 +6307,6 @@
    "src": "/assets/punetos/backgrounds/bg_sala_servidores.webp"
   },
   {
-   "id": "bg_despacho_director",
-   "label": "Despacho del director",
-   "src": "/assets/punetos/backgrounds/bg_despacho_director.webp"
-  },
-  {
    "id": "bg_cielo_amanecer",
    "label": "Cielo al amanecer (título)",
    "src": "/assets/punetos/backgrounds/bg_cielo_amanecer.webp"
@@ -6327,6 +6322,93 @@
    "actorScale": 1.02,
    "actorY": 1680,
    "src": "/assets/punetos/backgrounds/bg_sistemas.webp"
+  },
+  {
+   "id": "bg_azotea_amanecer",
+   "label": "Azotea al amanecer",
+   "src": "/assets/punetos/backgrounds/bg_azotea_amanecer.webp",
+   "actorScale": 1.02,
+   "actorY": 1800
+  },
+  {
+   "id": "bg_auditorio",
+   "label": "Auditorio (personajes sobre el escenario)",
+   "src": "/assets/punetos/backgrounds/bg_auditorio.webp",
+   "actorScale": 0.36,
+   "actorY": 905
+  },
+  {
+   "id": "bg_cabina_tecnica",
+   "label": "Cabina técnica del auditorio",
+   "src": "/assets/punetos/backgrounds/bg_cabina_tecnica.webp",
+   "actorScale": 1.02,
+   "actorY": 1660
+  },
+  {
+   "id": "bg_complejo_apagado",
+   "label": "Complejo · exterior apagado",
+   "src": "/assets/punetos/backgrounds/bg_complejo_apagado.webp"
+  },
+  {
+   "id": "bg_complejo_noche",
+   "label": "Complejo · exterior de noche",
+   "src": "/assets/punetos/backgrounds/bg_complejo_noche.webp"
+  },
+  {
+   "id": "bg_sala_anastasia_noche",
+   "label": "Sala de Anastas-IA (luz azul / noche)",
+   "src": "/assets/punetos/backgrounds/bg_sala_anastasia_noche.webp",
+   "actorScale": 1.02,
+   "actorY": 1696
+  },
+  {
+   "id": "bg_sala_anastasia",
+   "label": "Sala de Anastas-IA (pedestal)",
+   "src": "/assets/punetos/backgrounds/bg_sala_anastasia.webp",
+   "actorScale": 1.02,
+   "actorY": 1696
+  },
+  {
+   "id": "bg_despacho_director",
+   "label": "Despacho del Director",
+   "src": "/assets/punetos/backgrounds/bg_despacho_director.webp",
+   "actorScale": 1.02,
+   "actorY": 1710
+  },
+  {
+   "id": "bg_despacho_director_2",
+   "label": "Despacho del Director (con sofás)",
+   "src": "/assets/punetos/backgrounds/bg_despacho_director_2.webp",
+   "actorScale": 1.02,
+   "actorY": 1710
+  },
+  {
+   "id": "bg_sistemas_noche",
+   "label": "Sistemas · open space de noche",
+   "src": "/assets/punetos/backgrounds/bg_sistemas_noche.webp",
+   "actorScale": 1.02,
+   "actorY": 1680
+  },
+  {
+   "id": "bg_pasillo",
+   "label": "Pasillo del complejo",
+   "src": "/assets/punetos/backgrounds/bg_pasillo.webp",
+   "actorScale": 1.02,
+   "actorY": 1660
+  },
+  {
+   "id": "bg_recepcion",
+   "label": "Recepción del complejo",
+   "src": "/assets/punetos/backgrounds/bg_recepcion.webp",
+   "actorScale": 1.02,
+   "actorY": 1760
+  },
+  {
+   "id": "bg_sala_reuniones",
+   "label": "Sala de reuniones",
+   "src": "/assets/punetos/backgrounds/bg_sala_reuniones.webp",
+   "actorScale": 1.02,
+   "actorY": 1730
   }
  ],
  "props": [
