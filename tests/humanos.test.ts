@@ -49,7 +49,7 @@ describe("humanos de frente (poses dibujadas enteras)", () => {
 
   it("si falta algún personaje humano, vuelve a la vista de espaldas", () => {
     const g = structuredClone(guion);
-    g.escenas[0].personajes = ["Jefe", "Barbas"];
+    g.escenas[0].personajes = ["Jefe", "Sister"];
     const r2 = validateProject(g, catalog);
     expect(r2.project!.takes[0].actors.every((a) => !a.poseId.includes("pose_h_"))).toBe(true);
   });
