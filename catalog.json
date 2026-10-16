@@ -10105,6 +10105,398 @@
     }
    ],
    "fallbackExpressionId": "expression.alf.neutral"
+  },
+  {
+   "id": "fake",
+   "name": "Fake",
+   "color": "#b07a4f",
+   "defaultVoice": {
+    "pitch": 1.25,
+    "rate": 1.1
+   },
+   "hasEyes": false,
+   "heightCm": 165,
+   "poses": [
+    {
+     "id": "char.fake.pose_h_neutro",
+     "key": "pose_h_neutro",
+     "label": "Humano · nervioso, manos en los bolsillos",
+     "src": "/assets/punetos/humanos/fake/neutro.webp",
+     "talkSrc": "/assets/punetos/humanos/fake/neutro.webp",
+     "width": 276,
+     "height": 731,
+     "displayScale": 1.139,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.fake.pose_h_explica",
+     "key": "pose_h_explica",
+     "label": "Humano · contento, explicando",
+     "src": "/assets/punetos/humanos/fake/explica.webp",
+     "talkSrc": "/assets/punetos/humanos/fake/explica.webp",
+     "width": 380,
+     "height": 824,
+     "displayScale": 1.139,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.fake.pose_h_cafe",
+     "key": "pose_h_cafe",
+     "label": "Humano · con su taza de conejito",
+     "src": "/assets/punetos/humanos/fake/cafe.webp",
+     "talkSrc": "/assets/punetos/humanos/fake/cafe.webp",
+     "width": 421,
+     "height": 782,
+     "displayScale": 1.139,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.fake.pose_h_charla",
+     "key": "pose_h_charla",
+     "label": "Humano · charlando, ilusionado",
+     "src": "/assets/punetos/humanos/fake/charla.webp",
+     "talkSrc": "/assets/punetos/humanos/fake/charla.webp",
+     "width": 372,
+     "height": 812,
+     "displayScale": 1.139,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.fake.pose_h_pensando",
+     "key": "pose_h_pensando",
+     "label": "Humano · pensando, sonriente",
+     "src": "/assets/punetos/humanos/fake/pensando.webp",
+     "talkSrc": "/assets/punetos/humanos/fake/pensando.webp",
+     "width": 353,
+     "height": 776,
+     "displayScale": 1.139,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.fake.pose_h_encoge",
+     "key": "pose_h_encoge",
+     "label": "Humano · «¿y yo qué sé?»",
+     "src": "/assets/punetos/humanos/fake/encoge.webp",
+     "talkSrc": "/assets/punetos/humanos/fake/encoge.webp",
+     "width": 421,
+     "height": 709,
+     "displayScale": 1.139,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.fake.pose_h_grita_senala",
+     "key": "pose_h_grita_senala",
+     "label": "Humano · señalando, aterrado",
+     "src": "/assets/punetos/humanos/fake/grita_senala.webp",
+     "talkSrc": "/assets/punetos/humanos/fake/grita_senala.webp",
+     "width": 398,
+     "height": 675,
+     "displayScale": 1.139,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.fake.pose_h_para",
+     "key": "pose_h_para",
+     "label": "Humano · «¡no, no, no!»",
+     "src": "/assets/punetos/humanos/fake/para.webp",
+     "talkSrc": "/assets/punetos/humanos/fake/para.webp",
+     "width": 332,
+     "height": 764,
+     "displayScale": 1.139,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.fake.pose_h_timido",
+     "key": "pose_h_timido",
+     "label": "Humano · tímido, manos juntas",
+     "src": "/assets/punetos/humanos/fake/timido.webp",
+     "talkSrc": "/assets/punetos/humanos/fake/timido.webp",
+     "width": 281,
+     "height": 766,
+     "displayScale": 1.139,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.fake.pose_h_enfado",
+     "key": "pose_h_enfado",
+     "label": "Humano · enfadado (vibrando)",
+     "src": "/assets/punetos/humanos/fake/enfado.webp",
+     "talkSrc": "/assets/punetos/humanos/fake/enfado.webp",
+     "width": 382,
+     "height": 752,
+     "displayScale": 1.139,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.fake.pose_h_panico",
+     "key": "pose_h_panico",
+     "label": "Humano · pánico, manos en la cabeza",
+     "src": "/assets/punetos/humanos/fake/panico.webp",
+     "talkSrc": "/assets/punetos/humanos/fake/panico.webp",
+     "width": 357,
+     "height": 745,
+     "displayScale": 1.139,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.fake.pose_h_huevo",
+     "key": "pose_h_huevo",
+     "label": "Humano · susto: ¡pone un huevo!",
+     "src": "/assets/punetos/humanos/fake/huevo.webp",
+     "talkSrc": "/assets/punetos/humanos/fake/huevo.webp",
+     "width": 341,
+     "height": 626,
+     "displayScale": 1.139,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.fake.pose_h_garras_huevos",
+     "key": "pose_h_garras_huevos",
+     "label": "Humano · terror, poniendo huevos",
+     "src": "/assets/punetos/humanos/fake/garras_huevos.webp",
+     "talkSrc": "/assets/punetos/humanos/fake/garras_huevos.webp",
+     "width": 331,
+     "height": 701,
+     "displayScale": 1.139,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.fake.pose_h_acurrucado",
+     "key": "pose_h_acurrucado",
+     "label": "Humano · acurrucado, llorando entre huevos",
+     "src": "/assets/punetos/humanos/fake/acurrucado.webp",
+     "talkSrc": "/assets/punetos/humanos/fake/acurrucado.webp",
+     "width": 344,
+     "height": 528,
+     "displayScale": 1.139,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.fake.pose_h_huye",
+     "key": "pose_h_huye",
+     "label": "Humano · huyendo, soltando huevos",
+     "src": "/assets/punetos/humanos/fake/huye.webp",
+     "talkSrc": "/assets/punetos/humanos/fake/huye.webp",
+     "width": 428,
+     "height": 647,
+     "displayScale": 1.139,
+     "facing": "right",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.fake.pose_h_panico_huevos",
+     "key": "pose_h_panico_huevos",
+     "label": "Humano · pánico total, lluvia de huevos",
+     "src": "/assets/punetos/humanos/fake/panico_huevos.webp",
+     "talkSrc": "/assets/punetos/humanos/fake/panico_huevos.webp",
+     "width": 365,
+     "height": 687,
+     "displayScale": 1.139,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    }
+   ],
+   "face": {
+    "eyes": [],
+    "brows": [],
+    "mouths": []
+   },
+   "expressions": [
+    {
+     "id": "expression.fake.neutral",
+     "emotion": "neutral",
+     "label": "Neutral",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_10"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_08",
+      "face.reynaldo.mouths.reynaldo_mouth_07",
+      "face.reynaldo.mouths.reynaldo_mouth_03"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_04",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_04",
+      "crop": "right"
+     },
+     "browL": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_10"
+     },
+     "browR": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_10",
+      "flip": true
+     }
+    },
+    {
+     "id": "expression.fake.alegria",
+     "emotion": "alegria",
+     "label": "Alegría",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_09"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_07",
+      "face.reynaldo.mouths.reynaldo_mouth_08",
+      "face.reynaldo.mouths.reynaldo_mouth_01"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "right"
+     },
+     "browL": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04"
+     },
+     "browR": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "flip": true
+     }
+    },
+    {
+     "id": "expression.fake.risa",
+     "emotion": "risa",
+     "label": "Risa",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_01"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_02",
+      "face.reynaldo.mouths.reynaldo_mouth_01",
+      "face.reynaldo.mouths.reynaldo_mouth_07"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "right"
+     },
+     "browL": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "dy": -4
+     },
+     "browR": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "flip": true,
+      "dy": -4
+     }
+    },
+    {
+     "id": "expression.fake.enfado",
+     "emotion": "enfado",
+     "label": "Enfado",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_05"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_06",
+      "face.reynaldo.mouths.reynaldo_mouth_05",
+      "face.reynaldo.mouths.reynaldo_mouth_08"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_06",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_06",
+      "crop": "right"
+     }
+    },
+    {
+     "id": "expression.fake.sorpresa",
+     "emotion": "sorpresa",
+     "label": "Sorpresa",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_03"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_03",
+      "face.reynaldo.mouths.reynaldo_mouth_08",
+      "face.reynaldo.mouths.reynaldo_mouth_06"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_03_izq",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_03_izq",
+      "crop": "right"
+     },
+     "browL": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "dy": -10
+     },
+     "browR": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "flip": true,
+      "dy": -10
+     }
+    },
+    {
+     "id": "expression.fake.tristeza",
+     "emotion": "tristeza",
+     "label": "Tristeza",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_10"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_06",
+      "face.reynaldo.mouths.reynaldo_mouth_08"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_02",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_02",
+      "crop": "right"
+     }
+    }
+   ],
+   "fallbackExpressionId": "expression.fake.neutral"
   }
  ],
  "backgrounds": [
