@@ -114,3 +114,15 @@ describe("humanos: al hablar siempre con boca", () => {
     }
   });
 });
+
+describe("sketch «Las lentejas»", () => {
+  it("se monta sin errores, con los tres humanos y el Jefe saliendo y volviendo", async () => {
+    const raw = (await import("@/data/sketch-lentejas.json")).default;
+    const r = validateProject(structuredClone(raw), catalog);
+    expect(r.errors).toEqual([]);
+    const tk = r.project!.takes[0];
+    expect(tk.actors.map((a) => a.poseId)).toEqual(["char.jefe.pose_h_neutro", "char.barbas.pose_h_neutro", "char.usu.pose_h_neutro"]);
+    expect(tk.events.some((e) => e.track === "body" && e.actorUid === "jefe" && "disappear" in e && e.disappear)).toBe(true);
+    expect(tk.events.some((e) => e.track === "body" && e.poseId === "char.barbas.pose_h_risa")).toBe(true);
+  });
+});

@@ -94,6 +94,9 @@ export function ProjectsScreen({ s }: { s: PocketState }) {
           <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("prueba-humanos"), "demo"); s.setTab("ver"); }}>
             🆕 Prueba: Jefe y Usu humanos en sistemas
           </button>
+          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("lentejas"), "demo"); s.setTab("ver"); }}>
+            🆕 Sketch: Las lentejas (Barbas, Jefe y Usu)
+          </button>
           <p className="fine"><b>Serie · El origen</b></p>
           {(["ep1", "ep2", "ep3", "ep4", "ep5"] as const).map((k, n) => (
             <button key={k} type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject(k), "demo"); s.setTab("ver"); }}>
