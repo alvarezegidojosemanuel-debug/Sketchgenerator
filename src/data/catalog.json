@@ -4404,7 +4404,8 @@
      "displayScale": 1.402,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/barbas/pulgar_boca.webp"
     },
     {
      "id": "char.barbas.pose_h_movil",
@@ -4428,7 +4429,8 @@
      "displayScale": 1.402,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/barbas/explica_boca.webp"
     },
     {
      "id": "char.barbas.pose_h_silla_relajado",
@@ -4464,7 +4466,8 @@
      "displayScale": 1.184,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/barbas/silla_cuernos_boca.webp"
     },
     {
      "id": "char.barbas.pose_h_camina",
@@ -4476,7 +4479,8 @@
      "displayScale": 1.731,
      "facing": "right",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/barbas/camina_boca.webp"
     },
     {
      "id": "char.barbas.pose_h_corre",
@@ -4500,7 +4504,8 @@
      "displayScale": 1.337,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/barbas/celebra_boca.webp"
     },
     {
      "id": "char.barbas.pose_h_para",
@@ -4512,7 +4517,8 @@
      "displayScale": 1.337,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/barbas/para_boca.webp"
     },
     {
      "id": "char.barbas.pose_h_agobiado",
@@ -4524,7 +4530,8 @@
      "displayScale": 1.337,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/barbas/agobiado_boca.webp"
     },
     {
      "id": "char.barbas.pose_h_abre_brazos",
@@ -4536,7 +4543,8 @@
      "displayScale": 1.406,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/barbas/abre_brazos_boca.webp"
     },
     {
      "id": "char.barbas.pose_h_susto",
@@ -4548,7 +4556,8 @@
      "displayScale": 1.406,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/barbas/susto_boca.webp"
     },
     {
      "id": "char.barbas.pose_h_neutro",
@@ -4560,7 +4569,8 @@
      "displayScale": 1.364,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/barbas/neutro_boca.webp"
     },
     {
      "id": "char.barbas.pose_h_brazos_cruzados",
@@ -4572,7 +4582,8 @@
      "displayScale": 1.364,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/barbas/brazos_cruzados_boca.webp"
     },
     {
      "id": "char.barbas.pose_h_senala",
@@ -4584,7 +4595,8 @@
      "displayScale": 1.364,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/barbas/senala_boca.webp"
     },
     {
      "id": "char.barbas.pose_h_encoge",
@@ -4596,7 +4608,8 @@
      "displayScale": 1.364,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/barbas/encoge_boca.webp"
     },
     {
      "id": "char.barbas.pose_h_confundido",
@@ -4608,7 +4621,8 @@
      "displayScale": 1.5,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/barbas/confundido_boca.webp"
     },
     {
      "id": "char.barbas.pose_h_risa",
@@ -4620,7 +4634,8 @@
      "displayScale": 1.565,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/barbas/risa_boca.webp"
     },
     {
      "id": "char.barbas.pose_h_facepalm",
@@ -4644,7 +4659,8 @@
      "displayScale": 1.565,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/barbas/cuernos_boca.webp"
     }
    ],
    "face": {
