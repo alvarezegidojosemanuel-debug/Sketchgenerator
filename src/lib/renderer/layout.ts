@@ -52,6 +52,8 @@ export interface PropLayout {
 export interface StageLayout {
   screen: FrameState["screen"];
   background?: string;
+  /** Filtro de luz del escenario para los personajes. */
+  actorLight?: string;
   propsBack: PropLayout[];
   actors: ActorLayout[];
   propsFront: PropLayout[];
@@ -124,6 +126,7 @@ export function layoutFrame(catalog: Catalog, frame: FrameState, opts: { showHid
   return {
     screen: frame.screen,
     background: frame.backgroundId ? findBackground(catalog, frame.backgroundId)?.src : undefined,
+    actorLight: frame.backgroundId ? findBackground(catalog, frame.backgroundId)?.actorLight : undefined,
     propsBack: frame.props.filter((p) => p.layer === "props-back").map((p) => layoutProp(catalog, p, Z.propsBack)).filter((x): x is PropLayout => !!x),
     actors: frame.actors
       .filter((a) => a.visible > 0 || opts.showHidden)

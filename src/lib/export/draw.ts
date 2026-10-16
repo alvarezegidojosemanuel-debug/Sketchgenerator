@@ -41,9 +41,16 @@ export function drawFrame(ctx: Ctx, catalog: Catalog, frame: FrameState, images:
   type Item = { z: number; draw: () => void };
   const items: Item[] = [];
   for (const p of [...layout.propsBack, ...layout.propsFront]) items.push({ z: p.z, draw: () => drawProp(ctx, p, images) });
+  const lit = (fn: () => void) => () => {
+    if (!layout.actorLight) return fn();
+    ctx.save();
+    ctx.filter = layout.actorLight;
+    fn();
+    ctx.restore();
+  };
   for (const a of layout.actors) {
-    if (a.ghost) items.push({ z: a.z - 0.1, draw: () => drawActor(ctx, a.ghost!, images) });
-    items.push({ z: a.z, draw: () => drawActor(ctx, a, images) });
+    if (a.ghost) items.push({ z: a.z - 0.1, draw: lit(() => drawActor(ctx, a.ghost!, images)) });
+    items.push({ z: a.z, draw: lit(() => drawActor(ctx, a, images)) });
   }
   items.sort((x, y) => x.z - y.z).forEach((i) => i.draw());
   for (const ex of layout.screen.explosions ?? []) drawExplosion(ctx, ex);

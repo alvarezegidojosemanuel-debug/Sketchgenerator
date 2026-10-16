@@ -6299,7 +6299,8 @@
   {
    "id": "bg_oficina_noche",
    "label": "Oficina de soporte de noche (5 puestos, vista por detrás)",
-   "src": "/assets/punetos/backgrounds/bg_oficina_noche.webp"
+   "src": "/assets/punetos/backgrounds/bg_oficina_noche.webp",
+   "actorLight": "brightness(0.66) saturate(0.7) contrast(1.05)"
   },
   {
    "id": "bg_sala_servidores",
@@ -6328,21 +6329,24 @@
    "label": "Azotea al amanecer",
    "src": "/assets/punetos/backgrounds/bg_azotea_amanecer.webp",
    "actorScale": 1.02,
-   "actorY": 1800
+   "actorY": 1800,
+   "actorLight": "brightness(0.95) sepia(0.25) saturate(1.1)"
   },
   {
    "id": "bg_auditorio",
    "label": "Auditorio (personajes sobre el escenario)",
    "src": "/assets/punetos/backgrounds/bg_auditorio.webp",
    "actorScale": 0.36,
-   "actorY": 905
+   "actorY": 905,
+   "actorLight": "brightness(0.95) sepia(0.12)"
   },
   {
    "id": "bg_cabina_tecnica",
    "label": "Cabina técnica del auditorio",
    "src": "/assets/punetos/backgrounds/bg_cabina_tecnica.webp",
    "actorScale": 1.02,
-   "actorY": 1660
+   "actorY": 1660,
+   "actorLight": "brightness(0.82) saturate(0.9)"
   },
   {
    "id": "bg_complejo_apagado",
@@ -6352,14 +6356,16 @@
   {
    "id": "bg_complejo_noche",
    "label": "Complejo · exterior de noche",
-   "src": "/assets/punetos/backgrounds/bg_complejo_noche.webp"
+   "src": "/assets/punetos/backgrounds/bg_complejo_noche.webp",
+   "actorLight": "brightness(0.6) saturate(0.7) contrast(1.05)"
   },
   {
    "id": "bg_sala_anastasia_noche",
    "label": "Sala de Anastas-IA (luz azul / noche)",
    "src": "/assets/punetos/backgrounds/bg_sala_anastasia_noche.webp",
    "actorScale": 1.02,
-   "actorY": 1696
+   "actorY": 1696,
+   "actorLight": "brightness(0.74) saturate(0.75) contrast(1.05)"
   },
   {
    "id": "bg_sala_anastasia",
@@ -6387,7 +6393,8 @@
    "label": "Sistemas · open space de noche",
    "src": "/assets/punetos/backgrounds/bg_sistemas_noche.webp",
    "actorScale": 1.02,
-   "actorY": 1680
+   "actorY": 1680,
+   "actorLight": "brightness(0.66) saturate(0.7) contrast(1.05)"
   },
   {
    "id": "bg_pasillo",

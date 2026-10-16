@@ -145,6 +145,8 @@ export interface Background {
   actorScale?: number;
   /** Línea de los pies (y en px del lienzo) para los personajes de primer plano. */
   actorY?: number;
+  /** Luz del escenario sobre los personajes (filtro CSS: «brightness(.6) saturate(.8)…»), p. ej. de noche. */
+  actorLight?: string;
 }
 
 export interface Prop {
