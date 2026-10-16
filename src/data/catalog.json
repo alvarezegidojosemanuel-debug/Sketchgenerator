@@ -6320,16 +6320,16 @@
   {
    "id": "bg_sistemas",
    "label": "Sistemas · open space (de día)",
-   "actorScale": 1.02,
-   "actorY": 1680,
+   "actorScale": 1.1,
+   "actorY": 1710,
    "src": "/assets/punetos/backgrounds/bg_sistemas.webp"
   },
   {
    "id": "bg_azotea_amanecer",
    "label": "Azotea al amanecer",
    "src": "/assets/punetos/backgrounds/bg_azotea_amanecer.webp",
-   "actorScale": 1.02,
-   "actorY": 1800,
+   "actorScale": 1.1,
+   "actorY": 1820,
    "actorLight": "brightness(0.95) sepia(0.25) saturate(1.1)"
   },
   {
@@ -6362,16 +6362,16 @@
    "id": "bg_sala_anastasia_noche",
    "label": "Sala de Anastas-IA (luz azul / noche)",
    "src": "/assets/punetos/backgrounds/bg_sala_anastasia_noche.webp",
-   "actorScale": 1.02,
-   "actorY": 1696,
+   "actorScale": 1.1,
+   "actorY": 1726,
    "actorLight": "brightness(0.74) saturate(0.75) contrast(1.05)"
   },
   {
    "id": "bg_sala_anastasia",
    "label": "Sala de Anastas-IA (pedestal)",
    "src": "/assets/punetos/backgrounds/bg_sala_anastasia.webp",
-   "actorScale": 1.02,
-   "actorY": 1696
+   "actorScale": 1.1,
+   "actorY": 1726
   },
   {
    "id": "bg_despacho_director",
@@ -6390,23 +6390,23 @@
    "id": "bg_sistemas_noche",
    "label": "Sistemas · open space de noche",
    "src": "/assets/punetos/backgrounds/bg_sistemas_noche.webp",
-   "actorScale": 1.02,
-   "actorY": 1680,
+   "actorScale": 1.1,
+   "actorY": 1710,
    "actorLight": "brightness(0.66) saturate(0.7) contrast(1.05)"
   },
   {
    "id": "bg_pasillo",
    "label": "Pasillo del complejo",
    "src": "/assets/punetos/backgrounds/bg_pasillo.webp",
-   "actorScale": 1.02,
-   "actorY": 1660
+   "actorScale": 1.1,
+   "actorY": 1690
   },
   {
    "id": "bg_recepcion",
    "label": "Recepción del complejo",
    "src": "/assets/punetos/backgrounds/bg_recepcion.webp",
-   "actorScale": 1.02,
-   "actorY": 1760
+   "actorScale": 1.1,
+   "actorY": 1790
   },
   {
    "id": "bg_sala_reuniones",
