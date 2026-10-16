@@ -215,7 +215,7 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
         if (!active) break;
         if (!e.actorUid) {
           if (e.voiceOf && !opts.live && !opts.levels && mouthFlap(e, t)) voiceOpen.add(e.voiceOf);
-          const who = e.voiceOf ? findCharacter(catalog, e.voiceOf)?.name ?? e.voiceOf : e.speakerName ?? "Narrador";
+          const who = e.speakerName ?? (e.voiceOf ? findCharacter(catalog, e.voiceOf)?.name ?? e.voiceOf : "Narrador");
           subtitles.push({ eventId: e.id, actorUid: "", voiceOf: e.voiceOf, speaker: who, text: stripAudioTags(e.text) });
           break;
         }

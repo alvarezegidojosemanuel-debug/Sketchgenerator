@@ -175,7 +175,7 @@ class SceneBuilder {
       const g = opts.gesture ? BACK_GESTURE[who]?.[norm(opts.gesture)] : undefined;
       this.backBeats.push([who, at - 0.1, at + d + 0.1, g ?? BACK_TALK[who]]);
     } else if (opts.voiceOf) {
-      this.add({ track: "dialogue", voiceOf: opts.voiceOf, duration: d, text }, at);
+      this.add({ track: "dialogue", voiceOf: opts.voiceOf, ...(opts.speakerName ? { speakerName: opts.speakerName } : {}), duration: d, text }, at);
     } else if (opts.speakerName) {
       this.add({ track: "dialogue", speakerName: opts.speakerName, duration: d, text }, at);
     } else {
@@ -312,7 +312,16 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
       } else if (st.off !== undefined) {
         if (typeof st.off === "string" && text) {
           const t0 = b.t;
-          b.say(undefined, text, { speakerName: st.off.slice(0, 40), gap });
+          // «off» de un protagonista que no está en escena (o con «voz»: un personaje con la voz de otro, p. ej. «Jefe del pasado»)
+          const voz = typeof st.voz === "string" ? CHAR_ALIAS[norm(st.voz)] : CHAR_ALIAS[norm(st.off)];
+          const name = st.off.slice(0, 40);
+          if (voz && catalog.characters.some((c) => c.id === voz)) {
+            b.say(undefined, text, { voiceOf: voz, speakerName: typeof st.voz === "string" ? name : undefined, gap });
+            if (typeof st.voz === "string" && catalog.props.some((x) => x.id === "prop_anastasia_pantalla"))
+              b.add({ track: "props", propId: "prop_anastasia_pantalla", layer: "props-front", x: 840, y: 520, scale: 0.9, duration: estimate(text) + 0.3, enter: "pop", exit: "fade", loop: "pulse" }, t0 - 0.15);
+            return;
+          }
+          b.say(undefined, text, { speakerName: name, gap });
           // Anastas-IA (la IA del complejo) no tiene cuerpo: mientras habla se ve su pantalla, para que su voz no salga «de la nada»
           const who = norm(st.off).replace(/[^a-z]/g, "");
           if ((who.startsWith("anastas") || who === "nodo") && catalog.props.some((x) => x.id === "prop_anastasia_pantalla"))

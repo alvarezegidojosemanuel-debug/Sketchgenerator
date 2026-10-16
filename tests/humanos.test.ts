@@ -141,3 +141,17 @@ describe("recursos de cómic", () => {
     expect(c.y).toBeLessThan(barbas.y - 500);
   });
 });
+
+describe("sketch «El Jefe del pasado»", () => {
+  it("Sister habla en off con su voz y el «Jefe del pasado» usa la voz del Jefe con su pantalla", async () => {
+    const raw = (await import("@/data/sketch-jefe-del-pasado.json")).default;
+    const r = validateProject(structuredClone(raw), catalog);
+    expect(r.errors).toEqual([]);
+    const tk = r.project!.takes[0];
+    const lines = tk.events.filter((e) => e.track === "dialogue") as { voiceOf?: string; speakerName?: string; actorUid?: string }[];
+    expect(lines.filter((l) => l.voiceOf === "sister").length).toBe(3);
+    const pasado = lines.find((l) => l.speakerName === "Jefe del pasado")!;
+    expect(pasado.voiceOf).toBe("jefe");
+    expect(tk.events.filter((e) => e.track === "props" && e.propId === "prop_anastasia_pantalla").length).toBe(2);
+  });
+});
