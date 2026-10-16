@@ -212,25 +212,17 @@ export function autoShots(take: Take): CameraEvent[] {
 }
 
 /**
- * Cámara «viva» por defecto (sin planos puestos): se acerca muy despacio durante la escena, se desliza
- * hacia quien habla y en la última frase (el remate) da un pequeño empujón hacia el personaje.
+ * Cámara «viva» por defecto (sin planos puestos): se acerca muy despacio durante la escena y en la
+ * última frase (el remate) da un pequeño empujón. No sigue a quien habla.
  */
-function livingCamera(take: Take, catalog: Catalog, t: number, actors: Map<string, ActorState>): CameraState {
+function livingCamera(take: Take, _catalog: Catalog, t: number, _actors: Map<string, ActorState>): CameraState {
   const lines = actorLines(take);
   if (!lines.length || take.duration < 2) return WIDE;
   const slow = 1 + 0.05 * ease(clamp01(t / take.duration));
-  // centro: media suavizada de quien habla (se desliza, no corta)
-  let cx = 540;
-  let cy = 960;
-  for (const l of lines) {
-    const a = actors.get(l.actorUid);
-    if (!a || l.start > t) continue;
-    const k = ease(clamp01((t - l.start) / 0.8));
-    const tx = 540 + (a.x - 540) * 0.35;
-    const ty = 960 + (a.y - actorHeight(catalog, a) * 0.55 - 960) * 0.3;
-    cx += (tx - cx) * k;
-    cy += (ty - cy) * k;
-  }
+  // sin deslizarse hacia quien habla: un movimiento tan pequeño se leía como traqueteo.
+  // Solo el acercamiento lento y el empujón del remate, siempre centrados (cámara quieta).
+  const cx = 540;
+  const cy = 960;
   const last = lines[lines.length - 1];
   const punch = t >= last.start ? 0.12 * ease(clamp01((t - last.start) / 0.35)) : 0;
   return clampCam({ zoom: slow + punch, cx, cy });
