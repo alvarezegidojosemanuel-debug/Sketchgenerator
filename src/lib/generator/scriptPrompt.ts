@@ -14,7 +14,7 @@ export function buildScriptPrompt(intent: SketchIntent, catalog: Catalog): Promp
   const names = chars.map((c) => c.name).join(", ");
   const lugares = catalog.backgrounds
     .filter((b) => !b.placeholder || !catalog.backgrounds.some((x) => !x.placeholder && x.label.split(" ")[0] === b.label.split(" ")[0]))
-    .map((b) => `${b.id} (${b.label}${b.placeholder ? ", provisional" : ""}${OFFICE_BGS.includes(b.id) ? ", admite vista «espaldas»" : ""})`)
+    .map((b) => `${b.id} (${b.label}${b.placeholder ? ", provisional" : ""}${OFFICE_BGS.includes(b.id) ? ", admite vista «espaldas»" : ""}${b.standing === false ? ", SOLO plano general: sin personajes" : ""})`)
     .join("; ");
   const objetos = catalog.props.filter((p) => !p.id.includes("_espaldas_")).map((p) => `${p.id} (${p.label})`).join("; ");
   const sonidos = (catalog.sounds ?? []).map((s) => `${s.id.replace(/^sfx_/, "")} (${s.label})`).join("; ");

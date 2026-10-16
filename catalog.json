@@ -6344,9 +6344,8 @@
    "id": "bg_cabina_tecnica",
    "label": "Cabina técnica del auditorio",
    "src": "/assets/punetos/backgrounds/bg_cabina_tecnica.webp",
-   "actorScale": 1.02,
-   "actorY": 1660,
-   "actorLight": "brightness(0.82) saturate(0.9)"
+   "actorLight": "brightness(0.82) saturate(0.9)",
+   "standing": false
   },
   {
    "id": "bg_complejo_apagado",
@@ -6385,8 +6384,7 @@
    "id": "bg_despacho_director_2",
    "label": "Despacho del Director (con sofás)",
    "src": "/assets/punetos/backgrounds/bg_despacho_director_2.webp",
-   "actorScale": 1.02,
-   "actorY": 1710
+   "standing": false
   },
   {
    "id": "bg_sistemas_noche",
@@ -6414,8 +6412,7 @@
    "id": "bg_sala_reuniones",
    "label": "Sala de reuniones",
    "src": "/assets/punetos/backgrounds/bg_sala_reuniones.webp",
-   "actorScale": 1.02,
-   "actorY": 1730
+   "standing": false
   }
  ],
  "props": [

@@ -147,6 +147,8 @@ export interface Background {
   actorY?: number;
   /** Luz del escenario sobre los personajes (filtro CSS: «brightness(.6) saturate(.8)…»), p. ej. de noche. */
   actorLight?: string;
+  /** false = solo para planos generales: los muebles ocupan el primer plano y no caben personajes de pie. */
+  standing?: boolean;
 }
 
 export interface Prop {
