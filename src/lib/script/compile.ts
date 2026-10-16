@@ -67,9 +67,13 @@ const POSE_ALIAS: Record<string, string> = {
   movil: "movil", telefono_movil: "movil", encoge: "encoge", hombros: "encoge", corre: "corre", corriendo: "corre", susto: "susto",
 };
 /** Vista «humanos» (de frente, poses dibujadas enteras): equivalencias de las poses de los Puñetos. */
+function humanRow(n: number) {
+  const xs = Array.from({ length: n }, (_, i) => Math.round(140 + (i * 800) / (n - 1)));
+  return xs.map((x, i) => ({ x, y: 1790, scale: n >= 5 ? 0.72 : 0.8, zIndex: 1 + (i % 2) }));
+}
 const HUMAN_POSE: Record<string, string[]> = {
   neutral_front: ["neutro"], neutral_3q_left: ["neutro"], neutral_3q_right: ["neutro"],
-  talk_explain: ["explica"], talk_emphasis: ["explica"], pointing: ["senala", "explica"], arms_crossed: ["neutro"],
+  talk_explain: ["explica"], talk_emphasis: ["explica"], pointing: ["senala", "explica"], arms_crossed: ["brazos_cruzados", "neutro"],
   reaction: ["sorprendido"], walk_small_left: ["camina"], walk_small_right: ["camina"],
   susto: ["susto", "sorprendido"], panico: ["panico", "susto"], pensando: ["pensando", "confundido"], encoge: ["encoge", "explica"],
   sentado_habla: ["sentado_habla", "sentado_teclea"], sentado_agobiado: ["sentado_agobiado", "sentado_cansado"], sentado_cansado: ["sentado_cansado", "sentado_agobiado"],
@@ -302,7 +306,8 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
       const bgInfo = bg ? catalog.backgrounds.find((x) => x.id === bg) : undefined;
       const k = bgInfo?.actorScale ?? 1;
       const dy = bgInfo?.actorY !== undefined ? bgInfo.actorY - 1780 : 0;
-      const slots = groupLayout(cast.length).map((sl) => ({ ...sl, y: Math.round(sl.y + dy), scale: Math.round(sl.scale * k * 1000) / 1000, x: Math.round(540 + (sl.x - 540) * (0.6 + 0.4 * k)) }));
+      // humanos: dibujos anchos y de frente → en una sola fila (con 4-5 en dos filas se tapan unos a otros)
+      const slots = (human && cast.length >= 4 ? humanRow(cast.length) : groupLayout(cast.length)).map((sl) => ({ ...sl, y: Math.round(sl.y + dy), scale: Math.round(sl.scale * k * 1000) / 1000, x: Math.round(540 + (sl.x - 540) * (0.6 + 0.4 * k)) }));
       cast.forEach((cid, i) => {
         const sl = slots[i];
         const pose = human ? "h_neutro" : sl.x < 470 ? "neutral_3q_right" : sl.x > 610 ? "neutral_3q_left" : "neutral_front";

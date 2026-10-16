@@ -49,7 +49,7 @@ describe("humanos de frente (poses dibujadas enteras)", () => {
 
   it("si falta algún personaje humano, vuelve a la vista de espaldas", () => {
     const g = structuredClone(guion);
-    g.escenas[0].personajes = ["Jefe", "Sister"];
+    g.escenas[0].personajes = ["Jefe", "Reynaldo"];
     const r2 = validateProject(g, catalog);
     expect(r2.project!.takes[0].actors.every((a) => !a.poseId.includes("pose_h_"))).toBe(true);
   });
@@ -143,13 +143,15 @@ describe("recursos de cómic", () => {
 });
 
 describe("sketch «El Jefe del pasado»", () => {
-  it("Sister habla en off con su voz y el «Jefe del pasado» usa la voz del Jefe con su pantalla", async () => {
+  it("Sister sale en escena y habla moviendo la boca; el «Jefe del pasado» usa la voz del Jefe con su pantalla", async () => {
     const raw = (await import("@/data/sketch-jefe-del-pasado.json")).default;
     const r = validateProject(structuredClone(raw), catalog);
     expect(r.errors).toEqual([]);
     const tk = r.project!.takes[0];
     const lines = tk.events.filter((e) => e.track === "dialogue") as { voiceOf?: string; speakerName?: string; actorUid?: string }[];
-    expect(lines.filter((l) => l.voiceOf === "sister").length).toBe(3);
+    expect(lines.filter((l) => l.actorUid === "sister").length).toBe(3);
+    const sisterPoses = tk.events.filter((e) => e.track === "body" && e.actorUid === "sister").map((e) => (e as { poseId: string }).poseId);
+    for (const id of sisterPoses) expect(catalog.characters.find((c) => c.id === "sister")!.poses.find((p) => p.id === id)?.talkSrc).toBeTruthy();
     const pasado = lines.find((l) => l.speakerName === "Jefe del pasado")!;
     expect(pasado.voiceOf).toBe("jefe");
     expect(tk.events.filter((e) => e.track === "props" && e.propId === "prop_anastasia_pantalla").length).toBe(2);

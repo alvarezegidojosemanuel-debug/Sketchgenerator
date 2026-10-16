@@ -8,8 +8,9 @@
       "lugar": "bg_sistemas",
       "vista": "humanos",
       "personajes": [
-        "Jefe",
         "Barbas",
+        "Jefe",
+        "Sister",
         "Usu"
       ],
       "pasos": [
@@ -17,8 +18,9 @@
           "sonido": "teclado"
         },
         {
-          "off": "Sister",
-          "texto": "Jefe, dice el Director que le prometiste el servidor nuevo para el viernes."
+          "dice": "Sister",
+          "texto": "Jefe, dice el Director que le prometiste el servidor nuevo para el viernes.",
+          "gesto": "brazos_cruzados"
         },
         {
           "dice": "Jefe",
@@ -27,8 +29,9 @@
           "pausa_despues": 0.3
         },
         {
-          "off": "Sister",
-          "texto": "No hace falta. Aquí tienes tu correo: «Viernes sin falta. Firmado: el Jefe»."
+          "dice": "Sister",
+          "texto": "No hace falta. Aquí tienes tu correo: «Viernes sin falta. Firmado: el Jefe».",
+          "gesto": "movil"
         },
         {
           "dice": "Jefe",
@@ -36,8 +39,9 @@
           "gesto": "explica"
         },
         {
-          "off": "Sister",
-          "texto": "También hay un audio."
+          "dice": "Sister",
+          "texto": "También hay un audio.",
+          "gesto": "movil"
         },
         {
           "off": "Audio del Jefe",
@@ -72,6 +76,10 @@
         },
         {
           "mira": "Usu",
+          "a": "Jefe"
+        },
+        {
+          "mira": "Sister",
           "a": "Jefe"
         },
         {
