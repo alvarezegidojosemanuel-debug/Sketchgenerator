@@ -46,20 +46,12 @@
           "pausa_despues": 0.4
         },
         {
-          "quien": "Barbas",
-          "gesto": "risa"
-        },
-        {
           "dice": "Jefe",
           "texto": "Ese señor suena demasiado seguro de sí mismo.",
           "gesto": "sorprendido"
         },
         {
           "quien": "Jefe",
-          "gesto": "neutral"
-        },
-        {
-          "quien": "Barbas",
           "gesto": "neutral"
         },
         {
