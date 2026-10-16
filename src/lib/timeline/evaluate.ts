@@ -403,7 +403,8 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
     const w = prop.width * (pr.baseScale ?? 1) + 120;
     const bh = prop.height * (pr.baseScale ?? 1) + 100;
     const cx = Math.max(w / 2 + 10, Math.min(1080 - w / 2 - 10, st.x + st.offX + side * 150 * st.scale));
-    const cy = Math.max(bh / 2 + 10, headTop - bh / 2 - 60);
+    // humanos: el bocadillo de diálogo va justo encima de la cabeza → el de pensamiento, más arriba
+    const cy = Math.max(bh / 2 + 10, headTop - bh / 2 - 60 - (pose?.flat ? 230 : 0));
     const dx = pr.anim?.dx ?? 0;
     const dy = pr.anim?.dy ?? 0;
     pr.x = cx + dx;

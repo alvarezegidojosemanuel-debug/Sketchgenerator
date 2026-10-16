@@ -7455,43 +7455,11 @@
  ],
  "props": [
   {
-   "id": "prop_cafe",
-   "label": "Taza de café",
-   "width": 120,
-   "height": 120,
-   "src": "/assets/placeholder/props/prop_cafe.svg",
-   "placeholder": true
-  },
-  {
-   "id": "prop_movil",
-   "label": "Móvil",
-   "width": 90,
-   "height": 160,
-   "src": "/assets/placeholder/props/prop_movil.svg",
-   "placeholder": true
-  },
-  {
    "id": "prop_papeles",
    "label": "Papeles",
    "width": 180,
    "height": 140,
    "src": "/assets/placeholder/props/prop_papeles.svg",
-   "placeholder": true
-  },
-  {
-   "id": "prop_planta",
-   "label": "Planta",
-   "width": 220,
-   "height": 360,
-   "src": "/assets/placeholder/props/prop_planta.svg",
-   "placeholder": true
-  },
-  {
-   "id": "prop_maletin",
-   "label": "Maletín",
-   "width": 220,
-   "height": 170,
-   "src": "/assets/placeholder/props/prop_maletin.svg",
    "placeholder": true
   },
   {
@@ -7623,6 +7591,146 @@
    "height": 206,
    "src": "/assets/placeholder/props/prop_anastasia_pantalla.svg",
    "placeholder": true
+  },
+  {
+   "id": "prop_mochila",
+   "label": "Mochila",
+   "width": 188,
+   "height": 230,
+   "src": "/assets/punetos/props/mochila.webp"
+  },
+  {
+   "id": "prop_libros",
+   "label": "Pila de libros",
+   "width": 163,
+   "height": 170,
+   "src": "/assets/punetos/props/libros.webp"
+  },
+  {
+   "id": "prop_libreta",
+   "label": "Libreta de espiral",
+   "width": 150,
+   "height": 170,
+   "src": "/assets/punetos/props/libreta.webp"
+  },
+  {
+   "id": "prop_movil",
+   "label": "Móvil",
+   "width": 112,
+   "height": 150,
+   "src": "/assets/punetos/props/movil.webp"
+  },
+  {
+   "id": "prop_acreditacion",
+   "label": "Acreditación con lanyard",
+   "width": 76,
+   "height": 190,
+   "src": "/assets/punetos/props/acreditacion.webp"
+  },
+  {
+   "id": "prop_portatil",
+   "label": "Portátil abierto",
+   "width": 240,
+   "height": 210,
+   "src": "/assets/punetos/props/portatil.webp"
+  },
+  {
+   "id": "prop_botella",
+   "label": "Botella de agua",
+   "width": 65,
+   "height": 180,
+   "src": "/assets/punetos/props/botella.webp"
+  },
+  {
+   "id": "prop_cafe",
+   "label": "Café para llevar",
+   "width": 94,
+   "height": 140,
+   "src": "/assets/punetos/props/cafe.webp"
+  },
+  {
+   "id": "prop_auriculares",
+   "label": "Auriculares",
+   "width": 153,
+   "height": 170,
+   "src": "/assets/punetos/props/auriculares.webp"
+  },
+  {
+   "id": "prop_boli",
+   "label": "Bolígrafo",
+   "width": 75,
+   "height": 150,
+   "src": "/assets/punetos/props/boli.webp"
+  },
+  {
+   "id": "prop_planta",
+   "label": "Planta en maceta",
+   "width": 220,
+   "height": 300,
+   "src": "/assets/punetos/props/planta.webp"
+  },
+  {
+   "id": "prop_flexo",
+   "label": "Flexo",
+   "width": 151,
+   "height": 250,
+   "src": "/assets/punetos/props/flexo.webp"
+  },
+  {
+   "id": "prop_lapicero",
+   "label": "Lapicero con tijeras",
+   "width": 119,
+   "height": 170,
+   "src": "/assets/punetos/props/lapicero.webp"
+  },
+  {
+   "id": "prop_telefono",
+   "label": "Teléfono fijo",
+   "width": 201,
+   "height": 160,
+   "src": "/assets/punetos/props/telefono.webp"
+  },
+  {
+   "id": "prop_globo",
+   "label": "Bola del mundo",
+   "width": 173,
+   "height": 240,
+   "src": "/assets/punetos/props/globo.webp"
+  },
+  {
+   "id": "prop_papelera",
+   "label": "Papelera",
+   "width": 175,
+   "height": 230,
+   "src": "/assets/punetos/props/papelera.webp"
+  },
+  {
+   "id": "prop_archivador",
+   "label": "Archivador metálico",
+   "width": 301,
+   "height": 480,
+   "src": "/assets/punetos/props/archivador.webp"
+  },
+  {
+   "id": "prop_reloj",
+   "label": "Reloj de pared",
+   "width": 168,
+   "height": 170,
+   "src": "/assets/punetos/props/reloj.webp"
+  },
+  {
+   "id": "prop_portapapeles",
+   "label": "Portapapeles",
+   "width": 146,
+   "height": 200,
+   "src": "/assets/punetos/props/portapapeles.webp"
+  },
+  {
+   "id": "prop_maletin",
+   "label": "Maletín de cuero",
+   "width": 228,
+   "height": 210,
+   "src": "/assets/punetos/props/maletin.webp"
   }
  ]
 }

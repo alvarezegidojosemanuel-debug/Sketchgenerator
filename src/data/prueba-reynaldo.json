@@ -7,18 +7,65 @@
       "nombre": "Sistemas",
       "lugar": "bg_sistemas",
       "vista": "humanos",
-      "personajes": ["Barbas", "Reynaldo", "Sister", "Usu"],
+      "personajes": [
+        "Barbas",
+        "Reynaldo",
+        "Sister",
+        "Usu"
+      ],
       "pasos": [
-        { "sonido": "teclado" },
-        { "dice": "Reynaldo", "texto": "Un momento. ¿Quién se ha llevado mi silla?", "gesto": "señala" },
-        { "dice": "Sister", "texto": "El Director, para la reunión de las diez.", "gesto": "explica" },
-        { "dice": "Reynaldo", "texto": "¿Sin avisar? Eso es una modificación sustancial de mis condiciones de trabajo.", "gesto": "para" },
-        { "dice": "Usu", "texto": "Es una silla.", "pausa_despues": 0.3 },
-        { "mira": "Reynaldo", "a": "Usu" },
-        { "dice": "Reynaldo", "texto": "Es MI silla. Ergonómica. Pedida por escrito en marzo.", "gesto": "explica" },
-        { "dice": "Barbas", "texto": "Pues vete redactando la reclamación, que a las diez y media la quiere el Director firmada.", "gesto": "encoge" },
-        { "quien": "Reynaldo", "gesto": "panico" },
-        { "dice": "Sister", "texto": "Tranquilo, te la imprimo yo.", "gesto": "brazos_cruzados", "pausa_despues": 0.4 }
+        {
+          "sonido": "teclado"
+        },
+        {
+          "dice": "Reynaldo",
+          "texto": "Un momento. ¿Quién se ha llevado mi silla?",
+          "gesto": "señala"
+        },
+        {
+          "dice": "Sister",
+          "texto": "El Director, para la reunión de las diez.",
+          "gesto": "explica"
+        },
+        {
+          "dice": "Reynaldo",
+          "texto": "¿Sin avisar? Eso es una modificación sustancial de mis condiciones de trabajo.",
+          "gesto": "para"
+        },
+        {
+          "dice": "Usu",
+          "texto": "Es una silla.",
+          "pausa_despues": 0.3
+        },
+        {
+          "mira": "Reynaldo",
+          "a": "Usu"
+        },
+        {
+          "objeto": "prop_portapapeles",
+          "donde": "bocadillo_reynaldo",
+          "durante": 3
+        },
+        {
+          "dice": "Reynaldo",
+          "texto": "Es MI silla. Ergonómica. Pedida por escrito en marzo.",
+          "gesto": "explica"
+        },
+        {
+          "dice": "Barbas",
+          "texto": "Pues vete redactando la reclamación, que a las diez y media la quiere el Director firmada.",
+          "gesto": "encoge"
+        },
+        {
+          "quien": "Reynaldo",
+          "gesto": "panico"
+        },
+        {
+          "dice": "Sister",
+          "texto": "Tranquilo, te la imprimo yo.",
+          "gesto": "brazos_cruzados",
+          "pausa_despues": 0.4
+        }
       ]
     }
   ]
