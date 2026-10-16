@@ -6377,8 +6377,8 @@
    "id": "bg_despacho_director",
    "label": "Despacho del Director",
    "src": "/assets/punetos/backgrounds/bg_despacho_director.webp",
-   "actorScale": 1.02,
-   "actorY": 1710
+   "actorScale": 0.78,
+   "actorY": 1500
   },
   {
    "id": "bg_despacho_director_2",
