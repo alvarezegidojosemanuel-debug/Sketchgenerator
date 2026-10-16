@@ -8,27 +8,73 @@
       "lugar": "bg_complejo_dia",
       "personajes": [],
       "pasos": [
-        { "sonido": "whoosh" },
-        { "narrador": "Lunes. Ocho y cincuenta y nueve." },
-        { "pausa": 0.4 }
+        {
+          "sonido": "whoosh"
+        },
+        {
+          "narrador": "Lunes. Ocho y cincuenta y nueve."
+        },
+        {
+          "pausa": 0.4
+        }
       ]
     },
     {
       "nombre": "Sistemas",
       "lugar": "bg_sistemas",
       "vista": "humanos",
-      "personajes": ["Jefe", "Usu"],
+      "personajes": [
+        "Jefe",
+        "Usu"
+      ],
       "pasos": [
-        { "sonido": "teclado" },
-        { "dice": "Jefe", "texto": "Tranquilo, Usu, que esta semana va a ser tranquila. Lo presiento." },
-        { "dice": "Usu", "texto": "[laughs] Jefe, el Director ha convocado a los inversores para el viernes.", "gesto": "señala" },
-        { "dice": "Jefe", "texto": "¿Qué inversores?", "gesto": "confundido", "pausa_despues": 0.4 },
-        { "dice": "Usu", "texto": "Los del correo de esta mañana. El que te reenvié tres veces.", "gesto": "encoge" },
-        { "off": "NODO", "texto": "Cuatro veces, Usu. La cuarta te la mandé yo. Con cariño." },
-        { "mira": "Jefe", "a": "Usu" },
-        { "dice": "Jefe", "texto": "¿Con cariño?", "gesto": "sorprendido", "pausa_despues": 0.5 },
-        { "dice": "Usu", "texto": "[excited] Está aprendiendo. ¿A que es una maravilla?", "gesto": "celebra" },
-        { "dice": "Jefe", "texto": "Eso se lo preguntaré al Jefe del pasado.", "gesto": "panico" }
+        {
+          "sonido": "teclado"
+        },
+        {
+          "dice": "Jefe",
+          "texto": "Tranquilo, Usu, que esta semana va a ser tranquila. Lo presiento."
+        },
+        {
+          "dice": "Usu",
+          "texto": "[laughs] Jefe, el Director ha convocado a los inversores para el viernes.",
+          "gesto": "señala"
+        },
+        {
+          "dice": "Jefe",
+          "texto": "¿Qué inversores?",
+          "gesto": "confundido",
+          "pausa_despues": 0.4
+        },
+        {
+          "dice": "Usu",
+          "texto": "Te lo reenvié tres veces. ¿Verdad, Anastasia?",
+          "gesto": "encoge"
+        },
+        {
+          "off": "Anastas-IA",
+          "texto": "Cuatro, Usu. La cuarta se la mandé yo. Con cariño."
+        },
+        {
+          "mira": "Jefe",
+          "a": "Usu"
+        },
+        {
+          "dice": "Jefe",
+          "texto": "¿Con cariño?",
+          "gesto": "sorprendido",
+          "pausa_despues": 0.5
+        },
+        {
+          "dice": "Usu",
+          "texto": "[excited] Está aprendiendo. ¿A que es una maravilla?",
+          "gesto": "celebra"
+        },
+        {
+          "dice": "Jefe",
+          "texto": "Eso se lo preguntaré al Jefe del pasado.",
+          "gesto": "panico"
+        }
       ]
     }
   ]

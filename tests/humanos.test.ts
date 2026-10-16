@@ -77,3 +77,25 @@ describe("proyecto de prueba de humanos", () => {
     expect(tk.actors.map((a) => a.poseId)).toEqual(["char.jefe.pose_h_neutro", "char.usu.pose_h_neutro"]);
   });
 });
+
+describe("boca de dos fotogramas con voz real", () => {
+  it("abre y cierra a ritmo de sílaba mientras suena, y se cierra en silencio", async () => {
+    const { flatMouthOpen } = await import("@/lib/timeline/evaluate");
+    let toggles = 0, open = 0, prev = false;
+    for (let i = 0; i < 60; i++) {
+      const o = flatMouthOpen(0.9, i / 60);
+      if (o !== prev) toggles++;
+      if (o) open++;
+      prev = o;
+    }
+    expect(open).toBeGreaterThan(20);
+    expect(open).toBeLessThan(40);
+    expect(toggles).toBeLessThanOrEqual(17);
+    for (let i = 0; i < 60; i++) expect(flatMouthOpen(0.05, i / 60)).toBe(false);
+  });
+  it("cuando habla Anastas-IA se ve su pantalla", async () => {
+    const raw = (await import("@/data/prueba-humanos.json")).default;
+    const r = validateProject(structuredClone(raw), catalog);
+    expect(r.project!.takes[1].events.some((e) => e.track === "props" && e.propId === "prop_anastasia_pantalla")).toBe(true);
+  });
+});

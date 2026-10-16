@@ -13,7 +13,7 @@
 - la oficina de 5 mesas de mañana, de tarde y de noche (pasa a ser la sala de **sistemas**);
 - el despacho del Director;
 - los humanos de espaldas;
-- la sala de servidores, que editaremos para convertirla en la sala de NODO.
+- la sala de servidores, que editaremos para convertirla en la sala de Anastas-IA.
 
 ```
 Vas a ser el ilustrador de la serie PUÑETOS. Respeta siempre las referencias adjuntas.
@@ -35,8 +35,8 @@ ESCENARIOS
 3. bg_complejo_noche — EDITA la 2: de noche, cielo estrellado, todas las ventanas apagadas MENOS UNA en una planta intermedia, con luz azulada. El panel de la fachada sigue liso y oscuro.
 4. bg_complejo_apagado — EDITA la 2: misma mañana, pero el edificio entero sin ninguna luz, ventanas oscuras y apagadas, un aire de «algo va mal».
 5. bg_oficina_oscuras — EDITA la oficina de 5 mesas: completamente a oscuras, monitores apagados, solo un poco de luz gris por la ventana.
-6. bg_sala_nodo — EDITA la sala de servidores: en el centro del fondo, un gran núcleo cilíndrico de cristal (el cerebro de la IA «NODO») con un anillo de luz, APAGADO (gris, sin brillo). Quita el humo y la luz roja.
-7. bg_sala_nodo_on — EDITA la 6: el mismo núcleo ENCENDIDO, brillando en azul cian, con reflejos en el suelo.
+6. bg_sala_anastasia — EDITA la sala de servidores: en el centro del fondo, un gran núcleo cilíndrico de cristal (el cerebro de la IA «Anastas-IA») con un anillo de luz, APAGADO (gris, sin brillo). Quita el humo y la luz roja.
+7. bg_sala_anastasia_on — EDITA la 6: el mismo núcleo ENCENDIDO, brillando en azul cian, con reflejos en el suelo.
 
 PERSONAJES HUMANOS (para la presentación)
 8. director_habla — Director: hombre de unos 55 años, traje gris caro, corbata roja, canas peinadas impecables, sonrisa de anuncio, reloj grande. De pie, de frente, hablando con una mano levantada, muy contento.
@@ -53,7 +53,7 @@ OBJETOS
 17. taza_sistemas — taza de café blanca humeante.
 18. posit — pósit amarillo grande, en blanco, un poco arrugado.
 
-NODO (la IA, para los episodios 4 en adelante; adelántala si quieres)
+Anastas-IA (la IA, para los episodios 4 en adelante; adelántala si quieres)
 19b. nodo — una pequeña esfera flotante de luz cian brillante, del tamaño de un balón, con una cara sencilla y expresiva (dos ojos ovalados y una boca de luz), aire curioso y simpático. Sin brazos. NADA parecido a robots o IAs de películas conocidas.
 
 TÍTULO

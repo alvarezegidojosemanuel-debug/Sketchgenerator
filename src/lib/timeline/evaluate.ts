@@ -133,6 +133,15 @@ function talkByOpenness(catalog: Catalog, characterId: string, talk: string[]): 
 }
 
 /** Boca mientras suena la voz real: ~8 aperturas por segundo. */
+/**
+ * Boca de dos fotogramas (humanos dibujados enteros): con voz real no basta «volumen > umbral» (la boca se
+ * quedaría abierta toda la frase o temblaría a 60 fps). Abre y cierra a ritmo de sílaba (~8/s) solo mientras suena,
+ * y se cierra en las pausas y caídas de volumen.
+ */
+export function flatMouthOpen(level: number, t: number): boolean {
+  return level > MOUTH_THRESHOLD * 1.4 && Math.floor(t * 8) % 2 === 0;
+}
+
 export function liveMouthOpen(elapsed: number): boolean {
   return Math.floor(elapsed * 8) % 2 === 0;
 }
@@ -308,14 +317,16 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
   if (opts.levels) {
     for (const [uid, level] of opts.levels) {
       if (uid.startsWith("voice:")) {
-        if (level > MOUTH_THRESHOLD) voiceOpen.add(uid.slice(6));
+        if (flatMouthOpen(level, t)) voiceOpen.add(uid.slice(6));
         continue;
       }
       const st = actors.get(uid);
       if (!st) continue;
       st.speaking = true;
       levelDriven.add(uid);
-      if (level > MOUTH_THRESHOLD) {
+      if (findPose(catalog, st.characterId, st.poseId)?.flat) {
+        st.mouthOpen = flatMouthOpen(level, t);
+      } else if (level > MOUTH_THRESHOLD) {
         const ex = st.expressionId ? findExpression(catalog, st.characterId, st.expressionId) : undefined;
         const ordered = ex?.talk.length ? talkByOpenness(catalog, st.characterId, ex.talk) : [];
         st.mouthOpen = true;

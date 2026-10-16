@@ -160,9 +160,9 @@ Ahora su AURA (cómo lo ven los Puñetos): mismo personaje, mismas poses y encua
 | A5 | `bg_recepcion` | Vestíbulo del complejo: suelo brillante, mostrador curvo blanco a la izquierda, tornos de acceso, plantas grandes y un ventanal. **Sin el robot.** |
 | A6 | `bg_pasillo_labs` | Pasillo con puertas de cristal de laboratorios a ambos lados (vacíos por dentro) y luces en el techo. Al fondo, una puerta de baño. |
 | A7 | `bg_oficina_oscuras` | EDITA la oficina de 5 mesas: a oscuras, con los monitores apagados. |
-| A8 | `bg_sala_nodo` | EDITA la sala de servidores: un núcleo cilíndrico de cristal en el centro (NODO), **apagado**. |
-| A9 | `bg_sala_nodo_on` | EDITA A8: el núcleo **encendido**, en azul cian. |
-| A10 | `bg_sala_nodo_noche` | EDITA A8: de noche, con solo la luz de emergencia y unas pantallas. |
+| A8 | `bg_sala_anastasia` | EDITA la sala de servidores: un núcleo cilíndrico de cristal en el centro (Anastas-IA), **apagado**. |
+| A9 | `bg_sala_anastasia_on` | EDITA A8: el núcleo **encendido**, en azul cian. |
+| A10 | `bg_sala_anastasia_noche` | EDITA A8: de noche, con solo la luz de emergencia y unas pantallas. |
 | A11 | `bg_lab_semilla` | Laboratorio de biotecnología tipo invernadero: mesas con macetas, tubos de ensayo verdes, luces de cultivo moradas y cristaleras. |
 
 ### Prioridad B · Ep4–7
@@ -211,7 +211,7 @@ Recuerda: vertical 9:16, sin personas, suelo despejado en el tercio inferior, un
 | `prop_monitor_off` | El mismo monitor, apagado. |
 | `prop_puerta_lab` | Puerta de cristal de laboratorio, cerrada. |
 | `prop_puerta_lab_abierta` | La misma puerta, abierta. |
-| `prop_nodo` | Esfera flotante de luz cian con cara sencilla (NODO en visión Puñeta). |
+| `prop_anastasia` | Esfera flotante de luz cian con cara sencilla (Anastas-IA en visión Puñeta). |
 
 **Cotidianos:**
 

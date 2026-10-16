@@ -123,8 +123,8 @@ describe("vibración y fotogramas", () => {
     expect(during.has("prop_jefe_neutro_boca")).toBe(true);
     expect(evaluateTake(take, catalog, 2.8).props[0].propId).toBe("prop_jefe_neutro");
     // con voz real manda el volumen
-    expect(evaluateTake(take, catalog, 1.2, { levels: new Map([["voice:jefe", 0.9]]) }).props[0].propId).toBe("prop_jefe_neutro_boca");
-    expect(evaluateTake(take, catalog, 1.2, { levels: new Map([["voice:jefe", 0]]) }).props[0].propId).toBe("prop_jefe_neutro");
-    expect(evaluateTake(take, catalog, 1.2, { levels: new Map([["voice:sister", 0.9]]) }).props[0].propId).toBe("prop_jefe_neutro");
+    expect(evaluateTake(take, catalog, 1.3, { levels: new Map([["voice:jefe", 0.9]]) }).props[0].propId).toBe("prop_jefe_neutro_boca");
+    expect(evaluateTake(take, catalog, 1.3, { levels: new Map([["voice:jefe", 0]]) }).props[0].propId).toBe("prop_jefe_neutro");
+    expect(evaluateTake(take, catalog, 1.3, { levels: new Map([["voice:sister", 0.9]]) }).props[0].propId).toBe("prop_jefe_neutro");
   });
 });

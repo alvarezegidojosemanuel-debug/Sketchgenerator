@@ -6491,6 +6491,14 @@
    "height": 300,
    "src": "/assets/placeholder/props/prop_pulpo.svg",
    "placeholder": true
+  },
+  {
+   "id": "prop_anastasia_pantalla",
+   "label": "Anastas-IA hablando (pantalla con onda, provisional)",
+   "width": 300,
+   "height": 206,
+   "src": "/assets/placeholder/props/prop_anastasia_pantalla.svg",
+   "placeholder": true
   }
  ]
 }

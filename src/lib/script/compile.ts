@@ -284,7 +284,14 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
         const tx = typeof st.narrador === "string" ? st.narrador : text;
         if (tx) b.say(undefined, tx, { gap });
       } else if (st.off !== undefined) {
-        if (typeof st.off === "string" && text) b.say(undefined, text, { speakerName: st.off.slice(0, 40), gap });
+        if (typeof st.off === "string" && text) {
+          const t0 = b.t;
+          b.say(undefined, text, { speakerName: st.off.slice(0, 40), gap });
+          // Anastas-IA (la IA del complejo) no tiene cuerpo: mientras habla se ve su pantalla, para que su voz no salga «de la nada»
+          const who = norm(st.off).replace(/[^a-z]/g, "");
+          if ((who.startsWith("anastas") || who === "nodo") && catalog.props.some((x) => x.id === "prop_anastasia_pantalla"))
+            b.add({ track: "props", propId: "prop_anastasia_pantalla", layer: "props-front", x: 840, y: 520, scale: 0.9, duration: estimate(text) + 0.3, enter: "pop", exit: "fade", loop: "pulse" }, t0 - 0.15);
+        }
       } else if (st.coro !== undefined) {
         const whos = ((Array.isArray(st.coro) ? st.coro : []) as unknown[]).map((c, i) => charId(c, `${sp}.coro[${i}]`)).filter((c): c is string => !!c && cast.includes(c));
         if (!whos.length || !text) return;

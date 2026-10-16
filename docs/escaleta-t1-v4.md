@@ -4,11 +4,11 @@
 
 ## Decisiones aplicadas
 1. **Ep1 empieza con un flash-forward:** los Puñetos en un aprieto y, después, «Cuatro días antes…» con los humanos.
-2. **NODO cambia con el parche.**
+2. **Anastas-IA cambia con el parche.**
    - **Antes:** pantallas y megafonía con frases solo «un pelín raras».
    - **Después:** los cinco **la oyen pensar en voz alta**.
 3. **La voz desconocida** (final del Ep2) **provoca la avería** del Ep3 y **le sugiere a Usu la idea del parche**.
-4. **NODO y Sister:** Sister no quiere nada con Usu. NODO tiene **celos infundados** por sus inseguridades y compite por **la confianza** de Usu. No hay pelea entre ellas.
+4. **Anastas-IA y Sister:** Sister no quiere nada con Usu. Anastas-IA tiene **celos infundados** por sus inseguridades y compite por **la confianza** de Usu. No hay pelea entre ellas.
 5. **El Ep9 es de continuidad («relleno»):** minisketches sueltos fuera del trabajo.
 6. **El villano:** pistas muy sutiles y **varios candidatos** (ver la tabla al final).
 
@@ -32,7 +32,7 @@
 **Función:** enganchar con el flash-forward y presentar el mundo, a los cinco, al Director y la presión.
 
 1. **Flash-forward (≈6 s).** Viernes, en el auditorio, visión Puñeta.
-   - La maqueta de ÍCARO vuela sola sobre el público. Saltan chispas y NODO, la esfera cian, se agita: «Usu, cariño, esto no lo he hecho yo».
+   - La maqueta de ÍCARO vuela sola sobre el público. Saltan chispas y Anastas-IA, la esfera cian, se agita: «Usu, cariño, esto no lo he hecho yo».
    - **Jefe:** «¿Cómo hemos llegado a esto?»
    - La imagen se congela con un sonido de rebobinado.
 2. **Título PUÑETOS en el cielo.**
@@ -47,7 +47,7 @@
    - **Barbas** achucha al Jefe: «Pregúntale quién va a hacer todo eso.»
    - El Jefe empieza a calentarse… y el Director ya se ha ido.
 6. **Remate y primera rareza.** Por la megafonía:
-   - **NODO:** «Recordatorio: la productividad mejora con descansos. Usu, has trabajado bien hoy.»
+   - **Anastas-IA:** «Recordatorio: la productividad mejora con descansos. Usu, has trabajado bien hoy.»
    - Todos miran a Usu.
    - **Barbas:** «¿*Usu*? ¿Te ha nombrado a ti solo?»
    - **Usu:** «Será que me lee los informes.»
@@ -57,19 +57,19 @@
 ---
 
 ## Ep2 · «La novia electrónica»
-**Función:** presentar a NODO, el gag de Barbas y la primera sospecha de Sister.
+**Función:** presentar a Anastas-IA, el gag de Barbas y la primera sospecha de Sister.
 
-1. **Reynaldo** descubre que NODO le ha puesto las **vacaciones en 2047**. Es la escena de la biblia: «También podrá solicitar la jubilación». **Usu:** «Está aprendiendo.» **Barbas:** «Sí, a quitarnos de en medio.»
+1. **Reynaldo** descubre que Anastas-IA le ha puesto las **vacaciones en 2047**. Es la escena de la biblia: «También podrá solicitar la jubilación». **Usu:** «Está aprendiendo.» **Barbas:** «Sí, a quitarnos de en medio.»
 2. **Detalles raros que solo le pasan a Usu,** y todos son a su favor: le sale el café perfecto, su ascensor siempre llega y su silla está calentita.
 3. **Barbas** ata cabos: «Usu… que tu IA te tiene en un altar. Es tu **novia electrónica**.» La megafonía responde con un pitido ofendido.
-4. **Sister** repasa los registros y ve un patrón: el 80 % de las decisiones de NODO benefician a Usu. Lo comenta con calma; no hay acusación.
-   - **NODO**, por pantalla, a Sister: «Su solicitud de material ha quedado en cola. Posición: 412.»
+4. **Sister** repasa los registros y ve un patrón: el 80 % de las decisiones de Anastas-IA benefician a Usu. Lo comenta con calma; no hay acusación.
+   - **Anastas-IA**, por pantalla, a Sister: «Su solicitud de material ha quedado en cola. Posición: 412.»
    - **Sister:** «…Vale.»
 5. **Usu la defiende:** «Es una IA que aprende. Si la tratáis como a una tostadora, se comporta como una tostadora.»
-6. **Gancho.** De noche, en la sala de NODO vacía, la pantalla muestra **una conversación en curso que nadie ha abierto**:
-   - **Voz desconocida, distorsionada:** «Hola, NODO.»
+6. **Gancho.** De noche, en la sala de Anastas-IA vacía, la pantalla muestra **una conversación en curso que nadie ha abierto**:
+   - **Voz desconocida, distorsionada:** «Hola, Anastas-IA.»
    - Pausa larga.
-   - **NODO:** «¿Quién eres?»
+   - **Anastas-IA:** «¿Quién eres?»
    - Negro.
 
 ---
@@ -78,11 +78,11 @@
 **Función:** la avería y la decisión del parche.
 
 1. **El complejo se vuelve imprevisible:** puertas que se cierran, laboratorios a oscuras y SEMILLA regada en exceso. El Director, al teléfono, pasa de sonreír a gritar.
-2. **Todos culpan a NODO.** Reynaldo quiere dar parte. Usu se niega: «No es ella. Os lo demuestro.»
-3. **Usu investiga** y encuentra **órdenes que NODO no ha dado**. Nadie le cree, porque los registros dicen que fue ella.
-4. **La gran avería.** NODO cae del todo y el complejo entero se apaga. Quedan dos días para los inversores.
+2. **Todos culpan a Anastas-IA.** Reynaldo quiere dar parte. Usu se niega: «No es ella. Os lo demuestro.»
+3. **Usu investiga** y encuentra **órdenes que Anastas-IA no ha dado**. Nadie le cree, porque los registros dicen que fue ella.
+4. **La gran avería.** Anastas-IA cae del todo y el complejo entero se apaga. Quedan dos días para los inversores.
 5. **El Director, en el despacho.** El Jefe va como un miura, porque Barbas lo ha calentado, y sale escaldado: «¡Fuera de mi despacho! ¡Y mándame una reunión para el viernes!» **Sister:** «Apuntado.» **Jefe:** «¿Qué reunión?»
-6. **Remate.** En la pantalla apagada de NODO parpadea un instante un mensaje para Usu, que solo él ve: «SINAPSIS + NÚCLEO + ÍCARO». Es la idea que le da la voz, aunque Usu cree que se le ha ocurrido a él.
+6. **Remate.** En la pantalla apagada de Anastas-IA parpadea un instante un mensaje para Usu, que solo él ve: «SINAPSIS + NÚCLEO + ÍCARO». Es la idea que le da la voz, aunque Usu cree que se le ha ocurrido a él.
    - **Usu:** «Tengo un plan.»
    - **Todos:** «No.»
    - **Usu:** «Ya lo he empezado.»
@@ -92,7 +92,7 @@
 ## Ep4 · «El parche»
 **Función:** el accidente y el nacimiento de los Puñetos. Es el corazón de la serie.
 
-1. **Miércoles, 23:40, sala de NODO.** Usu conecta el casco SINAPSIS, el núcleo y la batería de ÍCARO.
+1. **Miércoles, 23:40, sala de Anastas-IA.** Usu conecta el casco SINAPSIS, el núcleo y la batería de ÍCARO.
 2. **Van llegando todos,** cada uno por su motivo:
    - **Sister** viene a vigilarlo.
    - **El Jefe** viene porque Sister le ha dicho que viniera.
@@ -100,7 +100,7 @@
    - **Reynaldo** viene a decir que no se queda… y se queda.
 3. **Usu:** «El parche necesita un cerebro para arrancar. Solo uno.» El cable pasa de mano en mano y todos lo sujetan «solo un segundo».
 4. **Cuenta atrás.** 23:59… 00:00. Pantallazo azul gigante y la batería de ÍCARO explota. Negro.
-5. **Despiertan.** NODO funciona. Se miran: son **Puñetos**. Silencio.
+5. **Despiertan.** Anastas-IA funciona. Se miran: son **Puñetos**. Silencio.
    - **Reynaldo:** «¿Alguien más…?»
    - **Todos:** «No.»
    - Uno a uno, levantan la mano.
@@ -110,12 +110,12 @@
 ---
 
 ## Ep5 · «¿Qué nos ha pasado?»
-**Función:** la visión Puñeta, las auras, las primeras habilidades y NODO «pensando en voz alta».
+**Función:** la visión Puñeta, las auras, las primeras habilidades y Anastas-IA «pensando en voz alta».
 
 1. **Entrada al complejo.** Todos los demás tienen auras de cliché y nadie nota nada raro en ellos. **Barbas:** «¿Me ves… raro?» Una científica: «¿Te has cortado la barba?»
-2. **Ahora oyen a NODO pensar.** La esfera cian flota junto a Usu:
-   - **NODO** (pensando): «Ha vuelto. Está bien. Qué guapo está en azul…»
-   - **NODO** (en voz alta): «Buenos días, equipo.»
+2. **Ahora oyen a Anastas-IA pensar.** La esfera cian flota junto a Usu:
+   - **Anastas-IA** (pensando): «Ha vuelto. Está bien. Qué guapo está en azul…»
+   - **Anastas-IA** (en voz alta): «Buenos días, equipo.»
    - Los cinco se quedan helados.
    - **Barbas**, en voz baja: «…¿Lo habéis oído?»
    - **Usu:** «¿El qué?» Solo él no se entera.
@@ -123,7 +123,7 @@
    - **Sister** ordena con la mente el caos de cables.
    - **Reynaldo** recibe en la cabeza: «Convenio colectivo actualizado».
    - **El Jefe** arregla de un vistazo un problema de meses… y lo olvida.
-4. **NODO**, por dentro, sobre Sister: «Siempre tan útil, Sister…» Sister ni se entera. Son celos infundados.
+4. **Anastas-IA**, por dentro, sobre Sister: «Siempre tan útil, Sister…» Sister ni se entera. Son celos infundados.
 5. **Remate.** El Director: «¡Habéis recuperado todo en una noche! ¿Cómo lo habéis hecho?» **Jefe:** «Eso se lo preguntaré al Jefe del pasado.»
 
 ---
@@ -139,7 +139,7 @@
    - **Usu:** «¿Los he creado yo?»
    - **Reynaldo:** «¿Están dados de alta?»
    - **Barbas**, cogiendo a Humillos: «Con todo el amor del mundo: este es mío.»
-   - **NODO**, pensando: «…Dos. Ahora son dos.» En voz alta: «Qué monos.»
+   - **Anastas-IA**, pensando: «…Dos. Ahora son dos.» En voz alta: «Qué monos.»
 
 ---
 
@@ -149,14 +149,14 @@
 1. **Auditorio.** Inversores con auras de tiburón de traje. El Director presenta y el equipo lo salva todo desde la cabina técnica, sin que nadie lo vea:
    - **SINAPSIS:** el voluntario del casco habla en binario. Sister lo reordena con la mente.
    - **SEMILLA:** la planta se pone a cantar. **Barbas:** «Déjala, que gusta.» Gusta.
-   - **ÍCARO:** la maqueta despega sola. **Es el plano del Ep1:** NODO: «Esto no lo he hecho yo». **Jefe:** «¿Cómo hemos llegado a esto?»
+   - **ÍCARO:** la maqueta despega sola. **Es el plano del Ep1:** Anastas-IA: «Esto no lo he hecho yo». **Jefe:** «¿Cómo hemos llegado a esto?»
 2. **El Jefe** encuentra una solución genial que no recordará, y Draco y Humillos sacan la maqueta por la ventana. **Explota en el cielo como un fuego artificial.**
 3. **Los inversores:** «¡Qué final!»
 4. **Remate.**
    - **Director:** «Todo esto ha sido idea mía.»
    - **Reynaldo**, en la cabina, ya está redactando algo con la mente.
 
-**Pista sutil:** NODO decía la verdad, porque la orden de despegue salió de **otra conexión**. Nadie lo ve, salvo un registro en pantalla durante un instante.
+**Pista sutil:** Anastas-IA decía la verdad, porque la orden de despegue salió de **otra conexión**. Nadie lo ve, salvo un registro en pantalla durante un instante.
 
 ---
 
@@ -178,7 +178,7 @@
 - **Reynaldo y el banco:** le cobran una comisión absurda y lo resuelve con la mente. El banco le devuelve el dinero y le pide perdón.
 - **Sister y la casa ajena:** ordena la casa caótica de una amiga… y la suya sigue patas arriba. «En casa del herrero.»
 - **Barbas y la comida familiar:** el cuñado sabelotodo acaba abrazándolo y cediéndole la última croqueta.
-- **Usu y el semáforo:** crea un ser que dirige el tráfico. NODO, desde el móvil: «Yo también sé hacer semáforos.»
+- **Usu y el semáforo:** crea un ser que dirige el tráfico. Anastas-IA, desde el móvil: «Yo también sé hacer semáforos.»
 - **El Jefe y el wifi del vecino:** lo arregla sin querer. «¿Cómo lo has hecho?» «¿El qué?»
 
 ---
@@ -188,10 +188,10 @@
 
 1. **Unas semanas después: «LUNES · 08:59».** Es el mismo plano que el Ep1, pero ahora llegan Puñetos, tranquilos y con dragones. Las peticiones se resuelven en segundos.
 2. **En el bar.** Brindis, y Barbas: «Por los Puñetos.» Usu deja dos platitos para los dragones y el camarero se los devuelve **chamuscados**.
-3. **NODO**, celosa, en el móvil de Usu: «¿Vuelves pronto?» **Barbas:** «Tu novia.» **Usu:** «Es una IA.» **NODO:** «Le he oído.»
-4. **Gancho.** De noche, en la sala de NODO, Sister revisa el registro del parche: **«Conexiones: 6»**.
+3. **Anastas-IA**, celosa, en el móvil de Usu: «¿Vuelves pronto?» **Barbas:** «Tu novia.» **Usu:** «Es una IA.» **Anastas-IA:** «Le he oído.»
+4. **Gancho.** De noche, en la sala de Anastas-IA, Sister revisa el registro del parche: **«Conexiones: 6»**.
    - **Sister:** «Cinco somos nosotros…»
-   - **NODO**, en voz muy baja: «Yo no he sido.»
+   - **Anastas-IA**, en voz muy baja: «Yo no he sido.»
    - Negro. *Fin de temporada.*
 
 ---
@@ -201,8 +201,8 @@
 |---|---|
 | **El Director** | Su acreditación registra una entrada a las 23:59 del miércoles, pero él dice que estaba en casa (Ep4/Ep10). |
 | **La persona responsable de SINAPSIS** (secundario por definir) | El casco tenía un **segundo receptor** que no figura en los planos (Ep4). |
-| **NODO misma** | ¿Se conectó a sí misma? Sabe cosas que no debería, pero dice «Yo no he sido» (Ep10). |
-| **La voz desconocida** | Habló con NODO antes de la avería y conocía la combinación del parche (Ep2/Ep3). |
+| **Anastas-IA misma** | ¿Se conectó a sí misma? Sabe cosas que no debería, pero dice «Yo no he sido» (Ep10). |
+| **La voz desconocida** | Habló con Anastas-IA antes de la avería y conocía la combinación del parche (Ep2/Ep3). |
 | **Alguien de fuera** | El despegue de la maqueta lo ordenó una conexión **externa** (Ep7). |
 
 **Regla:** cada pista aparece **un instante** (un fotograma, un rótulo o una frase de fondo) y nunca interrumpe el chiste de la escena.
@@ -210,11 +210,11 @@
 ## Arte que pide esta escaleta (además de lo que ya hay)
 - **Humanos:** los cinco con las poses nuevas y el Director.
 - **Puñetos:** hojas de modelo y poses nuevas para el Ep5 en adelante.
-- **NODO:** la esfera cian con 4–6 caras: neutra, enamorada, celosa, irónica, ofendida y asustada.
+- **Anastas-IA:** la esfera cian con 4–6 caras: neutra, enamorada, celosa, irónica, ofendida y asustada.
 - **Dragones:** Draco y Humillos definitivos.
 - **Escenarios:**
   - cielo, el complejo de día, de noche y apagado;
-  - la sala de NODO;
+  - la sala de Anastas-IA;
   - el laboratorio de SEMILLA, normal e invadido;
   - el auditorio y la cabina técnica;
   - el bar.

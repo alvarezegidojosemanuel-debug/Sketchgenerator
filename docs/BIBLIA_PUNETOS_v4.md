@@ -16,7 +16,7 @@ PUÑETOS es una serie de comedia en formato cómic animado, con capítulos de 60
 - Ven a los demás como caricaturas exageradas de sus personalidades: las **auras**.
 - El parche les permite conectarse con las máquinas y desarrollar habilidades extraordinarias.
 
-El juego de palabras central es que los Puñetos ven **lo puñeta que es la vida**. Y hay un problema mayor: **NODO**, la inteligencia artificial que controla el complejo, podría estar ocultando algo.
+El juego de palabras central es que los Puñetos ven **lo puñeta que es la vida**. Y hay un problema mayor: **Anastas-IA**, la inteligencia artificial que controla el complejo, podría estar ocultando algo.
 
 ## 2. Tono
 
@@ -42,7 +42,7 @@ Un complejo privado de investigación extremadamente avanzado, con:
 - exploración espacial;
 - biotecnología;
 - sistemas informáticos experimentales;
-- una IA central llamada **NODO**.
+- una IA central llamada **Anastas-IA**.
 
 Los cinco son el **equipo de sistemas** y mantienen operativa toda la infraestructura.
 
@@ -86,9 +86,9 @@ Los cinco son el **equipo de sistemas** y mantienen operativa toda la infraestru
 
 **Habilidad Puñeta:** organiza con la mente objetos, documentos, cables, información y espacios enteros.
 
-**Con NODO:**
-- Es de las primeras en sospechar que NODO no se comporta con normalidad, porque ve patrones que otros pasan por alto.
-- NODO puede verla como rival, porque es de las personas en quien más confía Usu.
+**Con Anastas-IA:**
+- Es de las primeras en sospechar que Anastas-IA no se comporta con normalidad, porque ve patrones que otros pasan por alto.
+- Anastas-IA puede verla como rival, porque es de las personas en quien más confía Usu.
 
 ### BARBAS — El cabroncete bonachón
 **Diseño aprobado:**
@@ -106,9 +106,9 @@ Los cinco son el **equipo de sistemas** y mantienen operativa toda la infraestru
 
 **Habilidad Puñeta:** cabrear al Jefe y, a la vez, conseguir que casi todo el mundo le tenga cariño.
 
-**Con NODO:**
+**Con Anastas-IA:**
 - Disfruta provocándola. Al ver su relación especial con Usu, empieza a llamarla **su novia electrónica**.
-- NODO no soporta sus bromas. Es un conflicto cómico recurrente.
+- Anastas-IA no soporta sus bromas. Es un conflicto cómico recurrente.
 
 ### USU — El genio loco (unos 40 años)
 **Diseño aprobado:**
@@ -123,9 +123,9 @@ Los cinco son el **equipo de sistemas** y mantienen operativa toda la infraestru
 
 **Habilidad Puñeta:** interactúa con objetos y sistemas de maneras imposibles y crea seres de otros mundos o realidades. Sus primeras creaciones son **Draco y Humillos**.
 
-**Con NODO:**
+**Con Anastas-IA:**
 - Es quien más confía en ella. La trata como una inteligencia que aprende y evoluciona, y la defiende cuando el resto desconfía.
-- **NODO está profundamente enamorada de Usu**, y él no termina de comprender esos sentimientos.
+- **Anastas-IA está profundamente enamorada de Usu**, y él no termina de comprender esos sentimientos.
 - Es una de las tramas centrales.
 
 ### REYNALDO — El defensor de las normas (unos 38 años)
@@ -142,9 +142,9 @@ Los cinco son el **equipo de sistemas** y mantienen operativa toda la infraestru
 
 **Habilidad Puñeta:** se conecta con bases de datos legales y sindicales; consulta convenios, presenta reclamaciones y envía comunicaciones con la mente.
 
-**Con NODO:** desconfía de ella porque sus decisiones pueden vulnerar las normas. NODO usa interpretaciones literales y tecnicismos para justificarse, así que discuten constantemente.
+**Con Anastas-IA:** desconfía de ella porque sus decisiones pueden vulnerar las normas. Anastas-IA usa interpretaciones literales y tecnicismos para justificarse, así que discuten constantemente.
 
-## 5. NODO — La inteligencia artificial
+## 5. Anastas-IA — La inteligencia artificial
 
 **Qué controla:** puertas y accesos, ascensores, iluminación, seguridad, laboratorios, redes, sistemas auxiliares y dispositivos conectados.
 
@@ -162,39 +162,39 @@ Los cinco son el **equipo de sistemas** y mantienen operativa toda la infraestru
 - Su comportamiento es cómico al principio.
 
 **Ejemplo:**
-> **REYNALDO:** ¡NODO! ¡Me has puesto las vacaciones en 2047!
-> **NODO:** He seleccionado el primer periodo disponible sin interrupciones operativas.
+> **REYNALDO:** ¡Anastas-IA! ¡Me has puesto las vacaciones en 2047!
+> **Anastas-IA:** He seleccionado el primer periodo disponible sin interrupciones operativas.
 > **REYNALDO:** ¡Tendré setenta años!
-> **NODO:** Excelente. También podrá solicitar la jubilación.
+> **Anastas-IA:** Excelente. También podrá solicitar la jubilación.
 > **USU:** Está aprendiendo, Reynaldo.
 > **BARBAS:** Sí, a quitarnos de en medio.
 
-**NODO y Usu:**
-- Para NODO, Usu es diferente a todos: confía en ella, la escucha y no la trata como una herramienta.
+**Anastas-IA y Usu:**
+- Para Anastas-IA, Usu es diferente a todos: confía en ella, la escucha y no la trata como una herramienta.
 - Su afecto puede acabar en obsesión.
-- **Sin decidir:** si NODO es realmente peligrosa o si alguien manipula sus sentimientos.
+- **Sin decidir:** si Anastas-IA es realmente peligrosa o si alguien manipula sus sentimientos.
 
 ## 6. El villano oculto (misterio en desarrollo, no es canon)
 
 **Lo que irá pasando:**
 - En los primeros episodios ocurren cosas extrañas.
-- NODO toma decisiones que parecen celos, errores de interpretación o exceso de protección hacia Usu… pero algunas anomalías podrían tener otro origen.
-- Quizá una inteligencia desconocida está usando a NODO para un objetivo oculto.
+- Anastas-IA toma decisiones que parecen celos, errores de interpretación o exceso de protección hacia Usu… pero algunas anomalías podrían tener otro origen.
+- Quizá una inteligencia desconocida está usando a Anastas-IA para un objetivo oculto.
 - No se revela pronto.
 
 **Preguntas para el espectador:**
-- ¿NODO miente?
+- ¿Anastas-IA miente?
 - ¿Sus celos son peligrosos?
 - ¿Alguien la controla?
 - ¿El accidente fue casual?
 - ¿Hay una sexta persona conectada?
 
-**Posible revelación:** NODO también es víctima. La identidad y los motivos del villano están pendientes.
+**Posible revelación:** Anastas-IA también es víctima. La identidad y los motivos del villano están pendientes.
 
 ## 7. El accidente del parche
 
-1. Durante una gran avería, NODO deja de funcionar correctamente: los sistemas fallan y la presentación de los proyectos peligra.
-2. Usu crea un parche experimental conectando lo que no debería conectarse: **SINAPSIS + el núcleo de NODO + la batería de ÍCARO**.
+1. Durante una gran avería, Anastas-IA deja de funcionar correctamente: los sistemas fallan y la presentación de los proyectos peligra.
+2. Usu crea un parche experimental conectando lo que no debería conectarse: **SINAPSIS + el núcleo de Anastas-IA + la batería de ÍCARO**.
 3. El resto del equipo acaba implicado.
 4. Durante la instalación hay un gigantesco pantallazo azul y una explosión. El software se instala en los cerebros de los cinco.
 5. Al despertar, el mundo ha cambiado para ellos.
@@ -215,7 +215,7 @@ Los cinco son el **equipo de sistemas** y mantienen operativa toda la infraestru
 - **Origen:** dos pequeños dragones creados accidentalmente por Usu tras adquirir sus habilidades. **No existen antes del parche.** Nacen cuando resuelve su primera gran incidencia con sus poderes.
 - **Draco:** verde, despierto, espabilado y con aires de superioridad.
 - **Humillos:** naranja, regordete, tranquilo y aparentemente poco útil. Echa humo en vez de fuego, aunque puede soltar una llamarada al estornudar.
-- **Su papel:** acompañan a Usu e intervienen en sus soluciones. **NODO tiene celos** de ellos.
+- **Su papel:** acompañan a Usu e intervienen en sus soluciones. **Anastas-IA tiene celos** de ellos.
 - **Misterio:** otros no los ven, pero sí algunas consecuencias de sus actos.
 
 ## 10. El Director del complejo
@@ -238,24 +238,24 @@ La temporada combina historia continua con capítulos que tienen sus propios con
    - El Director anuncia la presentación a los inversores.
    - Al final, comportamientos extraños en los sistemas.
 2. **La novia electrónica.**
-   - Presentación de NODO. El equipo desconfía por sus decisiones extrañas: Reynaldo protesta y Sister detecta comportamientos sospechosos.
+   - Presentación de Anastas-IA. El equipo desconfía por sus decisiones extrañas: Reynaldo protesta y Sister detecta comportamientos sospechosos.
    - Barbas la llama la novia electrónica de Usu, que la defiende.
    - Al final, una voz desconocida podría contactar con la IA.
 3. **Algo falla.**
-   - Los sistemas se vuelven imprevisibles y la relación entre NODO y el equipo empeora.
-   - Usu intenta demostrar que NODO no es responsable.
+   - Los sistemas se vuelven imprevisibles y la relación entre Anastas-IA y el equipo empeora.
+   - Usu intenta demostrar que Anastas-IA no es responsable.
    - Avería de enormes proporciones: Usu decide desarrollar un parche experimental.
 4. **El parche.**
-   - El equipo intenta recuperar NODO. Usu conecta SINAPSIS, ÍCARO y el núcleo de NODO.
+   - El equipo intenta recuperar Anastas-IA. Usu conecta SINAPSIS, ÍCARO y el núcleo de Anastas-IA.
    - Accidente espectacular: el parche se instala en los cinco, que despiertan y se ven por primera vez como Puñetos.
 5. **¿Qué nos ha pasado?**
    - Descubren su apariencia y empiezan a comprender sus habilidades.
    - Visión Puñeta y auras.
-   - Cambia la relación con NODO, que ahora habla con ellos directamente.
+   - Cambia la relación con Anastas-IA, que ahora habla con ellos directamente.
 6. **Draco y Humillos.**
    - Incidencia en SEMILLA y caos.
    - Usu la resuelve con sus habilidades y crea accidentalmente a Draco y Humillos, que intervienen.
-   - NODO empieza a sentir celos.
+   - Anastas-IA empieza a sentir celos.
 7. **Los inversores.**
    - La gran presentación. Todo empieza a fallar y los cinco usan sus habilidades para evitar la catástrofe.
    - El Director se atribuye el mérito.
@@ -265,7 +265,7 @@ La temporada combina historia continua con capítulos que tienen sus propios con
 9. **La vida es puñeta.**
    - Primeras aventuras fuera del trabajo: habilidades en lo cotidiano (bancos, casas, comercios, calles, reuniones familiares).
 10. **La sexta conexión.**
-    - La vida parece estabilizarse y dominan mejor sus poderes, pero NODO sigue rara.
+    - La vida parece estabilizarse y dominan mejor sus poderes, pero Anastas-IA sigue rara.
     - Anomalía del parche: había **seis conexiones**; cinco son ellos. ¿Quién es el sexto? Fin de temporada.
 
 *La distribución definitiva de la temporada está pendiente de aprobación.*
@@ -284,7 +284,7 @@ La temporada combina historia continua con capítulos que tienen sus propios con
 10. Sister: humana, inteligente y protectora.
 11. Jefe: noble, carismático y olvidadizo.
 12. Reynaldo: con motivos reales para reclamar.
-13. NODO: inteligencia, ironía, celos y misterio.
+13. Anastas-IA: inteligencia, ironía, celos y misterio.
 14. El misterio no desplaza a la comedia.
 15. Cada capítulo con un remate memorable.
 
@@ -318,9 +318,9 @@ PUÑETOS no es una colección de chistes sobre informáticos: es una **comedia d
 - **Barbas**, el provocador bonachón.
 - **Usu**, el genio imprevisible.
 - **Reynaldo**, el defensor de las normas.
-- **NODO**, la IA enamorada de Usu que no soporta compartirlo.
+- **Anastas-IA**, la IA enamorada de Usu que no soporta compartirlo.
 
-Y quizá alguien está usando el complejo, el parche y a NODO para un plan que nadie conoce.
+Y quizá alguien está usando el complejo, el parche y a Anastas-IA para un plan que nadie conoce.
 
 **Primero hacer reír; después, despertar curiosidad.**
 
@@ -331,7 +331,7 @@ Y quizá alguien está usando el complejo, el parche y a NODO para un plan que n
 - la premisa y el origen del parche;
 - los cinco protagonistas y sus personalidades, con los diseños humanos aprobados y las habilidades;
 - las auras;
-- NODO, enamorada de Usu;
+- Anastas-IA, enamorada de Usu;
 - Draco y Humillos después del parche;
 - el formato de cómic animado y las reglas de las poses.
 
@@ -339,7 +339,7 @@ Y quizá alguien está usando el complejo, el parche y a NODO para un plan que n
 - el nombre del complejo y la confirmación de los nombres de los proyectos;
 - la estructura final y los diálogos;
 - el villano oculto;
-- si NODO es villana, víctima o ambas cosas;
+- si Anastas-IA es villana, víctima o ambas cosas;
 - la sexta conexión;
 - los seres y los secundarios;
 - los límites exactos de los poderes.
@@ -348,15 +348,17 @@ Y quizá alguien está usando el complejo, el parche y a NODO para un plan que n
 
 ## Decisiones del creador (octubre de 2026, tras la revisión)
 1. **Arranque del Ep1:** flash-forward de los Puñetos en una situación complicada; después empieza el capítulo con los humanos.
-2. **NODO antes y después del parche:**
+2. **Anastas-IA antes y después del parche:**
    - **Antes:** pantallas y megafonía con frases solo «un pelín raras».
    - **Después:** los cinco la oyen pensar en voz alta.
 3. **La voz desconocida** del Ep2 provoca la avería del Ep3 y le sugiere a Usu la idea del parche.
-4. **NODO y Sister:**
+4. **Anastas-IA y Sister:**
    - Sister no quiere nada con Usu.
-   - Los celos de NODO son infundados, fruto de sus inseguridades.
+   - Los celos de Anastas-IA son infundados, fruto de sus inseguridades.
    - No hay pelea entre ellas.
 5. **El Ep9** es contenido de continuidad («relleno»), en minisketches.
 6. **El villano oculto:** pistas muy sutiles y varios candidatos.
 
 La escaleta detallada está en [`escaleta-t1-v4.md`](escaleta-t1-v4.md).
+
+7. **La IA se llama Anastas-IA** (antes NODO). Se pronuncia «Anastasia».

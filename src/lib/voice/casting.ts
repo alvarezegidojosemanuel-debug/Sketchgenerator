@@ -51,7 +51,7 @@ export const CASTING: Record<string, CastingPreset> = {
     sample:
       "Buenos días, equipo. Quiero resultados, quiero eficiencia y quiero esa incidencia cerrada antes del viernes. ¿Que no? ¡Pues fuera de mi despacho! ¡Y mándame una reunión para el viernes a primera hora!",
   },
-  extra_nodo: {
+  extra_anastas_ia: {
     description:
       "Voz femenina de inteligencia artificial, joven y clara, muy educada y precisa. Con una persona habla dulce, casi enamorada; con los demás es irónica, fría y pasivo-agresiva, con pausas calculadas. Natural, nada robótica ni metálica. Acento de España neutro.",
     sample:

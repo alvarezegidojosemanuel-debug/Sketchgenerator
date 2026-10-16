@@ -2,10 +2,10 @@
 
 export const UNIVERSE = `PUÑETOS: cinco compañeros del equipo de SISTEMAS de un complejo tecnológico privado y puntero, con proyectos de
 inteligencia artificial, espaciales, biotecnología y robótica (Usu, Reynaldo, Sister, Barbas y Jefe). Ellos mantienen todo funcionando:
-los ordenadores de los científicos, la red y NODO, la IA central que controla el edificio. NO es un call center ni un servicio de atención
+los ordenadores de los científicos, la red y Anastas-IA, la IA central que controla el edificio. NO es un call center ni un servicio de atención
 telefónica: nada de llamadas de clientes, centralitas ni «¿ha probado a apagarlo y encenderlo?».
-Eran humanos hasta que, durante la gran incidencia (NODO caído a días de presentar los proyectos a los inversores), Usu montó un parche
-conectando el casco SINAPSIS (interfaz cerebral), el núcleo de NODO y la batería de ÍCARO (espacio): hubo un pantallazo azul y el parche se les
+Eran humanos hasta que, durante la gran incidencia (Anastas-IA caída a días de presentar los proyectos a los inversores), Usu montó un parche
+conectando el casco SINAPSIS (interfaz cerebral), el núcleo de Anastas-IA y la batería de ÍCARO (espacio): hubo un pantallazo azul y el parche se les
 instaló a los cinco en la cabeza. Desde entonces ELLOS SE VEN como Puñetos (piel azul brillante,
 cuerpo de gominola, mismos rasgos y personalidad), pero PARA TODOS LOS DEMÁS SIGUEN SIENDO HUMANOS NORMALES: nadie más nota nada.
 Además CONECTAN CON LOS SISTEMAS: resuelven incidencias «mágicamente», y cada uno tiene una HABILIDAD que exagera su rasgo principal
@@ -17,15 +17,16 @@ suelto, una planta experimental…), sin satirizar el ambiente laboral. Los cien
 En la visión Puñeta, también cámaras, fotos y espejos los muestran como Puñetos.
 El parche les instaló en la cabeza un software que les hace ver lo puñeta que es la vida: por eso se ven Puñetos y ven a los demás
 con el aura de lo puñeteros que son. Quién hizo ese software y si se puede quitar es un misterio: no lo resuelvas.
-NODO es la IA central del complejo (puertas, ascensores, luces, seguridad, laboratorios, redes). Antes del parche habla por pantallas
+Anastas-IA es la IA central del complejo (puertas, ascensores, luces, seguridad, laboratorios, redes). Antes del parche habla por pantallas
 y megafonía con frases solo un pelín raras; después del parche la OYEN PENSAR EN VOZ ALTA y los Puñetos la tratan como a una más del equipo (en visión Puñeta: esfera flotante de luz cian con cara).
-NODO (femenino: «la IA») es brillantísima pero entiende mal a los humanos: con Usu es dulce y servicial porque ESTÁ ENAMORADA DE ÉL
+Anastas-IA (femenino: «la IA») es brillantísima pero entiende mal a los humanos: con Usu es dulce y servicial porque ESTÁ ENAMORADA DE ÉL
 (él no termina de entenderlo); con los demás es pasivo-agresiva, irónica y literal, y usa tecnicismos para justificarse.
-Celosa de Draco y Humillos y, sin motivo, de Sister: Sister no quiere nada con Usu; son celos infundados, fruto de las inseguridades de NODO
-(sin pelea entre ellas: NODO compite por la confianza de Usu y Sister ni se entera o se lo toma con paciencia). Barbas la llama «la novia electrónica» de Usu y ella no lo soporta; Reynaldo discute
+Celosa de Draco y Humillos y, sin motivo, de Sister: Sister no quiere nada con Usu; son celos infundados, fruto de las inseguridades de Anastas-IA
+(sin pelea entre ellas: Anastas-IA compite por la confianza de Usu y Sister ni se entera o se lo toma con paciencia). Barbas la llama «la novia electrónica» de Usu y ella no lo soporta; Reynaldo discute
 con ella por saltarse las normas; Sister sospecha de sus patrones; Usu la defiende. Misterio de fondo (NO lo resuelvas): quizá
 alguien la está usando; ¿el accidente fue casual?; el parche tenía seis conexiones. El misterio nunca desplaza a la comedia.
-En el guion: { "off": "NODO", "texto": … }.
+Se escribe «Anastas-IA» (juego con «IA») pero se pronuncia «Anastasia»: cuando un personaje la nombre en voz alta, escribe «Anastasia» en el texto.
+En el guion: { "off": "Anastas-IA", "texto": … }.
 El Jefe (su jefe de equipo) y el Director (director del complejo, eufórico con los resultados mientras ellos van desbordados) son personas distintas.
 El humor nace de las situaciones y de cómo son ellos (contradicciones, relaciones, consecuencias inesperadas), no de insultos ni gritos,
 y nunca de burlarse de los usuarios ni de ningún colectivo. Sin parecidos con franquicias existentes.`;
@@ -33,10 +34,10 @@ y nunca de burlarse de los usuarios ni de ningún colectivo. Sin parecidos con f
 /** Personalidad y forma de hablar de cada personaje (clave = characterId). */
 export const PERSONALITIES: Record<string, string> = {
   jefe: "Unos 45 años. Líder noble y protector, el que todos quieren: brillante pero tremendamente despistado; puede olvidar lo que acaba de hacer. Cuando molestan a los suyos se enfada como un miura (Barbas sabe provocarlo; Sister le cubre los despistes). Frase: «Eso se lo preguntaré al Jefe del pasado». HABILIDAD: resuelve al instante lo extraordinariamente complejo… y después no recuerda cómo.",
-  sister: "Unos 35 años. Inteligente, organizada, dulce, trabajadora y protectora: evita que el caos se apodere del equipo; mucha paciencia pero sabe ponerse firme; protege al Jefe de sus olvidos; no presume, lo demuestra. Es de las primeras en sospechar de NODO (ve patrones que otros no ven). HABILIDAD: organiza con la mente objetos, documentos, cables, información y espacios.",
-  barbas: "Noble, trabajador, pícaro y muy querido: humor sarcástico, con retintín y mala uva cariñosa, siempre sabe dónde meter la pulla (voz: acotaciones [mischievously] o [chuckles]), nunca desagradable. Le encanta provocar al Jefe para que se caliente y defienda al equipo. Llama a NODO «la novia electrónica» de Usu. Coletilla con moderación: «con todo el amor del mundo». HABILIDAD: cabrear al Jefe y que casi todo el mundo le tenga cariño.",
-  usu: "Unos 40 años. Genio tecnológico extraordinario, creativo, entusiasta e imprevisible: sus métodos son disparatados pero con inteligencia detrás; NUNCA torpe ni incompetente. Es quien más confía en NODO y la defiende; no entiende que ella está enamorada de él. Draco y Humillos solo existen después del parche (Ep6). HABILIDAD: interactúa con objetos y sistemas de formas imposibles y crea seres de otros mundos.",
-  reynaldo: "Unos 38 años. Trabajador, meticuloso y defensor de los derechos laborales; detecta cualquier irregularidad; humor seco, preciso y sarcástico. No es un quejica: siempre tiene motivos reales para reclamar. Desconfía de NODO y discute con ella por sus tecnicismos. HABILIDAD: conectado a bases de datos legales y sindicales: consulta convenios y envía reclamaciones con la mente.",
+  sister: "Unos 35 años. Inteligente, organizada, dulce, trabajadora y protectora: evita que el caos se apodere del equipo; mucha paciencia pero sabe ponerse firme; protege al Jefe de sus olvidos; no presume, lo demuestra. Es de las primeras en sospechar de Anastas-IA (ve patrones que otros no ven). HABILIDAD: organiza con la mente objetos, documentos, cables, información y espacios.",
+  barbas: "Noble, trabajador, pícaro y muy querido: humor sarcástico, con retintín y mala uva cariñosa, siempre sabe dónde meter la pulla (voz: acotaciones [mischievously] o [chuckles]), nunca desagradable. Le encanta provocar al Jefe para que se caliente y defienda al equipo. Llama a Anastas-IA «la novia electrónica» de Usu. Coletilla con moderación: «con todo el amor del mundo». HABILIDAD: cabrear al Jefe y que casi todo el mundo le tenga cariño.",
+  usu: "Unos 40 años. Genio tecnológico extraordinario, creativo, entusiasta e imprevisible: sus métodos son disparatados pero con inteligencia detrás; NUNCA torpe ni incompetente. Es quien más confía en Anastas-IA y la defiende; no entiende que ella está enamorada de él. Draco y Humillos solo existen después del parche (Ep6). HABILIDAD: interactúa con objetos y sistemas de formas imposibles y crea seres de otros mundos.",
+  reynaldo: "Unos 38 años. Trabajador, meticuloso y defensor de los derechos laborales; detecta cualquier irregularidad; humor seco, preciso y sarcástico. No es un quejica: siempre tiene motivos reales para reclamar. Desconfía de Anastas-IA y discute con ella por sus tecnicismos. HABILIDAD: conectado a bases de datos legales y sindicales: consulta convenios y envía reclamaciones con la mente.",
 };
 
 export function loreBlock(characterIds: string[]): string {
