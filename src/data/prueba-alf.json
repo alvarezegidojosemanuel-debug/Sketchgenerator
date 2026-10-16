@@ -1,0 +1,22 @@
+{
+  "formato": "puñetos-guion-1",
+  "titulo": "Prueba técnica: Alf",
+  "idea": "Prueba de las poses humanas de Alf (guion provisional).",
+  "escenas": [
+    {
+      "nombre": "Pasillo",
+      "lugar": "bg_sistemas",
+      "vista": "humanos",
+      "personajes": ["Barbas", "Alf"],
+      "pasos": [
+        { "dice": "Barbas", "texto": "Alf, te han puesto el cohete en el baño. Por si despega.", "gesto": "señala" },
+        { "dice": "Alf", "texto": "¡Ja, ja! Qué bueno, Barbas. Qué bueno.", "gesto": "bolsillos" },
+        { "mira": "Barbas", "a": "Alf" },
+        { "dice": "Barbas", "texto": "Con todo el amor del mundo, ¿eh?", "gesto": "explica" },
+        { "sale": "Barbas" },
+        { "pausa": 0.6 },
+        { "dice": "Alf", "texto": "Ji, ji, ji… Ya lo veremos quién despega.", "gesto": "garras", "pausa_despues": 0.5 }
+      ]
+    }
+  ]
+}
