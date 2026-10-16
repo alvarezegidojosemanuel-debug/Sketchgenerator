@@ -50,7 +50,10 @@ describe("humanos de frente (poses dibujadas enteras)", () => {
   it("si falta algún personaje humano, vuelve a la vista de espaldas", () => {
     const g = structuredClone(guion);
     g.escenas[0].personajes = ["Jefe", "Reynaldo"];
-    const r2 = validateProject(g, catalog);
+    const cat = structuredClone(catalog);
+    const rey = cat.characters.find((c) => c.id === "reynaldo")!;
+    rey.poses = rey.poses.filter((p) => !p.key.startsWith("pose_h_"));
+    const r2 = validateProject(g, cat);
     expect(r2.project!.takes[0].actors.every((a) => !a.poseId.includes("pose_h_"))).toBe(true);
   });
 });
@@ -212,5 +215,23 @@ describe("interpretación automática de las voces", () => {
     expect(actingTag("jefe", "¿Qué?")).toBe("[confused] ¿Qué?");
     expect(actingTag("barbas", "[whispers] Oye…")).toBe("[whispers] Oye…");
     expect(actingTag(undefined, "Narrador")).toBe("Narrador");
+  });
+});
+
+describe("prueba de Reynaldo humano", () => {
+  it("se monta de frente y, cuando habla, siempre en una pose con boca", async () => {
+    const raw = (await import("@/data/prueba-reynaldo.json")).default;
+    const r = validateProject(structuredClone(raw), catalog);
+    expect(r.errors).toEqual([]);
+    const tk = r.project!.takes[0];
+    const rey = catalog.characters.find((c) => c.id === "reynaldo")!;
+    expect(tk.actors.find((a) => a.uid === "reynaldo")!.poseId).toBe("char.reynaldo.pose_h_neutro");
+    const lines = tk.events.filter((e) => e.track === "dialogue" && e.actorUid === "reynaldo");
+    expect(lines.length).toBe(3);
+    for (const l of lines) {
+      const body = tk.events.filter((e) => e.track === "body" && e.actorUid === "reynaldo" && e.start <= l.start + 0.01).at(-1) as { poseId: string } | undefined;
+      const id = body?.poseId ?? "char.reynaldo.pose_h_neutro";
+      expect(rey.poses.find((p) => p.id === id)?.talkSrc).toBeTruthy();
+    }
   });
 });

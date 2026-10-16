@@ -97,6 +97,9 @@ export function ProjectsScreen({ s }: { s: PocketState }) {
           <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("jefe-del-pasado"), "demo"); s.setTab("ver"); }}>
             🆕 Sketch: El Jefe del pasado
           </button>
+          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("prueba-reynaldo"), "demo"); s.setTab("ver"); }}>
+            🆕 Prueba: Reynaldo y Sister humanos
+          </button>
           <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("prueba-humanos"), "demo"); s.setTab("ver"); }}>
             🆕 Prueba: Jefe y Usu humanos en sistemas
           </button>
