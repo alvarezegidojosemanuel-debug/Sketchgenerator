@@ -40,7 +40,7 @@ const BACK_GESTURE: Record<string, Record<string, string>> = {
 };
 
 // ---------------------------------------------------------------- nombres tolerantes
-const CHAR_ALIAS: Record<string, string> = { director: "director", el_director: "director", usu: "usu", reynaldo: "reynaldo", rey: "reynaldo", sister: "sister", sis: "sister", barbas: "barbas", jefe: "jefe", el_jefe: "jefe" };
+const CHAR_ALIAS: Record<string, string> = { neli: "neli", director: "director", el_director: "director", usu: "usu", reynaldo: "reynaldo", rey: "reynaldo", sister: "sister", sis: "sister", barbas: "barbas", jefe: "jefe", el_jefe: "jefe" };
 const EMO_ALIAS: Record<string, string> = {
   neutral: "neutral", serio: "neutral", seria: "neutral", normal: "neutral",
   alegria: "alegria", contento: "alegria", contenta: "alegria", feliz: "alegria", sonrie: "alegria",
@@ -104,6 +104,7 @@ export function actingTag(who: string | undefined, text: string, gesture?: strin
   else if (who === "jefe") tag = /!/.test(text) ? "exasperated" : /\?/.test(text) ? "confused" : undefined;
   else if (who === "reynaldo") tag = "dryly";
   else if (who === "sister") tag = "calmly";
+  else if (who === "neli") tag = "cheerfully";
   return tag ? `[${tag}] ${text}` : text;
 }
 
@@ -275,7 +276,7 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
     if (typeof v !== "string") return undefined;
     const n = norm(v);
     const id = CHAR_ALIAS[n] ?? catalog.characters.find((c) => norm(c.name) === n || c.id === n)?.id;
-    if (!id) issues.push({ path, message: `personaje «${v}» no existe (usa: Usu, Reynaldo, Sister, Barbas, Jefe, Director)` });
+    if (!id) issues.push({ path, message: `personaje «${v}» no existe (usa: Usu, Reynaldo, Sister, Barbas, Jefe, Director, Neli)` });
     return id;
   };
   const emo = (v: unknown) => (typeof v === "string" ? EMO_ALIAS[norm(v)] : undefined);
