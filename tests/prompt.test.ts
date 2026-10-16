@@ -57,7 +57,7 @@ describe("grupos de personajes en una toma", () => {
     }
     const ex = buildExample(catalog, catalog.characters, "bg_salon");
     const take = ex.takes[0];
-    take.actors = catalog.characters.filter((c) => !["director", "neli", "gala"].includes(c.id)).map((c, i) => ({ uid: `a${i}`, characterId: c.id, poseId: c.poses[0].id, x: 540, y: 1780, scale: 1, zIndex: 0 }));
+    take.actors = catalog.characters.filter((c) => !["director", "neli", "gala", "damian"].includes(c.id)).map((c, i) => ({ uid: `a${i}`, characterId: c.id, poseId: c.poses[0].id, x: 540, y: 1780, scale: 1, zIndex: 0 }));
     take.events = take.events.filter((e) => e.track === "dialogue").map((e) => ({ ...e, actorUid: "a0" }));
     const arranged = { ...ex, takes: [arrangeTake(take)] };
     const r = validateProject(arranged, catalog);

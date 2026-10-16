@@ -8411,6 +8411,343 @@
     }
    ],
    "fallbackExpressionId": "expression.gala.neutral"
+  },
+  {
+   "id": "damian",
+   "name": "Damián",
+   "color": "#3a3a4a",
+   "defaultVoice": {
+    "pitch": 0.9,
+    "rate": 0.92
+   },
+   "hasEyes": false,
+   "heightCm": 175,
+   "poses": [
+    {
+     "id": "char.damian.pose_h_neutro",
+     "key": "pose_h_neutro",
+     "label": "Humano · brazos cruzados",
+     "src": "/assets/punetos/humanos/damian/brazos.webp",
+     "talkSrc": "/assets/punetos/humanos/damian/brazos_boca.webp",
+     "width": 409,
+     "height": 905,
+     "displayScale": 0.994,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.damian.pose_h_matraz",
+     "key": "pose_h_matraz",
+     "label": "Humano · examinando un matraz",
+     "src": "/assets/punetos/humanos/damian/matraz.webp",
+     "talkSrc": "/assets/punetos/humanos/damian/matraz_boca.webp",
+     "width": 435,
+     "height": 814,
+     "displayScale": 1.106,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.damian.pose_h_pensando",
+     "key": "pose_h_pensando",
+     "label": "Humano · pensando, mano en la boca",
+     "src": "/assets/punetos/humanos/damian/pensando.webp",
+     "width": 352,
+     "height": 814,
+     "displayScale": 1.106,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.damian.pose_h_lee",
+     "key": "pose_h_lee",
+     "label": "Humano · leyendo un libro",
+     "src": "/assets/punetos/humanos/damian/libro.webp",
+     "talkSrc": "/assets/punetos/humanos/damian/libro_boca.webp",
+     "width": 420,
+     "height": 804,
+     "displayScale": 1.106,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.damian.pose_h_para",
+     "key": "pose_h_para",
+     "label": "Humano · ¡quieto! (mano extendida)",
+     "src": "/assets/punetos/humanos/damian/mano.webp",
+     "talkSrc": "/assets/punetos/humanos/damian/mano_boca.webp",
+     "width": 438,
+     "height": 811,
+     "displayScale": 1.106,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.damian.pose_h_cafe",
+     "key": "pose_h_cafe",
+     "label": "Humano · bebiendo de la taza",
+     "src": "/assets/punetos/humanos/damian/cafe.webp",
+     "width": 387,
+     "height": 912,
+     "displayScale": 0.994,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.damian.pose_h_bolsa",
+     "key": "pose_h_bolsa",
+     "label": "Humano · de lado, con la bolsa al hombro",
+     "src": "/assets/punetos/humanos/damian/bolsa.webp",
+     "talkSrc": "/assets/punetos/humanos/damian/bolsa_boca.webp",
+     "width": 356,
+     "height": 903,
+     "displayScale": 0.994,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.damian.pose_h_carpeta",
+     "key": "pose_h_carpeta",
+     "label": "Humano · con carpeta, mano en la nuca",
+     "src": "/assets/punetos/humanos/damian/carpeta.webp",
+     "talkSrc": "/assets/punetos/humanos/damian/carpeta_boca.webp",
+     "width": 401,
+     "height": 911,
+     "displayScale": 0.994,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.damian.pose_h_camina",
+     "key": "pose_h_camina",
+     "label": "Humano · caminando",
+     "src": "/assets/punetos/humanos/damian/camina.webp",
+     "talkSrc": "/assets/punetos/humanos/damian/camina_boca.webp",
+     "width": 372,
+     "height": 988,
+     "displayScale": 0.911,
+     "facing": "right",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.damian.pose_h_cafe2",
+     "key": "pose_h_cafe2",
+     "label": "Humano · bebiendo de la taza, mirando de reojo",
+     "src": "/assets/punetos/humanos/damian/cafe2.webp",
+     "width": 354,
+     "height": 988,
+     "displayScale": 0.911,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.damian.pose_h_agachado",
+     "key": "pose_h_agachado",
+     "label": "Humano · agachado, aburrido",
+     "src": "/assets/punetos/humanos/damian/agachado.webp",
+     "talkSrc": "/assets/punetos/humanos/damian/agachado_boca.webp",
+     "width": 451,
+     "height": 695,
+     "displayScale": 0.911,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    },
+    {
+     "id": "char.damian.pose_h_senala",
+     "key": "pose_h_senala",
+     "label": "Humano · señalando con portapapeles",
+     "src": "/assets/punetos/humanos/damian/senala.webp",
+     "talkSrc": "/assets/punetos/humanos/damian/senala_boca.webp",
+     "width": 389,
+     "height": 989,
+     "displayScale": 0.911,
+     "facing": "front",
+     "flat": true,
+     "look": "humano"
+    }
+   ],
+   "face": {
+    "eyes": [],
+    "brows": [],
+    "mouths": []
+   },
+   "expressions": [
+    {
+     "id": "expression.damian.neutral",
+     "emotion": "neutral",
+     "label": "Neutral",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_10"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_08",
+      "face.reynaldo.mouths.reynaldo_mouth_07",
+      "face.reynaldo.mouths.reynaldo_mouth_03"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_04",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_04",
+      "crop": "right"
+     },
+     "browL": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_10"
+     },
+     "browR": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_10",
+      "flip": true
+     }
+    },
+    {
+     "id": "expression.damian.alegria",
+     "emotion": "alegria",
+     "label": "Alegría",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_09"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_07",
+      "face.reynaldo.mouths.reynaldo_mouth_08",
+      "face.reynaldo.mouths.reynaldo_mouth_01"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "right"
+     },
+     "browL": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04"
+     },
+     "browR": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "flip": true
+     }
+    },
+    {
+     "id": "expression.damian.risa",
+     "emotion": "risa",
+     "label": "Risa",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_01"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_02",
+      "face.reynaldo.mouths.reynaldo_mouth_01",
+      "face.reynaldo.mouths.reynaldo_mouth_07"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_05",
+      "crop": "right"
+     },
+     "browL": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "dy": -4
+     },
+     "browR": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "flip": true,
+      "dy": -4
+     }
+    },
+    {
+     "id": "expression.damian.enfado",
+     "emotion": "enfado",
+     "label": "Enfado",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_05"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_06",
+      "face.reynaldo.mouths.reynaldo_mouth_05",
+      "face.reynaldo.mouths.reynaldo_mouth_08"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_06",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_06",
+      "crop": "right"
+     }
+    },
+    {
+     "id": "expression.damian.sorpresa",
+     "emotion": "sorpresa",
+     "label": "Sorpresa",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_03"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_03",
+      "face.reynaldo.mouths.reynaldo_mouth_08",
+      "face.reynaldo.mouths.reynaldo_mouth_06"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_03_izq",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_03_izq",
+      "crop": "right"
+     },
+     "browL": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "dy": -10
+     },
+     "browR": {
+      "assetId": "face.reynaldo.brows.reynaldo_brow_04",
+      "flip": true,
+      "dy": -10
+     }
+    },
+    {
+     "id": "expression.damian.tristeza",
+     "emotion": "tristeza",
+     "label": "Tristeza",
+     "status": "draft",
+     "mouth": {
+      "assetId": "face.reynaldo.mouths.reynaldo_mouth_10"
+     },
+     "talk": [
+      "face.reynaldo.mouths.reynaldo_mouth_06",
+      "face.reynaldo.mouths.reynaldo_mouth_08"
+     ],
+     "eyeL": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_02",
+      "crop": "left"
+     },
+     "eyeR": {
+      "assetId": "face.reynaldo.eyes.reynaldo_eyes_02",
+      "crop": "right"
+     }
+    }
+   ],
+   "fallbackExpressionId": "expression.damian.neutral"
   }
  ],
  "backgrounds": [

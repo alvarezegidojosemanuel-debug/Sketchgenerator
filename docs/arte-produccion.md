@@ -50,7 +50,7 @@ Genera UNA imagen cada vez y espera a que diga «siguiente». Dime siempre el n�
 
 ## 2. Personajes secundarios
 
-> **Definidos y montados:** **Neli** (bióloga genial, dulce, despistada, obsesiva e ingenua; 1,60 m provisional) y **Gala** (comercial estrella, guapísima, pelirroja, engreída, narcisista y manipuladora; 1,72 m provisional). El Director ya tiene poses humanas.
+> **Definidos y montados:** **Neli** (bióloga genial, dulce, despistada, obsesiva e ingenua; 1,60 m provisional) y **Gala** (comercial estrella, guapísima, pelirroja, engreída, narcisista y manipuladora; 1,72 m provisional) y **Damián** (científico extraño y sombrío, CI altísimo, sin empatía; gordito, sin gafas; 1,75 m provisional). El Director ya tiene poses humanas.
 >
 > **`PENDIENTE` — NO generar todavía el resto.** Los secundarios se definirán con la historia de los 10 episodios. Lo de abajo es solo un borrador de ejemplo.
 

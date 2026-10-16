@@ -43,7 +43,7 @@ ${loreBlock(chars.map((c) => c.id))}
 6. Vista: "humanos" = humanos de frente (antes del parche; si a alguno le faltan poses humanas, Pocket los pone de espaldas en la oficina); "espaldas" = humanos de espaldas en sus mesas; "puñetos" = los Puñetos de frente (lo normal después del parche).
 
 ## Lo que existe (usa SOLO esto)
-- Personajes: Usu, Reynaldo, Sister, Barbas, Jefe ; el Director, Neli y Gala (solo en vista «humanos»). Otros secundarios (camarero, vecina…): con "off" (se les oye, no se les ve).
+- Personajes: Usu, Reynaldo, Sister, Barbas, Jefe ; el Director, Neli, Gala y Damián (solo en vista «humanos»). Otros secundarios (camarero, vecina…): con "off" (se les oye, no se les ve).
 - Lugares (lugar): ${lugares}
 - Emociones: neutral, alegria, risa, enfado, sorpresa, tristeza.
 - Gestos (vista puñetos): explica, enfatiza, señala, brazos_cruzados, reacciona, frente.
