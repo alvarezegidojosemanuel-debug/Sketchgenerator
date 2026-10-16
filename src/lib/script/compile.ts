@@ -81,6 +81,28 @@ const COMIC_FX: Record<string, "sudor" | "sorpresa" | "enfado" | "lineas" | "ris
   lineas: "lineas", velocidad: "lineas", risa: "risa", ja: "risa", jaja: "risa", onomatopeya: "onomatopeya", zas: "onomatopeya",
 };
 
+/**
+ * Indicación de interpretación automática para ElevenLabs v3 (solo si la frase no trae ya una):
+ * cómo suena cada personaje por defecto y gritos / preguntas / susto según el texto y el gesto.
+ * Los demás motores de voz quitan las acotaciones, así que no molestan.
+ */
+export function actingTag(who: string | undefined, text: string, gesture?: string): string {
+  if (!who || /^\s*\[[^\]]{1,30}\]/.test(text)) return text;
+  const plain = text.replace(/[¡!¿?.,…«»"]/g, "").trim();
+  const words = plain.split(/\s+/).filter(Boolean);
+  const shout = /!/.test(text) && (words.some((w) => w.length > 2 && w === w.toUpperCase() && /[A-ZÁÉÍÓÚÑ]/.test(w)) || /¡.*!.*¡/.test(text));
+  const g = norm(gesture ?? "");
+  let tag: string | undefined;
+  if (shout) tag = "shouting";
+  else if (/panico|susto|sorpre/.test(g)) tag = who === "jefe" ? "panicking" : "surprised";
+  else if (who === "barbas") tag = "mischievously";
+  else if (who === "usu") tag = words.length <= 7 ? "deadpan" : "matter-of-fact";
+  else if (who === "jefe") tag = /!/.test(text) ? "exasperated" : /\?/.test(text) ? "confused" : undefined;
+  else if (who === "reynaldo") tag = "dryly";
+  else if (who === "sister") tag = "calmly";
+  return tag ? `[${tag}] ${text}` : text;
+}
+
 export interface ScriptIssue {
   path: string;
   message: string;
@@ -154,6 +176,7 @@ class SceneBuilder {
   }
 
   say(who: string | undefined, text: string, opts: { emo?: string; gesture?: string; gap?: number; voiceOf?: string; speakerName?: string; at?: number }) {
+    if (opts.at === undefined) text = actingTag(who ?? opts.voiceOf, text, opts.gesture); // el coro, tal cual
     const d = estimate(text);
     const at = opts.at ?? this.t;
     if (who && !this.back && this.has(who)) {

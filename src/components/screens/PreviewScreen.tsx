@@ -24,7 +24,23 @@ const ENGINE_KEY = "pocket:voiceEngine";
 export function PreviewScreen({ s }: { s: PocketState }) {
   const { project, catalog } = s;
   const [engine, setEngineState] = useState<VoiceEngine>("elevenlabs");
-  const [model, setModel] = useState<ElevenModel>("eleven_multilingual_v2");
+  // modo conversación por defecto (la escena entera de una vez: las voces se responden con más naturalidad);
+  // se recuerda la última elección
+  const [model, setModelState] = useState<ElevenModel>(() => {
+    try {
+      return (localStorage.getItem("pocket:elevenModel") as ElevenModel | null) ?? "dialogue_v3";
+    } catch {
+      return "dialogue_v3";
+    }
+  });
+  const setModel = (m: ElevenModel) => {
+    setModelState(m);
+    try {
+      localStorage.setItem("pocket:elevenModel", m);
+    } catch {
+      /* sin almacenamiento */
+    }
+  };
   const [code, setCode] = useState("");
   const [subs, setSubs] = useState(true);
   const [hasTts, setHasTts] = useState(true);
