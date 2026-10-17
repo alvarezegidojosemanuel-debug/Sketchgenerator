@@ -6,7 +6,7 @@
  * - Cada frase generada se guarda en IndexedDB: reproducir o editar no vuelve a sintetizar.
  */
 import { castFor, findPiperVoice, PIPER_BASE, type CastEntry } from "./catalog";
-import { envelope, resample, trimSilence } from "./dsp";
+import { envelope, masterVoice, resample, trimSilence } from "./dsp";
 import { clipCache } from "@/lib/storage/projects";
 import { stripAudioTags } from "./tags";
 
@@ -168,7 +168,10 @@ export async function generateLines(lines: LineRequest[], cast: Record<string, C
     req = { ...req, text: stripAudioTags(req.text) };
     const ck = clipKeyOf(req.text, c, req.rate ?? 1);
     const hit = await clipCache.get(ck).catch(() => undefined);
-    if (hit) result.set(req.key, { ...hit, env: envelope(hit.samples, hit.sampleRate), duration: hit.samples.length / hit.sampleRate });
+    if (hit) {
+      const m = masterVoice(hit.samples, hit.sampleRate);
+      result.set(req.key, { samples: m, sampleRate: hit.sampleRate, env: envelope(m, hit.sampleRate), duration: m.length / hit.sampleRate });
+    }
     else todo.push({ req, c, ck });
   }
   const byVoice = new Map<string, typeof todo>();
@@ -196,7 +199,8 @@ export async function generateLines(lines: LineRequest[], cast: Record<string, C
       const sr = cfg.audio.sample_rate;
       const samples = trimSilence(resample(out.output.data, pitch), sr);
       await clipCache.put(ck, { samples, sampleRate: sr }).catch(() => {});
-      result.set(req.key, { samples, sampleRate: sr, env: envelope(samples, sr), duration: samples.length / sr });
+      const m = masterVoice(samples, sr);
+      result.set(req.key, { samples: m, sampleRate: sr, env: envelope(m, sr), duration: m.length / sr });
       done++;
     }
   }

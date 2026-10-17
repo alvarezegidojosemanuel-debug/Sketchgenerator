@@ -2,7 +2,7 @@
 /** Voces ElevenLabs (a través de /api/voice/*, con la clave solo en el servidor). */
 import { clipCache } from "@/lib/storage/projects";
 import type { PocketProject } from "@/lib/schema/pocket";
-import { envelope, trimSilence } from "./dsp";
+import { envelope, masterVoice, trimSilence } from "./dsp";
 import { audioContext, type Clip, type LineRequest, type Progress } from "./piper";
 import { stripAudioTags } from "./tags";
 
@@ -188,7 +188,8 @@ export function shiftPitch(p: { samples: Float32Array; sampleRate: number }, k: 
 }
 
 function toClip(p: { samples: Float32Array; sampleRate: number }): Clip {
-  return { ...p, env: envelope(p.samples, p.sampleRate), duration: p.samples.length / p.sampleRate };
+  const samples = masterVoice(p.samples, p.sampleRate);
+  return { samples, sampleRate: p.sampleRate, env: envelope(samples, p.sampleRate), duration: samples.length / p.sampleRate };
 }
 
 /** Genera (o recupera de la caché) las frases con ElevenLabs. Cada frase se paga una sola vez. */

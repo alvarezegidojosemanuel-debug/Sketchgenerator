@@ -106,3 +106,44 @@ export function encodeWav(samples: Float32Array, sampleRate: number): ArrayBuffe
   }
   return buf;
 }
+
+/**
+ * Iguala el volumen de cada frase (todas las voces al mismo nivel percibido) y la «mete» en la sala
+ * con un eco muy corto y apagado, para que no suene pegada encima del escenario.
+ * El nivel se mide solo en los tramos con voz (ventanas de 20 ms), así los silencios no engañan.
+ */
+export const VOICE_TARGET_RMS = 0.09; // ≈ −21 dBFS: deja hueco a efectos y ambiente
+export function masterVoice(samples: Float32Array, sampleRate: number): Float32Array {
+  if (!samples.length) return samples;
+  const win = Math.max(1, Math.round(sampleRate * 0.02));
+  const rms: number[] = [];
+  for (let i = 0; i < samples.length; i += win) {
+    let s = 0;
+    const end = Math.min(samples.length, i + win);
+    for (let j = i; j < end; j++) s += samples[j]! * samples[j]!;
+    rms.push(Math.sqrt(s / (end - i)));
+  }
+  const loud = Math.max(...rms);
+  const active = rms.filter((r) => r > Math.max(0.003, loud * 0.1));
+  if (!active.length) return samples;
+  const level = Math.sqrt(active.reduce((a, r) => a + r * r, 0) / active.length);
+  const gain = VOICE_TARGET_RMS / level;
+  // Sala: dos reflexiones tempranas suavizadas (paso bajo de un polo) a −22 y −26 dB.
+  const taps: [number, number][] = [[0.019, 0.08], [0.031, 0.05]];
+  const out = new Float32Array(samples.length);
+  const a = 0.35; // suavizado de las reflexiones (suenan «más lejos»)
+  let lp = 0;
+  for (let i = 0; i < samples.length; i++) {
+    let wet = 0;
+    for (const [d, g] of taps) wet += (samples[i - Math.round(d * sampleRate)] ?? 0) * g;
+    lp += a * (wet - lp);
+    out[i] = (samples[i]! + lp) * gain;
+  }
+  // Limitador suave: los gritos no saturan ni destacan tanto sobre el resto.
+  for (let i = 0; i < out.length; i++) {
+    const x = out[i]!;
+    const ax = Math.abs(x);
+    if (ax > 0.5) out[i] = Math.sign(x) * (0.5 + (0.45 * (ax - 0.5)) / (0.45 + (ax - 0.5)));
+  }
+  return out;
+}

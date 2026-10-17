@@ -72,3 +72,16 @@ describe("ajustar diálogos a la voz real", () => {
     expect(validateProject(project, catalog).errors).toEqual([]);
   });
 });
+
+describe("masterVoice", () => {
+  it("iguala el volumen de una voz floja y otra fuerte", async () => {
+    const { masterVoice } = await import("@/lib/voice/dsp");
+    const sr = 16000;
+    const tone = (amp: number) => Float32Array.from({ length: sr }, (_, i) => (i < sr / 2 ? amp * Math.sin(i / 5) : 0));
+    const rms = (x: Float32Array) => Math.sqrt(x.slice(0, sr / 2).reduce((a, v) => a + v * v, 0) / (sr / 2));
+    const a = rms(masterVoice(tone(0.05), sr));
+    const b = rms(masterVoice(tone(0.8), sr));
+    expect(Math.abs(a - b) / a).toBeLessThan(0.1);
+    expect(Math.max(...masterVoice(tone(0.8), sr).map(Math.abs))).toBeLessThan(1);
+  });
+});
