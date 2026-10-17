@@ -335,6 +335,8 @@ La temporada combina historia continua con capítulos que tienen sus propios con
 11. Jefe: noble, carismático y olvidadizo.
 12. Reynaldo: con motivos reales para reclamar.
 13. Anastas-IA: inteligencia, ironía, celos y misterio.
+14. **Frases cortas** (idealmente menos de 15 palabras). Las voces de IA suenan mucho más naturales así; si alguien tiene que decir más, se parte en dos frases o se reparte entre personajes.
+15. **Chistes que entienda cualquiera**, no bromas internas del grupo: el espectador no conoce nuestro día a día.
 14. El misterio no desplaza a la comedia.
 15. Cada capítulo con un remate memorable.
 
