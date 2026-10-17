@@ -302,7 +302,7 @@ export function PreviewScreen({ s }: { s: PocketState }) {
         <p className="fine">Créditos obligatorios de voz para tus publicaciones: {credits.join(" · ")}</p>
       )}
       {engine === "piper" && <VoiceCast s={s} />}
-      {engine === "elevenlabs" && <ElevenCast s={s} model={model} onModel={setModel} code={code} onCode={setCode} />}
+      {engine === "elevenlabs" && <ElevenCast s={s} model={model} onModel={setModel} code={code} onCode={setCode} lines={lines} />}
       {engine === "elevenlabs" && code && <VoiceCasting s={s} code={code} />}
       <Card title="Configuración de voces de esta escena">
         <p className="fine">Copia la configuración tal y como suena ahora (voces, ajustes de cada personaje, motor y modelo) para pasársela a Claude o pegarla en otro dispositivo.</p>

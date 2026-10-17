@@ -20,7 +20,10 @@ import {
   type ElevenModel,
   type ElevenVoice,
   pitchOf,
+  generateElevenLines,
 } from "@/lib/voice/elevenlabs";
+import { playClip, unlockAudio, type LineRequest } from "@/lib/voice/piper";
+import { stripAudioTags } from "@/lib/voice/tags";
 import type { PocketState } from "./usePocket";
 import { Card, Field, Stepper } from "./ui";
 
@@ -30,10 +33,12 @@ interface Props {
   onModel: (m: ElevenModel) => void;
   code: string;
   onCode: (c: string) => void;
+  /** Frases del proyecto, para probar cada voz con las suyas. */
+  lines?: LineRequest[];
 }
 
 /** Reparto de voces ElevenLabs: código de acceso, modelo y voz/ajustes por personaje. */
-export function ElevenCast({ s, model, onModel, code, onCode }: Props) {
+export function ElevenCast({ s, model, onModel, code, onCode, lines = [] }: Props) {
   const { project, catalog, editProject } = s;
   const [status, setStatus] = useState<Awaited<ReturnType<typeof elevenStatus>>>(null);
   const [voices, setVoices] = useState<ElevenVoice[] | null>(null);
@@ -176,6 +181,7 @@ export function ElevenCast({ s, model, onModel, code, onCode }: Props) {
                   </Field>
                 </div>
               )}
+              {c && <TryLine cid={cid} entry={c} model={model} code={code} lines={lines.filter((l) => l.characterId === cid)} />}
             </div>
           );
         })}
@@ -184,5 +190,51 @@ export function ElevenCast({ s, model, onModel, code, onCode }: Props) {
         añádelas a tu cuenta desde la biblioteca de voces de ElevenLabs y pulsa Conectar otra vez.
       </p>
     </Card>
+  );
+}
+
+/** Prueba una frase del personaje con los ajustes actuales (gasta créditos solo si la combinación es nueva). */
+function TryLine({ cid, entry, model, code, lines }: { cid: string; entry: ElevenCastEntry; model: ElevenModel; code: string; lines: LineRequest[] }) {
+  const [pick, setPick] = useState(0);
+  const [own, setOwn] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState<string | null>(null);
+  const base = lines[pick];
+  const go = async () => {
+    setErr(null);
+    setBusy(true);
+    try {
+      await unlockAudio();
+      const req: LineRequest = own.trim() ? { key: "prueba:0", text: own.trim(), characterId: cid } : { ...base!, key: "prueba:0" };
+      // «conversación» ignora los ajustes por personaje: la prueba va frase a frase para oír lo que se toca
+      const clips = await generateElevenLines([req], { [cid]: entry }, code, model === "dialogue_v3" ? "eleven_v3" : model);
+      const clip = clips.get("prueba:0");
+      if (clip) playClip(clip);
+    } catch (e) {
+      setErr(e instanceof Error ? e.message : String(e));
+    } finally {
+      setBusy(false);
+    }
+  };
+  return (
+    <div className="try-line">
+      <Field label="Probar con esta frase">
+        {lines.length > 0 && (
+          <select value={pick} onChange={(e) => { setPick(Number(e.target.value)); setOwn(""); }}>
+            {lines.map((l, i) => (
+              <option key={l.key} value={i}>
+                {stripAudioTags(l.text).slice(0, 70)}
+              </option>
+            ))}
+          </select>
+        )}
+        <input value={own} maxLength={300} placeholder={lines.length ? "…o escribe otra frase" : "Escribe una frase para probar"} onChange={(e) => setOwn(e.target.value)} />
+      </Field>
+      <button type="button" className="btn btn-small btn-primary" disabled={busy || !code || (!own.trim() && !base)} onClick={go}>
+        {busy ? "Generando…" : "🔊 Probar con estos ajustes"}
+      </button>
+      <p className="fine">Gasta créditos la primera vez con cada combinación de ajustes; repetirla o cambiar solo el tono es gratis.</p>
+      {err && <p className="error-text">{err}</p>}
+    </div>
   );
 }

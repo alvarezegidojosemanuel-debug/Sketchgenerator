@@ -255,6 +255,9 @@ textarea.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; fon
 .layer-name { flex: 1; min-height: 44px; text-align: left; border: 1px solid var(--line); border-radius: 10px; background: var(--panel-2); padding: 6px 10px; display: flex; flex-direction: column; cursor: pointer; }
 .layer-name small { color: var(--muted); }
 .cast-row { display: flex; flex-direction: column; gap: 8px; padding: 10px 0; border-top: 1px solid var(--line); }
+.try-line { display: flex; flex-direction: column; gap: 6px; padding: 8px 10px; border-radius: 10px; background: var(--card-2, rgba(127,127,127,.08)); }
+.try-line select, .try-line input { width: 100%; }
+.try-line .field > * + * { margin-top: 6px; }
 .cast-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .progress { position: relative; height: 30px; border-radius: 8px; background: var(--bg); border: 1px solid var(--line); overflow: hidden; }
 .progress > div { position: absolute; inset: 0 auto 0 0; background: color-mix(in srgb, var(--accent) 45%, transparent); transition: width .2s; }
