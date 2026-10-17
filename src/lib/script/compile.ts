@@ -131,6 +131,9 @@ export function estimate(text: string): number {
 }
 
 // ---------------------------------------------------------------- montaje de una escena
+/** Gestos que son una postura (se mantienen), frente a los gestos de acompañar una frase (vuelven al reposo). */
+const isStateGesture = (g: string) => /^(sentad|silla|ko|tumbad|brazos_cruzados|brazos2|movil|telefono|mostrador|lee|portatil|acurrucad|manos_espalda|espalda|cafe|mesa|carpeta)/.test(norm(g));
+
 class SceneBuilder {
   t = 0.3;
   ev: PocketEvent[] = [];
@@ -145,6 +148,10 @@ class SceneBuilder {
   iaTv = false;
   /** Dónde cuelga la tele de Anastas-IA (para poner efectos sobre ella). */
   iaTvPos?: { x: number; y: number; scale: number };
+  /** Postura de reposo de cada actor (cambia con gestos «de estado»: sentarse, cruzar brazos, el móvil…). */
+  rest = new Map<string, string>();
+  /** Vueltas a la postura de reposo tras una frase (se quitan si enseguida hay otro gesto). */
+  reverts = new Set<PocketEvent>();
   constructor(
     readonly id: string,
     readonly back: boolean,
@@ -209,11 +216,12 @@ class SceneBuilder {
       const poseId = g ? this.pose(who, g, true) : undefined;
       if (poseId) {
         this.add({ track: "body", actorUid: who, duration: 0.3, poseId }, at);
-        // vuelve a su pose al terminar (salvo gestos «de reacción» que se mantienen hasta el siguiente cambio)
-        if (!opts.gesture) {
-          const base = this.actors.find((a) => a.uid === who)?.poseId;
-          if (base) this.add({ track: "body", actorUid: who, duration: 0.3, poseId: base }, at + d + 0.1);
-        }
+        // los gestos de hablar (señalar, explicar, gritar…) vuelven a la postura de reposo al acabar la frase;
+        // los «de estado» (sentado, brazos cruzados, móvil, KO…) se quedan y pasan a ser el reposo
+        if (!opts.gesture || !isStateGesture(opts.gesture)) {
+          const base = this.rest.get(who) ?? this.actors.find((a) => a.uid === who)?.poseId;
+          if (base && base !== poseId) this.reverts.add(this.add({ track: "body", actorUid: who, duration: 0.3, poseId: base }, at + d + 0.15));
+        } else this.rest.set(who, poseId);
       }
       this.add({ track: "dialogue", actorUid: who, duration: d, text }, at);
       this.comicAuto(who, opts.gesture, text, at, d);
@@ -234,7 +242,8 @@ class SceneBuilder {
 
   build(name: string, bg: string | null, camera?: "auto", transition?: "cut" | "fade" | "white"): Take {
     const dur = Math.round((this.t + 0.5) * 10) / 10;
-    const ev = [...this.ev];
+    // una vuelta al reposo justo antes de otro gesto del mismo actor solo haría parpadear la pose
+    const ev = this.ev.filter((e) => !this.reverts.has(e) || !this.ev.some((o) => o !== e && o.track === "body" && o.actorUid === e.actorUid && "poseId" in o && o.start >= e.start && o.start - e.start < 0.6));
     for (const a of this.actors) ev.push({ id: this.nid("mo"), track: "mouth", start: 0, duration: dur, actorUid: a.uid, mode: "auto" } as PocketEvent);
     if (this.back) ev.push(...this.backProps(dur));
     for (const e of ev) if (e.start + e.duration > dur) e.duration = Math.max(0.1, Math.round((dur - e.start) * 100) / 100);
@@ -424,6 +433,7 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
         const poseId = who ? b.pose(who, POSE_ALIAS[norm(String(st.gesto))] ?? norm(String(st.gesto))) : undefined;
         if (who && poseId && !back) {
           b.add({ track: "body", actorUid: who, duration: 0.3, poseId });
+          if (isStateGesture(String(st.gesto))) b.rest.set(who, poseId);
           b.comicAuto(who, POSE_ALIAS[norm(String(st.gesto))] ?? norm(String(st.gesto)), "", b.t, 1.4);
         }
       } else if (st.sale !== undefined || st.entra !== undefined) {

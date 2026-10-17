@@ -20,6 +20,7 @@ import {
   type ElevenModel,
   type ElevenVoice,
   pitchOf,
+  tempoOf,
   generateElevenLines,
 } from "@/lib/voice/elevenlabs";
 import { playClip, unlockAudio, type LineRequest } from "@/lib/voice/piper";
@@ -171,6 +172,9 @@ export function ElevenCast({ s, model, onModel, code, onCode, lines = [] }: Prop
                   </Field>
                   <Field label="Tono (agudo)" hint="1 = normal; 1,1 = más agudo y nervioso. Se aplica en la app: suena igual en todos los dispositivos.">
                     <Stepper value={pitchOf(cid, c)} step={0.02} min={0.8} max={1.3} onChange={(x) => set(cid, { pitch: Math.round(x * 100) / 100 })} />
+                  </Field>
+                  <Field label="Ritmo (más rápido)" hint="1 = como sale de ElevenLabs; 1,2 = un 20 % más rápido SIN cambiar el tono. Gratis: se aplica en la app.">
+                    <Stepper value={tempoOf(c)} step={0.05} min={0.8} max={1.6} onChange={(x) => set(cid, { tempo: Math.round(x * 100) / 100 })} />
                   </Field>
                   <Field label="Modelo de este personaje" hint="v3 entiende acotaciones como [chuckles] o [mischievously]: más exagerado.">
                     <select value={c.model ?? ""} onChange={(e) => set(cid, { model: (e.target.value || undefined) as ElevenCastEntry["model"] })}>

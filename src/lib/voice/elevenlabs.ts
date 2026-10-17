@@ -2,7 +2,7 @@
 /** Voces ElevenLabs (a través de /api/voice/*, con la clave solo en el servidor). */
 import { clipCache } from "@/lib/storage/projects";
 import type { PocketProject } from "@/lib/schema/pocket";
-import { envelope, masterVoice, trimSilence } from "./dsp";
+import { envelope, masterVoice, timeStretch, trimSilence } from "./dsp";
 import { audioContext, type Clip, type LineRequest, type Progress } from "./piper";
 import { stripAudioTags } from "./tags";
 
@@ -125,7 +125,7 @@ export async function generateElevenDialogue(
     const base = `dlg2|${stability}|${JSON.stringify(inputs)}`;
     const cached = await Promise.all(group.map((_, i) => clipCache.get(`${base}|${i}`).catch(() => undefined)));
     if (cached.every(Boolean)) {
-      group.forEach((l, i) => out.set(l.key, toClip(shiftPitch(cached[i]!, pitchOf(l.characterId, cast?.[l.characterId])))));
+      group.forEach((l, i) => out.set(l.key, toClip(shape(cached[i]!, cast?.[l.characterId], l.characterId))));
       continue;
     }
     onProgress?.({ stage: "generate", label: `Conversación: escena ${g}/${groups.size}`, ratio: (g - 1) / groups.size });
@@ -162,7 +162,7 @@ export async function generateElevenDialogue(
         piece = { samples: c.samples, sampleRate: c.sampleRate };
       }
       await clipCache.put(`${base}|${i}`, piece).catch(() => {});
-      out.set(group[i].key, toClip(shiftPitch(piece, pitchOf(group[i].characterId, cast?.[group[i].characterId]))));
+      out.set(group[i].key, toClip(shape(piece, cast?.[group[i].characterId], group[i].characterId)));
     }
   }
   onProgress?.({ stage: "generate", label: "Voces listas", ratio: 1 });
@@ -172,6 +172,14 @@ export async function generateElevenDialogue(
 /** Tono por defecto de cada personaje si no se ha tocado el ajuste (Usu nervioso; Reynaldo menos formal). */
 export const DEFAULT_PITCH: Record<string, number> = { usu: 1.18 };
 export const pitchOf = (cid: string, c?: { pitch?: number }) => c?.pitch ?? DEFAULT_PITCH[cid] ?? 1;
+/** Ritmo por defecto: algo más ágil que lo que sale de ElevenLabs (cuyo tope de velocidad es 1,2). */
+export const DEFAULT_TEMPO = 1.15;
+export const tempoOf = (c?: { tempo?: number }) => c?.tempo ?? DEFAULT_TEMPO;
+/** Tono y ritmo propios del personaje, aplicados en la app (no gastan créditos). */
+const shape = (p: { samples: Float32Array; sampleRate: number }, c?: { pitch?: number; tempo?: number }, cid = "") => {
+  const q = shiftPitch(p, pitchOf(cid, c));
+  return { samples: timeStretch(q.samples, q.sampleRate, tempoOf(c)), sampleRate: q.sampleRate };
+};
 
 /** Sube o baja el tono (y el ritmo) remuestreando: 1.1 = 10 % más agudo y más rápido. */
 export function shiftPitch(p: { samples: Float32Array; sampleRate: number }, k: number | undefined): { samples: Float32Array; sampleRate: number } {
@@ -238,7 +246,7 @@ export async function generateElevenLines(
       hit = await decode(await r.arrayBuffer());
       await clipCache.put(ck, hit).catch(() => {});
     }
-    out.set(l.key, toClip(shiftPitch(hit, pitchOf(l.characterId, c))));
+    out.set(l.key, toClip(shape(hit, c, l.characterId)));
   }
   onProgress?.({ stage: "generate", label: "Voces listas", ratio: 1 });
   return out;

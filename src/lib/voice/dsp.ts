@@ -169,3 +169,51 @@ export function normalizeLevel(samples: Float32Array, sampleRate: number, target
   const gain = Math.min(targetRms / Math.max(level, 1e-6), 0.95 / peak, 200);
   return samples.map((x) => x * gain);
 }
+
+/**
+ * Cambia la velocidad SIN cambiar el tono (WSOLA): rate 1,2 = un 20 % más rápido con la misma voz.
+ * Trocea en ventanas de 30 ms y las vuelve a pegar más juntas, buscando en cada una el punto en que
+ * mejor encaja con la anterior para que no se oigan cortes.
+ */
+export function timeStretch(x: Float32Array, sr: number, rate: number): Float32Array {
+  if (!rate || Math.abs(rate - 1) < 0.01 || x.length < sr * 0.1) return x;
+  const N = Math.max(64, Math.round(sr * 0.03) & ~1);
+  const Hs = N / 2;
+  const tol = Math.round(sr * 0.008);
+  const win = new Float32Array(N);
+  for (let i = 0; i < N; i++) win[i] = 0.5 - 0.5 * Math.cos((2 * Math.PI * i) / (N - 1));
+  const outLen = Math.ceil(x.length / rate) + N;
+  const y = new Float32Array(outLen);
+  const w = new Float32Array(outLen);
+  let prev = 0;
+  for (let k = 0; ; k++) {
+    const sPos = k * Hs;
+    const nom = Math.round(k * Hs * rate);
+    if (nom + N + tol >= x.length || sPos + N >= outLen) break;
+    let best = nom;
+    if (k > 0) {
+      // lo que «debería» venir después del trozo anterior
+      const nat = prev + Hs;
+      let bestC = -Infinity;
+      for (let d = -tol; d <= tol; d += 2) {
+        const p = nom + d;
+        if (p < 0) continue;
+        let c = 0;
+        for (let i = 0; i < N; i += 4) c += x[p + i]! * x[nat + i]!;
+        if (c > bestC) {
+          bestC = c;
+          best = p;
+        }
+      }
+    }
+    for (let i = 0; i < N; i++) {
+      y[sPos + i] += x[best + i]! * win[i]!;
+      w[sPos + i] += win[i]!;
+    }
+    prev = best;
+  }
+  const len = Math.round(x.length / rate);
+  const out = new Float32Array(len);
+  for (let i = 0; i < len; i++) out[i] = w[i]! > 1e-3 ? y[i]! / w[i]! : 0;
+  return out;
+}

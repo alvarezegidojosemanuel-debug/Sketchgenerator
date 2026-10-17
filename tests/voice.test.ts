@@ -85,3 +85,17 @@ describe("masterVoice", () => {
     expect(Math.max(...masterVoice(tone(0.8), sr).map(Math.abs))).toBeLessThan(1);
   });
 });
+
+describe("timeStretch", () => {
+  it("acelera sin cambiar el tono", async () => {
+    const { timeStretch } = await import("@/lib/voice/dsp");
+    const sr = 16000;
+    const f = 220;
+    const x = Float32Array.from({ length: sr * 2 }, (_, i) => Math.sin((2 * Math.PI * f * i) / sr));
+    const y = timeStretch(x, sr, 1.25);
+    expect(Math.abs(y.length - (sr * 2) / 1.25)).toBeLessThan(sr * 0.01);
+    // misma frecuencia: cuenta de cruces por cero por segundo
+    const zc = (s: Float32Array) => { let n = 0; for (let i = 1; i < s.length; i++) if ((s[i - 1]! < 0) !== (s[i]! < 0)) n++; return n / (s.length / sr); };
+    expect(Math.abs(zc(y.slice(sr * 0.1, sr * 1.4)) - 2 * f)).toBeLessThan(2 * f * 0.05);
+  });
+});
