@@ -125,7 +125,7 @@ export async function generateElevenDialogue(
     const base = `dlg2|${stability}|${JSON.stringify(inputs)}`;
     const cached = await Promise.all(group.map((_, i) => clipCache.get(`${base}|${i}`).catch(() => undefined)));
     if (cached.every(Boolean)) {
-      group.forEach((l, i) => out.set(l.key, toClip(shiftPitch(cached[i]!, cast?.[l.characterId]?.pitch))));
+      group.forEach((l, i) => out.set(l.key, toClip(shiftPitch(cached[i]!, pitchOf(l.characterId, cast?.[l.characterId])))));
       continue;
     }
     onProgress?.({ stage: "generate", label: `Conversación: escena ${g}/${groups.size}`, ratio: (g - 1) / groups.size });
@@ -162,12 +162,16 @@ export async function generateElevenDialogue(
         piece = { samples: c.samples, sampleRate: c.sampleRate };
       }
       await clipCache.put(`${base}|${i}`, piece).catch(() => {});
-      out.set(group[i].key, toClip(shiftPitch(piece, cast?.[group[i].characterId]?.pitch)));
+      out.set(group[i].key, toClip(shiftPitch(piece, pitchOf(group[i].characterId, cast?.[group[i].characterId]))));
     }
   }
   onProgress?.({ stage: "generate", label: "Voces listas", ratio: 1 });
   return out;
 }
+
+/** Tono por defecto de cada personaje si no se ha tocado el ajuste (Usu nervioso; Reynaldo menos formal). */
+export const DEFAULT_PITCH: Record<string, number> = { usu: 1.1, reynaldo: 1.06 };
+export const pitchOf = (cid: string, c?: { pitch?: number }) => c?.pitch ?? DEFAULT_PITCH[cid] ?? 1;
 
 /** Sube o baja el tono (y el ritmo) remuestreando: 1.1 = 10 % más agudo y más rápido. */
 export function shiftPitch(p: { samples: Float32Array; sampleRate: number }, k: number | undefined): { samples: Float32Array; sampleRate: number } {
@@ -226,7 +230,7 @@ export async function generateElevenLines(
       hit = await decode(await r.arrayBuffer());
       await clipCache.put(ck, hit).catch(() => {});
     }
-    out.set(l.key, toClip(shiftPitch(hit, c.pitch)));
+    out.set(l.key, toClip(shiftPitch(hit, pitchOf(l.characterId, c))));
   }
   onProgress?.({ stage: "generate", label: "Voces listas", ratio: 1 });
   return out;
