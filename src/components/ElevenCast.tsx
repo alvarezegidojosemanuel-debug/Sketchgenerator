@@ -148,6 +148,7 @@ export function ElevenCast({ s, model, onModel, code, onCode }: Props) {
                 </select>
               </Field>
               {v && !isSpainVoice(v) && <p className="fine">⚠ Esta voz no está marcada como de España: puede sonar con acento latino o neutro.</p>}
+              {c && model === "dialogue_v3" && <p className="fine">⚠ En modo conversación ElevenLabs solo usa la voz y la estabilidad: el estilo, el parecido, la velocidad y el modelo de cada personaje se ignoran. Para que se respeten, elige «frase a frase» arriba.</p>}
               {c && (
                 <div className="grid2">
                   <Field label="Estabilidad" hint="baja = más expresiva">

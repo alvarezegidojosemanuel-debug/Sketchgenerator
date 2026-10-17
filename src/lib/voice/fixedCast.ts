@@ -20,7 +20,11 @@ const SHARED = shared as SharedConfig;
 export function syncShared() {
   try {
     if (localStorage.getItem(VERSION_KEY) === String(SHARED.version)) return;
-    localStorage.setItem(KEY, JSON.stringify({ eleven: SHARED.eleven ?? {}, piper: SHARED.piper ?? {} }));
+    // solo se pisa lo que trae la configuración común (si viene vacía, se respeta lo de este dispositivo)
+    const local = JSON.parse(localStorage.getItem(KEY) ?? "{}") as Fixed;
+    const hasEleven = Object.keys(SHARED.eleven ?? {}).length > 0;
+    const hasPiper = Object.keys(SHARED.piper ?? {}).length > 0;
+    localStorage.setItem(KEY, JSON.stringify({ eleven: hasEleven ? SHARED.eleven : local.eleven ?? {}, piper: hasPiper ? SHARED.piper : local.piper ?? {} }));
     localStorage.setItem("pocket:voiceEngine", SHARED.engine);
     localStorage.setItem("pocket:elevenModel", SHARED.model);
     localStorage.setItem(VERSION_KEY, String(SHARED.version));

@@ -122,7 +122,7 @@ export async function generateElevenDialogue(
     });
     const stab = group.reduce((s, l) => s + (cast?.[l.characterId]?.stability ?? 0.5), 0) / group.length;
     const stability = stab < 0.34 ? 0 : stab < 0.67 ? 0.5 : 1; // v3: creativo / natural / robusto
-    const base = `dlg1|${stability}|${JSON.stringify(inputs)}`;
+    const base = `dlg2|${stability}|${JSON.stringify(inputs)}`;
     const cached = await Promise.all(group.map((_, i) => clipCache.get(`${base}|${i}`).catch(() => undefined)));
     if (cached.every(Boolean)) {
       group.forEach((l, i) => out.set(l.key, toClip(cached[i]!)));
@@ -196,7 +196,7 @@ export async function generateElevenLines(
       model === "eleven_v3" ? {} : { previousText: prevL ? stripAudioTags(prevL).slice(0, 400) : undefined, nextText: nextL ? stripAudioTags(nextL).slice(0, 400) : undefined };
     const text = model === "eleven_v3" ? l.text.trim() : stripAudioTags(l.text);
     const speed = Math.min(1.2, Math.max(0.7, c.speed * (l.rate ?? 1)));
-    const ck = `el2|${model}|${c.voiceId}|${c.stability}|${c.similarity}|${c.style}|${speed.toFixed(2)}|${text}|${ctx.previousText ?? ""}|${ctx.nextText ?? ""}`;
+    const ck = `el3|${model}|${c.voiceId}|${c.stability}|${c.similarity}|${c.style}|${speed.toFixed(2)}|${text}|${ctx.previousText ?? ""}|${ctx.nextText ?? ""}`;
     let hit = await clipCache.get(ck).catch(() => undefined);
     if (!hit) {
       onProgress?.({ stage: "generate", label: `ElevenLabs: frase ${i}/${lines.length}`, ratio: (i - 1) / lines.length });
