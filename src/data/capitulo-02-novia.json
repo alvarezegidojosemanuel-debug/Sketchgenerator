@@ -180,27 +180,91 @@
       },
       "pasos": [
         {
+          "objeto": "prop_escritorio",
+          "x": 270,
+          "y": 1450,
+          "escala": 0.46,
+          "profundidad": -5
+        },
+        {
+          "objeto": "prop_escritorio",
+          "x": 800,
+          "y": 1450,
+          "escala": 0.46,
+          "profundidad": -5
+        },
+        {
+          "quien": "Barbas",
+          "gesto": "silla_relajado"
+        },
+        {
+          "quien": "Jefe",
+          "gesto": "sentado_habla"
+        },
+        {
+          "quien": "Sister",
+          "gesto": "sentado_teclea"
+        },
+        {
+          "quien": "Usu",
+          "gesto": "sentado_teclea"
+        },
+        {
+          "quien": "Reynaldo",
+          "gesto": "sentado_teclea"
+        },
+        {
           "sonido": "teclado"
         },
         {
           "dice": "Barbas",
           "texto": "Al final ayer no fuiste a hablar con el cabeza de buque.",
-          "gesto": "explica"
+          "gesto": "silla_relajado"
         },
         {
           "dice": "Barbas",
           "texto": "¿A qué coño esperas?",
-          "gesto": "senala"
+          "gesto": "silla_relajado"
         },
         {
           "dice": "Jefe",
           "texto": "Buah, ya me había olvidado. ¡Voy ahora mismo!",
-          "gesto": "explica"
+          "gesto": "sentado_habla"
         },
         {
           "sale": "Jefe"
         }
-      ]
+      ],
+      "colocar": {
+        "Sister": {
+          "x": 270,
+          "y": 1430,
+          "z": -10,
+          "escala": 0.82
+        },
+        "Reynaldo": {
+          "x": 790,
+          "y": 1430,
+          "z": -10,
+          "escala": 0.82
+        },
+        "Barbas": {
+          "x": 185,
+          "y": 1860,
+          "z": 5
+        },
+        "Jefe": {
+          "x": 560,
+          "y": 1880,
+          "z": 6
+        },
+        "Usu": {
+          "x": 905,
+          "y": 1870,
+          "z": 5,
+          "mira": "izquierda"
+        }
+      }
     },
     {
       "nombre": "Despacho del Director",
@@ -269,32 +333,66 @@
       "transicion": "corte",
       "pasos": [
         {
+          "objeto": "prop_escritorio",
+          "x": 270,
+          "y": 1450,
+          "escala": 0.46,
+          "profundidad": -5
+        },
+        {
+          "objeto": "prop_escritorio",
+          "x": 800,
+          "y": 1450,
+          "escala": 0.46,
+          "profundidad": -5
+        },
+        {
+          "quien": "Barbas",
+          "gesto": "silla_relajado"
+        },
+        {
+          "quien": "Sister",
+          "gesto": "sentado_teclea"
+        },
+        {
+          "quien": "Usu",
+          "gesto": "sentado_teclea"
+        },
+        {
+          "quien": "Reynaldo",
+          "gesto": "sentado_teclea"
+        },
+        {
           "entra": "Jefe"
+        },
+        {
+          "quien": "Jefe",
+          "gesto": "sentado_habla"
         },
         {
           "dice": "Barbas",
           "texto": "¿Qué? ¿Ya le has puesto en su sitio?",
-          "gesto": "explica"
+          "gesto": "silla_relajado"
         },
         {
           "dice": "Jefe",
           "texto": "Sí, claro. Ya me conoces. No volverá a decirnos nada.",
-          "gesto": "explica"
+          "gesto": "sentado_habla"
         },
         {
           "dice": "Jefe",
           "texto": "Usu, ¿acabaste el parche para ÍCARO?",
-          "gesto": "senala"
+          "gesto": "sentado_habla"
         },
         {
           "dice": "Jefe",
           "texto": "Sin él, los sistemas cuánticos podrían volverse inestables.",
-          "gesto": "explica"
+          "gesto": "sentado_habla"
         },
         {
           "dice": "Usu",
           "texto": "Emmm… espera. Anastas-IA, ¿cómo vas?",
-          "gesto": "confundido"
+          "gesto": "sentado_habla"
         },
         {
           "off": "Anastas-IA",
@@ -303,7 +401,7 @@
         {
           "dice": "Usu",
           "texto": "¡Genial! Sí, Jefe, ya está.",
-          "gesto": "celebra"
+          "gesto": "sentado_habla"
         },
         {
           "mira": "Barbas",
@@ -312,12 +410,12 @@
         {
           "dice": "Barbas",
           "texto": "¿Ahora la novia electrónica te hace los deberes?",
-          "gesto": "explica"
+          "gesto": "silla_relajado"
         },
         {
           "dice": "Usu",
           "texto": "No es mi novia. Es mi compañera.",
-          "gesto": "explica"
+          "gesto": "sentado_habla"
         },
         {
           "off": "Anastas-IA",
@@ -333,7 +431,7 @@
         {
           "dice": "Barbas",
           "texto": "¿A las tres? ¿Por qué a las tres?",
-          "gesto": "confundido"
+          "gesto": "silla_relajado"
         },
         {
           "off": "Anastas-IA",
@@ -363,7 +461,37 @@
         {
           "pausa": 1.8
         }
-      ]
+      ],
+      "colocar": {
+        "Sister": {
+          "x": 270,
+          "y": 1430,
+          "z": -10,
+          "escala": 0.82
+        },
+        "Reynaldo": {
+          "x": 790,
+          "y": 1430,
+          "z": -10,
+          "escala": 0.82
+        },
+        "Barbas": {
+          "x": 185,
+          "y": 1860,
+          "z": 5
+        },
+        "Jefe": {
+          "x": 560,
+          "y": 1880,
+          "z": 6
+        },
+        "Usu": {
+          "x": 905,
+          "y": 1870,
+          "z": 5,
+          "mira": "izquierda"
+        }
+      }
     }
   ]
 }

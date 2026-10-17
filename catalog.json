@@ -508,13 +508,14 @@
      "id": "char.usu.pose_h_sentado_habla",
      "key": "pose_h_sentado_habla",
      "label": "Humano · sentado hablando (mesa)",
-     "src": "/assets/punetos/humanos/usu/sentado_habla.webp",
+     "src": "/assets/punetos/humanos/usu/sentado_habla_cerrada.webp",
      "width": 440,
      "height": 579,
      "displayScale": 1.091,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/usu/sentado_habla.webp"
     },
     {
      "id": "char.usu.pose_h_sentado_pensativo",
@@ -6874,25 +6875,27 @@
      "id": "char.barbas.pose_h_silla_relajado",
      "key": "pose_h_silla_relajado",
      "label": "Humano · en la silla, relajado",
-     "src": "/assets/punetos/humanos/barbas/silla_relajado.webp",
+     "src": "/assets/punetos/humanos/barbas/silla_relajado_cerrada.webp",
      "width": 462,
      "height": 607,
      "displayScale": 1.184,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/barbas/silla_relajado.webp"
     },
     {
      "id": "char.barbas.pose_h_silla_pensando",
      "key": "pose_h_silla_pensando",
      "label": "Humano · en la silla, pensando",
-     "src": "/assets/punetos/humanos/barbas/silla_pensando.webp",
+     "src": "/assets/punetos/humanos/barbas/silla_pensando_cerrada.webp",
      "width": 420,
      "height": 608,
      "displayScale": 1.184,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "talkSrc": "/assets/punetos/humanos/barbas/silla_pensando.webp"
     },
     {
      "id": "char.barbas.pose_h_silla_cuernos",
