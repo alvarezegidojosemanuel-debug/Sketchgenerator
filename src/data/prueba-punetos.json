@@ -7,20 +7,63 @@
       "nombre": "Sistemas",
       "lugar": "bg_sistemas",
       "vista": "puñetos",
-      "personajes": ["Jefe", "Sister"],
+      "personajes": [
+        "Usu",
+        "Jefe",
+        "Sister",
+        "Barbas",
+        "Reynaldo"
+      ],
       "pasos": [
-        { "dice": "Jefe", "texto": "Sister… ¿tú también te ves azul?", "gesto": "sorprendido" },
-        { "dice": "Sister", "texto": "Azul, gominola y con el pelo perfecto.", "gesto": "explica" },
-        { "dice": "Jefe", "texto": "Pues yo me veo guapísimo.", "gesto": "ajusta_gafas" }
+        {
+          "dice": "Jefe",
+          "texto": "¿Os veis azules?",
+          "gesto": "sorprendido"
+        },
+        {
+          "dice": "Barbas",
+          "texto": "Azul y guapísimo, como siempre.",
+          "gesto": "explica"
+        },
+        {
+          "dice": "Reynaldo",
+          "texto": "Esto no viene en el convenio.",
+          "gesto": "panico"
+        },
+        {
+          "dice": "Usu",
+          "texto": "Pues yo lo veo bastante bien.",
+          "gesto": "encoge"
+        },
+        {
+          "dice": "Sister",
+          "texto": "Usu… ¿qué has hecho?",
+          "gesto": "explica"
+        }
       ]
     },
     {
       "nombre": "KO",
       "lugar": "bg_sala_anastasia_noche",
       "vista": "puñetos",
-      "personajes": ["Jefe", "Sister"],
-      "tumbados": ["Jefe", "Sister"],
-      "pasos": [{ "pausa": 2 }]
+      "personajes": [
+        "Jefe",
+        "Sister",
+        "Usu",
+        "Barbas",
+        "Reynaldo"
+      ],
+      "tumbados": [
+        "Jefe",
+        "Sister",
+        "Barbas",
+        "Reynaldo"
+      ],
+      "pasos": [
+        {
+          "pausa": 2
+        }
+      ]
     }
   ]
 }

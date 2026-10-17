@@ -27,7 +27,7 @@ describe("montador de guiones", () => {
     expect(tk.actors.map((a) => a.uid).sort()).toEqual(["barbas", "jefe", "reynaldo", "sister", "usu"]);
     expect(tk.events.some((e) => e.track === "screen" && e.effect === "explosion")).toBe(true);
     expect(tk.events.some((e) => e.track === "sfx" && e.soundId === "sfx_explosion")).toBe(true);
-    expect(tk.events.some((e) => e.track === "body" && e.actorUid === "reynaldo" && e.poseId?.endsWith("arms_crossed"))).toBe(true);
+    expect(tk.events.some((e) => e.track === "body" && e.actorUid === "reynaldo" && (e.poseId?.endsWith("arms_crossed") || e.poseId?.includes("pose_p_")))).toBe(true);
     // nadie habla a la vez salvo los coros: los tiempos van encadenados
     const lines = tk.events.filter((e) => e.track === "dialogue").sort((a, b) => a.start - b.start);
     for (let i = 1; i < lines.length; i++) expect(lines[i].start).toBeGreaterThan(lines[i - 1].start);

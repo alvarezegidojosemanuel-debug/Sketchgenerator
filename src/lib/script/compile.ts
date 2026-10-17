@@ -341,9 +341,9 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
         // «colocar»: posición a mano de algún personaje { "Vanesa": { "x": 900, "z": -5 } }
         const ov = isObj(sc.colocar) ? Object.entries(sc.colocar).find(([k]) => charId(k, `${p}.colocar`) === cid)?.[1] : undefined;
         const o = isObj(ov) ? ov : {};
-        const ox = typeof o.x === "number" ? o.x : lying ? Math.round(540 + (sl.x - 540) * 0.45) : sl.x;
+        const ox = typeof o.x === "number" ? o.x : lying && !ko ? Math.round(540 + (sl.x - 540) * 0.45) : sl.x;
         const oy = typeof o.y === "number" ? o.y : sl.y;
-        const osc = typeof o.escala === "number" ? sl.scale * o.escala : sl.scale;
+        const osc = (typeof o.escala === "number" ? sl.scale * o.escala : sl.scale) * (pfx === "p" && cast.length >= 4 ? 0.85 : 1);
         const oz = typeof o.z === "number" ? Math.max(-100, Math.min(100, Math.round(o.z))) : sl.zIndex;
         const oflip = typeof o.mira === "string" ? { flip: norm(o.mira) === "izquierda" } : human && ox > 610 ? { flip: true } : {};
         b.px.set(cid, ox);
