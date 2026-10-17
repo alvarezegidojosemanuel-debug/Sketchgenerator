@@ -1,0 +1,369 @@
+{
+  "formato": "puñetos-guion-1",
+  "titulo": "Capítulo 2 · La novia electrónica",
+  "escenas": [
+    {
+      "nombre": "Ahora · la sala",
+      "lugar": "bg_sala_anastasia_noche",
+      "vista": "puñetos",
+      "personajes": [
+        "Jefe",
+        "Sister",
+        "Usu",
+        "Barbas",
+        "Reynaldo"
+      ],
+      "tumbados": [
+        "Jefe",
+        "Sister",
+        "Barbas",
+        "Reynaldo"
+      ],
+      "transicion": "blanco",
+      "pantalla": {
+        "x": 820,
+        "y": 980,
+        "escala": 0.7
+      },
+      "colocar": {
+        "Usu": {
+          "x": 560,
+          "y": 1560,
+          "z": -5
+        },
+        "Jefe": {
+          "x": 230,
+          "y": 1760,
+          "z": 3
+        },
+        "Sister": {
+          "x": 470,
+          "y": 1870,
+          "z": 6
+        },
+        "Barbas": {
+          "x": 790,
+          "y": 1790,
+          "z": 4
+        },
+        "Reynaldo": {
+          "x": 900,
+          "y": 1900,
+          "z": 7
+        }
+      },
+      "pasos": [
+        {
+          "quien": "Usu",
+          "gesto": "sentado_teclea"
+        },
+        {
+          "sonido": "servidor"
+        },
+        {
+          "camara": "punto",
+          "x": 540,
+          "y": 1420,
+          "zoom": 1.25
+        },
+        {
+          "rotulo": "cat /opt/props/default.json — uninstall core-ICARO",
+          "durante": 2.6
+        },
+        {
+          "teclea": "Usu",
+          "durante": 2.4
+        },
+        {
+          "dice": "Usu",
+          "texto": "Vale… desinstalo el núcleo de ÍCARO y…",
+          "gesto": "sentado_agobiado"
+        },
+        {
+          "dice": "Usu",
+          "texto": "¡Ay, Dios!",
+          "gesto": "sentado_panico"
+        },
+        {
+          "efecto": "explosion",
+          "donde": "Usu"
+        },
+        {
+          "off": "Anastas-IA",
+          "texto": "¡USUUUU!"
+        },
+        {
+          "pausa": 0.6
+        },
+        {
+          "quien": "Barbas",
+          "gesto": "tumbado_preocupado"
+        },
+        {
+          "quien": "Jefe",
+          "gesto": "tumbado"
+        },
+        {
+          "dice": "Jefe",
+          "texto": "Uhh… ¿Qué ha pasado?"
+        },
+        {
+          "sonido": "whoosh"
+        },
+        {
+          "camara": "general",
+          "mover": true,
+          "durante": 0.5
+        },
+        {
+          "pausa": 0.6
+        }
+      ]
+    },
+    {
+      "nombre": "Título",
+      "lugar": "bg_cielo_amanecer",
+      "personajes": [],
+      "transicion": "blanco",
+      "pasos": [
+        {
+          "objeto": "prop_logo_punetos",
+          "durante": 2.8,
+          "anim": "flota"
+        },
+        {
+          "pausa": 2.9
+        }
+      ]
+    },
+    {
+      "nombre": "Martes",
+      "lugar": "bg_complejo_dia",
+      "personajes": [],
+      "transicion": "corte",
+      "pasos": [
+        {
+          "rotulo": "MARTES · 11:30 — 3 días antes…",
+          "durante": 2.6
+        },
+        {
+          "camara": "general"
+        },
+        {
+          "camara": "punto",
+          "x": 720,
+          "y": 950,
+          "zoom": 2.4,
+          "mover": true,
+          "durante": 2.6
+        },
+        {
+          "pausa": 2.7
+        }
+      ]
+    },
+    {
+      "nombre": "Sistemas · el encargo",
+      "lugar": "bg_sistemas",
+      "vista": "humanos",
+      "personajes": [
+        "Barbas",
+        "Jefe",
+        "Sister",
+        "Usu",
+        "Reynaldo"
+      ],
+      "pantalla": {
+        "x": 820,
+        "y": 560,
+        "escala": 0.7
+      },
+      "pasos": [
+        {
+          "sonido": "teclado"
+        },
+        {
+          "dice": "Barbas",
+          "texto": "Al final ayer no fuiste a hablar con el cabeza de buque.",
+          "gesto": "explica"
+        },
+        {
+          "dice": "Barbas",
+          "texto": "¿A qué coño esperas?",
+          "gesto": "senala"
+        },
+        {
+          "dice": "Jefe",
+          "texto": "Buah, ya me había olvidado. ¡Voy ahora mismo!",
+          "gesto": "explica"
+        },
+        {
+          "sale": "Jefe"
+        }
+      ]
+    },
+    {
+      "nombre": "Despacho del Director",
+      "lugar": "bg_despacho_director",
+      "vista": "humanos",
+      "personajes": [
+        "Director",
+        "Jefe"
+      ],
+      "transicion": "corte",
+      "colocar": {
+        "Jefe": {
+          "x": 280,
+          "z": 5
+        },
+        "Director": {
+          "x": 760,
+          "z": 4,
+          "mira": "izquierda"
+        }
+      },
+      "pasos": [
+        {
+          "entra": "Jefe"
+        },
+        {
+          "dice": "Jefe",
+          "texto": "Director, necesito hablar con usted.",
+          "gesto": "explica"
+        },
+        {
+          "dice": "Director",
+          "texto": "¿De qué puta mierda quieres hablar?",
+          "gesto": "grita"
+        },
+        {
+          "dice": "Director",
+          "texto": "Ponte a trabajar y deja de hacerme perder el tiempo.",
+          "gesto": "grita_senala"
+        },
+        {
+          "quien": "Jefe",
+          "gesto": "susto"
+        },
+        {
+          "pausa": 0.6
+        }
+      ]
+    },
+    {
+      "nombre": "Sistemas · la novia electrónica",
+      "lugar": "bg_sistemas",
+      "vista": "humanos",
+      "personajes": [
+        "Barbas",
+        "Jefe",
+        "Sister",
+        "Usu",
+        "Reynaldo"
+      ],
+      "pantalla": {
+        "x": 820,
+        "y": 560,
+        "escala": 0.7
+      },
+      "transicion": "corte",
+      "pasos": [
+        {
+          "entra": "Jefe"
+        },
+        {
+          "dice": "Barbas",
+          "texto": "¿Qué? ¿Ya le has puesto en su sitio?",
+          "gesto": "explica"
+        },
+        {
+          "dice": "Jefe",
+          "texto": "Sí, claro. Ya me conoces. No volverá a decirnos nada.",
+          "gesto": "explica"
+        },
+        {
+          "dice": "Jefe",
+          "texto": "Usu, ¿acabaste el parche para ÍCARO?",
+          "gesto": "senala"
+        },
+        {
+          "dice": "Jefe",
+          "texto": "Sin él, los sistemas cuánticos podrían volverse inestables.",
+          "gesto": "explica"
+        },
+        {
+          "dice": "Usu",
+          "texto": "Emmm… espera. Anastas-IA, ¿cómo vas?",
+          "gesto": "confundido"
+        },
+        {
+          "off": "Anastas-IA",
+          "texto": "Sí, mi Usu. Ya está listo para instalar."
+        },
+        {
+          "dice": "Usu",
+          "texto": "¡Genial! Sí, Jefe, ya está.",
+          "gesto": "celebra"
+        },
+        {
+          "mira": "Barbas",
+          "a": "Usu"
+        },
+        {
+          "dice": "Barbas",
+          "texto": "¿Ahora la novia electrónica te hace los deberes?",
+          "gesto": "explica"
+        },
+        {
+          "dice": "Usu",
+          "texto": "No es mi novia. Es mi compañera.",
+          "gesto": "explica"
+        },
+        {
+          "off": "Anastas-IA",
+          "texto": "Novia."
+        },
+        {
+          "pausa": 0.4
+        },
+        {
+          "off": "Anastas-IA",
+          "texto": "Instalación programada para el jueves a las tres de la mañana."
+        },
+        {
+          "dice": "Barbas",
+          "texto": "¿A las tres? ¿Por qué a las tres?",
+          "gesto": "confundido"
+        },
+        {
+          "off": "Anastas-IA",
+          "texto": "Es cuando Usu está más guapo."
+        },
+        {
+          "efecto": "corazones",
+          "donde": "Anastas-IA",
+          "durante": 2.2
+        },
+        {
+          "mira": "Barbas",
+          "a": "Usu"
+        },
+        {
+          "mira": "Jefe",
+          "a": "Usu"
+        },
+        {
+          "mira": "Sister",
+          "a": "Usu"
+        },
+        {
+          "mira": "Reynaldo",
+          "a": "Usu"
+        },
+        {
+          "pausa": 1.8
+        }
+      ]
+    }
+  ]
+}
