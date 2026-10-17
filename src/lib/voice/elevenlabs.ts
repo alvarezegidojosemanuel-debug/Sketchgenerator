@@ -38,7 +38,7 @@ export const accessCode = {
   set: (v: string) => safe(() => localStorage.setItem(CODE_KEY, v), undefined),
 };
 export const elevenModel = {
-  get: (): ElevenModel => safe(() => (localStorage.getItem(MODEL_KEY) as ElevenModel) || "eleven_multilingual_v2", "eleven_multilingual_v2"),
+  get: (): ElevenModel => safe(() => (localStorage.getItem(MODEL_KEY) as ElevenModel) || "dialogue_v3", "dialogue_v3"),
   set: (v: ElevenModel) => safe(() => localStorage.setItem(MODEL_KEY, v), undefined),
 };
 

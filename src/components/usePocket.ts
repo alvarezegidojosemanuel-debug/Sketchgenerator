@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { applyOverrides, catalog as defaultCatalog } from "@/lib/catalog";
 import type { Catalog } from "@/lib/catalog/types";
 import type { FaceOverrides } from "@/lib/catalog/types";
-import { withFixedCast } from "@/lib/voice/fixedCast";
+import { syncShared, withFixedCast } from "@/lib/voice/fixedCast";
 import demoRaw from "@/data/sketch-demo.json";
 import demoUsuReyRaw from "@/data/sketch-usu-reynaldo.json";
 import demoFxRaw from "@/data/sketch-interacciones.json";
@@ -151,6 +151,7 @@ export function usePocket() {
 
   // Restaurar intención y último proyecto.
   useEffect(() => {
+    syncShared(); // configuración de voces común a todos los dispositivos
     const saved = safeLocal(() => localStorage.getItem(INTENT_KEY), null);
     if (saved) {
       const parsed = safeLocal(() => JSON.parse(saved) as SketchIntent, null);

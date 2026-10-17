@@ -145,6 +145,8 @@ export async function handleTts(body: unknown, ip: string, code: string | null, 
         previous_text: model === "eleven_v3" ? undefined : previousText,
         next_text: model === "eleven_v3" ? undefined : nextText,
         voice_settings: { stability: settings.stability, similarity_boost: settings.similarity, style: settings.style, use_speaker_boost: true, speed: settings.speed },
+        // semilla fija por frase: la misma frase suena igual en cualquier dispositivo
+        seed: seedOf(`${voiceId}|${model}|${text}`),
       }),
     });
     if (!r.ok) {
@@ -215,6 +217,7 @@ export async function handleDialogue(body: unknown, ip: string, code: string | n
       body: JSON.stringify({
         inputs: p.data.inputs.map((i) => ({ text: i.text, voice_id: i.voiceId })),
         model_id: "eleven_v3",
+        seed: seedOf(p.data.inputs.map((i) => `${i.voiceId}|${i.text}`).join("\n")),
         ...(p.data.stability !== undefined ? { settings: { stability: p.data.stability } } : {}),
       }),
     });
@@ -306,6 +309,13 @@ const SaveVoiceBody = z.object({
 });
 
 /** Guarda en la cuenta la muestra elegida del casting y devuelve su voice_id. */
+/** Semilla determinista (0…4 294 967 295) a partir del texto: ElevenLabs genera el mismo audio para la misma entrada. */
+export function seedOf(s: string): number {
+  let h = 2166136261;
+  for (let i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 16777619) >>> 0;
+  return h;
+}
+
 export async function handleVoiceSave(body: unknown, code: string | null, env: ElevenEnv, deps: { fetch: typeof fetch }): Promise<Res> {
   const g = gate(env, code);
   if (g) return g;

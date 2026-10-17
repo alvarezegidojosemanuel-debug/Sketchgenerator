@@ -9,6 +9,7 @@ import { generateLines, unlockAudio, type Clip, type Progress } from "@/lib/voic
 import { accessCode, elevenModel, generateElevenDialogue, generateElevenLines, type ElevenModel } from "@/lib/voice/elevenlabs";
 import { ElevenCast } from "../ElevenCast";
 import { VoiceCasting } from "../VoiceCasting";
+import { exportSharedConfig, importSharedConfig, syncShared } from "@/lib/voice/fixedCast";
 import { exportAudioWav, exportMp4, lastExportAudio, lastExportCodec, type ExportProgress } from "@/lib/export/mp4";
 
 const EXPORT_LABEL: Record<ExportProgress["stage"], string> = { imagenes: "Cargando imágenes…", audio: "Mezclando audio…", video: "Creando vídeo…", listo: "Listo" };
@@ -16,7 +17,7 @@ import { Stage } from "../Stage";
 import { usePlayer, type VoiceEngine } from "../usePlayer";
 import type { PocketState } from "../usePocket";
 import { VoiceCast } from "../VoiceCast";
-import { IssueList } from "../ui";
+import { Card, IssueList } from "../ui";
 
 const fmt = (t: number) => `${Math.floor(t / 60)}:${(t % 60).toFixed(1).padStart(4, "0")}`;
 const ENGINE_KEY = "pocket:voiceEngine";
@@ -28,6 +29,7 @@ export function PreviewScreen({ s }: { s: PocketState }) {
   // se recuerda la última elección
   const [model, setModelState] = useState<ElevenModel>(() => {
     try {
+      syncShared();
       return (localStorage.getItem("pocket:elevenModel") as ElevenModel | null) ?? "dialogue_v3";
     } catch {
       return "dialogue_v3";
@@ -51,6 +53,7 @@ export function PreviewScreen({ s }: { s: PocketState }) {
   const [fitMsg, setFitMsg] = useState<string | null>(null);
 
   useEffect(() => {
+    syncShared();
     setHasTts(ttsSupported());
     setModel(elevenModel.get());
     setCode(accessCode.get());
@@ -301,6 +304,13 @@ export function PreviewScreen({ s }: { s: PocketState }) {
       {engine === "piper" && <VoiceCast s={s} />}
       {engine === "elevenlabs" && <ElevenCast s={s} model={model} onModel={setModel} code={code} onCode={setCode} />}
       {engine === "elevenlabs" && code && <VoiceCasting s={s} code={code} />}
+      <Card title="Misma configuración en todos los dispositivos" tone="muted">
+        <p className="fine">Las voces, el motor y el modo se toman de la configuración común de la app. Si cambias algo aquí y quieres que suene igual en el móvil y en el PC, pulsa «Copiar configuración» y envíasela a Claude para dejarla fija para todos (o pégala en el otro dispositivo).</p>
+        <div className="row">
+          <button type="button" className="btn btn-secondary" onClick={async () => { const t = exportSharedConfig(); try { await navigator.clipboard.writeText(t); alert("Configuración copiada."); } catch { prompt("Copia esta configuración:", t); } }}>📋 Copiar configuración</button>
+          <button type="button" className="btn btn-ghost" onClick={() => { const t = prompt("Pega aquí la configuración copiada del otro dispositivo:"); if (t && importSharedConfig(t)) { alert("Configuración aplicada. Se recarga la app."); location.reload(); } else if (t) alert("No es una configuración válida."); }}>📥 Pegar configuración</button>
+        </div>
+      </Card>
       <button type="button" className="btn btn-secondary btn-block" onClick={() => s.setTab("editar")}>
         ✎ Editar este sketch
       </button>
