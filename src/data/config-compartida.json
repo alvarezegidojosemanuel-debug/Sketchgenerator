@@ -1,16 +1,7 @@
 {
-  "version": 2,
+  "version": 1,
   "engine": "elevenlabs",
-  "model": "eleven_v3",
-  "eleven": {
-    "jefe": { "voiceId": "wzwqviNGrzu0BmqEIbY8", "name": "Puñetos · Jefe", "stability": 0.5, "similarity": 0.8, "style": 0.75, "speed": 1.2, "model": "eleven_v3" },
-    "sister": { "voiceId": "Sm7IPVqNHN3zm39J5VGT", "name": "Puñetos · Sister", "stability": 0.5, "similarity": 0.8, "style": 0.1, "speed": 1 },
-    "barbas": { "voiceId": "hrAIEKnLFU8SyuWYOZjJ", "name": "BARBAS", "stability": 0.5, "similarity": 0.8, "style": 0.1, "speed": 1.2 },
-    "usu": { "voiceId": "ChmL8GuEZ6T3ZS0keVX4", "name": "USU", "stability": 0.5, "similarity": 1, "style": 0.15, "speed": 1.2, "model": "eleven_v3" },
-    "vanesa": { "voiceId": "M9RTtrzRACmbUzsEMq8p", "name": "Granny - Cartoonish Old Lady", "stability": 0.5, "similarity": 0.85, "style": 0.8, "speed": 1.2, "model": "eleven_v3" },
-    "director": { "voiceId": "YKrm0N1EAM9Bw27j8kuD", "name": "Leónidas - Legendary Spartan Warrior", "stability": 0.5, "similarity": 0.85, "style": 0.35, "speed": 1, "model": "eleven_v3" },
-    "anastasia": { "voiceId": "weA4Q36twV5kwSaTEL0Q", "name": "Eva - Futuristic Robot Helper", "stability": 0.5, "similarity": 0.8, "style": 0.55, "speed": 1, "model": "eleven_v3" },
-    "reynaldo": { "voiceId": "HMCmDsbKeaSZp5LMOYKR", "name": "Johnny - Mocking, Sarcastic and Rich", "stability": 0.5, "similarity": 0.9, "style": 0.9, "speed": 1.2 }
-  },
+  "model": "dialogue_v3",
+  "eleven": {},
   "piper": {}
 }
