@@ -77,7 +77,7 @@ function layoutProp(catalog: Catalog, p: PropState, base: number): PropLayout | 
   if (!prop) return null;
   const w = prop.width * p.scale;
   const h = prop.height * p.scale;
-  return { key: p.key, src: prop.src, left: p.x - w / 2, top: p.y - h, width: w, height: h, z: base + p.zIndex, rot: p.rot, opacity: p.opacity, flip: p.flip, bubble: p.bubble, altSrc: p.altPropId ? findProp(catalog, p.altPropId)?.src : undefined };
+  return { key: p.key, src: prop.src, left: p.x - w / 2, top: p.y - h, width: w, height: h, z: p.depth !== undefined ? Z.actors + p.depth : base + p.zIndex, rot: p.rot, opacity: p.opacity, flip: p.flip, bubble: p.bubble, altSrc: p.altPropId ? findProp(catalog, p.altPropId)?.src : undefined };
 }
 
 export function layoutActor(catalog: Catalog, a: ActorState): ActorLayout {

@@ -55,11 +55,21 @@
           "sonido": "servidor"
         },
         {
-          "camara": "medio",
-          "quien": "Usu"
+          "objeto": "prop_escritorio",
+          "x": 460,
+          "y": 1800,
+          "escala": 0.5,
+          "profundidad": 5
         },
         {
-          "tiembla": "Usu"
+          "camara": "punto",
+          "x": 480,
+          "y": 1450,
+          "zoom": 1.55
+        },
+        {
+          "teclea": "Usu",
+          "durante": 6
         },
         {
           "dice": "Usu",
@@ -87,7 +97,12 @@
           "pausa": 0.6
         }
       ],
-      "escala": 0.62
+      "escala": 0.62,
+      "pantalla": {
+        "x": 820,
+        "y": 980,
+        "escala": 0.7
+      }
     },
     {
       "nombre": "Título",
@@ -136,26 +151,18 @@
       "vista": "humanos",
       "personajes": [
         "Usu",
-        "Sister",
+        "Jefe",
         "Barbas",
         "Reynaldo",
-        "Jefe",
         "Vanesa"
       ],
       "pasos": [
         {
-          "dice": "Sister",
-          "texto": "Jefe, la reunión de las diez. Te la he puesto en el móvil, en el calendario y en un pósit.",
-          "gesto": "movil"
-        },
-        {
-          "dice": "Jefe",
-          "texto": "¿Qué reunión?",
-          "gesto": "confundido"
-        },
-        {
-          "mira": "Vanesa",
-          "a": "Jefe"
+          "objeto": "prop_mostrador",
+          "x": 930,
+          "y": 1810,
+          "escala": 1.45,
+          "profundidad": 0
         },
         {
           "dice": "Vanesa",
@@ -191,8 +198,13 @@
         },
         {
           "dice": "Barbas",
-          "texto": "Ve, Reynaldo, hombre. Que tenías que hablarle del convenio.",
-          "gesto": "señala"
+          "texto": "Venga, Reynaldo, que tenías que hablarle del convenio.",
+          "gesto": "explica"
+        },
+        {
+          "empuja": "Barbas",
+          "a": "Reynaldo",
+          "distancia": 150
         },
         {
           "dice": "Reynaldo",
@@ -200,7 +212,8 @@
           "gesto": "para"
         },
         {
-          "sale": "Jefe"
+          "huye": "Jefe",
+          "hacia": "izquierda"
         },
         {
           "dice": "Vanesa",
@@ -220,7 +233,35 @@
           "texto": "…Gracias.",
           "gesto": "encoge"
         }
-      ]
+      ],
+      "colocar": {
+        "Usu": {
+          "x": 110,
+          "z": 5
+        },
+        "Jefe": {
+          "x": 285,
+          "z": 6
+        },
+        "Barbas": {
+          "x": 450,
+          "z": 5
+        },
+        "Reynaldo": {
+          "x": 610,
+          "z": 7
+        },
+        "Vanesa": {
+          "x": 920,
+          "z": -5,
+          "mira": "izquierda"
+        }
+      },
+      "pantalla": {
+        "x": 860,
+        "y": 560,
+        "escala": 0.7
+      }
     },
     {
       "nombre": "Sistemas",
@@ -236,6 +277,16 @@
       "pasos": [
         {
           "sonido": "teclado"
+        },
+        {
+          "dice": "Sister",
+          "texto": "Jefe, la reunión de las diez. Te la he puesto en el móvil, en el calendario y en un pósit.",
+          "gesto": "movil"
+        },
+        {
+          "dice": "Jefe",
+          "texto": "¿Qué reunión?",
+          "gesto": "confundido"
         },
         {
           "dice": "Director",
@@ -285,7 +336,12 @@
           "texto": "Son las nueve y cinco.",
           "gesto": "encoge"
         }
-      ]
+      ],
+      "pantalla": {
+        "x": 820,
+        "y": 560,
+        "escala": 0.7
+      }
     }
   ]
 }

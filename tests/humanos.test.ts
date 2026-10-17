@@ -99,7 +99,7 @@ describe("boca de dos fotogramas con voz real", () => {
   it("cuando habla Anastas-IA se ve su pantalla", async () => {
     const raw = (await import("@/data/prueba-humanos.json")).default;
     const r = validateProject(structuredClone(raw), catalog);
-    expect(r.project!.takes[1].events.some((e) => e.track === "props" && e.propId === "prop_anastasia_pantalla")).toBe(true);
+    expect(r.project!.takes[1].events.some((e) => e.track === "props" && e.propId === "prop_anastasia_tv" && e.start === 0)).toBe(true);
   });
 });
 
@@ -237,16 +237,17 @@ describe("prueba de Reynaldo humano", () => {
 });
 
 describe("Anastas-IA", () => {
-  it("en off: su pantalla mueve la boca con su voz; en escena habla como un personaje más", async () => {
+  it("en off: su tele colgada mueve la boca con su voz; en escena habla como un personaje más", async () => {
     const raw = (await import("@/data/prueba-anastasia.json")).default;
     const r = validateProject(structuredClone(raw), catalog);
     expect(r.errors).toEqual([]);
     const [t1, t2] = r.project!.takes;
     const off = t1.events.find((e) => e.track === "dialogue" && e.voiceOf === "anastasia");
     expect(off).toBeTruthy();
-    const scr = t1.events.find((e) => e.track === "props" && e.propId === "prop_anastasia_pantalla") as { talkOf?: string; altPropId?: string };
+    const scr = t1.events.find((e) => e.track === "props" && e.propId === "prop_anastasia_tv") as { talkOf?: string; altPropId?: string; start: number };
     expect(scr.talkOf).toBe("anastasia");
-    expect(scr.altPropId).toBe("prop_anastasia_pantalla_boca");
+    expect(scr.altPropId).toBe("prop_anastasia_tv_boca");
+    expect(scr.start).toBe(0); // colgada desde el principio, no aparece de la nada
     expect(t2.events.filter((e) => e.track === "dialogue" && e.actorUid === "anastasia").length).toBe(2);
   });
 });

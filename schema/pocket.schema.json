@@ -673,6 +673,11 @@
                     "flip": {
                       "type": "boolean"
                     },
+                    "depth": {
+                      "type": "integer",
+                      "minimum": -100,
+                      "maximum": 100
+                    },
                     "enter": {
                       "type": "string",
                       "enum": [
@@ -836,7 +841,8 @@
                         "lineas",
                         "risa",
                         "onomatopeya",
-                        "rotulo"
+                        "rotulo",
+                        "humo"
                       ]
                     },
                     "x": {

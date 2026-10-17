@@ -108,7 +108,7 @@ export interface ScreenFx {
   /** Recursos de cómic activos (ya colocados sobre la cabeza de su actor). */
   comics?: ComicState[];
   /** Pendientes de colocar (se resuelven con la posición final del actor). */
-  comicsPending?: { kind: ComicKind; actorUid?: string; local: number; duration: number; text?: string }[];
+  comicsPending?: { kind: ComicKind; actorUid?: string; local: number; duration: number; text?: string; x?: number; y?: number }[];
   rotulos?: { kind: ComicKind; actorUid?: string; local: number; duration: number; text?: string }[];
 }
 
@@ -158,7 +158,7 @@ export function screenFx(e: ScreenEvent, t: number, acc: ScreenFx) {
       break;
     }
     case "comic":
-      (acc.comicsPending ??= []).push({ kind: e.kind ?? "sorpresa", actorUid: e.actorUid, local, duration: e.duration, text: e.text });
+      (acc.comicsPending ??= []).push({ kind: e.kind ?? "sorpresa", actorUid: e.actorUid, local, duration: e.duration, text: e.text, x: e.x, y: e.y });
       break;
     case "bluescreen":
       acc.bluescreen = { alpha: clamp01(Math.min(local, e.duration - local) / 0.08), text: e.text ?? "Tu equipo se ha puñetizado." };

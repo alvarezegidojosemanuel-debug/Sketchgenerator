@@ -2,8 +2,8 @@
  * Recursos de cómic sobre los personajes (gotas de sudor, susto, vena de enfado, líneas de movimiento,
  * risas y onomatopeyas). Se dibujan en canvas: los usan el escenario y el MP4.
  */
-export type ComicKind = "sudor" | "sorpresa" | "enfado" | "lineas" | "risa" | "onomatopeya" | "rotulo";
-export const COMIC_KINDS: ComicKind[] = ["sudor", "sorpresa", "enfado", "lineas", "risa", "onomatopeya", "rotulo"];
+export type ComicKind = "sudor" | "sorpresa" | "enfado" | "lineas" | "risa" | "onomatopeya" | "rotulo" | "humo";
+export const COMIC_KINDS: ComicKind[] = ["sudor", "sorpresa", "enfado", "lineas", "risa", "onomatopeya", "rotulo", "humo"];
 
 export interface ComicState {
   kind: ComicKind;
@@ -179,6 +179,25 @@ export function drawComic(ctx: Ctx, c: ComicState) {
         ctx.scale(s, s);
         comicText(ctx, "JA", (70 - i * 6) * u, "#ffffff");
         ctx.restore();
+      }
+      break;
+    }
+    case "humo": {
+      // nube de polvo de cómic donde estaba alguien que sale disparado (en el suelo, se deshace)
+      const p = clamp01(t / Math.max(0.3, c.duration));
+      ctx.globalAlpha = alpha * (1 - p * 0.7);
+      for (let i = 0; i < 7; i++) {
+        const a = (i / 7) * Math.PI - Math.PI;
+        const r = (55 + (i % 3) * 18) * (0.7 + p * 0.6);
+        const px = c.x + Math.cos(a) * 120 * (0.6 + p * 0.5) - c.side * p * 60;
+        const py = c.y - 40 - Math.abs(Math.sin(a)) * 90 * (0.5 + p * 0.6);
+        ctx.beginPath();
+        ctx.arc(px, py, r * scale, 0, Math.PI * 2);
+        ctx.fillStyle = "#f3efe6";
+        ctx.fill();
+        ctx.lineWidth = 6;
+        ctx.strokeStyle = INK;
+        ctx.stroke();
       }
       break;
     }

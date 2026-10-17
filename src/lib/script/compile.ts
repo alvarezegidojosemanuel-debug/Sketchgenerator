@@ -135,6 +135,10 @@ class SceneBuilder {
   backBeats: [string, number, number, string][] = [];
   absent: [string, number, number][] = [];
   hiddenFrom = new Set<string>();
+  /** Posición x actual de cada actor (cambia con empujones / huidas). */
+  px = new Map<string, number>();
+  /** Ya está colgada la tele de Anastas-IA en esta escena. */
+  iaTv = false;
   constructor(
     readonly id: string,
     readonly back: boolean,
@@ -325,7 +329,16 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
         // «tumbados»: en el suelo (inconscientes), girados sobre los pies
         const lying = Array.isArray(sc.tumbados) && (sc.tumbados as unknown[]).some((x) => typeof x === "string" && charId(x, `${p}.tumbados`) === cid);
         const rot = lying ? (sl.x > 540 ? 88 : -88) : 0;
-        b.actors.push({ uid: cid, characterId: cid, poseId: `char.${cid}.pose_${pose}`, x: lying ? Math.round(540 + (sl.x - 540) * 0.45) : sl.x, y: sl.y, scale: sl.scale, zIndex: sl.zIndex, ...flip, ...(rot ? { rot } : {}), expressionId: b.expr(cid, "neutral") });
+        // «colocar»: posición a mano de algún personaje { "Vanesa": { "x": 900, "z": -5 } }
+        const ov = isObj(sc.colocar) ? Object.entries(sc.colocar).find(([k]) => charId(k, `${p}.colocar`) === cid)?.[1] : undefined;
+        const o = isObj(ov) ? ov : {};
+        const ox = typeof o.x === "number" ? o.x : lying ? Math.round(540 + (sl.x - 540) * 0.45) : sl.x;
+        const oy = typeof o.y === "number" ? o.y : sl.y;
+        const osc = typeof o.escala === "number" ? sl.scale * o.escala : sl.scale;
+        const oz = typeof o.z === "number" ? Math.max(-100, Math.min(100, Math.round(o.z))) : sl.zIndex;
+        const oflip = typeof o.mira === "string" ? { flip: norm(o.mira) === "izquierda" } : human && ox > 610 ? { flip: true } : {};
+        b.px.set(cid, ox);
+        b.actors.push({ uid: cid, characterId: cid, poseId: `char.${cid}.pose_${pose}`, x: ox, y: oy, scale: osc, zIndex: oz, ...(typeof o.x === "number" || typeof o.mira === "string" ? oflip : flip), ...(rot ? { rot } : {}), expressionId: b.expr(cid, "neutral") });
       });
     }
     const steps = (Array.isArray(sc.pasos) ? sc.pasos : []) as unknown[];
@@ -366,9 +379,15 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
           const ia = who.startsWith("anastas") || who === "nodo";
           const iaChar = ia && catalog.characters.some((c) => c.id === "anastasia");
           b.say(undefined, text, iaChar ? { voiceOf: "anastasia", speakerName: name, gap } : { speakerName: name, gap });
-          if (ia && catalog.props.some((x) => x.id === "prop_anastasia_pantalla")) {
-            const talk = iaChar && catalog.props.some((x) => x.id === "prop_anastasia_pantalla_boca") ? { talkOf: "anastasia", altPropId: "prop_anastasia_pantalla_boca" } : { loop: "pulse" as const };
-            b.add({ track: "props", propId: "prop_anastasia_pantalla", layer: "props-front", x: 790, y: 700, scale: 1.35, duration: estimate(text) + 0.3, enter: "pop", exit: "fade", ...talk }, t0 - 0.15);
+          if (ia && iaChar && catalog.props.some((x) => x.id === "prop_anastasia_tv")) {
+            // la tele cuelga en la escena desde el principio (no aparece de la nada) y mueve la boca con su voz
+            if (!b.iaTv) {
+              const tv = isObj(sc.pantalla) ? sc.pantalla : {};
+              b.add({ track: "props", propId: "prop_anastasia_tv", altPropId: "prop_anastasia_tv_boca", talkOf: "anastasia", layer: "props-back", x: typeof tv.x === "number" ? tv.x : 800, y: typeof tv.y === "number" ? tv.y : 640, scale: typeof tv.escala === "number" ? tv.escala : 0.85, enter: "none", exit: "none", duration: 999 }, 0);
+              b.iaTv = true;
+            }
+          } else if (ia && catalog.props.some((x) => x.id === "prop_anastasia_pantalla")) {
+            b.add({ track: "props", propId: "prop_anastasia_pantalla", layer: "props-front", x: 790, y: 700, scale: 1.35, duration: estimate(text) + 0.3, enter: "pop", exit: "fade", loop: "pulse" }, t0 - 0.15);
           }
         }
       } else if (st.coro !== undefined) {
@@ -449,6 +468,45 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
         const pt = typeof st.x === "number" && typeof st.y === "number" ? { x: st.x, y: st.y, zoom: typeof st.zoom === "number" ? st.zoom : 1.5 } : typeof st.zoom === "number" ? { zoom: st.zoom } : {};
         const dur = Number(st.durante) || (st.mover ? 1.5 : 0.1);
         b.add({ track: "camera", shot, ...(who && b.actors.some((x) => x.uid === who) ? { actorUid: who } : {}), ...pt, ...(st.mover ? { move: true } : {}), duration: dur });
+      } else if (st.teclea !== undefined) {
+        const who = charId(st.teclea, `${sp}.teclea`);
+        if (who && b.actors.some((a) => a.uid === who)) b.add({ track: "body", actorUid: who, duration: Number(st.durante) || 2, fx: "type" });
+      } else if (st.empuja !== undefined) {
+        // empujón de cómic: el que empuja da un golpe hacia el otro y el empujado sale despedido unos pasos
+        const who = charId(st.empuja, `${sp}.empuja`);
+        const to = charId(st.a, `${sp}.a`);
+        const me = b.actors.find((a) => a.uid === who);
+        const other = b.actors.find((a) => a.uid === to);
+        if (me && other) {
+          const mx = b.px.get(me.uid) ?? me.x;
+          const ox = b.px.get(other.uid) ?? other.x;
+          const dir = ox >= mx ? 1 : -1;
+          const dist = typeof st.distancia === "number" ? st.distancia : 170;
+          const nx = Math.max(60, Math.min(1020, ox + dir * dist));
+          b.add({ track: "body", actorUid: me.uid, duration: 0.14, x: mx + dir * 70, ease: "linear" });
+          b.add({ track: "body", actorUid: me.uid, duration: 0.3, x: mx }, b.t + 0.16);
+          b.add({ track: "body", actorUid: other.uid, duration: 0.35, x: nx }, b.t + 0.1);
+          b.add({ track: "screen", effect: "comic", kind: "lineas", actorUid: other.uid, duration: 0.7 }, b.t + 0.1);
+          b.add({ track: "sfx", soundId: "sfx_boing", duration: 0.5 }, b.t + 0.08);
+          b.px.set(other.uid, nx);
+          b.t += 0.6;
+        }
+      } else if (st.huye !== undefined) {
+        // sale disparado de escena con nube de polvo y líneas de velocidad (recurso de cómic)
+        const who = charId(st.huye, `${sp}.huye`);
+        const me = b.actors.find((a) => a.uid === who);
+        if (me && who) {
+          const mx = b.px.get(me.uid) ?? me.x;
+          const left = typeof st.hacia === "string" ? norm(st.hacia).startsWith("izq") : mx < 540;
+          const walk = b.pose(who, "camina");
+          if (walk) b.add({ track: "body", actorUid: me.uid, duration: 0.15, poseId: walk, flip: left });
+          b.add({ track: "screen", effect: "comic", kind: "humo", x: mx, y: me.y - 80, duration: 1.4 }, b.t + 0.2);
+          b.add({ track: "screen", effect: "comic", kind: "lineas", actorUid: me.uid, duration: 0.6 }, b.t + 0.15);
+          b.add({ track: "body", actorUid: me.uid, duration: 0.45, x: left ? -350 : 1430, ease: "linear" }, b.t + 0.2);
+          b.add({ track: "sfx", soundId: "sfx_whoosh", duration: 0.6 }, b.t + 0.15);
+          b.px.set(me.uid, left ? -350 : 1430);
+          b.t += 0.8;
+        }
       } else if (st.rotulo !== undefined) {
         // cartela de cómic arriba: «LUNES · 08:59 — Cuatro días antes»
         b.add({ track: "screen", effect: "comic", kind: "rotulo", text: String(st.rotulo).slice(0, 120), duration: Number(st.durante) || 2.5 });
@@ -469,10 +527,16 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
           }
         }
         const xs: Record<string, number> = { izquierda: 270, centro: 540, derecha: 810 };
+        // colocado a mano (x/y = base del objeto): parte del decorado, sin «pop»
+        if (typeof st.x === "number" && typeof st.y === "number") {
+          const depth = typeof st.profundidad === "number" ? { depth: Math.max(-100, Math.min(100, Math.round(st.profundidad))) } : {};
+          b.add({ track: "props", propId: prop.id, layer: norm(String(st.capa ?? "")) === "detras" ? "props-back" : "props-front", x: st.x, y: st.y, scale: typeof st.escala === "number" ? st.escala : 1, ...depth, ...(st.voltear ? { flip: true } : {}), enter: "none", exit: "none", ...(loop ? { loop } : {}), duration: Number(st.durante) || 999 });
+          return;
+        }
         b.add({ track: "props", propId: prop.id, layer: "props-front", x: xs[where] ?? 540, y: 1250, enter: "pop", exit: "fade", ...(loop ? { loop } : {}), duration: dur });
         b.add({ track: "sfx", soundId: "sfx_pop", duration: 0.4 });
       } else {
-        issues.push({ path: sp, message: "paso desconocido (usa dice, narrador, off, coro, pausa, mira, cara, gesto, entra, sale, salta, tiembla, sonido, efecto, objeto, camara, rotulo)" });
+        issues.push({ path: sp, message: "paso desconocido (usa dice, narrador, off, coro, pausa, mira, cara, gesto, entra, sale, salta, tiembla, sonido, efecto, objeto, camara, rotulo, teclea, empuja, huye)" });
       }
     });
     // entre escenas, fundido rápido a negro (salvo «transicion»: «corte»)

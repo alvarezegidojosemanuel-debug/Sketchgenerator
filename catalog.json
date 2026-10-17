@@ -11439,6 +11439,27 @@
    "src": "/assets/punetos/props/anastasia_pantalla_boca.webp",
    "width": 330,
    "height": 270
+  },
+  {
+   "id": "prop_anastasia_tv",
+   "label": "Anastas-IA en televisor colgado",
+   "src": "/assets/punetos/props/anastasia_tv.webp",
+   "width": 330,
+   "height": 315
+  },
+  {
+   "id": "prop_anastasia_tv_boca",
+   "label": "Anastas-IA en televisor colgado (hablando)",
+   "src": "/assets/punetos/props/anastasia_tv_boca.webp",
+   "width": 330,
+   "height": 315
+  },
+  {
+   "id": "prop_mostrador",
+   "label": "Mostrador de recepción (provisional)",
+   "src": "/assets/punetos/props/mostrador.webp",
+   "width": 440,
+   "height": 271
   }
  ]
 }

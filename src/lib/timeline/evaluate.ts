@@ -63,6 +63,8 @@ export interface PropState {
   rot: number;
   opacity: number;
   flip: boolean;
+  /** Profundidad entre los personajes (si existe). */
+  depth?: number;
   /** Otro fotograma de la animación (para precargarlo). */
   altPropId?: string;
   /** Bocadillo de pensamiento: el objeto se dibuja centrado en (x, y) dentro de una nube. */
@@ -323,6 +325,7 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
           rot: a.rot,
           opacity: a.opacity,
           flip: e.flip ?? false,
+          ...(e.depth !== undefined ? { depth: e.depth } : {}),
           ...(e.bubbleOf ? { bubble: { cx: 0, cy: 0, w: 0, h: 0, tailX: 0, tailY: 0 }, bubbleOf: e.bubbleOf, baseScale: e.scale ?? 1, anim: a } : {}),
         } as PropState;
         props.push(pr);
@@ -423,8 +426,8 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
       if (c.actorUid && (!st || st.visible <= 0)) continue;
       const pose = st ? findPose(catalog, st.characterId, st.poseId) : undefined;
       const h = st ? (pose?.height ?? 600) * poseScale(catalog, st.characterId, pose) * st.scale : 900;
-      const x = st ? st.x + st.offX : 540;
-      const y = st ? st.y + st.offY - h * 0.88 : 700;
+      const x = st ? st.x + st.offX : c.x ?? 540;
+      const y = st ? st.y + st.offY - h * 0.88 : c.y ?? 700;
       if (c.kind === "rotulo") {
         (screen.rotulos ??= []).push(c);
         continue;

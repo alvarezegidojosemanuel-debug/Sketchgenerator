@@ -129,6 +129,8 @@ export const PropsEvent = z.object({
   zIndex: zIndex.optional(),
   rot: z.number().finite().min(-180).max(180).optional(),
   flip: z.boolean().optional(),
+  /** Profundidad entre los personajes (como su zIndex): p. ej. un mostrador delante de una persona y detrás de otras. */
+  depth: zIndex.optional(),
   /** Cómo aparece / desaparece. */
   enter: z.enum(["none", "pop", "fade", "slide"]).optional(),
   exit: z.enum(["none", "pop", "fade", "slide"]).optional(),
@@ -160,7 +162,7 @@ export const ScreenEvent = z.object({
   /** flash = destello de color (alarma), shake = temblor de cámara, darken = oscurecer, bluescreen = pantallazo azul con texto. */
   effect: z.enum(["flash", "shake", "darken", "bluescreen", "explosion", "comic"]),
   /** Recurso de cómic sobre un actor (effect «comic»): sudor, sorpresa, enfado, lineas, risa, onomatopeya (con text). */
-  kind: z.enum(["sudor", "sorpresa", "enfado", "lineas", "risa", "onomatopeya", "rotulo"]).optional(),
+  kind: z.enum(["sudor", "sorpresa", "enfado", "lineas", "risa", "onomatopeya", "rotulo", "humo"]).optional(),
   /** Explosión: dónde (px del lienzo) y tamaño. */
   x: coordX.optional(),
   y: coordY.optional(),
