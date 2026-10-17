@@ -182,7 +182,7 @@
         },
         {
           "dice": "Vanesa",
-          "texto": "¡ALTO AHÍ! Sin fichar no pasa nadie.",
+          "texto": "Alto ahí. Sin fichar no pasa nadie.",
           "gesto": "senala"
         },
         {
@@ -233,7 +233,7 @@
         },
         {
           "dice": "Vanesa",
-          "texto": "¿Y el Jefe?",
+          "texto": "Oye, Jefe… ¿a dónde se supone que vas?",
           "gesto": "neutro"
         },
         {
@@ -318,12 +318,12 @@
         },
         {
           "dice": "Barbas",
-          "texto": "Pregúntale quién va a hacer todo eso, Jefe.",
+          "texto": "¿Y quién se supone que va a hacer todo eso, Jefe?",
           "gesto": "señala"
         },
         {
           "dice": "Jefe",
-          "texto": "¡Ahora mismo se lo digo!",
+          "texto": "Pues me da a mí que nosotros… Pero esto no va a quedar así. ¡Voy a hablar ahora mismo con él!",
           "gesto": "explica"
         },
         {
@@ -349,7 +349,7 @@
         },
         {
           "dice": "Barbas",
-          "texto": "Son las nueve y cinco.",
+          "texto": "¡Pero si solo son las nueve y cinco!",
           "gesto": "encoge"
         }
       ],

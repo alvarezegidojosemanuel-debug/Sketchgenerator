@@ -115,7 +115,7 @@ export function actingTag(who: string | undefined, text: string, gesture?: strin
   else if (who === "anastasia") tag = /enamorada|suspira|corazon|coqueta|timida|guino/.test(g) ? "lovingly" : /enfado|mosqueo|acusa|celosa/.test(g) ? "annoyed" : "sarcastically";
   else if (who === "fake") tag = /huevo|panico|garras|acurrucado|huye|para|grita/.test(g) ? "terrified" : "nervously";
   else if (who === "alf") tag = /garra|malva|trama|acecha|grita/.test(g) ? "menacing" : "sweetly";
-  else if (who === "vanesa") tag = /reynaldo/i.test(text) ? "sweetly" : "annoyed";
+  else if (who === "vanesa") tag = /reynaldo|reycito/i.test(text) ? "sweetly" : "annoyed, quietly";
   return tag ? `[${tag}] ${text}` : text;
 }
 
