@@ -170,7 +170,7 @@ export async function generateElevenDialogue(
 }
 
 /** Tono por defecto de cada personaje si no se ha tocado el ajuste (Usu nervioso; Reynaldo menos formal). */
-export const DEFAULT_PITCH: Record<string, number> = { usu: 1.1, reynaldo: 1.06 };
+export const DEFAULT_PITCH: Record<string, number> = { usu: 1.18 };
 export const pitchOf = (cid: string, c?: { pitch?: number }) => c?.pitch ?? DEFAULT_PITCH[cid] ?? 1;
 
 /** Sube o baja el tono (y el ritmo) remuestreando: 1.1 = 10 % más agudo y más rápido. */

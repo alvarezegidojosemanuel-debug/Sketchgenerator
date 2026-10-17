@@ -106,7 +106,7 @@ export function actingTag(who: string | undefined, text: string, gesture?: strin
   else if (who === "barbas") tag = "mischievously";
   else if (who === "usu") tag = words.length <= 7 ? "nervously" : "excitedly"; // nervioso, agudo y rápido
   else if (who === "jefe") tag = /!/.test(text) ? "exasperated" : /\?/.test(text) ? "confused" : undefined;
-  else if (who === "reynaldo") tag = "sarcastically";
+  else if (who === "reynaldo") tag = "dryly";
   else if (who === "sister") tag = "calmly";
   else if (who === "neli") tag = "cheerfully";
   else if (who === "gala") tag = "smugly";
