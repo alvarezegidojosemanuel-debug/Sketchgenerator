@@ -40,6 +40,8 @@ export interface ActorState {
   presenceScale: number;
   /** Animación «de goma» (pies fijos): inclinación en grados y estiramiento horizontal/vertical. */
   skew: number;
+  /** Giro fijo del personaje (tumbado). */
+  rot: number;
   sx: number;
   sy: number;
   /** Cabeza articulada: giro (grados, + = hacia la derecha del dibujo) y bajada (px). */
@@ -185,6 +187,7 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
       visible: a.hidden ? 0 : 1,
       presenceScale: 1,
       skew: 0,
+      rot: a.rot ?? 0,
       sx: 1,
       sy: 1,
       headRot: 0,
@@ -422,16 +425,31 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
       const h = st ? (pose?.height ?? 600) * poseScale(catalog, st.characterId, pose) * st.scale : 900;
       const x = st ? st.x + st.offX : 540;
       const y = st ? st.y + st.offY - h * 0.88 : 700;
+      if (c.kind === "rotulo") {
+        (screen.rotulos ??= []).push(c);
+        continue;
+      }
       (screen.comics ??= []).push({ kind: c.kind, x, y, h, local: c.local, duration: c.duration, side: st?.flip ? -1 : 1, text: c.text });
     }
     delete screen.comicsPending;
   }
   const camera = cameraAt(take, catalog, t, actors);
+  // rótulos: fijos en pantalla (arriba), sea cual sea el plano
+  if (screen.rotulos) {
+    for (const c of screen.rotulos)
+      (screen.comics ??= []).push({ kind: "rotulo", x: camera.cx, y: camera.cy + (330 - 960) / camera.zoom, h: 900 / camera.zoom, local: c.local, duration: c.duration, side: 1, text: c.text });
+    delete screen.rotulos;
+  }
   if (take.transition === "fade") {
     // fundido a negro al entrar y al salir de la toma (tapa el salto de plano entre tomas)
     const F = 0.3;
     const a = Math.max(0, 1 - t / F, 1 - (take.duration - t) / F);
     if (a > 0) screen.darken = Math.max(screen.darken ?? 0, Math.min(1, a));
+  } else if (take.transition === "white") {
+    // fundido a blanco (más lento): flash-forwards y saltos en el tiempo
+    const F = 0.5;
+    const a = Math.max(0, 1 - t / F, 1 - (take.duration - t) / F);
+    if (a > 0) screen.flash = { color: "#ffffff", alpha: Math.min(1, a) };
   }
 
   return {

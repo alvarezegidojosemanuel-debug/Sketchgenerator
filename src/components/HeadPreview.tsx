@@ -46,6 +46,7 @@ export function HeadPreview({ catalog, characterId, poseId, expressionId, mouthA
           visible: 1,
           presenceScale: 1,
           skew: 0,
+      rot: 0,
           sx: 1,
           sy: 1,
           headRot: 0,

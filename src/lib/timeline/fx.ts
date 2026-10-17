@@ -109,6 +109,7 @@ export interface ScreenFx {
   comics?: ComicState[];
   /** Pendientes de colocar (se resuelven con la posición final del actor). */
   comicsPending?: { kind: ComicKind; actorUid?: string; local: number; duration: number; text?: string }[];
+  rotulos?: { kind: ComicKind; actorUid?: string; local: number; duration: number; text?: string }[];
 }
 
 export type Presence = NonNullable<BodyEvent["appear"]>;

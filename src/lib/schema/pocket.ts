@@ -160,7 +160,7 @@ export const ScreenEvent = z.object({
   /** flash = destello de color (alarma), shake = temblor de cámara, darken = oscurecer, bluescreen = pantallazo azul con texto. */
   effect: z.enum(["flash", "shake", "darken", "bluescreen", "explosion", "comic"]),
   /** Recurso de cómic sobre un actor (effect «comic»): sudor, sorpresa, enfado, lineas, risa, onomatopeya (con text). */
-  kind: z.enum(["sudor", "sorpresa", "enfado", "lineas", "risa", "onomatopeya"]).optional(),
+  kind: z.enum(["sudor", "sorpresa", "enfado", "lineas", "risa", "onomatopeya", "rotulo"]).optional(),
   /** Explosión: dónde (px del lienzo) y tamaño. */
   x: coordX.optional(),
   y: coordY.optional(),
@@ -179,6 +179,8 @@ export const CameraEvent = z.object({
   x: coordX.optional(),
   y: coordY.optional(),
   zoom: z.number().finite().min(1).max(3).optional(),
+  /** true = la cámara viaja suavemente desde el plano anterior hasta este durante «duration» (travelling / zoom). */
+  move: z.boolean().optional(),
 });
 
 export const PocketEvent = z.discriminatedUnion("track", [
@@ -202,6 +204,8 @@ export const Actor = z.object({
   scale: scale.default(1),
   zIndex: zIndex.default(0),
   flip: z.boolean().optional(),
+  /** Giro del personaje en grados alrededor de los pies (p. ej. 90 = tumbado en el suelo). */
+  rot: z.number().finite().min(-180).max(180).optional(),
   expressionId: id.optional(),
   /** Empieza fuera de escena (invisible) hasta un evento body con "appear". */
   hidden: z.boolean().optional(),
@@ -215,7 +219,7 @@ export const Take = z.object({
   /** "auto": planos automáticos (general / medio / primer plano en el remate) si no hay eventos de cámara. */
   camera: z.enum(["fixed", "auto"]).optional(),
   /** Paso a la toma siguiente / desde la anterior: «fade» = fundido rápido a negro (0,3 s); sin valor = corte seco. */
-  transition: z.enum(["cut", "fade"]).optional(),
+  transition: z.enum(["cut", "fade", "white"]).optional(),
   actors: z.array(Actor).max(LIMITS.maxActorsPerTake),
   events: z.array(PocketEvent).max(LIMITS.maxEventsPerTake),
 });

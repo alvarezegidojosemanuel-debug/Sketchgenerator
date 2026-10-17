@@ -2,8 +2,8 @@
  * Recursos de cómic sobre los personajes (gotas de sudor, susto, vena de enfado, líneas de movimiento,
  * risas y onomatopeyas). Se dibujan en canvas: los usan el escenario y el MP4.
  */
-export type ComicKind = "sudor" | "sorpresa" | "enfado" | "lineas" | "risa" | "onomatopeya";
-export const COMIC_KINDS: ComicKind[] = ["sudor", "sorpresa", "enfado", "lineas", "risa", "onomatopeya"];
+export type ComicKind = "sudor" | "sorpresa" | "enfado" | "lineas" | "risa" | "onomatopeya" | "rotulo";
+export const COMIC_KINDS: ComicKind[] = ["sudor", "sorpresa", "enfado", "lineas", "risa", "onomatopeya", "rotulo"];
 
 export interface ComicState {
   kind: ComicKind;
@@ -180,6 +180,33 @@ export function drawComic(ctx: Ctx, c: ComicState) {
         comicText(ctx, "JA", (70 - i * 6) * u, "#ffffff");
         ctx.restore();
       }
+      break;
+    }
+    case "rotulo": {
+      // cartela de cómic arriba (lugar / hora): «LUNES · 08:59 — Cuatro días antes»
+      const lines = (c.text ?? "").split(/\s*[—|]\s*/).filter(Boolean).slice(0, 2);
+      const big = lines.length === 1 && lines[0].length <= 12 ? 1.9 : 1; // título
+      ctx.translate(c.x, c.y);
+      ctx.rotate(-0.02);
+      ctx.scale(scale * u * big, scale * u * big);
+      ctx.font = `900 64px "Arial Black", Impact, system-ui, sans-serif`;
+      const w0 = Math.max(...lines.map((l, i) => { ctx.font = `900 ${i ? 40 : 64}px "Arial Black", Impact, system-ui, sans-serif`; return ctx.measureText(l).width; }), 200);
+      const bw = w0 + 80;
+      const bh = lines.length > 1 ? 170 : 110;
+      ctx.fillStyle = INK;
+      ctx.fillRect(-bw / 2 + 10, -bh / 2 + 10, bw, bh);
+      ctx.fillStyle = "#ffd23f";
+      ctx.fillRect(-bw / 2, -bh / 2, bw, bh);
+      ctx.lineWidth = 6;
+      ctx.strokeStyle = INK;
+      ctx.strokeRect(-bw / 2, -bh / 2, bw, bh);
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillStyle = INK;
+      lines.forEach((l, i) => {
+        ctx.font = `900 ${i ? 40 : 64}px "Arial Black", Impact, system-ui, sans-serif`;
+        ctx.fillText(l, 0, lines.length > 1 ? (i ? 42 : -28) : 0);
+      });
       break;
     }
     case "onomatopeya": {

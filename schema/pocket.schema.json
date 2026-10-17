@@ -210,7 +210,8 @@
             "type": "string",
             "enum": [
               "cut",
-              "fade"
+              "fade",
+              "white"
             ]
           },
           "actors": {
@@ -261,6 +262,11 @@
                 },
                 "flip": {
                   "type": "boolean"
+                },
+                "rot": {
+                  "type": "number",
+                  "minimum": -180,
+                  "maximum": 180
                 },
                 "expressionId": {
                   "type": "string",
@@ -829,7 +835,8 @@
                         "enfado",
                         "lineas",
                         "risa",
-                        "onomatopeya"
+                        "onomatopeya",
+                        "rotulo"
                       ]
                     },
                     "x": {
@@ -919,6 +926,9 @@
                       "type": "number",
                       "minimum": 1,
                       "maximum": 3
+                    },
+                    "move": {
+                      "type": "boolean"
                     }
                   },
                   "required": [

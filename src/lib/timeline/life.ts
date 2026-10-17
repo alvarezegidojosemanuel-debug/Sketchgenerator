@@ -238,6 +238,18 @@ export function cameraAt(take: Take, catalog: Catalog, t: number, actors: Map<st
     else break;
   }
   if (!cur) return take.camera === "fixed" ? WIDE : livingCamera(take, catalog, t, actors);
-  if (cur.x !== undefined && cur.y !== undefined) return clampCam({ zoom: cur.zoom ?? 1.5, cx: cur.x, cy: cur.y });
-  return frameShot(catalog, cur.shot, cur.actorUid ? actors.get(cur.actorUid) : undefined, cur.zoom);
+  const target = shotState(catalog, cur, actors);
+  if (!cur.move || t >= cur.start + cur.duration) return target;
+  // travelling: del plano anterior a este, suavizado
+  const prev = shots.filter((s) => s.start < cur!.start).pop();
+  const from = prev ? shotState(catalog, prev, actors) : take.camera === "fixed" ? WIDE : livingCamera(take, catalog, cur.start, actors);
+  const k = ease(clamp01((t - cur.start) / Math.max(0.05, cur.duration)));
+  // el zoom se interpola en escala logarítmica (acercamiento constante a la vista)
+  const zoom = Math.exp(Math.log(from.zoom) + (Math.log(target.zoom) - Math.log(from.zoom)) * k);
+  return clampCam({ zoom, cx: from.cx + (target.cx - from.cx) * k, cy: from.cy + (target.cy - from.cy) * k });
+}
+
+function shotState(catalog: Catalog, s: CameraEvent, actors: Map<string, ActorState>): CameraState {
+  if (s.x !== undefined && s.y !== undefined) return clampCam({ zoom: s.zoom ?? 1.5, cx: s.x, cy: s.y });
+  return frameShot(catalog, s.shot, s.actorUid ? actors.get(s.actorUid) : undefined, s.zoom);
 }

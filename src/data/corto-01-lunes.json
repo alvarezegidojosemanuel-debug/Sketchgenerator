@@ -1,0 +1,291 @@
+{
+  "formato": "puñetos-guion-1",
+  "titulo": "Corto 1 · El lunes no perdona",
+  "idea": "Flash-forward de la noche del parche; cuatro días antes, el lunes: Vanesa caza al Jefe sin fichar, el Director anuncia los inversores y Anastas-IA solo tiene ojos para Usu.",
+  "escenas": [
+    {
+      "nombre": "Flash-forward · exterior",
+      "lugar": "bg_complejo_noche",
+      "personajes": [],
+      "transicion": "corte",
+      "pasos": [
+        {
+          "camara": "general"
+        },
+        {
+          "camara": "punto",
+          "x": 700,
+          "y": 920,
+          "zoom": 2.6,
+          "mover": true,
+          "durante": 2.2
+        },
+        {
+          "pausa": 2.3
+        }
+      ]
+    },
+    {
+      "nombre": "Flash-forward · la sala",
+      "lugar": "bg_sala_anastasia_noche",
+      "personajes": [
+        "Jefe",
+        "Sister",
+        "Barbas",
+        "Usu",
+        "Reynaldo"
+      ],
+      "tumbados": [
+        "Jefe",
+        "Sister",
+        "Barbas",
+        "Reynaldo"
+      ],
+      "transicion": "blanco",
+      "pasos": [
+        {
+          "cara": "Sister",
+          "emocion": "tristeza"
+        },
+        {
+          "cara": "Reynaldo",
+          "emocion": "tristeza"
+        },
+        {
+          "sonido": "servidor"
+        },
+        {
+          "camara": "medio",
+          "quien": "Usu"
+        },
+        {
+          "tiembla": "Usu"
+        },
+        {
+          "dice": "Usu",
+          "texto": "Vale… vale… esto tiene arreglo.",
+          "gesto": "reaction"
+        },
+        {
+          "off": "Anastas-IA",
+          "texto": "Usu, cariño… ¿pruebo a reiniciarlos?"
+        },
+        {
+          "dice": "Usu",
+          "texto": "¡NI SE TE OCURRA!",
+          "gesto": "pointing"
+        },
+        {
+          "sonido": "whoosh"
+        },
+        {
+          "camara": "general",
+          "mover": true,
+          "durante": 0.5
+        },
+        {
+          "pausa": 0.6
+        }
+      ],
+      "escala": 0.62
+    },
+    {
+      "nombre": "Título",
+      "lugar": "bg_cielo_amanecer",
+      "personajes": [],
+      "transicion": "blanco",
+      "pasos": [
+        {
+          "rotulo": "PUÑETOS",
+          "durante": 2.2
+        },
+        {
+          "pausa": 2.3
+        }
+      ]
+    },
+    {
+      "nombre": "Lunes · llegada",
+      "lugar": "bg_complejo_dia",
+      "personajes": [],
+      "transicion": "corte",
+      "pasos": [
+        {
+          "rotulo": "LUNES · 08:59 — Cuatro días antes",
+          "durante": 2.6
+        },
+        {
+          "camara": "general"
+        },
+        {
+          "camara": "punto",
+          "x": 720,
+          "y": 950,
+          "zoom": 2.4,
+          "mover": true,
+          "durante": 2.6
+        },
+        {
+          "pausa": 2.7
+        }
+      ]
+    },
+    {
+      "nombre": "Recepción",
+      "lugar": "bg_recepcion",
+      "vista": "humanos",
+      "personajes": [
+        "Usu",
+        "Sister",
+        "Barbas",
+        "Reynaldo",
+        "Jefe",
+        "Vanesa"
+      ],
+      "pasos": [
+        {
+          "dice": "Sister",
+          "texto": "Jefe, la reunión de las diez. Te la he puesto en el móvil, en el calendario y en un pósit.",
+          "gesto": "movil"
+        },
+        {
+          "dice": "Jefe",
+          "texto": "¿Qué reunión?",
+          "gesto": "confundido"
+        },
+        {
+          "mira": "Vanesa",
+          "a": "Jefe"
+        },
+        {
+          "dice": "Vanesa",
+          "texto": "¡ALTO AHÍ! Sin fichar no pasa nadie. Y el viernes tampoco fichaste.",
+          "gesto": "senala"
+        },
+        {
+          "dice": "Jefe",
+          "texto": "Eso se lo preguntaré al Jefe del pasado.",
+          "gesto": "explica"
+        },
+        {
+          "dice": "Vanesa",
+          "texto": "¡El del pasado TAMPOCO ficha!",
+          "gesto": "explica"
+        },
+        {
+          "quien": "Reynaldo",
+          "gesto": "susto"
+        },
+        {
+          "mira": "Vanesa",
+          "a": "Reynaldo"
+        },
+        {
+          "quien": "Vanesa",
+          "gesto": "ilusion"
+        },
+        {
+          "dice": "Vanesa",
+          "texto": "Ay… mi Reycito de oro. ¿Un cafecito abajo, conmigo?",
+          "gesto": "boli"
+        },
+        {
+          "dice": "Barbas",
+          "texto": "Ve, Reynaldo, hombre. Que tenías que hablarle del convenio.",
+          "gesto": "señala"
+        },
+        {
+          "dice": "Reynaldo",
+          "texto": "Son las nueve menos uno. Hasta las nueve no existo. Y tú tampoco deberías.",
+          "gesto": "para"
+        },
+        {
+          "sale": "Jefe"
+        },
+        {
+          "dice": "Vanesa",
+          "texto": "¿Y el Jefe?",
+          "gesto": "neutro"
+        },
+        {
+          "off": "Anastas-IA",
+          "texto": "Fichaje no registrado. Buenos días, Usu. Hoy estás muy guapo."
+        },
+        {
+          "mira": "Vanesa",
+          "a": "Usu"
+        },
+        {
+          "dice": "Usu",
+          "texto": "…Gracias.",
+          "gesto": "encoge"
+        }
+      ]
+    },
+    {
+      "nombre": "Sistemas",
+      "lugar": "bg_sistemas",
+      "vista": "humanos",
+      "personajes": [
+        "Barbas",
+        "Jefe",
+        "Director",
+        "Sister",
+        "Usu"
+      ],
+      "pasos": [
+        {
+          "sonido": "teclado"
+        },
+        {
+          "dice": "Director",
+          "texto": "¡Equipo! ¡Resultados históricos! El viernes, presentación a los inversores: SINAPSIS, ÍCARO y SEMILLA. ¡Todo funcionando!",
+          "gesto": "explica"
+        },
+        {
+          "sale": "Director"
+        },
+        {
+          "mira": "Barbas",
+          "a": "Jefe"
+        },
+        {
+          "dice": "Barbas",
+          "texto": "Pregúntale quién va a hacer todo eso, Jefe.",
+          "gesto": "señala"
+        },
+        {
+          "dice": "Jefe",
+          "texto": "¡Ahora mismo se lo digo!",
+          "gesto": "explica"
+        },
+        {
+          "pausa": 0.6
+        },
+        {
+          "dice": "Jefe",
+          "texto": "…¿Dónde está?",
+          "gesto": "confundido"
+        },
+        {
+          "dice": "Sister",
+          "texto": "Se ha ido, Jefe. Hace un rato.",
+          "gesto": "explica"
+        },
+        {
+          "off": "Anastas-IA",
+          "texto": "Recordatorio: la productividad mejora con descansos. Usu, has trabajado muy bien hoy."
+        },
+        {
+          "mira": "Barbas",
+          "a": "Usu"
+        },
+        {
+          "dice": "Barbas",
+          "texto": "Son las nueve y cinco.",
+          "gesto": "encoge"
+        }
+      ]
+    }
+  ]
+}

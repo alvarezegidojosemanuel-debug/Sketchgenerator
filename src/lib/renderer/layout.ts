@@ -34,6 +34,7 @@ export interface ActorLayout {
   poseId: string;
   /** Animación «de goma»: inclinación (grados) y estiramiento, con los pies como pivote. */
   skew: number;
+  rot: number;
   sx: number;
   sy: number;
   /** Cabeza articulada: giro (grados, ya en coordenadas del dibujo) y bajada en px. */
@@ -120,6 +121,7 @@ function layoutActorPose(catalog: Catalog, a: ActorState): ActorLayout {
         ? layoutFace({ character: ch, pose, expression: findExpression(catalog, a.characterId, a.prevExpressionId), gazeX: a.gazeX, gazeY: a.gazeY, mouthDx: a.mouthDx, mouthDy: a.mouthDy })
         : undefined,
     skew: a.skew,
+    rot: a.rot,
     sx: a.sx,
     sy: a.sy,
     // el dibujo puede estar volteado: el giro se expresa en coordenadas del dibujo
