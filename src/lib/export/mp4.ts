@@ -53,7 +53,7 @@ async function loadImages(urls: string[]): Promise<ImageMap> {
 async function mixAudio(project: PocketProject, catalog: Catalog, clips: Map<string, Clip> | null, total: number): Promise<AudioBuffer> {
   const ctx = new OfflineAudioContext(2, Math.max(1, Math.ceil(total * SR)), SR);
   const { slots } = projectSchedule(project);
-  const add = (clip: Clip, at: number, volume = 1) => {
+  const add = (clip: Clip, at: number, volume = 1, maxDur?: number) => {
     const buf = ctx.createBuffer(1, clip.samples.length, clip.sampleRate);
     buf.copyToChannel(new Float32Array(clip.samples), 0);
     const src = ctx.createBufferSource();
@@ -62,6 +62,12 @@ async function mixAudio(project: PocketProject, catalog: Catalog, clips: Map<str
     g.gain.value = volume;
     src.connect(g).connect(ctx.destination);
     src.start(Math.max(0, at));
+    if (maxDur !== undefined && maxDur < clip.duration - 0.05) {
+      const end = Math.max(0, at) + Math.max(0.05, maxDur);
+      g.gain.setValueAtTime(volume, Math.max(0, end - 0.25));
+      g.gain.linearRampToValueAtTime(0, end);
+      src.stop(end);
+    }
   };
   for (const s of slots) {
     const take = project.takes[s.index];
@@ -71,7 +77,7 @@ async function mixAudio(project: PocketProject, catalog: Catalog, clips: Map<str
         if (c) add(c, s.offset + e.start);
       } else if (e.track === "sfx") {
         const c = await soundClip(catalog, e.soundId);
-        if (c) add(c, s.offset + e.start, e.volume ?? 1);
+        if (c) add(c, s.offset + e.start, e.volume ?? 1, e.duration);
       }
     }
   }

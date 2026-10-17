@@ -56,7 +56,7 @@ export function usePlayer(project: PocketProject, catalog: Catalog, opts: { engi
         });
       },
       onSfx: (e) => {
-        void playSound(catalogRef.current, e.soundId, e.volume ?? 1);
+        void playSound(catalogRef.current, e.soundId, e.volume ?? 1, e.duration);
       },
       onInterrupt: () => {
         stopSpeaking();

@@ -35,12 +35,19 @@ export async function preloadSounds(catalog: Catalog, soundIds: string[]) {
   await Promise.all([...new Set(soundIds)].map((id) => soundClip(catalog, id)));
 }
 
-export async function playSound(catalog: Catalog, soundId: string, volume = 1) {
+/** maxDur: corta el sonido (con un fundido corto) al acabar su evento, p. ej. el ambiente en bucle al cambiar de escena. */
+export async function playSound(catalog: Catalog, soundId: string, volume = 1, maxDur?: number) {
   const clip = await soundClip(catalog, soundId);
   if (!clip) return;
   const ctx = audioContext();
   const g = ctx.createGain();
   g.gain.value = volume;
   g.connect(ctx.destination);
-  playClip(clip, {}, g);
+  const stop = playClip(clip, {}, g);
+  if (maxDur !== undefined && maxDur < clip.duration - 0.05) {
+    const end = ctx.currentTime + Math.max(0.05, maxDur);
+    g.gain.setValueAtTime(volume, Math.max(ctx.currentTime, end - 0.25));
+    g.gain.linearRampToValueAtTime(0, end);
+    setTimeout(stop, Math.max(50, maxDur * 1000 + 50));
+  }
 }

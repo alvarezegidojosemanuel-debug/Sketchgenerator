@@ -78,6 +78,10 @@ const HUMAN_POSE: Record<string, string[]> = {
   susto: ["susto", "sorprendido"], panico: ["panico", "susto"], pensando: ["pensando", "confundido"], encoge: ["encoge", "explica"],
   sentado_habla: ["sentado_habla", "sentado_teclea"], sentado_agobiado: ["sentado_agobiado", "sentado_cansado"], sentado_cansado: ["sentado_cansado", "sentado_agobiado"],
 };
+const AMBIENT_BY_BG: Record<string, string> = {
+  bg_recepcion: "recepcion", bg_sistemas: "oficina", bg_oficina_soporte: "oficina", bg_oficina_manana: "oficina", bg_oficina: "oficina",
+  bg_pasillo: "oficina", bg_sala_reuniones: "oficina", bg_despacho_director: "oficina", bg_despacho_director_2: "oficina",
+};
 const SOUND_ALIAS: Record<string, string> = { telefono: "sfx_telefono", alarma: "sfx_alarma", pop: "sfx_pop", whoosh: "sfx_whoosh", ding: "sfx_ding", boing: "sfx_boing", golpe: "sfx_golpe", fracaso: "sfx_fracaso", teclado: "sfx_teclado", pantallazo: "sfx_pantallazo", servidor: "sfx_servidor", explosion: "sfx_explosion", portazo: "sfx_golpe" };
 
 const COMIC_FX: Record<string, "sudor" | "sorpresa" | "enfado" | "lineas" | "risa" | "onomatopeya"> = {
@@ -542,6 +546,14 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
     // entre escenas, fundido rápido a negro (salvo «transicion»: «corte»)
     const trn = norm(String(sc.transicion ?? ""));
     const tr = trn.startsWith("corte") ? "cut" : trn.startsWith("blanc") ? "white" : "fade";
+    // ambiente de fondo en bucle (por escenario, o «ambiente» en la escena; «ambiente»: "no" lo quita)
+    const amb = typeof sc.ambiente === "string" ? norm(sc.ambiente) : bg ? AMBIENT_BY_BG[bg] : undefined;
+    const ambId = amb && amb !== "no" && amb !== "ninguno" ? `sfx_ambiente_${amb}` : undefined;
+    const ambSnd = ambId ? catalog.sounds?.find((x) => x.id === ambId) : undefined;
+    if (ambSnd) {
+      const total = b.t + 0.5;
+      for (let at = 0; at < total; at += ambSnd.duration - 0.4) b.add({ track: "sfx", soundId: ambSnd.id, duration: Math.min(ambSnd.duration, total - at), volume: 0.35 }, at);
+    }
     takes.push(b.build(typeof sc.nombre === "string" ? sc.nombre.slice(0, 120) : `Escena ${si + 1}`, bg, norm(String(sc.camara ?? "")) === "auto" ? "auto" : undefined, tr));
   });
   if (issues.some((i) => /no existe|no tiene|no válid/.test(i.message)) && !takes.length) return { issues };
