@@ -251,3 +251,15 @@ describe("Anastas-IA", () => {
     expect(t2.events.filter((e) => e.track === "dialogue" && e.actorUid === "anastasia").length).toBe(2);
   });
 });
+
+describe("Puñetos rediseñados (vista «puñetos»)", () => {
+  it("usa las poses pose_p_* y, tumbada, la pose de KO en vez de girar la de pie", () => {
+    const g = { formato: "puñetos-guion-1", escenas: [{ lugar: "bg_sistemas", vista: "puñetos", personajes: ["Sister"], tumbados: ["Sister"], pasos: [{ pausa: 1 }] },
+      { lugar: "bg_sistemas", vista: "puñetos", personajes: ["Sister"], pasos: [{ dice: "Sister", texto: "¡Hola!", gesto: "saluda" }] }] };
+    const r = validateProject(g, catalog);
+    expect(r.errors).toEqual([]);
+    expect(r.project!.takes[0].actors[0].poseId).toBe("char.sister.pose_p_ko");
+    expect(r.project!.takes[0].actors[0].rot).toBeUndefined();
+    expect(r.project!.takes[1].actors[0].poseId).toBe("char.sister.pose_p_neutro");
+  });
+});
