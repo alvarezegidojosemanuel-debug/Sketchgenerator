@@ -1,7 +1,17 @@
 import rawCatalog from "@/data/catalog.json";
 import rawOverrides from "@/data/face-overrides.json";
 import { BUILTIN_SOUNDS } from "@/lib/sfx/synth";
-import type { Catalog, Character, ExpressionPrefab, FaceAsset, FaceOverrides, Pose } from "./types";
+
+/**
+ * Ambientes grabados de verdad (Freesound, CC0 — dominio público): call center de leonelmail (#579568) y oficina
+ * de Chelly01 (#541117), en capas desfasadas para que el murmullo no se entienda, con un teléfono lejano (#119555).
+ * Bucles de 60 s sin corte, a −30 LUFS.
+ */
+const RECORDED_SOUNDS: Sound[] = [
+  { id: "sfx_ambiente_oficina", label: "Ambiente oficina (grabado)", src: "/assets/sfx/ambiente_oficina.mp3", duration: 60, builtin: true },
+  { id: "sfx_ambiente_recepcion", label: "Ambiente recepción (grabado)", src: "/assets/sfx/ambiente_recepcion.mp3", duration: 60, builtin: true },
+];
+import type { Catalog, Character, ExpressionPrefab, FaceAsset, FaceOverrides, Pose, Sound } from "./types";
 
 export type * from "./types";
 export { FACE_SLOTS } from "./types";
@@ -41,7 +51,7 @@ export function applyOverrides(c: Catalog, ...layers: (FaceOverrides | null | un
 }
 
 /** Catálogo por defecto (base + overrides del repositorio + sonidos incluidos). La app añade los locales del usuario. */
-export const catalog: Catalog = { ...applyOverrides(baseCatalog, repoOverrides), sounds: BUILTIN_SOUNDS };
+export const catalog: Catalog = { ...applyOverrides(baseCatalog, repoOverrides), sounds: [...BUILTIN_SOUNDS, ...RECORDED_SOUNDS] };
 
 export function findSound(c: Catalog, id: string) {
   return c.sounds?.find((x) => x.id === id);

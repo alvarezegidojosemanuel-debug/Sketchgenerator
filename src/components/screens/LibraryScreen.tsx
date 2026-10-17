@@ -14,10 +14,6 @@ import { Card, Field } from "../ui";
 
 type Kind = "prop" | "background" | "sound";
 const KIND_LABEL: Record<Kind, string> = { prop: "Objetos", background: "Escenarios", sound: "Sonidos" };
-const AMBIENT_PRESETS = [
-  { id: "sfx_ambiente_oficina", label: "Ambiente oficina", duration: 22, text: "Busy open-plan office ambience: several people typing on keyboards, mouse clicks, air conditioning hum, a printer in the background, unintelligible murmur of coworkers, no music, continuous" },
-  { id: "sfx_ambiente_recepcion", label: "Ambiente recepción", duration: 22, text: "Office building reception lobby ambience: footsteps on tiles, people walking by, unintelligible murmur, a door opening, air conditioning hum, an elevator ding, no music, continuous" },
-];
 const PREFIX: Record<Kind, string> = { prop: "prop_", background: "bg_", sound: "sfx_" };
 
 const blobToDataUrl = (b: Blob) => new Promise<string>((res) => { const r = new FileReader(); r.onload = () => res(String(r.result)); r.readAsDataURL(b); });
@@ -69,9 +65,9 @@ export function LibraryScreen({ s }: { s: PocketState }) {
     if (done) setMsg((m) => m ?? `${done} recurso(s) añadidos. Ya puedes usarlos en Editar y ChatGPT los verá en el prompt.`);
   };
 
-  const genSfx = async (preset?: { id: string; label: string; text: string; duration: number }) => {
-    const text = preset?.text ?? sfxText;
-    const duration = preset?.duration ?? sfxDur;
+  const genSfx = async () => {
+    const text = sfxText;
+    const duration = sfxDur;
     const code = accessCode.get();
     if (!code) return setMsg("Primero conecta ElevenLabs en Ver → Voces (código de acceso).");
     setBusy("Generando sonido con ElevenLabs…");
@@ -79,10 +75,10 @@ export function LibraryScreen({ s }: { s: PocketState }) {
       const r = await fetch("/api/voice/sfx", { method: "POST", headers: { "content-type": "application/json", "x-pocket-code": code }, body: JSON.stringify({ text, duration }) });
       if (!r.ok) throw new Error((await r.json().catch(() => ({}))).message ?? `Error ${r.status}`);
       const blob = await r.blob();
-      const label = preset?.label ?? text.slice(0, 40);
-      await saveLibraryItem({ id: preset?.id ?? uniqueId(label), kind: "sound", label, blob, width: 0, height: 0, duration: await audioDuration(blob), createdAt: Date.now(), prompt: text });
-      setMsg(preset ? `«${preset.label}» listo: ya suena de fondo en las escenas de ese sitio.` : "Sonido generado y guardado.");
-      if (!preset) setSfxText("");
+      const label = text.slice(0, 40);
+      await saveLibraryItem({ id: uniqueId(label), kind: "sound", label, blob, width: 0, height: 0, duration: await audioDuration(blob), createdAt: Date.now(), prompt: text });
+      setMsg("Sonido generado y guardado.");
+      setSfxText("");
     } catch (e) {
       setMsg(`No se pudo generar: ${e instanceof Error ? e.message : e}`);
     } finally {
@@ -170,18 +166,6 @@ export function LibraryScreen({ s }: { s: PocketState }) {
           <p className="fine">Pega el prompt en ChatGPT y adjunta la imagen de referencia para que copie el estilo. Descarga el resultado (PNG) y súbelo aquí abajo.</p>
         </Card>
       ) : (
-        <>
-        <Card title="Ambiente de fondo (un toque)">
-          <p className="fine">Genera el ruido de fondo que suena en bucle, muy bajito, en las escenas de oficina y recepción.</p>
-          <div className="row">
-            {AMBIENT_PRESETS.map((a) => (
-              <button key={a.id} type="button" className="btn btn-secondary" disabled={busy !== null} onClick={() => void genSfx(a)}>
-                {(catalog.sounds ?? []).some((x) => x.id === a.id) ? "✓ " : ""}{a.label}
-              </button>
-            ))}
-          </div>
-          <p className="fine">Si ya existe, lo vuelve a generar y lo sustituye. También puedes subir un audio tuyo con «ambiente oficina» o «ambiente recepcion» en el nombre del archivo.</p>
-        </Card>
         <Card title="Generar sonido con ElevenLabs">
           <Field label="Describe el sonido (mejor en inglés o español sencillo)">
             <input value={sfxText} maxLength={300} placeholder={SFX_IDEAS[0]} onChange={(e) => setSfxText(e.target.value)} />
@@ -196,12 +180,11 @@ export function LibraryScreen({ s }: { s: PocketState }) {
           <Field label={`Duración: ${sfxDur} s`}>
             <input type="range" min={0.5} max={10} step={0.5} value={sfxDur} onChange={(e) => setSfxDur(Number(e.target.value))} />
           </Field>
-          <button type="button" className="btn btn-primary" disabled={!sfxText.trim() || busy !== null} onClick={() => void genSfx()}>
+          <button type="button" className="btn btn-primary" disabled={!sfxText.trim() || busy !== null} onClick={genSfx}>
             ✨ Generar sonido
           </button>
           <p className="fine">Gasta créditos de ElevenLabs (poco). El sonido queda guardado para reutilizarlo.</p>
         </Card>
-        </>
       )}
 
       <Card title={`2 · Sube ${KIND_LABEL[kind].toLowerCase()}`}>
