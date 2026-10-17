@@ -15,8 +15,8 @@ import { Card, Field } from "../ui";
 type Kind = "prop" | "background" | "sound";
 const KIND_LABEL: Record<Kind, string> = { prop: "Objetos", background: "Escenarios", sound: "Sonidos" };
 const AMBIENT_PRESETS = [
-  { id: "sfx_ambiente_oficina", label: "Ambiente oficina", duration: 22, text: "Quiet open-plan office room tone: soft distant keyboard typing, faint air conditioning hum, occasional mouse clicks, very distant muffled murmur, no clear voices, no music, steady and loopable" },
-  { id: "sfx_ambiente_recepcion", label: "Ambiente recepción", duration: 22, text: "Calm office building lobby room tone: soft air conditioning hum, distant footsteps on tiles, faint far-away elevator ding, very distant muffled murmur, no clear voices, no music, steady and loopable" },
+  { id: "sfx_ambiente_oficina", label: "Ambiente oficina", duration: 22, text: "Busy open-plan office ambience: several people typing on keyboards, mouse clicks, air conditioning hum, a printer in the background, unintelligible murmur of coworkers, no music, continuous" },
+  { id: "sfx_ambiente_recepcion", label: "Ambiente recepción", duration: 22, text: "Office building reception lobby ambience: footsteps on tiles, people walking by, unintelligible murmur, a door opening, air conditioning hum, an elevator ding, no music, continuous" },
 ];
 const PREFIX: Record<Kind, string> = { prop: "prop_", background: "bg_", sound: "sfx_" };
 
@@ -252,7 +252,7 @@ export function LibraryScreen({ s }: { s: PocketState }) {
         <ul className="lib-grid">
           {builtins.map((b) => (
             <li key={b.id} className="lib-item">
-              {"src" in b && kind !== "sound" ? <img src={b.src} alt="" /> : <button type="button" className="btn btn-small" onClick={async () => { await unlockAudio(); void playSound(catalog, b.id); }}>▶</button>}
+              {"src" in b && kind !== "sound" ? <img src={b.src} alt="" /> : <button type="button" className="btn btn-small" onClick={async () => { await unlockAudio(); if (!(await playSound(catalog, b.id))) setMsg("No se pudo reproducir ese sonido."); }}>▶</button>}
               <small>{b.label}</small>
               <code>{b.id}</code>
             </li>
@@ -269,7 +269,7 @@ function LibItem({ it, s, onSave, onRemove }: { it: LibraryItem; s: PocketState;
   return (
     <li className="lib-item">
       {it.kind === "sound" ? (
-        <button type="button" className="btn btn-small" onClick={async () => { await unlockAudio(); void playSound(s.catalog, it.id); }}>
+        <button type="button" className="btn btn-small" onClick={async () => { await unlockAudio(); if (!(await playSound(s.catalog, it.id))) alert("No se pudo reproducir: el audio está vacío o dañado. Vuelve a generarlo o súbelo de nuevo."); }}>
           ▶ {it.duration?.toFixed(1)} s
         </button>
       ) : (

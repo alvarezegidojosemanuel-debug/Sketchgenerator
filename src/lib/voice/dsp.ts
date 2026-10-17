@@ -147,3 +147,25 @@ export function masterVoice(samples: Float32Array, sampleRate: number): Float32A
   }
   return out;
 }
+
+/** Lleva un sonido a un nivel estándar (medido en los tramos que suenan) sin pasar de 0,95 de pico. */
+export function normalizeLevel(samples: Float32Array, sampleRate: number, targetRms = 0.12): Float32Array {
+  const win = Math.max(1, Math.round(sampleRate * 0.05));
+  const rms: number[] = [];
+  let peak = 0;
+  for (let i = 0; i < samples.length; i += win) {
+    let s = 0;
+    const end = Math.min(samples.length, i + win);
+    for (let j = i; j < end; j++) {
+      s += samples[j]! * samples[j]!;
+      peak = Math.max(peak, Math.abs(samples[j]!));
+    }
+    rms.push(Math.sqrt(s / (end - i)));
+  }
+  if (peak < 1e-5) return samples;
+  const loud = Math.max(...rms);
+  const active = rms.filter((r) => r > loud * 0.1);
+  const level = Math.sqrt(active.reduce((a, r) => a + r * r, 0) / Math.max(1, active.length));
+  const gain = Math.min(targetRms / Math.max(level, 1e-6), 0.95 / peak, 200);
+  return samples.map((x) => x * gain);
+}

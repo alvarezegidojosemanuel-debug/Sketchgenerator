@@ -2,7 +2,7 @@
 /** Carga y reproduce sonidos del catálogo (sintetizados o archivos de la biblioteca). */
 import type { Catalog } from "@/lib/catalog/types";
 import { findSound } from "@/lib/catalog";
-import { envelope } from "@/lib/voice/dsp";
+import { envelope, normalizeLevel } from "@/lib/voice/dsp";
 import { audioContext, playClip, type Clip } from "@/lib/voice/piper";
 import { SR, synthSamples } from "./synth";
 
@@ -16,7 +16,8 @@ async function load(src: string): Promise<Clip | null> {
   try {
     const buf = await (await fetch(src)).arrayBuffer();
     const a = await audioContext().decodeAudioData(buf);
-    const samples = new Float32Array(a.getChannelData(0));
+    // los sonidos de la biblioteca llegan a volúmenes muy distintos (un ambiente generado puede salir casi mudo)
+    const samples = normalizeLevel(new Float32Array(a.getChannelData(0)), a.sampleRate);
     return { samples, sampleRate: a.sampleRate, env: envelope(samples, a.sampleRate), duration: a.duration };
   } catch {
     return null;
@@ -36,9 +37,9 @@ export async function preloadSounds(catalog: Catalog, soundIds: string[]) {
 }
 
 /** maxDur: corta el sonido (con un fundido corto) al acabar su evento, p. ej. el ambiente en bucle al cambiar de escena. */
-export async function playSound(catalog: Catalog, soundId: string, volume = 1, maxDur?: number) {
+export async function playSound(catalog: Catalog, soundId: string, volume = 1, maxDur?: number): Promise<boolean> {
   const clip = await soundClip(catalog, soundId);
-  if (!clip) return;
+  if (!clip) return false;
   const ctx = audioContext();
   const g = ctx.createGain();
   g.gain.value = volume;
@@ -50,4 +51,5 @@ export async function playSound(catalog: Catalog, soundId: string, volume = 1, m
     g.gain.linearRampToValueAtTime(0, end);
     setTimeout(stop, Math.max(50, maxDur * 1000 + 50));
   }
+  return true;
 }
