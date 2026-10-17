@@ -166,17 +166,17 @@
         },
         {
           "dice": "Vanesa",
-          "texto": "¡ALTO AHÍ! Sin fichar no pasa nadie. Y el viernes tampoco fichaste.",
+          "texto": "¡ALTO AHÍ! Sin fichar no pasa nadie.",
           "gesto": "senala"
         },
         {
           "dice": "Jefe",
-          "texto": "Eso se lo preguntaré al Jefe del pasado.",
-          "gesto": "explica"
+          "texto": "Uy… me he vuelto a olvidar la tarjeta.",
+          "gesto": "confundido"
         },
         {
           "dice": "Vanesa",
-          "texto": "¡El del pasado TAMPOCO ficha!",
+          "texto": "¿Otra vez? Es la tercera esta semana. Y estamos a lunes.",
           "gesto": "explica"
         },
         {
