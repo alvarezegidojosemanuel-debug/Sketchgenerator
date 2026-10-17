@@ -10,7 +10,7 @@ import { speak, stopSpeaking } from "@/lib/tts";
 import { levelAt } from "@/lib/voice/dsp";
 import { clipKey } from "@/lib/voice/fit";
 import { playClip, stopAllClips, type Clip } from "@/lib/voice/piper";
-import { playSound, preloadSounds } from "@/lib/sfx/player";
+import { mixVolume, playSound, preloadSounds } from "@/lib/sfx/player";
 import { preloadProject } from "@/lib/renderer/preload";
 
 export type VoiceEngine = "elevenlabs" | "piper" | "browser" | "off";
@@ -56,7 +56,7 @@ export function usePlayer(project: PocketProject, catalog: Catalog, opts: { engi
         });
       },
       onSfx: (e) => {
-        void playSound(catalogRef.current, e.soundId, e.volume ?? 1, e.duration);
+        void playSound(catalogRef.current, e.soundId, mixVolume(e.soundId, e.volume ?? 1), e.duration);
       },
       onInterrupt: () => {
         stopSpeaking();

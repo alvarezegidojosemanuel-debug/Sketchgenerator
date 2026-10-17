@@ -144,7 +144,8 @@ export async function handleTts(body: unknown, ip: string, code: string | null, 
         language_code: model === "eleven_v3" ? undefined : "es",
         previous_text: model === "eleven_v3" ? undefined : previousText,
         next_text: model === "eleven_v3" ? undefined : nextText,
-        voice_settings: { stability: settings.stability, similarity_boost: settings.similarity, style: settings.style, use_speaker_boost: true, speed: settings.speed },
+        // v3 solo admite 0 (creativa), 0,5 (natural) y 1 (robusta)
+        voice_settings: { stability: model === "eleven_v3" ? (settings.stability < 0.25 ? 0 : settings.stability < 0.75 ? 0.5 : 1) : settings.stability, similarity_boost: settings.similarity, style: settings.style, use_speaker_boost: true, speed: settings.speed },
         // semilla fija por frase: la misma frase suena igual en cualquier dispositivo
         seed: seedOf(`${voiceId}|${model}|${text}`),
       }),

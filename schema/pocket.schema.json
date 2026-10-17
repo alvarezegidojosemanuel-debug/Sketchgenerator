@@ -127,6 +127,10 @@
                   "eleven_v3",
                   "eleven_flash_v2_5"
                 ]
+              },
+              "tag": {
+                "type": "string",
+                "maxLength": 60
               }
             },
             "required": [

@@ -118,7 +118,7 @@ export async function generateElevenDialogue(
     const inputs = group.map((l) => {
       const c = cast?.[l.characterId];
       if (!c) throw new Error(`Falta la voz ElevenLabs de «${l.characterId}» en el reparto.`);
-      return { text: l.text.trim(), voiceId: c.voiceId };
+      return { text: withTag(l.text.trim(), c), voiceId: c.voiceId };
     });
     const stab = group.reduce((s, l) => s + (cast?.[l.characterId]?.stability ?? 0.5), 0) / group.length;
     const stability = stab < 0.34 ? 0 : stab < 0.67 ? 0.5 : 1; // v3: creativo / natural / robusto
@@ -187,6 +187,13 @@ export function shiftPitch(p: { samples: Float32Array; sampleRate: number }, k: 
   return { samples: out, sampleRate: p.sampleRate };
 }
 
+/** Aplica la acotación propia del personaje (si la tiene) en lugar de la automática del principio de la frase. */
+export function withTag(text: string, c?: { tag?: string }): string {
+  const t = c?.tag?.trim().replace(/[[\]]/g, "");
+  if (!t) return text;
+  return `[${t}] ${text.replace(/^\s*\[[^\]]*\]\s*/, "")}`;
+}
+
 function toClip(p: { samples: Float32Array; sampleRate: number }): Clip {
   const samples = masterVoice(p.samples, p.sampleRate);
   return { samples, sampleRate: p.sampleRate, env: envelope(samples, p.sampleRate), duration: samples.length / p.sampleRate };
@@ -213,7 +220,7 @@ export async function generateElevenLines(
     const model = c.model ?? (globalModel === "dialogue_v3" ? "eleven_v3" : globalModel);
     const ctx: { previousText?: string; nextText?: string } =
       model === "eleven_v3" ? {} : { previousText: prevL ? stripAudioTags(prevL).slice(0, 400) : undefined, nextText: nextL ? stripAudioTags(nextL).slice(0, 400) : undefined };
-    const text = model === "eleven_v3" ? l.text.trim() : stripAudioTags(l.text);
+    const text = model === "eleven_v3" ? withTag(l.text.trim(), c) : stripAudioTags(l.text);
     const speed = Math.min(1.2, Math.max(0.7, c.speed * (l.rate ?? 1)));
     const ck = `el3|${model}|${c.voiceId}|${c.stability}|${c.similarity}|${c.style}|${speed.toFixed(2)}|${text}|${ctx.previousText ?? ""}|${ctx.nextText ?? ""}`;
     let hit = await clipCache.get(ck).catch(() => undefined);

@@ -1,5 +1,6 @@
 "use client";
 
+import { ambientVolume } from "@/lib/sfx/player";
 import { useEffect, useMemo, useState } from "react";
 import { evaluateTake, projectSchedule } from "@/lib/timeline/evaluate";
 import { ttsSupported } from "@/lib/tts";
@@ -17,7 +18,7 @@ import { Stage } from "../Stage";
 import { usePlayer, type VoiceEngine } from "../usePlayer";
 import type { PocketState } from "../usePocket";
 import { VoiceCast } from "../VoiceCast";
-import { Card, IssueList } from "../ui";
+import { Card, Field, IssueList } from "../ui";
 
 const fmt = (t: number) => `${Math.floor(t / 60)}:${(t % 60).toFixed(1).padStart(4, "0")}`;
 const ENGINE_KEY = "pocket:voiceEngine";
@@ -304,6 +305,7 @@ export function PreviewScreen({ s }: { s: PocketState }) {
       {engine === "piper" && <VoiceCast s={s} />}
       {engine === "elevenlabs" && <ElevenCast s={s} model={model} onModel={setModel} code={code} onCode={setCode} lines={lines} />}
       {engine === "elevenlabs" && code && <VoiceCasting s={s} code={code} />}
+      <AmbientVolume />
       <Card title="Configuración de voces de esta escena">
         <p className="fine">Copia la configuración tal y como suena ahora (voces, ajustes de cada personaje, motor y modelo) para pasársela a Claude o pegarla en otro dispositivo.</p>
         <div className="row">
@@ -315,5 +317,17 @@ export function PreviewScreen({ s }: { s: PocketState }) {
         ✎ Editar este sketch
       </button>
     </div>
+  );
+}
+
+/** Volumen del ruido de fondo (oficina, recepción…), guardado en este dispositivo. */
+function AmbientVolume() {
+  const [v, setV] = useState(() => ambientVolume.get());
+  return (
+    <Card title="Ruido de fondo">
+      <Field label={`Volumen del ambiente: ${Math.round(v * 100)} %`} hint="0 % = sin ambiente. Se aplica al reproducir y al exportar el vídeo.">
+        <input type="range" min={0} max={1.5} step={0.05} value={v} onChange={(e) => { const x = Number(e.target.value); setV(x); ambientVolume.set(x); }} />
+      </Field>
+    </Card>
   );
 }

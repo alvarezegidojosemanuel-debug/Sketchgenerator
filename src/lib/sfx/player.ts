@@ -6,6 +6,27 @@ import { envelope, normalizeLevel } from "@/lib/voice/dsp";
 import { audioContext, playClip, type Clip } from "@/lib/voice/piper";
 import { SR, synthSamples } from "./synth";
 
+/** Volumen del ambiente de fondo (bucles «sfx_ambiente_*»), ajustable en Ver; 1 = el del guion. */
+const AMB_KEY = "pocket:ambientVolume";
+export const ambientVolume = {
+  get(): number {
+    try {
+      const v = Number(localStorage.getItem(AMB_KEY));
+      return Number.isFinite(v) && localStorage.getItem(AMB_KEY) !== null ? Math.min(2, Math.max(0, v)) : 0.5;
+    } catch {
+      return 0.5;
+    }
+  },
+  set(v: number) {
+    try {
+      localStorage.setItem(AMB_KEY, String(v));
+    } catch {
+      /* sin almacenamiento */
+    }
+  },
+};
+export const mixVolume = (soundId: string, volume = 1) => (soundId.startsWith("sfx_ambiente") ? volume * ambientVolume.get() : volume);
+
 const cache = new Map<string, Promise<Clip | null>>();
 
 async function load(src: string): Promise<Clip | null> {

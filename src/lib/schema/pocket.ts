@@ -246,6 +246,8 @@ export const ElevenCast = z.object({
   pitch: z.number().min(0.8).max(1.3).optional(),
   /** Modelo propio de este personaje (p. ej. v3 para un tono más exagerado con acotaciones). */
   model: z.enum(["eleven_multilingual_v2", "eleven_v3", "eleven_flash_v2_5"]).optional(),
+  /** Acotación propia (v3), p. ej. «furious» o «sarcastic, exaggerated»: sustituye a la automática en sus frases. */
+  tag: z.string().max(60).optional(),
 });
 
 export const PocketProject = z.object({

@@ -157,7 +157,7 @@ export function ElevenCast({ s, model, onModel, code, onCode, lines = [] }: Prop
               {c && model === "dialogue_v3" && <p className="fine">⚠ En modo conversación ElevenLabs solo usa la voz y la estabilidad: el estilo, el parecido, la velocidad y el modelo de cada personaje se ignoran. Para que se respeten, elige «frase a frase» arriba.</p>}
               {c && (
                 <div className="grid2">
-                  <Field label="Estabilidad" hint="baja = más expresiva">
+                  <Field label="Estabilidad" hint="En v3 solo cuenta 0 (creativa, la más exagerada), 0,5 (natural) o 1 (estable).">
                     <Stepper value={c.stability} step={0.05} min={0} max={1} onChange={(x) => set(cid, { stability: x })} />
                   </Field>
                   <Field label="Estilo / exageración">
@@ -180,6 +180,11 @@ export function ElevenCast({ s, model, onModel, code, onCode, lines = [] }: Prop
                     </select>
                   </Field>
                 </div>
+              )}
+              {c && (
+                <Field label="Acotación (solo v3)" hint="Cómo dice TODAS sus frases, en inglés: furious, exasperated, sarcastic, whispering, shouting, overly dramatic… Vacío = la automática.">
+                  <input value={c.tag ?? ""} maxLength={60} placeholder="automática" onChange={(e) => set(cid, { tag: e.target.value || undefined })} />
+                </Field>
               )}
               {c && <TryLine cid={cid} entry={c} model={model} code={code} lines={lines.filter((l) => l.characterId === cid)} />}
             </div>

@@ -12,7 +12,7 @@ import { projectImageUrls } from "@/lib/renderer/preload";
 import { encodeWav, levelAt } from "@/lib/voice/dsp";
 import { clipKey } from "@/lib/voice/fit";
 import type { Clip } from "@/lib/voice/piper";
-import { soundClip } from "@/lib/sfx/player";
+import { mixVolume, soundClip } from "@/lib/sfx/player";
 import { drawFrame, H, W, type ImageMap } from "./draw";
 
 export interface ExportProgress {
@@ -77,7 +77,7 @@ async function mixAudio(project: PocketProject, catalog: Catalog, clips: Map<str
         if (c) add(c, s.offset + e.start);
       } else if (e.track === "sfx") {
         const c = await soundClip(catalog, e.soundId);
-        if (c) add(c, s.offset + e.start, e.volume ?? 1, e.duration);
+        if (c) add(c, s.offset + e.start, mixVolume(e.soundId, e.volume ?? 1), e.duration);
       }
     }
   }
