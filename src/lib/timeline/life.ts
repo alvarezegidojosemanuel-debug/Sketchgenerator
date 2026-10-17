@@ -120,14 +120,14 @@ export function applyLife(take: Take, catalog: Catalog, t: number, actors: Map<s
       const to = looks.get(l.actorUid)?.target;
       const other = to ? actors.get(to) : undefined;
       const dir = other ? Math.sign(other.x - sp.x) : 0;
-      const loud = /[!¡]/.test(l.text) ? 1.6 : 1;
-      sp.skew += (-dir * 0.8 + Math.sin((t + ph * 3) * Math.PI * 2 * 0.85) * 0.8 * loud) * into;
+      const loud = /[!¡]/.test(l.text) ? 1.3 : 1;
+      sp.skew += (-dir * 0.3 + Math.sin((t + ph * 3) * Math.PI * 2 * 0.5) * 0.25 * loud) * into;
       // cabeza: se gira hacia quien escucha y acompaña la frase con cabeceos
-      sp.headRot += (dir * 2 + Math.sin((t + ph) * Math.PI * 2 * 1.15) * 1.6 * loud) * into;
-      sp.headDy += Math.abs(Math.sin((t + ph * 2) * Math.PI * 2 * 1.6)) * 1.5 * loud * into;
-      const beat = Math.abs(Math.sin((t + ph) * Math.PI * 2 * 1.7));
-      sp.sy *= 1 + beat * 0.012 * loud * into;
-      sp.offX += Math.sin((t + ph * 3) * 2.2) * 1;
+      sp.headRot += (dir * 1.2 + Math.sin((t + ph) * Math.PI * 2 * 0.7) * 0.6 * loud) * into;
+      sp.headDy += Math.abs(Math.sin((t + ph * 2) * Math.PI * 2 * 0.9)) * 0.5 * loud * into;
+      const beat = Math.abs(Math.sin((t + ph) * Math.PI * 2 * 1.0));
+      sp.sy *= 1 + beat * 0.004 * loud * into;
+      sp.offX += Math.sin((t + ph * 3) * 1.4) * 0.3 * into;
     }
     if (prev && prev !== l.actorUid) {
       const lis = actors.get(prev);
