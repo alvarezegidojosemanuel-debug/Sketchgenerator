@@ -1,0 +1,26 @@
+{
+  "formato": "puñetos-guion-1",
+  "titulo": "Prueba técnica: Puñetos nuevos",
+  "idea": "Prueba de los Puñetos rediseñados (guion provisional).",
+  "escenas": [
+    {
+      "nombre": "Sistemas",
+      "lugar": "bg_sistemas",
+      "vista": "puñetos",
+      "personajes": ["Jefe", "Sister"],
+      "pasos": [
+        { "dice": "Jefe", "texto": "Sister… ¿tú también te ves azul?", "gesto": "sorprendido" },
+        { "dice": "Sister", "texto": "Azul, gominola y con el pelo perfecto.", "gesto": "explica" },
+        { "dice": "Jefe", "texto": "Pues yo me veo guapísimo.", "gesto": "ajusta_gafas" }
+      ]
+    },
+    {
+      "nombre": "KO",
+      "lugar": "bg_sala_anastasia_noche",
+      "vista": "puñetos",
+      "personajes": ["Jefe", "Sister"],
+      "tumbados": ["Jefe", "Sister"],
+      "pasos": [{ "pausa": 2 }]
+    }
+  ]
+}
