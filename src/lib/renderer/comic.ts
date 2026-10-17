@@ -2,8 +2,8 @@
  * Recursos de cómic sobre los personajes (gotas de sudor, susto, vena de enfado, líneas de movimiento,
  * risas y onomatopeyas). Se dibujan en canvas: los usan el escenario y el MP4.
  */
-export type ComicKind = "sudor" | "sorpresa" | "enfado" | "lineas" | "risa" | "onomatopeya" | "rotulo" | "humo";
-export const COMIC_KINDS: ComicKind[] = ["sudor", "sorpresa", "enfado", "lineas", "risa", "onomatopeya", "rotulo", "humo"];
+export type ComicKind = "sudor" | "sorpresa" | "enfado" | "lineas" | "risa" | "onomatopeya" | "rotulo" | "humo" | "corazones";
+export const COMIC_KINDS: ComicKind[] = ["sudor", "sorpresa", "enfado", "lineas", "risa", "onomatopeya", "rotulo", "humo", "corazones"];
 
 export interface ComicState {
   kind: ComicKind;
@@ -78,6 +78,23 @@ function comicText(ctx: Ctx, text: string, size: number, fill: string) {
   ctx.strokeText(text, 0, 0);
   ctx.fillStyle = fill;
   ctx.fillText(text, 0, 0);
+}
+
+function heart(ctx: Ctx, r: number) {
+  ctx.beginPath();
+  ctx.moveTo(0, r * 0.9);
+  ctx.bezierCurveTo(-r * 1.6, -r * 0.1, -r * 0.8, -r * 1.3, 0, -r * 0.45);
+  ctx.bezierCurveTo(r * 0.8, -r * 1.3, r * 1.6, -r * 0.1, 0, r * 0.9);
+  ctx.closePath();
+  ctx.fillStyle = "#ff4f8b";
+  ctx.fill();
+  ctx.lineWidth = r * 0.16;
+  ctx.strokeStyle = INK;
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.ellipse(-r * 0.45, -r * 0.45, r * 0.18, r * 0.28, -0.6, 0, Math.PI * 2);
+  ctx.fillStyle = "#ffffff";
+  ctx.fill();
 }
 
 export function drawComic(ctx: Ctx, c: ComicState) {
@@ -182,6 +199,24 @@ export function drawComic(ctx: Ctx, c: ComicState) {
       }
       break;
     }
+    case "corazones": {
+      // corazones que brotan y suben flotando (enamoramiento)
+      for (let i = 0; i < 6; i++) {
+        const lt = t - i * 0.18;
+        if (lt < 0) continue;
+        const rise = lt * 110 * u;
+        const sway = Math.sin(lt * 4 + i * 1.7) * 26 * u;
+        const ox = (i % 2 ? 1 : -1) * (40 + ((i * 37) % 90)) * u;
+        const s = Math.min(1, lt / 0.25) * (0.75 + ((i * 13) % 5) * 0.08) * scale;
+        ctx.save();
+        ctx.translate(c.x + ox + sway, c.y - 60 * u - rise);
+        ctx.rotate(Math.sin(lt * 3 + i) * 0.25);
+        ctx.scale(s, s);
+        heart(ctx, 30 * u);
+        ctx.restore();
+      }
+      break;
+    }
     case "humo": {
       // nube de polvo de cómic donde estaba alguien que sale disparado (en el suelo, se deshace)
       const p = clamp01(t / Math.max(0.3, c.duration));
@@ -205,12 +240,13 @@ export function drawComic(ctx: Ctx, c: ComicState) {
       // cartela de cómic arriba (lugar / hora): «LUNES · 08:59 — Cuatro días antes»
       const lines = (c.text ?? "").split(/\s*[—|]\s*/).filter(Boolean).slice(0, 2);
       const big = lines.length === 1 && lines[0].length <= 12 ? 1.9 : 1; // título
-      ctx.translate(c.x, c.y);
-      ctx.rotate(-0.02);
-      ctx.scale(scale * u * big, scale * u * big);
-      ctx.font = `900 64px "Arial Black", Impact, system-ui, sans-serif`;
       const w0 = Math.max(...lines.map((l, i) => { ctx.font = `900 ${i ? 40 : 64}px "Arial Black", Impact, system-ui, sans-serif`; return ctx.measureText(l).width; }), 200);
       const bw = w0 + 80;
+      // los rótulos largos se encogen para caber en pantalla (1080 px de ancho, con margen)
+      const fit = Math.min(1, 1010 / (bw * u * big));
+      ctx.translate(c.x, c.y);
+      ctx.rotate(-0.02);
+      ctx.scale(scale * u * big * fit, scale * u * big * fit);
       const bh = lines.length > 1 ? 170 : 110;
       ctx.fillStyle = INK;
       ctx.fillRect(-bw / 2 + 10, -bh / 2 + 10, bw, bh);

@@ -84,9 +84,9 @@ const AMBIENT_BY_BG: Record<string, string> = {
 };
 const SOUND_ALIAS: Record<string, string> = { telefono: "sfx_telefono", alarma: "sfx_alarma", pop: "sfx_pop", whoosh: "sfx_whoosh", ding: "sfx_ding", boing: "sfx_boing", golpe: "sfx_golpe", fracaso: "sfx_fracaso", teclado: "sfx_teclado", pantallazo: "sfx_pantallazo", servidor: "sfx_servidor", explosion: "sfx_explosion", portazo: "sfx_golpe" };
 
-const COMIC_FX: Record<string, "sudor" | "sorpresa" | "enfado" | "lineas" | "risa" | "onomatopeya"> = {
+const COMIC_FX: Record<string, "sudor" | "sorpresa" | "enfado" | "lineas" | "risa" | "onomatopeya" | "corazones"> = {
   sudor: "sudor", gotas: "sudor", sorpresa: "sorpresa", susto: "sorpresa", enfado: "enfado", vena: "enfado", furia: "enfado",
-  lineas: "lineas", velocidad: "lineas", risa: "risa", ja: "risa", jaja: "risa", onomatopeya: "onomatopeya", zas: "onomatopeya",
+  lineas: "lineas", velocidad: "lineas", risa: "risa", ja: "risa", jaja: "risa", onomatopeya: "onomatopeya", zas: "onomatopeya", corazones: "corazones", corazon: "corazones", amor: "corazones", enamorada: "corazones",
 };
 
 /**
@@ -143,6 +143,8 @@ class SceneBuilder {
   px = new Map<string, number>();
   /** Ya está colgada la tele de Anastas-IA en esta escena. */
   iaTv = false;
+  /** Dónde cuelga la tele de Anastas-IA (para poner efectos sobre ella). */
+  iaTvPos?: { x: number; y: number; scale: number };
   constructor(
     readonly id: string,
     readonly back: boolean,
@@ -394,6 +396,7 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
               const tv = isObj(sc.pantalla) ? sc.pantalla : {};
               b.add({ track: "props", propId: "prop_anastasia_tv", altPropId: "prop_anastasia_tv_boca", talkOf: "anastasia", layer: "props-back", x: typeof tv.x === "number" ? tv.x : 800, y: typeof tv.y === "number" ? tv.y : 640, scale: typeof tv.escala === "number" ? tv.escala : 0.85, enter: "none", exit: "none", duration: 999 }, 0);
               b.iaTv = true;
+              b.iaTvPos = { x: typeof tv.x === "number" ? tv.x : 800, y: typeof tv.y === "number" ? tv.y : 640, scale: typeof tv.escala === "number" ? tv.escala : 0.85 };
             }
           } else if (ia && catalog.props.some((x) => x.id === "prop_anastasia_pantalla")) {
             b.add({ track: "props", propId: "prop_anastasia_pantalla", layer: "props-front", x: 790, y: 700, scale: 1.35, duration: estimate(text) + 0.3, enter: "pop", exit: "fade", loop: "pulse" }, t0 - 0.15);
@@ -450,7 +453,8 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
         else issues.push({ path: `${sp}.sonido`, message: `sonido «${String(st.sonido)}» no existe` });
       } else if (st.efecto !== undefined) {
         const ef = norm(String(st.efecto));
-        const near = typeof st.donde === "string" ? b.actors.find((a) => a.uid === charId(st.donde, `${sp}.donde`)) : undefined;
+        const toIa = typeof st.donde === "string" && norm(st.donde).replace(/[^a-z]/g, "").startsWith("anastas") && !b.actors.some((a) => a.characterId === "anastasia");
+        const near = typeof st.donde === "string" && !toIa ? b.actors.find((a) => a.uid === charId(st.donde, `${sp}.donde`)) : undefined;
         if (ef === "explosion" || ef === "explota") {
           b.add({ track: "screen", effect: "explosion", duration: 1.9, x: near?.x ?? 540, y: near ? near.y - 300 : 1000, ...(text ? { text } : {}) });
           b.add({ track: "sfx", soundId: "sfx_explosion", duration: 2.4 });
@@ -467,8 +471,10 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
           b.add({ track: "screen", effect: "darken", duration: Number(st.durante) || 2 });
         } else if (COMIC_FX[ef]) {
           // recursos de cómic sobre un personaje
-          b.add({ track: "screen", effect: "comic", kind: COMIC_FX[ef], ...(near ? { actorUid: near.uid } : {}), duration: Number(st.durante) || 1.6, ...(text ? { text } : {}) });
-        } else issues.push({ path: `${sp}.efecto`, message: `efecto «${String(st.efecto)}» no existe (explosion, pantallazo, destello, temblor, oscuro, sudor, sorpresa, enfado, lineas, risa, onomatopeya)` });
+          // «donde: Anastas-IA» con su tele colgada: el efecto sale sobre la tele
+          const onTv = toIa ? b.iaTvPos : undefined;
+          b.add({ track: "screen", effect: "comic", kind: COMIC_FX[ef], ...(near ? { actorUid: near.uid } : {}), ...(onTv ? { x: Math.round(onTv.x), y: Math.round(onTv.y) } : {}), duration: Number(st.durante) || 1.6, ...(text ? { text } : {}) });
+        } else issues.push({ path: `${sp}.efecto`, message: `efecto «${String(st.efecto)}» no existe (explosion, pantallazo, destello, temblor, oscuro, sudor, sorpresa, enfado, lineas, risa, onomatopeya, corazones)` });
       } else if (st.camara !== undefined) {
         // planos de cámara: «general», «medio» / «primer_plano» de alguien, o un punto con zoom; «mover»: travelling suave
         const c = norm(String(st.camara));
