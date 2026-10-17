@@ -31,8 +31,8 @@
       "personajes": [
         "Jefe",
         "Sister",
-        "Barbas",
         "Usu",
+        "Barbas",
         "Reynaldo"
       ],
       "tumbados": [
@@ -44,37 +44,26 @@
       "transicion": "blanco",
       "pasos": [
         {
-          "cara": "Sister",
-          "emocion": "tristeza"
-        },
-        {
-          "cara": "Reynaldo",
-          "emocion": "tristeza"
+          "quien": "Usu",
+          "gesto": "sentado_teclea"
         },
         {
           "sonido": "servidor"
         },
         {
-          "objeto": "prop_escritorio",
-          "x": 460,
-          "y": 1800,
-          "escala": 0.5,
-          "profundidad": 5
-        },
-        {
           "camara": "punto",
-          "x": 480,
-          "y": 1450,
-          "zoom": 1.55
+          "x": 540,
+          "y": 1420,
+          "zoom": 1.25
         },
         {
           "teclea": "Usu",
-          "durante": 6
+          "durante": 2
         },
         {
           "dice": "Usu",
           "texto": "Vale… vale… esto tiene arreglo.",
-          "gesto": "reaction"
+          "gesto": "sentado_agobiado"
         },
         {
           "off": "Anastas-IA",
@@ -83,7 +72,7 @@
         {
           "dice": "Usu",
           "texto": "¡NI SE TE OCURRA!",
-          "gesto": "pointing"
+          "gesto": "sentado_panico"
         },
         {
           "sonido": "whoosh"
@@ -97,11 +86,38 @@
           "pausa": 0.6
         }
       ],
-      "escala": 0.62,
       "pantalla": {
         "x": 820,
         "y": 980,
         "escala": 0.7
+      },
+      "vista": "puñetos",
+      "colocar": {
+        "Usu": {
+          "x": 560,
+          "y": 1560,
+          "z": -5
+        },
+        "Jefe": {
+          "x": 230,
+          "y": 1760,
+          "z": 3
+        },
+        "Sister": {
+          "x": 470,
+          "y": 1870,
+          "z": 6
+        },
+        "Barbas": {
+          "x": 790,
+          "y": 1790,
+          "z": 4
+        },
+        "Reynaldo": {
+          "x": 900,
+          "y": 1900,
+          "z": 7
+        }
       }
     },
     {

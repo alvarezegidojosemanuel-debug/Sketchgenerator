@@ -6,6 +6,7 @@ import { pocketToV3, type ConversionReport } from "@/lib/adapters/v3";
 import { projectStore, type StoredProject } from "@/lib/storage/projects";
 import { validateProject } from "@/lib/schema/validate";
 import { demoProject, type PocketState } from "../usePocket";
+import { exportSharedConfig, importSharedConfig } from "@/lib/voice/fixedCast";
 import { Card, Field, IssueList } from "../ui";
 
 export function ProjectsScreen({ s }: { s: PocketState }) {
@@ -53,6 +54,8 @@ export function ProjectsScreen({ s }: { s: PocketState }) {
         <div className="row">
           <button type="button" className="btn btn-primary" onClick={exportPocket}>⬇ Exportar JSON</button>
           <button type="button" className="btn btn-secondary" onClick={exportV3}>⬇ Exportar V3</button>
+          <button type="button" className="btn btn-secondary" onClick={async () => { const t = exportSharedConfig(); try { await navigator.clipboard.writeText(t); alert("Configuración de voces copiada. Pégasela a Claude para dejarla igual en todos los dispositivos."); } catch { prompt("Copia esta configuración:", t); } }}>📋 Copiar configuración de voces</button>
+          <button type="button" className="btn btn-ghost" onClick={() => { const t = prompt("Pega aquí la configuración de voces copiada del otro dispositivo:"); if (t && importSharedConfig(t)) { alert("Configuración aplicada. Se recarga la app."); location.reload(); } else if (t) alert("No es una configuración válida."); }}>📥 Pegar configuración de voces</button>
           <label className="btn btn-secondary file-btn">
             ⬆ Importar
             <input type="file" accept=".json,application/json" onChange={(e) => importFile(e.target.files?.[0])} />
