@@ -84,9 +84,9 @@ const AMBIENT_BY_BG: Record<string, string> = {
 };
 const SOUND_ALIAS: Record<string, string> = { telefono: "sfx_telefono", alarma: "sfx_alarma", pop: "sfx_pop", whoosh: "sfx_whoosh", ding: "sfx_ding", boing: "sfx_boing", golpe: "sfx_golpe", fracaso: "sfx_fracaso", teclado: "sfx_teclado", pantallazo: "sfx_pantallazo", servidor: "sfx_servidor", explosion: "sfx_explosion", portazo: "sfx_golpe" };
 
-const COMIC_FX: Record<string, "sudor" | "sorpresa" | "enfado" | "lineas" | "risa" | "onomatopeya" | "corazones"> = {
+const COMIC_FX: Record<string, "sudor" | "sorpresa" | "enfado" | "lineas" | "risa" | "onomatopeya" | "corazones" | "mareo"> = {
   sudor: "sudor", gotas: "sudor", sorpresa: "sorpresa", susto: "sorpresa", enfado: "enfado", vena: "enfado", furia: "enfado",
-  lineas: "lineas", velocidad: "lineas", risa: "risa", ja: "risa", jaja: "risa", onomatopeya: "onomatopeya", zas: "onomatopeya", corazones: "corazones", corazon: "corazones", amor: "corazones", enamorada: "corazones",
+  lineas: "lineas", velocidad: "lineas", risa: "risa", ja: "risa", jaja: "risa", onomatopeya: "onomatopeya", zas: "onomatopeya", mareo: "mareo", aturdido: "mareo", estrellas: "mareo", corazones: "corazones", corazon: "corazones", amor: "corazones", enamorada: "corazones",
 };
 
 /**
@@ -358,7 +358,11 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
         const oz = typeof o.z === "number" ? Math.max(-100, Math.min(100, Math.round(o.z))) : sl.zIndex;
         const oflip = typeof o.mira === "string" ? { flip: norm(o.mira) === "izquierda" } : human && ox > 610 ? { flip: true } : {};
         b.px.set(cid, ox);
-        b.actors.push({ uid: cid, characterId: cid, poseId: ko ?? `char.${cid}.pose_${pose}`, x: ox, y: oy, scale: osc, zIndex: oz, ...(typeof o.x === "number" || typeof o.mira === "string" ? oflip : flip), ...(rot ? { rot } : {}), expressionId: b.expr(cid, "neutral") });
+        // «colocar»: { "gesto": "sentado_teclea" } = la escena empieza ya en esa postura (sin cambio a la vista)
+        const g0 = typeof o.gesto === "string" ? POSE_ALIAS[norm(o.gesto)] ?? norm(o.gesto) : undefined;
+        const p0 = g0 && !ko ? b.pose(cid, g0) : undefined;
+        if (p0 && isStateGesture(g0!)) b.rest.set(cid, p0);
+        b.actors.push({ uid: cid, characterId: cid, poseId: p0 ?? ko ?? `char.${cid}.pose_${pose}`, x: ox, y: oy, scale: osc, zIndex: oz, ...(typeof o.x === "number" || typeof o.mira === "string" ? oflip : flip), ...(rot ? { rot } : {}), expressionId: b.expr(cid, "neutral") });
       });
     }
     const steps = (Array.isArray(sc.pasos) ? sc.pasos : []) as unknown[];
@@ -484,7 +488,7 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
           // «donde: Anastas-IA» con su tele colgada: el efecto sale sobre la tele
           const onTv = toIa ? b.iaTvPos : undefined;
           b.add({ track: "screen", effect: "comic", kind: COMIC_FX[ef], ...(near ? { actorUid: near.uid } : {}), ...(onTv ? { x: Math.round(onTv.x), y: Math.round(onTv.y) } : {}), duration: Number(st.durante) || 1.6, ...(text ? { text } : {}) });
-        } else issues.push({ path: `${sp}.efecto`, message: `efecto «${String(st.efecto)}» no existe (explosion, pantallazo, destello, temblor, oscuro, sudor, sorpresa, enfado, lineas, risa, onomatopeya, corazones)` });
+        } else issues.push({ path: `${sp}.efecto`, message: `efecto «${String(st.efecto)}» no existe (explosion, pantallazo, destello, temblor, oscuro, sudor, sorpresa, enfado, lineas, risa, onomatopeya, corazones, mareo)` });
       } else if (st.camara !== undefined) {
         // planos de cámara: «general», «medio» / «primer_plano» de alguien, o un punto con zoom; «mover»: travelling suave
         const c = norm(String(st.camara));

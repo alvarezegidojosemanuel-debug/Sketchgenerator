@@ -162,7 +162,7 @@ export const ScreenEvent = z.object({
   /** flash = destello de color (alarma), shake = temblor de cámara, darken = oscurecer, bluescreen = pantallazo azul con texto. */
   effect: z.enum(["flash", "shake", "darken", "bluescreen", "explosion", "comic"]),
   /** Recurso de cómic sobre un actor (effect «comic»): sudor, sorpresa, enfado, lineas, risa, onomatopeya (con text). */
-  kind: z.enum(["sudor", "sorpresa", "enfado", "lineas", "risa", "onomatopeya", "rotulo", "humo", "corazones"]).optional(),
+  kind: z.enum(["sudor", "sorpresa", "enfado", "lineas", "risa", "onomatopeya", "rotulo", "humo", "corazones", "mareo"]).optional(),
   /** Explosión: dónde (px del lienzo) y tamaño. */
   x: coordX.optional(),
   y: coordY.optional(),

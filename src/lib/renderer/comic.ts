@@ -2,8 +2,8 @@
  * Recursos de cómic sobre los personajes (gotas de sudor, susto, vena de enfado, líneas de movimiento,
  * risas y onomatopeyas). Se dibujan en canvas: los usan el escenario y el MP4.
  */
-export type ComicKind = "sudor" | "sorpresa" | "enfado" | "lineas" | "risa" | "onomatopeya" | "rotulo" | "humo" | "corazones";
-export const COMIC_KINDS: ComicKind[] = ["sudor", "sorpresa", "enfado", "lineas", "risa", "onomatopeya", "rotulo", "humo", "corazones"];
+export type ComicKind = "sudor" | "sorpresa" | "enfado" | "lineas" | "risa" | "onomatopeya" | "rotulo" | "humo" | "corazones" | "mareo";
+export const COMIC_KINDS: ComicKind[] = ["sudor", "sorpresa", "enfado", "lineas", "risa", "onomatopeya", "rotulo", "humo", "corazones", "mareo"];
 
 export interface ComicState {
   kind: ComicKind;
@@ -78,6 +78,22 @@ function comicText(ctx: Ctx, text: string, size: number, fill: string) {
   ctx.strokeText(text, 0, 0);
   ctx.fillStyle = fill;
   ctx.fillText(text, 0, 0);
+}
+
+function star(ctx: Ctx, r: number, rot: number) {
+  ctx.rotate(rot);
+  ctx.beginPath();
+  for (let i = 0; i < 10; i++) {
+    const a = (i / 10) * Math.PI * 2 - Math.PI / 2;
+    const rr = i % 2 ? r * 0.45 : r;
+    ctx.lineTo(Math.cos(a) * rr, Math.sin(a) * rr);
+  }
+  ctx.closePath();
+  ctx.fillStyle = "#ffd23f";
+  ctx.fill();
+  ctx.lineWidth = r * 0.18;
+  ctx.strokeStyle = INK;
+  ctx.stroke();
 }
 
 function heart(ctx: Ctx, r: number) {
@@ -195,6 +211,24 @@ export function drawComic(ctx: Ctx, c: ComicState) {
         const s = Math.min(1, lt / 0.18);
         ctx.scale(s, s);
         comicText(ctx, "JA", (70 - i * 6) * u, "#ffffff");
+        ctx.restore();
+      }
+      break;
+    }
+    case "mareo": {
+      // estrellitas girando en círculo sobre la cabeza (aturdido); tumbados son «bajitos»: tamaño mínimo
+      const v = Math.max(u, 0.85);
+      ctx.translate(c.x, c.y - 40 * v);
+      ctx.scale(scale, scale);
+      const n = 5;
+      for (let i = 0; i < n; i++) {
+        const a = t * 3.2 + (i / n) * Math.PI * 2;
+        const sx = Math.cos(a) * 95 * v;
+        const sy = Math.sin(a) * 26 * v;
+        ctx.save();
+        ctx.translate(sx, sy);
+        ctx.globalAlpha = alpha * (Math.sin(a) > 0 ? 1 : 0.55);
+        star(ctx, 17 * v, t * 4 + i);
         ctx.restore();
       }
       break;

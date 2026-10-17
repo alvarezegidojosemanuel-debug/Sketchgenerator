@@ -67,16 +67,17 @@
           "zoom": 1.25
         },
         {
-          "rotulo": "cat /opt/props/default.json — uninstall core-ICARO",
-          "durante": 2.6
-        },
-        {
           "teclea": "Usu",
-          "durante": 2.4
+          "durante": 1.6
         },
         {
           "dice": "Usu",
-          "texto": "Vale… desinstalo el núcleo de ÍCARO y…",
+          "texto": "Cat… opt, props, default punto json…",
+          "gesto": "sentado_agobiado"
+        },
+        {
+          "dice": "Usu",
+          "texto": "Sed… zeta equis… y ahora… uninstall core ÍCARO…",
           "gesto": "sentado_agobiado"
         },
         {
@@ -90,22 +91,47 @@
         },
         {
           "off": "Anastas-IA",
-          "texto": "¡USUUUU!"
+          "texto": "¡Usuuu! ¿Estás bien?"
         },
         {
-          "pausa": 0.6
+          "pausa": 0.5
         },
         {
-          "quien": "Barbas",
-          "gesto": "tumbado_preocupado"
+          "efecto": "mareo",
+          "donde": "Jefe",
+          "durante": 4
         },
         {
-          "quien": "Jefe",
-          "gesto": "tumbado"
+          "efecto": "mareo",
+          "donde": "Barbas",
+          "durante": 4
+        },
+        {
+          "efecto": "mareo",
+          "donde": "Sister",
+          "durante": 4
+        },
+        {
+          "efecto": "mareo",
+          "donde": "Reynaldo",
+          "durante": 4
+        },
+        {
+          "tiembla": "Barbas"
+        },
+        {
+          "dice": "Barbas",
+          "texto": "Uff… mi cabeza…"
+        },
+        {
+          "tiembla": "Jefe"
         },
         {
           "dice": "Jefe",
           "texto": "Uhh… ¿Qué ha pasado?"
+        },
+        {
+          "pausa": 0.4
         },
         {
           "sonido": "whoosh"
@@ -194,26 +220,6 @@
           "profundidad": -5
         },
         {
-          "quien": "Barbas",
-          "gesto": "silla_relajado"
-        },
-        {
-          "quien": "Jefe",
-          "gesto": "sentado_habla"
-        },
-        {
-          "quien": "Sister",
-          "gesto": "sentado_teclea"
-        },
-        {
-          "quien": "Usu",
-          "gesto": "sentado_teclea"
-        },
-        {
-          "quien": "Reynaldo",
-          "gesto": "sentado_teclea"
-        },
-        {
           "sonido": "teclado"
         },
         {
@@ -240,29 +246,34 @@
           "x": 270,
           "y": 1430,
           "z": -10,
-          "escala": 0.82
+          "escala": 0.82,
+          "gesto": "sentado_teclea"
         },
         "Reynaldo": {
           "x": 790,
           "y": 1430,
           "z": -10,
-          "escala": 0.82
+          "escala": 0.82,
+          "gesto": "sentado_teclea"
         },
         "Barbas": {
           "x": 185,
           "y": 1860,
-          "z": 5
+          "z": 5,
+          "gesto": "silla_relajado"
         },
         "Jefe": {
           "x": 560,
           "y": 1880,
-          "z": 6
+          "z": 6,
+          "gesto": "sentado_habla"
         },
         "Usu": {
           "x": 905,
           "y": 1870,
           "z": 5,
-          "mira": "izquierda"
+          "mira": "izquierda",
+          "gesto": "sentado_teclea"
         }
       }
     },
@@ -306,8 +317,9 @@
           "gesto": "grita_senala"
         },
         {
-          "quien": "Jefe",
-          "gesto": "susto"
+          "efecto": "sudor",
+          "donde": "Jefe",
+          "durante": 1.8
         },
         {
           "pausa": 0.6
@@ -347,27 +359,7 @@
           "profundidad": -5
         },
         {
-          "quien": "Barbas",
-          "gesto": "silla_relajado"
-        },
-        {
-          "quien": "Sister",
-          "gesto": "sentado_teclea"
-        },
-        {
-          "quien": "Usu",
-          "gesto": "sentado_teclea"
-        },
-        {
-          "quien": "Reynaldo",
-          "gesto": "sentado_teclea"
-        },
-        {
           "entra": "Jefe"
-        },
-        {
-          "quien": "Jefe",
-          "gesto": "sentado_habla"
         },
         {
           "dice": "Barbas",
@@ -467,29 +459,34 @@
           "x": 270,
           "y": 1430,
           "z": -10,
-          "escala": 0.82
+          "escala": 0.82,
+          "gesto": "sentado_teclea"
         },
         "Reynaldo": {
           "x": 790,
           "y": 1430,
           "z": -10,
-          "escala": 0.82
+          "escala": 0.82,
+          "gesto": "sentado_teclea"
         },
         "Barbas": {
           "x": 185,
           "y": 1860,
-          "z": 5
+          "z": 5,
+          "gesto": "silla_relajado"
         },
         "Jefe": {
           "x": 560,
           "y": 1880,
-          "z": 6
+          "z": 6,
+          "gesto": "sentado_habla"
         },
         "Usu": {
           "x": 905,
           "y": 1870,
           "z": 5,
-          "mira": "izquierda"
+          "mira": "izquierda",
+          "gesto": "sentado_teclea"
         }
       }
     }
