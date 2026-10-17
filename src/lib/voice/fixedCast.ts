@@ -67,8 +67,10 @@ export function fixedCast(): Fixed {
 }
 
 /** La configuración de este dispositivo, lista para subirla al repositorio (config-compartida.json). */
-export function exportSharedConfig(): string {
-  const f = read();
+export function exportSharedConfig(project?: PocketProject): string {
+  const r = read();
+  // la de la escena abierta manda (es la que se está probando)
+  const f = project ? { eleven: { ...(r.eleven ?? {}), ...(project.metadata.elevenVoices ?? {}) }, piper: { ...(r.piper ?? {}), ...(project.metadata.voices ?? {}) } } : r;
   const get = (k: string, d: string) => {
     try {
       return localStorage.getItem(k) ?? d;

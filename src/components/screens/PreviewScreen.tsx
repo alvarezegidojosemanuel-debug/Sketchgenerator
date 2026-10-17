@@ -9,7 +9,7 @@ import { generateLines, unlockAudio, type Clip, type Progress } from "@/lib/voic
 import { accessCode, elevenModel, generateElevenDialogue, generateElevenLines, type ElevenModel } from "@/lib/voice/elevenlabs";
 import { ElevenCast } from "../ElevenCast";
 import { VoiceCasting } from "../VoiceCasting";
-import { syncShared } from "@/lib/voice/fixedCast";
+import { exportSharedConfig, importSharedConfig, syncShared } from "@/lib/voice/fixedCast";
 import { exportAudioWav, exportMp4, lastExportAudio, lastExportCodec, type ExportProgress } from "@/lib/export/mp4";
 
 const EXPORT_LABEL: Record<ExportProgress["stage"], string> = { imagenes: "Cargando imágenes…", audio: "Mezclando audio…", video: "Creando vídeo…", listo: "Listo" };
@@ -304,6 +304,13 @@ export function PreviewScreen({ s }: { s: PocketState }) {
       {engine === "piper" && <VoiceCast s={s} />}
       {engine === "elevenlabs" && <ElevenCast s={s} model={model} onModel={setModel} code={code} onCode={setCode} />}
       {engine === "elevenlabs" && code && <VoiceCasting s={s} code={code} />}
+      <Card title="Configuración de voces de esta escena">
+        <p className="fine">Copia la configuración tal y como suena ahora (voces, ajustes de cada personaje, motor y modelo) para pasársela a Claude o pegarla en otro dispositivo.</p>
+        <div className="row">
+          <button type="button" className="btn btn-primary" onClick={async () => { const t = exportSharedConfig(project); try { await navigator.clipboard.writeText(t); alert("Configuración copiada. Pégasela a Claude en el chat."); } catch { prompt("Copia esta configuración:", t); } }}>📋 Copiar configuración</button>
+          <button type="button" className="btn btn-secondary" onClick={() => { const t = prompt("Pega aquí la configuración:"); if (t && importSharedConfig(t)) { alert("Configuración aplicada. Se recarga la app."); location.reload(); } else if (t) alert("No es una configuración válida."); }}>📥 Pegar configuración</button>
+        </div>
+      </Card>
       <button type="button" className="btn btn-secondary btn-block" onClick={() => s.setTab("editar")}>
         ✎ Editar este sketch
       </button>
