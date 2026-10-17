@@ -555,10 +555,15 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
     // (por escenario, o «ambiente» en la escena; «ambiente»: "no" lo quita)
     const amb = typeof sc.ambiente === "string" ? norm(sc.ambiente) : bg ? AMBIENT_BY_BG[bg] : undefined;
     const ambId = amb && amb !== "no" && amb !== "ninguno" ? `sfx_ambiente_${amb}` : undefined;
-    const ambSnd = ambId ? catalog.sounds?.find((x) => x.id === ambId) : undefined;
+    // también vale un audio subido con «ambiente oficina» / «office ambience» en el nombre
+    const ambSnd = ambId
+      ? catalog.sounds?.find((x) => x.id === ambId) ??
+        catalog.sounds?.find((x) => { const n = norm(`${x.id} ${x.label}`); return /ambien|ambience|ambiance|room_tone/.test(n) && n.includes(amb === "oficina" ? "ofic" : (amb ?? "").slice(0, 5)); }) ??
+        (amb === "oficina" ? catalog.sounds?.find((x) => /office.*(ambien|room_tone)|(ambien|room_tone).*office/.test(norm(`${x.id} ${x.label}`))) : undefined)
+      : undefined;
     if (ambSnd) {
       const total = b.t + 0.5;
-      for (let at = 0; at < total; at += ambSnd.duration - 0.4) b.add({ track: "sfx", soundId: ambSnd.id, duration: Math.min(ambSnd.duration, total - at), volume: 0.35 }, at);
+      for (let at = 0; at < total; at += ambSnd.duration - 0.4) b.add({ track: "sfx", soundId: ambSnd.id, duration: Math.min(ambSnd.duration, total - at), volume: 0.25 }, at);
     }
     takes.push(b.build(typeof sc.nombre === "string" ? sc.nombre.slice(0, 120) : `Escena ${si + 1}`, bg, norm(String(sc.camara ?? "")) === "auto" ? "auto" : undefined, tr));
   });

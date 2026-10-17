@@ -337,7 +337,7 @@ export async function handleVoiceSave(body: unknown, code: string | null, env: E
 
 const SfxBody = z.object({
   text: z.string().min(2).max(300),
-  duration: z.number().min(0.5).max(10).optional(),
+  duration: z.number().min(0.5).max(22).optional(),
 });
 
 /** Coste aproximado contado contra el tope diario por cada efecto generado. */
@@ -347,7 +347,7 @@ export async function handleSfx(body: unknown, ip: string, code: string | null, 
   const g = gate(env, code);
   if (g) return g;
   const p = SfxBody.safeParse(body);
-  if (!p.success) return { status: 400, json: { error: "bad_request", message: "Descripción de sonido no válida (2–300 caracteres, 0,5–10 s)." } };
+  if (!p.success) return { status: 400, json: { error: "bad_request", message: "Descripción de sonido no válida (2–300 caracteres, 0,5–22 s)." } };
   const cfg = elevenConfig(env);
   const now = deps.now();
   const hits = (deps.state.perIp.get(ip) ?? []).filter((t) => now - t < WINDOW_MS);
