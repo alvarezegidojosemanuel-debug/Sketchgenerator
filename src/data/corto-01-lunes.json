@@ -127,11 +127,12 @@
       "transicion": "blanco",
       "pasos": [
         {
-          "rotulo": "PUÑETOS",
-          "durante": 2.2
+          "objeto": "prop_logo_punetos",
+          "durante": 2.8,
+          "anim": "flota"
         },
         {
-          "pausa": 2.3
+          "pausa": 2.9
         }
       ]
     },
@@ -142,7 +143,7 @@
       "transicion": "corte",
       "pasos": [
         {
-          "rotulo": "LUNES · 08:59 — Cuatro días antes",
+          "rotulo": "LUNES · 08:59 — 4 días antes…",
           "durante": 2.6
         },
         {
@@ -246,8 +247,16 @@
         },
         {
           "dice": "Usu",
-          "texto": "…Gracias.",
+          "texto": "¡Gracias! [sadly] Qué pena que solo una máquina se dé cuenta…",
           "gesto": "encoge"
+        },
+        {
+          "efecto": "enfado",
+          "donde": "Anastas-IA",
+          "durante": 1.8
+        },
+        {
+          "pausa": 1.0
         }
       ],
       "colocar": {
@@ -305,38 +314,77 @@
           "gesto": "confundido"
         },
         {
+          "entra": "Director"
+        },
+        {
           "dice": "Director",
-          "texto": "¡Equipo! ¡Resultados históricos! El viernes, presentación a los inversores: SINAPSIS, ÍCARO y SEMILLA. ¡Todo funcionando!",
+          "texto": "¡Mira! ¡Aquí está mi equipo de nerds favorito!",
           "gesto": "explica"
+        },
+        {
+          "dice": "Director",
+          "texto": "A ti, Jefe, te estaba buscando.",
+          "gesto": "senala"
+        },
+        {
+          "dice": "Director",
+          "texto": "Este viernes presentamos ÍCARO ante los inversores. Y no puede fallar nada.",
+          "gesto": "explica"
+        },
+        {
+          "dice": "Director",
+          "texto": "Más te vale que no pierda ese contrato por vuestra incompetencia.",
+          "gesto": "grita_senala"
+        },
+        {
+          "dice": "Director",
+          "texto": "¡Así que lo quiero todo funcionando!",
+          "gesto": "grita"
+        },
+        {
+          "dice": "Jefe",
+          "texto": "¿ÍCARO? Umm… Vale, vale. Todo saldrá bien, no se preocupe.",
+          "gesto": "explica"
+        },
+        {
+          "dice": "Director",
+          "texto": "Más te vale…",
+          "gesto": "neutro"
         },
         {
           "sale": "Director"
         },
         {
-          "mira": "Barbas",
-          "a": "Jefe"
+          "pausa": 0.5
         },
         {
-          "dice": "Barbas",
-          "texto": "¿Y quién se supone que va a hacer todo eso, Jefe?",
-          "gesto": "señala"
-        },
-        {
-          "dice": "Jefe",
-          "texto": "Pues me da a mí que nosotros… Pero esto no va a quedar así. ¡Voy a hablar ahora mismo con él!",
+          "dice": "Sister",
+          "texto": "Jefe, no sabes de qué te está hablando, ¿verdad?",
           "gesto": "explica"
         },
         {
-          "pausa": 0.6
-        },
-        {
           "dice": "Jefe",
-          "texto": "…¿Dónde está?",
+          "texto": "Pues no…",
           "gesto": "confundido"
         },
         {
           "dice": "Sister",
-          "texto": "Se ha ido, Jefe. Hace un rato.",
+          "texto": "Ay, Dios… Nada, ya te envío un correo con todo el estado del proyecto.",
+          "gesto": "movil"
+        },
+        {
+          "dice": "Barbas",
+          "texto": "Yo no sé, Jefe, pero me parece una puta vergüenza que nos trate así ese psicópata.",
+          "gesto": "explica"
+        },
+        {
+          "dice": "Barbas",
+          "texto": "Deberías ir a hablar con él y dejárselo claro.",
+          "gesto": "senala"
+        },
+        {
+          "dice": "Jefe",
+          "texto": "¡Sí, es cierto! Luego iré a su despacho y le pondré en su sitio.",
           "gesto": "explica"
         },
         {

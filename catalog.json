@@ -14197,6 +14197,13 @@
    "src": "/assets/punetos/props/mostrador.webp",
    "width": 440,
    "height": 271
+  },
+  {
+   "id": "prop_logo_punetos",
+   "label": "Logo PUÑETOS",
+   "src": "/assets/punetos/props/logo_punetos.webp",
+   "width": 1000,
+   "height": 276
   }
  ]
 }
