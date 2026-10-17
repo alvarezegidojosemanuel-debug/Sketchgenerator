@@ -242,6 +242,8 @@ export const ElevenCast = z.object({
   similarity: z.number().min(0).max(1),
   style: z.number().min(0).max(1),
   speed: z.number().min(0.7).max(1.2),
+  /** Tono: >1 más agudo y algo más rápido (se aplica en la app, igual en todos los dispositivos). */
+  pitch: z.number().min(0.8).max(1.3).optional(),
   /** Modelo propio de este personaje (p. ej. v3 para un tono más exagerado con acotaciones). */
   model: z.enum(["eleven_multilingual_v2", "eleven_v3", "eleven_flash_v2_5"]).optional(),
 });

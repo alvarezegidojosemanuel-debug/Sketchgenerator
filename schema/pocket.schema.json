@@ -115,6 +115,11 @@
                 "minimum": 0.7,
                 "maximum": 1.2
               },
+              "pitch": {
+                "type": "number",
+                "minimum": 0.8,
+                "maximum": 1.3
+              },
               "model": {
                 "type": "string",
                 "enum": [

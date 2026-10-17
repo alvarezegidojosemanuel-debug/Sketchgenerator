@@ -210,7 +210,7 @@ describe("interpretación automática de las voces", () => {
   it("añade acotaciones según el personaje y la frase, sin pisar las que ya trae", async () => {
     const { actingTag } = await import("@/lib/script/compile");
     expect(actingTag("barbas", "Mira qué detalle.")).toBe("[mischievously] Mira qué detalle.");
-    expect(actingTag("usu", "A mí.")).toBe("[deadpan] A mí.");
+    expect(actingTag("usu", "A mí.")).toBe("[nervously] A mí.");
     expect(actingTag("jefe", "¡USU, QUITA ESO AHORA MISMO!")).toBe("[shouting] ¡USU, QUITA ESO AHORA MISMO!");
     expect(actingTag("jefe", "¿Qué?")).toBe("[confused] ¿Qué?");
     expect(actingTag("barbas", "[whispers] Oye…")).toBe("[whispers] Oye…");

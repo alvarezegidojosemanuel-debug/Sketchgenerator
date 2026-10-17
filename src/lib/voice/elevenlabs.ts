@@ -125,7 +125,7 @@ export async function generateElevenDialogue(
     const base = `dlg2|${stability}|${JSON.stringify(inputs)}`;
     const cached = await Promise.all(group.map((_, i) => clipCache.get(`${base}|${i}`).catch(() => undefined)));
     if (cached.every(Boolean)) {
-      group.forEach((l, i) => out.set(l.key, toClip(cached[i]!)));
+      group.forEach((l, i) => out.set(l.key, toClip(shiftPitch(cached[i]!, cast?.[l.characterId]?.pitch))));
       continue;
     }
     onProgress?.({ stage: "generate", label: `Conversación: escena ${g}/${groups.size}`, ratio: (g - 1) / groups.size });
@@ -162,11 +162,25 @@ export async function generateElevenDialogue(
         piece = { samples: c.samples, sampleRate: c.sampleRate };
       }
       await clipCache.put(`${base}|${i}`, piece).catch(() => {});
-      out.set(group[i].key, toClip(piece));
+      out.set(group[i].key, toClip(shiftPitch(piece, cast?.[group[i].characterId]?.pitch)));
     }
   }
   onProgress?.({ stage: "generate", label: "Voces listas", ratio: 1 });
   return out;
+}
+
+/** Sube o baja el tono (y el ritmo) remuestreando: 1.1 = 10 % más agudo y más rápido. */
+export function shiftPitch(p: { samples: Float32Array; sampleRate: number }, k: number | undefined): { samples: Float32Array; sampleRate: number } {
+  if (!k || Math.abs(k - 1) < 0.005) return p;
+  const n = Math.max(1, Math.floor(p.samples.length / k));
+  const out = new Float32Array(n);
+  for (let i = 0; i < n; i++) {
+    const x = i * k;
+    const i0 = Math.floor(x);
+    const f = x - i0;
+    out[i] = (p.samples[i0] ?? 0) * (1 - f) + (p.samples[i0 + 1] ?? 0) * f;
+  }
+  return { samples: out, sampleRate: p.sampleRate };
 }
 
 function toClip(p: { samples: Float32Array; sampleRate: number }): Clip {
@@ -212,7 +226,7 @@ export async function generateElevenLines(
       hit = await decode(await r.arrayBuffer());
       await clipCache.put(ck, hit).catch(() => {});
     }
-    out.set(l.key, { ...hit, env: envelope(hit.samples, hit.sampleRate), duration: hit.samples.length / hit.sampleRate });
+    out.set(l.key, toClip(shiftPitch(hit, c.pitch)));
   }
   onProgress?.({ stage: "generate", label: "Voces listas", ratio: 1 });
   return out;

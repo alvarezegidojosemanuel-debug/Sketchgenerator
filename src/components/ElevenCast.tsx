@@ -163,6 +163,9 @@ export function ElevenCast({ s, model, onModel, code, onCode }: Props) {
                   <Field label="Velocidad">
                     <Stepper value={c.speed} step={0.05} min={0.7} max={1.2} onChange={(x) => set(cid, { speed: x })} />
                   </Field>
+                  <Field label="Tono (agudo)" hint="1 = normal; 1,1 = más agudo y nervioso. Se aplica en la app: suena igual en todos los dispositivos.">
+                    <Stepper value={c.pitch ?? 1} step={0.02} min={0.8} max={1.3} onChange={(x) => set(cid, { pitch: Math.round(x * 100) / 100 })} />
+                  </Field>
                   <Field label="Modelo de este personaje" hint="v3 entiende acotaciones como [chuckles] o [mischievously]: más exagerado.">
                     <select value={c.model ?? ""} onChange={(e) => set(cid, { model: (e.target.value || undefined) as ElevenCastEntry["model"] })}>
                       <option value="">(el general)</option>
