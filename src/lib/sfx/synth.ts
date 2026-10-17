@@ -218,112 +218,6 @@ const explosion: Gen = () => {
 };
 
 
-/** Murmullo de gente lejos: ruido en la banda de la voz con ritmo de sílabas (varias «voces» desfasadas). */
-function murmullo(out: Float32Array, r: () => number, voices: number, amp: number) {
-  const n = out.length;
-  for (let v = 0; v < voices; v++) {
-    let b1 = 0;
-    let b2 = 0;
-    const f0 = 2 + r() * 1.5; // ritmo de frase
-    const fs = 4 + r() * 2.5; // sílabas
-    const ph = r() * 10;
-    const center = 0.06 + r() * 0.05;
-    let gate = 0;
-    let next = 0;
-    for (let i = 0; i < n; i++) {
-      const t = i / SR;
-      if (t >= next) {
-        gate = r() < 0.65 ? 1 : 0; // a ratos hablan, a ratos callan
-        next = t + 1.2 + r() * 2.5;
-      }
-      const noise = r() * 2 - 1;
-      b1 += center * (noise - b1);
-      b2 += center * 0.35 * (b1 - b2);
-      const band = b1 - b2;
-      const syl = Math.pow(Math.max(0, Math.sin(2 * Math.PI * fs * t + ph)), 2) * (0.6 + 0.4 * Math.sin(2 * Math.PI * f0 * t * 0.25 + ph));
-      out[i] += amp * band * syl * gate;
-    }
-  }
-}
-/** Clics sueltos de teclado lejano. */
-function teclas(out: Float32Array, r: () => number, amp: number, from: number, to: number) {
-  let t = from;
-  while (t < to) {
-    const i0 = Math.round(t * SR);
-    const m = Math.round(0.02 * SR);
-    const f = 2000 + r() * 2000;
-    for (let i = 0; i < m && i0 + i < out.length; i++) out[i0 + i] += amp * ((r() * 2 - 1) * 0.6 + 0.4 * Math.sin((2 * Math.PI * f * i) / SR)) * Math.pow(1 - i / m, 3);
-    t += 0.07 + r() * 0.14;
-  }
-}
-/** Pasos con eco (suelo duro). */
-function pasos(out: Float32Array, r: () => number, amp: number, from: number, count: number) {
-  for (let k = 0; k < count; k++) {
-    const i0 = Math.round((from + k * 0.52) * SR);
-    const m = Math.round(0.12 * SR);
-    for (let e = 0; e < 2; e++) {
-      const d = Math.round(e * 0.09 * SR);
-      for (let i = 0; i < m && i0 + d + i < out.length; i++) {
-        const t = i / SR;
-        out[i0 + d + i] += amp * (e ? 0.3 : 1) * (Math.sin(2 * Math.PI * 140 * t) * 0.7 + (r() * 2 - 1) * 0.3) * Math.exp(-t * 45);
-      }
-    }
-  }
-}
-function fundidoBucle(out: Float32Array) {
-  const f = Math.round(0.4 * SR);
-  for (let i = 0; i < f; i++) {
-    out[i] *= i / f;
-    out[out.length - 1 - i] *= i / f;
-  }
-  return out;
-}
-/** Ambiente de oficina: aire acondicionado, murmullo lejano, teclados y algún teléfono a lo lejos (bucle de 12 s). */
-const ambiente_oficina: Gen = () => {
-  const n = len(12);
-  const out = new Float32Array(n);
-  const r = rng(101);
-  let lp = 0;
-  let lp2 = 0;
-  for (let i = 0; i < n; i++) {
-    const w = r() * 2 - 1;
-    lp += 0.02 * (w - lp);
-    lp2 += 0.004 * (w - lp2);
-    out[i] = lp * 0.5 + lp2 * 1.2 + 0.015 * Math.sin((2 * Math.PI * 100 * i) / SR); // aire + zumbido
-  }
-  murmullo(out, r, 4, 0.9);
-  teclas(out, r, 0.07, 0.5, 3.2);
-  teclas(out, r, 0.05, 6.1, 8.0);
-  teclas(out, r, 0.06, 9.4, 11.2);
-  // teléfono lejano
-  for (let i = 0; i < len(1.1); i++) {
-    const t = i / SR;
-    const on = t % 0.55 < 0.38;
-    const f = Math.floor(t * 18) % 2 ? 1320 : 1660;
-    out[len(4.6) + i] += on ? 0.025 * Math.sin(2 * Math.PI * f * t) : 0;
-  }
-  return fundidoBucle(out);
-};
-/** Ambiente de recepción: vestíbulo amplio con eco, pasos, murmullo y el pitido de los tornos (bucle de 12 s). */
-const ambiente_recepcion: Gen = () => {
-  const n = len(12);
-  const out = new Float32Array(n);
-  const r = rng(202);
-  let lp = 0;
-  for (let i = 0; i < n; i++) {
-    lp += 0.008 * (r() * 2 - 1 - lp);
-    out[i] = lp * 1.4;
-  }
-  murmullo(out, r, 5, 0.7);
-  pasos(out, r, 0.1, 0.8, 6);
-  pasos(out, r, 0.07, 7.2, 5);
-  // pitido de torno
-  for (const at of [3.9, 9.8]) for (let i = 0; i < len(0.12); i++) out[len(at) + i] += 0.05 * Math.sin((2 * Math.PI * 1900 * i) / SR) * Math.min(1, i / 200, (len(0.12) - i) / 200);
-  // eco del vestíbulo
-  const d = len(0.11);
-  for (let i = d; i < n; i++) out[i] += out[i - d] * 0.28;
-  return fundidoBucle(out);
-};
 
 const GENERATORS: Record<string, { label: string; gen: Gen }> = {
   telefono: { label: "Teléfono sonando", gen: telefono },
@@ -338,8 +232,6 @@ const GENERATORS: Record<string, { label: string; gen: Gen }> = {
   pantallazo: { label: "Pantallazo (chispazo y apagón)", gen: pantallazo },
   servidor: { label: "Servidor con ruido raro", gen: servidor },
   explosion: { label: "Explosión", gen: explosion },
-  ambiente_oficina: { label: "Ambiente: oficina (bucle)", gen: ambiente_oficina },
-  ambiente_recepcion: { label: "Ambiente: recepción (bucle)", gen: ambiente_recepcion },
 };
 
 const cache = new Map<string, Float32Array>();

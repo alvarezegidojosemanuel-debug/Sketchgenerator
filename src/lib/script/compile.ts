@@ -546,7 +546,8 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
     // entre escenas, fundido rápido a negro (salvo «transicion»: «corte»)
     const trn = norm(String(sc.transicion ?? ""));
     const tr = trn.startsWith("corte") ? "cut" : trn.startsWith("blanc") ? "white" : "fade";
-    // ambiente de fondo en bucle (por escenario, o «ambiente» en la escena; «ambiente»: "no" lo quita)
+    // ambiente de fondo en bucle, si hay un sonido real «sfx_ambiente_<tipo>» en la biblioteca (p. ej. «ambiente oficina»)
+    // (por escenario, o «ambiente» en la escena; «ambiente»: "no" lo quita)
     const amb = typeof sc.ambiente === "string" ? norm(sc.ambiente) : bg ? AMBIENT_BY_BG[bg] : undefined;
     const ambId = amb && amb !== "no" && amb !== "ninguno" ? `sfx_ambiente_${amb}` : undefined;
     const ambSnd = ambId ? catalog.sounds?.find((x) => x.id === ambId) : undefined;

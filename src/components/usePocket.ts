@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { applyOverrides, catalog as defaultCatalog } from "@/lib/catalog";
+import type { Catalog } from "@/lib/catalog/types";
 import type { FaceOverrides } from "@/lib/catalog/types";
 import { withFixedCast } from "@/lib/voice/fixedCast";
 import demoRaw from "@/data/sketch-demo.json";
@@ -60,8 +61,8 @@ export const DEMOS = {
   ep5: ep5Raw,
 } as const;
 
-export function demoProject(which: keyof typeof DEMOS = "usu-jefe"): PocketProject {
-  const r = validateProject(structuredClone(DEMOS[which]), defaultCatalog);
+export function demoProject(which: keyof typeof DEMOS = "usu-jefe", catalog: Catalog = defaultCatalog): PocketProject {
+  const r = validateProject(structuredClone(DEMOS[which]), catalog);
   if (!r.project) throw new Error("El sketch demo no valida: " + JSON.stringify(r.errors));
   return r.project;
 }
