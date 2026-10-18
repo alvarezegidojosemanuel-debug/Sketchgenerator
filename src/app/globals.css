@@ -389,3 +389,9 @@ textarea.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; fon
 .anim-frame-btns button:disabled { opacity: .3; }
 .anim-missing { display: flex; align-items: center; justify-content: center; width: 80px; height: 100px; color: var(--err); }
 .anim-picker { max-height: 420px; }
+
+/* ---------------------------------------------------------------- dar boca a una pose */
+.mouth-edit { display: flex; flex-direction: column; gap: 10px; padding: 10px; border: 1px dashed var(--accent); border-radius: 12px; background: var(--panel); }
+.mouth-body { display: grid; gap: 12px; }
+@media (min-width: 760px) { .mouth-body { grid-template-columns: minmax(0, 1fr) 280px; } }
+.mouth-canvas { display: block; margin: 0 auto; width: auto; height: auto; max-width: 100%; max-height: 62vh; background: repeating-conic-gradient(#ffffff10 0% 25%, transparent 0% 50%) 50% / 16px 16px; border-radius: 10px; cursor: crosshair; touch-action: none; }

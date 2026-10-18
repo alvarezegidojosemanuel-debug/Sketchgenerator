@@ -85,7 +85,8 @@ export const clipCache = {
 /** Recursos propios (objetos, escenarios, sonidos) guardados en este dispositivo. */
 export interface LibraryItem {
   id: string;
-  kind: "prop" | "background" | "sound";
+  /** «talk»: versión con la boca abierta de una pose (id = «talk:» + id de la pose). */
+  kind: "prop" | "background" | "sound" | "talk";
   label: string;
   blob: Blob;
   /** Tamaño en escena (px del lienzo 1080×1920) para objetos; tamaño original para escenarios. */

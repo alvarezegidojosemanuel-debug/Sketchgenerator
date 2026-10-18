@@ -5,6 +5,7 @@ import { makeZip } from "@/lib/export/zip";
 import type { PocketState } from "../usePocket";
 import { LibraryScreen } from "./LibraryScreen";
 import { Card } from "../ui";
+import { MouthEditor } from "../MouthEditor";
 import { CategoryFilter, CategoryIcons, filterPoses } from "../PoseCategories";
 import { POSE_CATEGORIES, autoCategories, poseCategoriesOf } from "@/lib/catalog/poseCategories";
 
@@ -84,13 +85,18 @@ function Characters({ s, pick }: { s: PocketState; pick: Picker }) {
   const [look, setLook] = useState<"p" | "h">("p");
   const [filter, setFilter] = useState<string[]>([]);
   const [editing, setEditing] = useState(false);
+  const [mouthMode, setMouthMode] = useState(false);
+  const [mute, setMute] = useState(false);
   const [editId, setEditId] = useState<string | null>(null);
   const ch = chars.find((c) => c.id === cid) ?? chars[0];
   if (!ch) return null;
   const hasP = ch.poses.some((p) => p.key.startsWith("pose_p_"));
   const lk = hasP ? look : "h";
   const all = ch.poses.filter((p) => p.key.startsWith(`pose_${lk}_`));
-  const poses = filterPoses(all, s.poseCats, filter);
+  const talks = (p: { talkSrc?: string; src: string }) => !!p.talkSrc && p.talkSrc !== p.src;
+  const poses = filterPoses(all, s.poseCats, filter).filter((p) => !mute || !talks(p));
+  const mouthPose = mouthMode ? all.find((p) => p.id === editId) : undefined;
+  const myMouths = s.library.filter((x) => x.kind === "talk");
   const editPose = editing ? all.find((p) => p.id === editId) : undefined;
   const changed = Object.keys(s.poseCats).length;
   const items = poses.map((p) => ({ id: p.id, name: `${ch.name}_${lk === "p" ? "puneto" : "humano"}_${p.key.replace(/^pose_[hp]_/, "")}`, src: p.src }));
@@ -108,10 +114,17 @@ function Characters({ s, pick }: { s: PocketState; pick: Picker }) {
         title={`${ch.name} · ${poses.length} poses`}
         right={
           <div className="row">
-            <button type="button" className={`btn btn-small ${editing ? "btn-primary" : "btn-ghost"}`} onClick={() => { setEditing(!editing); setEditId(null); }}>
-              {editing ? "✓ Hecho" : "✎ Cambiar categorías"}
-            </button>
-            {!editing && <button type="button" className="btn btn-ghost btn-small" onClick={() => pick.setMany(items, !allOn)}>{allOn ? "Quitar todas" : "Seleccionar todas"}</button>}
+            {!mouthMode && (
+              <button type="button" className={`btn btn-small ${editing ? "btn-primary" : "btn-ghost"}`} onClick={() => { setEditing(!editing); setEditId(null); }}>
+                {editing ? "✓ Hecho" : "✎ Cambiar categorías"}
+              </button>
+            )}
+            {!editing && (
+              <button type="button" className={`btn btn-small ${mouthMode ? "btn-primary" : "btn-ghost"}`} onClick={() => { setMouthMode(!mouthMode); setEditId(null); }}>
+                {mouthMode ? "✓ Hecho" : "👄 Dar boca"}
+              </button>
+            )}
+            {!editing && !mouthMode && <button type="button" className="btn btn-ghost btn-small" onClick={() => pick.setMany(items, !allOn)}>{allOn ? "Quitar todas" : "Seleccionar todas"}</button>}
           </div>
         }
       >
@@ -126,6 +139,27 @@ function Characters({ s, pick }: { s: PocketState; pick: Picker }) {
           </div>
         )}
         <CategoryFilter poses={all} cats={s.poseCats} value={filter} onChange={setFilter} />
+        <label className="g-check"><input type="checkbox" checked={mute} onChange={(e) => setMute(e.target.checked)} /> Solo las que aún no hablan ({all.filter((p) => !talks(p)).length})</label>
+        {mouthMode && (mouthPose ? (
+          <MouthEditor key={mouthPose.id} s={s} pose={mouthPose} charName={ch.name} onClose={() => setEditId(null)} />
+        ) : (
+          <div className="cat-edit">
+            <p className="fine">Toca una pose para darle boca: marcas dónde está la boca y la app dibuja la boca abierta (o subes la misma pose con la boca abierta, hecha con ChatGPT). Las que ya hablan llevan 👄.</p>
+            {myMouths.length > 0 && (
+              <button type="button" className="btn btn-secondary btn-small" onClick={async () => {
+                const files = await Promise.all(myMouths.map(async (it) => ({ name: `${it.id.replace(/^talk:char\./, "").replace(".pose_", "_")}_boca.png`, data: new Uint8Array(await it.blob.arrayBuffer()) })));
+                const url = URL.createObjectURL(makeZip(files));
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = `bocas-punetos-${files.length}.zip`;
+                a.click();
+                setTimeout(() => URL.revokeObjectURL(url), 5000);
+              }}>
+                ⬇ Descargar mis {myMouths.length} boca(s) (.zip) para Claude
+              </button>
+            )}
+          </div>
+        ))}
         {editing && (
           <div className="cat-edit">
             {editPose ? (
@@ -166,11 +200,11 @@ function Characters({ s, pick }: { s: PocketState; pick: Picker }) {
         )}
         <ul className="lib-grid lib-grid-poses">
           {poses.map((p, i) => (
-            <li key={p.id} className={`lib-item pickable${editing ? (p.id === editId ? " picked" : "") : pick.has(p.id) ? " picked" : ""}`} onClick={() => (editing ? setEditId(p.id) : pick.toggle(p.id, items[i].name, p.src))}>
+            <li key={p.id} className={`lib-item pickable${editing || mouthMode ? (p.id === editId ? " picked" : "") : pick.has(p.id) ? " picked" : ""}`} onClick={() => (editing || mouthMode ? setEditId(p.id) : pick.toggle(p.id, items[i].name, p.src))}>
               <img src={p.src} alt="" loading="lazy" />
               <code>{p.key.replace(/^pose_[hp]_/, "")}</code>
               <CategoryIcons pose={p} cats={s.poseCats} />
-              {p.talkSrc && p.talkSrc !== p.src ? <small className="fine">👄 habla</small> : null}
+              {talks(p) ? <small className="fine">👄 habla{s.library.some((x) => x.id === `talk:${p.id}`) ? " (tuya)" : ""}</small> : null}
             </li>
           ))}
         </ul>

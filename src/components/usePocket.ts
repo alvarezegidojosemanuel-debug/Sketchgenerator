@@ -89,6 +89,11 @@ export function usePocket() {
     const c = applyOverrides(defaultCatalog, localFace);
     const props = library.filter((x) => x.kind === "prop").map((x) => ({ id: x.id, label: x.label, src: urlOf(x), width: x.width, height: x.height, user: true }));
     const bgs = library.filter((x) => x.kind === "background").map((x) => ({ id: x.id, label: x.label, src: urlOf(x), user: true }));
+    // poses a las que se les ha dado boca en este dispositivo
+    for (const it of library.filter((x) => x.kind === "talk")) {
+      const pid = it.id.replace(/^talk:/, "");
+      for (const ch of c.characters) for (const p of ch.poses) if (p.id === pid) p.talkSrc = urlOf(it);
+    }
     const snd = library.filter((x) => x.kind === "sound").map((x) => ({ id: x.id, label: x.label, src: urlOf(x), duration: x.duration ?? 1, user: true }));
     return {
       ...c,

@@ -109,7 +109,9 @@ export function LibraryScreen({ s, pick }: { s: PocketState; pick?: Picker }) {
       if (j.kind !== "pocket-library" || !Array.isArray(j.items)) throw new Error("no es un paquete de recursos de Pocket");
       let n = 0;
       for (const it of j.items) {
-        if (!/^(prop|bg|sfx)_[a-z0-9_]{1,40}$/.test(it.id) || !["prop", "background", "sound"].includes(it.kind) || !/^data:(image|audio)\//.test(it.data)) continue;
+        const talk = it.kind === "talk" && /^talk:char\.[a-z0-9_]+\.pose_[a-z0-9_]+$/.test(it.id);
+        if (!talk && (!/^(prop|bg|sfx)_[a-z0-9_]{1,40}$/.test(it.id) || !["prop", "background", "sound"].includes(it.kind))) continue;
+        if (!/^data:(image|audio)\//.test(it.data)) continue;
         const blob = await (await fetch(it.data)).blob();
         await saveLibraryItem({ id: it.id, kind: it.kind, label: String(it.label).slice(0, 60), blob, width: Number(it.width) || 0, height: Number(it.height) || 0, duration: it.duration, createdAt: Number(it.createdAt) || Date.now(), prompt: it.prompt });
         n++;

@@ -218,7 +218,7 @@ class SceneBuilder {
     const keys = [...(HUMAN_POSE[key] ?? [key]), ...(speaking && fallback ? ["explica", "neutro"] : [])];
     // los secundarios sin versión Puñeto usan sus poses humanas también en vista Puñetos
     const pf = this.pfx === "p" && !ch?.poses.some((p) => p.id === `char.${cid}.pose_p_neutro`) ? "h" : this.pfx;
-    const ok = (k: string) => ch?.poses.find((p) => p.id === `char.${cid}.pose_${pf}_${k}` && (!speaking || p.talkSrc));
+    const ok = (k: string) => ch?.poses.find((p) => p.id === `char.${cid}.pose_${pf}_${k}` && (!speaking || (p.talkSrc && p.talkSrc !== p.src)));
     return keys.map(ok).find(Boolean)?.id;
   }
 
