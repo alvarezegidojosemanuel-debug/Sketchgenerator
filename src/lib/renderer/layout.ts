@@ -82,10 +82,11 @@ function layoutProp(catalog: Catalog, p: PropState, base: number): PropLayout | 
 
 export function layoutActor(catalog: Catalog, a: ActorState): ActorLayout {
   const main = layoutActorPose(catalog, a);
-  if (a.prevPoseId && a.poseMix < 1) {
-    // Fundido sin transparencia en el centro: cada pose se mantiene opaca la mitad del fundido.
-    main.opacity = Math.min(1, 2 * a.poseMix);
-    main.ghost = { ...layoutActorPose(catalog, { ...a, poseId: a.prevPoseId, prevPoseId: undefined }), opacity: Math.min(1, 2 * (1 - a.poseMix)) * a.visible };
+  if (a.prevPoseId && a.poseMix < 0.5) {
+    // Cambio de pose «a corte» a mitad de la transición (con el estirón de anticipación tapándolo):
+    // dos dibujos superpuestos a medio fundir se ven como un fantasma.
+    main.opacity = 0;
+    main.ghost = { ...layoutActorPose(catalog, { ...a, poseId: a.prevPoseId, prevPoseId: undefined }), opacity: a.visible };
   }
   if (a.turnFrom !== undefined && a.turnMix !== undefined && a.turnMix < 1) {
     // igual que el fundido de poses: cada lado se mantiene opaco la mitad del giro

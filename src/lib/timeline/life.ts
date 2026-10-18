@@ -82,6 +82,8 @@ export function applyLife(take: Take, catalog: Catalog, t: number, actors: Map<s
     const other = actors.get(target);
     const pose = me ? findPose(catalog, me.characterId, me.poseId) : undefined;
     if (!me || !other || !pose?.flat || pose.facing !== "front" || other.x === me.x) continue;
+    // sentados a su mesa, en la silla o en el suelo: girar el dibujo giraría también la mesa y la silla
+    if (/_(sentad|silla|ko|tumbad|despiert|aturdid|mesa|mostrador)/.test(pose.key)) continue;
     const want = other.x < me.x;
     const before = lookTargets(take, since - 0.01, actors).get(uid);
     const prevOther = before ? actors.get(before.target) : undefined;

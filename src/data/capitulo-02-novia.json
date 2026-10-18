@@ -288,6 +288,13 @@
           "profundidad": -5
         },
         {
+          "objeto": "prop_portatil",
+          "x": 790,
+          "y": 1268,
+          "escala": 0.5,
+          "profundidad": -4
+        },
+        {
           "sonido": "teclado"
         },
         {
@@ -428,6 +435,13 @@
           "profundidad": -5
         },
         {
+          "objeto": "prop_portatil",
+          "x": 790,
+          "y": 1268,
+          "escala": 0.5,
+          "profundidad": -4
+        },
+        {
           "entra": "Jefe"
         },
         {
@@ -490,9 +504,9 @@
           "texto": "Instalación programada para el jueves a las tres de la mañana."
         },
         {
-          "dice": "Barbas",
+          "dice": "Reynaldo",
           "texto": "¿A las tres? ¿Por qué a las tres?",
-          "gesto": "silla_relajado"
+          "gesto": "sentado_teclea"
         },
         {
           "off": "Anastas-IA",
@@ -509,14 +523,6 @@
         },
         {
           "mira": "Jefe",
-          "a": "Usu"
-        },
-        {
-          "mira": "Sister",
-          "a": "Usu"
-        },
-        {
-          "mira": "Reynaldo",
           "a": "Usu"
         },
         {

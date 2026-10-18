@@ -76,18 +76,20 @@ describe("reproductor sin clave ni red (prueba 1)", () => {
 });
 
 describe("transiciones suaves", () => {
-  it("un cambio de pose funde la pose anterior con la nueva y termina limpio", async () => {
+  it("un cambio de pose cambia a corte a mitad de la transición (sin dos dibujos superpuestos) y termina limpio", async () => {
     const { layoutActor } = await import("@/lib/renderer/layout");
     const { POSE_FADE } = await import("@/lib/timeline/evaluate");
     const take = project().takes[0];
     const ev = take.events.find((e) => e.id === "t1_b1")!; // usu → brazos cruzados
-    const mid = evaluateTake(take, catalog, ev.start + POSE_FADE / 2).actors.find((a) => a.uid === "usu")!;
-    expect(mid.prevPoseId).toBe("char.usu.pose_neutral_3q_right");
-    expect(mid.poseMix).toBeGreaterThan(0);
-    expect(mid.poseMix).toBeLessThan(1);
-    const lay = layoutActor(catalog, mid);
+    const early = evaluateTake(take, catalog, ev.start + POSE_FADE / 4).actors.find((a) => a.uid === "usu")!;
+    expect(early.prevPoseId).toBe("char.usu.pose_neutral_3q_right");
+    const lay = layoutActor(catalog, early);
     expect(lay.ghost?.pose?.id).toBe("char.usu.pose_neutral_3q_right");
-    expect(lay.opacity).toBeCloseTo(1, 5);
+    expect(lay.opacity).toBe(0);
+    const late = evaluateTake(take, catalog, ev.start + (POSE_FADE * 3) / 4).actors.find((a) => a.uid === "usu")!;
+    const lay2 = layoutActor(catalog, late);
+    expect(lay2.ghost).toBeUndefined();
+    expect(lay2.opacity).toBeCloseTo(1, 5);
     const end = evaluateTake(take, catalog, ev.start + POSE_FADE + 0.05).actors.find((a) => a.uid === "usu")!;
     expect(end.prevPoseId).toBeUndefined();
     expect(layoutActor(catalog, end).ghost).toBeUndefined();
