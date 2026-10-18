@@ -202,7 +202,9 @@ class SceneBuilder {
       return ch?.poses.some((p) => p.id === id) ? id : undefined;
     }
     const keys = [...(HUMAN_POSE[key] ?? [key]), ...(speaking ? ["explica", "neutro"] : [])];
-    const ok = (k: string) => ch?.poses.find((p) => p.id === `char.${cid}.pose_${this.pfx}_${k}` && (!speaking || p.talkSrc));
+    // los secundarios sin versión Puñeto usan sus poses humanas también en vista Puñetos
+    const pf = this.pfx === "p" && !ch?.poses.some((p) => p.id === `char.${cid}.pose_p_neutro`) ? "h" : this.pfx;
+    const ok = (k: string) => ch?.poses.find((p) => p.id === `char.${cid}.pose_${pf}_${k}` && (!speaking || p.talkSrc));
     return keys.map(ok).find(Boolean)?.id;
   }
 
@@ -327,10 +329,13 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
     const vista = norm(String(sc.vista ?? ""));
     // «humanos»: de frente con sus poses humanas si todos las tienen; si no, de espaldas en la oficina (como antes)
     // «puñetos»: los Puñetos rediseñados (poses dibujadas enteras pose_p_*), si todos las tienen
-    const pfx: "h" | "p" = vista.startsWith("puneto") ? "p" : "h";
-    const hasHuman = (cid: string) => !!catalog.characters.find((c) => c.id === cid)?.poses.some((x) => x.id === `char.${cid}.pose_${pfx}_neutro`);
-    const human = (vista.startsWith("human") || pfx === "p") && cast.length > 0 && cast.every(hasHuman);
-    const wantsBack = vista.startsWith("espalda") || (vista.startsWith("human") && !human);
+    // sin «vista»: Puñetos (lo normal en los sketches); los secundarios sin versión Puñeto salen como humanos
+    const pfx: "h" | "p" = vista.startsWith("human") ? "h" : "p";
+    const hasPose = (cid: string, k: string) => !!catalog.characters.find((c) => c.id === cid)?.poses.some((x) => x.id === `char.${cid}.pose_${k}`);
+    const cpfx = (cid: string): "h" | "p" => (pfx === "p" && !hasPose(cid, "p_neutro") ? "h" : pfx);
+    const hasHuman = (cid: string) => hasPose(cid, `${cpfx(cid)}_neutro`);
+    const human = cast.length === 0 || cast.every(hasHuman);
+    const wantsBack = vista.startsWith("espalda") && catalog.props.some((x) => x.id.endsWith("_espaldas_teclea"));
     const back = wantsBack && !!bg && OFFICE_BGS.includes(bg);
     const b = new SceneBuilder(`s${si + 1}`, back, cast, catalog, human, pfx);
     if (!back) {
@@ -342,12 +347,12 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
       const slots = (human && cast.length >= 4 ? humanRow(cast.length) : groupLayout(cast.length)).map((sl) => ({ ...sl, y: Math.round(sl.y + dy), scale: Math.round(sl.scale * k * 1000) / 1000, x: Math.round(540 + (sl.x - 540) * (0.6 + 0.4 * (bgInfo?.actorScale ?? 1))) }));
       cast.forEach((cid, i) => {
         const sl = slots[i];
-        const pose = human ? `${pfx}_neutro` : sl.x < 470 ? "neutral_3q_right" : sl.x > 610 ? "neutral_3q_left" : "neutral_front";
+        const pose = human ? `${cpfx(cid)}_neutro` : sl.x < 470 ? "neutral_3q_right" : sl.x > 610 ? "neutral_3q_left" : "neutral_front";
         // humanos: las poses están dibujadas mirando a la derecha; los de la mitad derecha se giran hacia el centro
         const flip = human && sl.x > 610 ? { flip: true } : {};
         // «tumbados»: en el suelo (inconscientes), girados sobre los pies
         const lying = Array.isArray(sc.tumbados) && (sc.tumbados as unknown[]).some((x) => typeof x === "string" && charId(x, `${p}.tumbados`) === cid);
-        const ko = lying && human ? ["ko", "tumbada", "tumbado"].map((k) => `char.${cid}.pose_${pfx}_${k}`).find((id) => catalog.characters.find((c) => c.id === cid)?.poses.some((x) => x.id === id)) : undefined;
+        const ko = lying && human ? ["ko", "tumbada", "tumbado"].map((k) => `char.${cid}.pose_${cpfx(cid)}_${k}`).find((id) => catalog.characters.find((c) => c.id === cid)?.poses.some((x) => x.id === id)) : undefined;
         const rot = lying && !ko ? (sl.x > 540 ? 88 : -88) : 0;
         // «colocar»: posición a mano de algún personaje { "Vanesa": { "x": 900, "z": -5 } }
         const ov = isObj(sc.colocar) ? Object.entries(sc.colocar).find(([k]) => charId(k, `${p}.colocar`) === cid)?.[1] : undefined;

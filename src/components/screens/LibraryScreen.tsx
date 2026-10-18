@@ -231,7 +231,7 @@ export function LibraryScreen({ s }: { s: PocketState }) {
         </div>
       </Card>
 
-      <Card title={kind === "sound" ? "Sonidos incluidos (gratis)" : "Provisionales incluidos"} tone="muted">
+      <Card title={kind === "sound" ? "Sonidos incluidos" : "Incluidos en la serie"} tone="muted">
         <ul className="lib-grid">
           {builtins.map((b) => (
             <li key={b.id} className="lib-item">

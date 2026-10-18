@@ -20,16 +20,10 @@ const TABS: { id: Tab; label: string; icon: string }[] = [
 
 export function PocketApp() {
   const s = usePocket();
-  const uncalibrated = s.catalog.characters.reduce((n, c) => n + c.poses.filter((p) => p.rig?.status === "estimated").length, 0);
   return (
     <div className="app">
       <header className="topbar">
         <span className="logo">PUÑETOS <b>Pocket</b></span>
-        {uncalibrated > 0 && (
-          <button type="button" className="badge badge-warn" title={s.catalog.source.note} onClick={() => s.setTab("caras")}>
-            {uncalibrated} poses sin calibrar
-          </button>
-        )}
       </header>
       <main className="content">
         {s.tab === "idea" && <IdeaScreen s={s} />}

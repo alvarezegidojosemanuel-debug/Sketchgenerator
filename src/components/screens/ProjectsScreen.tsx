@@ -109,62 +109,6 @@ export function ProjectsScreen({ s }: { s: PocketState }) {
           <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("sis-01", s.catalog), "demo"); s.setTab("ver"); }}>
             🎬 Versión Sister · 1 · Espacio-tiempo
           </button>
-          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("prueba-punetos", s.catalog), "demo"); s.setTab("ver"); }}>
-            🆕 Prueba: Puñetos rediseñados
-          </button>
-          <p className="fine"><b>Nuevo · Humanos</b></p>
-          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("fallecido", s.catalog), "demo"); s.setTab("ver"); }}>
-            🆕 Sketch: El fallecido
-          </button>
-          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("jefe-del-pasado", s.catalog), "demo"); s.setTab("ver"); }}>
-            🆕 Sketch: El Jefe del pasado
-          </button>
-          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("prueba-anastasia", s.catalog), "demo"); s.setTab("ver"); }}>
-            🆕 Prueba: Anastas-IA (pantalla y en persona)
-          </button>
-          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("prueba-fake", s.catalog), "demo"); s.setTab("ver"); }}>
-            🆕 Prueba: Fake y el pienso de Barbas
-          </button>
-          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("prueba-alf", s.catalog), "demo"); s.setTab("ver"); }}>
-            🆕 Prueba: Alf y Barbas
-          </button>
-          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("prueba-vanesa", s.catalog), "demo"); s.setTab("ver"); }}>
-            🆕 Prueba: Vanesa, el Jefe y Reynaldo
-          </button>
-          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("prueba-director", s.catalog), "demo"); s.setTab("ver"); }}>
-            🆕 Prueba: el Director humano
-          </button>
-          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("prueba-reynaldo", s.catalog), "demo"); s.setTab("ver"); }}>
-            🆕 Prueba: Reynaldo y Sister humanos
-          </button>
-          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("prueba-humanos", s.catalog), "demo"); s.setTab("ver"); }}>
-            🆕 Prueba: Jefe y Usu humanos en sistemas
-          </button>
-          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("lentejas", s.catalog), "demo"); s.setTab("ver"); }}>
-            Prueba técnica: animación y cómic (guion provisional)
-          </button>
-          <p className="fine"><b>Serie · El origen</b></p>
-          {(["ep1", "ep2", "ep3", "ep4", "ep5"] as const).map((k, n) => (
-            <button key={k} type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject(k), "demo"); s.setTab("ver"); }}>
-              {["Ep. 1 · Antes", "Ep. 2 · El parche", "Ep. 3 · ¿Qué coño nos ha pasado?", "Ep. 4 · Fuera de la oficina", "Ep. 5 · La nueva normalidad"][n]}
-            </button>
-          ))}
-          <p className="fine"><b>Pruebas y demos</b></p>
-          <button type="button" className="btn btn-secondary" onClick={() => { s.replaceProject(demoProject("origen", s.catalog), "demo"); s.setTab("ver"); }}>
-            El origen de los puñetos
-          </button>
-          <button type="button" className="btn btn-secondary" onClick={() => { s.replaceProject(demoProject("usu-reynaldo", s.catalog), "demo"); s.setTab("ver"); }}>
-            Demo: Usu + Reynaldo
-          </button>
-          <button type="button" className="btn btn-ghost" onClick={() => { s.replaceProject(demoProject("usu-jefe", s.catalog), "demo"); s.setTab("ver"); }}>
-            Demo: Usu + Jefe
-          </button>
-          <button type="button" className="btn btn-ghost" onClick={() => { s.replaceProject(demoProject("interacciones", s.catalog), "demo"); s.setTab("ver"); }}>
-            Demo: interacciones (móvil, alarma, bocadillo)
-          </button>
-          <button type="button" className="btn btn-ghost" onClick={() => { s.replaceProject(demoProject("pantallazo", s.catalog), "demo"); s.setTab("ver"); }}>
-            Demo: El Pantallazo Cero (narrador, escritorio, transformación)
-          </button>
         </div>
       </Card>
     </div>

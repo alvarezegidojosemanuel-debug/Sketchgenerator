@@ -5,31 +5,10 @@ import { applyOverrides, catalog as defaultCatalog } from "@/lib/catalog";
 import type { Catalog } from "@/lib/catalog/types";
 import type { FaceOverrides } from "@/lib/catalog/types";
 import { syncShared, withFixedCast } from "@/lib/voice/fixedCast";
-import demoRaw from "@/data/sketch-demo.json";
-import demoUsuReyRaw from "@/data/sketch-usu-reynaldo.json";
-import demoFxRaw from "@/data/sketch-interacciones.json";
-import demoBsodRaw from "@/data/sketch-pantallazo.json";
-import demoOrigenRaw from "@/data/sketch-origen.json";
-import pruebaHumanosRaw from "@/data/prueba-humanos.json";
-import lentejasRaw from "@/data/sketch-lentejas.json";
-import jefePasadoRaw from "@/data/sketch-jefe-del-pasado.json";
-import pruebaReyRaw from "@/data/prueba-reynaldo.json";
-import pruebaDirRaw from "@/data/prueba-director.json";
-import pruebaVanRaw from "@/data/prueba-vanesa.json";
-import pruebaAlfRaw from "@/data/prueba-alf.json";
-import pruebaFakeRaw from "@/data/prueba-fake.json";
-import pruebaAnaRaw from "@/data/prueba-anastasia.json";
 import corto01Raw from "@/data/corto-01-lunes.json";
 import cap02Raw from "@/data/capitulo-02-novia.json";
 import sis01Raw from "@/data/sister-01-espacio-tiempo.json";
 import sk01Raw from "@/data/sketch-01-en-vigor.json";
-import pruebaPunetosRaw from "@/data/prueba-punetos.json";
-import fallecidoRaw from "@/data/sketch-fallecido.json";
-import ep1Raw from "@/data/ep1.json";
-import ep2Raw from "@/data/ep2.json";
-import ep3Raw from "@/data/ep3.json";
-import ep4Raw from "@/data/ep4.json";
-import ep5Raw from "@/data/ep5.json";
 import type { PocketProject } from "@/lib/schema/pocket";
 import { validateProject, type Issue } from "@/lib/schema/validate";
 import { faceStore, libraryStore, newProjectId, projectStore, type LibraryItem } from "@/lib/storage/projects";
@@ -42,34 +21,13 @@ const LAST_ID_KEY = "pocket:lastProjectId";
 const INTENT_KEY = "pocket:intent";
 
 export const DEMOS = {
-  "usu-reynaldo": demoUsuReyRaw,
-  "usu-jefe": demoRaw,
-  interacciones: demoFxRaw,
-  pantallazo: demoBsodRaw,
-  origen: demoOrigenRaw,
-  "prueba-humanos": pruebaHumanosRaw,
-  lentejas: lentejasRaw,
-  "jefe-del-pasado": jefePasadoRaw,
-  "prueba-reynaldo": pruebaReyRaw,
-  "prueba-director": pruebaDirRaw,
-  "prueba-vanesa": pruebaVanRaw,
-  "prueba-alf": pruebaAlfRaw,
-  "prueba-fake": pruebaFakeRaw,
-  "prueba-anastasia": pruebaAnaRaw,
   "corto-01": corto01Raw,
   "cap-02": cap02Raw,
   "sis-01": sis01Raw,
   "sk-01": sk01Raw,
-  "prueba-punetos": pruebaPunetosRaw,
-  fallecido: fallecidoRaw,
-  ep1: ep1Raw,
-  ep2: ep2Raw,
-  ep3: ep3Raw,
-  ep4: ep4Raw,
-  ep5: ep5Raw,
 } as const;
 
-export function demoProject(which: keyof typeof DEMOS = "usu-jefe", catalog: Catalog = defaultCatalog): PocketProject {
+export function demoProject(which: keyof typeof DEMOS = "corto-01", catalog: Catalog = defaultCatalog): PocketProject {
   const r = validateProject(structuredClone(DEMOS[which]), catalog);
   if (!r.project) throw new Error("El sketch demo no valida: " + JSON.stringify(r.errors));
   return r.project;
@@ -88,7 +46,7 @@ function safeLocal<T>(fn: () => T, fallback: T): T {
 export function usePocket() {
   const [tab, setTab] = useState<Tab>("idea");
   const [intent, setIntentState] = useState<SketchIntent>(defaultIntent);
-  const [project, setProjectState] = useState<PocketProject>(() => demoProject("usu-reynaldo"));
+  const [project, setProjectState] = useState<PocketProject>(() => demoProject("corto-01"));
   const [projectId, setProjectId] = useState<string>(() => "demo");
   const [saveState, setSaveState] = useState<"idle" | "saving" | "saved" | "error">("idle");
   const [storageError, setStorageError] = useState<string | null>(null);
