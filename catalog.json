@@ -2090,6 +2090,54 @@
      "look": "puneto"
     },
     {
+     "id": "char.reynaldo.pose_p_anda1",
+     "key": "pose_p_anda1",
+     "label": "Puñeto · anda (paso 1 de 4)",
+     "src": "/assets/punetos/punetos/reynaldo/anda1.webp",
+     "width": 389,
+     "height": 705,
+     "displayScale": 0.917,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.reynaldo.pose_p_anda2",
+     "key": "pose_p_anda2",
+     "label": "Puñeto · anda (paso 2 de 4)",
+     "src": "/assets/punetos/punetos/reynaldo/anda2.webp",
+     "width": 389,
+     "height": 705,
+     "displayScale": 0.917,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.reynaldo.pose_p_anda3",
+     "key": "pose_p_anda3",
+     "label": "Puñeto · anda (paso 3 de 4)",
+     "src": "/assets/punetos/punetos/reynaldo/anda3.webp",
+     "width": 389,
+     "height": 705,
+     "displayScale": 0.917,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.reynaldo.pose_p_anda4",
+     "key": "pose_p_anda4",
+     "label": "Puñeto · anda (paso 4 de 4)",
+     "src": "/assets/punetos/punetos/reynaldo/anda4.webp",
+     "width": 389,
+     "height": 705,
+     "displayScale": 0.917,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
      "id": "char.reynaldo.pose_p_celebra",
      "key": "pose_p_celebra",
      "label": "Puñeto · celebra",
