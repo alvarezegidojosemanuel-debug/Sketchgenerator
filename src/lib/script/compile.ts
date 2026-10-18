@@ -163,6 +163,8 @@ class SceneBuilder {
   rest = new Map<string, string>();
   /** Vueltas a la postura de reposo tras una frase (se quitan si enseguida hay otro gesto). */
   reverts = new Set<PocketEvent>();
+  /** Gestos automáticos de hablar (y su vuelta al reposo): las acciones de la columna del personaje pueden mandar sobre ellos. */
+  talk: { ev: PocketEvent; who: string; column: boolean; revert: boolean }[] = [];
   constructor(
     readonly id: string,
     readonly back: boolean,
@@ -219,7 +221,7 @@ class SceneBuilder {
     return keys.map(ok).find(Boolean)?.id;
   }
 
-  say(who: string | undefined, text: string, opts: { emo?: string; gesture?: string; gap?: number; voiceOf?: string; speakerName?: string; at?: number }) {
+  say(who: string | undefined, text: string, opts: { emo?: string; gesture?: string; gap?: number; voiceOf?: string; speakerName?: string; at?: number; column?: boolean }) {
     if (opts.at === undefined) text = actingTag(who ?? opts.voiceOf, text, opts.gesture); // el coro, tal cual
     const d = estimate(text);
     const at = opts.at ?? this.t;
@@ -228,12 +230,16 @@ class SceneBuilder {
       const g = opts.gesture ?? (text.replace(/\[[^\]]*\]/g, "").split(/\s+/).length >= 7 ? "talk_explain" : undefined);
       const poseId = g ? this.pose(who, g, true) : undefined;
       if (poseId) {
-        this.add({ track: "body", actorUid: who, duration: 0.3, poseId }, at);
+        this.talk.push({ ev: this.add({ track: "body", actorUid: who, duration: 0.3, poseId }, at), who, column: !!opts.column, revert: false });
         // los gestos de hablar (señalar, explicar, gritar…) vuelven a la postura de reposo al acabar la frase;
         // los «de estado» (sentado, brazos cruzados, móvil, KO…) se quedan y pasan a ser el reposo
         if (!opts.gesture || !isStateGesture(opts.gesture)) {
           const base = this.rest.get(who) ?? this.actors.find((a) => a.uid === who)?.poseId;
-          if (base && base !== poseId) this.reverts.add(this.add({ track: "body", actorUid: who, duration: 0.3, poseId: base }, at + d + 0.15));
+          if (base && base !== poseId) {
+            const rv = this.add({ track: "body", actorUid: who, duration: 0.3, poseId: base }, at + d + 0.15);
+            this.reverts.add(rv);
+            this.talk.push({ ev: rv, who, column: !!opts.column, revert: true });
+          }
         } else this.rest.set(who, poseId);
       }
       this.add({ track: "dialogue", actorUid: who, duration: d, text }, at);
@@ -307,6 +313,73 @@ class SceneBuilder {
       }
     }
     return out;
+  }
+}
+
+// ---------------------------------------------------------------- columnas de los personajes
+/**
+ * Acción de la columna de un personaje: { quien, desde, hasta, gesto?, x?, y?, modo?, acaba? }.
+ * desde/hasta = índices de paso (0 = primero; «hasta» incluido). Mientras dura manda sobre el gesto automático de
+ * hablar de las frases marcadas con «columna»: true; en las demás frases habla con su gesto y vuelve a la acción.
+ * modo: «anda» (por defecto si se mueve), «desliza» o «aparece».
+ */
+function applyActions(b: SceneBuilder, list: unknown[], times: number[], path: string, charId: (v: unknown, path: string) => string | undefined, issues: ScriptIssue[]) {
+  const n = times.length - 1;
+  const items = list
+    .map((a, i) => ({ a, i }))
+    .filter((x): x is { a: Obj; i: number } => isObj(x.a))
+    .sort((x, y) => (Number(x.a.desde) || 0) - (Number(y.a.desde) || 0));
+  for (const { a, i } of items) {
+    const ap = `${path}[${i}]`;
+    const who = charId(a.quien, `${ap}.quien`);
+    const actor = b.actors.find((x) => x.uid === who);
+    if (!who || !actor) {
+      if (who) issues.push({ path: ap, message: "ese personaje no está en la escena" });
+      continue;
+    }
+    const d0 = Math.max(0, Math.min(Math.max(0, n - 1), Math.round(Number(a.desde) || 0)));
+    const d1 = Math.max(d0, Math.min(Math.max(0, n - 1), Math.round(typeof a.hasta === "number" ? a.hasta : d0)));
+    const T0 = times[d0] ?? 0;
+    let T1 = times[d1 + 1] ?? b.t;
+    if (T1 - T0 < 0.5) T1 = T0 + 0.8;
+    const key = (g: unknown) => (typeof g === "string" && g ? POSE_ALIAS[norm(g)] ?? norm(g) : undefined);
+    const g = key(a.gesto);
+    const gPose = g ? b.pose(who, g) : undefined;
+    if (g && !gPose) issues.push({ path: `${ap}.gesto`, message: `${actor.characterId} no tiene la pose «${String(a.gesto)}»` });
+    const x0 = b.px.get(who) ?? actor.x;
+    const moves = typeof a.x === "number" || typeof a.y === "number";
+    const x1 = typeof a.x === "number" ? Math.round(a.x) : x0;
+    const modo = norm(String(a.modo ?? ""));
+    const mode = modo.startsWith("apare") ? "aparece" : modo.startsWith("desliz") ? "desliza" : "anda";
+    const walkPose = moves && mode === "anda" && x1 !== x0 ? b.pose(who, "camina") : undefined;
+    const hold = walkPose ?? gPose;
+    // los gestos automáticos de hablar dentro de la acción
+    for (const te of b.talk) {
+      if (te.who !== who || te.ev.start < T0 - 0.01 || te.ev.start >= T1) continue;
+      if (te.column) b.ev = b.ev.filter((e) => e !== te.ev);
+      else if (te.revert && hold && "poseId" in te.ev) (te.ev as { poseId: string }).poseId = hold;
+    }
+    // si justo empieza una frase suya sin «columna», manda su gesto de hablar: la acción entra al acabar la frase
+    const talking = b.talk.some((te) => te.who === who && !te.column && !te.revert && b.ev.includes(te.ev) && Math.abs(te.ev.start - T0) < 0.05);
+    if (hold && !talking) b.add({ track: "body", actorUid: who, duration: 0.3, poseId: hold }, T0);
+    if (moves) {
+      const dur = mode === "aparece" ? 0.05 : Math.max(0.4, T1 - T0 - 0.15);
+      b.add({ track: "body", actorUid: who, duration: dur, ...(typeof a.x === "number" ? { x: x1 } : {}), ...(typeof a.y === "number" ? { y: Math.round(a.y) } : {}), ...(mode === "aparece" ? { ease: "instant" } : mode === "anda" ? { ease: "linear", fx: "walk" } : {}), ...(mode === "anda" && x1 !== x0 ? { flip: x1 < x0 } : {}) }, T0);
+      b.px.set(who, x1);
+    }
+    // al acabar: la pose de «acaba», o vuelta al reposo si era un gesto pasajero (las posturas se quedan)
+    const end = key(a.acaba);
+    const endPose = end ? b.pose(who, end) : undefined;
+    if (endPose) {
+      b.add({ track: "body", actorUid: who, duration: 0.3, poseId: endPose }, T1);
+      if (isStateGesture(end!)) b.rest.set(who, endPose);
+    } else if (hold) {
+      if (gPose && !walkPose && isStateGesture(g!)) b.rest.set(who, gPose);
+      else {
+        const base = (gPose && walkPose ? gPose : undefined) ?? b.rest.get(who) ?? actor.poseId;
+        if (base !== hold) b.add({ track: "body", actorUid: who, duration: 0.3, poseId: base }, T1);
+      }
+    }
   }
 }
 
@@ -402,7 +475,7 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
           return;
         }
         seen.add(who);
-        b.say(who, text, { emo: emo(st.emocion), gesture: typeof st.gesto === "string" ? POSE_ALIAS[norm(st.gesto)] ?? norm(st.gesto) : undefined, gap });
+        b.say(who, text, { emo: emo(st.emocion), gesture: typeof st.gesto === "string" ? POSE_ALIAS[norm(st.gesto)] ?? norm(st.gesto) : undefined, gap, column: st.columna === true });
       } else if (st.narrador !== undefined) {
         const tx = typeof st.narrador === "string" ? st.narrador : text;
         if (tx) b.say(undefined, tx, { gap });
@@ -606,6 +679,8 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
       for (let at = 0; at < total; at += ambSnd.duration - 0.4) b.add({ track: "sfx", soundId: ambSnd.id, duration: Math.min(ambSnd.duration, total - at), volume: 0.25 }, at);
     }
     times[steps.length] = b.t;
+    // «acciones»: la columna de cada personaje (gestos y movimientos que abarcan uno o varios pasos)
+    if (!back && Array.isArray(sc.acciones)) applyActions(b, sc.acciones as unknown[], times, `${p}.acciones`, (v, path) => charId(v, path), issues);
     takes.push(b.build(typeof sc.nombre === "string" ? sc.nombre.slice(0, 120) : `Escena ${si + 1}`, bg, norm(String(sc.camara ?? "")) === "auto" ? "auto" : undefined, tr));
   });
   if (issues.some((i) => /no existe|no tiene|no válid/.test(i.message)) && !takes.length) return { issues, marks };

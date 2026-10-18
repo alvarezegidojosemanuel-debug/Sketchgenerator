@@ -81,7 +81,7 @@ export function applyLife(take: Take, catalog: Catalog, t: number, actors: Map<s
     const me = actors.get(uid);
     const other = actors.get(target);
     const pose = me ? findPose(catalog, me.characterId, me.poseId) : undefined;
-    if (!me || !other || !pose?.flat || pose.facing !== "front" || other.x === me.x) continue;
+    if (!me || !other || !pose?.flat || pose.facing !== "front" || other.x === me.x || me.walking) continue;
     // sentados a su mesa, en la silla o en el suelo: girar el dibujo giraría también la mesa y la silla
     if (/_(sentad|silla|ko|tumbad|despiert|aturdid|mesa|mostrador)/.test(pose.key)) continue;
     const want = other.x < me.x;

@@ -18,7 +18,7 @@ import type { PoseCategoryMap } from "@/lib/catalog/poseCategories";
 
 type Obj = Record<string, unknown>;
 type Script = Obj & { escenas: Obj[] };
-type Sel = { scene: number; step: number | null };
+type Sel = { scene: number; step: number | null; action?: number };
 
 const isObj = (v: unknown): v is Obj => typeof v === "object" && v !== null && !Array.isArray(v);
 const str = (v: unknown) => (typeof v === "string" ? v : "");
@@ -109,6 +109,36 @@ function posePrefix(cid: string, vista: string, catalog: Catalog): "p" | "h" {
   return want === "p" && !ch?.poses.some((p) => p.key === "pose_p_neutro") ? "h" : want;
 }
 
+/** Al insertar (+1) o borrar (−1) un paso en «at», las acciones de las columnas siguen pegadas a sus pasos. */
+function shiftActions(sc: Obj, at: number, delta: 1 | -1) {
+  if (!Array.isArray(sc.acciones)) return;
+  const out: Obj[] = [];
+  for (const a of sc.acciones as Obj[]) {
+    if (!isObj(a)) continue;
+    let d0 = Number(a.desde) || 0;
+    let d1 = typeof a.hasta === "number" ? a.hasta : d0;
+    if (delta === 1) {
+      if (d0 >= at) d0++;
+      if (d1 >= at) d1++;
+    } else {
+      if (d0 === at && d1 === at) continue; // solo abarcaba el paso borrado
+      if (d0 > at) d0--;
+      if (d1 >= at) d1--;
+    }
+    out.push({ ...a, desde: d0, hasta: Math.max(d0, d1) });
+  }
+  sc.acciones = out;
+}
+function swapActions(sc: Obj, i: number, j: number) {
+  if (!Array.isArray(sc.acciones)) return;
+  for (const a of sc.acciones as Obj[]) {
+    if (!isObj(a)) continue;
+    const d0 = Number(a.desde) || 0;
+    const d1 = typeof a.hasta === "number" ? a.hasta : d0;
+    if (d0 === d1 && (d0 === i || d0 === j)) a.desde = a.hasta = d0 === i ? j : i;
+  }
+}
+
 const NEW_SCENE = (cast: string[]): Obj => ({ nombre: "Nueva escena", lugar: "bg_cafeteria", personajes: cast, pasos: [] });
 const NEW_SCRIPT: Script = { formato: "puñetos-guion-1", titulo: "Nuevo sketch", escenas: [{ nombre: "Escena 1", lugar: "bg_cafeteria", personajes: ["Usu", "Reynaldo"], camara: "auto", pasos: [{ dice: "Usu", texto: "" }] }] };
 
@@ -120,6 +150,14 @@ export function GuionScreen({ s }: { s: PocketState }) {
   const history = useRef<Script[]>([]);
   const pending = useRef<Script | null>(null);
   const propsRef = useRef<HTMLDivElement>(null);
+  const [laneChar, setLaneChar] = useState<string | null>(null);
+  const [narrow, setNarrow] = useState(false);
+  useEffect(() => {
+    const f = () => setNarrow(window.innerWidth < 760);
+    f();
+    window.addEventListener("resize", f);
+    return () => window.removeEventListener("resize", f);
+  }, []);
 
   // otro proyecto abierto (desde Proyectos): se carga su guion
   const pid = useRef(s.projectId);
@@ -201,13 +239,18 @@ export function GuionScreen({ s }: { s: PocketState }) {
   const stepIdx = sel.step !== null && sel.step < steps.length ? sel.step : null;
   const step = stepIdx !== null ? steps[stepIdx] : null;
   const cast = (Array.isArray(sc.personajes) ? sc.personajes : []).filter((x): x is string => typeof x === "string");
+  const lanes = narrow ? cast.filter((c) => c === (laneChar && cast.includes(laneChar) ? laneChar : cast[0])) : cast;
+  const actions = (Array.isArray(sc.acciones) ? sc.acciones : []) as Obj[];
+  const actIdx = sel.action !== undefined && isObj(actions[sel.action]) ? sel.action : null;
+  const action = actIdx !== null ? actions[actIdx] : null;
 
   // momento del sketch que corresponde a lo elegido
   const mark = compiled?.marks[si];
   const take = mark && compiled?.project ? compiled.project.takes[mark.take] : undefined;
   const t0 = mark ? (stepIdx !== null ? mark.times[stepIdx] ?? 0 : 0) : 0;
   const t1 = mark ? (stepIdx !== null ? mark.times[stepIdx + 1] ?? t0 : mark.times[0] ?? 0) : 0;
-  const tShow = take ? Math.min(take.duration - 0.05, stepIdx === null ? Math.max(0.4, t0 + 0.4) : t1 > t0 ? t0 + Math.min(t1 - t0 - 0.05, Math.max(0.35, (t1 - t0) * 0.6)) : t0 + 0.5) : 0;
+  const aT1 = mark && action ? mark.times[Math.min(steps.length - 1, Math.max(Number(action.desde) || 0, typeof action.hasta === "number" ? action.hasta : Number(action.desde) || 0)) + 1] ?? 0 : 0;
+  const tShow = take && action ? Math.max(0, Math.min(take.duration - 0.05, aT1 - 0.05)) : take ? Math.min(take.duration - 0.05, stepIdx === null ? Math.max(0.4, t0 + 0.4) : t1 > t0 ? t0 + Math.min(t1 - t0 - 0.05, Math.max(0.35, (t1 - t0) * 0.6)) : t0 + 0.5) : 0;
   const frame = take ? evaluateTake(take, catalog, Math.max(0, tShow)) : null;
   const sceneIssues = (compiled?.issues ?? []).filter((i) => i.path.startsWith(`escenas[${si}]`));
   const stepIssues = stepIdx !== null ? sceneIssues.filter((i) => i.path.startsWith(`escenas[${si}].pasos[${stepIdx}]`)) : sceneIssues.filter((i) => !i.path.includes(".pasos["));
@@ -231,6 +274,36 @@ export function GuionScreen({ s }: { s: PocketState }) {
       if (stepIdx !== null && isObj(arr[stepIdx])) fn(arr[stepIdx]);
     });
   const setScene = (fn: (x: Obj) => void) => update((d) => fn(d.escenas[si]));
+  const lastDrag = useRef(0);
+  const setAction = (fn: (a: Obj) => void, fromDrag = false) => {
+    const now = Date.now();
+    const keep = !fromDrag || now - lastDrag.current > 600;
+    if (fromDrag) lastDrag.current = now;
+    update((d) => {
+      const arr = d.escenas[si].acciones as Obj[];
+      if (actIdx !== null && isObj(arr?.[actIdx])) fn(arr[actIdx]);
+    }, keep);
+  };
+  const addAction = (who: string, row: number) => {
+    const at = actions.length;
+    update((d) => {
+      const x = d.escenas[si];
+      if (!Array.isArray(x.acciones)) x.acciones = [];
+      (x.acciones as Obj[]).push({ quien: who, desde: row, hasta: row });
+    });
+    select({ scene: si, step: null, action: at });
+  };
+  const actionAt = (who: string, row: number) => {
+    const cid = resolveCharacter(who, catalog);
+    for (let i = actions.length - 1; i >= 0; i--) {
+      const a = actions[i];
+      if (!isObj(a) || resolveCharacter(a.quien, catalog) !== cid) continue;
+      const d0 = Number(a.desde) || 0;
+      const d1 = typeof a.hasta === "number" ? a.hasta : d0;
+      if (row >= d0 && row <= d1) return { a, i, first: row === d0, last: row === d1 };
+    }
+    return undefined;
+  };
   const addStep = (kind: string) => {
     const k = KINDS.find((x) => x.id === kind)!;
     const at = stepIdx !== null ? stepIdx + 1 : steps.length;
@@ -238,6 +311,7 @@ export function GuionScreen({ s }: { s: PocketState }) {
       const x = d.escenas[si];
       if (!Array.isArray(x.pasos)) x.pasos = [];
       (x.pasos as Obj[]).splice(at, 0, k.make({ cast }));
+      shiftActions(x, at, 1);
     });
     setSel({ scene: si, step: at });
   };
@@ -248,6 +322,7 @@ export function GuionScreen({ s }: { s: PocketState }) {
     update((d) => {
       const arr = d.escenas[si].pasos as Obj[];
       [arr[stepIdx], arr[to]] = [arr[to], arr[stepIdx]];
+      swapActions(d.escenas[si], stepIdx, to);
     });
     setSel({ scene: si, step: to });
   };
@@ -281,6 +356,18 @@ export function GuionScreen({ s }: { s: PocketState }) {
                 </button>
                 <button type="button" className="g-play" onClick={() => playFrom(i, null)} title="Ver desde aquí" aria-label="Ver desde aquí">▶</button>
               </div>
+              {open && cast.length > 0 && (
+                <div className="g-lanes-head">
+                  {narrow ? (
+                    <select className="g-lane-pick" value={lanes[0]} onChange={(e) => setLaneChar(e.target.value)} aria-label="Columna de">
+                      {cast.map((c) => <option key={c} value={c}>{c}</option>)}
+                    </select>
+                  ) : (
+                    lanes.map((c) => <span key={c} className="g-lane-name" title={c}>{c.slice(0, 3)}</span>)
+                  )}
+                  <span className="fine">Columnas: toca una casilla para que haga algo en ese paso</span>
+                </div>
+              )}
               {open && (
                 <ol className="g-steps">
                   {ps.map((st, k) => {
@@ -288,7 +375,22 @@ export function GuionScreen({ s }: { s: PocketState }) {
                     const long = isObj(st) && words(str(st.texto)) > 15;
                     const bad = (compiled?.issues ?? []).some((is) => is.path.startsWith(`escenas[${i}].pasos[${k}]`));
                     return (
-                      <li key={k} className={`g-row${k === stepIdx ? " on" : ""}`}>
+                      <li key={k} className={`g-row${k === stepIdx && actIdx === null ? " on" : ""}`}>
+                        {lanes.map((c) => {
+                          const hit = actionAt(c, k);
+                          const mv = hit && (typeof hit.a.x === "number" || typeof hit.a.y === "number");
+                          return (
+                            <button
+                              key={c}
+                              type="button"
+                              className={`g-cell${hit ? " full" : ""}${hit?.first ? " first" : ""}${hit?.last ? " last" : ""}${hit && hit.i === actIdx ? " on" : ""}`}
+                              title={hit ? `${c}: ${hit.a.gesto ? String(hit.a.gesto) : ""}${mv ? " se mueve" : ""}` : `${c}: añadir acción aquí`}
+                              onClick={() => (hit ? select({ scene: i, step: null, action: hit.i }) : addAction(c, k))}
+                            >
+                              {hit?.first ? (mv ? "🚶" : hit.a.gesto ? "🤸" : "•") : hit ? "" : "+"}
+                            </button>
+                          );
+                        })}
                         <button type="button" className="g-main" onClick={() => select({ scene: i, step: k })}>
                           <span className="g-ico">{kd?.icon ?? "❔"}</span>
                           <span className="g-txt">{isObj(st) ? summary(st) : "?"}</span>
@@ -310,25 +412,43 @@ export function GuionScreen({ s }: { s: PocketState }) {
 
       {/* ------------------------------------------------ centro: cómo queda */}
       <section className="guion-col guion-stage" aria-label="Vista previa">
-        {frame ? <Stage catalog={catalog} frame={frame} maxHeight="58vh" /> : <p className="fine">No se puede montar esta escena todavía.</p>}
+        {frame ? (
+          <Stage
+            catalog={catalog}
+            frame={frame}
+            maxHeight="58vh"
+            {...(action ? { selectedUid: resolveCharacter(action.quien, catalog) ?? null, onMoveActor: (uid: string, x: number, y: number) => { if (uid === resolveCharacter(action.quien, catalog)) setAction((a) => { a.x = Math.round(x); a.y = Math.round(y); if (!a.modo) a.modo = "anda"; }, true); } } : {})}
+          />
+        ) : <p className="fine">No se puede montar esta escena todavía.</p>}
+        {action && <p className="fine">✋ Arrastra a {str(action.quien)} en la imagen para decir adónde va.</p>}
         <div className="row g-stage-bar">
           <button type="button" className="btn btn-primary btn-small" onClick={() => playFrom(si, stepIdx)}>▶ Ver desde aquí</button>
-          <span className="fine">Escena {si + 1}{stepIdx !== null ? ` · paso ${stepIdx + 1}` : ""} · segundo {(t0).toFixed(1)} de {take ? take.duration.toFixed(1) : "?"}</span>
+          <span className="fine">Escena {si + 1}{action ? ` · acción de ${str(action.quien)} (cómo acaba)` : stepIdx !== null ? ` · paso ${stepIdx + 1}` : ""} · segundo {tShow.toFixed(1)} de {take ? take.duration.toFixed(1) : "?"}</span>
         </div>
         <Info step={step} sceneIssues={sceneIssues} stepIssues={stepIssues} cast={cast} catalog={catalog} vista={str(sc.vista)} />
       </section>
 
       {/* ------------------------------------------------ derecha: propiedades */}
       <aside className="guion-col guion-props" ref={propsRef} aria-label="Propiedades">
-        {step && stepIdx !== null ? (
+        {action && actIdx !== null ? (
+          <>
+            <div className="g-props-head">
+              <h2>🎭 {str(action.quien)} <small>· columna</small></h2>
+              <div className="row">
+                <button type="button" className="btn btn-small btn-danger" onClick={() => { update((d) => { (d.escenas[si].acciones as Obj[]).splice(actIdx, 1); }); setSel({ scene: si, step: Number(action.desde) || 0 }); }} title="Borrar">🗑</button>
+              </div>
+            </div>
+            <ActionProps key={`${si}-a${actIdx}`} a={action} steps={steps} vista={str(sc.vista)} catalog={catalog} cats={s.poseCats} set={setAction} />
+          </>
+        ) : step && stepIdx !== null ? (
           <>
             <div className="g-props-head">
               <h2>{kindOf(step)?.icon} {kindOf(step)?.label ?? "Paso"} <small>· paso {stepIdx + 1}</small></h2>
               <div className="row">
                 <button type="button" className="btn btn-small btn-ghost" onClick={() => moveStep(-1)} disabled={stepIdx === 0} title="Subir">↑</button>
                 <button type="button" className="btn btn-small btn-ghost" onClick={() => moveStep(1)} disabled={stepIdx === steps.length - 1} title="Bajar">↓</button>
-                <button type="button" className="btn btn-small btn-ghost" onClick={() => { update((d) => { (d.escenas[si].pasos as Obj[]).splice(stepIdx + 1, 0, structuredClone(step)); }); setSel({ scene: si, step: stepIdx + 1 }); }} title="Duplicar">⧉</button>
-                <button type="button" className="btn btn-small btn-danger" onClick={() => { update((d) => { (d.escenas[si].pasos as Obj[]).splice(stepIdx, 1); }); setSel({ scene: si, step: stepIdx > 0 ? stepIdx - 1 : steps.length > 1 ? 0 : null }); }} title="Borrar">🗑</button>
+                <button type="button" className="btn btn-small btn-ghost" onClick={() => { update((d) => { (d.escenas[si].pasos as Obj[]).splice(stepIdx + 1, 0, structuredClone(step)); shiftActions(d.escenas[si], stepIdx + 1, 1); }); setSel({ scene: si, step: stepIdx + 1 }); }} title="Duplicar">⧉</button>
+                <button type="button" className="btn btn-small btn-danger" onClick={() => { update((d) => { (d.escenas[si].pasos as Obj[]).splice(stepIdx, 1); shiftActions(d.escenas[si], stepIdx, -1); }); setSel({ scene: si, step: stepIdx > 0 ? stepIdx - 1 : steps.length > 1 ? 0 : null }); }} title="Borrar">🗑</button>
               </div>
             </div>
             <StepProps key={`${si}-${stepIdx}`} st={step} cast={cast} vista={str(sc.vista)} catalog={catalog} set={setStep} cats={s.poseCats} />
@@ -427,6 +547,7 @@ function StepProps({ st, cast, vista, catalog, set, cats }: { st: Obj; cast: str
             </select>
           </Field>
           {num("pausa_despues", "Pausa después (s)", 0.1, "Silencio antes del siguiente paso (0–4 s).")}
+          <label className="g-check"><input type="checkbox" checked={st.columna === true} onChange={(e) => field("columna", e.target.checked || undefined)} /> Mientras habla, hace lo que tenga en su columna (andar, gesto…) en vez del gesto de hablar</label>
         </>
       )}
       {kind === "off" && (
@@ -664,6 +785,59 @@ function RawJson({ st, set, open }: { st: Obj; set: (fn: (st: Obj) => void) => v
     </details>
   );
 }
+
+// ---------------------------------------------------------------- acción de la columna de un personaje
+function ActionProps({ a, steps, vista, catalog, cats, set }: { a: Obj; steps: Obj[]; vista: string; catalog: Catalog; cats: PoseCategoryMap; set: (fn: (a: Obj) => void) => void }) {
+  const field = (key: string, v: unknown) => set((x) => { if (v === "" || v === undefined || (typeof v === "number" && !Number.isFinite(v))) delete x[key]; else x[key] = v; });
+  const cid = resolveCharacter(a.quien, catalog);
+  const d0 = Number(a.desde) || 0;
+  const d1 = typeof a.hasta === "number" ? a.hasta : d0;
+  const moves = typeof a.x === "number" || typeof a.y === "number";
+  const stepOpt = (k: number) => {
+    const st = steps[k];
+    const t = isObj(st) ? (str(st.texto) || str(st.rotulo) || str(st.efecto) || kindOf(st)?.label || "") : "";
+    return `${k + 1}. ${isObj(st) ? (str(st.dice) || str(st.off) || "") + (str(st.dice) || str(st.off) ? ": " : "") : ""}${t}`.slice(0, 50);
+  };
+  return (
+    <div className="g-form">
+      <div className="g-grid2">
+        <Field label="Desde el paso">
+          <select value={d0} onChange={(e) => { const v = Number(e.target.value); set((x) => { x.desde = v; if ((typeof x.hasta === "number" ? x.hasta : v) < v) x.hasta = v; }); }}>
+            {steps.map((_, k) => <option key={k} value={k}>{stepOpt(k)}</option>)}
+          </select>
+        </Field>
+        <Field label="Hasta el paso">
+          <select value={d1} onChange={(e) => field("hasta", Number(e.target.value))}>
+            {steps.map((_, k) => (k >= d0 ? <option key={k} value={k}>{stepOpt(k)}</option> : null))}
+          </select>
+        </Field>
+      </div>
+      <Gestures cid={cid} vista={vista} catalog={catalog} cats={cats} value={str(a.gesto)} onChange={(g) => field("gesto", g)} label="Qué hace (pose)" />
+      <label className="g-check">
+        <input type="checkbox" checked={moves} onChange={(e) => set((x) => { if (e.target.checked) { x.x = 540; x.modo = "anda"; } else { delete x.x; delete x.y; delete x.modo; } })} /> Cambia de sitio
+      </label>
+      {moves && (
+        <>
+          <p className="fine">✋ Arrastra al personaje en la vista previa hasta donde tiene que llegar.</p>
+          <Field label="Cómo llega">
+            <select value={norm3(str(a.modo))} onChange={(e) => field("modo", e.target.value)}>
+              <option value="anda">Andando</option>
+              <option value="desliza">Deslizándose (sin andar)</option>
+              <option value="aparece">Aparece allí de golpe</option>
+            </select>
+          </Field>
+          <div className="g-grid2">
+            <Field label="x (0–1080)"><input type="number" step={10} value={typeof a.x === "number" ? a.x : ""} onChange={(e) => field("x", e.target.value === "" ? undefined : Number(e.target.value))} /></Field>
+            <Field label="y (pies, 0–1920)"><input type="number" step={10} value={typeof a.y === "number" ? a.y : ""} placeholder="igual" onChange={(e) => field("y", e.target.value === "" ? undefined : Number(e.target.value))} /></Field>
+          </div>
+        </>
+      )}
+      <Gestures cid={cid} vista={vista} catalog={catalog} cats={cats} value={str(a.acaba)} onChange={(g) => field("acaba", g)} label="Al acabar se queda en… (ninguno = vuelve a su postura)" />
+      <p className="fine">Mientras dura, el personaje lo hace aunque hablen otros. En sus propias frases manda su gesto de hablar, salvo que la frase tenga marcado «hace lo que tenga en su columna».</p>
+    </div>
+  );
+}
+const norm3 = (v: string) => (normKey(v).startsWith("apare") ? "aparece" : normKey(v).startsWith("desliz") ? "desliza" : "anda");
 
 // ---------------------------------------------------------------- propiedades de la escena
 function SceneProps({ sc, catalog, set }: { sc: Obj; catalog: Catalog; set: (fn: (x: Obj) => void) => void }) {

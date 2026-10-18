@@ -49,6 +49,8 @@ export interface ActorState {
   headDy: number;
   /** Media vuelta: lado anterior y mezcla 0→1 hacia el nuevo (fundido rápido entre los dos lados). */
   turnFrom?: boolean;
+  /** Va andando (no se gira hacia quien habla mientras camina). */
+  walking?: boolean;
   turnMix?: number;
 }
 
@@ -281,6 +283,7 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
             if (!screen.flash || screen.flash.alpha < alpha) screen.flash = { color: "#ffffff", alpha };
           }
         }
+        if (e.fx === "walk" && t >= e.start && t < e.start + e.duration) st.walking = true;
         if (e.fx) {
           const o = bodyFx(e, t);
           st.offX += o.dx;

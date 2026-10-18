@@ -92,6 +92,8 @@ export function bodyFx(e: BodyEvent, t: number): { dx: number; dy: number } {
   const local = t - e.start;
   if (!e.fx || local < 0 || local > e.duration) return { dx: 0, dy: 0 };
   if (e.fx === "shake") return { dx: Math.sin(local * 60) * 9, dy: 0 };
+  // andar: botecito a cada paso y un leve vaivén
+  if (e.fx === "walk") return { dx: Math.sin(local * 7.5) * 3, dy: -Math.abs(Math.sin(local * 7.5)) * 22 };
   if (e.fx === "type") return { dx: Math.sin(local * 9) * 2, dy: -Math.abs(Math.sin(local * 16)) * 5 };
   const p = local / e.duration;
   return { dx: 0, dy: -Math.sin(Math.PI * p) * 140 };

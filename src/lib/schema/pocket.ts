@@ -83,7 +83,7 @@ export const BodyEvent = z.object({
   flip: z.boolean().optional(),
   ease: z.enum(["linear", "inOut", "instant"]).optional(),
   /** Efecto corporal durante el evento: temblar, saltar o teclear. */
-  fx: z.enum(["shake", "jump", "type"]).optional(),
+  fx: z.enum(["shake", "jump", "type", "walk"]).optional(),
   /** Entrar en escena (aparece) o salir (desaparece) al inicio del evento. */
   appear: z.enum(["cut", "fade", "pop", "flash"]).optional(),
   disappear: z.enum(["cut", "fade", "pop", "flash"]).optional(),

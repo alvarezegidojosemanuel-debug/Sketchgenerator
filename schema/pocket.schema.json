@@ -448,7 +448,8 @@
                       "enum": [
                         "shake",
                         "jump",
-                        "type"
+                        "type",
+                        "walk"
                       ]
                     },
                     "appear": {
