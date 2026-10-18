@@ -882,7 +882,7 @@
                     },
                     "text": {
                       "type": "string",
-                      "maxLength": 120
+                      "maxLength": 200
                     },
                     "actorUid": {
                       "type": "string",

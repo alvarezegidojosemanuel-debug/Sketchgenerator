@@ -1,0 +1,250 @@
+{
+  "formato": "puñetos-guion-1",
+  "titulo": "Puñetos · 1 · En algún lugar del espacio-tiempo",
+  "escenas": [
+    {
+      "nombre": "Exterior destrozado",
+      "lugar": "bg_complejo_apagado",
+      "personajes": [],
+      "transicion": "corte",
+      "ambiente": "no",
+      "pasos": [
+        {
+          "camara": "general"
+        },
+        {
+          "sonido": "alarma"
+        },
+        {
+          "rotulo": "EN ALGÚN LUGAR DEL ESPACIO-TIEMPO… — Sede secreta de un complejo secreto. Tan secreto que ni Recursos Humanos sabe que existe.",
+          "durante": 4.4
+        },
+        {
+          "efecto": "humo",
+          "x": 760,
+          "y": 620,
+          "durante": 4
+        },
+        {
+          "efecto": "destello",
+          "color": "#ff2a2a"
+        },
+        {
+          "pausa": 1.4
+        },
+        {
+          "efecto": "destello",
+          "color": "#ff2a2a"
+        },
+        {
+          "pausa": 1.4
+        },
+        {
+          "efecto": "destello",
+          "color": "#ff2a2a"
+        },
+        {
+          "pausa": 1.7
+        },
+        {
+          "camara": "punto",
+          "x": 700,
+          "y": 920,
+          "zoom": 2.4,
+          "mover": true,
+          "durante": 2.6
+        },
+        {
+          "pausa": 2.7
+        }
+      ]
+    },
+    {
+      "nombre": "Flash-forward · la sala",
+      "lugar": "bg_sala_anastasia_noche",
+      "vista": "puñetos",
+      "personajes": [
+        "Jefe",
+        "Sister",
+        "Usu",
+        "Barbas",
+        "Reynaldo"
+      ],
+      "transicion": "blanco",
+      "pantalla": {
+        "x": 820,
+        "y": 980,
+        "escala": 0.7
+      },
+      "colocar": {
+        "Usu": {
+          "x": 560,
+          "y": 1560,
+          "z": -5
+        },
+        "Jefe": {
+          "x": 230,
+          "y": 1760,
+          "z": 3,
+          "gesto": "despierta"
+        },
+        "Sister": {
+          "x": 470,
+          "y": 1870,
+          "z": 6,
+          "gesto": "despierta"
+        },
+        "Barbas": {
+          "x": 790,
+          "y": 1790,
+          "z": 4,
+          "gesto": "despierta"
+        },
+        "Reynaldo": {
+          "x": 900,
+          "y": 1900,
+          "z": 7,
+          "gesto": "despierta"
+        }
+      },
+      "pasos": [
+        {
+          "quien": "Usu",
+          "gesto": "sentado_teclea"
+        },
+        {
+          "sonido": "servidor"
+        },
+        {
+          "camara": "punto",
+          "x": 540,
+          "y": 1420,
+          "zoom": 1.25
+        },
+        {
+          "teclea": "Usu",
+          "durante": 1.6
+        },
+        {
+          "dice": "Usu",
+          "texto": "Pero… pero… ¿qué coño ha pasado aquí?",
+          "gesto": "sentado_agobiado"
+        },
+        {
+          "pausa": 0.6
+        },
+        {
+          "dice": "Usu",
+          "texto": "Vale. Vale. Tranquilidad. Esto tiene arreglo.",
+          "gesto": "sentado_agobiado"
+        },
+        {
+          "dice": "Usu",
+          "texto": "¡Jefe! ¡Chicos! ¿Estáis bien? ¡Decid algo!",
+          "gesto": "sentado_panico"
+        },
+        {
+          "dice": "Usu",
+          "texto": "¡Insultadme, aunque sea!",
+          "gesto": "sentado_panico"
+        },
+        {
+          "off": "Anastas-IA",
+          "texto": "Usu, cariño… ¿pruebo a reiniciarlos? Solo les dolerá un poquito."
+        },
+        {
+          "dice": "Usu",
+          "texto": "¡Madre mía, Ani! ¡Que no son máquinas!",
+          "gesto": "sentado_panico"
+        },
+        {
+          "pausa": 0.6
+        },
+        {
+          "dice": "Usu",
+          "texto": "Aunque el Jefe lleva años en modo de bajo consumo.",
+          "gesto": "sentado_agobiado"
+        },
+        {
+          "off": "Anastas-IA",
+          "texto": "Técnicamente, tiene tres actualizaciones de rendimiento pendientes."
+        },
+        {
+          "dice": "Usu",
+          "texto": "¡Ani, concéntrate! ¡Tengo que arreglar esto!",
+          "gesto": "sentado_panico"
+        },
+        {
+          "teclea": "Usu",
+          "durante": 1.0
+        },
+        {
+          "dice": "Usu",
+          "texto": "Solo tengo que picar aquí, invocar al brujo, sacar el dragón…",
+          "gesto": "sentado_teclea"
+        },
+        {
+          "efecto": "sudor",
+          "donde": "Usu",
+          "durante": 1.6
+        },
+        {
+          "off": "Anastas-IA",
+          "texto": "Tranquilo, cariño. He iniciado una copia de seguridad."
+        },
+        {
+          "dice": "Usu",
+          "texto": "¿Y eso es bueno?",
+          "gesto": "sentado_agobiado"
+        },
+        {
+          "off": "Anastas-IA",
+          "texto": "No. La última copia es del viernes."
+        },
+        {
+          "off": "Anastas-IA",
+          "texto": "Antes de que, ejem… se «optimizara» el sistema."
+        },
+        {
+          "dice": "Usu",
+          "texto": "Estamos muertos.",
+          "gesto": "sentado_agobiado2"
+        },
+        {
+          "off": "Anastas-IA",
+          "texto": "Técnicamente, ellos ya van adelantados."
+        },
+        {
+          "pausa": 0.8
+        },
+        {
+          "sonido": "whoosh"
+        },
+        {
+          "camara": "general",
+          "mover": true,
+          "durante": 0.5
+        },
+        {
+          "pausa": 0.6
+        }
+      ]
+    },
+    {
+      "nombre": "Título",
+      "lugar": "bg_cielo_amanecer",
+      "personajes": [],
+      "transicion": "blanco",
+      "pasos": [
+        {
+          "objeto": "prop_logo_punetos",
+          "durante": 2.8,
+          "anim": "flota"
+        },
+        {
+          "pausa": 2.9
+        }
+      ]
+    }
+  ]
+}

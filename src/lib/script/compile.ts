@@ -84,9 +84,9 @@ const AMBIENT_BY_BG: Record<string, string> = {
 };
 const SOUND_ALIAS: Record<string, string> = { telefono: "sfx_telefono", alarma: "sfx_alarma", pop: "sfx_pop", whoosh: "sfx_whoosh", ding: "sfx_ding", boing: "sfx_boing", golpe: "sfx_golpe", fracaso: "sfx_fracaso", teclado: "sfx_teclado", pantallazo: "sfx_pantallazo", servidor: "sfx_servidor", explosion: "sfx_explosion", portazo: "sfx_golpe" };
 
-const COMIC_FX: Record<string, "sudor" | "sorpresa" | "enfado" | "lineas" | "risa" | "onomatopeya" | "corazones" | "mareo"> = {
+const COMIC_FX: Record<string, "sudor" | "sorpresa" | "enfado" | "lineas" | "risa" | "onomatopeya" | "corazones" | "mareo" | "humo"> = {
   sudor: "sudor", gotas: "sudor", sorpresa: "sorpresa", susto: "sorpresa", enfado: "enfado", vena: "enfado", furia: "enfado",
-  lineas: "lineas", velocidad: "lineas", risa: "risa", ja: "risa", jaja: "risa", onomatopeya: "onomatopeya", zas: "onomatopeya", mareo: "mareo", aturdido: "mareo", estrellas: "mareo", corazones: "corazones", corazon: "corazones", amor: "corazones", enamorada: "corazones",
+  lineas: "lineas", velocidad: "lineas", risa: "risa", ja: "risa", jaja: "risa", onomatopeya: "onomatopeya", zas: "onomatopeya", humo: "humo", polvo: "humo", polvareda: "humo", mareo: "mareo", aturdido: "mareo", estrellas: "mareo", corazones: "corazones", corazon: "corazones", amor: "corazones", enamorada: "corazones",
 };
 
 /**
@@ -488,7 +488,7 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
           // «donde: Anastas-IA» con su tele colgada: el efecto sale sobre la tele
           const onTv = toIa ? b.iaTvPos : undefined;
           b.add({ track: "screen", effect: "comic", kind: COMIC_FX[ef], ...(near ? { actorUid: near.uid } : {}), ...(onTv ? { x: Math.round(onTv.x), y: Math.round(onTv.y) } : !near && typeof st.x === "number" && typeof st.y === "number" ? { x: Math.round(st.x), y: Math.round(st.y) } : {}), duration: Number(st.durante) || 1.6, ...(text ? { text } : {}) });
-        } else issues.push({ path: `${sp}.efecto`, message: `efecto «${String(st.efecto)}» no existe (explosion, pantallazo, destello, temblor, oscuro, sudor, sorpresa, enfado, lineas, risa, onomatopeya, corazones, mareo)` });
+        } else issues.push({ path: `${sp}.efecto`, message: `efecto «${String(st.efecto)}» no existe (explosion, pantallazo, destello, temblor, oscuro, sudor, sorpresa, enfado, lineas, risa, onomatopeya, corazones, mareo, humo)` });
       } else if (st.camara !== undefined) {
         // planos de cámara: «general», «medio» / «primer_plano» de alguien, o un punto con zoom; «mover»: travelling suave
         const c = norm(String(st.camara));
@@ -538,7 +538,7 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
         }
       } else if (st.rotulo !== undefined) {
         // cartela de cómic arriba: «LUNES · 08:59 — Cuatro días antes»
-        b.add({ track: "screen", effect: "comic", kind: "rotulo", text: String(st.rotulo).slice(0, 120), duration: Number(st.durante) || 2.5 });
+        b.add({ track: "screen", effect: "comic", kind: "rotulo", text: String(st.rotulo).slice(0, 200), duration: Number(st.durante) || 2.5 });
       } else if (st.objeto !== undefined) {
         const id = String(st.objeto);
         const prop = catalog.props.find((x) => x.id === id || norm(x.label) === norm(id));

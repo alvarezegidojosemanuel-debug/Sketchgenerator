@@ -21,6 +21,7 @@ import pruebaFakeRaw from "@/data/prueba-fake.json";
 import pruebaAnaRaw from "@/data/prueba-anastasia.json";
 import corto01Raw from "@/data/corto-01-lunes.json";
 import cap02Raw from "@/data/capitulo-02-novia.json";
+import sis01Raw from "@/data/sister-01-espacio-tiempo.json";
 import pruebaPunetosRaw from "@/data/prueba-punetos.json";
 import fallecidoRaw from "@/data/sketch-fallecido.json";
 import ep1Raw from "@/data/ep1.json";
@@ -56,6 +57,7 @@ export const DEMOS = {
   "prueba-anastasia": pruebaAnaRaw,
   "corto-01": corto01Raw,
   "cap-02": cap02Raw,
+  "sis-01": sis01Raw,
   "prueba-punetos": pruebaPunetosRaw,
   fallecido: fallecidoRaw,
   ep1: ep1Raw,

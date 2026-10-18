@@ -272,7 +272,10 @@ export function drawComic(ctx: Ctx, c: ComicState) {
     }
     case "rotulo": {
       // cartela de cómic arriba (lugar / hora): «LUNES · 08:59 — Cuatro días antes»
-      const lines = (c.text ?? "").split(/\s*[—|]\s*/).filter(Boolean).slice(0, 2);
+      // primera línea grande; el resto, más pequeño y partido en renglones de ~30 letras
+      const parts = (c.text ?? "").split(/\s*[—|]\s*/).filter(Boolean);
+      const wrap = (t: string) => t.split(" ").reduce<string[]>((acc, w) => (acc.length && (acc[acc.length - 1] + " " + w).length <= 30 ? ((acc[acc.length - 1] += " " + w), acc) : [...acc, w]), []);
+      const lines = [parts[0] ?? "", ...parts.slice(1).flatMap(wrap)].filter(Boolean).slice(0, 5);
       const big = lines.length === 1 && lines[0].length <= 12 ? 1.9 : 1; // título
       const w0 = Math.max(...lines.map((l, i) => { ctx.font = `900 ${i ? 40 : 64}px "Arial Black", Impact, system-ui, sans-serif`; return ctx.measureText(l).width; }), 200);
       const bw = w0 + 80;
@@ -281,7 +284,7 @@ export function drawComic(ctx: Ctx, c: ComicState) {
       ctx.translate(c.x, c.y);
       ctx.rotate(-0.02);
       ctx.scale(scale * u * big * fit, scale * u * big * fit);
-      const bh = lines.length > 1 ? 170 : 110;
+      const bh = lines.length > 1 ? 110 + 52 * (lines.length - 1) : 110;
       ctx.fillStyle = INK;
       ctx.fillRect(-bw / 2 + 10, -bh / 2 + 10, bw, bh);
       ctx.fillStyle = "#ffd23f";
@@ -294,7 +297,7 @@ export function drawComic(ctx: Ctx, c: ComicState) {
       ctx.fillStyle = INK;
       lines.forEach((l, i) => {
         ctx.font = `900 ${i ? 40 : 64}px "Arial Black", Impact, system-ui, sans-serif`;
-        ctx.fillText(l, 0, lines.length > 1 ? (i ? 42 : -28) : 0);
+        ctx.fillText(l, 0, lines.length > 1 ? -bh / 2 + 52 + (i ? 30 + 52 * i : 0) : 0);
       });
       break;
     }

@@ -100,6 +100,9 @@ export function ProjectsScreen({ s }: { s: PocketState }) {
           <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("cap-02", s.catalog), "demo"); s.setTab("ver"); }}>
             🎬 Capítulo 2 · Martes
           </button>
+          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("sis-01", s.catalog), "demo"); s.setTab("ver"); }}>
+            🎬 Versión Sister · 1 · Espacio-tiempo
+          </button>
           <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("prueba-punetos", s.catalog), "demo"); s.setTab("ver"); }}>
             🆕 Prueba: Puñetos rediseñados
           </button>
