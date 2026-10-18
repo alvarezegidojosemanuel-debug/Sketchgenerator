@@ -354,7 +354,9 @@ function applyActions(b: SceneBuilder, list: unknown[], times: number[], path: s
     const modo = norm(String(a.modo ?? ""));
     const mode = modo.startsWith("apare") ? "aparece" : modo.startsWith("desliz") ? "desliza" : "anda";
     // animación del personaje (secuencia de sus poses)
-    const anim = typeof a.animacion === "string" && a.animacion ? resolveAnimation(who, a.animacion, anims) : undefined;
+    // al ir andando sin animación elegida, usa su «andar» si lo tiene
+    const autoWalk = !(typeof a.animacion === "string" && a.animacion) && !g && moves && mode === "anda" && x1 !== x0;
+    const anim = typeof a.animacion === "string" && a.animacion ? resolveAnimation(who, a.animacion, anims) : autoWalk ? resolveAnimation(who, "andar", anims) : undefined;
     if (typeof a.animacion === "string" && a.animacion && !anim) issues.push({ path: `${ap}.animacion`, message: `${actor.characterId} no tiene la animación «${a.animacion}»` });
     const frames = anim ? anim.frames.map((f) => ({ id: b.pose(who, f.pose), dur: f.dur })).filter((f): f is { id: string; dur: number } => !!f.id) : [];
     const walkPose = !frames.length && moves && mode === "anda" && x1 !== x0 ? b.pose(who, "camina") : undefined;

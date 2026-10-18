@@ -636,6 +636,54 @@
      "look": "puneto"
     },
     {
+     "id": "char.usu.pose_p_anda1",
+     "key": "pose_p_anda1",
+     "label": "Puñeto · anda (paso 1 de 4)",
+     "src": "/assets/punetos/punetos/usu/anda1.webp",
+     "width": 294,
+     "height": 443,
+     "displayScale": 1.317,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.usu.pose_p_anda2",
+     "key": "pose_p_anda2",
+     "label": "Puñeto · anda (paso 2 de 4)",
+     "src": "/assets/punetos/punetos/usu/anda2.webp",
+     "width": 294,
+     "height": 443,
+     "displayScale": 1.317,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.usu.pose_p_anda3",
+     "key": "pose_p_anda3",
+     "label": "Puñeto · anda (paso 3 de 4)",
+     "src": "/assets/punetos/punetos/usu/anda3.webp",
+     "width": 294,
+     "height": 443,
+     "displayScale": 1.317,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.usu.pose_p_anda4",
+     "key": "pose_p_anda4",
+     "label": "Puñeto · anda (paso 4 de 4)",
+     "src": "/assets/punetos/punetos/usu/anda4.webp",
+     "width": 294,
+     "height": 443,
+     "displayScale": 1.317,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
      "id": "char.usu.pose_p_baila",
      "key": "pose_p_baila",
      "label": "Puñeto · baila",

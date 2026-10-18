@@ -1,1 +1,26 @@
-{}
+{
+  "usu": [
+    {
+      "nombre": "andar",
+      "bucle": true,
+      "frames": [
+        {
+          "pose": "anda1",
+          "dur": 0.15
+        },
+        {
+          "pose": "anda2",
+          "dur": 0.15
+        },
+        {
+          "pose": "anda3",
+          "dur": 0.15
+        },
+        {
+          "pose": "anda4",
+          "dur": 0.15
+        }
+      ]
+    }
+  ]
+}

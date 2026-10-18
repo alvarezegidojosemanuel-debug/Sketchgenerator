@@ -16,7 +16,8 @@ describe("acciones (columnas de personajes)", () => {
     expect(usu(0.2).x).toBe(300);
     expect(usu(t1 + 0.2).x).toBe(800);
     expect(usu(take.duration - 0.1).x).toBe(800);
-    expect(take.events.some((e) => e.track === "body" && e.actorUid === "usu" && e.fx === "walk")).toBe(true);
+    // Usu tiene «andar»: lo usa al ir andando
+    expect(take.events.some((e) => e.track === "body" && e.actorUid === "usu" && "poseId" in e && /pose_p_anda/.test(String(e.poseId)))).toBe(true);
   });
   it("con «columna» la frase no pone el gesto de hablar dentro de la acción", () => {
     const r = compileScript(base([{ quien: "Usu", desde: 2, gesto: "brazos_cruzados" }], [{ dice: "Sister", texto: "Hola." }, { pausa: 0.5 }, { dice: "Usu", texto: "Esto es una frase bastante larga para que explique con las manos.", columna: true }]), catalog);
@@ -51,5 +52,13 @@ describe("animaciones en las columnas", () => {
   it("avisa si la animación no existe", () => {
     const r = compileScript({ escenas: [{ lugar: "bg_cafeteria", personajes: ["Usu"], pasos: [{ pausa: 1 }], acciones: [{ quien: "Usu", desde: 0, animacion: "volar" }] }] }, catalog);
     expect(r.issues.some((i) => /animación «volar»/.test(i.message))).toBe(true);
+  });
+});
+
+describe("andar de Usu (común)", () => {
+  it("al ir andando sin animación elegida usa su «andar» (anda1…anda4)", () => {
+    const r = compileScript({ escenas: [{ lugar: "bg_cafeteria", personajes: ["Usu", "Sister"], colocar: { Usu: { x: 200 } }, pasos: [{ pausa: 2 }], acciones: [{ quien: "Usu", desde: 0, x: 900 }] }] }, catalog);
+    const ids = new Set(r.project!.takes[0].events.filter((e) => e.track === "body" && e.actorUid === "usu" && "poseId" in e).map((e) => (e as { poseId: string }).poseId));
+    expect([...ids].filter((x) => /pose_p_anda\d/.test(x)).length).toBe(4);
   });
 });
