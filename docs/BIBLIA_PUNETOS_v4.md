@@ -2,6 +2,13 @@
 
 > Versión de trabajo actualizada · octubre de 2026. **Es la fuente principal**: sustituye a `LORE_PUNETOS_completo.md`, `temporada-1.md` y `biblia-punetos.md` en todo lo que contradiga.
 
+## 0. Enfoque (decisión del creador, 18-10-2026)
+
+- **El gancho son los sketches sueltos**, no la historia. Los Puñetos existen para hacer sketches.
+- **Sketches sueltos:** situaciones del día a día (la oficina, la calle, España) que todos vemos y que no están bien. Se cuentan con **sentido común y de forma neutral**: se expone la situación, no se toma partido político. Si polariza, que sea por el sentido común, no por ser de un bando.
+- **La historia** (el parche, cómo se convirtieron en Puñetos) se cuenta poco a poco, de forma amena y **sin forzar chistes**. La dicta el creador y se monta tal cual la pida. Es para quien quiera saber de dónde vienen.
+- Siguen valiendo las reglas de escritura: frases cortas y chistes que entienda cualquiera.
+
 ## 1. Premisa
 
 PUÑETOS es una serie de comedia en formato cómic animado, con capítulos de 60 a 90 segundos, pensada para redes sociales y vinculada al lanzamiento de un videojuego.
