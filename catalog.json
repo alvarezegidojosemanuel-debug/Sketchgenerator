@@ -13894,6 +13894,20 @@
    "label": "Sala de reuniones",
    "src": "/assets/punetos/backgrounds/bg_sala_reuniones.webp",
    "standing": false
+  },
+  {
+   "id": "bg_puerta_sistemas",
+   "label": "Puerta de la sala de sistemas",
+   "src": "/assets/punetos/backgrounds/bg_puerta_sistemas.webp",
+   "actorScale": 1.1,
+   "actorY": 1600
+  },
+  {
+   "id": "bg_sala_equipo",
+   "label": "Sala del equipo de sistemas",
+   "src": "/assets/punetos/backgrounds/bg_sala_equipo.webp",
+   "actorScale": 1.1,
+   "actorY": 1710
   }
  ],
  "props": [

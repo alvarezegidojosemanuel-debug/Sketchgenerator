@@ -189,8 +189,33 @@
       ]
     },
     {
+      "nombre": "La puerta de sistemas",
+      "lugar": "bg_puerta_sistemas",
+      "personajes": [],
+      "transicion": "corte",
+      "pasos": [
+        {
+          "camara": "general"
+        },
+        {
+          "sonido": "teclado"
+        },
+        {
+          "camara": "punto",
+          "x": 560,
+          "y": 820,
+          "zoom": 1.8,
+          "mover": true,
+          "durante": 2.2
+        },
+        {
+          "pausa": 2.3
+        }
+      ]
+    },
+    {
       "nombre": "Sistemas · el encargo",
-      "lugar": "bg_sistemas",
+      "lugar": "bg_sala_equipo",
       "vista": "humanos",
       "personajes": [
         "Barbas",
@@ -275,7 +300,8 @@
           "mira": "izquierda",
           "gesto": "sentado_teclea"
         }
-      }
+      },
+      "transicion": "corte"
     },
     {
       "nombre": "Despacho del Director",
@@ -328,7 +354,7 @@
     },
     {
       "nombre": "Sistemas · la novia electrónica",
-      "lugar": "bg_sistemas",
+      "lugar": "bg_sala_equipo",
       "vista": "humanos",
       "personajes": [
         "Barbas",
