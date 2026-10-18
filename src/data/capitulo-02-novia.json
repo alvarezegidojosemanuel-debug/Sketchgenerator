@@ -465,6 +465,24 @@
           "texto": "Sí, mi Usu. Ya lo he instalado en preproducción."
         },
         {
+          "dice": "Reynaldo",
+          "texto": "¿«Mi Usu»?",
+          "gesto": "sentado_teclea"
+        },
+        {
+          "dice": "Reynaldo",
+          "texto": "Deberías reiniciar esa IA. Se está volviendo muy turbia…",
+          "gesto": "sentado_teclea"
+        },
+        {
+          "efecto": "enfado",
+          "donde": "Anastas-IA",
+          "durante": 1.8
+        },
+        {
+          "pausa": 1.0
+        },
+        {
           "dice": "Usu",
           "texto": "¡Genial! Sí, Jefe, ya está.",
           "gesto": "sentado_habla"
