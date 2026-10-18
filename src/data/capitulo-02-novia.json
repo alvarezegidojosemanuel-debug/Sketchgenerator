@@ -530,14 +530,56 @@
         },
         {
           "objeto": "prop_rata",
-          "x": -120,
+          "x": 300,
           "y": 1560,
           "escala": 1.5,
-          "hasta_x": 430,
-          "durante": 2.0
+          "hasta_x": 470,
+          "durante": 2.6
         },
         {
-          "pausa": 2.0
+          "objeto": "prop_pantalla_instala_68",
+          "x": 435,
+          "y": 771,
+          "durante": 0.55
+        },
+        {
+          "pausa": 0.55
+        },
+        {
+          "objeto": "prop_pantalla_instala_76",
+          "x": 435,
+          "y": 771,
+          "durante": 0.5
+        },
+        {
+          "pausa": 0.5
+        },
+        {
+          "objeto": "prop_pantalla_instala_84",
+          "x": 435,
+          "y": 771,
+          "durante": 0.5
+        },
+        {
+          "pausa": 0.5
+        },
+        {
+          "objeto": "prop_pantalla_instala_92",
+          "x": 435,
+          "y": 771,
+          "durante": 0.5
+        },
+        {
+          "pausa": 0.5
+        },
+        {
+          "objeto": "prop_pantalla_instala_100",
+          "x": 435,
+          "y": 771,
+          "durante": 0.55
+        },
+        {
+          "pausa": 0.55
         },
         {
           "efecto": "destello",
@@ -549,42 +591,65 @@
         {
           "objeto": "prop_pantalla_error",
           "x": 435,
-          "y": 771,
-          "escala": 1
+          "y": 771
         },
         {
           "objeto": "prop_rata_puneto",
-          "x": 430,
+          "x": 470,
           "y": 1560,
           "escala": 1.5,
-          "durante": 1.1
+          "durante": 0.9
         },
         {
-          "pausa": 1.1
+          "pausa": 0.9
         },
         {
           "objeto": "prop_rata_sorpresa",
-          "x": 430,
+          "x": 470,
           "y": 1560,
           "escala": 1.5,
-          "durante": 1.4
+          "durante": 1.3
         },
         {
-          "pausa": 1.4
+          "efecto": "sorpresa",
+          "x": 470,
+          "y": 1410,
+          "durante": 1.2
+        },
+        {
+          "pausa": 1.3
         },
         {
           "sonido": "whoosh"
         },
         {
-          "objeto": "prop_rata_huye",
-          "x": 430,
+          "efecto": "humo",
+          "x": 470,
           "y": 1560,
-          "escala": 1.5,
-          "hasta_x": 1300,
-          "durante": 0.9
+          "durante": 1.2
         },
         {
-          "pausa": 1.4
+          "efecto": "lineas",
+          "x": 610,
+          "y": 1340,
+          "durante": 0.7
+        },
+        {
+          "efecto": "sudor",
+          "x": 590,
+          "y": 1390,
+          "durante": 0.7
+        },
+        {
+          "objeto": "prop_rata_huye",
+          "x": 470,
+          "y": 1560,
+          "escala": 1.5,
+          "hasta_x": 1350,
+          "durante": 0.8
+        },
+        {
+          "pausa": 1.5
         }
       ]
     }

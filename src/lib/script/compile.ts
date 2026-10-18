@@ -487,7 +487,7 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
           // recursos de cómic sobre un personaje
           // «donde: Anastas-IA» con su tele colgada: el efecto sale sobre la tele
           const onTv = toIa ? b.iaTvPos : undefined;
-          b.add({ track: "screen", effect: "comic", kind: COMIC_FX[ef], ...(near ? { actorUid: near.uid } : {}), ...(onTv ? { x: Math.round(onTv.x), y: Math.round(onTv.y) } : {}), duration: Number(st.durante) || 1.6, ...(text ? { text } : {}) });
+          b.add({ track: "screen", effect: "comic", kind: COMIC_FX[ef], ...(near ? { actorUid: near.uid } : {}), ...(onTv ? { x: Math.round(onTv.x), y: Math.round(onTv.y) } : !near && typeof st.x === "number" && typeof st.y === "number" ? { x: Math.round(st.x), y: Math.round(st.y) } : {}), duration: Number(st.durante) || 1.6, ...(text ? { text } : {}) });
         } else issues.push({ path: `${sp}.efecto`, message: `efecto «${String(st.efecto)}» no existe (explosion, pantallazo, destello, temblor, oscuro, sudor, sorpresa, enfado, lineas, risa, onomatopeya, corazones, mareo)` });
       } else if (st.camara !== undefined) {
         // planos de cámara: «general», «medio» / «primer_plano» de alguien, o un punto con zoom; «mover»: travelling suave

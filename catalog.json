@@ -14389,6 +14389,41 @@
    "src": "/assets/punetos/props/pantalla_error_nucleo.webp",
    "width": 200,
    "height": 126
+  },
+  {
+   "id": "prop_pantalla_instala_68",
+   "label": "Pantalla instalando 68 %",
+   "src": "/assets/punetos/props/pantalla_instala_68.webp",
+   "width": 200,
+   "height": 126
+  },
+  {
+   "id": "prop_pantalla_instala_76",
+   "label": "Pantalla instalando 76 %",
+   "src": "/assets/punetos/props/pantalla_instala_76.webp",
+   "width": 200,
+   "height": 126
+  },
+  {
+   "id": "prop_pantalla_instala_84",
+   "label": "Pantalla instalando 84 %",
+   "src": "/assets/punetos/props/pantalla_instala_84.webp",
+   "width": 200,
+   "height": 126
+  },
+  {
+   "id": "prop_pantalla_instala_92",
+   "label": "Pantalla instalando 92 %",
+   "src": "/assets/punetos/props/pantalla_instala_92.webp",
+   "width": 200,
+   "height": 126
+  },
+  {
+   "id": "prop_pantalla_instala_100",
+   "label": "Pantalla instalando 100 %",
+   "src": "/assets/punetos/props/pantalla_instala_100.webp",
+   "width": 200,
+   "height": 126
   }
  ]
 }
