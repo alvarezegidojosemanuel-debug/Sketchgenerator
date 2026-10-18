@@ -208,13 +208,13 @@ class SceneBuilder {
     if (kind && !dup) this.add({ track: "screen", effect: "comic", kind, actorUid: who, duration: Math.max(1.1, Math.min(2.2, d)) }, at);
   }
   /** speaking: el personaje habla en esa pose → con humanos, solo poses que tienen boca abierta (talkSrc). */
-  pose(cid: string, key: string, speaking = false) {
+  pose(cid: string, key: string, speaking = false, fallback = true) {
     const ch = this.catalog.characters.find((c) => c.id === cid);
     if (!this.human) {
       const id = `char.${cid}.pose_${key}`;
       return ch?.poses.some((p) => p.id === id) ? id : undefined;
     }
-    const keys = [...(HUMAN_POSE[key] ?? [key]), ...(speaking ? ["explica", "neutro"] : [])];
+    const keys = [...(HUMAN_POSE[key] ?? [key]), ...(speaking && fallback ? ["explica", "neutro"] : [])];
     // los secundarios sin versión Puñeto usan sus poses humanas también en vista Puñetos
     const pf = this.pfx === "p" && !ch?.poses.some((p) => p.id === `char.${cid}.pose_p_neutro`) ? "h" : this.pfx;
     const ok = (k: string) => ch?.poses.find((p) => p.id === `char.${cid}.pose_${pf}_${k}` && (!speaking || p.talkSrc));
@@ -228,7 +228,8 @@ class SceneBuilder {
     if (who && !this.back && this.has(who)) {
       if (opts.emo) this.add({ track: "face", actorUid: who, duration: 0.3, expressionId: this.expr(who, opts.emo) }, at);
       const g = opts.gesture ?? (text.replace(/\[[^\]]*\]/g, "").split(/\s+/).length >= 7 ? "talk_explain" : undefined);
-      const poseId = g ? this.pose(who, g, true) : undefined;
+      // gesto elegido a mano: esa pose aunque no tenga boca dibujada (entonces la boca no se mueve)
+      const poseId = opts.gesture ? this.pose(who, opts.gesture, true, false) ?? this.pose(who, opts.gesture) ?? this.pose(who, opts.gesture, true) : g ? this.pose(who, g, true) : undefined;
       if (poseId) {
         this.talk.push({ ev: this.add({ track: "body", actorUid: who, duration: 0.3, poseId }, at), who, column: !!opts.column, revert: false });
         // los gestos de hablar (señalar, explicar, gritar…) vuelven a la postura de reposo al acabar la frase;

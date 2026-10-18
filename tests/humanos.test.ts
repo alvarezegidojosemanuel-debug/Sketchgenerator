@@ -120,14 +120,19 @@ describe("boca de dos fotogramas con voz real", () => {
 });
 
 describe("humanos: al hablar siempre con boca", () => {
-  it("si el gesto pedido no tiene boca abierta, usa otra pose que sí (para que mueva la boca)", () => {
-    const g = { formato: "puñetos-guion-1", escenas: [{ lugar: "bg_sistemas", vista: "humanos", personajes: ["Jefe", "Usu"], pasos: [
-      { dice: "Usu", texto: "No sé, yo solo lo he reenviado.", gesto: "encoge" },
-      { dice: "Usu", texto: "¡Ay!", gesto: "susto" },
-    ] }] };
+  it("el gesto elegido a mano manda aunque esa pose no tenga boca (en el editor se marca con 👄 la que sí)", () => {
+    const usu = catalog.characters.find((c) => c.id === "usu")!;
+    const mute = usu.poses.find((p) => p.key.startsWith("pose_h_") && !p.talkSrc && p.key !== "pose_h_neutro")!;
+    const k = mute.key.replace("pose_h_", "");
+    const g = { formato: "puñetos-guion-1", escenas: [{ lugar: "bg_sistemas", vista: "humanos", personajes: ["Jefe", "Usu"], pasos: [{ dice: "Usu", texto: "No sé, yo solo lo he reenviado.", gesto: k }] }] };
+    const tk = validateProject(g, catalog).project!.takes[0];
+    expect(tk.events.some((e) => e.track === "body" && e.poseId === mute.id)).toBe(true);
+  });
+  it("sin gesto elegido, al hablar usa una pose con boca", () => {
+    const g = { formato: "puñetos-guion-1", escenas: [{ lugar: "bg_sistemas", vista: "humanos", personajes: ["Jefe", "Usu"], pasos: [{ dice: "Usu", texto: "No sé, yo solo lo he reenviado esta mañana a todo el mundo." }] }] };
     const tk = validateProject(g, catalog).project!.takes[0];
     for (const e of tk.events) {
-      if (e.track !== "body" || !e.poseId) continue;
+      if (e.track !== "body" || !e.poseId || e.actorUid !== "usu") continue;
       const pose = catalog.characters.find((c) => c.id === "usu")!.poses.find((p) => p.id === e.poseId)!;
       expect(pose.talkSrc, e.poseId).toBeTruthy();
     }

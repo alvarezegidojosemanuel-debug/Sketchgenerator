@@ -540,7 +540,7 @@ function StepProps({ st, cast, vista, catalog, set, cats }: { st: Obj; cast: str
         <>
           {who("dice", "Quién habla", allNames)}
           {text()}
-          <Gestures cid={resolveCharacter(st.dice, catalog)} vista={vista} catalog={catalog} cats={cats} value={str(st.gesto)} onChange={(g) => field("gesto", g)} label="Gesto mientras lo dice" />
+          <Gestures cid={resolveCharacter(st.dice, catalog)} vista={vista} catalog={catalog} cats={cats} value={str(st.gesto)} onChange={(g) => field("gesto", g)} label="Gesto mientras lo dice (👄 = mueve la boca)" />
           <Field label="Emoción de la cara">
             <select value={str(st.emocion)} onChange={(e) => field("emocion", e.target.value)}>
               {EMOTIONS.map((e) => <option key={e} value={e}>{e || "— la del gesto —"}</option>)}
@@ -693,7 +693,7 @@ function Gestures({ cid, vista, catalog, value, onChange, label, cats }: { cid?:
           return (
             <button key={p.id} type="button" className={`g-pose${normKey(value) === g ? " on" : ""}`} onClick={() => onChange(g)} title={g}>
               <img src={p.src} alt="" loading="lazy" />
-              <small>{g.replace(/_/g, " ")}</small>
+              <small>{p.talkSrc && p.talkSrc !== p.src ? "👄 " : ""}{g.replace(/_/g, " ")}</small>
             </button>
           );
         })}
