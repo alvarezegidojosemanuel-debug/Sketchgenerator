@@ -1,0 +1,266 @@
+{
+  "formato": "puñetos-guion-1",
+  "titulo": "Sketch · ¿Está en vigor?",
+  "escenas": [
+    {
+      "nombre": "Cafetería",
+      "lugar": "bg_cafeteria",
+      "vista": "puñetos",
+      "personajes": [
+        "Usu",
+        "Jefe",
+        "Barbas",
+        "Sister",
+        "Reynaldo"
+      ],
+      "transicion": "corte",
+      "colocar": {
+        "Sister": {
+          "x": 300,
+          "y": 1520,
+          "z": -5,
+          "escala": 1.35
+        },
+        "Reynaldo": {
+          "x": 760,
+          "y": 1520,
+          "z": -5,
+          "escala": 1.35,
+          "mira": "izquierda"
+        },
+        "Usu": {
+          "x": 150,
+          "y": 1850,
+          "z": 5,
+          "escala": 1.45
+        },
+        "Jefe": {
+          "x": 540,
+          "y": 1880,
+          "z": 6,
+          "escala": 1.45
+        },
+        "Barbas": {
+          "x": 920,
+          "y": 1850,
+          "z": 5,
+          "escala": 1.45,
+          "mira": "izquierda"
+        }
+      },
+      "pasos": [
+        {
+          "dice": "Usu",
+          "texto": "Me suben el alquiler un treinta por ciento.",
+          "gesto": "susto"
+        },
+        {
+          "dice": "Reynaldo",
+          "texto": "No pueden. El decreto prorroga tu contrato cinco años.",
+          "gesto": "senala"
+        },
+        {
+          "dice": "Barbas",
+          "texto": "Ese decreto lo tumbaron.",
+          "gesto": "neutro"
+        },
+        {
+          "dice": "Reynaldo",
+          "texto": "Y lo volvieron a aprobar.",
+          "gesto": "senala2"
+        },
+        {
+          "dice": "Jefe",
+          "texto": "Entonces, ¿vale o no vale?",
+          "gesto": "confundido"
+        },
+        {
+          "dice": "Reynaldo",
+          "texto": "Depende de lo que voten sesenta y nueve diputados en noviembre.",
+          "gesto": "neutro"
+        },
+        {
+          "dice": "Sister",
+          "texto": "¿Y hasta entonces?",
+          "gesto": "preocupada"
+        },
+        {
+          "dice": "Reynaldo",
+          "texto": "Hasta entonces vale… a lo mejor.",
+          "gesto": "panico"
+        },
+        {
+          "efecto": "mareo",
+          "donde": "Reynaldo",
+          "durante": 3.2
+        },
+        {
+          "sonido": "pantallazo"
+        },
+        {
+          "objeto": "prop_impresora_loca",
+          "x": 900,
+          "y": 1000,
+          "escala": 1.0,
+          "anim": "vibra",
+          "durante": 3.2
+        },
+        {
+          "objeto": "prop_hoja_derogado",
+          "x": 900,
+          "y": 820,
+          "escala": 2.0,
+          "hasta_x": -80,
+          "hasta_y": 300,
+          "durante": 1.1
+        },
+        {
+          "pausa": 0.18
+        },
+        {
+          "objeto": "prop_hoja_aprobado",
+          "x": 900,
+          "y": 820,
+          "escala": 2.0,
+          "hasta_x": 1200,
+          "hasta_y": 500,
+          "durante": 1.1
+        },
+        {
+          "pausa": 0.18
+        },
+        {
+          "objeto": "prop_hoja_pendiente",
+          "x": 900,
+          "y": 820,
+          "escala": 2.0,
+          "hasta_x": 300,
+          "hasta_y": -80,
+          "durante": 1.1
+        },
+        {
+          "pausa": 0.18
+        },
+        {
+          "objeto": "prop_hoja_derogado",
+          "x": 900,
+          "y": 820,
+          "escala": 2.0,
+          "hasta_x": 820,
+          "hasta_y": -80,
+          "durante": 1.1
+        },
+        {
+          "pausa": 0.18
+        },
+        {
+          "objeto": "prop_hoja_aprobado",
+          "x": 900,
+          "y": 820,
+          "escala": 2.0,
+          "hasta_x": -80,
+          "hasta_y": 900,
+          "durante": 1.1
+        },
+        {
+          "pausa": 0.18
+        },
+        {
+          "objeto": "prop_hoja_pendiente",
+          "x": 900,
+          "y": 820,
+          "escala": 2.0,
+          "hasta_x": 1200,
+          "hasta_y": 1100,
+          "durante": 1.1
+        },
+        {
+          "pausa": 0.18
+        },
+        {
+          "objeto": "prop_hoja_derogado",
+          "x": 900,
+          "y": 820,
+          "escala": 2.0,
+          "hasta_x": 560,
+          "hasta_y": -80,
+          "durante": 1.1
+        },
+        {
+          "pausa": 0.18
+        },
+        {
+          "objeto": "prop_hoja_aprobado",
+          "x": 900,
+          "y": 820,
+          "escala": 2.0,
+          "hasta_x": 100,
+          "hasta_y": -80,
+          "durante": 1.1
+        },
+        {
+          "pausa": 0.18
+        },
+        {
+          "pausa": 1.2
+        },
+        {
+          "dice": "Barbas",
+          "texto": "Pues yo alquilo el piso de mi abuela.",
+          "gesto": "neutro"
+        },
+        {
+          "dice": "Barbas",
+          "texto": "¿Ahora no lo recupero en cinco años?",
+          "gesto": "idea"
+        },
+        {
+          "dice": "Reynaldo",
+          "texto": "O en siete, si eres empresa.",
+          "gesto": "senala"
+        },
+        {
+          "dice": "Barbas",
+          "texto": "Soy un señor con barba.",
+          "gesto": "neutro"
+        },
+        {
+          "dice": "Reynaldo",
+          "texto": "Entonces cinco. Y si no renuevas, indemnizas.",
+          "gesto": "senala2"
+        },
+        {
+          "dice": "Barbas",
+          "texto": "¿Y si se cae el decreto?",
+          "gesto": "idea"
+        },
+        {
+          "dice": "Reynaldo",
+          "texto": "Entonces no.",
+          "gesto": "neutro"
+        },
+        {
+          "dice": "Jefe",
+          "texto": "Bueno, lo importante es que lo tenemos claro.",
+          "gesto": "pulgar"
+        },
+        {
+          "pausa": 0.9
+        },
+        {
+          "dice": "Usu",
+          "texto": "Vale… ¿y yo dónde duermo esta noche?",
+          "gesto": "encoge"
+        },
+        {
+          "dice": "Reynaldo",
+          "texto": "Eso no viene en ningún decreto.",
+          "gesto": "neutro"
+        },
+        {
+          "pausa": 1.4
+        }
+      ]
+    }
+  ]
+}

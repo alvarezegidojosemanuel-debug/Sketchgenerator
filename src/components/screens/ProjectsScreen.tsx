@@ -93,6 +93,12 @@ export function ProjectsScreen({ s }: { s: PocketState }) {
           ))}
         </ul>
         <div className="row">
+          <p className="fine"><b>Sketches</b></p>
+          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("sk-01", s.catalog), "demo"); s.setTab("ver"); }}>
+            😂 Sketch · ¿Está en vigor?
+          </button>
+        </div>
+        <div className="row">
           <p className="fine"><b>Serie · Temporada 1</b></p>
           <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("corto-01", s.catalog), "demo"); s.setTab("ver"); }}>
             🎬 Corto 1 · El lunes no perdona

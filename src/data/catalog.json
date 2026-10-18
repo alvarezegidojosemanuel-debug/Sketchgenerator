@@ -14431,6 +14431,34 @@
    "src": "/assets/punetos/props/pantalla_instala_100.webp",
    "width": 200,
    "height": 126
+  },
+  {
+   "id": "prop_impresora_loca",
+   "label": "Impresora descontrolada escupiendo hojas",
+   "src": "/assets/punetos/props/impresora_loca.webp",
+   "width": 400,
+   "height": 400
+  },
+  {
+   "id": "prop_hoja_derogado",
+   "label": "Hoja «DEROGADO»",
+   "src": "/assets/punetos/props/hoja_derogado.webp",
+   "width": 110,
+   "height": 145
+  },
+  {
+   "id": "prop_hoja_aprobado",
+   "label": "Hoja «APROBADO»",
+   "src": "/assets/punetos/props/hoja_aprobado.webp",
+   "width": 110,
+   "height": 145
+  },
+  {
+   "id": "prop_hoja_pendiente",
+   "label": "Hoja «PENDIENTE»",
+   "src": "/assets/punetos/props/hoja_pendiente.webp",
+   "width": 110,
+   "height": 145
   }
  ]
 }
