@@ -9,6 +9,7 @@ import { playSound } from "@/lib/sfx/player";
 import { accessCode } from "@/lib/voice/elevenlabs";
 import { unlockAudio } from "@/lib/voice/piper";
 import { downloadText } from "@/lib/import-export";
+import type { Picker } from "./ResourcesScreen";
 import type { PocketState } from "../usePocket";
 import { Card, Field } from "../ui";
 
@@ -18,7 +19,7 @@ const PREFIX: Record<Kind, string> = { prop: "prop_", background: "bg_", sound: 
 
 const blobToDataUrl = (b: Blob) => new Promise<string>((res) => { const r = new FileReader(); r.onload = () => res(String(r.result)); r.readAsDataURL(b); });
 
-export function LibraryScreen({ s }: { s: PocketState }) {
+export function LibraryScreen({ s, pick }: { s: PocketState; pick?: Picker }) {
   const { catalog, library, saveLibraryItem, removeLibraryItem } = s;
   const [kind, setKind] = useState<Kind>("prop");
   const [size, setSize] = useState<number>(PROP_SIZES[2].height);
@@ -217,7 +218,7 @@ export function LibraryScreen({ s }: { s: PocketState }) {
         {mine.length === 0 && <p className="fine">Aún no has subido ninguno. Se guardan en este dispositivo; exporta el paquete para pasarlos a otro.</p>}
         <ul className="lib-grid">
           {mine.map((it) => (
-            <LibItem key={it.id} it={it} s={s} onSave={saveLibraryItem} onRemove={removeLibraryItem} />
+            <LibItem key={it.id} it={it} s={s} onSave={saveLibraryItem} onRemove={removeLibraryItem} pick={pick} />
           ))}
         </ul>
         <div className="row">
@@ -234,8 +235,8 @@ export function LibraryScreen({ s }: { s: PocketState }) {
       <Card title={kind === "sound" ? "Sonidos incluidos" : "Incluidos en la serie"} tone="muted">
         <ul className="lib-grid">
           {builtins.map((b) => (
-            <li key={b.id} className="lib-item">
-              {"src" in b && kind !== "sound" ? <img src={b.src} alt="" /> : <button type="button" className="btn btn-small" onClick={async () => { await unlockAudio(); if (!(await playSound(catalog, b.id))) setMsg("No se pudo reproducir ese sonido."); }}>▶</button>}
+            <li key={b.id} className={`lib-item${pick ? " pickable" : ""}${pick?.has(b.id) ? " picked" : ""}`} onClick={() => pick?.toggle(b.id, b.id, b.src)}>
+              {"src" in b && kind !== "sound" ? <img src={b.src} alt="" /> : <button type="button" className="btn btn-small" onClick={async (e) => { e.stopPropagation(); await unlockAudio(); if (!(await playSound(catalog, b.id))) setMsg("No se pudo reproducir ese sonido."); }}>▶</button>}
               <small>{b.label}</small>
               <code>{b.id}</code>
             </li>
@@ -246,17 +247,20 @@ export function LibraryScreen({ s }: { s: PocketState }) {
   );
 }
 
-function LibItem({ it, s, onSave, onRemove }: { it: LibraryItem; s: PocketState; onSave: (i: LibraryItem) => Promise<void>; onRemove: (id: string) => Promise<void> }) {
+function LibItem({ it, s, onSave, onRemove, pick }: { it: LibraryItem; s: PocketState; onSave: (i: LibraryItem) => Promise<void>; onRemove: (id: string) => Promise<void>; pick?: Picker }) {
   const [confirm, setConfirm] = useState(false);
-  const src = it.kind === "prop" ? s.catalog.props.find((p) => p.id === it.id)?.src : it.kind === "background" ? s.catalog.backgrounds.find((b) => b.id === it.id)?.src : undefined;
+  const src = it.kind === "prop" ? s.catalog.props.find((p) => p.id === it.id)?.src : it.kind === "background" ? s.catalog.backgrounds.find((b) => b.id === it.id)?.src : s.catalog.sounds?.find((x) => x.id === it.id)?.src;
   return (
-    <li className="lib-item">
+    <li className={`lib-item${pick?.has(it.id) ? " picked" : ""}`}>
+      {pick && src && (
+        <button type="button" className="btn btn-small btn-ghost" onClick={() => pick.toggle(it.id, it.label || it.id, src)}>{pick.has(it.id) ? "✓ Seleccionado" : "Seleccionar"}</button>
+      )}
       {it.kind === "sound" ? (
         <button type="button" className="btn btn-small" onClick={async () => { await unlockAudio(); if (!(await playSound(s.catalog, it.id))) alert("No se pudo reproducir: el audio está vacío o dañado. Vuelve a generarlo o súbelo de nuevo."); }}>
           ▶ {it.duration?.toFixed(1)} s
         </button>
       ) : (
-        <img src={src} alt="" className={it.kind === "background" ? "bg" : undefined} />
+        <img src={src} alt="" className={it.kind === "background" ? "bg" : undefined} onClick={() => src && pick?.toggle(it.id, it.label || it.id, src)} />
       )}
       <input value={it.label} maxLength={60} aria-label="Nombre" onChange={(e) => void onSave({ ...it, label: e.target.value })} />
       <code>{it.id}</code>
