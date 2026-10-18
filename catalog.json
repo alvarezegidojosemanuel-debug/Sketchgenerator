@@ -14040,6 +14040,13 @@
    "src": "/assets/punetos/backgrounds/bg_preproduccion.webp",
    "actorScale": 1.0,
    "actorY": 1700
+  },
+  {
+   "id": "bg_cafeteria",
+   "label": "Cafetería de la oficina",
+   "src": "/assets/punetos/backgrounds/bg_cafeteria.webp",
+   "actorScale": 1.0,
+   "actorY": 1720
   }
  ],
  "props": [
