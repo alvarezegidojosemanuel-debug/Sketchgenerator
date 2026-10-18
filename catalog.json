@@ -4135,6 +4135,54 @@
      "look": "puneto"
     },
     {
+     "id": "char.sister.pose_p_anda1",
+     "key": "pose_p_anda1",
+     "label": "Puñeto · anda (paso 1 de 4)",
+     "src": "/assets/punetos/punetos/sister/anda1.webp",
+     "width": 387,
+     "height": 600,
+     "displayScale": 0.922,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.sister.pose_p_anda2",
+     "key": "pose_p_anda2",
+     "label": "Puñeto · anda (paso 2 de 4)",
+     "src": "/assets/punetos/punetos/sister/anda2.webp",
+     "width": 387,
+     "height": 600,
+     "displayScale": 0.922,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.sister.pose_p_anda3",
+     "key": "pose_p_anda3",
+     "label": "Puñeto · anda (paso 3 de 4)",
+     "src": "/assets/punetos/punetos/sister/anda3.webp",
+     "width": 387,
+     "height": 600,
+     "displayScale": 0.922,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.sister.pose_p_anda4",
+     "key": "pose_p_anda4",
+     "label": "Puñeto · anda (paso 4 de 4)",
+     "src": "/assets/punetos/punetos/sister/anda4.webp",
+     "width": 387,
+     "height": 600,
+     "displayScale": 0.922,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
      "id": "char.sister.pose_p_idea",
      "key": "pose_p_idea",
      "label": "Puñeta · idea",
