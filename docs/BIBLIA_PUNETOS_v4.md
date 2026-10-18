@@ -7,6 +7,7 @@
 - **El gancho son los sketches sueltos**, no la historia. Los Puñetos existen para hacer sketches.
 - **Sketches sueltos:** situaciones del día a día (la oficina, la calle, España) que todos vemos y que no están bien. Se cuentan con **sentido común y de forma neutral**: se expone la situación, no se toma partido político. Si polariza, que sea por el sentido común, no por ser de un bando.
 - **La historia** (el parche, cómo se convirtieron en Puñetos) se cuenta poco a poco, de forma amena y **sin forzar chistes**. La dicta el creador y se monta tal cual la pida. Es para quien quiera saber de dónde vienen.
+- **Sketches de actualidad:** siempre en tono de humor; ni derechas ni izquierdas; sentido común; mostrar **cómo afecta de verdad a la gente** (los dos lados cuando los haya: inquilino y pequeño casero, trabajador y autónomo…). La crítica va a lo absurdo de la situación, no a un partido. Datos contrastados antes de publicar.
 - Siguen valiendo las reglas de escritura: frases cortas y chistes que entienda cualquiera.
 
 ## 1. Premisa
