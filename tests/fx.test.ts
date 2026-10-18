@@ -5,7 +5,7 @@ import { propAnim, bodyFx, screenFx } from "@/lib/timeline/fx";
 import { validateProject } from "@/lib/schema/validate";
 import { evaluateTake } from "@/lib/timeline/evaluate";
 import { removeBackground } from "@/lib/library/image";
-import demo from "@/data/sketch-interacciones.json";
+import demo from "./fixtures/sketch-interacciones.json";
 
 describe("sonidos sintetizados", () => {
   it("cada sonido integrado genera muestras finitas y acotadas", () => {
@@ -114,17 +114,17 @@ describe("vibración y fotogramas", () => {
   });
   it("talkOf: la boca abierta solo mientras habla ese personaje (voz real y sin voz)", async () => {
     const { evaluateTake } = await import("@/lib/timeline/evaluate");
-    const ev = { ...base, propId: "prop_jefe_neutro", altPropId: "prop_jefe_neutro_boca", talkOf: "jefe" };
-    const line = { id: "d", track: "dialogue" as const, voiceOf: "jefe", text: "¿Qué reunión? No sé de qué me hablas.", start: 1, duration: 1.5 };
+    const ev = { ...base, propId: "prop_anastasia_tv", altPropId: "prop_anastasia_tv_boca", talkOf: "anastasia" };
+    const line = { id: "d", track: "dialogue" as const, voiceOf: "anastasia", text: "¿Qué reunión? No sé de qué me hablas.", start: 1, duration: 1.5 };
     const take = { id: "t", duration: 3, backgroundId: null, actors: [], events: [ev, line] };
-    expect(evaluateTake(take, catalog, 0.5).props[0].propId).toBe("prop_jefe_neutro");
+    expect(evaluateTake(take, catalog, 0.5).props[0].propId).toBe("prop_anastasia_tv");
     const during = new Set<string>();
     for (let t = 1.02; t < 2.5; t += 0.03) during.add(evaluateTake(take, catalog, t).props[0].propId);
-    expect(during.has("prop_jefe_neutro_boca")).toBe(true);
-    expect(evaluateTake(take, catalog, 2.8).props[0].propId).toBe("prop_jefe_neutro");
+    expect(during.has("prop_anastasia_tv_boca")).toBe(true);
+    expect(evaluateTake(take, catalog, 2.8).props[0].propId).toBe("prop_anastasia_tv");
     // con voz real manda el volumen
-    expect(evaluateTake(take, catalog, 1.3, { levels: new Map([["voice:jefe", 0.9]]) }).props[0].propId).toBe("prop_jefe_neutro_boca");
-    expect(evaluateTake(take, catalog, 1.3, { levels: new Map([["voice:jefe", 0]]) }).props[0].propId).toBe("prop_jefe_neutro");
-    expect(evaluateTake(take, catalog, 1.3, { levels: new Map([["voice:sister", 0.9]]) }).props[0].propId).toBe("prop_jefe_neutro");
+    expect(evaluateTake(take, catalog, 1.3, { levels: new Map([["voice:anastasia", 0.9]]) }).props[0].propId).toBe("prop_anastasia_tv_boca");
+    expect(evaluateTake(take, catalog, 1.3, { levels: new Map([["voice:anastasia", 0]]) }).props[0].propId).toBe("prop_anastasia_tv");
+    expect(evaluateTake(take, catalog, 1.3, { levels: new Map([["voice:sister", 0.9]]) }).props[0].propId).toBe("prop_anastasia_tv");
   });
 });

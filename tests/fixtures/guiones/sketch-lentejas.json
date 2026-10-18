@@ -1,0 +1,115 @@
+{
+  "formato": "puñetos-guion-1",
+  "titulo": "Las lentejas",
+  "idea": "Barbas calienta al Jefe con un táper desaparecido… y las cámaras de Usu lo aclaran todo.",
+  "escenas": [
+    {
+      "nombre": "Sistemas, hora de comer",
+      "lugar": "bg_sistemas",
+      "vista": "humanos",
+      "personajes": [
+        "Jefe",
+        "Barbas",
+        "Usu"
+      ],
+      "pasos": [
+        {
+          "sonido": "teclado"
+        },
+        {
+          "quien": "Barbas",
+          "gesto": "pensando"
+        },
+        {
+          "dice": "Barbas",
+          "texto": "[mischievously] Jefe… ¿tú hoy habías traído lentejas?",
+          "pausa_despues": 0.3
+        },
+        {
+          "dice": "Jefe",
+          "texto": "Las de mi madre. ¿Por?"
+        },
+        {
+          "dice": "Barbas",
+          "texto": "[sighs] Nada, nada. Que uno de Robótica iba por el pasillo con un táper. Y una cuchara.",
+          "pausa_despues": 0.4
+        },
+        {
+          "dice": "Jefe",
+          "texto": "¿Con MIS lentejas?",
+          "gesto": "sorprendido"
+        },
+        {
+          "dice": "Jefe",
+          "texto": "[angry] Esto no se queda así.",
+          "gesto": "camina"
+        },
+        {
+          "sale": "Jefe"
+        },
+        {
+          "pausa": 0.6
+        },
+        {
+          "dice": "Usu",
+          "texto": "Barbas, las lentejas eran tuyas.",
+          "gesto": "explica"
+        },
+        {
+          "quien": "Barbas",
+          "gesto": "encoge"
+        },
+        {
+          "dice": "Barbas",
+          "texto": "[chuckles] Ya. Pero yo no tengo su mala leche."
+        },
+        {
+          "dice": "Usu",
+          "texto": "Además, he mirado las cámaras. El táper se lo llevó ayer un señor con gafas de sol… y corbata azul.",
+          "gesto": "movil",
+          "pausa_despues": 0.5
+        },
+        {
+          "quien": "Barbas",
+          "gesto": "facepalm"
+        },
+        {
+          "efecto": "onomatopeya",
+          "donde": "Barbas",
+          "texto": "¡PLAF!",
+          "durante": 1.2
+        },
+        {
+          "pausa": 0.5
+        },
+        {
+          "entra": "Jefe"
+        },
+        {
+          "dice": "Jefe",
+          "texto": "Falsa alarma. Los de Robótica no han sido.",
+          "gesto": "entra"
+        },
+        {
+          "dice": "Barbas",
+          "texto": "¿Y quién ha sido, Jefe?",
+          "pausa_despues": 0.4
+        },
+        {
+          "dice": "Jefe",
+          "texto": "Eso… se lo preguntaré al Jefe del pasado.",
+          "gesto": "confundido",
+          "pausa_despues": 0.6
+        },
+        {
+          "quien": "Barbas",
+          "gesto": "risa"
+        },
+        {
+          "dice": "Barbas",
+          "texto": "[laughs] Pues con todo el amor del mundo… el Jefe del pasado me debe unas lentejas."
+        }
+      ]
+    }
+  ]
+}

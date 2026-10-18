@@ -3,7 +3,7 @@ import { buildExample, buildPrompt, type SketchIntent } from "@/lib/generator/pr
 import { validateProject } from "@/lib/schema/validate";
 import { catalog } from "./helpers";
 
-const intent: SketchIntent = { idea: "El jefe descubre que Usu duerme en la sala de reuniones", duration: 30, characterIds: ["usu", "jefe"], tone: "absurdo", backgroundId: "bg_oficina" };
+const intent: SketchIntent = { idea: "El jefe descubre que Usu duerme en la sala de reuniones", duration: 30, characterIds: ["usu", "jefe"], tone: "absurdo", backgroundId: "bg_oficina_manana" };
 
 describe("generador de prompts", () => {
   it("es determinista", () => {
@@ -31,7 +31,7 @@ describe("generador de prompts", () => {
   });
 
   it("el ejemplo incluido es un proyecto válido", () => {
-    const ex = buildExample(catalog, catalog.characters.slice(0, 2), "bg_bar");
+    const ex = buildExample(catalog, catalog.characters.slice(0, 2), "bg_cafeteria");
     const r = validateProject(ex, catalog);
     expect(r.errors).toEqual([]);
     expect(r.ok).toBe(true);
@@ -55,7 +55,7 @@ describe("grupos de personajes en una toma", () => {
       expect(s.x - half).toBeGreaterThan(-80);
       expect(s.x + half).toBeLessThan(1160);
     }
-    const ex = buildExample(catalog, catalog.characters, "bg_salon");
+    const ex = buildExample(catalog, catalog.characters, "bg_sala_equipo");
     const take = ex.takes[0];
     take.actors = catalog.characters.filter((c) => !["director", "neli", "gala", "damian", "cientifica", "vanesa", "ruan", "alf", "fake", "anastasia"].includes(c.id)).map((c, i) => ({ uid: `a${i}`, characterId: c.id, poseId: c.poses[0].id, x: 540, y: 1780, scale: 1, zIndex: 0 }));
     take.events = take.events.filter((e) => e.track === "dialogue").map((e) => ({ ...e, actorUid: "a0" }));

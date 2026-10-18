@@ -15,10 +15,11 @@ describe("evaluación de la línea de tiempo", () => {
     expect(jefeAt(4.5).x).toBeLessThan(1400);
     expect(jefeAt(4.5).x).toBeGreaterThan(780);
     expect(jefeAt(6).x).toBe(780);
-    expect(jefeAt(6).poseId).toBe("char.jefe.pose_neutral_3q_left");
+    expect(jefeAt(6).poseId).toBe("char.jefe.pose_p_neutro");
+    expect(jefeAt(6).flip).toBe(true); // a la derecha, mirando a Usu
     expect(jefeAt(6).expressionId).toBe("expression.jefe.enfado");
     const usu = evaluateTake(take, catalog, 9).actors.find((a) => a.uid === "usu")!;
-    expect(usu.poseId).toBe("char.usu.pose_reaction");
+    expect(usu.poseId).toBe("char.usu.pose_p_susto");
   });
 
   it("subtítulos, boca y props activos solo en su intervalo", () => {
@@ -80,11 +81,11 @@ describe("transiciones suaves", () => {
     const { layoutActor } = await import("@/lib/renderer/layout");
     const { POSE_FADE } = await import("@/lib/timeline/evaluate");
     const take = project().takes[0];
-    const ev = take.events.find((e) => e.id === "t1_b1")!; // usu → brazos cruzados
+    const ev = take.events.find((e) => e.id === "t1_b1")!; // usu → brazos cruzados (Puñeto)
     const early = evaluateTake(take, catalog, ev.start + POSE_FADE / 4).actors.find((a) => a.uid === "usu")!;
-    expect(early.prevPoseId).toBe("char.usu.pose_neutral_3q_right");
+    expect(early.prevPoseId).toBe("char.usu.pose_p_neutro");
     const lay = layoutActor(catalog, early);
-    expect(lay.ghost?.pose?.id).toBe("char.usu.pose_neutral_3q_right");
+    expect(lay.ghost?.pose?.id).toBe("char.usu.pose_p_neutro");
     expect(lay.opacity).toBe(0);
     const late = evaluateTake(take, catalog, ev.start + (POSE_FADE * 3) / 4).actors.find((a) => a.uid === "usu")!;
     const lay2 = layoutActor(catalog, late);
@@ -158,17 +159,26 @@ describe("voz que empieza al instante (audio pregenerado)", () => {
     expect(ref.p.liveClips().get("usu")?.key).toBe("0:t1_d1");
   });
 
-  it("la boca se abre según el volumen y elige bocas más abiertas cuanto más alto", async () => {
-    const { findExpression } = await import("@/lib/catalog");
+  it("la boca de dos fotogramas se abre según el volumen, sin piezas de cara", async () => {
+    const { layoutActor } = await import("@/lib/renderer/layout");
+    const { findPose } = await import("@/lib/catalog");
     const take = project().takes[0];
-    const quiet = evaluateTake(take, catalog, 1, { live: new Map([["usu", 0.1]]), levels: new Map([["usu", 0.05]]) }).actors.find((a) => a.uid === "usu")!;
+    const at = (level: number, t = 1) => evaluateTake(take, catalog, t, { live: new Map([["usu", 0.1]]), levels: new Map([["usu", level]]) }).actors.find((a) => a.uid === "usu")!;
+    const quiet = at(0.05);
+    expect(quiet.speaking).toBe(true);
     expect(quiet.mouthOpen).toBe(false);
-    const soft = evaluateTake(take, catalog, 1, { live: new Map([["usu", 0.1]]), levels: new Map([["usu", 0.2]]) }).actors.find((a) => a.uid === "usu")!;
-    const loud = evaluateTake(take, catalog, 1, { live: new Map([["usu", 0.1]]), levels: new Map([["usu", 1]]) }).actors.find((a) => a.uid === "usu")!;
-    expect(soft.mouthOpen && loud.mouthOpen).toBe(true);
-    const talk = findExpression(catalog, "usu", soft.expressionId!)!.talk;
-    expect(talk).toContain(soft.mouthAssetId);
-    expect(talk).toContain(loud.mouthAssetId);
-    expect(soft.mouthAssetId).not.toBe(loud.mouthAssetId);
+    const loud = at(1);
+    expect(loud.mouthOpen).toBe(true);
+    expect(at(1, 1.13).mouthOpen).toBe(false); // a ritmo de sílaba (~8/s), no abierta toda la frase
+    // pose «flat» con talkSrc: no hay capas de cara, la boca es la imagen alternativa de la pose
+    const pose = findPose(catalog, "usu", loud.poseId)!;
+    expect(pose.flat).toBe(true);
+    expect(pose.talkSrc).toBeTruthy();
+    expect(loud.mouthAssetId).toBeUndefined();
+    const lay = layoutActor(catalog, loud);
+    expect(lay.face).toEqual([]);
+    expect(lay.talkOpen).toBe(true);
+    expect(layoutActor(catalog, quiet).talkOpen).toBe(false);
   });
+
 });

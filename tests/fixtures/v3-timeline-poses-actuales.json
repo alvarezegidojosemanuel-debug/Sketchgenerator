@@ -1,0 +1,18 @@
+{
+  "version": 3,
+  "type": "punetos_project",
+  "takes": [
+    {
+      "id": "take_x",
+      "name": "Toma 1",
+      "duration": 3.2,
+      "scene": {"version": 3, "canvas": {"width": 1080, "height": 1920}, "background": null, "layers": []},
+      "timeline": {"events": [
+        {"id":"d1","actor_uid":"actor1","track":"dialogue","start":0,"duration":3.2,"text":"Ejemplo"},
+        {"id":"b1","actor_uid":"actor1","track":"body","start":0,"duration":1.2,"asset_id":"char.usu.pose_p_camina","body_mode":"move","from_x":300,"from_y":1100,"target_x":520,"target_y":1100},
+        {"id":"f1","actor_uid":"actor1","track":"face","start":1.2,"duration":2,"asset_id":"expression.usu.sorpresa"},
+        {"id":"m1","actor_uid":"actor1","track":"mouth","start":0,"duration":3.2,"asset_id":"__auto__"}
+      ]}
+    }
+  ]
+}

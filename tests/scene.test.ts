@@ -5,7 +5,8 @@ import { evaluateTake } from "@/lib/timeline/evaluate";
 import { layoutFrame } from "@/lib/renderer/layout";
 import { actorHeight, deskFor, guessDesk } from "@/lib/timeline/desk";
 import { castIds, speakerCharacterId } from "@/lib/voice/catalog";
-import demo from "@/data/sketch-pantallazo.json";
+import demo from "./fixtures/sketch-pantallazo.json";
+import { readJson } from "./helpers";
 
 const r = validateProject(structuredClone(demo), catalog);
 const take = () => r.project!.takes[0];
@@ -97,17 +98,30 @@ describe("cambiar objeto", () => {
   });
 });
 
-describe("demo El origen", () => {
-  it("valida, usa voces de personajes sin actor y los puñetos entran en la toma 2", async () => {
-    const raw = (await import("@/data/sketch-origen.json")).default;
-    const ro = validateProject(structuredClone(raw), catalog);
+describe("voces sin actor y entrada de los Puñetos", () => {
+  it("valida, usa voces de personajes sin actor y los puñetos están todos en la toma 2", () => {
+    const g = { formato: "puñetos-guion-1", escenas: [
+      { nombre: "El complejo", lugar: "bg_complejo_dia", personajes: [], pasos: [
+        { narrador: "Hace mucho, mucho tiempo, en un departamento de soporte…" },
+        { off: "Sister", texto: "¿Alguien ha visto mi grapadora?" },
+        { off: "Reynaldo", texto: "Eso no entra en mis funciones." },
+      ] },
+      { nombre: "Sala", lugar: "bg_sala_equipo", personajes: ["Usu", "Reynaldo", "Sister", "Barbas", "Jefe"], pasos: [
+        { dice: "Jefe", texto: "Bueno, equipo. Empezamos." },
+      ] },
+    ] };
+    const ro = validateProject(g, catalog);
     expect(ro.errors).toEqual([]);
-    const t1 = ro.project!.takes[2];
-    const f = evaluateTake(t1, catalog, 4);
+    const t1 = ro.project!.takes[0];
+    const sis = t1.events.find((e) => e.track === "dialogue" && e.voiceOf === "sister")!;
+    const f = evaluateTake(t1, catalog, sis.start + 0.3);
     expect(f.subtitles[0].speaker).toBe("Sister");
-    expect(castIds(ro.project!)).toEqual(expect.arrayContaining(["sister", "reynaldo", "usu", "barbas", "narrador"]));
-    const t2 = ro.project!.takes[3];
-    expect(layoutFrame(catalog, evaluateTake(t2, catalog, 1)).actors.length).toBe(5);
+    expect(f.actors).toEqual([]);
+    expect(castIds(ro.project!)).toEqual(expect.arrayContaining(["sister", "reynaldo", "usu", "barbas", "jefe", "narrador"]));
+    const t2 = ro.project!.takes[1];
+    const lay = layoutFrame(catalog, evaluateTake(t2, catalog, 1));
+    expect(lay.actors.length).toBe(5);
+    expect(lay.actors.every((a) => a.pose?.id.includes(".pose_p_"))).toBe(true);
   });
 });
 
@@ -117,15 +131,20 @@ const GUION_GOMA = { formato: "puñetos-guion-1", escenas: [{ lugar: "bg_sistema
 ] }] };
 
 describe("vida automática y cámara", () => {
-  it("los que escuchan miran a quien habla y la cámara corta a primer plano en el remate", async () => {
-    const ep3 = (await import("@/data/ep3.json")).default;
-    const ro = validateProject(structuredClone(ep3), catalog);
+  it("los que escuchan miran a quien habla y la cámara corta a primer plano en el remate", () => {
+    const g = { formato: "puñetos-guion-1", escenas: [{ lugar: "bg_sala_equipo", personajes: ["Reynaldo", "Jefe", "Sister"], pasos: [
+      { dice: "Reynaldo", texto: "Según el artículo catorce, esto no lo arreglo yo ni aunque me lo pidas por escrito." },
+      { dice: "Jefe", texto: "¿Y quién lo arregla entonces?" },
+      { dice: "Sister", texto: "Yo. Como siempre." },
+    ] }] };
+    const ro = validateProject(g, catalog);
     expect(ro.errors).toEqual([]);
     const take = ro.project!.takes[0];
-    const line = take.events.find((e) => e.track === "dialogue" && e.actorUid === "rey")!;
+    const line = take.events.find((e) => e.track === "dialogue" && e.actorUid === "reynaldo")!;
     const f = evaluateTake(take, catalog, line.start + 0.6);
-    const sis = f.actors.find((a) => a.uid === "sis")!; // Sister (x 770) mira a Reynaldo (x 310): a la izquierda
-    const rey = f.actors.find((a) => a.uid === "rey")!;
+    const sis = f.actors.find((a) => a.uid === "sister")!; // Sister mira a Reynaldo mientras habla
+    const rey = f.actors.find((a) => a.uid === "reynaldo")!;
+    expect(sis.gazeX).not.toBe(0);
     expect(Math.sign(sis.gazeX)).toBe(Math.sign(rey.x - sis.x) * (sis.flip ? -1 : 1));
     // cámara automática (si la toma la pide): primer plano en el remate
     const auto = { ...take, camera: "auto" as const };
@@ -138,6 +157,39 @@ describe("vida automática y cámara", () => {
     expect(evaluateTake(take, catalog, last.start + 0.5).camera.zoom).toBeGreaterThan(1.1);
     expect(evaluateTake({ ...take, camera: "fixed" as const }, catalog, line.start + 0.6).camera.zoom).toBe(1);
   });
+  it("planos a mano: «camara» del guion y eventos camera del proyecto (corte y travelling)", () => {
+    const g = { formato: "puñetos-guion-1", escenas: [{ lugar: "bg_sistemas", camara: "auto", personajes: ["Usu", "Jefe"], pasos: [
+      { dice: "Usu", texto: "Jefe, tengo que contarte una cosa." },
+      { camara: "primer_plano", quien: "Jefe" },
+      { dice: "Jefe", texto: "¿Qué has roto?" },
+      { camara: "general", mover: true, durante: 1 },
+      { pausa: 1.2 },
+    ] }] };
+    const ro = validateProject(g, catalog);
+    expect(ro.errors).toEqual([]);
+    const tk = ro.project!.takes[0];
+    expect(tk.camera).toBe("auto");
+    const cams = tk.events.filter((e) => e.track === "camera");
+    expect(cams.map((c) => (c as { shot: string }).shot)).toEqual(["close", "wide"]);
+    const close = cams[0];
+    const jefe = (t: number) => evaluateTake(tk, catalog, t);
+    const c1 = jefe(close.start + 0.05);
+    expect(c1.camera.zoom).toBeGreaterThan(1.5);
+    expect(Math.abs(c1.camera.cx - c1.actors.find((a) => a.uid === "jefe")!.x)).toBeLessThan(400);
+    // los eventos de cámara mandan sobre «auto»: antes del primero, cámara viva (sin cortes automáticos)
+    expect(jefe(0.5).camera.zoom).toBeLessThan(1.2);
+    const wide = cams[1];
+    const mid = jefe(wide.start + wide.duration / 2).camera.zoom;
+    expect(mid).toBeGreaterThan(1);
+    expect(mid).toBeLessThan(c1.camera.zoom);
+    expect(jefe(wide.start + wide.duration + 0.05).camera.zoom).toBe(1);
+    // el ejemplo empaquetado trae un primer plano de Usu en la última toma
+    const p = validateProject(readJson("examples/sketch-demo.json"), catalog).project!;
+    const t3 = p.takes[2];
+    expect(evaluateTake(t3, catalog, 7.4).camera.zoom).toBeLessThan(1.2);
+    expect(evaluateTake(t3, catalog, 8).camera.zoom).toBeGreaterThan(1.5);
+  });
+
   it("animación de goma: quien habla se inclina y gesticula; al cambiar de pose estira y encoge", () => {
     const tk = validateProject(structuredClone(GUION_GOMA), catalog).project!.takes[0];
     const line = tk.events.find((e) => e.track === "dialogue")!;

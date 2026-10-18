@@ -76,8 +76,7 @@ src/lib/
 src/components/   UI móvil (5 pantallas)
 schema/pocket.schema.json   generado desde Zod (`npm run gen:schema`)
 catalog.json                catálogo actual (copia de src/data/catalog.json)
-examples/sketch-usu-reynaldo.json  demo de 30 s Usu + Reynaldo (expresiones, voces, ojos, boca, movimiento)
-examples/sketch-demo.json   demo de 30 s Usu + Jefe
+examples/sketch-demo.json   demo de 30 s Usu + Jefe (Puñetos)
 scripts/v8/import_v8.py     importador de assets V8 → catálogo (Python + Pillow, solo desarrollo)
 src/data/face-overrides.json calibraciones/prefabs revisados versionados (vacío de momento)
 ```

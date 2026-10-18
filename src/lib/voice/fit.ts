@@ -48,5 +48,5 @@ export function fitProjectToAudio(project: PocketProject, durations: Map<string,
     return r.take;
   });
   const total = takes.reduce((s, t) => s + t.duration, 0);
-  return { project: { ...project, takes, metadata: { ...project.metadata, approxDuration: Math.max(1, Math.round(total)) } }, changed };
+  return { project: { ...project, takes, metadata: { ...project.metadata, approxDuration: Math.min(180, Math.max(1, Math.round(total))) } }, changed };
 }

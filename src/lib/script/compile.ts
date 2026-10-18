@@ -619,7 +619,7 @@ export const GUION_EJEMPLO = {
     {
       nombre: "Barbas calienta al Jefe",
       lugar: "bg_oficina_manana",
-      vista: "espaldas",
+      vista: "puñetos",
       personajes: ["Jefe", "Barbas", "Sister", "Usu", "Reynaldo"],
       pasos: [
         { off: "Director", texto: "Si la incidencia sigue abierta el viernes, habrá cambios." },

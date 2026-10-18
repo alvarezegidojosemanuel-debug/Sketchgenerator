@@ -42,10 +42,19 @@ describe("rechazos (pruebas 3 y 4)", () => {
 
   it("rechaza una pose de otro personaje", () => {
     const p = demo();
-    p.takes[0].actors[0].poseId = "char.jefe.pose_neutral_front";
+    p.takes[0].actors[0].poseId = "char.jefe.pose_p_neutro";
     const r = validateProject(p, catalog);
     expect(r.ok).toBe(false);
-    expect(r.errors[0].message).toMatch(/pose "char.jefe.pose_neutral_front" no existe para Usu/);
+    expect(r.errors[0].message).toMatch(/pose "char.jefe.pose_p_neutro" no existe para Usu/);
+  });
+
+  it("rechaza las poses antiguas del rig V8 (ya no existen)", () => {
+    const p = demo();
+    p.takes[0].actors[0].poseId = "char.usu.pose_neutral_front";
+    (p.takes[0].events.find((e) => e.id === "t1_b1") as { poseId: string }).poseId = "char.usu.pose_arms_crossed";
+    const r = validateProject(p, catalog);
+    expect(r.ok).toBe(false);
+    expect(r.errors.map((e) => e.path)).toEqual(expect.arrayContaining(["takes[0].actors[0].poseId", "takes[0].events[3].poseId"]));
   });
 
   it("rechaza fondo y objeto inexistentes", () => {
@@ -102,8 +111,8 @@ describe("normalización de errores comunes (sin fabricar assets)", () => {
   "metadata": { "title": "Prueba", "approxDuration": "8" },
   "takes": [{
     "duration": 5,
-    "backgroundId": "Oficina",
-    "actors": [{ "uid": "a1", "characterId": "Usu", "poseId": "pointing", "x": "300", "y": 1780 }],
+    "backgroundId": "BG-Cafeteria",
+    "actors": [{ "uid": "a1", "characterId": "Usu", "poseId": "p_senala", "x": "300", "y": 1780 }],
     "events": [
       { "track": "dialogo", "actor_uid": "a1", "start": 0, "text": "Hola, buenos días a todos" },
       { "track": "face", "actorUid": "a1", "start": 1, "duration": 0.5, "expressionId": "furioso_extremo" },
@@ -120,8 +129,8 @@ describe("normalización de errores comunes (sin fabricar assets)", () => {
     expect(r.errors).toEqual([]);
     expect(r.ok).toBe(true);
     const t = r.project!.takes[0];
-    expect(t.backgroundId).toBe("bg_oficina");
-    expect(t.actors[0]).toMatchObject({ characterId: "usu", poseId: "char.usu.pose_pointing", x: 300 });
+    expect(t.backgroundId).toBe("bg_cafeteria");
+    expect(t.actors[0]).toMatchObject({ characterId: "usu", poseId: "char.usu.pose_p_senala", x: 300 });
     expect(t.events[0]).toMatchObject({ track: "dialogue", actorUid: "a1" });
     expect(t.events[0].duration).toBeGreaterThan(0);
     expect(t.duration).toBe(7);

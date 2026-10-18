@@ -1,0 +1,222 @@
+{
+  "schemaVersion": "pocket-1",
+  "catalogVersion": "v8-assets-1",
+  "metadata": {
+    "title": "Suena todo",
+    "language": "es-ES",
+    "approxDuration": 16,
+    "idea": "Demo de interacciones: teléfono, bocadillo de pensamiento y alarma.",
+    "wishlist": [
+      "dragón pequeño verde volando",
+      "cafetera humeante"
+    ]
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1920
+  },
+  "takes": [
+    {
+      "id": "take_1",
+      "name": "Suena todo",
+      "duration": 16,
+      "backgroundId": "bg_oficina_manana",
+      "actors": [
+        {
+          "uid": "usu",
+          "characterId": "usu",
+          "poseId": "char.usu.pose_p_neutro",
+          "x": 330,
+          "y": 1780,
+          "scale": 1,
+          "zIndex": 2,
+          "expressionId": "expression.usu.neutral"
+        },
+        {
+          "uid": "jefe",
+          "characterId": "jefe",
+          "poseId": "char.jefe.pose_p_neutro",
+          "x": 780,
+          "y": 1780,
+          "scale": 1,
+          "zIndex": 1,
+          "expressionId": "expression.jefe.neutral",
+          "flip": true
+        }
+      ],
+      "events": [
+        {
+          "id": "a_movil",
+          "track": "props",
+          "start": 0,
+          "duration": 3.2,
+          "actorUid": "jefe",
+          "propId": "prop_movil",
+          "layer": "props-front",
+          "x": 600,
+          "y": 1540,
+          "scale": 0.9,
+          "enter": "pop",
+          "exit": "fade",
+          "loop": "shake"
+        },
+        {
+          "id": "a_tel",
+          "track": "sfx",
+          "start": 0.1,
+          "duration": 2.4,
+          "soundId": "sfx_telefono"
+        },
+        {
+          "id": "a_salto",
+          "track": "body",
+          "start": 0.3,
+          "duration": 0.6,
+          "actorUid": "usu",
+          "fx": "jump"
+        },
+        {
+          "id": "a_fu",
+          "track": "face",
+          "start": 0.3,
+          "duration": 0.3,
+          "actorUid": "usu",
+          "expressionId": "expression.usu.sorpresa"
+        },
+        {
+          "id": "a_m1",
+          "track": "mouth",
+          "start": 3.2,
+          "duration": 4,
+          "actorUid": "jefe",
+          "mode": "auto"
+        },
+        {
+          "id": "a_d1",
+          "track": "dialogue",
+          "start": 3.3,
+          "duration": 2.6,
+          "actorUid": "jefe",
+          "text": "Usu, deja de soñar despierto y coge el teléfono."
+        },
+        {
+          "id": "a_fj",
+          "track": "face",
+          "start": 3.2,
+          "duration": 0.3,
+          "actorUid": "jefe",
+          "expressionId": "expression.jefe.enfado"
+        },
+        {
+          "id": "a_fu2",
+          "track": "face",
+          "start": 6.2,
+          "duration": 0.3,
+          "actorUid": "usu",
+          "expressionId": "expression.usu.alegria"
+        },
+        {
+          "id": "a_pop",
+          "track": "sfx",
+          "start": 6.3,
+          "duration": 0.3,
+          "soundId": "sfx_pop"
+        },
+        {
+          "id": "a_drag",
+          "track": "props",
+          "start": 6.3,
+          "duration": 4.2,
+          "actorUid": "usu",
+          "propId": "prop_cafe",
+          "layer": "props-front",
+          "x": 0,
+          "y": 0,
+          "scale": 1.4,
+          "bubbleOf": "usu",
+          "enter": "pop",
+          "exit": "fade",
+          "loop": "float"
+        },
+        {
+          "id": "a_m2",
+          "track": "mouth",
+          "start": 6.6,
+          "duration": 3,
+          "actorUid": "usu",
+          "mode": "auto"
+        },
+        {
+          "id": "a_d2",
+          "track": "dialogue",
+          "start": 6.7,
+          "duration": 2.4,
+          "actorUid": "usu",
+          "text": "Estaba pensando en café. Mucho café."
+        },
+        {
+          "id": "a_flash",
+          "track": "screen",
+          "start": 10.6,
+          "duration": 2.2,
+          "effect": "flash",
+          "color": "#ff2a2a"
+        },
+        {
+          "id": "a_alarma",
+          "track": "sfx",
+          "start": 10.6,
+          "duration": 2.2,
+          "soundId": "sfx_alarma"
+        },
+        {
+          "id": "a_shk",
+          "track": "body",
+          "start": 10.7,
+          "duration": 1.4,
+          "actorUid": "jefe",
+          "fx": "shake"
+        },
+        {
+          "id": "a_fj2",
+          "track": "face",
+          "start": 10.6,
+          "duration": 0.3,
+          "actorUid": "jefe",
+          "expressionId": "expression.jefe.sorpresa"
+        },
+        {
+          "id": "a_m3",
+          "track": "mouth",
+          "start": 12.9,
+          "duration": 2,
+          "actorUid": "usu",
+          "mode": "auto"
+        },
+        {
+          "id": "a_d3",
+          "track": "dialogue",
+          "start": 13.0,
+          "duration": 1.6,
+          "actorUid": "usu",
+          "text": "Eso es la cafetera."
+        },
+        {
+          "id": "a_ding",
+          "track": "sfx",
+          "start": 14.8,
+          "duration": 0.6,
+          "soundId": "sfx_fracaso"
+        },
+        {
+          "id": "a_fj3",
+          "track": "face",
+          "start": 14.8,
+          "duration": 0.3,
+          "actorUid": "jefe",
+          "expressionId": "expression.jefe.tristeza"
+        }
+      ]
+    }
+  ]
+}

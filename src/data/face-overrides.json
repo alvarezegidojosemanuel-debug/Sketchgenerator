@@ -1,4043 +1,2698 @@
 {
- "kind": "pocket-face-overrides",
- "version": 1,
- "catalogVersion": "v8-assets-1",
- "updatedAt": "2026-10-14T22:10:06.248Z",
- "rigs": {
-  "char.usu.pose_neutral_front": {
-   "browL": {
-    "x": 156.5,
-    "y": 89.6,
-    "scale": 0.598
-   },
-   "browR": {
-    "x": 262.5,
-    "y": 89.6,
-    "scale": 0.598
-   },
-   "mouth": {
-    "x": 211.62,
-    "y": 214.52,
-    "scale": 0.585,
-    "rot": 0
-   },
-   "status": "calibrated",
-   "source": "Calibrado a mano"
-  },
-  "char.usu.pose_neutral_3q_left": {
-   "browL": {
-    "x": 127,
-    "y": 88.6,
-    "scale": 0.419
-   },
-   "browR": {
-    "x": 186.5,
-    "y": 88.6,
-    "scale": 0.644
-   },
-   "mouth": {
-    "x": 156.37666666666667,
-    "y": 213.10000000000002,
-    "scale": 0.63,
-    "rot": 0
-   },
-   "status": "calibrated",
-   "source": "Calibrado a mano"
-  },
-  "char.usu.pose_neutral_3q_right": {
-   "browL": {
-    "x": 262.0,
-    "y": 84.5,
-    "scale": 0.645
-   },
-   "browR": {
-    "x": 313.0,
-    "y": 84.5,
-    "scale": 0.419
-   },
-   "mouth": {
-    "x": 294.6,
-    "y": 209.1,
-    "scale": 0.631
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_3q_left, pose_neutral_front)"
-  },
-  "char.usu.pose_walk_small_left": {
-   "browL": {
-    "x": 111.5,
-    "y": 83.6,
-    "scale": 0.398
-   },
-   "browR": {
-    "x": 173.5,
-    "y": 83.6,
-    "scale": 0.578
-   },
-   "mouth": {
-    "x": 137.9,
-    "y": 195.4,
-    "scale": 0.565
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_3q_left, pose_neutral_front)"
-  },
-  "char.usu.pose_walk_small_right": {
-   "browL": {
-    "x": 204.0,
-    "y": 83.3,
-    "scale": 0.632
-   },
-   "browR": {
-    "x": 281.0,
-    "y": 83.3,
-    "scale": 0.441
-   },
-   "mouth": {
-    "x": 262.1,
-    "y": 205.4,
-    "scale": 0.618
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_3q_left, pose_neutral_front)"
-  },
-  "char.usu.pose_talk_explain": {
-   "browL": {
-    "x": 167.0,
-    "y": 60.6,
-    "scale": 0.488
-   },
-   "browR": {
-    "x": 204.0,
-    "y": 60.6,
-    "scale": 0.34
-   },
-   "mouth": {
-    "x": 203.4,
-    "y": 161.7,
-    "scale": 0.511
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_3q_left, pose_neutral_front)"
-  },
-  "char.usu.pose_talk_emphasis": {
-   "browL": {
-    "x": 216.5,
-    "y": 84.3,
-    "scale": 0.621
-   },
-   "browR": {
-    "x": 294.0,
-    "y": 84.3,
-    "scale": 0.449
-   },
-   "mouth": {
-    "x": 265.9,
-    "y": 204.5,
-    "scale": 0.608
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_3q_left, pose_neutral_front)"
-  },
-  "char.usu.pose_pointing": {
-   "browL": {
-    "x": 202.5,
-    "y": 76.9,
-    "scale": 0.586
-   },
-   "browR": {
-    "x": 270.0,
-    "y": 76.9,
-    "scale": 0.395
-   },
-   "mouth": {
-    "x": 250.5,
-    "y": 190.1,
-    "scale": 0.573
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_3q_left, pose_neutral_front)"
-  },
-  "char.usu.pose_arms_crossed": {
-   "browL": {
-    "x": 227.0,
-    "y": 82.9,
-    "scale": 0.645
-   },
-   "browR": {
-    "x": 307.5,
-    "y": 82.9,
-    "scale": 0.466
-   },
-   "mouth": {
-    "x": 280.5,
-    "y": 207.8,
-    "scale": 0.631
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_3q_left, pose_neutral_front)"
-  },
-  "char.usu.pose_reaction": {
-   "browL": {
-    "x": 211.0,
-    "y": 66.7,
-    "scale": 0.627
-   },
-   "browR": {
-    "x": 274.5,
-    "y": 66.7,
-    "scale": 0.44
-   },
-   "mouth": {
-    "x": 260.3,
-    "y": 188.1,
-    "scale": 0.614
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_3q_left, pose_neutral_front)"
-  },
-  "char.reynaldo.pose_neutral_front": {
-   "eyeL": {
-    "x": 161.5,
-    "y": 170.5,
-    "scale": 1.153,
-    "clip": [
-     32,
-     33
-    ]
-   },
-   "eyeR": {
-    "x": 251,
-    "y": 170.5,
-    "scale": 1.153,
-    "clip": [
-     31.5,
-     33
-    ]
-   },
-   "browL": {
-    "x": 161.5,
-    "y": 114.7,
-    "scale": 0.634
-   },
-   "browR": {
-    "x": 251,
-    "y": 114.7,
-    "scale": 0.634
-   },
-   "mouth": {
-    "x": 209.25,
-    "y": 240.89,
-    "scale": 0.577,
-    "rot": 0
-   },
-   "status": "calibrated",
-   "source": "Calibrado a mano"
-  },
-  "char.reynaldo.pose_neutral_3q_left": {
-   "eyeL": {
-    "x": 101.5,
-    "y": 191.5,
-    "scale": 1.119,
-    "clip": [
-     12,
-     32
-    ]
-   },
-   "eyeR": {
-    "x": 171,
-    "y": 187,
-    "scale": 1.271,
-    "clip": [
-     31.5,
-     36.5
-    ]
-   },
-   "browL": {
-    "x": 115.5,
-    "y": 126.9,
-    "scale": 0.683
-   },
-   "browR": {
-    "x": 171,
-    "y": 126.9,
-    "scale": 0.683
-   },
-   "mouth": {
-    "x": 150.2,
-    "y": 251.98,
-    "scale": 0.621,
-    "rot": 0
-   },
-   "status": "calibrated",
-   "source": "Calibrado a mano"
-  },
-  "char.reynaldo.pose_neutral_3q_right": {
-   "eyeL": {
-    "x": 234.5,
-    "y": 197,
-    "scale": 1.271,
-    "clip": [
-     33,
-     36.5
-    ]
-   },
-   "eyeR": {
-    "x": 310.5,
-    "y": 197,
-    "scale": 1.237,
-    "clip": [
-     18,
-     35.5
-    ]
-   },
-   "browL": {
-    "x": 234.5,
-    "y": 135.8,
-    "scale": 0.684
-   },
-   "browR": {
-    "x": 305.5,
-    "y": 135.8,
-    "scale": 0.684
-   },
-   "mouth": {
-    "x": 259.44,
-    "y": 269.87,
-    "scale": 0.622,
-    "rot": 0
-   },
-   "status": "calibrated",
-   "source": "Calibrado a mano"
-  },
-  "char.reynaldo.pose_walk_small_left": {
-   "eyeL": {
-    "x": 115,
-    "y": 172.5,
-    "scale": 1.051,
-    "clip": [
-     20.5,
-     30
-    ]
-   },
-   "eyeR": {
-    "x": 190,
-    "y": 173,
-    "scale": 1.102,
-    "clip": [
-     29.5,
-     31.5
-    ]
-   },
-   "browL": {
-    "x": 115,
-    "y": 120.2,
-    "scale": 0.613
-   },
-   "browR": {
-    "x": 190,
-    "y": 120.2,
-    "scale": 0.613
-   },
-   "mouth": {
-    "x": 162.94,
-    "y": 237.16,
-    "scale": 0.558,
-    "rot": 0
-   },
-   "status": "calibrated",
-   "source": "Calibrado a mano"
-  },
-  "char.reynaldo.pose_walk_small_right": {
-   "eyeL": {
-    "x": 207.5,
-    "y": 193.5,
-    "scale": 1.186,
-    "clip": [
-     32,
-     34
-    ]
-   },
-   "eyeR": {
-    "x": 286.5,
-    "y": 191.5,
-    "scale": 1.153,
-    "clip": [
-     21,
-     33
-    ]
-   },
-   "browL": {
-    "x": 207.5,
-    "y": 135.4,
-    "scale": 0.67
-   },
-   "browR": {
-    "x": 286.5,
-    "y": 135.4,
-    "scale": 0.67
-   },
-   "mouth": {
-    "x": 250.39,
-    "y": 264.14,
-    "scale": 0.609,
-    "rot": 0
-   },
-   "status": "calibrated",
-   "source": "Calibrado a mano"
-  },
-  "char.reynaldo.pose_talk_explain": {
-   "eyeL": {
-    "x": 157.0,
-    "y": 154.0,
-    "scale": 0.898,
-    "clip": [
-     25.5,
-     25.5
-    ]
-   },
-   "eyeR": {
-    "x": 221.5,
-    "y": 141.0,
-    "scale": 0.831,
-    "clip": [
-     18.0,
-     23.5
-    ]
-   },
-   "browL": {
-    "x": 157.0,
-    "y": 100.2,
-    "scale": 0.554
-   },
-   "browR": {
-    "x": 211.5,
-    "y": 100.2,
-    "scale": 0.554
-   },
-   "mouth": {
-    "x": 188.6,
-    "y": 201.1,
-    "scale": 0.504
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_3q_left, pose_neutral_3q_right, pose_neutral_front, pose_walk_small_left, pose_walk_small_right)"
-  },
-  "char.reynaldo.pose_talk_emphasis": {
-   "eyeL": {
-    "x": 194.5,
-    "y": 187.5,
-    "scale": 1.186,
-    "clip": [
-     33.0,
-     34.0
-    ]
-   },
-   "eyeR": {
-    "x": 275.0,
-    "y": 177.0,
-    "scale": 1.136,
-    "clip": [
-     21.5,
-     32.5
-    ]
-   },
-   "browL": {
-    "x": 194.5,
-    "y": 121.6,
-    "scale": 0.659
-   },
-   "browR": {
-    "x": 271.0,
-    "y": 121.6,
-    "scale": 0.659
-   },
-   "mouth": {
-    "x": 234.1,
-    "y": 254.6,
-    "scale": 0.6
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_3q_left, pose_neutral_3q_right, pose_neutral_front, pose_walk_small_left, pose_walk_small_right)"
-  },
-  "char.reynaldo.pose_pointing": {
-   "eyeL": {
-    "x": 198.5,
-    "y": 174.5,
-    "scale": 1.051,
-    "clip": [
-     30.0,
-     30.0
-    ]
-   },
-   "eyeR": {
-    "x": 273.0,
-    "y": 171.5,
-    "scale": 1.017,
-    "clip": [
-     19.5,
-     29.0
-    ]
-   },
-   "browL": {
-    "x": 198.5,
-    "y": 122.0,
-    "scale": 0.621
-   },
-   "browR": {
-    "x": 273.0,
-    "y": 122.0,
-    "scale": 0.621
-   },
-   "mouth": {
-    "x": 235.2,
-    "y": 232.3,
-    "scale": 0.565
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_3q_left, pose_neutral_3q_right, pose_neutral_front, pose_walk_small_left, pose_walk_small_right)"
-  },
-  "char.reynaldo.pose_arms_crossed": {
-   "eyeL": {
-    "x": 202.5,
-    "y": 188.0,
-    "scale": 1.203,
-    "clip": [
-     34.0,
-     34.5
-    ]
-   },
-   "eyeR": {
-    "x": 286.0,
-    "y": 183.5,
-    "scale": 1.153,
-    "clip": [
-     21.5,
-     33.0
-    ]
-   },
-   "browL": {
-    "x": 202.5,
-    "y": 127.3,
-    "scale": 0.684
-   },
-   "browR": {
-    "x": 283.0,
-    "y": 127.3,
-    "scale": 0.684
-   },
-   "mouth": {
-    "x": 243.5,
-    "y": 255.2,
-    "scale": 0.623
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_3q_left, pose_neutral_3q_right, pose_neutral_front, pose_walk_small_left, pose_walk_small_right)"
-  },
-  "char.reynaldo.pose_reaction": {
-   "eyeL": {
-    "x": 212.0,
-    "y": 168.0,
-    "scale": 1.254,
-    "clip": [
-     31.0,
-     36.0
-    ]
-   },
-   "eyeR": {
-    "x": 288.0,
-    "y": 182.0,
-    "scale": 1.22,
-    "clip": [
-     25.0,
-     35.0
-    ]
-   },
-   "browL": {
-    "x": 212.0,
-    "y": 107.6,
-    "scale": 0.665
-   },
-   "browR": {
-    "x": 271.0,
-    "y": 107.6,
-    "scale": 0.665
-   },
-   "mouth": {
-    "x": 244.3,
-    "y": 254.1,
-    "scale": 0.605
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_3q_left, pose_neutral_3q_right, pose_neutral_front, pose_walk_small_left, pose_walk_small_right)",
-   "review": "La mano tapa parte de las gafas: cristales medidos a mano, revisar."
-  },
-  "char.sister.pose_neutral_front": {
-   "eyeL": {
-    "x": 205.02166666666665,
-    "y": 148.165,
-    "scale": 0.635
-   },
-   "eyeR": {
-    "x": 261.74333333333334,
-    "y": 146.91666666666666,
-    "scale": 0.635
-   },
-   "browL": {
-    "x": 204.3083333333333,
-    "y": 115.39166666666667,
-    "scale": 0.334
-   },
-   "browR": {
-    "x": 262.1,
-    "y": 114.5,
-    "scale": 0.334
-   },
-   "mouth": {
-    "x": 236.09666666666666,
-    "y": 197.06833333333333,
-    "scale": 0.565,
-    "rot": 0
-   },
-   "status": "calibrated",
-   "source": "Calibrado a mano"
-  },
-  "char.sister.pose_neutral_3q_left": {
-   "eyeL": {
-    "x": 156.7,
-    "y": 146.2,
-    "scale": 0.684
-   },
-   "eyeR": {
-    "x": 209.6,
-    "y": 144.9,
-    "scale": 0.684
-   },
-   "browL": {
-    "x": 157.5,
-    "y": 116.2,
-    "scale": 0.36
-   },
-   "browR": {
-    "x": 209.2,
-    "y": 115.2,
-    "scale": 0.36
-   },
-   "mouth": {
-    "x": 176.1,
-    "y": 189.3,
-    "scale": 0.608
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_front)"
-  },
-  "char.sister.pose_neutral_3q_right": {
-   "eyeL": {
-    "x": 263.1,
-    "y": 143.0,
-    "scale": 0.685
-   },
-   "eyeR": {
-    "x": 314.7,
-    "y": 144.3,
-    "scale": 0.685
-   },
-   "browL": {
-    "x": 264.5,
-    "y": 114.0,
-    "scale": 0.36
-   },
-   "browR": {
-    "x": 313.9,
-    "y": 115.0,
-    "scale": 0.36
-   },
-   "mouth": {
-    "x": 295.9,
-    "y": 183.8,
-    "scale": 0.609
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_front)"
-  },
-  "char.sister.pose_walk_small_left": {
-   "eyeL": {
-    "x": 148.9,
-    "y": 134.1,
-    "scale": 0.614
-   },
-   "eyeR": {
-    "x": 199.3,
-    "y": 132.9,
-    "scale": 0.614
-   },
-   "browL": {
-    "x": 149.6,
-    "y": 105.3,
-    "scale": 0.323
-   },
-   "browR": {
-    "x": 199.0,
-    "y": 104.4,
-    "scale": 0.323
-   },
-   "mouth": {
-    "x": 167.6,
-    "y": 170.9,
-    "scale": 0.546
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_front)"
-  },
-  "char.sister.pose_walk_small_right": {
-   "eyeL": {
-    "x": 266.7,
-    "y": 145.4,
-    "scale": 0.671
-   },
-   "eyeR": {
-    "x": 321.1,
-    "y": 146.7,
-    "scale": 0.671
-   },
-   "browL": {
-    "x": 267.1,
-    "y": 114.8,
-    "scale": 0.353
-   },
-   "browR": {
-    "x": 320.4,
-    "y": 115.7,
-    "scale": 0.353
-   },
-   "mouth": {
-    "x": 300.9,
-    "y": 187.9,
-    "scale": 0.597
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_front)"
-  },
-  "char.sister.pose_talk_explain": {
-   "eyeL": {
-    "x": 179.8,
-    "y": 116.3,
-    "scale": 0.555
-   },
-   "eyeR": {
-    "x": 223.6,
-    "y": 117.4,
-    "scale": 0.555
-   },
-   "browL": {
-    "x": 180.1,
-    "y": 91.7,
-    "scale": 0.292
-   },
-   "browR": {
-    "x": 223.0,
-    "y": 92.5,
-    "scale": 0.292
-   },
-   "mouth": {
-    "x": 204.2,
-    "y": 151.1,
-    "scale": 0.494
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_front)"
-  },
-  "char.sister.pose_talk_emphasis": {
-   "eyeL": {
-    "x": 226.8,
-    "y": 135.6,
-    "scale": 0.66
-   },
-   "eyeR": {
-    "x": 281.6,
-    "y": 136.9,
-    "scale": 0.66
-   },
-   "browL": {
-    "x": 227.2,
-    "y": 104.8,
-    "scale": 0.347
-   },
-   "browR": {
-    "x": 280.9,
-    "y": 105.7,
-    "scale": 0.347
-   },
-   "mouth": {
-    "x": 257.1,
-    "y": 176.6,
-    "scale": 0.587
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_front)"
-  },
-  "char.sister.pose_pointing": {
-   "eyeL": {
-    "x": 243.0,
-    "y": 126.8,
-    "scale": 0.622
-   },
-   "eyeR": {
-    "x": 289.5,
-    "y": 128.0,
-    "scale": 0.622
-   },
-   "browL": {
-    "x": 243.3,
-    "y": 100.6,
-    "scale": 0.327
-   },
-   "browR": {
-    "x": 288.8,
-    "y": 101.5,
-    "scale": 0.327
-   },
-   "mouth": {
-    "x": 268.9,
-    "y": 163.7,
-    "scale": 0.553
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_front)"
-  },
-  "char.sister.pose_arms_crossed": {
-   "eyeL": {
-    "x": 252.0,
-    "y": 144.5,
-    "scale": 0.685
-   },
-   "eyeR": {
-    "x": 306.4,
-    "y": 145.8,
-    "scale": 0.685
-   },
-   "browL": {
-    "x": 252.4,
-    "y": 113.9,
-    "scale": 0.36
-   },
-   "browR": {
-    "x": 305.6,
-    "y": 114.9,
-    "scale": 0.36
-   },
-   "mouth": {
-    "x": 282.2,
-    "y": 187.7,
-    "scale": 0.61
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_front)"
-  },
-  "char.sister.pose_reaction": {
-   "eyeL": {
-    "x": 216.5,
-    "y": 134.5,
-    "scale": 0.666
-   },
-   "eyeR": {
-    "x": 268.2,
-    "y": 135.8,
-    "scale": 0.666
-   },
-   "browL": {
-    "x": 216.9,
-    "y": 105.5,
-    "scale": 0.35
-   },
-   "browR": {
-    "x": 267.5,
-    "y": 106.4,
-    "scale": 0.35
-   },
-   "mouth": {
-    "x": 245.2,
-    "y": 178.1,
-    "scale": 0.593
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_front)"
-  },
-  "char.barbas.pose_neutral_front": {
-   "eyeL": {
-    "x": 210.7,
-    "y": 141.4,
-    "scale": 0.617
-   },
-   "eyeR": {
-    "x": 259.62833333333333,
-    "y": 140.22666666666666,
-    "scale": 0.617
-   },
-   "browL": {
-    "x": 210.7,
-    "y": 106.5,
-    "scale": 0.301
-   },
-   "browR": {
-    "x": 265.3,
-    "y": 106.5,
-    "scale": 0.301
-   },
-   "mouth": {
-    "x": 257.26,
-    "y": 160.96166666666667,
-    "scale": 0.7555095066666667,
-    "rot": 0
-   },
-   "status": "calibrated",
-   "source": "Calibrado a mano"
-  },
-  "char.barbas.pose_neutral_3q_left": {
-   "eyeL": {
-    "x": 195.9,
-    "y": 156.9,
-    "scale": 0.664
-   },
-   "eyeR": {
-    "x": 259.1,
-    "y": 156.9,
-    "scale": 0.664
-   },
-   "browL": {
-    "x": 195.9,
-    "y": 116.5,
-    "scale": 0.324
-   },
-   "browR": {
-    "x": 259.1,
-    "y": 116.5,
-    "scale": 0.324
-   },
-   "mouth": {
-    "x": 183.2,
-    "y": 181.81,
-    "scale": 0.847,
-    "rot": 0
-   },
-   "status": "calibrated",
-   "source": "Calibrado a mano"
-  },
-  "char.barbas.pose_neutral_3q_right": {
-   "eyeL": {
-    "x": 255.3,
-    "y": 150.9,
-    "scale": 0.665
-   },
-   "eyeR": {
-    "x": 316.7,
-    "y": 150.9,
-    "scale": 0.665
-   },
-   "browL": {
-    "x": 255.3,
-    "y": 111.6,
-    "scale": 0.325
-   },
-   "browR": {
-    "x": 316.7,
-    "y": 111.6,
-    "scale": 0.325
-   },
-   "mouth": {
-    "x": 316.28166666666664,
-    "y": 177.29999999999998,
-    "scale": 0.849,
-    "rot": 0
-   },
-   "status": "calibrated",
-   "source": "Calibrado a mano"
-  },
-  "char.barbas.pose_walk_small_left": {
-   "eyeL": {
-    "x": 196.0,
-    "y": 146.1,
-    "scale": 0.596
-   },
-   "eyeR": {
-    "x": 250.0,
-    "y": 146.1,
-    "scale": 0.596
-   },
-   "browL": {
-    "x": 196.0,
-    "y": 111.5,
-    "scale": 0.291
-   },
-   "browR": {
-    "x": 250.0,
-    "y": 111.5,
-    "scale": 0.291
-   },
-   "mouth": {
-    "x": 209.7,
-    "y": 166.5,
-    "scale": 0.76
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_3q_left, pose_neutral_3q_right, pose_neutral_front, pose_walk_small_right)"
-  },
-  "char.barbas.pose_walk_small_right": {
-   "eyeL": {
-    "x": 260.9,
-    "y": 156,
-    "scale": 0.652
-   },
-   "eyeR": {
-    "x": 324.1,
-    "y": 156,
-    "scale": 0.652
-   },
-   "browL": {
-    "x": 260.9,
-    "y": 115.6,
-    "scale": 0.318
-   },
-   "browR": {
-    "x": 324.1,
-    "y": 115.6,
-    "scale": 0.318
-   },
-   "mouth": {
-    "x": 262.95,
-    "y": 192.88,
-    "scale": 0.831,
-    "rot": 0
-   },
-   "status": "calibrated",
-   "source": "Calibrado a mano"
-  },
-  "char.barbas.pose_talk_explain": {
-   "eyeL": {
-    "x": 196.4,
-    "y": 133.0,
-    "scale": 0.539
-   },
-   "eyeR": {
-    "x": 246.6,
-    "y": 133.0,
-    "scale": 0.539
-   },
-   "browL": {
-    "x": 196.4,
-    "y": 100.9,
-    "scale": 0.263
-   },
-   "browR": {
-    "x": 246.6,
-    "y": 100.9,
-    "scale": 0.263
-   },
-   "mouth": {
-    "x": 233.5,
-    "y": 141.7,
-    "scale": 0.688
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_3q_left, pose_neutral_3q_right, pose_neutral_front, pose_walk_small_right)"
-  },
-  "char.barbas.pose_talk_emphasis": {
-   "eyeL": {
-    "x": 232.2,
-    "y": 157.7,
-    "scale": 0.641
-   },
-   "eyeR": {
-    "x": 290.8,
-    "y": 157.7,
-    "scale": 0.641
-   },
-   "browL": {
-    "x": 232.2,
-    "y": 120.3,
-    "scale": 0.313
-   },
-   "browR": {
-    "x": 290.8,
-    "y": 120.3,
-    "scale": 0.313
-   },
-   "mouth": {
-    "x": 275.8,
-    "y": 172.2,
-    "scale": 0.818
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_3q_left, pose_neutral_3q_right, pose_neutral_front, pose_walk_small_right)"
-  },
-  "char.barbas.pose_pointing": {
-   "eyeL": {
-    "x": 226.0,
-    "y": 140.1,
-    "scale": 0.604
-   },
-   "eyeR": {
-    "x": 283.0,
-    "y": 140.1,
-    "scale": 0.604
-   },
-   "browL": {
-    "x": 226.0,
-    "y": 103.7,
-    "scale": 0.295
-   },
-   "browR": {
-    "x": 283.0,
-    "y": 103.7,
-    "scale": 0.295
-   },
-   "mouth": {
-    "x": 268.0,
-    "y": 160.0,
-    "scale": 0.771
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_3q_left, pose_neutral_3q_right, pose_neutral_front, pose_walk_small_right)"
-  },
-  "char.barbas.pose_arms_crossed": {
-   "eyeL": {
-    "x": 233.2,
-    "y": 157.4,
-    "scale": 0.666
-   },
-   "eyeR": {
-    "x": 295.8,
-    "y": 157.4,
-    "scale": 0.666
-   },
-   "browL": {
-    "x": 233.2,
-    "y": 117.3,
-    "scale": 0.325
-   },
-   "browR": {
-    "x": 295.8,
-    "y": 117.3,
-    "scale": 0.325
-   },
-   "mouth": {
-    "x": 279.3,
-    "y": 177.1,
-    "scale": 0.849
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_3q_left, pose_neutral_3q_right, pose_neutral_front, pose_walk_small_right)"
-  },
-  "char.barbas.pose_reaction": {
-   "eyeL": {
-    "x": 234.0,
-    "y": 141.8,
-    "scale": 0.647
-   },
-   "eyeR": {
-    "x": 293.0,
-    "y": 141.8,
-    "scale": 0.647
-   },
-   "browL": {
-    "x": 234.0,
-    "y": 104.0,
-    "scale": 0.316
-   },
-   "browR": {
-    "x": 293.0,
-    "y": 104.0,
-    "scale": 0.316
-   },
-   "mouth": {
-    "x": 277.9,
-    "y": 160.6,
-    "scale": 0.826
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_3q_left, pose_neutral_3q_right, pose_neutral_front, pose_walk_small_right)"
-  },
-  "char.jefe.pose_neutral_front": {
-   "browL": {
-    "x": 171.5,
-    "y": 156.2,
-    "scale": 0.458
-   },
-   "browR": {
-    "x": 269.5,
-    "y": 156.2,
-    "scale": 0.458
-   },
-   "mouth": {
-    "x": 223.45,
-    "y": 277.68,
-    "scale": 0.526,
-    "rot": 0
-   },
-   "status": "calibrated",
-   "source": "Calibrado a mano"
-  },
-  "char.jefe.pose_neutral_3q_left": {
-   "browL": {
-    "x": 156.5,
-    "y": 157.2,
-    "scale": 0.321
-   },
-   "browR": {
-    "x": 207.0,
-    "y": 157.2,
-    "scale": 0.493
-   },
-   "mouth": {
-    "x": 173.6,
-    "y": 288.1,
-    "scale": 0.566
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_front)"
-  },
-  "char.jefe.pose_neutral_3q_right": {
-   "browL": {
-    "x": 253.5,
-    "y": 159.1,
-    "scale": 0.494
-   },
-   "browR": {
-    "x": 310.5,
-    "y": 159.1,
-    "scale": 0.321
-   },
-   "mouth": {
-    "x": 287.4,
-    "y": 290.1,
-    "scale": 0.567
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_front)"
-  },
-  "char.jefe.pose_walk_small_left": {
-   "browL": {
-    "x": 119.0,
-    "y": 151.2,
-    "scale": 0.324
-   },
-   "browR": {
-    "x": 202.0,
-    "y": 151.2,
-    "scale": 0.443
-   },
-   "mouth": {
-    "x": 149.2,
-    "y": 268.6,
-    "scale": 0.508
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_front)"
-  },
-  "char.jefe.pose_walk_small_right": {
-   "browL": {
-    "x": 235.0,
-    "y": 148.4,
-    "scale": 0.484
-   },
-   "browR": {
-    "x": 309.0,
-    "y": 148.4,
-    "scale": 0.341
-   },
-   "mouth": {
-    "x": 286.8,
-    "y": 276.8,
-    "scale": 0.556
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_front)"
-  },
-  "char.jefe.pose_talk_explain": {
-   "browL": {
-    "x": 113.0,
-    "y": 115.5,
-    "scale": 0.288
-   },
-   "browR": {
-    "x": 170.0,
-    "y": 115.5,
-    "scale": 0.4
-   },
-   "mouth": {
-    "x": 141.6,
-    "y": 221.7,
-    "scale": 0.46
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_front)"
-  },
-  "char.jefe.pose_talk_emphasis": {
-   "browL": {
-    "x": 198.0,
-    "y": 152.4,
-    "scale": 0.476
-   },
-   "browR": {
-    "x": 289.0,
-    "y": 152.4,
-    "scale": 0.352
-   },
-   "mouth": {
-    "x": 249.6,
-    "y": 278.7,
-    "scale": 0.547
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_front)"
-  },
-  "char.jefe.pose_pointing": {
-   "browL": {
-    "x": 207.5,
-    "y": 139.4,
-    "scale": 0.449
-   },
-   "browR": {
-    "x": 280.5,
-    "y": 139.4,
-    "scale": 0.308
-   },
-   "mouth": {
-    "x": 251.9,
-    "y": 258.4,
-    "scale": 0.515
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_front)"
-  },
-  "char.jefe.pose_arms_crossed": {
-   "browL": {
-    "x": 213.0,
-    "y": 156.6,
-    "scale": 0.494
-   },
-   "browR": {
-    "x": 297.0,
-    "y": 156.6,
-    "scale": 0.368
-   },
-   "mouth": {
-    "x": 265.2,
-    "y": 287.7,
-    "scale": 0.568
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_front)"
-  },
-  "char.jefe.pose_reaction": {
-   "browL": {
-    "x": 195.5,
-    "y": 139.9,
-    "scale": 0.48
-   },
-   "browR": {
-    "x": 259.5,
-    "y": 139.9,
-    "scale": 0.356
-   },
-   "mouth": {
-    "x": 242.6,
-    "y": 267.3,
-    "scale": 0.552
-   },
-   "status": "derived",
-   "source": "Derivado de las calibraciones a mano (pose_neutral_front)"
+  "kind": "pocket-face-overrides",
+  "version": 1,
+  "catalogVersion": "v8-assets-1",
+  "updatedAt": "2026-10-14T22:10:06.248Z",
+  "rigs": {},
+  "expressions": {
+    "expression.usu.neutral": {
+      "id": "expression.usu.neutral",
+      "characterId": "usu",
+      "emotion": "neutral",
+      "label": "Neutral",
+      "status": "draft",
+      "browL": {
+        "assetId": "face.usu.brows.usu_brow_13"
+      },
+      "browR": {
+        "assetId": "face.usu.brows.usu_brow_13",
+        "flip": true
+      },
+      "mouth": {
+        "assetId": "face.usu.mouths.usu_mouth_10"
+      },
+      "talk": [
+        "face.usu.mouths.usu_mouth_08",
+        "face.usu.mouths.usu_mouth_05",
+        "face.usu.mouths.usu_mouth_03"
+      ],
+      "poseOverrides": {
+        "char.usu.pose_neutral_front": {
+          "mouth": {
+            "dx": 0.0,
+            "dy": 4.58,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_neutral_3q_left": {
+          "mouth": {
+            "dx": 9.55,
+            "dy": 4.93,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_neutral_3q_right": {
+          "mouth": {
+            "dx": -9.57,
+            "dy": 4.94,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_walk_small_left": {
+          "mouth": {
+            "dx": 8.58,
+            "dy": 4.43,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_walk_small_right": {
+          "mouth": {
+            "dx": -9.37,
+            "dy": 4.84,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_talk_explain": {
+          "mouth": {
+            "dx": -7.75,
+            "dy": 4.0,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_talk_emphasis": {
+          "mouth": {
+            "dx": -9.22,
+            "dy": 4.76,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_pointing": {
+          "mouth": {
+            "dx": -8.69,
+            "dy": 4.48,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_arms_crossed": {
+          "mouth": {
+            "dx": -9.58,
+            "dy": 4.94,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_reaction": {
+          "mouth": {
+            "dx": -9.31,
+            "dy": 4.8,
+            "dscale": 1.0
+          }
+        }
+      }
+    },
+    "expression.usu.alegria": {
+      "id": "expression.usu.alegria",
+      "characterId": "usu",
+      "emotion": "alegria",
+      "label": "Alegría",
+      "status": "draft",
+      "browL": {
+        "assetId": "face.usu.brows.usu_brow_04"
+      },
+      "browR": {
+        "assetId": "face.usu.brows.usu_brow_04",
+        "flip": true
+      },
+      "mouth": {
+        "assetId": "face.usu.mouths.usu_mouth_09"
+      },
+      "talk": [
+        "face.usu.mouths.usu_mouth_05",
+        "face.usu.mouths.usu_mouth_08",
+        "face.usu.mouths.usu_mouth_01"
+      ],
+      "poseOverrides": {
+        "char.usu.pose_neutral_front": {
+          "mouth": {
+            "dx": 0.0,
+            "dy": 2.62,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_neutral_3q_left": {
+          "mouth": {
+            "dx": -1.06,
+            "dy": 2.82,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_neutral_3q_right": {
+          "mouth": {
+            "dx": 1.06,
+            "dy": 2.82,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_walk_small_left": {
+          "mouth": {
+            "dx": -0.95,
+            "dy": 2.53,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_walk_small_right": {
+          "mouth": {
+            "dx": 1.04,
+            "dy": 2.77,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_talk_explain": {
+          "mouth": {
+            "dx": 0.86,
+            "dy": 2.29,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_talk_emphasis": {
+          "mouth": {
+            "dx": 1.02,
+            "dy": 2.72,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_pointing": {
+          "mouth": {
+            "dx": 0.96,
+            "dy": 2.56,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_arms_crossed": {
+          "mouth": {
+            "dx": 1.06,
+            "dy": 2.83,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_reaction": {
+          "mouth": {
+            "dx": 1.03,
+            "dy": 2.75,
+            "dscale": 1.0
+          }
+        }
+      }
+    },
+    "expression.usu.risa": {
+      "id": "expression.usu.risa",
+      "characterId": "usu",
+      "emotion": "risa",
+      "label": "Risa",
+      "status": "draft",
+      "browL": {
+        "assetId": "face.usu.brows.usu_brow_04",
+        "dy": -4
+      },
+      "browR": {
+        "assetId": "face.usu.brows.usu_brow_04",
+        "flip": true,
+        "dy": -4
+      },
+      "mouth": {
+        "assetId": "face.usu.mouths.usu_mouth_01"
+      },
+      "talk": [
+        "face.usu.mouths.usu_mouth_02",
+        "face.usu.mouths.usu_mouth_01",
+        "face.usu.mouths.usu_mouth_05"
+      ],
+      "poseOverrides": {
+        "char.usu.pose_neutral_front": {
+          "mouth": {
+            "dx": 0.0,
+            "dy": -9.18,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_neutral_3q_left": {
+          "mouth": {
+            "dx": 10.57,
+            "dy": -9.88,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_neutral_3q_right": {
+          "mouth": {
+            "dx": -10.59,
+            "dy": -9.89,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_walk_small_left": {
+          "mouth": {
+            "dx": 9.49,
+            "dy": -8.87,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_walk_small_right": {
+          "mouth": {
+            "dx": -10.37,
+            "dy": -9.69,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_talk_explain": {
+          "mouth": {
+            "dx": -8.58,
+            "dy": -8.02,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_talk_emphasis": {
+          "mouth": {
+            "dx": -10.21,
+            "dy": -9.54,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_pointing": {
+          "mouth": {
+            "dx": -9.62,
+            "dy": -8.99,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_arms_crossed": {
+          "mouth": {
+            "dx": -10.6,
+            "dy": -9.9,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_reaction": {
+          "mouth": {
+            "dx": -10.3,
+            "dy": -9.62,
+            "dscale": 1.0
+          }
+        }
+      }
+    },
+    "expression.usu.enfado": {
+      "id": "expression.usu.enfado",
+      "characterId": "usu",
+      "emotion": "enfado",
+      "label": "Enfado",
+      "status": "draft",
+      "browL": {
+        "assetId": "face.usu.brows.usu_brow_06",
+        "crop": "left"
+      },
+      "browR": {
+        "assetId": "face.usu.brows.usu_brow_06",
+        "crop": "right"
+      },
+      "mouth": {
+        "assetId": "face.usu.mouths.usu_mouth_07"
+      },
+      "talk": [
+        "face.usu.mouths.usu_mouth_04",
+        "face.usu.mouths.usu_mouth_07",
+        "face.usu.mouths.usu_mouth_08"
+      ],
+      "poseOverrides": {
+        "char.usu.pose_neutral_front": {
+          "mouth": {
+            "dx": 0.0,
+            "dy": 2.61,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_neutral_3q_left": {
+          "mouth": {
+            "dx": -10.6,
+            "dy": 2.81,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_neutral_3q_right": {
+          "mouth": {
+            "dx": 10.61,
+            "dy": 2.81,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_walk_small_left": {
+          "mouth": {
+            "dx": -9.51,
+            "dy": 2.52,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_walk_small_right": {
+          "mouth": {
+            "dx": 10.39,
+            "dy": 2.76,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_talk_explain": {
+          "mouth": {
+            "dx": 8.6,
+            "dy": 2.28,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_talk_emphasis": {
+          "mouth": {
+            "dx": 10.23,
+            "dy": 2.71,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_pointing": {
+          "mouth": {
+            "dx": 9.64,
+            "dy": 2.56,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_arms_crossed": {
+          "mouth": {
+            "dx": 10.62,
+            "dy": 2.82,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_reaction": {
+          "mouth": {
+            "dx": 10.32,
+            "dy": 2.74,
+            "dscale": 1.0
+          }
+        }
+      }
+    },
+    "expression.usu.sorpresa": {
+      "id": "expression.usu.sorpresa",
+      "characterId": "usu",
+      "emotion": "sorpresa",
+      "label": "Sorpresa",
+      "status": "draft",
+      "browL": {
+        "assetId": "face.usu.brows.usu_brow_04",
+        "dy": -10
+      },
+      "browR": {
+        "assetId": "face.usu.brows.usu_brow_04",
+        "flip": true,
+        "dy": -10
+      },
+      "mouth": {
+        "assetId": "face.usu.mouths.usu_mouth_03"
+      },
+      "talk": [
+        "face.usu.mouths.usu_mouth_03",
+        "face.usu.mouths.usu_mouth_08",
+        "face.usu.mouths.usu_mouth_04"
+      ],
+      "poseOverrides": {
+        "char.usu.pose_neutral_front": {
+          "mouth": {
+            "dx": 0.0,
+            "dy": -7.19,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_neutral_3q_left": {
+          "mouth": {
+            "dx": -5.31,
+            "dy": -7.74,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_neutral_3q_right": {
+          "mouth": {
+            "dx": 5.31,
+            "dy": -7.75,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_walk_small_left": {
+          "mouth": {
+            "dx": -4.76,
+            "dy": -6.95,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_walk_small_right": {
+          "mouth": {
+            "dx": 5.21,
+            "dy": -7.59,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_talk_explain": {
+          "mouth": {
+            "dx": 4.31,
+            "dy": -6.28,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_talk_emphasis": {
+          "mouth": {
+            "dx": 5.12,
+            "dy": -7.47,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_pointing": {
+          "mouth": {
+            "dx": 4.83,
+            "dy": -7.04,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_arms_crossed": {
+          "mouth": {
+            "dx": 5.32,
+            "dy": -7.76,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_reaction": {
+          "mouth": {
+            "dx": 5.17,
+            "dy": -7.54,
+            "dscale": 1.0
+          }
+        }
+      }
+    },
+    "expression.usu.tristeza": {
+      "id": "expression.usu.tristeza",
+      "characterId": "usu",
+      "emotion": "tristeza",
+      "label": "Tristeza",
+      "status": "draft",
+      "browL": {
+        "assetId": "face.usu.brows.usu_brow_01"
+      },
+      "browR": {
+        "assetId": "face.usu.brows.usu_brow_01",
+        "flip": true
+      },
+      "mouth": {
+        "assetId": "face.usu.mouths.usu_mouth_10"
+      },
+      "talk": [
+        "face.usu.mouths.usu_mouth_08",
+        "face.usu.mouths.usu_mouth_03"
+      ],
+      "poseOverrides": {
+        "char.usu.pose_neutral_front": {
+          "mouth": {
+            "dx": 0.0,
+            "dy": 6.56,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_neutral_3q_left": {
+          "mouth": {
+            "dx": -3.17,
+            "dy": 7.06,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_neutral_3q_right": {
+          "mouth": {
+            "dx": 3.17,
+            "dy": 7.07,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_walk_small_left": {
+          "mouth": {
+            "dx": -2.84,
+            "dy": 6.34,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_walk_small_right": {
+          "mouth": {
+            "dx": 3.11,
+            "dy": 6.93,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_talk_explain": {
+          "mouth": {
+            "dx": 2.57,
+            "dy": 5.73,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_talk_emphasis": {
+          "mouth": {
+            "dx": 3.06,
+            "dy": 6.81,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_pointing": {
+          "mouth": {
+            "dx": 2.88,
+            "dy": 6.42,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_arms_crossed": {
+          "mouth": {
+            "dx": 3.17,
+            "dy": 7.08,
+            "dscale": 1.0
+          }
+        },
+        "char.usu.pose_reaction": {
+          "mouth": {
+            "dx": 3.08,
+            "dy": 6.88,
+            "dscale": 1.0
+          }
+        }
+      }
+    },
+    "expression.sister.enfado": {
+      "id": "expression.sister.enfado",
+      "characterId": "sister",
+      "emotion": "enfado",
+      "label": "Enfado",
+      "status": "draft",
+      "eyeL": {
+        "assetId": "face.sister.eyes.sister_eyes_02_der",
+        "crop": "left",
+        "flip": false
+      },
+      "eyeR": {
+        "assetId": "face.sister.eyes.sister_eyes_04_der",
+        "crop": "right"
+      },
+      "browL": {
+        "assetId": "face.sister.brows.sister_brow_09",
+        "dy": 4
+      },
+      "browR": {
+        "assetId": "face.sister.brows.sister_brow_09",
+        "flip": true,
+        "dy": 4
+      },
+      "mouth": {
+        "assetId": "face.sister.mouths.sister_mouth_04"
+      },
+      "talk": [
+        "face.sister.mouths.sister_mouth_04",
+        "face.sister.mouths.sister_mouth_09"
+      ],
+      "poseOverrides": {
+        "char.sister.pose_neutral_front": {
+          "eyeL": {
+            "dx": -0.89,
+            "dy": 0.53,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": -0.71,
+            "dy": -2.5,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": -4.46,
+            "dy": 4.46,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": -0.36,
+            "dy": -3.39,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_neutral_3q_left": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 0.58,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": -2.69,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": 4.8,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -3.65,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_neutral_3q_right": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 0.58,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": -2.69,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": 4.81,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -3.65,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_walk_small_left": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 0.52,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": -2.41,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": 4.31,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -3.27,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_walk_small_right": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 0.57,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": -2.64,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": 4.71,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -3.58,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_talk_explain": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 0.47,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": -2.18,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": 3.9,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -2.96,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_talk_emphasis": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 0.56,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": -2.59,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": 4.63,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -3.52,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_pointing": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 0.52,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": -2.45,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": 4.37,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -3.32,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_arms_crossed": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 0.58,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": -2.69,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": 4.81,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -3.66,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_reaction": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 0.56,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": -2.62,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": 4.68,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -3.55,
+            "dscale": 1.0
+          }
+        }
+      }
+    },
+    "expression.sister.risa": {
+      "id": "expression.sister.risa",
+      "characterId": "sister",
+      "emotion": "risa",
+      "label": "Risa",
+      "status": "draft",
+      "eyeL": {
+        "assetId": "face.sister.eyes.sister_eyes_04_izq",
+        "crop": "left",
+        "flip": false
+      },
+      "eyeR": {
+        "assetId": "face.sister.eyes.sister_eyes_03",
+        "crop": "right",
+        "flip": false
+      },
+      "browL": null,
+      "browR": null,
+      "mouth": {
+        "assetId": "face.sister.mouths.sister_mouth_02"
+      },
+      "talk": [
+        "face.sister.mouths.sister_mouth_02",
+        "face.sister.mouths.sister_mouth_01",
+        "face.sister.mouths.sister_mouth_06"
+      ],
+      "poseOverrides": {
+        "char.sister.pose_neutral_front": {
+          "eyeL": {
+            "dx": 2.32,
+            "dy": 2.67,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.36,
+            "dy": 1.78,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.89,
+            "dy": -0.89,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": -0.36,
+            "dy": -1.25,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_neutral_3q_left": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 2.88,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.92,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.96,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -1.34,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_neutral_3q_right": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 2.88,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.92,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.96,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -1.35,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_walk_small_left": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 2.59,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.72,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.86,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -1.21,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_walk_small_right": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 2.83,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.88,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.94,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -1.32,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_talk_explain": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 2.34,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.56,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.78,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -1.09,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_talk_emphasis": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 2.78,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.85,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.93,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -1.3,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_pointing": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 2.62,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.75,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.87,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -1.22,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_arms_crossed": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 2.89,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.92,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.96,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -1.35,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_reaction": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 2.81,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.87,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.94,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -1.31,
+            "dscale": 1.0
+          }
+        }
+      }
+    },
+    "expression.sister.alegria": {
+      "id": "expression.sister.alegria",
+      "characterId": "sister",
+      "emotion": "alegria",
+      "label": "Alegría",
+      "status": "draft",
+      "eyeL": {
+        "assetId": "face.sister.eyes.sister_eyes_05",
+        "flip": false
+      },
+      "eyeR": {
+        "assetId": "face.sister.eyes.sister_eyes_05",
+        "flip": false
+      },
+      "browL": null,
+      "browR": null,
+      "mouth": {
+        "assetId": "face.sister.mouths.sister_mouth_01"
+      },
+      "talk": [
+        "face.sister.mouths.sister_mouth_06",
+        "face.sister.mouths.sister_mouth_09",
+        "face.sister.mouths.sister_mouth_01"
+      ],
+      "poseOverrides": {
+        "char.sister.pose_neutral_front": {
+          "eyeL": {
+            "dx": -1.96,
+            "dy": -4.81,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": -1.78,
+            "dy": -5.71,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.89,
+            "dy": -0.89,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 4.99,
+            "dy": -11.95,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_neutral_3q_left": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": -5.18,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": -6.14,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.96,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -12.86,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_neutral_3q_right": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": -5.19,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": -6.15,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.96,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -12.88,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_walk_small_left": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": -4.65,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": -5.52,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.86,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -11.55,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_walk_small_right": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": -5.09,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": -6.03,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.94,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -12.62,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_talk_explain": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": -4.21,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": -4.99,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.78,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -10.44,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_talk_emphasis": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": -5.0,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": -5.93,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.93,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -12.42,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_pointing": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": -4.72,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": -5.59,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.87,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -11.7,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_arms_crossed": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": -5.2,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": -6.16,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.96,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -12.9,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_reaction": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": -5.05,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": -5.99,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.94,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -12.53,
+            "dscale": 1.0
+          }
+        }
+      }
+    },
+    "expression.sister.neutral": {
+      "id": "expression.sister.neutral",
+      "characterId": "sister",
+      "emotion": "neutral",
+      "label": "Neutral",
+      "status": "draft",
+      "eyeL": {
+        "assetId": "face.sister.eyes.sister_eyes_05"
+      },
+      "eyeR": {
+        "assetId": "face.sister.eyes.sister_eyes_05",
+        "flip": false
+      },
+      "browL": {
+        "assetId": "face.sister.brows.sister_brow_12"
+      },
+      "browR": {
+        "assetId": "face.sister.brows.sister_brow_12",
+        "flip": true
+      },
+      "mouth": {
+        "assetId": "face.sister.mouths.sister_mouth_10"
+      },
+      "talk": [
+        "face.sister.mouths.sister_mouth_09",
+        "face.sister.mouths.sister_mouth_06",
+        "face.sister.mouths.sister_mouth_03"
+      ],
+      "poseOverrides": {
+        "char.sister.pose_neutral_front": {
+          "eyeL": {
+            "dx": 0.18,
+            "dy": 0.53,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.36,
+            "dy": 1.78,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.89,
+            "dy": -0.89,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": -2.5,
+            "dy": 12.66,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_neutral_3q_left": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 0.58,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.92,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.96,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 13.63,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_neutral_3q_right": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 0.58,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.92,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.96,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 13.65,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_walk_small_left": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 0.52,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.72,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.86,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 12.24,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_walk_small_right": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 0.57,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.88,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.94,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 13.37,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_talk_explain": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 0.47,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.56,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.78,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 11.07,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_talk_emphasis": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 0.56,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.85,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.93,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 13.16,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_pointing": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 0.52,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.75,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.87,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 12.4,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_arms_crossed": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 0.58,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.92,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.96,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 13.67,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_reaction": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 0.56,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.87,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.94,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 13.28,
+            "dscale": 1.0
+          }
+        }
+      }
+    },
+    "expression.sister.sorpresa": {
+      "id": "expression.sister.sorpresa",
+      "characterId": "sister",
+      "emotion": "sorpresa",
+      "label": "Sorpresa",
+      "status": "draft",
+      "eyeL": {
+        "assetId": "face.sister.eyes.sister_eyes_05",
+        "flip": false
+      },
+      "eyeR": {
+        "assetId": "face.sister.eyes.sister_eyes_05",
+        "flip": false
+      },
+      "browL": null,
+      "browR": null,
+      "mouth": {
+        "assetId": "face.sister.mouths.sister_mouth_03"
+      },
+      "talk": [
+        "face.sister.mouths.sister_mouth_03",
+        "face.sister.mouths.sister_mouth_09",
+        "face.sister.mouths.sister_mouth_04"
+      ],
+      "poseOverrides": {
+        "char.sister.pose_neutral_front": {
+          "eyeL": {
+            "dx": 0.18,
+            "dy": 0.53,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 1.43,
+            "dy": 2.85,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.89,
+            "dy": -0.89,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.71,
+            "dy": -8.74,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_neutral_3q_left": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 0.58,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 3.07,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.96,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -9.41,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_neutral_3q_right": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 0.58,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 3.08,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.96,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -9.42,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_walk_small_left": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 0.52,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 2.76,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.86,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -8.45,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_walk_small_right": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 0.57,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 3.01,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.94,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -9.23,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_talk_explain": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 0.47,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 2.49,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.78,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -7.64,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_talk_emphasis": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 0.56,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 2.97,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.93,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -9.08,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_pointing": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 0.52,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 2.79,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.87,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -8.56,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_arms_crossed": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 0.58,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 3.08,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.96,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -9.43,
+            "dscale": 1.0
+          }
+        },
+        "char.sister.pose_reaction": {
+          "eyeL": {
+            "dx": 0.0,
+            "dy": 0.56,
+            "dscale": 1.0
+          },
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 2.99,
+            "dscale": 1.0
+          },
+          "browL": {
+            "dx": 0.0,
+            "dy": -0.94,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -9.17,
+            "dscale": 1.0
+          }
+        }
+      }
+    },
+    "expression.barbas.neutral": {
+      "id": "expression.barbas.neutral",
+      "emotion": "neutral",
+      "label": "Neutral",
+      "status": "draft",
+      "eyeL": {
+        "assetId": "face.barbas.eyes.barbas_eyes_01",
+        "crop": "left"
+      },
+      "eyeR": {
+        "assetId": "face.barbas.eyes.barbas_eyes_01",
+        "crop": "right"
+      },
+      "mouth": {
+        "assetId": "face.barbas.mouths.barbas_mouth_01",
+        "flip": true
+      },
+      "talk": [
+        "face.barbas.mouths.barbas_mouth_02",
+        "face.barbas.mouths.barbas_mouth_03",
+        "face.barbas.mouths.barbas_mouth_05"
+      ],
+      "poseOverrides": {
+        "char.barbas.pose_neutral_front": {
+          "eyeR": {
+            "dx": 5.67,
+            "dy": 1.17,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 3.92,
+            "dy": 6.57,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_neutral_3q_left": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.26,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 7.07,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_neutral_3q_right": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.27,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 3.92,
+            "dy": 2.4,
+            "dscale": 1.0
+          }
+        },
+        "char.barbas.pose_walk_small_left": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.13,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 6.35,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_walk_small_right": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.24,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 6.94,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_talk_explain": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.03,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 5.74,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_talk_emphasis": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.22,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 6.83,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_pointing": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.15,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 6.43,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_arms_crossed": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.27,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 7.09,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_reaction": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.23,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 6.89,
+            "dscale": 1.042
+          }
+        }
+      },
+      "characterId": "barbas"
+    },
+    "expression.barbas.alegria": {
+      "id": "expression.barbas.alegria",
+      "emotion": "alegria",
+      "label": "Alegría",
+      "status": "draft",
+      "eyeL": {
+        "assetId": "face.barbas.eyes.barbas_eyes_05_der",
+        "crop": "left"
+      },
+      "eyeR": {
+        "assetId": "face.barbas.eyes.barbas_eyes_05_der",
+        "crop": "right"
+      },
+      "mouth": {
+        "assetId": "face.barbas.mouths.barbas_mouth_06",
+        "flip": true
+      },
+      "talk": [
+        "face.barbas.mouths.barbas_mouth_06",
+        "face.barbas.mouths.barbas_mouth_03",
+        "face.barbas.mouths.barbas_mouth_02"
+      ],
+      "poseOverrides": {
+        "char.barbas.pose_neutral_front": {
+          "eyeR": {
+            "dx": 5.67,
+            "dy": 1.17,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.19,
+            "dy": -14.69,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_neutral_3q_left": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.26,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -15.82,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_neutral_3q_right": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.27,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 3.92,
+            "dy": 2.4,
+            "dscale": 1.0
+          }
+        },
+        "char.barbas.pose_walk_small_left": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.13,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -14.2,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_walk_small_right": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.24,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -15.52,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_talk_explain": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.03,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -12.84,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_talk_emphasis": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.22,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -15.27,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_pointing": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.15,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -14.39,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_arms_crossed": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.27,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -15.86,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_reaction": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.23,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -15.41,
+            "dscale": 1.042
+          }
+        }
+      },
+      "characterId": "barbas"
+    },
+    "expression.barbas.risa": {
+      "id": "expression.barbas.risa",
+      "emotion": "risa",
+      "label": "Risa",
+      "status": "draft",
+      "eyeL": {
+        "assetId": "face.barbas.eyes.barbas_eyes_05_der",
+        "crop": "left"
+      },
+      "eyeR": {
+        "assetId": "face.barbas.eyes.barbas_eyes_05_der",
+        "crop": "right"
+      },
+      "mouth": {
+        "assetId": "face.barbas.mouths.barbas_mouth_06",
+        "flip": true
+      },
+      "talk": [
+        "face.barbas.mouths.barbas_mouth_03",
+        "face.barbas.mouths.barbas_mouth_06",
+        "face.barbas.mouths.barbas_mouth_04"
+      ],
+      "poseOverrides": {
+        "char.barbas.pose_neutral_front": {
+          "eyeR": {
+            "dx": 5.67,
+            "dy": 1.17,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 4.72,
+            "dy": -5.37,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_neutral_3q_left": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.26,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -5.78,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_neutral_3q_right": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.27,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 3.92,
+            "dy": 2.4,
+            "dscale": 1.0
+          }
+        },
+        "char.barbas.pose_walk_small_left": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.13,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -5.19,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_walk_small_right": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.24,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -5.67,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_talk_explain": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.03,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -4.69,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_talk_emphasis": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.22,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -5.58,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_pointing": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.15,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -5.26,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_arms_crossed": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.27,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -5.8,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_reaction": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.23,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -5.63,
+            "dscale": 1.042
+          }
+        }
+      },
+      "characterId": "barbas"
+    },
+    "expression.barbas.enfado": {
+      "id": "expression.barbas.enfado",
+      "emotion": "enfado",
+      "label": "Enfado",
+      "status": "draft",
+      "eyeL": {
+        "assetId": "face.barbas.eyes.barbas_eyes_07",
+        "crop": "left"
+      },
+      "eyeR": {
+        "assetId": "face.barbas.eyes.barbas_eyes_07",
+        "crop": "right"
+      },
+      "mouth": {
+        "assetId": "face.barbas.mouths.barbas_mouth_09",
+        "flip": true
+      },
+      "talk": [
+        "face.barbas.mouths.barbas_mouth_08",
+        "face.barbas.mouths.barbas_mouth_09",
+        "face.barbas.mouths.barbas_mouth_02",
+        "face.barbas.mouths.barbas_mouth_01"
+      ],
+      "poseOverrides": {
+        "char.barbas.pose_neutral_front": {
+          "eyeR": {
+            "dx": 5.67,
+            "dy": 1.17,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 5.91,
+            "dy": -1.81,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_neutral_3q_left": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.26,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -1.95,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_neutral_3q_right": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.27,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 3.92,
+            "dy": 2.4,
+            "dscale": 1.0
+          }
+        },
+        "char.barbas.pose_walk_small_left": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.13,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -1.75,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_walk_small_right": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.24,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -1.91,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_talk_explain": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.03,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -1.58,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_talk_emphasis": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.22,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -1.88,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_pointing": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.15,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -1.77,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_arms_crossed": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.27,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -1.96,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_reaction": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.23,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": -1.9,
+            "dscale": 1.042
+          }
+        }
+      },
+      "characterId": "barbas"
+    },
+    "expression.barbas.sorpresa": {
+      "id": "expression.barbas.sorpresa",
+      "emotion": "sorpresa",
+      "label": "Sorpresa",
+      "status": "draft",
+      "eyeL": {
+        "assetId": "face.barbas.eyes.barbas_eyes_02",
+        "crop": "left"
+      },
+      "eyeR": {
+        "assetId": "face.barbas.eyes.barbas_eyes_02",
+        "crop": "right"
+      },
+      "mouth": {
+        "assetId": "face.barbas.mouths.barbas_mouth_05",
+        "flip": true
+      },
+      "talk": [
+        "face.barbas.mouths.barbas_mouth_05",
+        "face.barbas.mouths.barbas_mouth_02",
+        "face.barbas.mouths.barbas_mouth_04"
+      ],
+      "poseOverrides": {
+        "char.barbas.pose_neutral_front": {
+          "eyeR": {
+            "dx": 5.67,
+            "dy": 1.17,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": -15.01,
+            "dy": 13.49,
+            "dscale": 0.792
+          }
+        },
+        "char.barbas.pose_neutral_3q_left": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.26,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 14.52,
+            "dscale": 0.792
+          }
+        },
+        "char.barbas.pose_neutral_3q_right": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.27,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": -19.59,
+            "dy": -12.0,
+            "dscale": 1.0
+          }
+        },
+        "char.barbas.pose_walk_small_left": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.13,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 13.04,
+            "dscale": 0.792
+          }
+        },
+        "char.barbas.pose_walk_small_right": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.24,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 14.25,
+            "dscale": 0.792
+          }
+        },
+        "char.barbas.pose_talk_explain": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.03,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 11.79,
+            "dscale": 0.792
+          }
+        },
+        "char.barbas.pose_talk_emphasis": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.22,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 14.02,
+            "dscale": 0.792
+          }
+        },
+        "char.barbas.pose_pointing": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.15,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 13.21,
+            "dscale": 0.792
+          }
+        },
+        "char.barbas.pose_arms_crossed": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.27,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 14.56,
+            "dscale": 0.792
+          }
+        },
+        "char.barbas.pose_reaction": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": 1.23,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 14.15,
+            "dscale": 0.792
+          }
+        }
+      },
+      "characterId": "barbas"
+    },
+    "expression.barbas.tristeza": {
+      "id": "expression.barbas.tristeza",
+      "emotion": "tristeza",
+      "label": "Tristeza",
+      "status": "draft",
+      "mouth": {
+        "assetId": "face.barbas.mouths.barbas_mouth_01",
+        "flip": true
+      },
+      "talk": [
+        "face.barbas.mouths.barbas_mouth_02",
+        "face.barbas.mouths.barbas_mouth_05"
+      ],
+      "eyeL": null,
+      "eyeR": {
+        "assetId": "face.barbas.eyes.barbas_eyes_03",
+        "flip": true
+      },
+      "poseOverrides": {
+        "char.barbas.pose_neutral_front": {
+          "eyeR": {
+            "dx": -28.36,
+            "dy": -5.87,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.27,
+            "dy": 1.82,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_neutral_3q_left": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": -6.32,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 1.96,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_neutral_3q_right": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": -6.33,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 3.92,
+            "dy": 2.4,
+            "dscale": 1.0
+          }
+        },
+        "char.barbas.pose_walk_small_left": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": -5.67,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 1.76,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_walk_small_right": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": -6.2,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 1.92,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_talk_explain": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": -5.13,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 1.59,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_talk_emphasis": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": -6.1,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 1.89,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_pointing": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": -5.75,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 1.78,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_arms_crossed": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": -6.33,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 1.96,
+            "dscale": 1.042
+          }
+        },
+        "char.barbas.pose_reaction": {
+          "eyeR": {
+            "dx": 0.0,
+            "dy": -6.15,
+            "dscale": 1.0
+          },
+          "mouth": {
+            "dx": 0.0,
+            "dy": 1.91,
+            "dscale": 1.042
+          }
+        }
+      },
+      "characterId": "barbas"
+    }
   }
- },
- "expressions": {
-  "expression.usu.neutral": {
-   "id": "expression.usu.neutral",
-   "characterId": "usu",
-   "emotion": "neutral",
-   "label": "Neutral",
-   "status": "draft",
-   "browL": {
-    "assetId": "face.usu.brows.usu_brow_13"
-   },
-   "browR": {
-    "assetId": "face.usu.brows.usu_brow_13",
-    "flip": true
-   },
-   "mouth": {
-    "assetId": "face.usu.mouths.usu_mouth_10"
-   },
-   "talk": [
-    "face.usu.mouths.usu_mouth_08",
-    "face.usu.mouths.usu_mouth_05",
-    "face.usu.mouths.usu_mouth_03"
-   ],
-   "poseOverrides": {
-    "char.usu.pose_neutral_front": {
-     "mouth": {
-      "dx": 0.0,
-      "dy": 4.58,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_neutral_3q_left": {
-     "mouth": {
-      "dx": 9.55,
-      "dy": 4.93,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_neutral_3q_right": {
-     "mouth": {
-      "dx": -9.57,
-      "dy": 4.94,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_walk_small_left": {
-     "mouth": {
-      "dx": 8.58,
-      "dy": 4.43,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_walk_small_right": {
-     "mouth": {
-      "dx": -9.37,
-      "dy": 4.84,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_talk_explain": {
-     "mouth": {
-      "dx": -7.75,
-      "dy": 4.0,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_talk_emphasis": {
-     "mouth": {
-      "dx": -9.22,
-      "dy": 4.76,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_pointing": {
-     "mouth": {
-      "dx": -8.69,
-      "dy": 4.48,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_arms_crossed": {
-     "mouth": {
-      "dx": -9.58,
-      "dy": 4.94,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_reaction": {
-     "mouth": {
-      "dx": -9.31,
-      "dy": 4.8,
-      "dscale": 1.0
-     }
-    }
-   }
-  },
-  "expression.usu.alegria": {
-   "id": "expression.usu.alegria",
-   "characterId": "usu",
-   "emotion": "alegria",
-   "label": "Alegría",
-   "status": "draft",
-   "browL": {
-    "assetId": "face.usu.brows.usu_brow_04"
-   },
-   "browR": {
-    "assetId": "face.usu.brows.usu_brow_04",
-    "flip": true
-   },
-   "mouth": {
-    "assetId": "face.usu.mouths.usu_mouth_09"
-   },
-   "talk": [
-    "face.usu.mouths.usu_mouth_05",
-    "face.usu.mouths.usu_mouth_08",
-    "face.usu.mouths.usu_mouth_01"
-   ],
-   "poseOverrides": {
-    "char.usu.pose_neutral_front": {
-     "mouth": {
-      "dx": 0.0,
-      "dy": 2.62,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_neutral_3q_left": {
-     "mouth": {
-      "dx": -1.06,
-      "dy": 2.82,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_neutral_3q_right": {
-     "mouth": {
-      "dx": 1.06,
-      "dy": 2.82,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_walk_small_left": {
-     "mouth": {
-      "dx": -0.95,
-      "dy": 2.53,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_walk_small_right": {
-     "mouth": {
-      "dx": 1.04,
-      "dy": 2.77,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_talk_explain": {
-     "mouth": {
-      "dx": 0.86,
-      "dy": 2.29,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_talk_emphasis": {
-     "mouth": {
-      "dx": 1.02,
-      "dy": 2.72,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_pointing": {
-     "mouth": {
-      "dx": 0.96,
-      "dy": 2.56,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_arms_crossed": {
-     "mouth": {
-      "dx": 1.06,
-      "dy": 2.83,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_reaction": {
-     "mouth": {
-      "dx": 1.03,
-      "dy": 2.75,
-      "dscale": 1.0
-     }
-    }
-   }
-  },
-  "expression.usu.risa": {
-   "id": "expression.usu.risa",
-   "characterId": "usu",
-   "emotion": "risa",
-   "label": "Risa",
-   "status": "draft",
-   "browL": {
-    "assetId": "face.usu.brows.usu_brow_04",
-    "dy": -4
-   },
-   "browR": {
-    "assetId": "face.usu.brows.usu_brow_04",
-    "flip": true,
-    "dy": -4
-   },
-   "mouth": {
-    "assetId": "face.usu.mouths.usu_mouth_01"
-   },
-   "talk": [
-    "face.usu.mouths.usu_mouth_02",
-    "face.usu.mouths.usu_mouth_01",
-    "face.usu.mouths.usu_mouth_05"
-   ],
-   "poseOverrides": {
-    "char.usu.pose_neutral_front": {
-     "mouth": {
-      "dx": 0.0,
-      "dy": -9.18,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_neutral_3q_left": {
-     "mouth": {
-      "dx": 10.57,
-      "dy": -9.88,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_neutral_3q_right": {
-     "mouth": {
-      "dx": -10.59,
-      "dy": -9.89,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_walk_small_left": {
-     "mouth": {
-      "dx": 9.49,
-      "dy": -8.87,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_walk_small_right": {
-     "mouth": {
-      "dx": -10.37,
-      "dy": -9.69,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_talk_explain": {
-     "mouth": {
-      "dx": -8.58,
-      "dy": -8.02,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_talk_emphasis": {
-     "mouth": {
-      "dx": -10.21,
-      "dy": -9.54,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_pointing": {
-     "mouth": {
-      "dx": -9.62,
-      "dy": -8.99,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_arms_crossed": {
-     "mouth": {
-      "dx": -10.6,
-      "dy": -9.9,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_reaction": {
-     "mouth": {
-      "dx": -10.3,
-      "dy": -9.62,
-      "dscale": 1.0
-     }
-    }
-   }
-  },
-  "expression.usu.enfado": {
-   "id": "expression.usu.enfado",
-   "characterId": "usu",
-   "emotion": "enfado",
-   "label": "Enfado",
-   "status": "draft",
-   "browL": {
-    "assetId": "face.usu.brows.usu_brow_06",
-    "crop": "left"
-   },
-   "browR": {
-    "assetId": "face.usu.brows.usu_brow_06",
-    "crop": "right"
-   },
-   "mouth": {
-    "assetId": "face.usu.mouths.usu_mouth_07"
-   },
-   "talk": [
-    "face.usu.mouths.usu_mouth_04",
-    "face.usu.mouths.usu_mouth_07",
-    "face.usu.mouths.usu_mouth_08"
-   ],
-   "poseOverrides": {
-    "char.usu.pose_neutral_front": {
-     "mouth": {
-      "dx": 0.0,
-      "dy": 2.61,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_neutral_3q_left": {
-     "mouth": {
-      "dx": -10.6,
-      "dy": 2.81,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_neutral_3q_right": {
-     "mouth": {
-      "dx": 10.61,
-      "dy": 2.81,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_walk_small_left": {
-     "mouth": {
-      "dx": -9.51,
-      "dy": 2.52,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_walk_small_right": {
-     "mouth": {
-      "dx": 10.39,
-      "dy": 2.76,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_talk_explain": {
-     "mouth": {
-      "dx": 8.6,
-      "dy": 2.28,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_talk_emphasis": {
-     "mouth": {
-      "dx": 10.23,
-      "dy": 2.71,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_pointing": {
-     "mouth": {
-      "dx": 9.64,
-      "dy": 2.56,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_arms_crossed": {
-     "mouth": {
-      "dx": 10.62,
-      "dy": 2.82,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_reaction": {
-     "mouth": {
-      "dx": 10.32,
-      "dy": 2.74,
-      "dscale": 1.0
-     }
-    }
-   }
-  },
-  "expression.usu.sorpresa": {
-   "id": "expression.usu.sorpresa",
-   "characterId": "usu",
-   "emotion": "sorpresa",
-   "label": "Sorpresa",
-   "status": "draft",
-   "browL": {
-    "assetId": "face.usu.brows.usu_brow_04",
-    "dy": -10
-   },
-   "browR": {
-    "assetId": "face.usu.brows.usu_brow_04",
-    "flip": true,
-    "dy": -10
-   },
-   "mouth": {
-    "assetId": "face.usu.mouths.usu_mouth_03"
-   },
-   "talk": [
-    "face.usu.mouths.usu_mouth_03",
-    "face.usu.mouths.usu_mouth_08",
-    "face.usu.mouths.usu_mouth_04"
-   ],
-   "poseOverrides": {
-    "char.usu.pose_neutral_front": {
-     "mouth": {
-      "dx": 0.0,
-      "dy": -7.19,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_neutral_3q_left": {
-     "mouth": {
-      "dx": -5.31,
-      "dy": -7.74,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_neutral_3q_right": {
-     "mouth": {
-      "dx": 5.31,
-      "dy": -7.75,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_walk_small_left": {
-     "mouth": {
-      "dx": -4.76,
-      "dy": -6.95,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_walk_small_right": {
-     "mouth": {
-      "dx": 5.21,
-      "dy": -7.59,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_talk_explain": {
-     "mouth": {
-      "dx": 4.31,
-      "dy": -6.28,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_talk_emphasis": {
-     "mouth": {
-      "dx": 5.12,
-      "dy": -7.47,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_pointing": {
-     "mouth": {
-      "dx": 4.83,
-      "dy": -7.04,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_arms_crossed": {
-     "mouth": {
-      "dx": 5.32,
-      "dy": -7.76,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_reaction": {
-     "mouth": {
-      "dx": 5.17,
-      "dy": -7.54,
-      "dscale": 1.0
-     }
-    }
-   }
-  },
-  "expression.usu.tristeza": {
-   "id": "expression.usu.tristeza",
-   "characterId": "usu",
-   "emotion": "tristeza",
-   "label": "Tristeza",
-   "status": "draft",
-   "browL": {
-    "assetId": "face.usu.brows.usu_brow_01"
-   },
-   "browR": {
-    "assetId": "face.usu.brows.usu_brow_01",
-    "flip": true
-   },
-   "mouth": {
-    "assetId": "face.usu.mouths.usu_mouth_10"
-   },
-   "talk": [
-    "face.usu.mouths.usu_mouth_08",
-    "face.usu.mouths.usu_mouth_03"
-   ],
-   "poseOverrides": {
-    "char.usu.pose_neutral_front": {
-     "mouth": {
-      "dx": 0.0,
-      "dy": 6.56,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_neutral_3q_left": {
-     "mouth": {
-      "dx": -3.17,
-      "dy": 7.06,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_neutral_3q_right": {
-     "mouth": {
-      "dx": 3.17,
-      "dy": 7.07,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_walk_small_left": {
-     "mouth": {
-      "dx": -2.84,
-      "dy": 6.34,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_walk_small_right": {
-     "mouth": {
-      "dx": 3.11,
-      "dy": 6.93,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_talk_explain": {
-     "mouth": {
-      "dx": 2.57,
-      "dy": 5.73,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_talk_emphasis": {
-     "mouth": {
-      "dx": 3.06,
-      "dy": 6.81,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_pointing": {
-     "mouth": {
-      "dx": 2.88,
-      "dy": 6.42,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_arms_crossed": {
-     "mouth": {
-      "dx": 3.17,
-      "dy": 7.08,
-      "dscale": 1.0
-     }
-    },
-    "char.usu.pose_reaction": {
-     "mouth": {
-      "dx": 3.08,
-      "dy": 6.88,
-      "dscale": 1.0
-     }
-    }
-   }
-  },
-  "expression.sister.enfado": {
-   "id": "expression.sister.enfado",
-   "characterId": "sister",
-   "emotion": "enfado",
-   "label": "Enfado",
-   "status": "draft",
-   "eyeL": {
-    "assetId": "face.sister.eyes.sister_eyes_02_der",
-    "crop": "left",
-    "flip": false
-   },
-   "eyeR": {
-    "assetId": "face.sister.eyes.sister_eyes_04_der",
-    "crop": "right"
-   },
-   "browL": {
-    "assetId": "face.sister.brows.sister_brow_09",
-    "dy": 4
-   },
-   "browR": {
-    "assetId": "face.sister.brows.sister_brow_09",
-    "flip": true,
-    "dy": 4
-   },
-   "mouth": {
-    "assetId": "face.sister.mouths.sister_mouth_04"
-   },
-   "talk": [
-    "face.sister.mouths.sister_mouth_04",
-    "face.sister.mouths.sister_mouth_09"
-   ],
-   "poseOverrides": {
-    "char.sister.pose_neutral_front": {
-     "eyeL": {
-      "dx": -0.89,
-      "dy": 0.53,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": -0.71,
-      "dy": -2.5,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": -4.46,
-      "dy": 4.46,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": -0.36,
-      "dy": -3.39,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_neutral_3q_left": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 0.58,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": -2.69,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": 4.8,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -3.65,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_neutral_3q_right": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 0.58,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": -2.69,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": 4.81,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -3.65,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_walk_small_left": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 0.52,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": -2.41,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": 4.31,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -3.27,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_walk_small_right": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 0.57,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": -2.64,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": 4.71,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -3.58,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_talk_explain": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 0.47,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": -2.18,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": 3.9,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -2.96,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_talk_emphasis": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 0.56,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": -2.59,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": 4.63,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -3.52,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_pointing": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 0.52,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": -2.45,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": 4.37,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -3.32,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_arms_crossed": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 0.58,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": -2.69,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": 4.81,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -3.66,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_reaction": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 0.56,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": -2.62,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": 4.68,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -3.55,
-      "dscale": 1.0
-     }
-    }
-   }
-  },
-  "expression.sister.risa": {
-   "id": "expression.sister.risa",
-   "characterId": "sister",
-   "emotion": "risa",
-   "label": "Risa",
-   "status": "draft",
-   "eyeL": {
-    "assetId": "face.sister.eyes.sister_eyes_04_izq",
-    "crop": "left",
-    "flip": false
-   },
-   "eyeR": {
-    "assetId": "face.sister.eyes.sister_eyes_03",
-    "crop": "right",
-    "flip": false
-   },
-   "browL": null,
-   "browR": null,
-   "mouth": {
-    "assetId": "face.sister.mouths.sister_mouth_02"
-   },
-   "talk": [
-    "face.sister.mouths.sister_mouth_02",
-    "face.sister.mouths.sister_mouth_01",
-    "face.sister.mouths.sister_mouth_06"
-   ],
-   "poseOverrides": {
-    "char.sister.pose_neutral_front": {
-     "eyeL": {
-      "dx": 2.32,
-      "dy": 2.67,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.36,
-      "dy": 1.78,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.89,
-      "dy": -0.89,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": -0.36,
-      "dy": -1.25,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_neutral_3q_left": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 2.88,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.92,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.96,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -1.34,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_neutral_3q_right": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 2.88,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.92,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.96,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -1.35,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_walk_small_left": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 2.59,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.72,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.86,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -1.21,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_walk_small_right": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 2.83,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.88,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.94,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -1.32,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_talk_explain": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 2.34,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.56,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.78,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -1.09,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_talk_emphasis": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 2.78,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.85,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.93,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -1.3,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_pointing": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 2.62,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.75,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.87,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -1.22,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_arms_crossed": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 2.89,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.92,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.96,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -1.35,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_reaction": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 2.81,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.87,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.94,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -1.31,
-      "dscale": 1.0
-     }
-    }
-   }
-  },
-  "expression.sister.alegria": {
-   "id": "expression.sister.alegria",
-   "characterId": "sister",
-   "emotion": "alegria",
-   "label": "Alegría",
-   "status": "draft",
-   "eyeL": {
-    "assetId": "face.sister.eyes.sister_eyes_05",
-    "flip": false
-   },
-   "eyeR": {
-    "assetId": "face.sister.eyes.sister_eyes_05",
-    "flip": false
-   },
-   "browL": null,
-   "browR": null,
-   "mouth": {
-    "assetId": "face.sister.mouths.sister_mouth_01"
-   },
-   "talk": [
-    "face.sister.mouths.sister_mouth_06",
-    "face.sister.mouths.sister_mouth_09",
-    "face.sister.mouths.sister_mouth_01"
-   ],
-   "poseOverrides": {
-    "char.sister.pose_neutral_front": {
-     "eyeL": {
-      "dx": -1.96,
-      "dy": -4.81,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": -1.78,
-      "dy": -5.71,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.89,
-      "dy": -0.89,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 4.99,
-      "dy": -11.95,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_neutral_3q_left": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": -5.18,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": -6.14,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.96,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -12.86,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_neutral_3q_right": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": -5.19,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": -6.15,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.96,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -12.88,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_walk_small_left": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": -4.65,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": -5.52,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.86,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -11.55,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_walk_small_right": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": -5.09,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": -6.03,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.94,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -12.62,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_talk_explain": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": -4.21,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": -4.99,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.78,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -10.44,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_talk_emphasis": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": -5.0,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": -5.93,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.93,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -12.42,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_pointing": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": -4.72,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": -5.59,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.87,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -11.7,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_arms_crossed": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": -5.2,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": -6.16,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.96,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -12.9,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_reaction": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": -5.05,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": -5.99,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.94,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -12.53,
-      "dscale": 1.0
-     }
-    }
-   }
-  },
-  "expression.sister.neutral": {
-   "id": "expression.sister.neutral",
-   "characterId": "sister",
-   "emotion": "neutral",
-   "label": "Neutral",
-   "status": "draft",
-   "eyeL": {
-    "assetId": "face.sister.eyes.sister_eyes_05"
-   },
-   "eyeR": {
-    "assetId": "face.sister.eyes.sister_eyes_05",
-    "flip": false
-   },
-   "browL": {
-    "assetId": "face.sister.brows.sister_brow_12"
-   },
-   "browR": {
-    "assetId": "face.sister.brows.sister_brow_12",
-    "flip": true
-   },
-   "mouth": {
-    "assetId": "face.sister.mouths.sister_mouth_10"
-   },
-   "talk": [
-    "face.sister.mouths.sister_mouth_09",
-    "face.sister.mouths.sister_mouth_06",
-    "face.sister.mouths.sister_mouth_03"
-   ],
-   "poseOverrides": {
-    "char.sister.pose_neutral_front": {
-     "eyeL": {
-      "dx": 0.18,
-      "dy": 0.53,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.36,
-      "dy": 1.78,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.89,
-      "dy": -0.89,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": -2.5,
-      "dy": 12.66,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_neutral_3q_left": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 0.58,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.92,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.96,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 13.63,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_neutral_3q_right": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 0.58,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.92,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.96,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 13.65,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_walk_small_left": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 0.52,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.72,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.86,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 12.24,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_walk_small_right": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 0.57,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.88,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.94,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 13.37,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_talk_explain": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 0.47,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.56,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.78,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 11.07,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_talk_emphasis": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 0.56,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.85,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.93,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 13.16,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_pointing": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 0.52,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.75,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.87,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 12.4,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_arms_crossed": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 0.58,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.92,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.96,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 13.67,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_reaction": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 0.56,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.87,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.94,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 13.28,
-      "dscale": 1.0
-     }
-    }
-   }
-  },
-  "expression.sister.sorpresa": {
-   "id": "expression.sister.sorpresa",
-   "characterId": "sister",
-   "emotion": "sorpresa",
-   "label": "Sorpresa",
-   "status": "draft",
-   "eyeL": {
-    "assetId": "face.sister.eyes.sister_eyes_05",
-    "flip": false
-   },
-   "eyeR": {
-    "assetId": "face.sister.eyes.sister_eyes_05",
-    "flip": false
-   },
-   "browL": null,
-   "browR": null,
-   "mouth": {
-    "assetId": "face.sister.mouths.sister_mouth_03"
-   },
-   "talk": [
-    "face.sister.mouths.sister_mouth_03",
-    "face.sister.mouths.sister_mouth_09",
-    "face.sister.mouths.sister_mouth_04"
-   ],
-   "poseOverrides": {
-    "char.sister.pose_neutral_front": {
-     "eyeL": {
-      "dx": 0.18,
-      "dy": 0.53,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 1.43,
-      "dy": 2.85,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.89,
-      "dy": -0.89,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.71,
-      "dy": -8.74,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_neutral_3q_left": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 0.58,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 3.07,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.96,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -9.41,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_neutral_3q_right": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 0.58,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 3.08,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.96,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -9.42,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_walk_small_left": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 0.52,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 2.76,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.86,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -8.45,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_walk_small_right": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 0.57,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 3.01,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.94,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -9.23,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_talk_explain": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 0.47,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 2.49,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.78,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -7.64,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_talk_emphasis": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 0.56,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 2.97,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.93,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -9.08,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_pointing": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 0.52,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 2.79,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.87,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -8.56,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_arms_crossed": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 0.58,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 3.08,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.96,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -9.43,
-      "dscale": 1.0
-     }
-    },
-    "char.sister.pose_reaction": {
-     "eyeL": {
-      "dx": 0.0,
-      "dy": 0.56,
-      "dscale": 1.0
-     },
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 2.99,
-      "dscale": 1.0
-     },
-     "browL": {
-      "dx": 0.0,
-      "dy": -0.94,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -9.17,
-      "dscale": 1.0
-     }
-    }
-   }
-  },
-  "expression.barbas.neutral": {
-   "id": "expression.barbas.neutral",
-   "emotion": "neutral",
-   "label": "Neutral",
-   "status": "draft",
-   "eyeL": {
-    "assetId": "face.barbas.eyes.barbas_eyes_01",
-    "crop": "left"
-   },
-   "eyeR": {
-    "assetId": "face.barbas.eyes.barbas_eyes_01",
-    "crop": "right"
-   },
-   "mouth": {
-    "assetId": "face.barbas.mouths.barbas_mouth_01",
-    "flip": true
-   },
-   "talk": [
-    "face.barbas.mouths.barbas_mouth_02",
-    "face.barbas.mouths.barbas_mouth_03",
-    "face.barbas.mouths.barbas_mouth_05"
-   ],
-   "poseOverrides": {
-    "char.barbas.pose_neutral_front": {
-     "eyeR": {
-      "dx": 5.67,
-      "dy": 1.17,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 3.92,
-      "dy": 6.57,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_neutral_3q_left": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.26,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 7.07,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_neutral_3q_right": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.27,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 3.92,
-      "dy": 2.4,
-      "dscale": 1.0
-     }
-    },
-    "char.barbas.pose_walk_small_left": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.13,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 6.35,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_walk_small_right": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.24,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 6.94,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_talk_explain": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.03,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 5.74,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_talk_emphasis": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.22,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 6.83,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_pointing": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.15,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 6.43,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_arms_crossed": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.27,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 7.09,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_reaction": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.23,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 6.89,
-      "dscale": 1.042
-     }
-    }
-   },
-   "characterId": "barbas"
-  },
-  "expression.barbas.alegria": {
-   "id": "expression.barbas.alegria",
-   "emotion": "alegria",
-   "label": "Alegría",
-   "status": "draft",
-   "eyeL": {
-    "assetId": "face.barbas.eyes.barbas_eyes_05_der",
-    "crop": "left"
-   },
-   "eyeR": {
-    "assetId": "face.barbas.eyes.barbas_eyes_05_der",
-    "crop": "right"
-   },
-   "mouth": {
-    "assetId": "face.barbas.mouths.barbas_mouth_06",
-    "flip": true
-   },
-   "talk": [
-    "face.barbas.mouths.barbas_mouth_06",
-    "face.barbas.mouths.barbas_mouth_03",
-    "face.barbas.mouths.barbas_mouth_02"
-   ],
-   "poseOverrides": {
-    "char.barbas.pose_neutral_front": {
-     "eyeR": {
-      "dx": 5.67,
-      "dy": 1.17,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.19,
-      "dy": -14.69,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_neutral_3q_left": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.26,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -15.82,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_neutral_3q_right": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.27,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 3.92,
-      "dy": 2.4,
-      "dscale": 1.0
-     }
-    },
-    "char.barbas.pose_walk_small_left": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.13,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -14.2,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_walk_small_right": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.24,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -15.52,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_talk_explain": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.03,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -12.84,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_talk_emphasis": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.22,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -15.27,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_pointing": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.15,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -14.39,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_arms_crossed": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.27,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -15.86,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_reaction": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.23,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -15.41,
-      "dscale": 1.042
-     }
-    }
-   },
-   "characterId": "barbas"
-  },
-  "expression.barbas.risa": {
-   "id": "expression.barbas.risa",
-   "emotion": "risa",
-   "label": "Risa",
-   "status": "draft",
-   "eyeL": {
-    "assetId": "face.barbas.eyes.barbas_eyes_05_der",
-    "crop": "left"
-   },
-   "eyeR": {
-    "assetId": "face.barbas.eyes.barbas_eyes_05_der",
-    "crop": "right"
-   },
-   "mouth": {
-    "assetId": "face.barbas.mouths.barbas_mouth_06",
-    "flip": true
-   },
-   "talk": [
-    "face.barbas.mouths.barbas_mouth_03",
-    "face.barbas.mouths.barbas_mouth_06",
-    "face.barbas.mouths.barbas_mouth_04"
-   ],
-   "poseOverrides": {
-    "char.barbas.pose_neutral_front": {
-     "eyeR": {
-      "dx": 5.67,
-      "dy": 1.17,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 4.72,
-      "dy": -5.37,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_neutral_3q_left": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.26,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -5.78,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_neutral_3q_right": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.27,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 3.92,
-      "dy": 2.4,
-      "dscale": 1.0
-     }
-    },
-    "char.barbas.pose_walk_small_left": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.13,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -5.19,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_walk_small_right": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.24,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -5.67,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_talk_explain": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.03,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -4.69,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_talk_emphasis": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.22,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -5.58,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_pointing": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.15,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -5.26,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_arms_crossed": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.27,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -5.8,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_reaction": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.23,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -5.63,
-      "dscale": 1.042
-     }
-    }
-   },
-   "characterId": "barbas"
-  },
-  "expression.barbas.enfado": {
-   "id": "expression.barbas.enfado",
-   "emotion": "enfado",
-   "label": "Enfado",
-   "status": "draft",
-   "eyeL": {
-    "assetId": "face.barbas.eyes.barbas_eyes_07",
-    "crop": "left"
-   },
-   "eyeR": {
-    "assetId": "face.barbas.eyes.barbas_eyes_07",
-    "crop": "right"
-   },
-   "mouth": {
-    "assetId": "face.barbas.mouths.barbas_mouth_09",
-    "flip": true
-   },
-   "talk": [
-    "face.barbas.mouths.barbas_mouth_08",
-    "face.barbas.mouths.barbas_mouth_09",
-    "face.barbas.mouths.barbas_mouth_02",
-    "face.barbas.mouths.barbas_mouth_01"
-   ],
-   "poseOverrides": {
-    "char.barbas.pose_neutral_front": {
-     "eyeR": {
-      "dx": 5.67,
-      "dy": 1.17,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 5.91,
-      "dy": -1.81,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_neutral_3q_left": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.26,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -1.95,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_neutral_3q_right": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.27,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 3.92,
-      "dy": 2.4,
-      "dscale": 1.0
-     }
-    },
-    "char.barbas.pose_walk_small_left": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.13,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -1.75,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_walk_small_right": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.24,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -1.91,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_talk_explain": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.03,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -1.58,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_talk_emphasis": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.22,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -1.88,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_pointing": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.15,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -1.77,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_arms_crossed": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.27,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -1.96,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_reaction": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.23,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": -1.9,
-      "dscale": 1.042
-     }
-    }
-   },
-   "characterId": "barbas"
-  },
-  "expression.barbas.sorpresa": {
-   "id": "expression.barbas.sorpresa",
-   "emotion": "sorpresa",
-   "label": "Sorpresa",
-   "status": "draft",
-   "eyeL": {
-    "assetId": "face.barbas.eyes.barbas_eyes_02",
-    "crop": "left"
-   },
-   "eyeR": {
-    "assetId": "face.barbas.eyes.barbas_eyes_02",
-    "crop": "right"
-   },
-   "mouth": {
-    "assetId": "face.barbas.mouths.barbas_mouth_05",
-    "flip": true
-   },
-   "talk": [
-    "face.barbas.mouths.barbas_mouth_05",
-    "face.barbas.mouths.barbas_mouth_02",
-    "face.barbas.mouths.barbas_mouth_04"
-   ],
-   "poseOverrides": {
-    "char.barbas.pose_neutral_front": {
-     "eyeR": {
-      "dx": 5.67,
-      "dy": 1.17,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": -15.01,
-      "dy": 13.49,
-      "dscale": 0.792
-     }
-    },
-    "char.barbas.pose_neutral_3q_left": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.26,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 14.52,
-      "dscale": 0.792
-     }
-    },
-    "char.barbas.pose_neutral_3q_right": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.27,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": -19.59,
-      "dy": -12.0,
-      "dscale": 1.0
-     }
-    },
-    "char.barbas.pose_walk_small_left": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.13,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 13.04,
-      "dscale": 0.792
-     }
-    },
-    "char.barbas.pose_walk_small_right": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.24,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 14.25,
-      "dscale": 0.792
-     }
-    },
-    "char.barbas.pose_talk_explain": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.03,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 11.79,
-      "dscale": 0.792
-     }
-    },
-    "char.barbas.pose_talk_emphasis": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.22,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 14.02,
-      "dscale": 0.792
-     }
-    },
-    "char.barbas.pose_pointing": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.15,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 13.21,
-      "dscale": 0.792
-     }
-    },
-    "char.barbas.pose_arms_crossed": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.27,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 14.56,
-      "dscale": 0.792
-     }
-    },
-    "char.barbas.pose_reaction": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": 1.23,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 14.15,
-      "dscale": 0.792
-     }
-    }
-   },
-   "characterId": "barbas"
-  },
-  "expression.barbas.tristeza": {
-   "id": "expression.barbas.tristeza",
-   "emotion": "tristeza",
-   "label": "Tristeza",
-   "status": "draft",
-   "mouth": {
-    "assetId": "face.barbas.mouths.barbas_mouth_01",
-    "flip": true
-   },
-   "talk": [
-    "face.barbas.mouths.barbas_mouth_02",
-    "face.barbas.mouths.barbas_mouth_05"
-   ],
-   "eyeL": null,
-   "eyeR": {
-    "assetId": "face.barbas.eyes.barbas_eyes_03",
-    "flip": true
-   },
-   "poseOverrides": {
-    "char.barbas.pose_neutral_front": {
-     "eyeR": {
-      "dx": -28.36,
-      "dy": -5.87,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.27,
-      "dy": 1.82,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_neutral_3q_left": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": -6.32,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 1.96,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_neutral_3q_right": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": -6.33,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 3.92,
-      "dy": 2.4,
-      "dscale": 1.0
-     }
-    },
-    "char.barbas.pose_walk_small_left": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": -5.67,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 1.76,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_walk_small_right": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": -6.2,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 1.92,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_talk_explain": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": -5.13,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 1.59,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_talk_emphasis": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": -6.1,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 1.89,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_pointing": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": -5.75,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 1.78,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_arms_crossed": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": -6.33,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 1.96,
-      "dscale": 1.042
-     }
-    },
-    "char.barbas.pose_reaction": {
-     "eyeR": {
-      "dx": 0.0,
-      "dy": -6.15,
-      "dscale": 1.0
-     },
-     "mouth": {
-      "dx": 0.0,
-      "dy": 1.91,
-      "dscale": 1.042
-     }
-    }
-   },
-   "characterId": "barbas"
-  }
- }
 }

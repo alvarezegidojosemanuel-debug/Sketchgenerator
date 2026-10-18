@@ -4,18 +4,26 @@ import { validateProject } from "@/lib/schema/validate";
 import { catalog, demo, readJson } from "./helpers";
 
 describe("adaptador punetos_project v3 (formato de V8)", () => {
-  it("importa el TIMELINE_SCHEMA_EXAMPLE.json REAL de PUNETOS_STUDIO_V8 con IDs del catálogo", () => {
-    const fx = readJson("tests/fixtures/v8-timeline-schema-example.json");
+  it("importa un proyecto con la forma del TIMELINE_SCHEMA_EXAMPLE.json de V8 y poses del catálogo actual", () => {
+    const fx = readJson("tests/fixtures/v3-timeline-poses-actuales.json");
     expect(isV3Project(fx)).toBe(true);
     const { project, report } = v3ToPocket(fx, catalog);
     const r = validateProject(project, catalog);
     expect(r.errors).toEqual([]);
     const t = r.project!.takes[0];
-    expect(t.actors[0]).toMatchObject({ uid: "actor1", characterId: "usu", poseId: "char.usu.pose_walk_small_right", x: 300, y: 1100 });
+    expect(t.actors[0]).toMatchObject({ uid: "actor1", characterId: "usu", poseId: "char.usu.pose_p_camina", x: 300, y: 1100 });
     expect(t.events.find((e) => e.track === "dialogue")).toMatchObject({ text: "Ejemplo", start: 0, duration: 3.2 });
     expect(t.events.find((e) => e.track === "body")).toMatchObject({ x: 520, y: 1100 });
     expect(t.events.find((e) => e.track === "face")).toMatchObject({ expressionId: "expression.usu.sorpresa" });
     expect(report.assumptions.some((a) => /reconstruido/.test(a))).toBe(true);
+  });
+
+  it("el ejemplo REAL de V8 (poses del rig antiguo) no inventa actores: lo omite e informa", () => {
+    const fx = readJson("tests/fixtures/v8-timeline-schema-example.json");
+    const { project, report } = v3ToPocket(fx, catalog);
+    expect(validateProject(project, catalog).errors).toEqual([]);
+    expect(project.takes[0].actors).toEqual([]);
+    expect(report.losses.some((l) => /actor1.*sin capa ni pose de catálogo/.test(l))).toBe(true);
   });
 
   it("pocket → v3 produce la forma esperada e informa de pérdidas", () => {
@@ -23,13 +31,14 @@ describe("adaptador punetos_project v3 (formato de V8)", () => {
     const { v3, report } = pocketToV3(p, catalog);
     expect(v3).toMatchObject({ version: 3, type: "punetos_project" });
     const t = v3.takes[0];
-    expect(t.scene).toMatchObject({ version: 3, canvas: { width: 1080, height: 1920 }, background: "bg_oficina" });
+    expect(t.scene).toMatchObject({ version: 3, canvas: { width: 1080, height: 1920 }, background: "bg_oficina_manana" });
     const body = t.timeline.events.find((e) => e.id === "t1_b2")!;
-    expect(body).toMatchObject({ track: "body", asset_id: "char.jefe.pose_walk_small_left", body_mode: "move", from_x: 1400, target_x: 780 });
+    expect(body).toMatchObject({ track: "body", asset_id: "char.jefe.pose_p_camina", body_mode: "move", from_x: 1400, target_x: 780 });
     expect(t.timeline.events.find((e) => e.id === "t1_f1")).toMatchObject({ track: "face", asset_id: "expression.jefe.enfado" });
     expect(t.timeline.events.every((e) => e.track !== "eyes" && e.track !== "props")).toBe(true);
     expect(report.losses.some((l) => /ojos/.test(l))).toBe(true);
     expect(report.losses.some((l) => /prop_cafe/.test(l))).toBe(true);
+    expect(report.losses.some((l) => /jefe: 'flip'/.test(l))).toBe(true);
   });
 
   it("ida y vuelta conserva diálogos, actores y posiciones (subconjunto soportado)", () => {

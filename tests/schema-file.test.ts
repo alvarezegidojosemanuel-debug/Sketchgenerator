@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { pocketJsonSchema } from "@/lib/schema/json-schema";
-import { readJson } from "./helpers";
+import fs from "node:fs";
+import path from "node:path";
+import { validateProject } from "@/lib/schema/validate";
+import { catalog, readJson, root } from "./helpers";
 
 describe("archivos generados", () => {
   it("schema/pocket.schema.json está sincronizado con el esquema Zod (npm run gen:schema)", () => {
@@ -11,8 +14,14 @@ describe("archivos generados", () => {
     expect(readJson("catalog.json")).toEqual(readJson("src/data/catalog.json"));
   });
 
-  it("los ejemplos coinciden con sus copias empaquetadas", () => {
-    expect(readJson("src/data/sketch-demo.json")).toEqual(readJson("examples/sketch-demo.json"));
-    expect(readJson("src/data/sketch-usu-reynaldo.json")).toEqual(readJson("examples/sketch-usu-reynaldo.json"));
+  it("los ejemplos de examples/ validan contra el catálogo empaquetado sin correcciones", () => {
+    const files = fs.readdirSync(path.join(root, "examples")).filter((f) => f.endsWith(".json"));
+    expect(files).toContain("sketch-demo.json");
+    for (const f of files) {
+      const r = validateProject(readJson(`examples/${f}`), catalog);
+      expect(r.errors, f).toEqual([]);
+      expect(r.warnings, f).toEqual([]);
+      expect(r.project!.catalogVersion, f).toBe(catalog.catalogVersion);
+    }
   });
 });

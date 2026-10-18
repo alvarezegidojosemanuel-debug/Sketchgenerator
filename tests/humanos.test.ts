@@ -47,32 +47,48 @@ describe("humanos de frente (poses dibujadas enteras)", () => {
     expect(lv(0)).toBe(false);
   });
 
-  it("si falta algún personaje humano, vuelve a la vista de espaldas", () => {
-    const g = structuredClone(guion);
-    g.escenas[0].personajes = ["Jefe", "Reynaldo"];
-    const cat = structuredClone(catalog);
-    const rey = cat.characters.find((c) => c.id === "reynaldo")!;
-    rey.poses = rey.poses.filter((p) => !p.key.startsWith("pose_h_"));
-    const r2 = validateProject(g, cat);
-    expect(r2.project!.takes[0].actors.every((a) => !a.poseId.includes("pose_h_"))).toBe(true);
+  it("sin «vista», Puñetos; un secundario sin versión Puñeto sale con sus poses humanas", () => {
+    const g = structuredClone(guion) as { escenas: Record<string, unknown>[] };
+    delete g.escenas[0].vista;
+    g.escenas[0].personajes = ["Jefe", "Vanesa"];
+    g.escenas[0].pasos = [
+      { dice: "Jefe", texto: "Vanesa, ¿tú sabes dónde está la reunión?", gesto: "señala" },
+      { dice: "Vanesa", texto: "En tu agenda, Jefe.", gesto: "explica" },
+    ];
+    const r2 = validateProject(g, catalog);
+    expect(r2.errors).toEqual([]);
+    const t2 = r2.project!.takes[0];
+    expect(t2.actors.map((a) => a.poseId)).toEqual(["char.jefe.pose_p_neutro", "char.vanesa.pose_h_neutro"]);
+    const poses = t2.events.filter((e) => e.track === "body" && e.poseId).map((e) => (e as { poseId: string }).poseId);
+    expect(poses).toContain("char.jefe.pose_p_senala");
+    expect(poses).toContain("char.vanesa.pose_h_explica");
+    // «vista: espaldas» ya no existe (no quedan sillas de espaldas): se monta igual que sin vista
+    const back = validateProject({ ...g, escenas: [{ ...g.escenas[0], lugar: "bg_oficina_manana", vista: "espaldas" }] }, catalog);
+    expect(back.errors).toEqual([]);
+    expect(back.project!.takes[0].actors.map((a) => a.poseId)).toEqual(["char.jefe.pose_p_neutro", "char.vanesa.pose_h_neutro"]);
+    expect(back.project!.takes[0].events.some((e) => e.track === "props" && e.propId.includes("_espaldas_"))).toBe(false);
   });
+
 });
 
 describe("estatura de los humanos", () => {
-  it("las poses humanas se escalan por la estatura (ref. 1,84 m); las de Puñeto no", async () => {
+  it("las poses dibujadas enteras (humanos y Puñetos) se escalan por la estatura (ref. 1,84 m); las de rig no", async () => {
     const { poseScale, findPose } = await import("@/lib/catalog");
     const flat = { ...findPose(catalog, "jefe", "char.jefe.pose_h_neutro")!, displayScale: 1 };
     expect(poseScale(catalog, "jefe", flat)).toBe(1);
     expect(poseScale(catalog, "sister", flat)).toBeCloseTo(170 / 184);
     expect(poseScale(catalog, "barbas", flat)).toBeCloseTo(187 / 184);
-    const puneto = findPose(catalog, "sister", "char.sister.pose_neutral_front")!;
-    expect(poseScale(catalog, "sister", puneto)).toBe(puneto.displayScale);
+    const puneto = findPose(catalog, "sister", "char.sister.pose_p_neutro")!;
+    expect(puneto.flat).toBe(true);
+    expect(poseScale(catalog, "sister", puneto)).toBeCloseTo((puneto.displayScale * 170) / 184);
+    const rig = { ...flat, flat: false, displayScale: 1.5 };
+    expect(poseScale(catalog, "sister", rig)).toBe(1.5);
   });
 });
 
 describe("proyecto de prueba de humanos", () => {
   it("se monta y valida, con Jefe y Usu de frente en sistemas", async () => {
-    const raw = (await import("@/data/prueba-humanos.json")).default;
+    const raw = (await import("./fixtures/guiones/prueba-humanos.json")).default;
     const r = validateProject(structuredClone(raw), catalog);
     expect(r.errors).toEqual([]);
     const tk = r.project!.takes[1];
@@ -97,7 +113,7 @@ describe("boca de dos fotogramas con voz real", () => {
     for (let i = 0; i < 60; i++) expect(flatMouthOpen(0.05, i / 60)).toBe(false);
   });
   it("cuando habla Anastas-IA se ve su pantalla", async () => {
-    const raw = (await import("@/data/prueba-humanos.json")).default;
+    const raw = (await import("./fixtures/guiones/prueba-humanos.json")).default;
     const r = validateProject(structuredClone(raw), catalog);
     expect(r.project!.takes[1].events.some((e) => e.track === "props" && e.propId === "prop_anastasia_tv" && e.start === 0)).toBe(true);
   });
@@ -120,7 +136,7 @@ describe("humanos: al hablar siempre con boca", () => {
 
 describe("sketch «Las lentejas»", () => {
   it("se monta sin errores, con los tres humanos y el Jefe saliendo y volviendo", async () => {
-    const raw = (await import("@/data/sketch-lentejas.json")).default;
+    const raw = (await import("./fixtures/guiones/sketch-lentejas.json")).default;
     const r = validateProject(structuredClone(raw), catalog);
     expect(r.errors).toEqual([]);
     const tk = r.project!.takes[0];
@@ -132,7 +148,7 @@ describe("sketch «Las lentejas»", () => {
 
 describe("recursos de cómic", () => {
   it("se ponen solos según el gesto (sudor, sorpresa, líneas, risa) y a mano con «efecto»", async () => {
-    const raw = (await import("@/data/sketch-lentejas.json")).default;
+    const raw = (await import("./fixtures/guiones/sketch-lentejas.json")).default;
     const tk = validateProject(structuredClone(raw), catalog).project!.takes[0];
     const kinds = tk.events.filter((e) => e.track === "screen" && e.effect === "comic").map((e) => (e as { kind?: string }).kind);
     expect(kinds).toEqual(expect.arrayContaining(["sorpresa", "lineas", "risa", "onomatopeya"]));
@@ -147,7 +163,7 @@ describe("recursos de cómic", () => {
 
 describe("sketch «El Jefe del pasado»", () => {
   it("Sister sale en escena y habla moviendo la boca; el «Jefe del pasado» usa la voz del Jefe con su pantalla", async () => {
-    const raw = (await import("@/data/sketch-jefe-del-pasado.json")).default;
+    const raw = (await import("./fixtures/guiones/sketch-jefe-del-pasado.json")).default;
     const r = validateProject(structuredClone(raw), catalog);
     expect(r.errors).toEqual([]);
     const tk = r.project!.takes[0];
@@ -164,7 +180,7 @@ describe("sketch «El Jefe del pasado»", () => {
 describe("cabeza articulada (piloto Barbas)", () => {
   it("la cabeza gira dentro de un límite mientras habla y al escuchar se ladea hacia quien habla", async () => {
     const { layoutActor } = await import("@/lib/renderer/layout");
-    const raw = (await import("@/data/sketch-jefe-del-pasado.json")).default;
+    const raw = (await import("./fixtures/guiones/sketch-jefe-del-pasado.json")).default;
     const tk = validateProject(structuredClone(raw), catalog).project!.takes[0];
     const barbasLine = tk.events.filter((e) => e.track === "dialogue" && e.actorUid === "barbas").at(-1)!;
     const rots = new Set<number>();
@@ -183,7 +199,7 @@ describe("cabeza articulada (piloto Barbas)", () => {
 
 describe("se giran hacia quien hablan", () => {
   it("quien habla mira a quien le escucha y quien escucha mira a quien habla", async () => {
-    const raw = (await import("@/data/sketch-jefe-del-pasado.json")).default;
+    const raw = (await import("./fixtures/guiones/sketch-jefe-del-pasado.json")).default;
     const tk = validateProject(structuredClone(raw), catalog).project!.takes[0];
     const last = tk.events.filter((e) => e.track === "dialogue" && e.actorUid === "barbas").at(-1)!;
     const f = evaluateTake(tk, catalog, last.start + 0.6);
@@ -196,13 +212,19 @@ describe("se giran hacia quien hablan", () => {
 });
 
 describe("transición entre tomas", () => {
-  it("las escenas de un guion entran y salen con un fundido rápido a negro", async () => {
-    const raw = (await import("@/data/sketch-fallecido.json")).default;
-    const tk = validateProject(structuredClone(raw), catalog).project!.takes[1];
+  it("las escenas de un guion entran y salen con un fundido rápido a negro (salvo «corte»)", () => {
+    const esc = (extra: Record<string, unknown> = {}) => ({ lugar: "bg_sistemas", personajes: ["Usu"], pasos: [{ dice: "Usu", texto: "Esto no estaba así ayer, os lo juro." }], ...extra });
+    const r = validateProject({ formato: "puñetos-guion-1", escenas: [esc(), esc(), esc({ transicion: "corte" }), esc({ transicion: "blanco" })] }, catalog);
+    expect(r.errors).toEqual([]);
+    const [, tk, cut, white] = r.project!.takes;
     expect(tk.transition).toBe("fade");
     expect(evaluateTake(tk, catalog, 0.02).screen.darken).toBeGreaterThan(0.9);
     expect(evaluateTake(tk, catalog, tk.duration / 2).screen.darken ?? 0).toBe(0);
     expect(evaluateTake(tk, catalog, tk.duration - 0.02).screen.darken).toBeGreaterThan(0.9);
+    expect(cut.transition).toBe("cut");
+    expect(evaluateTake(cut, catalog, 0.02).screen.darken ?? 0).toBe(0);
+    expect(white.transition).toBe("white");
+    expect(evaluateTake(white, catalog, 0.02).screen.flash?.alpha).toBeGreaterThan(0.9);
   });
 });
 
@@ -220,7 +242,7 @@ describe("interpretación automática de las voces", () => {
 
 describe("prueba de Reynaldo humano", () => {
   it("se monta de frente y, cuando habla, siempre en una pose con boca", async () => {
-    const raw = (await import("@/data/prueba-reynaldo.json")).default;
+    const raw = (await import("./fixtures/guiones/prueba-reynaldo.json")).default;
     const r = validateProject(structuredClone(raw), catalog);
     expect(r.errors).toEqual([]);
     const tk = r.project!.takes[0];
@@ -238,7 +260,7 @@ describe("prueba de Reynaldo humano", () => {
 
 describe("Anastas-IA", () => {
   it("en off: su tele colgada mueve la boca con su voz; en escena habla como un personaje más", async () => {
-    const raw = (await import("@/data/prueba-anastasia.json")).default;
+    const raw = (await import("./fixtures/guiones/prueba-anastasia.json")).default;
     const r = validateProject(structuredClone(raw), catalog);
     expect(r.errors).toEqual([]);
     const [t1, t2] = r.project!.takes;
@@ -261,5 +283,29 @@ describe("Puñetos rediseñados (vista «puñetos»)", () => {
     expect(r.project!.takes[0].actors[0].poseId).toBe("char.sister.pose_p_ko");
     expect(r.project!.takes[0].actors[0].rot).toBeUndefined();
     expect(r.project!.takes[1].actors[0].poseId).toBe("char.sister.pose_p_neutro");
+  });
+});
+
+describe("tumbados (KO)", () => {
+  it("cada uno usa su pose de suelo (ko / tumbado); si no tiene, se gira la de pie sobre los pies", () => {
+    const g = { formato: "puñetos-guion-1", escenas: [
+      { lugar: "bg_sala_equipo", personajes: ["Usu", "Jefe", "Vanesa"], tumbados: ["Usu", "Jefe", "Vanesa"], pasos: [{ pausa: 1 }] },
+      { lugar: "bg_sala_equipo", vista: "humanos", personajes: ["Jefe"], tumbados: ["Jefe"], pasos: [{ pausa: 1 }] },
+    ] };
+    const r = validateProject(g, catalog);
+    expect(r.errors).toEqual([]);
+    const [a, b] = r.project!.takes;
+    const by = Object.fromEntries(a.actors.map((x) => [x.uid, x]));
+    expect(by.usu.poseId).toBe("char.usu.pose_p_tumbado");
+    expect(by.jefe.poseId).toBe("char.jefe.pose_p_ko");
+    expect(by.usu.rot ?? 0).toBe(0);
+    expect(by.jefe.rot ?? 0).toBe(0);
+    // Vanesa no tiene pose de suelo: tumbada girando la de pie, hacia fuera y un poco hacia el centro
+    expect(by.vanesa.poseId).toBe("char.vanesa.pose_h_neutro");
+    expect(Math.abs(by.vanesa.rot!)).toBe(88);
+    // el Jefe humano tampoco tiene pose de suelo
+    expect(b.actors[0].poseId).toBe("char.jefe.pose_h_neutro");
+    expect(Math.abs(b.actors[0].rot!)).toBe(88);
+    expect(evaluateTake(b, catalog, 0.5).actors[0].rot).toBe(b.actors[0].rot);
   });
 });

@@ -10,18 +10,21 @@ describe("montador de guiones", () => {
     expect(r.errors).toEqual([]);
     expect(r.project!.takes).toHaveLength(2);
   });
-  it("escena de espaldas: los cinco en sus sillas, el que habla cambia de postura y el Jefe se va", () => {
+  it("escena con «vista: espaldas» (ya retirada): los cinco como Puñetos, Director en off, coro a la vez y el Jefe se va", () => {
     const tk = r.project!.takes[0];
-    const seats = (t: number) => evaluateTake(tk, catalog, t).props.filter((p) => p.opacity > 0.5).map((p) => p.propId);
-    expect(seats(0.1).length).toBe(5);
-    const barbas = tk.events.find((e) => e.track === "dialogue" && e.voiceOf === "barbas")!;
-    expect(seats(barbas.start + 0.5)).toContain("prop_barbas_espaldas_habla");
+    expect(tk.events.some((e) => e.track === "props" && e.propId.includes("_espaldas_"))).toBe(false);
+    expect(tk.actors.map((a) => a.uid).sort()).toEqual(["barbas", "jefe", "reynaldo", "sister", "usu"]);
+    expect(tk.actors.every((a) => a.poseId === `char.${a.characterId}.pose_p_neutro`)).toBe(true);
+    const barbas = tk.events.find((e) => e.track === "dialogue" && e.actorUid === "barbas")!;
+    expect(evaluateTake(tk, catalog, barbas.start + 0.5).actors.find((a) => a.uid === "barbas")!.speaking).toBe(true);
     const coro = tk.events.filter((e) => e.track === "dialogue" && e.text === "No.");
     expect(coro).toHaveLength(3);
     expect(Math.max(...coro.map((e) => e.start)) - Math.min(...coro.map((e) => e.start))).toBeLessThan(0.2); // a la vez
-    expect(seats(tk.duration - 0.1).some((p) => p.startsWith("prop_jefe"))).toBe(false); // se fue
+    const end = evaluateTake(tk, catalog, tk.duration - 0.05).actors.find((a) => a.uid === "jefe")!;
+    expect(end.visible).toBe(0); // se fue
     expect(tk.events.some((e) => e.track === "dialogue" && (e.speakerName === "Director" || e.voiceOf === "director"))).toBe(true);
   });
+
   it("escena de puñetos: colocados en grupo, gestos, miradas y explosión con sonido", () => {
     const tk = r.project!.takes[1];
     expect(tk.actors.map((a) => a.uid).sort()).toEqual(["barbas", "jefe", "reynaldo", "sister", "usu"]);

@@ -5,7 +5,7 @@
     "title": "La taza del jefe",
     "language": "es-ES",
     "approxDuration": 30,
-    "idea": "Usu se bebe sin querer el café del jefe un lunes por la mañana."
+    "idea": "Usu se bebe sin querer el café del Jefe un lunes por la mañana (vista Puñetos)."
   },
   "canvas": {
     "width": 1080,
@@ -16,12 +16,12 @@
       "id": "take_1",
       "name": "El crimen",
       "duration": 10,
-      "backgroundId": "bg_oficina",
+      "backgroundId": "bg_oficina_manana",
       "actors": [
         {
           "uid": "usu",
           "characterId": "usu",
-          "poseId": "char.usu.pose_neutral_3q_right",
+          "poseId": "char.usu.pose_p_neutro",
           "x": 300,
           "y": 1780,
           "scale": 1,
@@ -31,11 +31,12 @@
         {
           "uid": "jefe",
           "characterId": "jefe",
-          "poseId": "char.jefe.pose_walk_small_left",
+          "poseId": "char.jefe.pose_p_camina",
           "x": 1400,
           "y": 1780,
           "scale": 1.05,
-          "zIndex": 1
+          "zIndex": 1,
+          "flip": true
         }
       ],
       "events": [
@@ -77,7 +78,7 @@
           "actorUid": "usu",
           "start": 3.2,
           "duration": 0.6,
-          "poseId": "char.usu.pose_arms_crossed"
+          "poseId": "char.usu.pose_p_brazos_cruzados"
         },
         {
           "id": "t1_b2",
@@ -94,7 +95,7 @@
           "actorUid": "jefe",
           "start": 5.6,
           "duration": 0.2,
-          "poseId": "char.jefe.pose_neutral_3q_left",
+          "poseId": "char.jefe.pose_p_neutro",
           "ease": "instant"
         },
         {
@@ -140,7 +141,7 @@
           "actorUid": "usu",
           "start": 8.4,
           "duration": 0.3,
-          "poseId": "char.usu.pose_reaction",
+          "poseId": "char.usu.pose_p_susto",
           "ease": "instant"
         }
       ]
@@ -149,12 +150,12 @@
       "id": "take_2",
       "name": "La coartada",
       "duration": 10,
-      "backgroundId": "bg_oficina",
+      "backgroundId": "bg_oficina_manana",
       "actors": [
         {
           "uid": "usu",
           "characterId": "usu",
-          "poseId": "char.usu.pose_reaction",
+          "poseId": "char.usu.pose_p_susto",
           "x": 300,
           "y": 1780,
           "scale": 1,
@@ -164,12 +165,13 @@
         {
           "uid": "jefe",
           "characterId": "jefe",
-          "poseId": "char.jefe.pose_arms_crossed",
+          "poseId": "char.jefe.pose_p_brazos_cruzados",
           "x": 780,
           "y": 1780,
           "scale": 1.05,
           "zIndex": 1,
-          "expressionId": "expression.jefe.enfado"
+          "expressionId": "expression.jefe.enfado",
+          "flip": true
         }
       ],
       "events": [
@@ -191,7 +193,7 @@
           "actorUid": "usu",
           "start": 0.3,
           "duration": 0.5,
-          "poseId": "char.usu.pose_pointing"
+          "poseId": "char.usu.pose_p_senala"
         },
         {
           "id": "t2_f1",
@@ -219,7 +221,7 @@
           "actorUid": "jefe",
           "start": 3.3,
           "duration": 0.5,
-          "poseId": "char.jefe.pose_pointing"
+          "poseId": "char.jefe.pose_p_senala"
         },
         {
           "id": "t2_e1",
@@ -257,7 +259,7 @@
           "start": 5.6,
           "duration": 1.2,
           "x": 240,
-          "poseId": "char.usu.pose_arms_crossed"
+          "poseId": "char.usu.pose_p_encoge"
         },
         {
           "id": "t2_e2",
@@ -267,6 +269,15 @@
           "duration": 0.4,
           "gazeX": 0.9,
           "gazeY": 0
+        },
+        {
+          "id": "t2_c1",
+          "track": "screen",
+          "effect": "comic",
+          "kind": "sorpresa",
+          "actorUid": "usu",
+          "start": 0.1,
+          "duration": 1.2
         }
       ]
     },
@@ -274,12 +285,12 @@
       "id": "take_3",
       "name": "El remate",
       "duration": 10,
-      "backgroundId": "bg_oficina",
+      "backgroundId": "bg_cafeteria",
       "actors": [
         {
           "uid": "usu",
           "characterId": "usu",
-          "poseId": "char.usu.pose_arms_crossed",
+          "poseId": "char.usu.pose_p_encoge",
           "x": 260,
           "y": 1780,
           "scale": 1,
@@ -289,12 +300,13 @@
         {
           "uid": "jefe",
           "characterId": "jefe",
-          "poseId": "char.jefe.pose_arms_crossed",
+          "poseId": "char.jefe.pose_p_brazos_cruzados",
           "x": 780,
           "y": 1780,
           "scale": 1.05,
           "zIndex": 1,
-          "expressionId": "expression.jefe.enfado"
+          "expressionId": "expression.jefe.enfado",
+          "flip": true
         }
       ],
       "events": [
@@ -367,7 +379,7 @@
           "actorUid": "jefe",
           "start": 4.8,
           "duration": 0.5,
-          "poseId": "char.jefe.pose_pointing"
+          "poseId": "char.jefe.pose_p_senala2"
         },
         {
           "id": "t3_e1",
@@ -413,11 +425,29 @@
           "actorUid": "usu",
           "start": 7.8,
           "duration": 0.6,
-          "poseId": "char.usu.pose_neutral_3q_right",
+          "poseId": "char.usu.pose_p_neutro",
           "y": 1800,
           "scale": 0.95
+        },
+        {
+          "id": "t3_cam1",
+          "track": "camera",
+          "shot": "close",
+          "actorUid": "usu",
+          "start": 7.6,
+          "duration": 0.1
+        },
+        {
+          "id": "t3_c1",
+          "track": "screen",
+          "effect": "comic",
+          "kind": "sudor",
+          "actorUid": "usu",
+          "start": 7.8,
+          "duration": 1.8
         }
-      ]
+      ],
+      "transition": "fade"
     }
   ]
 }
