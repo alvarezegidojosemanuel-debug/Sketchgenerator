@@ -221,7 +221,8 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
   for (const e of sortedEvents(take)) {
     if (t < e.start) continue;
     const end = e.start + e.duration;
-    const active = t < end;
+    // lo que dura hasta el final de la toma sigue visible en su último fotograma (si no, el cierre «parpadea»)
+    const active = t < end || (end >= take.duration - 0.02 && t <= take.duration + 0.05);
     const st = e.actorUid ? actors.get(e.actorUid) : undefined;
     switch (e.track) {
       case "dialogue": {

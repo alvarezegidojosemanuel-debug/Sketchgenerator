@@ -94,6 +94,15 @@
           "donde": "Usu"
         },
         {
+          "quien": "Usu",
+          "gesto": "aturdido"
+        },
+        {
+          "efecto": "mareo",
+          "donde": "Usu",
+          "durante": 3
+        },
+        {
           "off": "Anastas-IA",
           "texto": "¡Usuuu! ¿Estás bien?"
         },
