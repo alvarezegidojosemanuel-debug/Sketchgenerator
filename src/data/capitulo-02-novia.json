@@ -480,16 +480,7 @@
           "gesto": "sentado_habla"
         },
         {
-          "pausa": 0.8
-        },
-        {
-          "sonido": "explosion"
-        },
-        {
-          "efecto": "temblor"
-        },
-        {
-          "pausa": 1.5
+          "pausa": 0.7
         }
       ],
       "colocar": {
@@ -527,6 +518,75 @@
           "gesto": "sentado_teclea"
         }
       }
+    },
+    {
+      "nombre": "Preproducción",
+      "lugar": "bg_preproduccion",
+      "personajes": [],
+      "transicion": "corte",
+      "pasos": [
+        {
+          "camara": "general"
+        },
+        {
+          "objeto": "prop_rata",
+          "x": -120,
+          "y": 1560,
+          "escala": 1.5,
+          "hasta_x": 430,
+          "durante": 2.0
+        },
+        {
+          "pausa": 2.0
+        },
+        {
+          "efecto": "destello",
+          "color": "#3a8dff"
+        },
+        {
+          "sonido": "pantallazo"
+        },
+        {
+          "objeto": "prop_pantalla_error",
+          "x": 435,
+          "y": 771,
+          "escala": 1
+        },
+        {
+          "objeto": "prop_rata_puneto",
+          "x": 430,
+          "y": 1560,
+          "escala": 1.5,
+          "durante": 1.1
+        },
+        {
+          "pausa": 1.1
+        },
+        {
+          "objeto": "prop_rata_sorpresa",
+          "x": 430,
+          "y": 1560,
+          "escala": 1.5,
+          "durante": 1.4
+        },
+        {
+          "pausa": 1.4
+        },
+        {
+          "sonido": "whoosh"
+        },
+        {
+          "objeto": "prop_rata_huye",
+          "x": 430,
+          "y": 1560,
+          "escala": 1.5,
+          "hasta_x": 1300,
+          "durante": 0.9
+        },
+        {
+          "pausa": 1.4
+        }
+      ]
     }
   ]
 }

@@ -14033,6 +14033,13 @@
    "src": "/assets/punetos/backgrounds/bg_sala_equipo.webp",
    "actorScale": 1.1,
    "actorY": 1710
+  },
+  {
+   "id": "bg_preproduccion",
+   "label": "Preproducción · entorno de pruebas (noche)",
+   "src": "/assets/punetos/backgrounds/bg_preproduccion.webp",
+   "actorScale": 1.0,
+   "actorY": 1700
   }
  ],
  "props": [
@@ -14347,6 +14354,41 @@
    "src": "/assets/punetos/props/logo_punetos.webp",
    "width": 1000,
    "height": 276
+  },
+  {
+   "id": "prop_rata",
+   "label": "Rata",
+   "src": "/assets/punetos/props/rata.webp",
+   "width": 200,
+   "height": 151
+  },
+  {
+   "id": "prop_rata_puneto",
+   "label": "Rata Puñeto",
+   "src": "/assets/punetos/props/rata_puneto.webp",
+   "width": 200,
+   "height": 146
+  },
+  {
+   "id": "prop_rata_sorpresa",
+   "label": "Rata Puñeto sorprendida",
+   "src": "/assets/punetos/props/rata_sorpresa.webp",
+   "width": 200,
+   "height": 211
+  },
+  {
+   "id": "prop_rata_huye",
+   "label": "Rata Puñeto huyendo",
+   "src": "/assets/punetos/props/rata_huye.webp",
+   "width": 200,
+   "height": 137
+  },
+  {
+   "id": "prop_pantalla_error",
+   "label": "Pantalla con error de núcleo",
+   "src": "/assets/punetos/props/pantalla_error_nucleo.webp",
+   "width": 200,
+   "height": 126
   }
  ]
 }
