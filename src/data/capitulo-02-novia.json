@@ -99,39 +99,82 @@
         {
           "efecto": "mareo",
           "donde": "Jefe",
-          "durante": 4
+          "durante": 3
         },
         {
           "efecto": "mareo",
           "donde": "Barbas",
-          "durante": 4
+          "durante": 3
         },
         {
           "efecto": "mareo",
           "donde": "Sister",
-          "durante": 4
+          "durante": 3
         },
         {
           "efecto": "mareo",
           "donde": "Reynaldo",
-          "durante": 4
+          "durante": 3
         },
         {
-          "tiembla": "Barbas"
+          "pausa": 1.2
         },
         {
-          "dice": "Barbas",
-          "texto": "Uff… mi cabeza…"
-        },
-        {
-          "tiembla": "Jefe"
-        },
-        {
-          "dice": "Jefe",
-          "texto": "Uhh… ¿Qué ha pasado?"
+          "quien": "Barbas",
+          "gesto": "despierta"
         },
         {
           "pausa": 0.4
+        },
+        {
+          "quien": "Reynaldo",
+          "gesto": "despierta"
+        },
+        {
+          "pausa": 0.5
+        },
+        {
+          "quien": "Barbas",
+          "gesto": "aturdido"
+        },
+        {
+          "dice": "Barbas",
+          "texto": "Uff… mi cabeza…",
+          "gesto": "aturdido"
+        },
+        {
+          "quien": "Jefe",
+          "gesto": "despierta"
+        },
+        {
+          "pausa": 0.3
+        },
+        {
+          "quien": "Sister",
+          "gesto": "despierta"
+        },
+        {
+          "pausa": 0.4
+        },
+        {
+          "quien": "Jefe",
+          "gesto": "aturdido"
+        },
+        {
+          "dice": "Jefe",
+          "texto": "Uhh… ¿Qué ha pasado?",
+          "gesto": "aturdido"
+        },
+        {
+          "quien": "Reynaldo",
+          "gesto": "aturdido"
+        },
+        {
+          "quien": "Sister",
+          "gesto": "aturdido"
+        },
+        {
+          "pausa": 0.8
         },
         {
           "sonido": "whoosh"

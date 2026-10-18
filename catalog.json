@@ -1345,6 +1345,31 @@
      "facing": "front",
      "flat": true,
      "look": "puneto"
+    },
+    {
+     "id": "char.usu.pose_p_despierta",
+     "key": "pose_p_despierta",
+     "label": "Puñeto · despertando, tumbado",
+     "src": "/assets/punetos/punetos/usu/despierta.webp",
+     "width": 772,
+     "height": 294,
+     "displayScale": 0.8,
+     "facing": "front",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.usu.pose_p_aturdido",
+     "key": "pose_p_aturdido",
+     "label": "Puñeto · aturdido, sentado en el suelo",
+     "src": "/assets/punetos/punetos/usu/aturdido.webp",
+     "width": 542,
+     "height": 498,
+     "displayScale": 0.8,
+     "facing": "front",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/usu/aturdido_boca.webp"
     }
    ],
    "face": {
@@ -3169,6 +3194,31 @@
      "facing": "front",
      "flat": true,
      "look": "puneto"
+    },
+    {
+     "id": "char.reynaldo.pose_p_despierta",
+     "key": "pose_p_despierta",
+     "label": "Puñeto · despertando, tumbado",
+     "src": "/assets/punetos/punetos/reynaldo/despierta.webp",
+     "width": 768,
+     "height": 371,
+     "displayScale": 0.8,
+     "facing": "front",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.reynaldo.pose_p_aturdido",
+     "key": "pose_p_aturdido",
+     "label": "Puñeto · aturdido, sentado en el suelo",
+     "src": "/assets/punetos/punetos/reynaldo/aturdido.webp",
+     "width": 562,
+     "height": 540,
+     "displayScale": 0.8,
+     "facing": "front",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/reynaldo/aturdido_boca.webp"
     }
    ],
    "face": {
@@ -5481,6 +5531,31 @@
      "facing": "front",
      "flat": true,
      "look": "puneto"
+    },
+    {
+     "id": "char.sister.pose_p_despierta",
+     "key": "pose_p_despierta",
+     "label": "Puñeto · despertando, tumbado",
+     "src": "/assets/punetos/punetos/sister/despierta.webp",
+     "width": 768,
+     "height": 348,
+     "displayScale": 0.8,
+     "facing": "front",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.sister.pose_p_aturdido",
+     "key": "pose_p_aturdido",
+     "label": "Puñeto · aturdido, sentado en el suelo",
+     "src": "/assets/punetos/punetos/sister/aturdido.webp",
+     "width": 581,
+     "height": 547,
+     "displayScale": 0.8,
+     "facing": "front",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/sister/aturdido_boca.webp"
     }
    ],
    "face": {
@@ -7695,6 +7770,31 @@
      "facing": "front",
      "flat": true,
      "look": "puneto"
+    },
+    {
+     "id": "char.barbas.pose_p_despierta",
+     "key": "pose_p_despierta",
+     "label": "Puñeto · despertando, tumbado",
+     "src": "/assets/punetos/punetos/barbas/despierta.webp",
+     "width": 792,
+     "height": 313,
+     "displayScale": 0.8,
+     "facing": "front",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.barbas.pose_p_aturdido",
+     "key": "pose_p_aturdido",
+     "label": "Puñeto · aturdido, sentado en el suelo",
+     "src": "/assets/punetos/punetos/barbas/aturdido.webp",
+     "width": 577,
+     "height": 536,
+     "displayScale": 0.8,
+     "facing": "front",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/barbas/aturdido_boca.webp"
     }
    ],
    "face": {
@@ -9416,6 +9516,31 @@
      "facing": "front",
      "flat": true,
      "look": "puneto"
+    },
+    {
+     "id": "char.jefe.pose_p_despierta",
+     "key": "pose_p_despierta",
+     "label": "Puñeto · despertando, tumbado",
+     "src": "/assets/punetos/punetos/jefe/despierta.webp",
+     "width": 815,
+     "height": 343,
+     "displayScale": 0.8,
+     "facing": "front",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.jefe.pose_p_aturdido",
+     "key": "pose_p_aturdido",
+     "label": "Puñeto · aturdido, sentado en el suelo",
+     "src": "/assets/punetos/punetos/jefe/aturdido.webp",
+     "width": 557,
+     "height": 545,
+     "displayScale": 0.8,
+     "facing": "front",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/jefe/aturdido_boca.webp"
     }
    ],
    "face": {

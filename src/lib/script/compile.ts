@@ -132,7 +132,7 @@ export function estimate(text: string): number {
 
 // ---------------------------------------------------------------- montaje de una escena
 /** Gestos que son una postura (se mantienen), frente a los gestos de acompañar una frase (vuelven al reposo). */
-const isStateGesture = (g: string) => /^(sentad|silla|ko|tumbad|brazos_cruzados|brazos2|movil|telefono|mostrador|lee|portatil|acurrucad|manos_espalda|espalda|cafe|mesa|carpeta)/.test(norm(g));
+const isStateGesture = (g: string) => /^(sentad|silla|ko|tumbad|despiert|aturdid|brazos_cruzados|brazos2|movil|telefono|mostrador|lee|portatil|acurrucad|manos_espalda|espalda|cafe|mesa|carpeta)/.test(norm(g));
 
 class SceneBuilder {
   t = 0.3;
