@@ -1,6 +1,6 @@
 {
   "formato": "puñetos-guion-1",
-  "titulo": "Capítulo 2 · La novia electrónica",
+  "titulo": "Capítulo 2 · Martes",
   "escenas": [
     {
       "nombre": "Ahora · la sala",
@@ -34,22 +34,26 @@
         "Jefe": {
           "x": 230,
           "y": 1760,
-          "z": 3
+          "z": 3,
+          "gesto": "despierta"
         },
         "Sister": {
           "x": 470,
           "y": 1870,
-          "z": 6
+          "z": 6,
+          "gesto": "despierta"
         },
         "Barbas": {
           "x": 790,
           "y": 1790,
-          "z": 4
+          "z": 4,
+          "gesto": "despierta"
         },
         "Reynaldo": {
           "x": 900,
           "y": 1900,
-          "z": 7
+          "z": 7,
+          "gesto": "despierta"
         }
       },
       "pasos": [
@@ -117,21 +121,13 @@
           "durante": 3
         },
         {
-          "pausa": 1.2
+          "pausa": 1.6
         },
         {
-          "quien": "Barbas",
-          "gesto": "despierta"
+          "tiembla": "Barbas"
         },
         {
-          "pausa": 0.4
-        },
-        {
-          "quien": "Reynaldo",
-          "gesto": "despierta"
-        },
-        {
-          "pausa": 0.5
+          "pausa": 0.3
         },
         {
           "quien": "Barbas",
@@ -143,18 +139,10 @@
           "gesto": "aturdido"
         },
         {
-          "quien": "Jefe",
-          "gesto": "despierta"
+          "tiembla": "Jefe"
         },
         {
           "pausa": 0.3
-        },
-        {
-          "quien": "Sister",
-          "gesto": "despierta"
-        },
-        {
-          "pausa": 0.4
         },
         {
           "quien": "Jefe",
@@ -164,6 +152,15 @@
           "dice": "Jefe",
           "texto": "Uhh… ¿Qué ha pasado?",
           "gesto": "aturdido"
+        },
+        {
+          "tiembla": "Reynaldo"
+        },
+        {
+          "tiembla": "Sister"
+        },
+        {
+          "pausa": 0.3
         },
         {
           "quien": "Reynaldo",
@@ -311,9 +308,6 @@
           "dice": "Jefe",
           "texto": "Buah, ya me había olvidado. ¡Voy ahora mismo!",
           "gesto": "sentado_habla"
-        },
-        {
-          "sale": "Jefe"
         }
       ],
       "colocar": {
@@ -403,7 +397,7 @@
       ]
     },
     {
-      "nombre": "Sistemas · la novia electrónica",
+      "nombre": "Sistemas · el parche",
       "lugar": "bg_sala_equipo",
       "vista": "humanos",
       "personajes": [
@@ -442,9 +436,6 @@
           "profundidad": -4
         },
         {
-          "entra": "Jefe"
-        },
-        {
           "dice": "Barbas",
           "texto": "¿Qué? ¿Ya le has puesto en su sitio?",
           "gesto": "silla_relajado"
@@ -466,7 +457,7 @@
         },
         {
           "dice": "Usu",
-          "texto": "Emmm… espera. Anastas-IA, ¿cómo vas?",
+          "texto": "Emmm… espera. Anastasia, ¿cómo vas?",
           "gesto": "sentado_habla"
         },
         {
@@ -479,54 +470,26 @@
           "gesto": "sentado_habla"
         },
         {
-          "mira": "Barbas",
-          "a": "Usu"
-        },
-        {
-          "dice": "Barbas",
-          "texto": "¿Ahora la novia electrónica te hace los deberes?",
-          "gesto": "silla_relajado"
-        },
-        {
-          "dice": "Usu",
-          "texto": "No es mi novia. Es mi compañera.",
+          "dice": "Jefe",
+          "texto": "Perfecto. Lo instalamos el jueves.",
           "gesto": "sentado_habla"
         },
         {
-          "off": "Anastas-IA",
-          "texto": "Novia."
+          "dice": "Jefe",
+          "texto": "¿Qué podría salir mal?",
+          "gesto": "sentado_habla"
         },
         {
-          "pausa": 0.4
+          "pausa": 0.8
         },
         {
-          "off": "Anastas-IA",
-          "texto": "Instalación programada para el jueves a las tres de la mañana."
+          "sonido": "explosion"
         },
         {
-          "dice": "Reynaldo",
-          "texto": "¿A las tres? ¿Por qué a las tres?",
-          "gesto": "sentado_teclea"
+          "efecto": "temblor"
         },
         {
-          "off": "Anastas-IA",
-          "texto": "Es cuando Usu está más guapo."
-        },
-        {
-          "efecto": "corazones",
-          "donde": "Anastas-IA",
-          "durante": 2.2
-        },
-        {
-          "mira": "Barbas",
-          "a": "Usu"
-        },
-        {
-          "mira": "Jefe",
-          "a": "Usu"
-        },
-        {
-          "pausa": 1.8
+          "pausa": 1.5
         }
       ],
       "colocar": {

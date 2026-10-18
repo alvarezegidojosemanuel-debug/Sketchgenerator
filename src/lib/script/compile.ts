@@ -360,7 +360,7 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
         b.px.set(cid, ox);
         // «colocar»: { "gesto": "sentado_teclea" } = la escena empieza ya en esa postura (sin cambio a la vista)
         const g0 = typeof o.gesto === "string" ? POSE_ALIAS[norm(o.gesto)] ?? norm(o.gesto) : undefined;
-        const p0 = g0 && !ko ? b.pose(cid, g0) : undefined;
+        const p0 = g0 ? b.pose(cid, g0) : undefined;
         if (p0 && isStateGesture(g0!)) b.rest.set(cid, p0);
         b.actors.push({ uid: cid, characterId: cid, poseId: p0 ?? ko ?? `char.${cid}.pose_${pose}`, x: ox, y: oy, scale: osc, zIndex: oz, ...(typeof o.x === "number" || typeof o.mira === "string" ? oflip : flip), ...(rot ? { rot } : {}), expressionId: b.expr(cid, "neutral") });
       });

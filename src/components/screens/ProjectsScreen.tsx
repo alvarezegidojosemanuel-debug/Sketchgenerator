@@ -98,7 +98,7 @@ export function ProjectsScreen({ s }: { s: PocketState }) {
             🎬 Corto 1 · El lunes no perdona
           </button>
           <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("cap-02", s.catalog), "demo"); s.setTab("ver"); }}>
-            🎬 Capítulo 2 · La novia electrónica
+            🎬 Capítulo 2 · Martes
           </button>
           <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("prueba-punetos", s.catalog), "demo"); s.setTab("ver"); }}>
             🆕 Prueba: Puñetos rediseñados
