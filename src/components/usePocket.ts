@@ -14,6 +14,7 @@ import { validateProject, type Issue } from "@/lib/schema/validate";
 import { faceStore, libraryStore, newProjectId, projectStore, type LibraryItem } from "@/lib/storage/projects";
 import { salvageOverrides } from "@/lib/face/overrides";
 import type { SketchIntent } from "@/lib/generator/prompt";
+import { poseCategoryStore, type PoseCategoryMap } from "@/lib/catalog/poseCategories";
 
 export type Tab = "guion" | "idea" | "generar" | "ver" | "editar" | "caras" | "proyectos";
 
@@ -47,6 +48,18 @@ export function usePocket() {
   const [tab, setTab] = useState<Tab>("idea");
   /** «Ver desde aquí»: toma y segundo (del guion montado) en que empezar al abrir Ver. */
   const [playFrom, setPlayFrom] = useState<{ take: number; t: number } | null>(null);
+  /** Categorías de poses cambiadas a mano en este dispositivo. */
+  const [poseCats, setPoseCatsState] = useState<PoseCategoryMap>({});
+  useEffect(() => setPoseCatsState(poseCategoryStore.get()), []);
+  const setPoseCats = useCallback((poseId: string, cats: string[] | null) => {
+    setPoseCatsState((m) => {
+      const n = { ...m };
+      if (cats) n[poseId] = cats;
+      else delete n[poseId];
+      poseCategoryStore.save(n);
+      return n;
+    });
+  }, []);
   const [intent, setIntentState] = useState<SketchIntent>(defaultIntent);
   const [project, setProjectState] = useState<PocketProject>(() => demoProject("corto-01"));
   const [projectId, setProjectId] = useState<string>(() => "demo");
@@ -194,7 +207,7 @@ export function usePocket() {
   const validation = useMemo(() => validateProject(project, catalog), [project, catalog]);
   const issues: Issue[] = validation.errors;
 
-  return { playFrom, setPlayFrom, tab, setTab, intent, setIntent, project, projectId, replaceProject, editProject, issues, saveState, storageError, catalog, localFace, saveFace, faceTarget, setFaceTarget, library, saveLibraryItem, removeLibraryItem };
+  return { poseCats, setPoseCats, playFrom, setPlayFrom, tab, setTab, intent, setIntent, project, projectId, replaceProject, editProject, issues, saveState, storageError, catalog, localFace, saveFace, faceTarget, setFaceTarget, library, saveLibraryItem, removeLibraryItem };
 }
 
 export type PocketState = ReturnType<typeof usePocket>;

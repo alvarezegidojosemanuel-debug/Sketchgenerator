@@ -7,6 +7,8 @@ import { evaluateTake } from "@/lib/timeline/evaluate";
 import { Stage } from "../Stage";
 import type { PocketState } from "../usePocket";
 import { Field } from "../ui";
+import { CategoryFilter, filterPoses } from "../PoseCategories";
+import type { PoseCategoryMap } from "@/lib/catalog/poseCategories";
 
 /**
  * EDITOR DE GUION. Se edita el sketch como se piensa: escenas y, dentro, pasos (frase, gesto, efecto…).
@@ -329,7 +331,7 @@ export function GuionScreen({ s }: { s: PocketState }) {
                 <button type="button" className="btn btn-small btn-danger" onClick={() => { update((d) => { (d.escenas[si].pasos as Obj[]).splice(stepIdx, 1); }); setSel({ scene: si, step: stepIdx > 0 ? stepIdx - 1 : steps.length > 1 ? 0 : null }); }} title="Borrar">🗑</button>
               </div>
             </div>
-            <StepProps key={`${si}-${stepIdx}`} st={step} cast={cast} vista={str(sc.vista)} catalog={catalog} set={setStep} />
+            <StepProps key={`${si}-${stepIdx}`} st={step} cast={cast} vista={str(sc.vista)} catalog={catalog} set={setStep} cats={s.poseCats} />
           </>
         ) : (
           <>
@@ -389,7 +391,7 @@ function Info({ step, sceneIssues, stepIssues, cast, catalog, vista }: { step: O
 }
 
 // ---------------------------------------------------------------- propiedades de un paso
-function StepProps({ st, cast, vista, catalog, set }: { st: Obj; cast: string[]; vista: string; catalog: Catalog; set: (fn: (st: Obj) => void) => void }) {
+function StepProps({ st, cast, vista, catalog, set, cats }: { st: Obj; cast: string[]; vista: string; catalog: Catalog; set: (fn: (st: Obj) => void) => void; cats: PoseCategoryMap }) {
   const kind = kindOf(st)?.id;
   const field = (key: string, v: unknown) => set((x) => { if (v === "" || v === undefined || (typeof v === "number" && !Number.isFinite(v))) delete x[key]; else x[key] = v; });
   const who = (key: string, label = "Personaje", options = cast) => (
@@ -418,7 +420,7 @@ function StepProps({ st, cast, vista, catalog, set }: { st: Obj; cast: string[];
         <>
           {who("dice", "Quién habla", allNames)}
           {text()}
-          <Gestures cid={resolveCharacter(st.dice, catalog)} vista={vista} catalog={catalog} value={str(st.gesto)} onChange={(g) => field("gesto", g)} label="Gesto mientras lo dice" />
+          <Gestures cid={resolveCharacter(st.dice, catalog)} vista={vista} catalog={catalog} cats={cats} value={str(st.gesto)} onChange={(g) => field("gesto", g)} label="Gesto mientras lo dice" />
           <Field label="Emoción de la cara">
             <select value={str(st.emocion)} onChange={(e) => field("emocion", e.target.value)}>
               {EMOTIONS.map((e) => <option key={e} value={e}>{e || "— la del gesto —"}</option>)}
@@ -454,7 +456,7 @@ function StepProps({ st, cast, vista, catalog, set }: { st: Obj; cast: string[];
       {kind === "gesto" && (
         <>
           {who("quien")}
-          <Gestures cid={resolveCharacter(st.quien, catalog)} vista={vista} catalog={catalog} value={str(st.gesto)} onChange={(g) => field("gesto", g || "neutro")} label="Gesto" />
+          <Gestures cid={resolveCharacter(st.quien, catalog)} vista={vista} catalog={catalog} cats={cats} value={str(st.gesto)} onChange={(g) => field("gesto", g || "neutro")} label="Gesto" />
           <p className="fine">Las posturas (sentado, tumbado, brazos cruzados, con el móvil…) se quedan; los demás gestos vuelven al reposo tras la siguiente frase.</p>
         </>
       )}
@@ -552,14 +554,17 @@ function StepProps({ st, cast, vista, catalog, set }: { st: Obj; cast: string[];
 }
 
 /** Selector de gesto con miniaturas de las poses del personaje. */
-function Gestures({ cid, vista, catalog, value, onChange, label }: { cid?: string; vista: string; catalog: Catalog; value: string; onChange: (g: string) => void; label: string }) {
+function Gestures({ cid, vista, catalog, value, onChange, label, cats }: { cid?: string; vista: string; catalog: Catalog; value: string; onChange: (g: string) => void; label: string; cats: PoseCategoryMap }) {
+  const [filter, setFilter] = useState<string[]>([]);
   const ch = cid ? catalog.characters.find((c) => c.id === cid) : undefined;
   if (!ch) return null;
   const pf = posePrefix(ch.id, vista, catalog);
-  const poses = ch.poses.filter((p) => p.key.startsWith(`pose_${pf}_`));
-  if (!poses.length) return null;
+  const all = ch.poses.filter((p) => p.key.startsWith(`pose_${pf}_`));
+  if (!all.length) return null;
+  const poses = filterPoses(all, cats, filter);
   return (
     <Field label={label}>
+      <CategoryFilter poses={all} cats={cats} value={filter} onChange={setFilter} />
       <div className="g-poses">
         <button type="button" className={`g-pose${!value ? " on" : ""}`} onClick={() => onChange("")}><span className="g-pose-none">—</span><small>ninguno</small></button>
         {poses.map((p) => {

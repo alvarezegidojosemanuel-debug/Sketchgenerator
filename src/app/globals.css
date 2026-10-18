@@ -348,3 +348,14 @@ textarea.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; fon
 .lib-item.picked { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 20%, var(--panel-2)); position: relative; }
 .lib-item.picked::after { content: "✓"; position: absolute; top: 6px; right: 6px; width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); font-weight: 800; display: flex; align-items: center; justify-content: center; pointer-events: none; }
 .pick-bar { position: sticky; bottom: calc(var(--tabbar) + env(safe-area-inset-bottom) + 8px); z-index: 25; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; justify-content: space-between; padding: 10px 12px; border-radius: var(--radius); background: var(--panel); border: 1px solid var(--accent); box-shadow: 0 6px 24px rgba(0,0,0,.45); }
+
+/* ---------------------------------------------------------------- categorías de poses */
+.cat-filter { gap: 6px; }
+.cat-filter .chip { min-height: 34px; padding: 4px 10px; font-size: 13px; }
+.cat-icons { font-size: 12px; letter-spacing: 1px; }
+.cat-edit { display: flex; flex-direction: column; gap: 8px; padding: 10px; border: 1px dashed var(--accent); border-radius: 12px; background: var(--panel); }
+@media (min-width: 760px) { .cat-edit { position: sticky; top: 56px; z-index: 5; } }
+.cat-edit-head { display: flex; gap: 10px; align-items: center; }
+.cat-edit-head img { width: 64px; height: 80px; object-fit: contain; }
+.cat-edit-head p { margin: 2px 0 0; }
+.cat-edit .chip { min-height: 34px; padding: 4px 10px; font-size: 13px; }

@@ -5,6 +5,8 @@ import { makeZip } from "@/lib/export/zip";
 import type { PocketState } from "../usePocket";
 import { LibraryScreen } from "./LibraryScreen";
 import { Card } from "../ui";
+import { CategoryFilter, CategoryIcons, filterPoses } from "../PoseCategories";
+import { POSE_CATEGORIES, autoCategories, poseCategoriesOf } from "@/lib/catalog/poseCategories";
 
 /** Recursos: personajes con todas sus poses (humanos y Puñetos) + objetos, escenarios y sonidos. */
 /** Selección de recursos para descargar (p. ej. para pasárselos a ChatGPT como referencia). */
@@ -80,11 +82,17 @@ function Characters({ s, pick }: { s: PocketState; pick: Picker }) {
   const chars = s.catalog.characters.filter((c) => c.poses.some((p) => /^pose_[hp]_/.test(p.key)));
   const [cid, setCid] = useState(chars[0]?.id ?? "");
   const [look, setLook] = useState<"p" | "h">("p");
+  const [filter, setFilter] = useState<string[]>([]);
+  const [editing, setEditing] = useState(false);
+  const [editId, setEditId] = useState<string | null>(null);
   const ch = chars.find((c) => c.id === cid) ?? chars[0];
   if (!ch) return null;
   const hasP = ch.poses.some((p) => p.key.startsWith("pose_p_"));
   const lk = hasP ? look : "h";
-  const poses = ch.poses.filter((p) => p.key.startsWith(`pose_${lk}_`));
+  const all = ch.poses.filter((p) => p.key.startsWith(`pose_${lk}_`));
+  const poses = filterPoses(all, s.poseCats, filter);
+  const editPose = editing ? all.find((p) => p.id === editId) : undefined;
+  const changed = Object.keys(s.poseCats).length;
   const items = poses.map((p) => ({ id: p.id, name: `${ch.name}_${lk === "p" ? "puneto" : "humano"}_${p.key.replace(/^pose_[hp]_/, "")}`, src: p.src }));
   const allOn = items.length > 0 && items.every((it) => pick.has(it.id));
   return (
@@ -96,7 +104,17 @@ function Characters({ s, pick }: { s: PocketState; pick: Picker }) {
           </button>
         ))}
       </div>
-      <Card title={`${ch.name} · ${poses.length} poses`} right={<button type="button" className="btn btn-ghost btn-small" onClick={() => pick.setMany(items, !allOn)}>{allOn ? "Quitar todas" : "Seleccionar todas"}</button>}>
+      <Card
+        title={`${ch.name} · ${poses.length} poses`}
+        right={
+          <div className="row">
+            <button type="button" className={`btn btn-small ${editing ? "btn-primary" : "btn-ghost"}`} onClick={() => { setEditing(!editing); setEditId(null); }}>
+              {editing ? "✓ Hecho" : "✎ Cambiar categorías"}
+            </button>
+            {!editing && <button type="button" className="btn btn-ghost btn-small" onClick={() => pick.setMany(items, !allOn)}>{allOn ? "Quitar todas" : "Seleccionar todas"}</button>}
+          </div>
+        }
+      >
         {hasP && (
           <div className="view-toggle" role="radiogroup" style={{ alignSelf: "flex-start" }}>
             <button type="button" className={lk === "p" ? "on" : ""} onClick={() => setLook("p")}>
@@ -107,11 +125,51 @@ function Characters({ s, pick }: { s: PocketState; pick: Picker }) {
             </button>
           </div>
         )}
+        <CategoryFilter poses={all} cats={s.poseCats} value={filter} onChange={setFilter} />
+        {editing && (
+          <div className="cat-edit">
+            {editPose ? (
+              <>
+                <div className="cat-edit-head">
+                  <img src={editPose.src} alt="" />
+                  <div>
+                    <b>{editPose.key.replace(/^pose_[hp]_/, "")}</b>
+                    <p className="fine">Toca las categorías para ponerlas o quitarlas (puede tener varias).</p>
+                  </div>
+                </div>
+                <div className="chips">
+                  {POSE_CATEGORIES.map((c) => {
+                    const mine = poseCategoriesOf(editPose.id, editPose.key, s.poseCats);
+                    const on = mine.includes(c.id);
+                    return (
+                      <button key={c.id} type="button" className={`chip${on ? " on" : ""}`} onClick={() => s.setPoseCats(editPose.id, on ? mine.filter((x) => x !== c.id) : [...mine, c.id])}>
+                        {c.icon} {c.label}
+                      </button>
+                    );
+                  })}
+                </div>
+                {s.poseCats[editPose.id] && (
+                  <button type="button" className="btn btn-ghost btn-small" onClick={() => s.setPoseCats(editPose.id, null)}>
+                    ↺ Volver a la clasificación automática ({autoCategories(editPose.key).join(", ")})
+                  </button>
+                )}
+              </>
+            ) : (
+              <p className="fine">Toca una pose para cambiar sus categorías.</p>
+            )}
+            {changed > 0 && (
+              <button type="button" className="btn btn-secondary btn-small" onClick={async () => { const t = JSON.stringify(s.poseCats); try { await navigator.clipboard.writeText(t); alert(`${changed} cambio(s) copiados. Pégaselos a Claude para que se queden igual en todos los dispositivos.`); } catch { prompt("Copia esto:", t); } }}>
+                📋 Copiar mis {changed} cambio(s) de categorías para Claude
+              </button>
+            )}
+          </div>
+        )}
         <ul className="lib-grid lib-grid-poses">
           {poses.map((p, i) => (
-            <li key={p.id} className={`lib-item pickable${pick.has(p.id) ? " picked" : ""}`} onClick={() => pick.toggle(p.id, items[i].name, p.src)}>
+            <li key={p.id} className={`lib-item pickable${editing ? (p.id === editId ? " picked" : "") : pick.has(p.id) ? " picked" : ""}`} onClick={() => (editing ? setEditId(p.id) : pick.toggle(p.id, items[i].name, p.src))}>
               <img src={p.src} alt="" loading="lazy" />
               <code>{p.key.replace(/^pose_[hp]_/, "")}</code>
+              <CategoryIcons pose={p} cats={s.poseCats} />
               {p.talkSrc && p.talkSrc !== p.src ? <small className="fine">👄 habla</small> : null}
             </li>
           ))}
