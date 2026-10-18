@@ -9,6 +9,7 @@
 - **La historia** (el parche, cómo se convirtieron en Puñetos) se cuenta poco a poco, de forma amena y **sin forzar chistes**. La dicta el creador y se monta tal cual la pida. Es para quien quiera saber de dónde vienen.
 - **Sketches de actualidad:** siempre en tono de humor; ni derechas ni izquierdas; sentido común; mostrar **cómo afecta de verdad a la gente** (los dos lados cuando los haya: inquilino y pequeño casero, trabajador y autónomo…). La crítica va a lo absurdo de la situación, no a un partido. Datos contrastados antes de publicar.
 - Siguen valiendo las reglas de escritura: frases cortas y chistes que entienda cualquiera.
+- **Formato visual (decidido):** seguimos con la animación propia de la app (personajes vivos: hablan, mueven la boca, reaccionan), no con «motion comic». Es lo que gusta y lo que nos hace únicos. Mejoras: escenas más ricas, poses haciendo cosas (sentados, con objetos), primeros planos y cámara que sigue a quien habla.
 
 ## 1. Premisa
 
