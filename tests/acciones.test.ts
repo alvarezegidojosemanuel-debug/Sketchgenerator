@@ -32,3 +32,24 @@ describe("acciones (columnas de personajes)", () => {
     expect(sis.x).toBe(900);
   });
 });
+
+describe("animaciones en las columnas", () => {
+  it("alterna las poses de la animación (copiada en el guion) mientras dura la acción", () => {
+    const g = {
+      animaciones: { usu: [{ nombre: "andar", bucle: true, mov: "bote", frames: [{ pose: "camina", dur: 0.2 }, { pose: "camina2", dur: 0.2 }] }] },
+      escenas: [{ lugar: "bg_cafeteria", personajes: ["Usu", "Sister"], pasos: [{ dice: "Sister", texto: "Esto es una frase larga para que dure un rato largo." }, { pausa: 1 }], acciones: [{ quien: "Usu", desde: 0, hasta: 1, animacion: "andar", x: 900 }] }],
+    };
+    const r = compileScript(g, catalog);
+    expect(r.issues).toEqual([]);
+    const take = r.project!.takes[0];
+    const t0 = r.marks[0]!.times[0];
+    const at = (t: number) => evaluateTake(take, catalog, t).actors.find((a) => a.uid === "usu")!.poseId;
+    expect(at(t0 + 0.05)).toBe("char.usu.pose_p_camina");
+    expect(at(t0 + 0.25)).toBe("char.usu.pose_p_camina2");
+    expect(at(t0 + 0.45)).toBe("char.usu.pose_p_camina");
+  });
+  it("avisa si la animación no existe", () => {
+    const r = compileScript({ escenas: [{ lugar: "bg_cafeteria", personajes: ["Usu"], pasos: [{ pausa: 1 }], acciones: [{ quien: "Usu", desde: 0, animacion: "volar" }] }] }, catalog);
+    expect(r.issues.some((i) => /animación «volar»/.test(i.message))).toBe(true);
+  });
+});

@@ -9,11 +9,13 @@ import { EditScreen } from "./screens/EditScreen";
 import { ProjectsScreen } from "./screens/ProjectsScreen";
 import { ResourcesScreen } from "./screens/ResourcesScreen";
 import { GuionScreen } from "./screens/GuionScreen";
+import { AnimScreen } from "./screens/AnimScreen";
 
 const TABS: { id: Tab; label: string; icon: string }[] = [
   { id: "idea", label: "Idea", icon: "💡" },
   { id: "generar", label: "Generar", icon: "✨" },
   { id: "guion", label: "Guion", icon: "✎" },
+  { id: "animacion", label: "Animación", icon: "🎞" },
   { id: "ver", label: "Ver", icon: "▶" },
   { id: "editar", label: "Avanzado", icon: "🎛" },
   { id: "caras", label: "Recursos", icon: "🧰" },
@@ -31,6 +33,7 @@ export function PocketApp() {
         {s.tab === "idea" && <IdeaScreen s={s} />}
         {s.tab === "generar" && <GenerateScreen s={s} />}
         {s.tab === "guion" && <GuionScreen s={s} />}
+        {s.tab === "animacion" && <AnimScreen s={s} />}
         {s.tab === "ver" && <PreviewScreen s={s} />}
         {s.tab === "editar" && <EditScreen s={s} />}
         {s.tab === "caras" && <ResourcesScreen s={s} />}

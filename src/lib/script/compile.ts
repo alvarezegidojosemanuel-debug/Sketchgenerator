@@ -9,6 +9,7 @@
 import type { Catalog } from "@/lib/catalog/types";
 import type { PocketEvent, PocketProject, Take } from "@/lib/schema/pocket";
 import { groupLayout } from "@/lib/timeline/arrange";
+import { animDuration, resolveAnimation } from "@/lib/animation/animations";
 
 type Obj = Record<string, unknown>;
 const isObj = (v: unknown): v is Obj => typeof v === "object" && v !== null && !Array.isArray(v);
@@ -324,7 +325,7 @@ class SceneBuilder {
  * hablar de las frases marcadas con «columna»: true; en las demás frases habla con su gesto y vuelve a la acción.
  * modo: «anda» (por defecto si se mueve), «desliza» o «aparece».
  */
-function applyActions(b: SceneBuilder, list: unknown[], times: number[], path: string, charId: (v: unknown, path: string) => string | undefined, issues: ScriptIssue[]) {
+function applyActions(b: SceneBuilder, list: unknown[], times: number[], path: string, charId: (v: unknown, path: string) => string | undefined, issues: ScriptIssue[], anims?: unknown) {
   const n = times.length - 1;
   const items = list
     .map((a, i) => ({ a, i }))
@@ -352,8 +353,12 @@ function applyActions(b: SceneBuilder, list: unknown[], times: number[], path: s
     const x1 = typeof a.x === "number" ? Math.round(a.x) : x0;
     const modo = norm(String(a.modo ?? ""));
     const mode = modo.startsWith("apare") ? "aparece" : modo.startsWith("desliz") ? "desliza" : "anda";
-    const walkPose = moves && mode === "anda" && x1 !== x0 ? b.pose(who, "camina") : undefined;
-    const hold = walkPose ?? gPose;
+    // animación del personaje (secuencia de sus poses)
+    const anim = typeof a.animacion === "string" && a.animacion ? resolveAnimation(who, a.animacion, anims) : undefined;
+    if (typeof a.animacion === "string" && a.animacion && !anim) issues.push({ path: `${ap}.animacion`, message: `${actor.characterId} no tiene la animación «${a.animacion}»` });
+    const frames = anim ? anim.frames.map((f) => ({ id: b.pose(who, f.pose), dur: f.dur })).filter((f): f is { id: string; dur: number } => !!f.id) : [];
+    const walkPose = !frames.length && moves && mode === "anda" && x1 !== x0 ? b.pose(who, "camina") : undefined;
+    const hold = frames[0]?.id ?? walkPose ?? gPose;
     // los gestos automáticos de hablar dentro de la acción
     for (const te of b.talk) {
       if (te.who !== who || te.ev.start < T0 - 0.01 || te.ev.start >= T1) continue;
@@ -362,10 +367,33 @@ function applyActions(b: SceneBuilder, list: unknown[], times: number[], path: s
     }
     // si justo empieza una frase suya sin «columna», manda su gesto de hablar: la acción entra al acabar la frase
     const talking = b.talk.some((te) => te.who === who && !te.column && !te.revert && b.ev.includes(te.ev) && Math.abs(te.ev.start - T0) < 0.05);
-    if (hold && !talking) b.add({ track: "body", actorUid: who, duration: 0.3, poseId: hold }, T0);
+    if (frames.length) {
+      // frases suyas sin «columna» dentro de la acción: mientras habla manda su gesto de hablar
+      const quiet: [number, number][] = [];
+      b.talk.forEach((te, k) => {
+        if (te.who !== who || te.column || te.revert || te.ev.start < T0 - 0.01 || te.ev.start >= T1 || !b.ev.includes(te.ev)) return;
+        const rv = b.talk.slice(k + 1).find((o) => o.who === who && o.revert);
+        quiet.push([te.ev.start, rv ? rv.ev.start : te.ev.start + 1.5]);
+      });
+      const until = anim!.bucle ? T1 : Math.min(T1, T0 + animDuration(anim!));
+      let t = T0;
+      for (let k = 0; t < until - 0.01 && k < 2000; k++) {
+        const f = frames[k % frames.length];
+        if (!quiet.some(([q0, q1]) => t >= q0 - 0.01 && t < q1)) b.add({ track: "body", actorUid: who, duration: Math.min(f.dur, until - t), poseId: f.id, ease: "instant" }, t);
+        else {
+          // al acabar la frase vuelve a la animación
+          const q = quiet.find(([q0, q1]) => t >= q0 - 0.01 && t < q1)!;
+          if (q[1] < until) b.add({ track: "body", actorUid: who, duration: 0.1, poseId: f.id, ease: "instant" }, q[1] + 0.01);
+        }
+        t += f.dur;
+        if (!anim!.bucle && k + 1 >= frames.length) break;
+      }
+      const fx = anim!.mov === "bote" ? "walk" : anim!.mov === "tiembla" ? "shake" : anim!.mov === "salto" ? "jump" : undefined;
+      if (fx && !moves) b.add({ track: "body", actorUid: who, duration: Math.max(0.3, until - T0), fx }, T0);
+    } else if (hold && !talking) b.add({ track: "body", actorUid: who, duration: 0.3, poseId: hold }, T0);
     if (moves) {
       const dur = mode === "aparece" ? 0.05 : Math.max(0.4, T1 - T0 - 0.15);
-      b.add({ track: "body", actorUid: who, duration: dur, ...(typeof a.x === "number" ? { x: x1 } : {}), ...(typeof a.y === "number" ? { y: Math.round(a.y) } : {}), ...(mode === "aparece" ? { ease: "instant" } : mode === "anda" ? { ease: "linear", fx: "walk" } : {}), ...(mode === "anda" && x1 !== x0 ? { flip: x1 < x0 } : {}) }, T0);
+      b.add({ track: "body", actorUid: who, duration: dur, ...(typeof a.x === "number" ? { x: x1 } : {}), ...(typeof a.y === "number" ? { y: Math.round(a.y) } : {}), ...(mode === "aparece" ? { ease: "instant" } : mode === "anda" ? { ease: "linear", ...(frames.length ? (anim!.mov === "bote" ? { fx: "walk" } : {}) : { fx: "walk" }) } : {}), ...(mode === "anda" && x1 !== x0 ? { flip: x1 < x0 } : {}) }, T0);
       b.px.set(who, x1);
     }
     // al acabar: la pose de «acaba», o vuelta al reposo si era un gesto pasajero (las posturas se quedan)
@@ -375,7 +403,7 @@ function applyActions(b: SceneBuilder, list: unknown[], times: number[], path: s
       b.add({ track: "body", actorUid: who, duration: 0.3, poseId: endPose }, T1);
       if (isStateGesture(end!)) b.rest.set(who, endPose);
     } else if (hold) {
-      if (gPose && !walkPose && isStateGesture(g!)) b.rest.set(who, gPose);
+      if (gPose && !walkPose && !frames.length && isStateGesture(g!)) b.rest.set(who, gPose);
       else {
         const base = (gPose && walkPose ? gPose : undefined) ?? b.rest.get(who) ?? actor.poseId;
         if (base !== hold) b.add({ track: "body", actorUid: who, duration: 0.3, poseId: base }, T1);
@@ -681,7 +709,7 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
     }
     times[steps.length] = b.t;
     // «acciones»: la columna de cada personaje (gestos y movimientos que abarcan uno o varios pasos)
-    if (!back && Array.isArray(sc.acciones)) applyActions(b, sc.acciones as unknown[], times, `${p}.acciones`, (v, path) => charId(v, path), issues);
+    if (!back && Array.isArray(sc.acciones)) applyActions(b, sc.acciones as unknown[], times, `${p}.acciones`, (v, path) => charId(v, path), issues, raw.animaciones);
     takes.push(b.build(typeof sc.nombre === "string" ? sc.nombre.slice(0, 120) : `Escena ${si + 1}`, bg, norm(String(sc.camara ?? "")) === "auto" ? "auto" : undefined, tr));
   });
   if (issues.some((i) => /no existe|no tiene|no válid/.test(i.message)) && !takes.length) return { issues, marks };

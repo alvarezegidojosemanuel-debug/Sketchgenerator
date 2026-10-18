@@ -43,7 +43,7 @@ code { font-size: 0.85em; background: var(--panel-2); padding: 1px 5px; border-r
 
 .tabbar {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
-  display: grid; grid-template-columns: repeat(7, 1fr);
+  display: grid; grid-template-columns: repeat(8, 1fr);
   height: calc(var(--tabbar) + env(safe-area-inset-bottom));
   padding-bottom: env(safe-area-inset-bottom);
   background: var(--panel); border-top: 1px solid var(--line);
@@ -373,3 +373,19 @@ textarea.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; fon
 .g-cell.on { background: #38bdf8; color: #001018; }
 .g-steps .g-row { gap: 2px; }
 @media (min-width: 1100px) { .guion { grid-template-columns: minmax(380px, 470px) minmax(0, 1fr) 360px; } }
+
+/* ---------------------------------------------------------------- animaciones */
+.anim-edit { display: grid; gap: 14px; }
+@media (min-width: 1000px) { .content:has(.anim-screen) { max-width: 1200px; } .anim-edit { grid-template-columns: 320px 1fr; } .anim-edit > :last-child { grid-column: 1 / -1; } }
+.anim-preview { display: flex; align-items: flex-end; justify-content: center; background: repeating-conic-gradient(#ffffff08 0% 25%, transparent 0% 50%) 50% / 20px 20px; border-radius: 12px; overflow: hidden; }
+.anim-preview img { max-height: 92%; max-width: 100%; object-fit: contain; }
+.anim-frames { list-style: none; margin: 0; padding: 0; display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; }
+.anim-frames li { flex: none; width: 96px; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 6px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel-2); }
+.anim-frames img { width: 80px; height: 100px; object-fit: contain; }
+.anim-frames small { font-size: 11px; color: var(--muted); max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.anim-frames input { width: 100%; font-size: 13px; padding: 4px 6px; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; }
+.anim-frame-btns { display: flex; gap: 2px; }
+.anim-frame-btns button { border: 0; background: var(--bg); border-radius: 6px; width: 20px; height: 24px; font-size: 11px; cursor: pointer; padding: 0; }
+.anim-frame-btns button:disabled { opacity: .3; }
+.anim-missing { display: flex; align-items: center; justify-content: center; width: 80px; height: 100px; color: var(--err); }
+.anim-picker { max-height: 420px; }

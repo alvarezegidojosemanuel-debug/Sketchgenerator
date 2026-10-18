@@ -9,6 +9,7 @@ import type { PocketState } from "../usePocket";
 import { Field } from "../ui";
 import { CategoryFilter, filterPoses } from "../PoseCategories";
 import type { PoseCategoryMap } from "@/lib/catalog/poseCategories";
+import { animationsFor, cleanAnimation, type AnimLibrary, type Animation } from "@/lib/animation/animations";
 
 /**
  * EDITOR DE GUION. Se edita el sketch como se piensa: escenas y, dentro, pasos (frase, gesto, efecto…).
@@ -173,6 +174,31 @@ export function GuionScreen({ s }: { s: PocketState }) {
     setSel({ scene: 0, step: 0 });
   }, [s.projectId, s.project]);
 
+  // animaciones retocadas en la pestaña Animación: la copia que lleva el guion se pone al día
+  useEffect(() => {
+    if (!script || !isObj(script.animaciones)) return;
+    const lib = script.animaciones as Record<string, unknown[]>;
+    let changed = false;
+    const next: Record<string, unknown[]> = {};
+    for (const [cid, list] of Object.entries(lib)) {
+      next[cid] = (Array.isArray(list) ? list : []).map((x) => {
+        const a = cleanAnimation(x);
+        const fresh = a ? (s.animLib[cid] ?? []).find((y) => y.nombre === a.nombre) : undefined;
+        if (fresh && JSON.stringify(fresh) !== JSON.stringify(a)) {
+          changed = true;
+          return fresh;
+        }
+        return x;
+      });
+    }
+    if (changed) {
+      const d = { ...script, animaciones: next } as Script;
+      pending.current = d;
+      setScriptState(d);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [s.animLib, script === null]);
+
   const compiled = useMemo(() => (script ? compileScript(script, catalog) : null), [script, catalog]);
 
   // el sketch montado pasa al proyecto (y se guarda) poco después de dejar de escribir
@@ -274,6 +300,15 @@ export function GuionScreen({ s }: { s: PocketState }) {
       if (stepIdx !== null && isObj(arr[stepIdx])) fn(arr[stepIdx]);
     });
   const setScene = (fn: (x: Obj) => void) => update((d) => fn(d.escenas[si]));
+  /** Animaciones de un personaje: las del dispositivo y las que ya trae el guion. */
+  const animsOf = (cid?: string): Animation[] => {
+    if (!cid) return [];
+    const m = new Map<string, Animation>();
+    const inScript = isObj(script.animaciones) && Array.isArray(script.animaciones[cid]) ? (script.animaciones[cid] as unknown[]).map(cleanAnimation).filter((a): a is Animation => !!a) : [];
+    for (const a of inScript) m.set(a.nombre, a);
+    for (const a of animationsFor(cid, s.animLib as AnimLibrary)) m.set(a.nombre, a);
+    return [...m.values()];
+  };
   const lastDrag = useRef(0);
   const setAction = (fn: (a: Obj) => void, fromDrag = false) => {
     const now = Date.now();
@@ -387,7 +422,7 @@ export function GuionScreen({ s }: { s: PocketState }) {
                               title={hit ? `${c}: ${hit.a.gesto ? String(hit.a.gesto) : ""}${mv ? " se mueve" : ""}` : `${c}: añadir acción aquí`}
                               onClick={() => (hit ? select({ scene: i, step: null, action: hit.i }) : addAction(c, k))}
                             >
-                              {hit?.first ? (mv ? "🚶" : hit.a.gesto ? "🤸" : "•") : hit ? "" : "+"}
+                              {hit?.first ? (hit.a.animacion ? "🎞" : mv ? "🚶" : hit.a.gesto ? "🤸" : "•") : hit ? "" : "+"}
                             </button>
                           );
                         })}
@@ -438,7 +473,27 @@ export function GuionScreen({ s }: { s: PocketState }) {
                 <button type="button" className="btn btn-small btn-danger" onClick={() => { update((d) => { (d.escenas[si].acciones as Obj[]).splice(actIdx, 1); }); setSel({ scene: si, step: Number(action.desde) || 0 }); }} title="Borrar">🗑</button>
               </div>
             </div>
-            <ActionProps key={`${si}-a${actIdx}`} a={action} steps={steps} vista={str(sc.vista)} catalog={catalog} cats={s.poseCats} set={setAction} />
+            <ActionProps
+              key={`${si}-a${actIdx}`}
+              a={action}
+              steps={steps}
+              vista={str(sc.vista)}
+              catalog={catalog}
+              cats={s.poseCats}
+              set={setAction}
+              anims={animsOf(resolveCharacter(action.quien, catalog))}
+              pickAnim={(an) => update((d) => {
+                const cid = resolveCharacter(action.quien, catalog);
+                const arr = d.escenas[si].acciones as Obj[];
+                if (!cid || actIdx === null || !isObj(arr?.[actIdx])) return;
+                if (!an) { delete arr[actIdx].animacion; return; }
+                arr[actIdx].animacion = an.nombre;
+                // se copia en el guion: así el proyecto funciona en cualquier dispositivo
+                const lib = (isObj(d.animaciones) ? d.animaciones : {}) as Record<string, unknown[]>;
+                lib[cid] = [...(Array.isArray(lib[cid]) ? lib[cid] : []).filter((x) => !(isObj(x) && x.nombre === an.nombre)), an];
+                d.animaciones = lib;
+              })}
+            />
           </>
         ) : step && stepIdx !== null ? (
           <>
@@ -787,7 +842,7 @@ function RawJson({ st, set, open }: { st: Obj; set: (fn: (st: Obj) => void) => v
 }
 
 // ---------------------------------------------------------------- acción de la columna de un personaje
-function ActionProps({ a, steps, vista, catalog, cats, set }: { a: Obj; steps: Obj[]; vista: string; catalog: Catalog; cats: PoseCategoryMap; set: (fn: (a: Obj) => void) => void }) {
+function ActionProps({ a, steps, vista, catalog, cats, set, anims, pickAnim }: { a: Obj; steps: Obj[]; vista: string; catalog: Catalog; cats: PoseCategoryMap; set: (fn: (a: Obj) => void) => void; anims: Animation[]; pickAnim: (a: Animation | null) => void }) {
   const field = (key: string, v: unknown) => set((x) => { if (v === "" || v === undefined || (typeof v === "number" && !Number.isFinite(v))) delete x[key]; else x[key] = v; });
   const cid = resolveCharacter(a.quien, catalog);
   const d0 = Number(a.desde) || 0;
@@ -812,7 +867,14 @@ function ActionProps({ a, steps, vista, catalog, cats, set }: { a: Obj; steps: O
           </select>
         </Field>
       </div>
-      <Gestures cid={cid} vista={vista} catalog={catalog} cats={cats} value={str(a.gesto)} onChange={(g) => field("gesto", g)} label="Qué hace (pose)" />
+      <Field label="Animación" hint={anims.length ? undefined : "Este personaje aún no tiene animaciones: créalas en la pestaña 🎞 Animación."}>
+        <select value={str(a.animacion)} onChange={(e) => pickAnim(anims.find((x) => x.nombre === e.target.value) ?? null)}>
+          <option value="">— ninguna (usa la pose de abajo) —</option>
+          {!anims.some((x) => x.nombre === str(a.animacion)) && a.animacion ? <option value={str(a.animacion)}>{str(a.animacion)} (no encontrada)</option> : null}
+          {anims.map((x) => <option key={x.nombre} value={x.nombre}>🎞 {x.nombre}{x.bucle ? " (en bucle)" : ""}</option>)}
+        </select>
+      </Field>
+      {!a.animacion && <Gestures cid={cid} vista={vista} catalog={catalog} cats={cats} value={str(a.gesto)} onChange={(g) => field("gesto", g)} label="Qué hace (pose)" />}
       <label className="g-check">
         <input type="checkbox" checked={moves} onChange={(e) => set((x) => { if (e.target.checked) { x.x = 540; x.modo = "anda"; } else { delete x.x; delete x.y; delete x.modo; } })} /> Cambia de sitio
       </label>

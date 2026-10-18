@@ -252,7 +252,12 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
       }
       case "body": {
         if (!st) break;
-        if (e.poseId && e.poseId !== st.poseId) {
+        if (e.poseId && e.poseId !== st.poseId && e.ease === "instant") {
+          // fotograma de una animación: cambio seco, sin fundido ni rebote
+          st.prevPoseId = undefined;
+          st.poseId = e.poseId;
+          st.poseMix = 1;
+        } else if (e.poseId && e.poseId !== st.poseId) {
           // estirar y encoger al cambiar de pose (anticipación + rebote), con los pies en el suelo
           const k = (t - e.start) / 0.45;
           if (k >= 0 && k < 1) {

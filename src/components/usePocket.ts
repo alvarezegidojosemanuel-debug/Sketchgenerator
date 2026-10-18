@@ -15,8 +15,9 @@ import { faceStore, libraryStore, newProjectId, projectStore, type LibraryItem }
 import { salvageOverrides } from "@/lib/face/overrides";
 import type { SketchIntent } from "@/lib/generator/prompt";
 import { poseCategoryStore, type PoseCategoryMap } from "@/lib/catalog/poseCategories";
+import { animationStore, type AnimLibrary } from "@/lib/animation/animations";
 
-export type Tab = "guion" | "idea" | "generar" | "ver" | "editar" | "caras" | "proyectos";
+export type Tab = "guion" | "animacion" | "idea" | "generar" | "ver" | "editar" | "caras" | "proyectos";
 
 const LAST_ID_KEY = "pocket:lastProjectId";
 const INTENT_KEY = "pocket:intent";
@@ -59,6 +60,13 @@ export function usePocket() {
       poseCategoryStore.save(n);
       return n;
     });
+  }, []);
+  /** Animaciones creadas en este dispositivo (por personaje). */
+  const [animLib, setAnimLibState] = useState<AnimLibrary>({});
+  useEffect(() => setAnimLibState(animationStore.get()), []);
+  const setAnimLib = useCallback((next: AnimLibrary) => {
+    setAnimLibState(next);
+    animationStore.save(next);
   }, []);
   const [intent, setIntentState] = useState<SketchIntent>(defaultIntent);
   const [project, setProjectState] = useState<PocketProject>(() => demoProject("corto-01"));
@@ -207,7 +215,7 @@ export function usePocket() {
   const validation = useMemo(() => validateProject(project, catalog), [project, catalog]);
   const issues: Issue[] = validation.errors;
 
-  return { poseCats, setPoseCats, playFrom, setPlayFrom, tab, setTab, intent, setIntent, project, projectId, replaceProject, editProject, issues, saveState, storageError, catalog, localFace, saveFace, faceTarget, setFaceTarget, library, saveLibraryItem, removeLibraryItem };
+  return { animLib, setAnimLib, poseCats, setPoseCats, playFrom, setPlayFrom, tab, setTab, intent, setIntent, project, projectId, replaceProject, editProject, issues, saveState, storageError, catalog, localFace, saveFace, faceTarget, setFaceTarget, library, saveLibraryItem, removeLibraryItem };
 }
 
 export type PocketState = ReturnType<typeof usePocket>;
