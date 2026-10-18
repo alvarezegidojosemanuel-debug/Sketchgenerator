@@ -119,6 +119,17 @@ export function actingTag(who: string | undefined, text: string, gesture?: strin
   return tag ? `[${tag}] ${text}` : text;
 }
 
+/** Por escena: toma que genera y segundo (dentro de la toma) en que empieza cada paso; el último = fin de los pasos. */
+export type ScriptMarks = ({ take: number; times: number[] } | undefined)[];
+
+/** Personaje del catálogo al que se refiere un nombre del guion («Usu», «el jefe», «Rey»…). */
+export function resolveCharacter(v: unknown, catalog: Catalog): string | undefined {
+  if (typeof v !== "string") return undefined;
+  const n = norm(v);
+  return CHAR_ALIAS[n] ?? catalog.characters.find((c) => norm(c.name) === n || c.id === n)?.id;
+}
+export { norm as normKey };
+
 export interface ScriptIssue {
   path: string;
   message: string;
@@ -300,8 +311,9 @@ class SceneBuilder {
 }
 
 // ---------------------------------------------------------------- guion → proyecto
-export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketProject; issues: ScriptIssue[] } {
+export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketProject; issues: ScriptIssue[]; marks: ScriptMarks } {
   const issues: ScriptIssue[] = [];
+  const marks: ScriptMarks = [];
   const charId = (v: unknown, path: string): string | undefined => {
     if (typeof v !== "string") return undefined;
     const n = norm(v);
@@ -372,7 +384,10 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
     }
     const steps = (Array.isArray(sc.pasos) ? sc.pasos : []) as unknown[];
     const seen = new Set<string>();
+    const times: number[] = [];
+    marks[si] = { take: takes.length, times };
     steps.forEach((st0, k) => {
+      times[k] = b.t;
       const sp = `${p}.pasos[${k}]`;
       if (!isObj(st0)) return issues.push({ path: sp, message: "paso no válido" });
       const st = st0;
@@ -590,9 +605,10 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
       const total = b.t + 0.5;
       for (let at = 0; at < total; at += ambSnd.duration - 0.4) b.add({ track: "sfx", soundId: ambSnd.id, duration: Math.min(ambSnd.duration, total - at), volume: 0.25 }, at);
     }
+    times[steps.length] = b.t;
     takes.push(b.build(typeof sc.nombre === "string" ? sc.nombre.slice(0, 120) : `Escena ${si + 1}`, bg, norm(String(sc.camara ?? "")) === "auto" ? "auto" : undefined, tr));
   });
-  if (issues.some((i) => /no existe|no tiene|no válid/.test(i.message)) && !takes.length) return { issues };
+  if (issues.some((i) => /no existe|no tiene|no válid/.test(i.message)) && !takes.length) return { issues, marks };
   const total = takes.reduce((s, t) => s + t.duration, 0);
   const project: PocketProject = {
     schemaVersion: "pocket-1",
@@ -602,12 +618,13 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
       language: "es-ES",
       approxDuration: Math.min(180, Math.max(1, Math.round(total * 10) / 10)),
       ...(typeof raw.idea === "string" ? { idea: raw.idea.slice(0, 1000) } : {}),
+      script: JSON.parse(JSON.stringify(raw)) as Record<string, unknown>,
       ...(Array.isArray(raw.faltan) ? { wishlist: (raw.faltan as unknown[]).filter((x): x is string => typeof x === "string").slice(0, 12).map((s) => s.slice(0, 120)) } : {}),
     },
     canvas: { width: 1080, height: 1920 },
     takes,
   };
-  return { project, issues };
+  return { project, issues, marks };
 }
 
 /** Ejemplo del formato (también va en el prompt para ChatGPT). */

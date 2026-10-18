@@ -154,6 +154,13 @@
             "type": "string",
             "maxLength": 120
           }
+        },
+        "script": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {}
         }
       },
       "required": [

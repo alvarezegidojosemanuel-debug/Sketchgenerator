@@ -8,12 +8,14 @@ import { PreviewScreen } from "./screens/PreviewScreen";
 import { EditScreen } from "./screens/EditScreen";
 import { ProjectsScreen } from "./screens/ProjectsScreen";
 import { ResourcesScreen } from "./screens/ResourcesScreen";
+import { GuionScreen } from "./screens/GuionScreen";
 
 const TABS: { id: Tab; label: string; icon: string }[] = [
   { id: "idea", label: "Idea", icon: "💡" },
   { id: "generar", label: "Generar", icon: "✨" },
+  { id: "guion", label: "Guion", icon: "✎" },
   { id: "ver", label: "Ver", icon: "▶" },
-  { id: "editar", label: "Editar", icon: "✎" },
+  { id: "editar", label: "Avanzado", icon: "🎛" },
   { id: "caras", label: "Recursos", icon: "🧰" },
   { id: "proyectos", label: "Proyectos", icon: "🗂" },
 ];
@@ -25,9 +27,10 @@ export function PocketApp() {
       <header className="topbar">
         <span className="logo">PUÑETOS <b>Pocket</b></span>
       </header>
-      <main className="content">
+      <main className={`content${s.tab === "guion" ? " content-wide" : ""}`}>
         {s.tab === "idea" && <IdeaScreen s={s} />}
         {s.tab === "generar" && <GenerateScreen s={s} />}
+        {s.tab === "guion" && <GuionScreen s={s} />}
         {s.tab === "ver" && <PreviewScreen s={s} />}
         {s.tab === "editar" && <EditScreen s={s} />}
         {s.tab === "caras" && <ResourcesScreen s={s} />}

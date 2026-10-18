@@ -266,6 +266,8 @@ export const PocketProject = z.object({
     elevenVoices: z.record(id, ElevenCast).optional(),
     /** Objetos, escenarios o sonidos que el guionista habría querido usar y no existen (para crearlos). */
     wishlist: z.array(z.string().max(120)).max(12).optional(),
+    /** Guion «puñetos-guion-1» del que sale el proyecto (para editarlo en el editor de guion). */
+    script: z.record(z.string(), z.unknown()).optional(),
   }),
   canvas: z.object({ width: z.literal(1080), height: z.literal(1920) }),
   takes: z.array(Take).min(1).max(LIMITS.maxTakes),

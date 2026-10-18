@@ -104,6 +104,17 @@ export function PreviewScreen({ s }: { s: PocketState }) {
   }, [project, liveClips, usesClips]);
   const pl = usePlayer(playProject, catalog, { engine, clips: liveClips });
   const { slots } = projectSchedule(playProject);
+  // «▶ Ver desde aquí» del editor de guion: se coloca en ese momento (con voces, a la escala real de la toma)
+  const { playFrom, setPlayFrom } = s;
+  useEffect(() => {
+    if (!playFrom) return;
+    const sl = slots[playFrom.take];
+    const orig = project.takes[playFrom.take];
+    const real = playProject.takes[playFrom.take];
+    if (sl && orig && real) pl.seek(sl.offset + Math.min(real.duration - 0.05, playFrom.t * (real.duration / orig.duration)));
+    setPlayFrom(null);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [playFrom]);
   const take = playProject.takes[pl.pos.takeIndex];
   // Los últimos 2 s de una toma: la siguiente se prepara invisible (evita el «fogonazo» en el corte en el móvil).
   const nextTake = playProject.takes[pl.pos.takeIndex + 1];
