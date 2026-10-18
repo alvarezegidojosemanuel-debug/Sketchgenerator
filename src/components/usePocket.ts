@@ -103,7 +103,8 @@ export function usePocket() {
         if (!ov) return;
         const { value, dropped } = salvageOverrides(ov, defaultCatalog);
         if (value) setLocalFace(value);
-        if (dropped.length) setStorageError(`Se ignoraron ${dropped.length} calibraciones no válidas: ${dropped.join(", ")}`);
+        // calibraciones de poses que ya no existen (las antiguas): se limpian en silencio
+        if (dropped.length) void faceStore.save(value ?? ({} as FaceOverrides)).catch(() => {});
       })
       .catch(() => {});
   }, []);

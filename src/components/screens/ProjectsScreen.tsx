@@ -44,6 +44,28 @@ export function ProjectsScreen({ s }: { s: PocketState }) {
 
   return (
     <div className="screen">
+      <Card title="Capítulos y sketches (versión oficial)">
+        <p className="fine">Siempre la última versión, igual en todos los dispositivos. Ábrelos desde aquí.</p>
+        <div className="row">
+          <p className="fine"><b>Sketches</b></p>
+          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("sk-01", s.catalog), "demo"); s.setTab("ver"); }}>
+            😂 Sketch · ¿Está en vigor?
+          </button>
+        </div>
+        <div className="row">
+          <p className="fine"><b>Serie · Temporada 1</b></p>
+          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("corto-01", s.catalog), "demo"); s.setTab("ver"); }}>
+            🎬 Corto 1 · El lunes no perdona
+          </button>
+          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("cap-02", s.catalog), "demo"); s.setTab("ver"); }}>
+            🎬 Capítulo 2 · Martes
+          </button>
+          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("sis-01", s.catalog), "demo"); s.setTab("ver"); }}>
+            🎬 Versión Sister · 1 · Espacio-tiempo
+          </button>
+        </div>
+      </Card>
+
       <Card title="Proyecto actual" right={<span className="badge">{s.saveState === "saving" ? "guardando…" : s.saveState === "saved" ? "guardado" : s.saveState === "error" ? "error" : "local"}</span>}>
         <Field label="Título">
           <input value={project.metadata.title} maxLength={120} onChange={(e) => s.editProject((p) => { p.metadata.title = e.target.value || "Sin título"; })} />
@@ -72,11 +94,11 @@ export function ProjectsScreen({ s }: { s: PocketState }) {
         )}
       </Card>
 
-      <Card title="Mis proyectos (este navegador)">
+      <Card title="Tus copias guardadas (solo en este dispositivo)">
         <p className="fine">
-          Se guardan automáticamente en este dispositivo (IndexedDB). Si borras los datos del navegador se pierden: exporta JSON para tener copia.
+          Cada vez que retocas algo se guarda aquí una copia con fecha. Son versiones tuyas, antiguas o en pruebas: para ver la versión oficial usa los botones de arriba. Borra las que no necesites.
         </p>
-        {(err || s.storageError) && <p className="error-text">Almacenamiento no disponible: {err ?? s.storageError}</p>}
+        {err && <p className="error-text">Almacenamiento no disponible: {err}</p>}
         {list === null && !err && <p className="fine">Cargando…</p>}
         {list && list.length === 0 && <p className="fine">Aún no hay proyectos guardados. Edita el demo o importa uno.</p>}
         <ul className="project-list">
@@ -92,24 +114,6 @@ export function ProjectsScreen({ s }: { s: PocketState }) {
             </li>
           ))}
         </ul>
-        <div className="row">
-          <p className="fine"><b>Sketches</b></p>
-          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("sk-01", s.catalog), "demo"); s.setTab("ver"); }}>
-            😂 Sketch · ¿Está en vigor?
-          </button>
-        </div>
-        <div className="row">
-          <p className="fine"><b>Serie · Temporada 1</b></p>
-          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("corto-01", s.catalog), "demo"); s.setTab("ver"); }}>
-            🎬 Corto 1 · El lunes no perdona
-          </button>
-          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("cap-02", s.catalog), "demo"); s.setTab("ver"); }}>
-            🎬 Capítulo 2 · Martes
-          </button>
-          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("sis-01", s.catalog), "demo"); s.setTab("ver"); }}>
-            🎬 Versión Sister · 1 · Espacio-tiempo
-          </button>
-        </div>
       </Card>
     </div>
   );
