@@ -7758,6 +7758,54 @@
      "look": "puneto"
     },
     {
+     "id": "char.jefe.pose_p_anda1",
+     "key": "pose_p_anda1",
+     "label": "Puñeto · andar (paso 1 de 4)",
+     "src": "/assets/punetos/punetos/jefe/anda1.webp",
+     "width": 412,
+     "height": 676,
+     "displayScale": 0.958,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.jefe.pose_p_anda2",
+     "key": "pose_p_anda2",
+     "label": "Puñeto · andar (paso 2 de 4)",
+     "src": "/assets/punetos/punetos/jefe/anda2.webp",
+     "width": 412,
+     "height": 676,
+     "displayScale": 0.958,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.jefe.pose_p_anda3",
+     "key": "pose_p_anda3",
+     "label": "Puñeto · andar (paso 3 de 4)",
+     "src": "/assets/punetos/punetos/jefe/anda3.webp",
+     "width": 412,
+     "height": 676,
+     "displayScale": 0.958,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.jefe.pose_p_anda4",
+     "key": "pose_p_anda4",
+     "label": "Puñeto · andar (paso 4 de 4)",
+     "src": "/assets/punetos/punetos/jefe/anda4.webp",
+     "width": 412,
+     "height": 676,
+     "displayScale": 0.958,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
      "id": "char.jefe.pose_p_confundido",
      "key": "pose_p_confundido",
      "label": "Puñeto · confundido",
