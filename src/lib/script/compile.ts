@@ -361,10 +361,13 @@ function applyActions(b: SceneBuilder, list: unknown[], times: number[], path: s
     const frames = anim ? anim.frames.map((f) => ({ id: b.pose(who, f.pose), dur: f.dur })).filter((f): f is { id: string; dur: number } => !!f.id) : [];
     const walkPose = !frames.length && moves && mode === "anda" && x1 !== x0 ? b.pose(who, "camina") : undefined;
     const hold = frames[0]?.id ?? walkPose ?? gPose;
+    // si todas las poses de la animación tienen boca (p. ej. «andar»), habla sin pararse: como con «columna»
+    const mouthOf = (id: string) => b.catalog.characters.find((c) => c.id === who)?.poses.find((p) => p.id === id);
+    const talksMoving = frames.length > 0 && frames.every((f) => { const p = mouthOf(f.id); return !!p?.talkSrc && p.talkSrc !== p.src; });
     // los gestos automáticos de hablar dentro de la acción
     for (const te of b.talk) {
       if (te.who !== who || te.ev.start < T0 - 0.01 || te.ev.start >= T1) continue;
-      if (te.column) b.ev = b.ev.filter((e) => e !== te.ev);
+      if (te.column || talksMoving) b.ev = b.ev.filter((e) => e !== te.ev);
       else if (te.revert && hold && "poseId" in te.ev) (te.ev as { poseId: string }).poseId = hold;
     }
     // si justo empieza una frase suya sin «columna», manda su gesto de hablar: la acción entra al acabar la frase

@@ -53,6 +53,9 @@ export function animationsFor(cid: string, local?: AnimLibrary | null): Animatio
   return [...out.values()];
 }
 
+/** La animación común (src/data/animations.json) «nombre» de un personaje, si existe. */
+export const sharedAnimation = (cid: string, nombre: string): Animation | undefined => ((shared as AnimLibrary)[cid] ?? []).find((a) => a.nombre === nombre);
+
 /** La animación «nombre» de un personaje según el guion (primero la copia del guion, luego las comunes). */
 export function resolveAnimation(cid: string, nombre: string, fromScript: unknown): Animation | undefined {
   const inScript = isObj(fromScript) && Array.isArray(fromScript[cid]) ? (fromScript[cid] as unknown[]).map(cleanAnimation).find((a) => a?.nombre === nombre) : undefined;

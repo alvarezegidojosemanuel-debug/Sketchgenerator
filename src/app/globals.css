@@ -375,8 +375,8 @@ textarea.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; fon
 @media (min-width: 1100px) { .guion { grid-template-columns: minmax(380px, 470px) minmax(0, 1fr) 360px; } }
 
 /* ---------------------------------------------------------------- animaciones */
-.anim-edit { display: grid; gap: 14px; }
-@media (min-width: 1000px) { .content:has(.anim-screen) { max-width: 1200px; } .anim-edit { grid-template-columns: 320px 1fr; } .anim-edit > :last-child { grid-column: 1 / -1; } }
+.anim-edit { display: grid; gap: 14px; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 1000px) { .content:has(.anim-screen) { max-width: 1200px; } .anim-edit { grid-template-columns: 320px minmax(0, 1fr); } .anim-edit > :last-child { grid-column: 1 / -1; } }
 .anim-preview { display: flex; align-items: flex-end; justify-content: center; background: repeating-conic-gradient(#ffffff08 0% 25%, transparent 0% 50%) 50% / 20px 20px; border-radius: 12px; overflow: hidden; }
 .anim-preview img { max-height: 92%; max-width: 100%; object-fit: contain; }
 .anim-frames { list-style: none; margin: 0; padding: 0; display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; }

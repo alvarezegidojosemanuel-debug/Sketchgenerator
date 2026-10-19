@@ -12,3 +12,5 @@ next-env.d.ts
 *.zip
 /v3-source/
 /v8-source/
+
+__pycache__/

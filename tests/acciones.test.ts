@@ -61,4 +61,14 @@ describe("andar de Usu (común)", () => {
     const ids = new Set(r.project!.takes[0].events.filter((e) => e.track === "body" && e.actorUid === "usu" && "poseId" in e).map((e) => (e as { poseId: string }).poseId));
     expect([...ids].filter((x) => /pose_p_anda\d/.test(x)).length).toBe(4);
   });
+  it("habla andando: sigue con «andar» y mueve la boca (los pasos tienen boca)", () => {
+    const r = compileScript({ escenas: [{ lugar: "bg_cafeteria", personajes: ["Usu", "Sister"], colocar: { Usu: { x: 200 } }, pasos: [{ dice: "Usu", texto: "Esto es una frase bastante larga para decirla mientras voy andando hasta allí." }], acciones: [{ quien: "Usu", desde: 0, x: 900 }] }] }, catalog);
+    const take = r.project!.takes[0];
+    const usu = (t: number) => evaluateTake(take, catalog, t).actors.find((a) => a.uid === "usu")!;
+    const ts = Array.from({ length: 30 }, (_, i) => 0.3 + i * 0.1);
+    expect(ts.every((t) => /pose_p_anda\d$/.test(usu(t).poseId ?? ""))).toBe(true);
+    expect(ts.some((t) => usu(t).mouthOpen)).toBe(true);
+    for (const cid of ["usu", "reynaldo", "sister", "barbas", "jefe"])
+      for (const p of catalog.characters.find((c) => c.id === cid)!.poses.filter((p) => /^pose_p_anda/.test(p.key))) expect(p.talkSrc, p.id).toMatch(/_boca\.webp$/);
+  });
 });
