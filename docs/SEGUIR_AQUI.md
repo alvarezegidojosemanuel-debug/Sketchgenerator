@@ -49,3 +49,6 @@ Quiere que se muevan por la escena en profundidad (arriba/abajo, en diagonal), m
 6. **Escenario grande** (ver arriba).
 7. **Gestos mal clasificados**: revisar las categorías mirando cada pose (Claude puede ver las imágenes y proponer categorías por personaje).
 - **Decisión del usuario:** la vida de fondo = personajes con **animaciones fijas en bucle** (ciclos largos hechos con el animador), sin más complicación. Ideas: ciclos con «esperas» (pose A 3 s, B 0,4 s, A 2 s…), desfase para que dos extras no vayan sincronizados, movimiento de la app (respirar, bote, teclear) cuando no hay arte. Arte de ciclos: pedir a ChatGPT **editar** la misma imagen cambiando solo una parte (brazo arriba/abajo, taza), no generar de cero.
+
+## Arte pedido para la gran escena de la cafetería (19-oct)
+Orden: 1A fondo panorámico vacío (entrada, mesas, barra, sofás; suelo despejado abajo; ampliar por los lados si sale estrecho) · 1B primer término (planta + canto de mesa) · 2 hoja de objetos (mesa redonda, silla de lado, taza, vaso para llevar, cruasán, bandeja, jarra, servilletero) · 3 cada Puñeto sentado de perfil en silla (habla, bebe, aburrido) · 4 extras con ciclos por edición (camarero secando taza, clienta con móvil, cliente con portátil, pareja en sofá). Todo en el estilo de bg_cafeteria, fondo blanco, sin sombra, separados.
