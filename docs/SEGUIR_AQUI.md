@@ -2,6 +2,7 @@
 
 Rama: `claude/new-session-w14x31` · todo subido · 155 tests verdes (`npx vitest run`, `npx tsc --noEmit`, `npm run build`).
 Commits: terminan con `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>` y `Claude-Session: https://claude.ai/code/session_01JMuA9ngbhrTgayxwJt3uwf`. No crear PR salvo que lo pidan. Responder en español.
+**Subir SIEMPRE también a la rama principal `claude/new-session-w14x31`** (de ahí publica Vercel la app del usuario; lo pidió él): tras cada push a la rama de la sesión, `git push origin HEAD:claude/new-session-w14x31` (avance rápido, sin forzar).
 
 ## Hecho en esta sesión
 - **Editor de guion** (pestaña ✎ Guion, `src/components/screens/GuionScreen.tsx`): escenas/pasos a la izquierda, vista previa en el centro, propiedades a la derecha; «▶ Ver desde aquí» (`playFrom` en usePocket → PreviewScreen hace seek). El guion se guarda en `project.metadata.script`; `compileScript` devuelve `marks` (segundo de cada paso).
