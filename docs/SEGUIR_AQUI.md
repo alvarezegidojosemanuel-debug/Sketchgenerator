@@ -48,3 +48,4 @@ Quiere que se muevan por la escena en profundidad (arriba/abajo, en diagonal), m
 5. **Cámara**: seguir a un personaje, travelling, zoom lento (ken burns), cortes de plano; capas delante (primer término) con parallax.
 6. **Escenario grande** (ver arriba).
 7. **Gestos mal clasificados**: revisar las categorías mirando cada pose (Claude puede ver las imágenes y proponer categorías por personaje).
+- **Decisión del usuario:** la vida de fondo = personajes con **animaciones fijas en bucle** (ciclos largos hechos con el animador), sin más complicación. Ideas: ciclos con «esperas» (pose A 3 s, B 0,4 s, A 2 s…), desfase para que dos extras no vayan sincronizados, movimiento de la app (respirar, bote, teclear) cuando no hay arte. Arte de ciclos: pedir a ChatGPT **editar** la misma imagen cambiando solo una parte (brazo arriba/abajo, taza), no generar de cero.
