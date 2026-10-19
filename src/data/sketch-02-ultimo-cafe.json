@@ -1,0 +1,59 @@
+{
+  "formato": "puñetos-guion-1",
+  "titulo": "Sketch · El último café",
+  "idea": "Viernes, queda un solo café en la máquina y cuatro Puñetos van a por él a la vez.",
+  "escenas": [
+    {
+      "nombre": "La cafetería",
+      "lugar": "bg_cafeteria",
+      "camara": "auto",
+      "personajes": ["Usu", "Reynaldo", "Barbas", "Sister", "Jefe"],
+      "colocar": {
+        "Usu": { "x": 90 },
+        "Reynaldo": { "x": 200 },
+        "Barbas": { "x": 880, "mira": "izquierda" },
+        "Sister": { "x": 990, "mira": "izquierda" },
+        "Jefe": { "x": 1180, "mira": "izquierda" }
+      },
+      "pasos": [
+        { "objeto": "prop_cafe", "x": 540, "y": 1230, "escala": 1.3, "anim": "late" },
+        { "rotulo": "VIERNES · 10:59 — Queda un solo café" },
+        { "off": "Anastas-IA", "texto": "Aviso: queda un café. Uno." },
+        { "pausa": 0.5 },
+        { "sonido": "whoosh" },
+        { "pausa": 1.6 },
+        { "dice": "Barbas", "texto": "Yo llevo aquí desde las siete." },
+        { "dice": "Sister", "texto": "Y yo desde las seis." },
+        { "dice": "Usu", "texto": "Yo ni he dormido." },
+        { "efecto": "sudor", "donde": "Reynaldo" },
+        { "dice": "Reynaldo", "texto": "Propongo un reparto justo.", "gesto": "explica" },
+        { "coro": ["Usu", "Sister", "Barbas"], "texto": "¿Justo cómo?" },
+        { "dice": "Reynaldo", "texto": "Por orden alfabético." },
+        { "pausa": 0.5 },
+        { "dice": "Barbas", "texto": "¡Barbas empieza por B!" },
+        { "dice": "Reynaldo", "texto": "Ya… y Reynaldo por R." },
+        { "entra": "Jefe" },
+        { "dice": "Jefe", "texto": "Tranquilos, he traído un termo." },
+        { "coro": ["Usu", "Sister", "Barbas", "Reynaldo"], "texto": "¿Para todos?" },
+        { "pausa": 0.4 },
+        { "camara": "primer_plano", "quien": "Jefe" },
+        { "dice": "Jefe", "texto": "Para mí." },
+        { "camara": "general" },
+        { "efecto": "enfado", "donde": "Usu" },
+        { "efecto": "enfado", "donde": "Barbas" },
+        { "sonido": "fracaso" },
+        { "pausa": 1.2 },
+        { "objeto": "prop_logo_punetos", "x": 540, "y": 1050, "escala": 1 },
+        { "pausa": 2 }
+      ],
+      "acciones": [
+        { "quien": "Usu", "desde": 4, "hasta": 5, "x": 330 },
+        { "quien": "Reynaldo", "desde": 4, "hasta": 5, "x": 440 },
+        { "quien": "Barbas", "desde": 4, "hasta": 5, "x": 650 },
+        { "quien": "Sister", "desde": 4, "hasta": 5, "x": 770 },
+        { "quien": "Sister", "desde": 8, "hasta": 15, "gesto": "brazos_cruzados" },
+        { "quien": "Jefe", "desde": 16, "hasta": 17, "x": 930 }
+      ]
+    }
+  ]
+}

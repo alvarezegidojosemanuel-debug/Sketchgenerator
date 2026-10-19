@@ -51,6 +51,9 @@ export function ProjectsScreen({ s }: { s: PocketState }) {
           <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("sk-01", s.catalog), "demo"); s.setTab("ver"); }}>
             😂 Sketch · ¿Está en vigor?
           </button>
+          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("sk-02", s.catalog), "demo"); s.setTab("guion"); }}>
+            ☕ Sketch · El último café
+          </button>
         </div>
         <div className="row">
           <p className="fine"><b>Serie · Temporada 1</b></p>

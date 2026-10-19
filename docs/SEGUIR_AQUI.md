@@ -23,6 +23,8 @@ ChatGPT NO sabe hacer ciclos de andar (no alterna piernas). Solución: **piernas
 7. Tests, commit y push.
 
 ## Pendiente
+- **Escenario grande (siguiente tarea, propuesta al usuario):** fondo panorámico más ancho que la pantalla (p. ej. 3240×1920, varias zonas: entrada, puestos, cafetería, despacho) por el que se mueven los personajes. Diseño propuesto: `background.worldWidth`; coordenadas x de 0 a worldWidth; cámara con ventana de 1080 que sigue a un personaje (`camara: "sigue", quien`) o hace travelling a una x; el editor muestra el panorama entero en pequeño para arrastrar y una vista de lo que se ve; el renderizador/exportador desplaza el fondo según la cámara. Arte: fondo ancho (ChatGPT da 1536×1024 → ampliar por los lados con «outpainting» o unir 2-3 imágenes).
+- Sketch de prueba **«El último café»** (`src/data/sketch-02-ultimo-cafe.json`, botón en Proyectos): andar en paralelo, columna de brazos cruzados, off, coro, entra el Jefe andando, primer plano, logo. Mejorable: la taza flota en el suelo (ponerla en la mesa) y están apretados.
 - **El Jefe**: falta su «andar» (esperar su imagen de perfil).
 - Retocar «andar contento» de Barbas si el usuario lo devuelve.
 - Pasar los capítulos ya hechos a columnas (gestos/entra/sale/teclea/huye → `acciones`).
