@@ -70,5 +70,51 @@
         }
       ]
     }
+  ],
+  "barbas": [
+    {
+      "nombre": "andar",
+      "bucle": true,
+      "frames": [
+        {
+          "pose": "anda1",
+          "dur": 0.15
+        },
+        {
+          "pose": "anda2",
+          "dur": 0.15
+        },
+        {
+          "pose": "anda3",
+          "dur": 0.15
+        },
+        {
+          "pose": "anda4",
+          "dur": 0.15
+        }
+      ]
+    },
+    {
+      "nombre": "andar contento",
+      "bucle": true,
+      "frames": [
+        {
+          "pose": "anda_contento1",
+          "dur": 0.15
+        },
+        {
+          "pose": "anda_contento2",
+          "dur": 0.15
+        },
+        {
+          "pose": "anda_contento3",
+          "dur": 0.15
+        },
+        {
+          "pose": "anda_contento4",
+          "dur": 0.15
+        }
+      ]
+    }
   ]
 }
