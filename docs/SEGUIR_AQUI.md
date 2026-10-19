@@ -38,3 +38,13 @@ ChatGPT NO sabe hacer ciclos de andar (no alterna piernas). Solución: **piernas
 ## Añadido desde la otra sesión (19-oct)
 - **Escenario grande (siguiente tarea propuesta):** fondo panorámico más ancho que la pantalla (p. ej. 3240×1920 con zonas: entrada, puestos, cafetería, despacho) por el que se mueven los personajes. Diseño: `background.worldWidth`; x de 0 a worldWidth; cámara con ventana de 1080 que sigue a un personaje (`camara: "sigue", quien`) o hace travelling; el editor muestra el panorama entero en pequeño para arrastrar; renderizador y exportador desplazan el fondo según la cámara. Arte: ChatGPT da ~1536×1024 → ampliar por los lados (outpainting) o unir 2-3 imágenes.
 - Sketch de prueba **«El último café»** (`src/data/sketch-02-ultimo-cafe.json`, botón en Proyectos, test `tests/sketch-cafe.test.ts`): andar en paralelo, columna de brazos cruzados, off, coro, entra el Jefe andando, primer plano, logo. Mejorable: la taza flota en el suelo y están apretados.
+
+## Petición del usuario (19-oct): más cinematográfico, «2,5D»
+Quiere que se muevan por la escena en profundidad (arriba/abajo, en diagonal), más dinamismo y otros personajes moviéndose detrás. Plan propuesto (pendiente de empezar):
+1. **Perspectiva automática**: cada fondo con línea de suelo/horizonte (`floorTop`, `floorBottom`); la escala del personaje depende de su y (más arriba = más lejos = más pequeño) y el orden de capas también (más abajo = delante). Así andar en diagonal ya «se aleja/acerca».
+2. **Acciones con destino x,y** (ya existe) usando esa escala; arrastrar en la vista previa también hacia arriba/abajo.
+3. **Andar hacia el fondo / hacia cámara**: necesita poses de espaldas y de frente andando (arte nuevo; mismo truco de piernas de Usu si sirve).
+4. **Vida de fondo**: extras o Puñetos cruzando por detrás en bucle mientras hablan (acciones en columnas de personajes «de fondo»).
+5. **Cámara**: seguir a un personaje, travelling, zoom lento (ken burns), cortes de plano; capas delante (primer término) con parallax.
+6. **Escenario grande** (ver arriba).
+7. **Gestos mal clasificados**: revisar las categorías mirando cada pose (Claude puede ver las imágenes y proponer categorías por personaje).
