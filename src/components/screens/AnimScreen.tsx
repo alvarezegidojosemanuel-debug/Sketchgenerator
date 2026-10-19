@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { Pose } from "@/lib/catalog/types";
-import { ANIM_MOVES, animDuration, animationsFor, cleanAnimation, type AnimLibrary, type AnimMove, type Animation } from "@/lib/animation/animations";
+import { ANIM_MOVES, animDuration, animationsFor, cleanAnimation, sharedAnimation, type AnimLibrary, type AnimMove, type Animation } from "@/lib/animation/animations";
 import { poseShortKey } from "@/lib/catalog/poseCategories";
 import { CategoryFilter, filterPoses } from "../PoseCategories";
 import type { PocketState } from "../usePocket";
@@ -27,6 +27,11 @@ export function AnimScreen({ s }: { s: PocketState }) {
   const list = animationsFor(ch.id, s.animLib);
   const cur = list.find((a) => a.nombre === name) ?? null;
   const mineCount = Object.values(s.animLib).reduce((n, l) => n + l.length, 0);
+  const isMine = (a: Animation) => (s.animLib[ch.id] ?? []).some((x) => x.nombre === a.nombre);
+  // una común tapada por una copia de este dispositivo con el mismo nombre
+  const common = cur ? sharedAnimation(ch.id, cur.nombre) : undefined;
+  const changed = !!common && !!cur && isMine(cur);
+  const dropMine = (nombre: string) => s.setAnimLib({ ...s.animLib, [ch.id]: (s.animLib[ch.id] ?? []).filter((x) => x.nombre !== nombre) });
 
   const save = (a: Animation, oldName = a.nombre) => {
     const lib: AnimLibrary = { ...s.animLib, [ch.id]: [...(s.animLib[ch.id] ?? []).filter((x) => x.nombre !== oldName && x.nombre !== a.nombre), a] };
@@ -65,7 +70,7 @@ export function AnimScreen({ s }: { s: PocketState }) {
         <div className="chips">
           {list.map((a) => (
             <button key={a.nombre} type="button" className={`chip${a.nombre === cur?.nombre ? " on" : ""}`} onClick={() => setName(a.nombre)}>
-              🎞 {a.nombre}
+              🎞 {a.nombre}{sharedAnimation(ch.id, a.nombre) && isMine(a) ? " ✎" : ""}
             </button>
           ))}
           <button type="button" className="chip" onClick={() => create()}>＋ Nueva</button>
@@ -87,8 +92,15 @@ export function AnimScreen({ s }: { s: PocketState }) {
           </Card>
           <Card
             title="Ajustes"
-            right={<button type="button" className="btn btn-small btn-danger" onClick={() => { if (confirm(`¿Borrar la animación «${cur.nombre}»?`)) { s.setAnimLib({ ...s.animLib, [ch.id]: (s.animLib[ch.id] ?? []).filter((x) => x.nombre !== cur.nombre) }); setName(null); } }}>🗑</button>}
+            right={
+              changed ? (
+                <button type="button" className="btn btn-small btn-secondary" onClick={() => { if (confirm(`¿Quitar tus cambios y volver a la «${cur.nombre}» de todos?`)) dropMine(cur.nombre); }}>↺ Volver a la de todos</button>
+              ) : !common ? (
+                <button type="button" className="btn btn-small btn-danger" onClick={() => { if (confirm(`¿Borrar la animación «${cur.nombre}»?`)) { dropMine(cur.nombre); setName(null); } }}>🗑</button>
+              ) : undefined
+            }
           >
+            {changed && <p className="fine">✎ Es tu versión de este dispositivo: tapa la «{cur.nombre}» de todos.</p>}
             <Field label="Nombre">
               <input value={cur.nombre} maxLength={40} onChange={(e) => { const v = e.target.value.trim(); if (v && !list.some((a) => a.nombre === v && a !== cur)) edit((a) => { a.nombre = v; }); }} />
             </Field>
