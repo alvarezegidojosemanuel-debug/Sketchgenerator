@@ -10,7 +10,7 @@ Commits: terminan con `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>` 
 - **Categorías de poses** (`src/lib/catalog/poseCategories.ts`, editables en Recursos, cambios locales + «copiar para Claude» → `src/data/pose-categories.json`).
 - **Recursos**: seleccionar y descargar (.zip, `src/lib/export/zip.ts`); **👄 Dar boca** a poses (`MouthEditor.tsx`, guardadas como LibraryItem kind "talk"; descargar .zip para fijarlas en el repo).
 - El gesto elegido a mano se respeta aunque la pose no tenga boca (👄 marca las que sí).
-- **Andar de verdad**: poses `pose_p_anda1..4` + animación «andar» para **Usu, Reynaldo, Sister, Barbas** (Barbas también `anda_contento1..4` / «andar contento»).
+- **Andar de verdad**: poses `pose_p_anda1..4` + animación «andar» para **Usu, Reynaldo, Sister, Barbas** (Barbas también `anda_contento1..4` / «andar contento», ya con la cintura retocada por el usuario).
 
 ## Cómo se hacen los «andar» (lo que funcionó)
 ChatGPT NO sabe hacer ciclos de andar (no alterna piernas). Solución: **piernas de Usu reutilizadas** (dibujadas/retocadas a mano por el usuario).
@@ -23,8 +23,7 @@ ChatGPT NO sabe hacer ciclos de andar (no alterna piernas). Solución: **piernas
 7. Tests, commit y push.
 
 ## Pendiente
-- **El Jefe**: falta su «andar» (esperar su imagen de perfil).
-- Retocar «andar contento» de Barbas si el usuario lo devuelve.
+- **El Jefe**: falta su «andar». Ya hay tira de ChatGPT y trasplante de piernas de Usu hecho (paso 3); se le mandó la tira y el GIF y falta que devuelva la cintura retocada (pasos 5–6).
 - Pasar los capítulos ya hechos a columnas (gestos/entra/sale/teclea/huye → `acciones`).
 - Rehacer «¿Está en vigor?» sentados a la mesa (espera arte de cafetería: poses sentados, mesa, fondo con vida).
 - «Emoción» del editor: no hace nada con poses de Puñeto (dibujos enteros). Propuesto: que cambie tono de voz + icono de cómic, o quitarla. Sin respuesta.
