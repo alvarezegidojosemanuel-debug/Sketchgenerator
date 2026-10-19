@@ -645,7 +645,8 @@
      "displayScale": 1.317,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/usu/anda1_boca.webp"
     },
     {
      "id": "char.usu.pose_p_anda2",
@@ -657,7 +658,8 @@
      "displayScale": 1.317,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/usu/anda2_boca.webp"
     },
     {
      "id": "char.usu.pose_p_anda3",
@@ -669,7 +671,8 @@
      "displayScale": 1.317,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/usu/anda3_boca.webp"
     },
     {
      "id": "char.usu.pose_p_anda4",
@@ -681,7 +684,8 @@
      "displayScale": 1.317,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/usu/anda4_boca.webp"
     },
     {
      "id": "char.usu.pose_p_baila",
@@ -2099,7 +2103,8 @@
      "displayScale": 0.917,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/reynaldo/anda1_boca.webp"
     },
     {
      "id": "char.reynaldo.pose_p_anda2",
@@ -2111,7 +2116,8 @@
      "displayScale": 0.917,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/reynaldo/anda2_boca.webp"
     },
     {
      "id": "char.reynaldo.pose_p_anda3",
@@ -2123,7 +2129,8 @@
      "displayScale": 0.917,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/reynaldo/anda3_boca.webp"
     },
     {
      "id": "char.reynaldo.pose_p_anda4",
@@ -2135,7 +2142,8 @@
      "displayScale": 0.917,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/reynaldo/anda4_boca.webp"
     },
     {
      "id": "char.reynaldo.pose_p_celebra",
@@ -4144,7 +4152,8 @@
      "displayScale": 0.922,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/sister/anda1_boca.webp"
     },
     {
      "id": "char.sister.pose_p_anda2",
@@ -4156,7 +4165,8 @@
      "displayScale": 0.922,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/sister/anda2_boca.webp"
     },
     {
      "id": "char.sister.pose_p_anda3",
@@ -4168,7 +4178,8 @@
      "displayScale": 0.922,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/sister/anda3_boca.webp"
     },
     {
      "id": "char.sister.pose_p_anda4",
@@ -4180,7 +4191,8 @@
      "displayScale": 0.922,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/sister/anda4_boca.webp"
     },
     {
      "id": "char.sister.pose_p_idea",
@@ -6112,7 +6124,8 @@
      "displayScale": 0.86,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/barbas/anda1_boca.webp"
     },
     {
      "id": "char.barbas.pose_p_anda2",
@@ -6124,7 +6137,8 @@
      "displayScale": 0.86,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/barbas/anda2_boca.webp"
     },
     {
      "id": "char.barbas.pose_p_anda3",
@@ -6136,7 +6150,8 @@
      "displayScale": 0.86,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/barbas/anda3_boca.webp"
     },
     {
      "id": "char.barbas.pose_p_anda4",
@@ -6148,7 +6163,8 @@
      "displayScale": 0.86,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/barbas/anda4_boca.webp"
     },
     {
      "id": "char.barbas.pose_p_anda_contento1",
@@ -6160,7 +6176,8 @@
      "displayScale": 0.889,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/barbas/anda_contento1_boca.webp"
     },
     {
      "id": "char.barbas.pose_p_anda_contento2",
@@ -6172,7 +6189,8 @@
      "displayScale": 0.889,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/barbas/anda_contento2_boca.webp"
     },
     {
      "id": "char.barbas.pose_p_anda_contento3",
@@ -6184,7 +6202,8 @@
      "displayScale": 0.889,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/barbas/anda_contento3_boca.webp"
     },
     {
      "id": "char.barbas.pose_p_anda_contento4",
@@ -6196,7 +6215,8 @@
      "displayScale": 0.889,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/barbas/anda_contento4_boca.webp"
     },
     {
      "id": "char.barbas.pose_p_cafe",
@@ -7767,7 +7787,8 @@
      "displayScale": 0.958,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/jefe/anda1_boca.webp"
     },
     {
      "id": "char.jefe.pose_p_anda2",
@@ -7779,7 +7800,8 @@
      "displayScale": 0.958,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/jefe/anda2_boca.webp"
     },
     {
      "id": "char.jefe.pose_p_anda3",
@@ -7791,7 +7813,8 @@
      "displayScale": 0.958,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/jefe/anda3_boca.webp"
     },
     {
      "id": "char.jefe.pose_p_anda4",
@@ -7803,7 +7826,8 @@
      "displayScale": 0.958,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/jefe/anda4_boca.webp"
     },
     {
      "id": "char.jefe.pose_p_confundido",

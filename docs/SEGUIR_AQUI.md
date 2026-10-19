@@ -20,7 +20,8 @@ ChatGPT NO sabe hacer ciclos de andar (no alterna piernas). Solución: **piernas
 4. `python3 tools/andar/gif.py /tmp/x/t /tmp/x/prueba.gif` y se le manda al usuario la tira y el GIF. Él suele retocar la cintura a mano y devuelve la tira (fondo beige).
 5. Limpieza de la tira retocada: `tools/andar/fix.py` (editar rutas y las cajas `fix(x0,y0,x1,y1)` de la cintura; evitar bolso/mochila; si deja contornos dentados, usar la tira tal cual). Recortar con `tools/andar/cut.py <png> <salida>` (4 figuras, fondo beige).
 6. Instalar: `python3 tools/andar/install_walk.py <id> <prefijo_png> [clave] [nombre]` (escribe webp en `public/assets/punetos/punetos/<id>/`, poses en `catalog.json` y `src/data/catalog.json` con indent=1, animación en `src/data/animations.json`). Si el personaje no tiene `pose_p_camina` se mide con `pose_p_neutro` → multiplicar displayScale por **0.894** (lo que encoge al andar).
-7. Tests, commit y push.
+7. Boca para hablar andando: `python3 tools/andar/boca.py <id> <clave> <x> <y> <ancho> [giro] [sonrisa|ovalo]` (centro y ancho de la sonrisa en el paso 1; probar antes con un 8.º argumento = carpeta de salida). Dibuja `<clave>N_boca.webp` y pone `talkSrc`. Si todas las poses de una animación tienen boca, el personaje habla sin dejar de andar (`talksMoving` en compile.ts).
+8. Tests, commit y push.
 
 ## Pendiente
 - Pasar los capítulos ya hechos a columnas (gestos/entra/sale/teclea/huye → `acciones`).
