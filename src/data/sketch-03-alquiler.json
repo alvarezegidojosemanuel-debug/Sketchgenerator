@@ -5,7 +5,7 @@
   "escenas": [
     {
       "nombre": "La pausa del café",
-      "lugar": "bg_cafeteria",
+      "lugar": "bg_cafeteria_barra",
       "camara": "auto",
       "escala": 1.65,
       "personajes": [
@@ -54,18 +54,19 @@
       },
       "pasos": [
         {
-          "objeto": "prop_extra_camarero",
-          "x": 300,
-          "y": 930,
-          "escala": 0.32,
+          "objeto": "prop_extra_clienta_movil",
+          "x": 120,
+          "y": 1330,
+          "escala": 0.42,
           "capa": "detras"
         },
         {
-          "objeto": "prop_extra_pareja_sofa",
-          "x": 900,
-          "y": 1230,
-          "escala": 0.33,
-          "capa": "detras"
+          "objeto": "prop_extra_cliente_portatil",
+          "x": 960,
+          "y": 1330,
+          "escala": 0.42,
+          "capa": "detras",
+          "voltear": true
         },
         {
           "objeto": "prop_mesa_redonda",

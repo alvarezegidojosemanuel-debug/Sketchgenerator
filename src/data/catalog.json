@@ -14461,6 +14461,13 @@
    "src": "/assets/punetos/backgrounds/bg_cafeteria.webp",
    "actorScale": 1.0,
    "actorY": 1720
+  },
+  {
+   "id": "bg_cafeteria_barra",
+   "label": "Cafetería · la barra (vertical)",
+   "src": "/assets/punetos/backgrounds/bg_cafeteria_barra.webp",
+   "actorScale": 1.0,
+   "actorY": 1760
   }
  ],
  "props": [
