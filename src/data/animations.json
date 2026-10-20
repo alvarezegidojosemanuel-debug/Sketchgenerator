@@ -483,6 +483,28 @@
           "dur": 1.2
         }
       ]
+    },
+    {
+      "nombre": "cara de malo",
+      "bucle": false,
+      "frames": [
+        {
+          "pose": "sentado_malo1",
+          "dur": 1.0
+        },
+        {
+          "pose": "sentado_malo2",
+          "dur": 1.5
+        },
+        {
+          "pose": "sentado_malo3",
+          "dur": 1.5
+        },
+        {
+          "pose": "sentado_malo4",
+          "dur": 2.0
+        }
+      ]
     }
   ]
 }

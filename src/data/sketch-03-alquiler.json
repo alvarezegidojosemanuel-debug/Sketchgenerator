@@ -1,0 +1,296 @@
+{
+  "formato": "puñetos-guion-1",
+  "titulo": "Sketch · Un par de añitos",
+  "idea": "El Jefe no cobra el alquiler de la casa que heredó; los Puñetos discuten qué hacer en la cafetería.",
+  "escenas": [
+    {
+      "nombre": "La pausa del café",
+      "lugar": "bg_cafeteria",
+      "camara": "auto",
+      "escala": 1.65,
+      "personajes": [
+        "Usu",
+        "Jefe",
+        "Reynaldo",
+        "Sister",
+        "Barbas"
+      ],
+      "colocar": {
+        "Usu": {
+          "x": 165,
+          "y": 1580,
+          "z": 2,
+          "escala": 0.9,
+          "gesto": "sentado_escucha1"
+        },
+        "Jefe": {
+          "x": 300,
+          "y": 1870,
+          "z": 12,
+          "gesto": "sentado_triste_n1"
+        },
+        "Reynaldo": {
+          "x": 545,
+          "y": 1470,
+          "z": 1,
+          "escala": 0.8,
+          "gesto": "sentado_legal1"
+        },
+        "Sister": {
+          "x": 790,
+          "y": 1870,
+          "z": 12,
+          "mira": "izquierda",
+          "gesto": "sentada_preocupa4"
+        },
+        "Barbas": {
+          "x": 925,
+          "y": 1580,
+          "z": 2,
+          "escala": 0.9,
+          "mira": "izquierda",
+          "gesto": "sentado_comenta4"
+        }
+      },
+      "pasos": [
+        {
+          "objeto": "prop_extra_camarero",
+          "x": 300,
+          "y": 930,
+          "escala": 0.32,
+          "capa": "detras"
+        },
+        {
+          "objeto": "prop_extra_pareja_sofa",
+          "x": 900,
+          "y": 1230,
+          "escala": 0.33,
+          "capa": "detras"
+        },
+        {
+          "objeto": "prop_mesa_redonda",
+          "x": 545,
+          "y": 1900,
+          "escala": 1.25,
+          "profundidad": 6
+        },
+        {
+          "objeto": "prop_primer_planta",
+          "x": -40,
+          "y": 2010,
+          "escala": 0.75,
+          "profundidad": 60
+        },
+        {
+          "rotulo": "LUNES · 11:00 — La pausa del café"
+        },
+        {
+          "pausa": 1.5
+        },
+        {
+          "dice": "Sister",
+          "texto": "Oye, Jefe, ¿qué te pasa? Estás muy callado.",
+          "gesto": "sentada_preocupa1"
+        },
+        {
+          "dice": "Barbas",
+          "texto": "¿Que si le pasa algo? Solo hay que verle la cara de mierda que trae desde esta mañana.",
+          "gesto": "sentado_comenta2"
+        },
+        {
+          "dice": "Jefe",
+          "texto": "¿Os acordáis de la casa que tenía alquilada?",
+          "gesto": "sentado_drama1"
+        },
+        {
+          "dice": "Reynaldo",
+          "texto": "Sí, la que heredaste de tu tío abuelo, ¿no?",
+          "gesto": "sentado_legal3"
+        },
+        {
+          "dice": "Jefe",
+          "texto": "Sí, esa… Pues llevo varios meses sin cobrar el alquiler.",
+          "gesto": "sentado_drama3"
+        },
+        {
+          "dice": "Jefe",
+          "texto": "Y encima me piden que cambie la compañía de internet, que la que hay no les gusta.",
+          "gesto": "sentado_drama2"
+        },
+        {
+          "efecto": "enfado",
+          "donde": "Barbas"
+        },
+        {
+          "dice": "Barbas",
+          "texto": "¿En serio? ¿Esos hijos de puta se ríen en tu cara? Habrá que hacerles una visita.",
+          "gesto": "sentado_indignado1"
+        },
+        {
+          "dice": "Usu",
+          "texto": "¡SÍ! Les meto uno de mis dragones y verás cómo salen corriendo. ¡Jajaja!",
+          "gesto": "sentado_loco1"
+        },
+        {
+          "dice": "Reynaldo",
+          "texto": "¡Chicos! Si hacéis eso, cometeréis un delito muy grave. La casa ahora es de ellos.",
+          "gesto": "sentado_alarma2"
+        },
+        {
+          "dice": "Sister",
+          "texto": "¿Cómo va a ser de ellos, si es del Jefe? ¡Los papeles lo dicen!",
+          "gesto": "sentada_protesta1"
+        },
+        {
+          "dice": "Reynaldo",
+          "texto": "A ver, conseguiréis sacarlos… en un par de añitos.",
+          "gesto": "sentado_legal4"
+        },
+        {
+          "dice": "Jefe",
+          "texto": "¿Y qué alternativa tenemos?",
+          "gesto": "sentado_drama4"
+        },
+        {
+          "pausa": 2.2
+        },
+        {
+          "dice": "Jefe",
+          "texto": "Ya sé… Me busco yo una casa vacía y me meto.",
+          "gesto": "sentado_malo1"
+        },
+        {
+          "efecto": "sorpresa",
+          "donde": "Reynaldo"
+        },
+        {
+          "dice": "Reynaldo",
+          "texto": "¡Jefe, eso es delito!",
+          "gesto": "sentado_alarma1"
+        },
+        {
+          "camara": "primer_plano",
+          "quien": "Jefe"
+        },
+        {
+          "dice": "Jefe",
+          "texto": "Sí… pero me sacarán en un par de añitos.",
+          "gesto": "sentado_malo2"
+        },
+        {
+          "pausa": 1.6
+        },
+        {
+          "camara": "general"
+        },
+        {
+          "objeto": "prop_logo_punetos",
+          "x": 540,
+          "y": 1050,
+          "escala": 1
+        },
+        {
+          "pausa": 2
+        }
+      ],
+      "acciones": [
+        {
+          "quien": "Jefe",
+          "desde": 0,
+          "hasta": 7,
+          "animacion": "triste"
+        },
+        {
+          "quien": "Usu",
+          "desde": 8,
+          "hasta": 13,
+          "gesto": "sentado_escucha1"
+        },
+        {
+          "quien": "Barbas",
+          "desde": 8,
+          "hasta": 11,
+          "gesto": "sentado_comenta4"
+        },
+        {
+          "quien": "Sister",
+          "desde": 10,
+          "hasta": 15,
+          "gesto": "sentada_preocupa3"
+        },
+        {
+          "quien": "Usu",
+          "desde": 15,
+          "hasta": 17,
+          "gesto": "sentado_loco4"
+        },
+        {
+          "quien": "Barbas",
+          "desde": 14,
+          "hasta": 17,
+          "gesto": "sentado_indignado3"
+        },
+        {
+          "quien": "Usu",
+          "desde": 19,
+          "hasta": 19,
+          "gesto": "sentado_silencio1"
+        },
+        {
+          "quien": "Reynaldo",
+          "desde": 19,
+          "hasta": 19,
+          "gesto": "sentado_silencio1"
+        },
+        {
+          "quien": "Sister",
+          "desde": 19,
+          "hasta": 19,
+          "gesto": "sentado_silencio1"
+        },
+        {
+          "quien": "Barbas",
+          "desde": 19,
+          "hasta": 19,
+          "gesto": "sentado_silencio1"
+        },
+        {
+          "quien": "Usu",
+          "desde": 20,
+          "hasta": 28,
+          "gesto": "sentado_escucha3"
+        },
+        {
+          "quien": "Sister",
+          "desde": 20,
+          "hasta": 28,
+          "gesto": "sentada_preocupa3"
+        },
+        {
+          "quien": "Barbas",
+          "desde": 20,
+          "hasta": 28,
+          "gesto": "sentado_silencio3"
+        },
+        {
+          "quien": "Reynaldo",
+          "desde": 25,
+          "hasta": 28,
+          "gesto": "sentado_alarma4"
+        },
+        {
+          "quien": "Jefe",
+          "desde": 25,
+          "hasta": 25,
+          "gesto": "sentado_malo3"
+        },
+        {
+          "quien": "Jefe",
+          "desde": 26,
+          "hasta": 28,
+          "gesto": "sentado_malo4"
+        }
+      ]
+    }
+  ]
+}

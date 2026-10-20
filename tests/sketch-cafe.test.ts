@@ -7,3 +7,8 @@ it("el último café monta sin avisos", () => {
   console.log(JSON.stringify(r.issues), r.project?.takes[0].duration);
   expect(r.issues).toEqual([]);
 });
+
+import alq from "@/data/sketch-03-alquiler.json";
+it("«Un par de añitos» monta sin avisos", () => {
+  expect(compileScript(alq as never, catalog).issues).toEqual([]);
+});
