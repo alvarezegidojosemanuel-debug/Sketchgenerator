@@ -1168,6 +1168,42 @@
      "facing": "right",
      "flat": true,
      "look": "puneto"
+    },
+    {
+     "id": "char.usu.pose_p_cafe_habla2",
+     "key": "pose_p_cafe_habla2",
+     "label": "Puñeto · café · hablando 2",
+     "src": "/assets/punetos/punetos/usu/cafe_habla2.webp",
+     "width": 593,
+     "height": 656,
+     "displayScale": 0.838,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.usu.pose_p_cafe_bebe2",
+     "key": "pose_p_cafe_bebe2",
+     "label": "Puñeto · café · bebiendo 2",
+     "src": "/assets/punetos/punetos/usu/cafe_bebe2.webp",
+     "width": 576,
+     "height": 658,
+     "displayScale": 0.838,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.usu.pose_p_cafe_relajado",
+     "key": "pose_p_cafe_relajado",
+     "label": "Puñeto · café · relajado",
+     "src": "/assets/punetos/punetos/usu/cafe_relajado.webp",
+     "width": 563,
+     "height": 652,
+     "displayScale": 0.838,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
     }
    ],
    "face": {
@@ -2631,6 +2667,42 @@
      "width": 539,
      "height": 664,
      "displayScale": 0.811,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.reynaldo.pose_p_cafe_habla2",
+     "key": "pose_p_cafe_habla2",
+     "label": "Puñeto · café · hablando 2",
+     "src": "/assets/punetos/punetos/reynaldo/cafe_habla2.webp",
+     "width": 566,
+     "height": 667,
+     "displayScale": 0.793,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.reynaldo.pose_p_cafe_bebe2",
+     "key": "pose_p_cafe_bebe2",
+     "label": "Puñeto · café · bebiendo 2",
+     "src": "/assets/punetos/punetos/reynaldo/cafe_bebe2.webp",
+     "width": 542,
+     "height": 671,
+     "displayScale": 0.793,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.reynaldo.pose_p_cafe_relajado",
+     "key": "pose_p_cafe_relajado",
+     "label": "Puñeto · café · relajado",
+     "src": "/assets/punetos/punetos/reynaldo/cafe_relajado.webp",
+     "width": 543,
+     "height": 664,
+     "displayScale": 0.793,
      "facing": "right",
      "flat": true,
      "look": "puneto"
@@ -4669,6 +4741,42 @@
      "facing": "right",
      "flat": true,
      "look": "puneto"
+    },
+    {
+     "id": "char.sister.pose_p_cafe_habla2",
+     "key": "pose_p_cafe_habla2",
+     "label": "Puñeto · café · hablando 2",
+     "src": "/assets/punetos/punetos/sister/cafe_habla2.webp",
+     "width": 604,
+     "height": 669,
+     "displayScale": 0.773,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.sister.pose_p_cafe_bebe2",
+     "key": "pose_p_cafe_bebe2",
+     "label": "Puñeto · café · bebiendo 2",
+     "src": "/assets/punetos/punetos/sister/cafe_bebe2.webp",
+     "width": 549,
+     "height": 668,
+     "displayScale": 0.773,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.sister.pose_p_cafe_relajado",
+     "key": "pose_p_cafe_relajado",
+     "label": "Puñeto · café · relajado",
+     "src": "/assets/punetos/punetos/sister/cafe_relajado.webp",
+     "width": 560,
+     "height": 664,
+     "displayScale": 0.773,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
     }
    ],
    "face": {
@@ -6658,6 +6766,42 @@
      "facing": "right",
      "flat": true,
      "look": "puneto"
+    },
+    {
+     "id": "char.barbas.pose_p_cafe_habla2",
+     "key": "pose_p_cafe_habla2",
+     "label": "Puñeto · café · hablando 2",
+     "src": "/assets/punetos/punetos/barbas/cafe_habla2.webp",
+     "width": 607,
+     "height": 655,
+     "displayScale": 0.645,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.barbas.pose_p_cafe_bebe2",
+     "key": "pose_p_cafe_bebe2",
+     "label": "Puñeto · café · bebiendo 2",
+     "src": "/assets/punetos/punetos/barbas/cafe_bebe2.webp",
+     "width": 579,
+     "height": 655,
+     "displayScale": 0.645,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.barbas.pose_p_cafe_relajado",
+     "key": "pose_p_cafe_relajado",
+     "label": "Puñeto · café · relajado",
+     "src": "/assets/punetos/punetos/barbas/cafe_relajado.webp",
+     "width": 565,
+     "height": 647,
+     "displayScale": 0.645,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
     }
    ],
    "face": {
@@ -8199,6 +8343,42 @@
      "width": 546,
      "height": 677,
      "displayScale": 0.803,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.jefe.pose_p_cafe_habla2",
+     "key": "pose_p_cafe_habla2",
+     "label": "Puñeto · café · hablando 2",
+     "src": "/assets/punetos/punetos/jefe/cafe_habla2.webp",
+     "width": 581,
+     "height": 690,
+     "displayScale": 0.8,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.jefe.pose_p_cafe_bebe2",
+     "key": "pose_p_cafe_bebe2",
+     "label": "Puñeto · café · bebiendo 2",
+     "src": "/assets/punetos/punetos/jefe/cafe_bebe2.webp",
+     "width": 557,
+     "height": 688,
+     "displayScale": 0.8,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.jefe.pose_p_cafe_relajado",
+     "key": "pose_p_cafe_relajado",
+     "label": "Puñeto · café · relajado",
+     "src": "/assets/punetos/punetos/jefe/cafe_relajado.webp",
+     "width": 584,
+     "height": 693,
+     "displayScale": 0.8,
      "facing": "right",
      "flat": true,
      "look": "puneto"
