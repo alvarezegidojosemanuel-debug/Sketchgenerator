@@ -113,6 +113,50 @@
           "dur": 2.0
         }
       ]
+    },
+    {
+      "nombre": "discutir A",
+      "bucle": true,
+      "frames": [
+        {
+          "pose": "discute_a1",
+          "dur": 0.7
+        },
+        {
+          "pose": "discute_a2",
+          "dur": 0.6
+        },
+        {
+          "pose": "discute_a3",
+          "dur": 0.7
+        },
+        {
+          "pose": "discute_a2",
+          "dur": 0.5
+        }
+      ]
+    },
+    {
+      "nombre": "discutir B",
+      "bucle": true,
+      "frames": [
+        {
+          "pose": "discute_b1",
+          "dur": 0.6
+        },
+        {
+          "pose": "discute_b2",
+          "dur": 0.6
+        },
+        {
+          "pose": "discute_b3",
+          "dur": 0.7
+        },
+        {
+          "pose": "discute_b2",
+          "dur": 0.5
+        }
+      ]
     }
   ],
   "sister": [

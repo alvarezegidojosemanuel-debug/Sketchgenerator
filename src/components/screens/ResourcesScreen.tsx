@@ -87,12 +87,14 @@ function Characters({ s, pick }: { s: PocketState; pick: Picker }) {
   const [editing, setEditing] = useState(false);
   const [mouthMode, setMouthMode] = useState(false);
   const [mute, setMute] = useState(false);
+  const [showArchived, setShowArchived] = useState(false);
   const [editId, setEditId] = useState<string | null>(null);
   const ch = chars.find((c) => c.id === cid) ?? chars[0];
   if (!ch) return null;
   const hasP = ch.poses.some((p) => p.key.startsWith("pose_p_"));
   const lk = hasP ? look : "h";
-  const all = ch.poses.filter((p) => p.key.startsWith(`pose_${lk}_`));
+  const all = ch.poses.filter((p) => p.key.startsWith(`pose_${lk}_`) && (showArchived ? p.archived : !p.archived));
+  const nArchived = ch.poses.filter((p) => p.key.startsWith(`pose_${lk}_`) && p.archived).length;
   const talks = (p: { talkSrc?: string; src: string }) => !!p.talkSrc && p.talkSrc !== p.src;
   const poses = filterPoses(all, s.poseCats, filter).filter((p) => !mute || !talks(p));
   const mouthPose = mouthMode ? all.find((p) => p.id === editId) : undefined;
@@ -138,6 +140,7 @@ function Characters({ s, pick }: { s: PocketState; pick: Picker }) {
             </button>
           </div>
         )}
+        {nArchived > 0 && <label className="g-check"><input type="checkbox" checked={showArchived} onChange={(e) => setShowArchived(e.target.checked)} /> Ver las archivadas (diseño anterior, {nArchived})</label>}
         <CategoryFilter poses={all} cats={s.poseCats} value={filter} onChange={setFilter} />
         <label className="g-check"><input type="checkbox" checked={mute} onChange={(e) => setMute(e.target.checked)} /> Solo las que aún no hablan ({all.filter((p) => !talks(p)).length})</label>
         {mouthMode && (mouthPose ? (

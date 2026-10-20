@@ -557,7 +557,7 @@ function Info({ step, sceneIssues, stepIssues, cast, catalog, vista }: { step: O
       {!stepIssues.length && sceneIssues.length > 0 && <p className="warn-text">⚠ {sceneIssues.length} aviso(s) en otros pasos de esta escena (marcados con ✖ en la lista).</p>}
       {ch && (
         <p className="fine">
-          <b>{ch.name}</b> tiene {ch.poses.filter((p) => p.key.startsWith(`pose_${posePrefix(ch.id, vista, catalog)}_`)).length} gestos en esta vista.
+          <b>{ch.name}</b> tiene {ch.poses.filter((p) => p.key.startsWith(`pose_${posePrefix(ch.id, vista, catalog)}_`) && !p.archived).length} gestos en esta vista.
         </p>
       )}
       <p className="fine">En escena: {cast.join(", ") || "nadie"}. Consejo: frases cortas, y que el chiste se entienda sin conocer la serie.</p>
@@ -735,7 +735,7 @@ function Gestures({ cid, vista, catalog, value, onChange, label, cats }: { cid?:
   const ch = cid ? catalog.characters.find((c) => c.id === cid) : undefined;
   if (!ch) return null;
   const pf = posePrefix(ch.id, vista, catalog);
-  const all = ch.poses.filter((p) => p.key.startsWith(`pose_${pf}_`));
+  const all = ch.poses.filter((p) => p.key.startsWith(`pose_${pf}_`) && (!p.archived || normKey(value) === p.key.replace(`pose_${pf}_`, "")));
   if (!all.length) return null;
   const poses = filterPoses(all, cats, filter);
   return (

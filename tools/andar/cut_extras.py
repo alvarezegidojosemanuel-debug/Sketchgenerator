@@ -6,6 +6,8 @@ from PIL import Image
 from scipy import ndimage
 a=np.array(Image.open(sys.argv[1]).convert('RGB')).astype(int); mn=a.min(-1)
 white=mn>=238
+if '--sin-sombra' in sys.argv:
+    white|=(a.max(-1)-mn<22)&(mn>150)  # sombra gris clara en el suelo
 m=ndimage.binary_closing(~white,iterations=1)
 lab,n=ndimage.label(m); s=ndimage.sum(m,lab,range(1,n+1)); objs=ndimage.find_objects(lab)
 out=[]

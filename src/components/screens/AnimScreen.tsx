@@ -22,8 +22,8 @@ export function AnimScreen({ s }: { s: PocketState }) {
   if (!ch) return null;
   const hasP = ch.poses.some((p) => p.key.startsWith("pose_p_"));
   const lk = hasP ? look : "h";
-  const poses = ch.poses.filter((p) => p.key.startsWith(`pose_${lk}_`));
-  const poseOf = (k: string) => poses.find((p) => poseShortKey(p.key) === k);
+  const poses = ch.poses.filter((p) => p.key.startsWith(`pose_${lk}_`) && !p.archived);
+  const poseOf = (k: string) => ch.poses.find((p) => p.key === `pose_${lk}_${k}`);
   const list = animationsFor(ch.id, s.animLib);
   const cur = list.find((a) => a.nombre === name) ?? null;
   const mineCount = Object.values(s.animLib).reduce((n, l) => n + l.length, 0);

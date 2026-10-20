@@ -60,3 +60,9 @@ Orden: 1A fondo panorámico vacío (entrada, mesas, barra, sofás; suelo despeja
 - Poses sentados con café instaladas (pose_p_cafe_habla / cafe_bebe / cafe_aburrido) para los 5; Sister sale con pelo y bolso más oscuros que en su diseño.
 - Extras instalados como objetos: prop_extra_camarero, prop_extra_clienta_movil, prop_extra_cliente_portatil, prop_extra_pareja_sofa (pose base; faltan sus ciclos por edición). Recorte con tools/andar/cut_extras.py (conserva blancos interiores: ojos, tazas); re-recortados con él todos los packs sentado/comer.
 - 12 extras más (prop_extra_movil_1..3, prop_extra_portatil_1..3, prop_extra_sofa_1..6); cut_extras.py admite --rejilla (ordena por filas).
+
+## Rediseño de los Puñetos (con nariz) — 20-oct
+- El usuario cambia al **nuevo diseño con nariz** y quiere poses ordenadas por **secuencias de movimiento**.
+- Todas las poses `pose_p_*` antiguas de los 5 protagonistas tienen `archived: true`: siguen funcionando en los capítulos y guiones que las usan, pero no se ofrecen en los selectores (Recursos tiene «Ver las archivadas»). Las animaciones antiguas (andar, comer…) siguen funcionando.
+- Nuevas de Reynaldo: `discute_a1..a4` y `discute_b1..b4` (a4 y b4 miran a la izquierda, facing "left") + animaciones «discutir A» y «discutir B». Recorte: `tools/andar/cut_extras.py <img> <prefijo> --sin-sombra`. Tamaño: figura más alta del pack = 1,05 × altura del neutro antiguo.
+- Pendiente: un **neutro nuevo** por personaje (las escenas aún arrancan con el neutro antiguo), boca cerrada para las poses que hablan, y el resto de personajes.

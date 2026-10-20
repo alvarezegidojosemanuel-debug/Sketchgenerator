@@ -54,6 +54,8 @@ export interface Pose {
   talkSrc?: string;
   /** Aspecto: «humano» (antes del parche) o «puneto». Sin valor = Puñeto. */
   look?: "humano" | "puneto";
+  /** Pose del diseño anterior: sigue funcionando en los guiones que la usan, pero no se ofrece al elegir. */
+  archived?: boolean;
   /** Cabeza articulada (pose «flat»): el cuerpo sin cabeza y la cabeza aparte, que gira sobre el cuello. */
   bodySrc?: string;
   head?: {
