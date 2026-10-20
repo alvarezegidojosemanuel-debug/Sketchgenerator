@@ -2722,7 +2722,8 @@
      "displayScale": 1.094,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/reynaldo/anda_n1_boca.webp"
     },
     {
      "id": "char.reynaldo.pose_p_anda_n2",
@@ -2734,7 +2735,8 @@
      "displayScale": 1.094,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/reynaldo/anda_n2_boca.webp"
     },
     {
      "id": "char.reynaldo.pose_p_anda_n3",
@@ -2746,7 +2748,8 @@
      "displayScale": 1.094,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/reynaldo/anda_n3_boca.webp"
     },
     {
      "id": "char.reynaldo.pose_p_anda_n4",
@@ -2758,7 +2761,8 @@
      "displayScale": 1.094,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/reynaldo/anda_n4_boca.webp"
     },
     {
      "id": "char.reynaldo.pose_p_idea",

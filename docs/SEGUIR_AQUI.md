@@ -66,4 +66,4 @@ Orden: 1A fondo panorámico vacío (entrada, mesas, barra, sofás; suelo despeja
 - Todas las poses `pose_p_*` antiguas de los 5 protagonistas tienen `archived: true`: siguen funcionando en los capítulos y guiones que las usan, pero no se ofrecen en los selectores (Recursos tiene «Ver las archivadas»). Las animaciones antiguas (andar, comer…) siguen funcionando.
 - Nuevas de Reynaldo: `discute_a1..a4` y `discute_b1..b4` (a4 y b4 miran a la izquierda, facing "left") + animaciones «discutir A» y «discutir B». Recorte: `tools/andar/cut_extras.py <img> <prefijo> --sin-sombra`. Tamaño: figura más alta del pack = 1,05 × altura del neutro antiguo.
 - Pendiente: un **neutro nuevo** por personaje (las escenas aún arrancan con el neutro antiguo), boca cerrada para las poses que hablan, y el resto de personajes.
-- Reynaldo nuevo: «andar» = anda_n1..4 (boca abierta siempre; falta versión con boca cerrada para que mueva la boca al hablar andando).
+- Reynaldo nuevo: «andar» = anda_n1..4 con boca cerrada (sonrisa dibujada) y anda_n*_boca abierta (habla andando).

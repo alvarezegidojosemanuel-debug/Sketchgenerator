@@ -69,6 +69,6 @@ describe("andar de Usu (común)", () => {
     expect(ts.every((t) => /pose_p_anda\d$/.test(usu(t).poseId ?? ""))).toBe(true);
     expect(ts.some((t) => usu(t).mouthOpen)).toBe(true);
     for (const cid of ["usu", "reynaldo", "sister", "barbas", "jefe"])
-      for (const p of catalog.characters.find((c) => c.id === cid)!.poses.filter((p) => /^pose_p_anda\d$/.test(p.key))) expect(p.talkSrc, p.id).toMatch(/_boca\.webp$/);
+      for (const p of catalog.characters.find((c) => c.id === cid)!.poses.filter((p) => /^pose_p_anda(_n)?\d$/.test(p.key))) expect(p.talkSrc, p.id).toMatch(/_boca\.webp$/);
   });
 });
