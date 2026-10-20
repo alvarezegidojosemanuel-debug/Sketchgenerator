@@ -1367,6 +1367,54 @@
      "flat": true,
      "look": "puneto",
      "archived": true
+    },
+    {
+     "id": "char.usu.pose_p_sentado_loco1",
+     "key": "pose_p_sentado_loco1",
+     "label": "Puñeto · sentado · emocionado (puños arriba)",
+     "src": "/assets/punetos/punetos/usu/sentado_loco1.webp",
+     "width": 465,
+     "height": 508,
+     "displayScale": 0.99,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.usu.pose_p_sentado_loco2",
+     "key": "pose_p_sentado_loco2",
+     "label": "Puñeto · sentado · carcajada",
+     "src": "/assets/punetos/punetos/usu/sentado_loco2.webp",
+     "width": 463,
+     "height": 503,
+     "displayScale": 0.99,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.usu.pose_p_sentado_loco3",
+     "key": "pose_p_sentado_loco3",
+     "label": "Puñeto · sentado · suelta el dragón",
+     "src": "/assets/punetos/punetos/usu/sentado_loco3.webp",
+     "width": 461,
+     "height": 500,
+     "displayScale": 0.99,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.usu.pose_p_sentado_loco4",
+     "key": "pose_p_sentado_loco4",
+     "label": "Puñeto · sentado · «era broma»",
+     "src": "/assets/punetos/punetos/usu/sentado_loco4.webp",
+     "width": 475,
+     "height": 504,
+     "displayScale": 0.99,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
     }
    ],
    "face": {
@@ -3150,6 +3198,54 @@
      "height": 534,
      "displayScale": 1.243,
      "facing": "left",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.reynaldo.pose_p_sentado_legal1",
+     "key": "pose_p_sentado_legal1",
+     "label": "Puñeto · sentado · el legal (dedo arriba)",
+     "src": "/assets/punetos/punetos/reynaldo/sentado_legal1.webp",
+     "width": 451,
+     "height": 552,
+     "displayScale": 0.967,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.reynaldo.pose_p_sentado_legal2",
+     "key": "pose_p_sentado_legal2",
+     "label": "Puñeto · sentado · el legal (gafas)",
+     "src": "/assets/punetos/punetos/reynaldo/sentado_legal2.webp",
+     "width": 450,
+     "height": 549,
+     "displayScale": 0.967,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.reynaldo.pose_p_sentado_legal3",
+     "key": "pose_p_sentado_legal3",
+     "label": "Puñeto · sentado · el legal (explica)",
+     "src": "/assets/punetos/punetos/reynaldo/sentado_legal3.webp",
+     "width": 466,
+     "height": 557,
+     "displayScale": 0.967,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.reynaldo.pose_p_sentado_legal4",
+     "key": "pose_p_sentado_legal4",
+     "label": "Puñeto · sentado · el legal (encoge hombros)",
+     "src": "/assets/punetos/punetos/reynaldo/sentado_legal4.webp",
+     "width": 452,
+     "height": 551,
+     "displayScale": 0.967,
+     "facing": "right",
      "flat": true,
      "look": "puneto"
     }
@@ -5374,6 +5470,54 @@
      "flat": true,
      "look": "puneto",
      "archived": true
+    },
+    {
+     "id": "char.sister.pose_p_sentada_preocupa1",
+     "key": "pose_p_sentada_preocupa1",
+     "label": "Puñeto · sentada · preocupada (pregunta)",
+     "src": "/assets/punetos/punetos/sister/sentada_preocupa1.webp",
+     "width": 432,
+     "height": 563,
+     "displayScale": 0.917,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.sister.pose_p_sentada_preocupa2",
+     "key": "pose_p_sentada_preocupa2",
+     "label": "Puñeto · sentada · interesada",
+     "src": "/assets/punetos/punetos/sister/sentada_preocupa2.webp",
+     "width": 401,
+     "height": 556,
+     "displayScale": 0.917,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.sister.pose_p_sentada_preocupa3",
+     "key": "pose_p_sentada_preocupa3",
+     "label": "Puñeto · sentada · sorprendida",
+     "src": "/assets/punetos/punetos/sister/sentada_preocupa3.webp",
+     "width": 426,
+     "height": 565,
+     "displayScale": 0.917,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.sister.pose_p_sentada_preocupa4",
+     "key": "pose_p_sentada_preocupa4",
+     "label": "Puñeto · sentada · escucha con café",
+     "src": "/assets/punetos/punetos/sister/sentada_preocupa4.webp",
+     "width": 421,
+     "height": 565,
+     "displayScale": 0.917,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
     }
    ],
    "face": {
@@ -7546,6 +7690,54 @@
      "flat": true,
      "look": "puneto",
      "archived": true
+    },
+    {
+     "id": "char.barbas.pose_p_sentado_indignado1",
+     "key": "pose_p_sentado_indignado1",
+     "label": "Puñeto · sentado · indignado (puñetazo)",
+     "src": "/assets/punetos/punetos/barbas/sentado_indignado1.webp",
+     "width": 435,
+     "height": 520,
+     "displayScale": 0.826,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.barbas.pose_p_sentado_indignado2",
+     "key": "pose_p_sentado_indignado2",
+     "label": "Puñeto · sentado · indignado (señala)",
+     "src": "/assets/punetos/punetos/barbas/sentado_indignado2.webp",
+     "width": 439,
+     "height": 519,
+     "displayScale": 0.826,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.barbas.pose_p_sentado_indignado3",
+     "key": "pose_p_sentado_indignado3",
+     "label": "Puñeto · sentado · indignado (brazos cruzados)",
+     "src": "/assets/punetos/punetos/barbas/sentado_indignado3.webp",
+     "width": 413,
+     "height": 520,
+     "displayScale": 0.826,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.barbas.pose_p_sentado_indignado4",
+     "key": "pose_p_sentado_indignado4",
+     "label": "Puñeto · sentado · indignado (se remanga)",
+     "src": "/assets/punetos/punetos/barbas/sentado_indignado4.webp",
+     "width": 410,
+     "height": 520,
+     "displayScale": 0.826,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
     }
    ],
    "face": {
@@ -9265,6 +9457,54 @@
      "flat": true,
      "look": "puneto",
      "archived": true
+    },
+    {
+     "id": "char.jefe.pose_p_sentado_triste_n1",
+     "key": "pose_p_sentado_triste_n1",
+     "label": "Puñeto · sentado · triste (mira la taza)",
+     "src": "/assets/punetos/punetos/jefe/sentado_triste_n1.webp",
+     "width": 454,
+     "height": 558,
+     "displayScale": 0.968,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.jefe.pose_p_sentado_triste_n2",
+     "key": "pose_p_sentado_triste_n2",
+     "label": "Puñeto · sentado · triste (suspira)",
+     "src": "/assets/punetos/punetos/jefe/sentado_triste_n2.webp",
+     "width": 451,
+     "height": 561,
+     "displayScale": 0.968,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.jefe.pose_p_sentado_triste_n3",
+     "key": "pose_p_sentado_triste_n3",
+     "label": "Puñeto · sentado · triste (remueve el café)",
+     "src": "/assets/punetos/punetos/jefe/sentado_triste_n3.webp",
+     "width": 449,
+     "height": 560,
+     "displayScale": 0.968,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.jefe.pose_p_sentado_triste_n4",
+     "key": "pose_p_sentado_triste_n4",
+     "label": "Puñeto · sentado · triste (mano en la cara)",
+     "src": "/assets/punetos/punetos/jefe/sentado_triste_n4.webp",
+     "width": 444,
+     "height": 543,
+     "displayScale": 0.968,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
     }
    ],
    "face": {

@@ -55,6 +55,20 @@
           "dur": 2.0
         }
       ]
+    },
+    {
+      "nombre": "carcajada",
+      "bucle": true,
+      "frames": [
+        {
+          "pose": "sentado_loco2",
+          "dur": 0.4
+        },
+        {
+          "pose": "sentado_loco1",
+          "dur": 0.4
+        }
+      ]
     }
   ],
   "reynaldo": [
@@ -155,6 +169,28 @@
         {
           "pose": "anda_n4",
           "dur": 0.15
+        }
+      ]
+    },
+    {
+      "nombre": "explica la ley",
+      "bucle": true,
+      "frames": [
+        {
+          "pose": "sentado_legal1",
+          "dur": 0.8
+        },
+        {
+          "pose": "sentado_legal3",
+          "dur": 0.9
+        },
+        {
+          "pose": "sentado_legal2",
+          "dur": 0.7
+        },
+        {
+          "pose": "sentado_legal3",
+          "dur": 0.8
         }
       ]
     }
@@ -295,6 +331,28 @@
           "dur": 2.0
         }
       ]
+    },
+    {
+      "nombre": "indignado",
+      "bucle": true,
+      "frames": [
+        {
+          "pose": "sentado_indignado1",
+          "dur": 0.6
+        },
+        {
+          "pose": "sentado_indignado2",
+          "dur": 0.8
+        },
+        {
+          "pose": "sentado_indignado1",
+          "dur": 0.5
+        },
+        {
+          "pose": "sentado_indignado2",
+          "dur": 0.7
+        }
+      ]
     }
   ],
   "jefe": [
@@ -351,6 +409,28 @@
         {
           "pose": "come4",
           "dur": 2.0
+        }
+      ]
+    },
+    {
+      "nombre": "triste",
+      "bucle": true,
+      "frames": [
+        {
+          "pose": "sentado_triste_n1",
+          "dur": 2.5
+        },
+        {
+          "pose": "sentado_triste_n2",
+          "dur": 1.5
+        },
+        {
+          "pose": "sentado_triste_n3",
+          "dur": 2.0
+        },
+        {
+          "pose": "sentado_triste_n4",
+          "dur": 2.5
         }
       ]
     }
