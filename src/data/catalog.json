@@ -1132,6 +1132,42 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/usu/aturdido_boca.webp"
+    },
+    {
+     "id": "char.usu.pose_p_cafe_habla",
+     "key": "pose_p_cafe_habla",
+     "label": "Puñeto · café · hablando",
+     "src": "/assets/punetos/punetos/usu/cafe_habla.webp",
+     "width": 597,
+     "height": 645,
+     "displayScale": 0.838,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.usu.pose_p_cafe_bebe",
+     "key": "pose_p_cafe_bebe",
+     "label": "Puñeto · café · bebiendo",
+     "src": "/assets/punetos/punetos/usu/cafe_bebe.webp",
+     "width": 571,
+     "height": 653,
+     "displayScale": 0.828,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.usu.pose_p_cafe_aburrido",
+     "key": "pose_p_cafe_aburrido",
+     "label": "Puñeto · café · aburrido",
+     "src": "/assets/punetos/punetos/usu/cafe_aburrido.webp",
+     "width": 568,
+     "height": 626,
+     "displayScale": 0.863,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
     }
    ],
    "face": {
@@ -2562,6 +2598,42 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/reynaldo/aturdido_boca.webp"
+    },
+    {
+     "id": "char.reynaldo.pose_p_cafe_habla",
+     "key": "pose_p_cafe_habla",
+     "label": "Puñeto · café · hablando",
+     "src": "/assets/punetos/punetos/reynaldo/cafe_habla.webp",
+     "width": 548,
+     "height": 679,
+     "displayScale": 0.793,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.reynaldo.pose_p_cafe_bebe",
+     "key": "pose_p_cafe_bebe",
+     "label": "Puñeto · café · bebiendo",
+     "src": "/assets/punetos/punetos/reynaldo/cafe_bebe.webp",
+     "width": 517,
+     "height": 680,
+     "displayScale": 0.791,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.reynaldo.pose_p_cafe_aburrido",
+     "key": "pose_p_cafe_aburrido",
+     "label": "Puñeto · café · aburrido",
+     "src": "/assets/punetos/punetos/reynaldo/cafe_aburrido.webp",
+     "width": 539,
+     "height": 664,
+     "displayScale": 0.811,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
     }
    ],
    "face": {
@@ -4561,6 +4633,42 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/sister/aturdido_boca.webp"
+    },
+    {
+     "id": "char.sister.pose_p_cafe_habla",
+     "key": "pose_p_cafe_habla",
+     "label": "Puñeto · café · hablando",
+     "src": "/assets/punetos/punetos/sister/cafe_habla.webp",
+     "width": 585,
+     "height": 670,
+     "displayScale": 0.773,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.sister.pose_p_cafe_bebe",
+     "key": "pose_p_cafe_bebe",
+     "label": "Puñeto · café · bebiendo",
+     "src": "/assets/punetos/punetos/sister/cafe_bebe.webp",
+     "width": 544,
+     "height": 670,
+     "displayScale": 0.773,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.sister.pose_p_cafe_aburrido",
+     "key": "pose_p_cafe_aburrido",
+     "label": "Puñeto · café · aburrido",
+     "src": "/assets/punetos/punetos/sister/cafe_aburrido.webp",
+     "width": 561,
+     "height": 653,
+     "displayScale": 0.793,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
     }
    ],
    "face": {
@@ -6514,6 +6622,42 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/barbas/aturdido_boca.webp"
+    },
+    {
+     "id": "char.barbas.pose_p_cafe_habla",
+     "key": "pose_p_cafe_habla",
+     "label": "Puñeto · café · hablando",
+     "src": "/assets/punetos/punetos/barbas/cafe_habla.webp",
+     "width": 592,
+     "height": 666,
+     "displayScale": 0.645,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.barbas.pose_p_cafe_bebe",
+     "key": "pose_p_cafe_bebe",
+     "label": "Puñeto · café · bebiendo",
+     "src": "/assets/punetos/punetos/barbas/cafe_bebe.webp",
+     "width": 579,
+     "height": 666,
+     "displayScale": 0.645,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.barbas.pose_p_cafe_aburrido",
+     "key": "pose_p_cafe_aburrido",
+     "label": "Puñeto · café · aburrido",
+     "src": "/assets/punetos/punetos/barbas/cafe_aburrido.webp",
+     "width": 567,
+     "height": 647,
+     "displayScale": 0.663,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
     }
    ],
    "face": {
@@ -8022,6 +8166,42 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/jefe/aturdido_boca.webp"
+    },
+    {
+     "id": "char.jefe.pose_p_cafe_habla",
+     "key": "pose_p_cafe_habla",
+     "label": "Puñeto · café · hablando",
+     "src": "/assets/punetos/punetos/jefe/cafe_habla.webp",
+     "width": 589,
+     "height": 679,
+     "displayScale": 0.8,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.jefe.pose_p_cafe_bebe",
+     "key": "pose_p_cafe_bebe",
+     "label": "Puñeto · café · bebiendo",
+     "src": "/assets/punetos/punetos/jefe/cafe_bebe.webp",
+     "width": 542,
+     "height": 679,
+     "displayScale": 0.8,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.jefe.pose_p_cafe_aburrido",
+     "key": "pose_p_cafe_aburrido",
+     "label": "Puñeto · café · aburrido",
+     "src": "/assets/punetos/punetos/jefe/cafe_aburrido.webp",
+     "width": 546,
+     "height": 677,
+     "displayScale": 0.803,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
     }
    ],
    "face": {
