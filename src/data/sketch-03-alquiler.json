@@ -96,7 +96,7 @@
         {
           "dice": "Barbas",
           "texto": "¿Que si le pasa algo? Solo hay que verle la cara de mierda que trae desde esta mañana.",
-          "gesto": "sentado_comenta2"
+          "gesto": "sentado_comenta1"
         },
         {
           "dice": "Jefe",
@@ -116,7 +116,7 @@
         {
           "dice": "Jefe",
           "texto": "Y encima me piden que cambie la compañía de internet, que la que hay no les gusta.",
-          "gesto": "sentado_drama2"
+          "gesto": "sentado_drama1"
         },
         {
           "efecto": "enfado",
@@ -145,12 +145,12 @@
         {
           "dice": "Reynaldo",
           "texto": "A ver, conseguiréis sacarlos… en un par de añitos.",
-          "gesto": "sentado_legal4"
+          "gesto": "sentado_legal3"
         },
         {
           "dice": "Jefe",
           "texto": "¿Y qué alternativa tenemos?",
-          "gesto": "sentado_drama4"
+          "gesto": "sentado_drama1"
         },
         {
           "pausa": 2.2

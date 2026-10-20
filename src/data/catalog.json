@@ -1378,7 +1378,8 @@
      "displayScale": 0.99,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/usu/sentado_loco1_boca.webp"
     },
     {
      "id": "char.usu.pose_p_sentado_loco2",
@@ -1390,7 +1391,8 @@
      "displayScale": 0.99,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/usu/sentado_loco2_boca.webp"
     },
     {
      "id": "char.usu.pose_p_sentado_loco3",
@@ -1450,7 +1452,8 @@
      "displayScale": 0.99,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/usu/sentado_escucha3_boca.webp"
     },
     {
      "id": "char.usu.pose_p_sentado_escucha4",
@@ -3307,7 +3310,8 @@
      "displayScale": 0.967,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/reynaldo/sentado_legal1_boca.webp"
     },
     {
      "id": "char.reynaldo.pose_p_sentado_legal2",
@@ -3331,7 +3335,8 @@
      "displayScale": 0.967,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/reynaldo/sentado_legal3_boca.webp"
     },
     {
      "id": "char.reynaldo.pose_p_sentado_legal4",
@@ -3355,7 +3360,8 @@
      "displayScale": 0.967,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/reynaldo/sentado_alarma1_boca.webp"
     },
     {
      "id": "char.reynaldo.pose_p_sentado_alarma2",
@@ -3367,7 +3373,8 @@
      "displayScale": 0.967,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/reynaldo/sentado_alarma2_boca.webp"
     },
     {
      "id": "char.reynaldo.pose_p_sentado_alarma3",
@@ -3379,7 +3386,8 @@
      "displayScale": 0.967,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/reynaldo/sentado_alarma3_boca.webp"
     },
     {
      "id": "char.reynaldo.pose_p_sentado_alarma4",
@@ -5673,7 +5681,8 @@
      "displayScale": 0.917,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/sister/sentada_preocupa1_boca.webp"
     },
     {
      "id": "char.sister.pose_p_sentada_preocupa2",
@@ -5685,7 +5694,8 @@
      "displayScale": 0.917,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/sister/sentada_preocupa2_boca.webp"
     },
     {
      "id": "char.sister.pose_p_sentada_preocupa3",
@@ -5697,7 +5707,8 @@
      "displayScale": 0.917,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/sister/sentada_preocupa3_boca.webp"
     },
     {
      "id": "char.sister.pose_p_sentada_preocupa4",
@@ -5721,7 +5732,8 @@
      "displayScale": 0.917,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/sister/sentada_protesta1_boca.webp"
     },
     {
      "id": "char.sister.pose_p_sentada_protesta2",
@@ -5733,7 +5745,8 @@
      "displayScale": 0.917,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/sister/sentada_protesta2_boca.webp"
     },
     {
      "id": "char.sister.pose_p_sentada_protesta3",
@@ -5793,7 +5806,8 @@
      "displayScale": 0.917,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/sister/sentado_silencio3_boca.webp"
     },
     {
      "id": "char.sister.pose_p_sentado_silencio4",
@@ -7989,7 +8003,8 @@
      "displayScale": 0.826,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/barbas/sentado_indignado1_boca.webp"
     },
     {
      "id": "char.barbas.pose_p_sentado_indignado2",
@@ -8001,7 +8016,8 @@
      "displayScale": 0.826,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/barbas/sentado_indignado2_boca.webp"
     },
     {
      "id": "char.barbas.pose_p_sentado_indignado3",
@@ -8037,7 +8053,8 @@
      "displayScale": 0.826,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/barbas/sentado_comenta1_boca.webp"
     },
     {
      "id": "char.barbas.pose_p_sentado_comenta2",
@@ -8061,7 +8078,8 @@
      "displayScale": 0.826,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/barbas/sentado_comenta3_boca.webp"
     },
     {
      "id": "char.barbas.pose_p_sentado_comenta4",
@@ -9900,7 +9918,8 @@
      "displayScale": 0.968,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/jefe/sentado_drama1_boca.webp"
     },
     {
      "id": "char.jefe.pose_p_sentado_drama2",
@@ -9924,7 +9943,8 @@
      "displayScale": 0.968,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/jefe/sentado_drama3_boca.webp"
     },
     {
      "id": "char.jefe.pose_p_sentado_drama4",
@@ -9948,7 +9968,8 @@
      "displayScale": 0.968,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/jefe/sentado_malo1_boca.webp"
     },
     {
      "id": "char.jefe.pose_p_sentado_malo2",
@@ -9960,7 +9981,8 @@
      "displayScale": 0.968,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/jefe/sentado_malo2_boca.webp"
     },
     {
      "id": "char.jefe.pose_p_sentado_malo3",
