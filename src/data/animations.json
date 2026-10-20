@@ -251,6 +251,20 @@
           "dur": 2.0
         }
       ]
+    },
+    {
+      "nombre": "protesta",
+      "bucle": true,
+      "frames": [
+        {
+          "pose": "sentada_protesta1",
+          "dur": 0.8
+        },
+        {
+          "pose": "sentada_protesta2",
+          "dur": 0.8
+        }
+      ]
     }
   ],
   "barbas": [
@@ -353,6 +367,20 @@
           "dur": 0.7
         }
       ]
+    },
+    {
+      "nombre": "comenta",
+      "bucle": true,
+      "frames": [
+        {
+          "pose": "sentado_comenta1",
+          "dur": 0.9
+        },
+        {
+          "pose": "sentado_comenta2",
+          "dur": 0.8
+        }
+      ]
     }
   ],
   "jefe": [
@@ -431,6 +459,28 @@
         {
           "pose": "sentado_triste_n4",
           "dur": 2.5
+        }
+      ]
+    },
+    {
+      "nombre": "cuenta su drama",
+      "bucle": true,
+      "frames": [
+        {
+          "pose": "sentado_drama1",
+          "dur": 0.9
+        },
+        {
+          "pose": "sentado_drama3",
+          "dur": 0.9
+        },
+        {
+          "pose": "sentado_drama1",
+          "dur": 0.7
+        },
+        {
+          "pose": "sentado_drama2",
+          "dur": 1.2
         }
       ]
     }
