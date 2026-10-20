@@ -19,5 +19,5 @@ for i,v in enumerate(s):
     alpha=np.clip((255-mn[sl])*255/30,0,255)
     inner=ndimage.binary_erosion(keep2,iterations=2)
     alpha[inner]=255; alpha[~keep2]=0
-    out.append((sl[1].start,Image.fromarray(np.dstack([a[sl],alpha]).astype(np.uint8),'RGBA')))
+    out.append(((sl[0].start//250, sl[1].start) if "--rejilla" in sys.argv else sl[1].start,Image.fromarray(np.dstack([a[sl],alpha]).astype(np.uint8),'RGBA')))
 for k,(_,im) in enumerate(sorted(out,key=lambda o:o[0])): im.save(f'{sys.argv[2]}{k+1}.png'); print(k+1,im.size)

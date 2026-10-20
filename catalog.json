@@ -13665,6 +13665,90 @@
    "width": 665,
    "height": 600,
    "src": "/assets/punetos/props/extra_pareja_sofa.webp"
+  },
+  {
+   "id": "prop_extra_movil_1",
+   "label": "Extra · chica con móvil (moño)",
+   "width": 473,
+   "height": 560,
+   "src": "/assets/punetos/props/extra_movil_1.webp"
+  },
+  {
+   "id": "prop_extra_portatil_1",
+   "label": "Extra · chico con gorra y portátil",
+   "width": 627,
+   "height": 560,
+   "src": "/assets/punetos/props/extra_portatil_1.webp"
+  },
+  {
+   "id": "prop_extra_sofa_1",
+   "label": "Extra · pareja en sofá 1",
+   "width": 686,
+   "height": 560,
+   "src": "/assets/punetos/props/extra_sofa_1.webp"
+  },
+  {
+   "id": "prop_extra_sofa_2",
+   "label": "Extra · pareja en sofá 2",
+   "width": 632,
+   "height": 560,
+   "src": "/assets/punetos/props/extra_sofa_2.webp"
+  },
+  {
+   "id": "prop_extra_movil_2",
+   "label": "Extra · chica con cascos y móvil",
+   "width": 566,
+   "height": 560,
+   "src": "/assets/punetos/props/extra_movil_2.webp"
+  },
+  {
+   "id": "prop_extra_portatil_2",
+   "label": "Extra · chico con portátil",
+   "width": 628,
+   "height": 560,
+   "src": "/assets/punetos/props/extra_portatil_2.webp"
+  },
+  {
+   "id": "prop_extra_sofa_3",
+   "label": "Extra · pareja en sofá 3 (relajado)",
+   "width": 819,
+   "height": 560,
+   "src": "/assets/punetos/props/extra_sofa_3.webp"
+  },
+  {
+   "id": "prop_extra_sofa_4",
+   "label": "Extra · pareja en sofá 4",
+   "width": 832,
+   "height": 560,
+   "src": "/assets/punetos/props/extra_sofa_4.webp"
+  },
+  {
+   "id": "prop_extra_movil_3",
+   "label": "Extra · chico con móvil (sudadera)",
+   "width": 570,
+   "height": 560,
+   "src": "/assets/punetos/props/extra_movil_3.webp"
+  },
+  {
+   "id": "prop_extra_portatil_3",
+   "label": "Extra · señora con portátil",
+   "width": 660,
+   "height": 560,
+   "src": "/assets/punetos/props/extra_portatil_3.webp"
+  },
+  {
+   "id": "prop_extra_sofa_5",
+   "label": "Extra · pareja en sofá 5",
+   "width": 879,
+   "height": 560,
+   "src": "/assets/punetos/props/extra_sofa_5.webp"
+  },
+  {
+   "id": "prop_extra_sofa_6",
+   "label": "Extra · pareja en sofá 6",
+   "width": 893,
+   "height": 560,
+   "src": "/assets/punetos/props/extra_sofa_6.webp"
   }
  ]
 }
