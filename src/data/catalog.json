@@ -2713,6 +2713,54 @@
      "archived": true
     },
     {
+     "id": "char.reynaldo.pose_p_anda_n1",
+     "key": "pose_p_anda_n1",
+     "label": "Puñeto · andar (paso 1 de 4)",
+     "src": "/assets/punetos/punetos/reynaldo/anda_n1.webp",
+     "width": 387,
+     "height": 592,
+     "displayScale": 1.094,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.reynaldo.pose_p_anda_n2",
+     "key": "pose_p_anda_n2",
+     "label": "Puñeto · andar (paso 2 de 4)",
+     "src": "/assets/punetos/punetos/reynaldo/anda_n2.webp",
+     "width": 387,
+     "height": 592,
+     "displayScale": 1.094,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.reynaldo.pose_p_anda_n3",
+     "key": "pose_p_anda_n3",
+     "label": "Puñeto · andar (paso 3 de 4)",
+     "src": "/assets/punetos/punetos/reynaldo/anda_n3.webp",
+     "width": 387,
+     "height": 592,
+     "displayScale": 1.094,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.reynaldo.pose_p_anda_n4",
+     "key": "pose_p_anda_n4",
+     "label": "Puñeto · andar (paso 4 de 4)",
+     "src": "/assets/punetos/punetos/reynaldo/anda_n4.webp",
+     "width": 387,
+     "height": 592,
+     "displayScale": 1.094,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
      "id": "char.reynaldo.pose_p_idea",
      "key": "pose_p_idea",
      "label": "Puñeto · idea",
