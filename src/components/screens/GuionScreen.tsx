@@ -759,7 +759,7 @@ function Gestures({ cid, vista, catalog, value, onChange, label, cats }: { cid?:
 
 function PropProps({ st, catalog, field }: { st: Obj; catalog: Catalog; field: (k: string, v: unknown) => void }) {
   const [q, setQ] = useState("");
-  const list = catalog.props.filter((p) => !/_espaldas_|^prop_anastasia_tv/.test(p.id) && (!q || normKey(`${p.id} ${p.label}`).includes(normKey(q))));
+  const list = catalog.props.filter((p) => !/_espaldas_|^prop_anastasia_tv|_c\d$/.test(p.id) && (!q || normKey(`${p.id} ${p.label}`).includes(normKey(q))));
   const placed = typeof st.x === "number" && typeof st.y === "number";
   return (
     <>

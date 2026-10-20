@@ -14102,34 +14102,6 @@
    "src": "/assets/punetos/props/primer_mesa.webp"
   },
   {
-   "id": "prop_extra_camarero",
-   "label": "Extra · camarero en la barra",
-   "width": 617,
-   "height": 760,
-   "src": "/assets/punetos/props/extra_camarero.webp"
-  },
-  {
-   "id": "prop_extra_clienta_movil",
-   "label": "Extra · clienta con el móvil",
-   "width": 404,
-   "height": 640,
-   "src": "/assets/punetos/props/extra_clienta_movil.webp"
-  },
-  {
-   "id": "prop_extra_cliente_portatil",
-   "label": "Extra · cliente con portátil",
-   "width": 449,
-   "height": 620,
-   "src": "/assets/punetos/props/extra_cliente_portatil.webp"
-  },
-  {
-   "id": "prop_extra_pareja_sofa",
-   "label": "Extra · pareja en el sofá",
-   "width": 665,
-   "height": 600,
-   "src": "/assets/punetos/props/extra_pareja_sofa.webp"
-  },
-  {
    "id": "prop_extra_movil_1",
    "label": "Extra · chica con móvil (moño)",
    "width": 473,
@@ -14212,6 +14184,262 @@
    "width": 893,
    "height": 560,
    "src": "/assets/punetos/props/extra_sofa_6.webp"
+  },
+  {
+   "id": "prop_extra_camarero_c1",
+   "label": "(fotograma) extra_camarero 1",
+   "width": 685,
+   "height": 760,
+   "src": "/assets/punetos/props/extra_camarero_c1.webp"
+  },
+  {
+   "id": "prop_extra_camarero_c2",
+   "label": "(fotograma) extra_camarero 2",
+   "width": 685,
+   "height": 760,
+   "src": "/assets/punetos/props/extra_camarero_c2.webp"
+  },
+  {
+   "id": "prop_extra_camarero_c3",
+   "label": "(fotograma) extra_camarero 3",
+   "width": 685,
+   "height": 760,
+   "src": "/assets/punetos/props/extra_camarero_c3.webp"
+  },
+  {
+   "id": "prop_extra_camarero_c4",
+   "label": "(fotograma) extra_camarero 4",
+   "width": 685,
+   "height": 760,
+   "src": "/assets/punetos/props/extra_camarero_c4.webp"
+  },
+  {
+   "id": "prop_extra_camarero_c5",
+   "label": "(fotograma) extra_camarero 5",
+   "width": 685,
+   "height": 760,
+   "src": "/assets/punetos/props/extra_camarero_c5.webp"
+  },
+  {
+   "id": "prop_extra_camarero",
+   "label": "Extra · camarero en la barra · con ciclo",
+   "width": 685,
+   "height": 760,
+   "src": "/assets/punetos/props/extra_camarero_c1.webp",
+   "cycle": [
+    {
+     "id": "prop_extra_camarero_c1",
+     "dur": 2.5
+    },
+    {
+     "id": "prop_extra_camarero_c2",
+     "dur": 2.0
+    },
+    {
+     "id": "prop_extra_camarero_c3",
+     "dur": 1.8
+    },
+    {
+     "id": "prop_extra_camarero_c4",
+     "dur": 2.2
+    },
+    {
+     "id": "prop_extra_camarero_c5",
+     "dur": 1.2
+    }
+   ]
+  },
+  {
+   "id": "prop_extra_clienta_movil_c1",
+   "label": "(fotograma) extra_clienta_movil 1",
+   "width": 493,
+   "height": 640,
+   "src": "/assets/punetos/props/extra_clienta_movil_c1.webp"
+  },
+  {
+   "id": "prop_extra_clienta_movil_c2",
+   "label": "(fotograma) extra_clienta_movil 2",
+   "width": 493,
+   "height": 640,
+   "src": "/assets/punetos/props/extra_clienta_movil_c2.webp"
+  },
+  {
+   "id": "prop_extra_clienta_movil_c3",
+   "label": "(fotograma) extra_clienta_movil 3",
+   "width": 493,
+   "height": 640,
+   "src": "/assets/punetos/props/extra_clienta_movil_c3.webp"
+  },
+  {
+   "id": "prop_extra_clienta_movil_c4",
+   "label": "(fotograma) extra_clienta_movil 4",
+   "width": 493,
+   "height": 640,
+   "src": "/assets/punetos/props/extra_clienta_movil_c4.webp"
+  },
+  {
+   "id": "prop_extra_clienta_movil_c5",
+   "label": "(fotograma) extra_clienta_movil 5",
+   "width": 493,
+   "height": 640,
+   "src": "/assets/punetos/props/extra_clienta_movil_c5.webp"
+  },
+  {
+   "id": "prop_extra_clienta_movil",
+   "label": "Extra · clienta con el móvil · con ciclo",
+   "width": 493,
+   "height": 640,
+   "src": "/assets/punetos/props/extra_clienta_movil_c1.webp",
+   "cycle": [
+    {
+     "id": "prop_extra_clienta_movil_c1",
+     "dur": 3.0
+    },
+    {
+     "id": "prop_extra_clienta_movil_c2",
+     "dur": 1.2
+    },
+    {
+     "id": "prop_extra_clienta_movil_c3",
+     "dur": 1.0
+    },
+    {
+     "id": "prop_extra_clienta_movil_c4",
+     "dur": 2.5
+    },
+    {
+     "id": "prop_extra_clienta_movil_c5",
+     "dur": 2.0
+    }
+   ]
+  },
+  {
+   "id": "prop_extra_cliente_portatil_c1",
+   "label": "(fotograma) extra_cliente_portatil 1",
+   "width": 558,
+   "height": 620,
+   "src": "/assets/punetos/props/extra_cliente_portatil_c1.webp"
+  },
+  {
+   "id": "prop_extra_cliente_portatil_c2",
+   "label": "(fotograma) extra_cliente_portatil 2",
+   "width": 558,
+   "height": 620,
+   "src": "/assets/punetos/props/extra_cliente_portatil_c2.webp"
+  },
+  {
+   "id": "prop_extra_cliente_portatil_c3",
+   "label": "(fotograma) extra_cliente_portatil 3",
+   "width": 558,
+   "height": 620,
+   "src": "/assets/punetos/props/extra_cliente_portatil_c3.webp"
+  },
+  {
+   "id": "prop_extra_cliente_portatil_c4",
+   "label": "(fotograma) extra_cliente_portatil 4",
+   "width": 558,
+   "height": 620,
+   "src": "/assets/punetos/props/extra_cliente_portatil_c4.webp"
+  },
+  {
+   "id": "prop_extra_cliente_portatil_c5",
+   "label": "(fotograma) extra_cliente_portatil 5",
+   "width": 558,
+   "height": 620,
+   "src": "/assets/punetos/props/extra_cliente_portatil_c5.webp"
+  },
+  {
+   "id": "prop_extra_cliente_portatil",
+   "label": "Extra · cliente con portátil · con ciclo",
+   "width": 558,
+   "height": 620,
+   "src": "/assets/punetos/props/extra_cliente_portatil_c1.webp",
+   "cycle": [
+    {
+     "id": "prop_extra_cliente_portatil_c1",
+     "dur": 3.0
+    },
+    {
+     "id": "prop_extra_cliente_portatil_c2",
+     "dur": 2.0
+    },
+    {
+     "id": "prop_extra_cliente_portatil_c3",
+     "dur": 1.2
+    },
+    {
+     "id": "prop_extra_cliente_portatil_c4",
+     "dur": 1.0
+    },
+    {
+     "id": "prop_extra_cliente_portatil_c5",
+     "dur": 2.0
+    }
+   ]
+  },
+  {
+   "id": "prop_extra_pareja_sofa_c1",
+   "label": "(fotograma) extra_pareja_sofa 1",
+   "width": 838,
+   "height": 600,
+   "src": "/assets/punetos/props/extra_pareja_sofa_c1.webp"
+  },
+  {
+   "id": "prop_extra_pareja_sofa_c2",
+   "label": "(fotograma) extra_pareja_sofa 2",
+   "width": 838,
+   "height": 600,
+   "src": "/assets/punetos/props/extra_pareja_sofa_c2.webp"
+  },
+  {
+   "id": "prop_extra_pareja_sofa_c3",
+   "label": "(fotograma) extra_pareja_sofa 3",
+   "width": 838,
+   "height": 600,
+   "src": "/assets/punetos/props/extra_pareja_sofa_c3.webp"
+  },
+  {
+   "id": "prop_extra_pareja_sofa_c4",
+   "label": "(fotograma) extra_pareja_sofa 4",
+   "width": 838,
+   "height": 600,
+   "src": "/assets/punetos/props/extra_pareja_sofa_c4.webp"
+  },
+  {
+   "id": "prop_extra_pareja_sofa_c5",
+   "label": "(fotograma) extra_pareja_sofa 5",
+   "width": 838,
+   "height": 600,
+   "src": "/assets/punetos/props/extra_pareja_sofa_c5.webp"
+  },
+  {
+   "id": "prop_extra_pareja_sofa",
+   "label": "Extra · pareja en el sofá · con ciclo",
+   "width": 838,
+   "height": 600,
+   "src": "/assets/punetos/props/extra_pareja_sofa_c1.webp",
+   "cycle": [
+    {
+     "id": "prop_extra_pareja_sofa_c1",
+     "dur": 2.5
+    },
+    {
+     "id": "prop_extra_pareja_sofa_c2",
+     "dur": 2.5
+    },
+    {
+     "id": "prop_extra_pareja_sofa_c3",
+     "dur": 2.0
+    },
+    {
+     "id": "prop_extra_pareja_sofa_c4",
+     "dur": 2.5
+    },
+    {
+     "id": "prop_extra_pareja_sofa_c5",
+     "dur": 2.5
+    }
+   ]
   }
  ]
 }

@@ -322,10 +322,24 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
         if (!active) break;
         const a = propAnim(e, t);
         const frame2 = e.altPropId && !e.talkOf && Math.floor((t - e.start) / (e.altEvery ?? 0.16)) % 2 === 1;
+        // extras con ciclo: cada uno desfasado (según su id) para que no vayan sincronizados
+        const cyc = !e.altPropId ? findProp(catalog, e.propId)?.cycle : undefined;
+        let cycId: string | undefined;
+        let cycNext: string | undefined;
+        if (cyc?.length) {
+          const total = cyc.reduce((n, f) => n + f.dur, 0);
+          let h = 0;
+          for (const ch of e.id) h = (h * 31 + ch.charCodeAt(0)) % 9973;
+          let local = (t - e.start + (h / 9973) * total) % total;
+          let k = 0;
+          while (k < cyc.length - 1 && local >= cyc[k].dur) local -= cyc[k++].dur;
+          cycId = cyc[k].id;
+          cycNext = cyc[(k + 1) % cyc.length].id;
+        }
         const pr = {
           key: e.id,
-          propId: frame2 ? e.altPropId! : e.propId,
-          altPropId: e.altPropId ? (frame2 ? e.propId : e.altPropId) : undefined,
+          propId: cycId ?? (frame2 ? e.altPropId! : e.propId),
+          altPropId: cycNext ?? (e.altPropId ? (frame2 ? e.propId : e.altPropId) : undefined),
           layer: e.bubbleOf ? "props-front" : e.layer,
           x: e.x + a.dx,
           y: e.y + a.dy,

@@ -67,3 +67,4 @@ Orden: 1A fondo panorámico vacío (entrada, mesas, barra, sofás; suelo despeja
 - Nuevas de Reynaldo: `discute_a1..a4` y `discute_b1..b4` (a4 y b4 miran a la izquierda, facing "left") + animaciones «discutir A» y «discutir B». Recorte: `tools/andar/cut_extras.py <img> <prefijo> --sin-sombra`. Tamaño: figura más alta del pack = 1,05 × altura del neutro antiguo.
 - Pendiente: un **neutro nuevo** por personaje (las escenas aún arrancan con el neutro antiguo), boca cerrada para las poses que hablan, y el resto de personajes.
 - Reynaldo nuevo: «andar» = anda_n1..4 con boca cerrada (sonrisa dibujada) y anda_n*_boca abierta (habla andando).
+- Extras con ciclo: el catálogo de objetos admite `cycle: [{id,dur}]`; evaluate alterna los fotogramas en bucle con desfase por id de evento. Con ciclo: camarero, clienta del móvil, cliente del portátil y pareja del sofá (fotogramas prop_extra_*_c1..5, ocultos en el selector).

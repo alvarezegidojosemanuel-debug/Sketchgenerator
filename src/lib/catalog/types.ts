@@ -176,6 +176,8 @@ export interface Prop {
   height: number;
   placeholder?: boolean;
   user?: boolean;
+  /** Ciclo de vida de fondo (extras): fotogramas que se alternan en bucle, cada uno con su duración (s). */
+  cycle?: { id: string; dur: number }[];
 }
 
 export interface Sound {

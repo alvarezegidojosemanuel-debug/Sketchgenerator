@@ -26,6 +26,7 @@ export function projectImageUrls(project: PocketProject, catalog: Catalog): stri
         for (const id of [e.propId, e.altPropId]) {
           const pr = id ? findProp(catalog, id) : undefined;
           if (pr) urls.add(pr.src);
+          for (const f of pr?.cycle ?? []) { const q = findProp(catalog, f.id); if (q) urls.add(q.src); }
         }
       }
     }
