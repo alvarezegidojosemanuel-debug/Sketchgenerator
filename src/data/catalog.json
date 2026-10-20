@@ -1240,6 +1240,54 @@
      "facing": "right",
      "flat": true,
      "look": "puneto"
+    },
+    {
+     "id": "char.usu.pose_p_come1",
+     "key": "pose_p_come1",
+     "label": "Puñeto · comiendo 1 (lo enseña)",
+     "src": "/assets/punetos/punetos/usu/come1.webp",
+     "width": 517,
+     "height": 597,
+     "displayScale": 0.904,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.usu.pose_p_come2",
+     "key": "pose_p_come2",
+     "label": "Puñeto · comiendo 2 (mordisco)",
+     "src": "/assets/punetos/punetos/usu/come2.webp",
+     "width": 514,
+     "height": 598,
+     "displayScale": 0.904,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.usu.pose_p_come3",
+     "key": "pose_p_come3",
+     "label": "Puñeto · comiendo 3 (mastica)",
+     "src": "/assets/punetos/punetos/usu/come3.webp",
+     "width": 508,
+     "height": 598,
+     "displayScale": 0.904,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.usu.pose_p_come4",
+     "key": "pose_p_come4",
+     "label": "Puñeto · comiendo 4 (acabado)",
+     "src": "/assets/punetos/punetos/usu/come4.webp",
+     "width": 506,
+     "height": 598,
+     "displayScale": 0.904,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
     }
    ],
    "face": {
@@ -2775,6 +2823,54 @@
      "width": 595,
      "height": 685,
      "displayScale": 0.793,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.reynaldo.pose_p_come1",
+     "key": "pose_p_come1",
+     "label": "Puñeto · comiendo 1 (lo enseña)",
+     "src": "/assets/punetos/punetos/reynaldo/come1.webp",
+     "width": 486,
+     "height": 579,
+     "displayScale": 0.914,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.reynaldo.pose_p_come2",
+     "key": "pose_p_come2",
+     "label": "Puñeto · comiendo 2 (mordisco)",
+     "src": "/assets/punetos/punetos/reynaldo/come2.webp",
+     "width": 480,
+     "height": 579,
+     "displayScale": 0.914,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.reynaldo.pose_p_come3",
+     "key": "pose_p_come3",
+     "label": "Puñeto · comiendo 3 (mastica)",
+     "src": "/assets/punetos/punetos/reynaldo/come3.webp",
+     "width": 478,
+     "height": 578,
+     "displayScale": 0.914,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.reynaldo.pose_p_come4",
+     "key": "pose_p_come4",
+     "label": "Puñeto · comiendo 4 (acabado)",
+     "src": "/assets/punetos/punetos/reynaldo/come4.webp",
+     "width": 518,
+     "height": 589,
+     "displayScale": 0.914,
      "facing": "right",
      "flat": true,
      "look": "puneto"
@@ -6946,6 +7042,54 @@
      "facing": "right",
      "flat": true,
      "look": "puneto"
+    },
+    {
+     "id": "char.barbas.pose_p_come1",
+     "key": "pose_p_come1",
+     "label": "Puñeto · comiendo 1 (lo enseña)",
+     "src": "/assets/punetos/punetos/barbas/come1.webp",
+     "width": 424,
+     "height": 515,
+     "displayScale": 0.833,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.barbas.pose_p_come2",
+     "key": "pose_p_come2",
+     "label": "Puñeto · comiendo 2 (mordisco)",
+     "src": "/assets/punetos/punetos/barbas/come2.webp",
+     "width": 409,
+     "height": 516,
+     "displayScale": 0.833,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.barbas.pose_p_come3",
+     "key": "pose_p_come3",
+     "label": "Puñeto · comiendo 3 (mastica)",
+     "src": "/assets/punetos/punetos/barbas/come3.webp",
+     "width": 417,
+     "height": 515,
+     "displayScale": 0.833,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.barbas.pose_p_come4",
+     "key": "pose_p_come4",
+     "label": "Puñeto · comiendo 4 (acabado)",
+     "src": "/assets/punetos/punetos/barbas/come4.webp",
+     "width": 416,
+     "height": 516,
+     "displayScale": 0.833,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
     }
    ],
    "face": {
@@ -8559,6 +8703,54 @@
      "width": 585,
      "height": 683,
      "displayScale": 0.8,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.jefe.pose_p_come1",
+     "key": "pose_p_come1",
+     "label": "Puñeto · comiendo 1 (lo enseña)",
+     "src": "/assets/punetos/punetos/jefe/come1.webp",
+     "width": 480,
+     "height": 598,
+     "displayScale": 0.905,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.jefe.pose_p_come2",
+     "key": "pose_p_come2",
+     "label": "Puñeto · comiendo 2 (mordisco)",
+     "src": "/assets/punetos/punetos/jefe/come2.webp",
+     "width": 492,
+     "height": 600,
+     "displayScale": 0.905,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.jefe.pose_p_come3",
+     "key": "pose_p_come3",
+     "label": "Puñeto · comiendo 3 (mastica)",
+     "src": "/assets/punetos/punetos/jefe/come3.webp",
+     "width": 479,
+     "height": 600,
+     "displayScale": 0.905,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.jefe.pose_p_come4",
+     "key": "pose_p_come4",
+     "label": "Puñeto · comiendo 4 (acabado)",
+     "src": "/assets/punetos/punetos/jefe/come4.webp",
+     "width": 467,
+     "height": 600,
+     "displayScale": 0.905,
      "facing": "right",
      "flat": true,
      "look": "puneto"

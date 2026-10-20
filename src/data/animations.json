@@ -21,6 +21,40 @@
           "dur": 0.15
         }
       ]
+    },
+    {
+      "nombre": "comer",
+      "bucle": false,
+      "frames": [
+        {
+          "pose": "come1",
+          "dur": 1.2
+        },
+        {
+          "pose": "come2",
+          "dur": 0.5
+        },
+        {
+          "pose": "come3",
+          "dur": 0.35
+        },
+        {
+          "pose": "come2",
+          "dur": 0.35
+        },
+        {
+          "pose": "come3",
+          "dur": 0.35
+        },
+        {
+          "pose": "come3",
+          "dur": 1.5
+        },
+        {
+          "pose": "come4",
+          "dur": 2.0
+        }
+      ]
     }
   ],
   "reynaldo": [
@@ -45,6 +79,40 @@
           "dur": 0.15
         }
       ]
+    },
+    {
+      "nombre": "comer",
+      "bucle": false,
+      "frames": [
+        {
+          "pose": "come1",
+          "dur": 1.2
+        },
+        {
+          "pose": "come2",
+          "dur": 0.5
+        },
+        {
+          "pose": "come3",
+          "dur": 0.35
+        },
+        {
+          "pose": "come2",
+          "dur": 0.35
+        },
+        {
+          "pose": "come3",
+          "dur": 0.35
+        },
+        {
+          "pose": "come3",
+          "dur": 1.5
+        },
+        {
+          "pose": "come4",
+          "dur": 2.0
+        }
+      ]
     }
   ],
   "sister": [
@@ -67,6 +135,40 @@
         {
           "pose": "anda4",
           "dur": 0.15
+        }
+      ]
+    },
+    {
+      "nombre": "comer",
+      "bucle": false,
+      "frames": [
+        {
+          "pose": "come1",
+          "dur": 1.2
+        },
+        {
+          "pose": "come2",
+          "dur": 0.5
+        },
+        {
+          "pose": "come3",
+          "dur": 0.35
+        },
+        {
+          "pose": "come2",
+          "dur": 0.35
+        },
+        {
+          "pose": "come3",
+          "dur": 0.35
+        },
+        {
+          "pose": "come3",
+          "dur": 1.5
+        },
+        {
+          "pose": "come4",
+          "dur": 2.0
         }
       ]
     }
@@ -115,6 +217,40 @@
           "dur": 0.15
         }
       ]
+    },
+    {
+      "nombre": "comer",
+      "bucle": false,
+      "frames": [
+        {
+          "pose": "come1",
+          "dur": 1.2
+        },
+        {
+          "pose": "come2",
+          "dur": 0.5
+        },
+        {
+          "pose": "come3",
+          "dur": 0.35
+        },
+        {
+          "pose": "come2",
+          "dur": 0.35
+        },
+        {
+          "pose": "come3",
+          "dur": 0.35
+        },
+        {
+          "pose": "come3",
+          "dur": 1.5
+        },
+        {
+          "pose": "come4",
+          "dur": 2.0
+        }
+      ]
     }
   ],
   "jefe": [
@@ -137,6 +273,40 @@
         {
           "pose": "anda4",
           "dur": 0.15
+        }
+      ]
+    },
+    {
+      "nombre": "comer",
+      "bucle": false,
+      "frames": [
+        {
+          "pose": "come1",
+          "dur": 1.2
+        },
+        {
+          "pose": "come2",
+          "dur": 0.5
+        },
+        {
+          "pose": "come3",
+          "dur": 0.35
+        },
+        {
+          "pose": "come2",
+          "dur": 0.35
+        },
+        {
+          "pose": "come3",
+          "dur": 0.35
+        },
+        {
+          "pose": "come3",
+          "dur": 1.5
+        },
+        {
+          "pose": "come4",
+          "dur": 2.0
         }
       ]
     }
