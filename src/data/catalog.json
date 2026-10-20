@@ -4987,7 +4987,7 @@
      "key": "pose_p_come1",
      "label": "Puñeto · comiendo 1 (lo enseña)",
      "src": "/assets/punetos/punetos/sister/come1.webp",
-     "width": 432,
+     "width": 433,
      "height": 560,
      "displayScale": 0.923,
      "facing": "right",
@@ -5023,7 +5023,7 @@
      "key": "pose_p_come4",
      "label": "Puñeto · comiendo 4 (acabado)",
      "src": "/assets/punetos/punetos/sister/come4.webp",
-     "width": 427,
+     "width": 428,
      "height": 561,
      "displayScale": 0.923,
      "facing": "right",
@@ -7120,7 +7120,7 @@
      "key": "pose_p_come3",
      "label": "Puñeto · comiendo 3 (mastica)",
      "src": "/assets/punetos/punetos/barbas/come3.webp",
-     "width": 417,
+     "width": 415,
      "height": 515,
      "displayScale": 0.833,
      "facing": "right",
@@ -8736,7 +8736,7 @@
      "key": "pose_p_cafe_discute2",
      "label": "Puñeto · café · discutiendo (dedo)",
      "src": "/assets/punetos/punetos/jefe/cafe_discute2.webp",
-     "width": 588,
+     "width": 587,
      "height": 683,
      "displayScale": 0.8,
      "facing": "right",
@@ -13637,6 +13637,34 @@
    "width": 587,
    "height": 520,
    "src": "/assets/punetos/props/primer_mesa.webp"
+  },
+  {
+   "id": "prop_extra_camarero",
+   "label": "Extra · camarero en la barra",
+   "width": 617,
+   "height": 760,
+   "src": "/assets/punetos/props/extra_camarero.webp"
+  },
+  {
+   "id": "prop_extra_clienta_movil",
+   "label": "Extra · clienta con el móvil",
+   "width": 404,
+   "height": 640,
+   "src": "/assets/punetos/props/extra_clienta_movil.webp"
+  },
+  {
+   "id": "prop_extra_cliente_portatil",
+   "label": "Extra · cliente con portátil",
+   "width": 449,
+   "height": 620,
+   "src": "/assets/punetos/props/extra_cliente_portatil.webp"
+  },
+  {
+   "id": "prop_extra_pareja_sofa",
+   "label": "Extra · pareja en el sofá",
+   "width": 665,
+   "height": 600,
+   "src": "/assets/punetos/props/extra_pareja_sofa.webp"
   }
  ]
 }

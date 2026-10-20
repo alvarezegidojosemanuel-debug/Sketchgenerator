@@ -58,3 +58,4 @@ Orden: 1A fondo panorámico vacío (entrada, mesas, barra, sofás; suelo despeja
 - Objetos ya instalados (catálogo): prop_mesa_redonda, prop_silla_cafeteria, prop_taza_cafe, prop_vaso_cafe, prop_cruasan, prop_bandeja, prop_jarrita_leche, prop_servilletero, prop_primer_planta y prop_primer_mesa (primer término, para delante de los personajes).
 - Falta la sesión 2 (Puñetos sentados y extras con ciclos).
 - Poses sentados con café instaladas (pose_p_cafe_habla / cafe_bebe / cafe_aburrido) para los 5; Sister sale con pelo y bolso más oscuros que en su diseño.
+- Extras instalados como objetos: prop_extra_camarero, prop_extra_clienta_movil, prop_extra_cliente_portatil, prop_extra_pareja_sofa (pose base; faltan sus ciclos por edición). Recorte con tools/andar/cut_extras.py (conserva blancos interiores: ojos, tazas); re-recortados con él todos los packs sentado/comer.
