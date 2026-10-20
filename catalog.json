@@ -12787,6 +12787,76 @@
    "src": "/assets/punetos/props/hoja_pendiente.webp",
    "width": 110,
    "height": 145
+  },
+  {
+   "id": "prop_mesa_redonda",
+   "label": "Mesa redonda de cafetería",
+   "width": 445,
+   "height": 330,
+   "src": "/assets/punetos/props/mesa_redonda.webp"
+  },
+  {
+   "id": "prop_silla_cafeteria",
+   "label": "Silla de cafetería (de lado)",
+   "width": 214,
+   "height": 300,
+   "src": "/assets/punetos/props/silla_cafeteria.webp"
+  },
+  {
+   "id": "prop_taza_cafe",
+   "label": "Taza de café con plato",
+   "width": 88,
+   "height": 60,
+   "src": "/assets/punetos/props/taza_cafe.webp"
+  },
+  {
+   "id": "prop_vaso_cafe",
+   "label": "Vaso de café para llevar",
+   "width": 68,
+   "height": 110,
+   "src": "/assets/punetos/props/vaso_cafe.webp"
+  },
+  {
+   "id": "prop_cruasan",
+   "label": "Plato con cruasán",
+   "width": 93,
+   "height": 55,
+   "src": "/assets/punetos/props/cruasan.webp"
+  },
+  {
+   "id": "prop_bandeja",
+   "label": "Bandeja",
+   "width": 96,
+   "height": 45,
+   "src": "/assets/punetos/props/bandeja.webp"
+  },
+  {
+   "id": "prop_jarrita_leche",
+   "label": "Jarrita de leche",
+   "width": 70,
+   "height": 70,
+   "src": "/assets/punetos/props/jarrita_leche.webp"
+  },
+  {
+   "id": "prop_servilletero",
+   "label": "Servilletero",
+   "width": 67,
+   "height": 70,
+   "src": "/assets/punetos/props/servilletero.webp"
+  },
+  {
+   "id": "prop_primer_planta",
+   "label": "Primer término · planta",
+   "width": 821,
+   "height": 1150,
+   "src": "/assets/punetos/props/primer_planta.webp"
+  },
+  {
+   "id": "prop_primer_mesa",
+   "label": "Primer término · canto de mesa",
+   "width": 587,
+   "height": 520,
+   "src": "/assets/punetos/props/primer_mesa.webp"
   }
  ]
 }

@@ -52,3 +52,8 @@ Quiere que se muevan por la escena en profundidad (arriba/abajo, en diagonal), m
 
 ## Arte pedido para la gran escena de la cafetería (19-oct)
 Orden: 1A fondo panorámico vacío (entrada, mesas, barra, sofás; suelo despejado abajo; ampliar por los lados si sale estrecho) · 1B primer término (planta + canto de mesa) · 2 hoja de objetos (mesa redonda, silla de lado, taza, vaso para llevar, cruasán, bandeja, jarra, servilletero) · 3 cada Puñeto sentado de perfil en silla (habla, bebe, aburrido) · 4 extras con ciclos por edición (camarero secando taza, clienta con móvil, cliente con portátil, pareja en sofá). Todo en el estilo de bg_cafeteria, fondo blanco, sin sombra, separados.
+
+## Arte recibido de la cafetería (sesión 1 de ChatGPT, 20-oct)
+- Fondos panorámicos (2000×667, 3:1) guardados en `public/assets/punetos/backgrounds/panoramicas/cafeteria_pano_a.webp` (mesas más cerca) y `cafeteria_pano_b.webp` (más suelo libre, recomendado). **No están en el catálogo** porque la app aún no sabe mostrar fondos más anchos que la pantalla: es el primer paso del «escenario grande» (cámara que recorre el panorama; ojo, 667 px de alto es poco para 1920: habrá que escalar ~2,9× o pedir más resolución/ampliar por arriba y abajo).
+- Objetos ya instalados (catálogo): prop_mesa_redonda, prop_silla_cafeteria, prop_taza_cafe, prop_vaso_cafe, prop_cruasan, prop_bandeja, prop_jarrita_leche, prop_servilletero, prop_primer_planta y prop_primer_mesa (primer término, para delante de los personajes).
+- Falta la sesión 2 (Puñetos sentados y extras con ciclos).
