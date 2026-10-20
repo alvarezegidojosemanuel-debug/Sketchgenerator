@@ -1204,6 +1204,42 @@
      "facing": "right",
      "flat": true,
      "look": "puneto"
+    },
+    {
+     "id": "char.usu.pose_p_cafe_discute",
+     "key": "pose_p_cafe_discute",
+     "label": "Puñeto · café · discutiendo",
+     "src": "/assets/punetos/punetos/usu/cafe_discute.webp",
+     "width": 622,
+     "height": 656,
+     "displayScale": 0.838,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.usu.pose_p_cafe_discute2",
+     "key": "pose_p_cafe_discute2",
+     "label": "Puñeto · café · discutiendo (dedo)",
+     "src": "/assets/punetos/punetos/usu/cafe_discute2.webp",
+     "width": 578,
+     "height": 656,
+     "displayScale": 0.838,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.usu.pose_p_cafe_discute3",
+     "key": "pose_p_cafe_discute3",
+     "label": "Puñeto · café · discutiendo (protesta)",
+     "src": "/assets/punetos/punetos/usu/cafe_discute3.webp",
+     "width": 602,
+     "height": 655,
+     "displayScale": 0.838,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
     }
    ],
    "face": {
@@ -2702,6 +2738,42 @@
      "src": "/assets/punetos/punetos/reynaldo/cafe_relajado.webp",
      "width": 543,
      "height": 664,
+     "displayScale": 0.793,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.reynaldo.pose_p_cafe_discute",
+     "key": "pose_p_cafe_discute",
+     "label": "Puñeto · café · discutiendo",
+     "src": "/assets/punetos/punetos/reynaldo/cafe_discute.webp",
+     "width": 617,
+     "height": 684,
+     "displayScale": 0.793,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.reynaldo.pose_p_cafe_discute2",
+     "key": "pose_p_cafe_discute2",
+     "label": "Puñeto · café · discutiendo (dedo)",
+     "src": "/assets/punetos/punetos/reynaldo/cafe_discute2.webp",
+     "width": 580,
+     "height": 688,
+     "displayScale": 0.793,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.reynaldo.pose_p_cafe_discute3",
+     "key": "pose_p_cafe_discute3",
+     "label": "Puñeto · café · discutiendo (protesta)",
+     "src": "/assets/punetos/punetos/reynaldo/cafe_discute3.webp",
+     "width": 595,
+     "height": 685,
      "displayScale": 0.793,
      "facing": "right",
      "flat": true,
@@ -4777,6 +4849,42 @@
      "facing": "right",
      "flat": true,
      "look": "puneto"
+    },
+    {
+     "id": "char.sister.pose_p_cafe_discute",
+     "key": "pose_p_cafe_discute",
+     "label": "Puñeto · café · discutiendo",
+     "src": "/assets/punetos/punetos/sister/cafe_discute.webp",
+     "width": 608,
+     "height": 665,
+     "displayScale": 0.773,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.sister.pose_p_cafe_discute2",
+     "key": "pose_p_cafe_discute2",
+     "label": "Puñeto · café · discutiendo (dedo)",
+     "src": "/assets/punetos/punetos/sister/cafe_discute2.webp",
+     "width": 574,
+     "height": 665,
+     "displayScale": 0.773,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.sister.pose_p_cafe_discute3",
+     "key": "pose_p_cafe_discute3",
+     "label": "Puñeto · café · discutiendo (protesta)",
+     "src": "/assets/punetos/punetos/sister/cafe_discute3.webp",
+     "width": 599,
+     "height": 665,
+     "displayScale": 0.773,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
     }
    ],
    "face": {
@@ -6802,6 +6910,42 @@
      "facing": "right",
      "flat": true,
      "look": "puneto"
+    },
+    {
+     "id": "char.barbas.pose_p_cafe_discute",
+     "key": "pose_p_cafe_discute",
+     "label": "Puñeto · café · discutiendo",
+     "src": "/assets/punetos/punetos/barbas/cafe_discute.webp",
+     "width": 605,
+     "height": 669,
+     "displayScale": 0.645,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.barbas.pose_p_cafe_discute2",
+     "key": "pose_p_cafe_discute2",
+     "label": "Puñeto · café · discutiendo (dedo)",
+     "src": "/assets/punetos/punetos/barbas/cafe_discute2.webp",
+     "width": 602,
+     "height": 672,
+     "displayScale": 0.645,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.barbas.pose_p_cafe_discute3",
+     "key": "pose_p_cafe_discute3",
+     "label": "Puñeto · café · discutiendo (protesta)",
+     "src": "/assets/punetos/punetos/barbas/cafe_discute3.webp",
+     "width": 613,
+     "height": 671,
+     "displayScale": 0.645,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
     }
    ],
    "face": {
@@ -8378,6 +8522,42 @@
      "src": "/assets/punetos/punetos/jefe/cafe_relajado.webp",
      "width": 584,
      "height": 693,
+     "displayScale": 0.8,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.jefe.pose_p_cafe_discute",
+     "key": "pose_p_cafe_discute",
+     "label": "Puñeto · café · discutiendo",
+     "src": "/assets/punetos/punetos/jefe/cafe_discute.webp",
+     "width": 577,
+     "height": 683,
+     "displayScale": 0.8,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.jefe.pose_p_cafe_discute2",
+     "key": "pose_p_cafe_discute2",
+     "label": "Puñeto · café · discutiendo (dedo)",
+     "src": "/assets/punetos/punetos/jefe/cafe_discute2.webp",
+     "width": 588,
+     "height": 683,
+     "displayScale": 0.8,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.jefe.pose_p_cafe_discute3",
+     "key": "pose_p_cafe_discute3",
+     "label": "Puñeto · café · discutiendo (protesta)",
+     "src": "/assets/punetos/punetos/jefe/cafe_discute3.webp",
+     "width": 585,
+     "height": 683,
      "displayScale": 0.8,
      "facing": "right",
      "flat": true,
