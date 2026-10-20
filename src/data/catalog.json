@@ -4981,6 +4981,54 @@
      "facing": "right",
      "flat": true,
      "look": "puneto"
+    },
+    {
+     "id": "char.sister.pose_p_come1",
+     "key": "pose_p_come1",
+     "label": "Puñeto · comiendo 1 (lo enseña)",
+     "src": "/assets/punetos/punetos/sister/come1.webp",
+     "width": 432,
+     "height": 560,
+     "displayScale": 0.923,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.sister.pose_p_come2",
+     "key": "pose_p_come2",
+     "label": "Puñeto · comiendo 2 (mordisco)",
+     "src": "/assets/punetos/punetos/sister/come2.webp",
+     "width": 392,
+     "height": 561,
+     "displayScale": 0.923,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.sister.pose_p_come3",
+     "key": "pose_p_come3",
+     "label": "Puñeto · comiendo 3 (mastica)",
+     "src": "/assets/punetos/punetos/sister/come3.webp",
+     "width": 435,
+     "height": 561,
+     "displayScale": 0.923,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.sister.pose_p_come4",
+     "key": "pose_p_come4",
+     "label": "Puñeto · comiendo 4 (acabado)",
+     "src": "/assets/punetos/punetos/sister/come4.webp",
+     "width": 427,
+     "height": 561,
+     "displayScale": 0.923,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
     }
    ],
    "face": {
