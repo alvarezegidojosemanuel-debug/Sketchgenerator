@@ -88,7 +88,7 @@ export function trimSilence(samples: Float32Array, sampleRate: number, threshold
  * frases seguidas en modo conversación: trozos de voz cortos (< maxBlob s) separados del cuerpo de la frase
  * por un silencio de al menos minGap s, en los primeros/últimos 0,7 s.
  */
-export function dropEdgeBlobs(samples: Float32Array, sampleRate: number, threshold = 0.012, minGap = 0.04, maxBlob = 0.3): Float32Array {
+export function dropEdgeBlobs(samples: Float32Array, sampleRate: number, threshold = 0.012, minGap = 0.04, maxBlob = 0.3, ends: { head?: boolean; tail?: boolean } = { head: true, tail: true }): Float32Array {
   const win = Math.max(1, Math.round(sampleRate * 0.01));
   const n = Math.ceil(samples.length / win);
   const on: boolean[] = [];
@@ -108,8 +108,8 @@ export function dropEdgeBlobs(samples: Float32Array, sampleRate: number, thresho
   const len = (r: [number, number]) => (r[1] - r[0] + 1) / 100;
   let a = 0;
   let b = merged.length - 1;
-  while (a < b && len(merged[a]) < maxBlob && merged[a][1] < 70) a++;
-  while (b > a && len(merged[b]) < maxBlob && merged[b][0] > n - 70) b--;
+  while (ends.head && a < b && len(merged[a]) < maxBlob && merged[a][1] < 70) a++;
+  while (ends.tail && b > a && len(merged[b]) < maxBlob && merged[b][0] > n - 70) b--;
   if (a === 0 && b === merged.length - 1) return samples;
   const i0 = Math.max(0, merged[a][0] * win - Math.round(0.03 * sampleRate));
   const i1 = Math.min(samples.length, (merged[b][1] + 1) * win + Math.round(0.08 * sampleRate));

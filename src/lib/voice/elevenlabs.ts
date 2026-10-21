@@ -88,6 +88,11 @@ export function autoCast(voices: ElevenVoice[], characterIds: string[]): Record<
   return out;
 }
 
+/** Los «ah» que mete ElevenLabs aparecen entre frases seguidas del MISMO personaje: solo ahí se quitan. */
+function sameNeighbours(group: { characterId: string }[], i: number) {
+  return { head: group[i - 1]?.characterId === group[i].characterId, tail: group[i + 1]?.characterId === group[i].characterId };
+}
+
 async function decode(buf: ArrayBuffer): Promise<{ samples: Float32Array; sampleRate: number }> {
   const audio = await audioContext().decodeAudioData(buf.slice(0));
   const ch = audio.getChannelData(0);
@@ -125,7 +130,7 @@ export async function generateElevenDialogue(
     const base = `dlg2|${stability}|${JSON.stringify(inputs)}`;
     const cached = await Promise.all(group.map((_, i) => clipCache.get(`${base}|${i}`).catch(() => undefined)));
     if (cached.every(Boolean)) {
-      group.forEach((l, i) => { const c = cached[i]!; out.set(l.key, toClip(shape({ samples: dropEdgeBlobs(trimSilence(c.samples, c.sampleRate, 0.006, 0.02, 0.1), c.sampleRate), sampleRate: c.sampleRate }, cast?.[l.characterId], l.characterId))); });
+      group.forEach((l, i) => { const c = cached[i]!; out.set(l.key, toClip(shape({ samples: dropEdgeBlobs(trimSilence(c.samples, c.sampleRate, 0.006, 0.02, 0.1), c.sampleRate, 0.012, 0.04, 0.3, sameNeighbours(group, i)), sampleRate: c.sampleRate }, cast?.[l.characterId], l.characterId))); });
       continue;
     }
     onProgress?.({ stage: "generate", label: `Conversación: escena ${g}/${groups.size}`, ratio: (g - 1) / groups.size });
@@ -163,7 +168,7 @@ export async function generateElevenDialogue(
       }
       await clipCache.put(`${base}|${i}`, piece).catch(() => {});
       // en modo conversación ElevenLabs deja pausas entre frases: se recortan (el ritmo lo marca el guion)
-      const tight = { samples: dropEdgeBlobs(trimSilence(piece.samples, piece.sampleRate, 0.006, 0.02, 0.1), piece.sampleRate), sampleRate: piece.sampleRate };
+      const tight = { samples: dropEdgeBlobs(trimSilence(piece.samples, piece.sampleRate, 0.006, 0.02, 0.1), piece.sampleRate, 0.012, 0.04, 0.3, sameNeighbours(group, i)), sampleRate: piece.sampleRate };
       out.set(group[i].key, toClip(shape(tight, cast?.[group[i].characterId], group[i].characterId)));
     }
   }
