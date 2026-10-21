@@ -219,13 +219,17 @@
         {
           "efecto": "corazones",
           "donde": "Vanesa",
-          "durante": 2.2
+          "durante": 4
         },
         {
           "dice": "Vanesa",
           "texto": "Ay… mi Reycito de oro. ¿Un cafecito abajo, conmigo?",
           "gesto": "ilusion",
           "pausa_despues": 0.1
+        },
+        {
+          "quien": "Vanesa",
+          "gesto": "abraza"
         },
         {
           "dice": "Barbas",

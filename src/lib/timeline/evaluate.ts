@@ -258,9 +258,11 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
           st.poseId = e.poseId;
           st.poseMix = 1;
         } else if (e.poseId && e.poseId !== st.poseId) {
-          // estirar y encoger al cambiar de pose (anticipación + rebote), con los pies en el suelo
+          // estirar y encoger al cambiar de pose (anticipación + rebote), con los pies en el suelo;
+          // no mientras habla (entre frase y frase parecía que botaba)
           const k = (t - e.start) / 0.45;
-          if (k >= 0 && k < 1) {
+          const talking = take.events.some((o) => o.track === "dialogue" && o.actorUid === st.uid && o.start - 0.6 <= e.start && o.start + o.duration + 0.6 >= e.start);
+          if (k >= 0 && k < 1 && !talking) {
             const s = Math.sin(k * Math.PI * 2) * (1 - k) * 0.07;
             st.sy *= 1 - s;
             st.sx *= 1 + s * 0.7;

@@ -196,8 +196,11 @@ describe("vida automática y cámara", () => {
     const skews = new Set<number>();
     for (let t = line.start + 0.3; t < line.start + line.duration - 0.3; t += 0.1) skews.add(Math.round(evaluateTake(tk, catalog, t).actors.find((a) => a.uid === line.actorUid)!.skew * 10));
     expect(skews.size).toBeGreaterThan(3);
-    const body = tk.events.find((e) => e.track === "body" && e.poseId)!;
-    const a = evaluateTake(tk, catalog, body.start + 0.1).actors.find((x) => x.uid === body.actorUid)!;
-    expect(Math.abs(a.sy - 1)).toBeGreaterThan(0.01);
+    // el estirar-encoger al cambiar de pose solo cuando no está hablando (entre frases parecía que botaba)
+    const body = tk.events.find((e) => e.track === "body" && e.poseId && !tk.events.some((d) => d.track === "dialogue" && d.actorUid === e.actorUid && Math.abs(d.start - e.start) < 0.7))!;
+    if (body) {
+      const a = evaluateTake(tk, catalog, body.start + 0.1).actors.find((x) => x.uid === body.actorUid)!;
+      expect(Math.abs(a.sy - 1)).toBeGreaterThan(0.01);
+    }
   });
 });
