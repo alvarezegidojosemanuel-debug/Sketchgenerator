@@ -72,7 +72,12 @@
         {
           "dice": "Usu",
           "texto": "¡NI SE TE OCURRA!",
-          "gesto": "sentado_panico"
+          "gesto": "grita",
+          "emocion": "enfado"
+        },
+        {
+          "efecto": "enfado",
+          "donde": "Usu"
         },
         {
           "sonido": "whoosh"
@@ -184,17 +189,20 @@
         {
           "dice": "Vanesa",
           "texto": "Alto ahí. Sin fichar no pasa nadie.",
-          "gesto": "senala"
+          "gesto": "senala",
+          "pausa_despues": 0.1
         },
         {
           "dice": "Jefe",
           "texto": "Uy… me he vuelto a olvidar la tarjeta.",
-          "gesto": "confundido"
+          "gesto": "confundido",
+          "pausa_despues": 0.15
         },
         {
           "dice": "Vanesa",
           "texto": "¿Otra vez? Es la tercera esta semana. Y estamos a lunes.",
-          "gesto": "explica"
+          "gesto": "explica",
+          "pausa_despues": 0.1
         },
         {
           "quien": "Reynaldo",
@@ -209,14 +217,21 @@
           "gesto": "ilusion"
         },
         {
+          "efecto": "corazones",
+          "donde": "Vanesa",
+          "durante": 2.2
+        },
+        {
           "dice": "Vanesa",
           "texto": "Ay… mi Reycito de oro. ¿Un cafecito abajo, conmigo?",
-          "gesto": "boli"
+          "gesto": "ilusion",
+          "pausa_despues": 0.1
         },
         {
           "dice": "Barbas",
           "texto": "Venga, Reynaldo, que tenías que hablarle del convenio.",
-          "gesto": "explica"
+          "gesto": "explica",
+          "pausa_despues": 0.15
         },
         {
           "empuja": "Barbas",
@@ -226,7 +241,8 @@
         {
           "dice": "Reynaldo",
           "texto": "Son las nueve menos uno. Hasta las nueve no existo. Y tú tampoco deberías.",
-          "gesto": "para"
+          "gesto": "para",
+          "pausa_despues": 0.15
         },
         {
           "huye": "Jefe",
@@ -235,7 +251,8 @@
         {
           "dice": "Vanesa",
           "texto": "Oye, Jefe… ¿a dónde se supone que vas?",
-          "gesto": "neutro"
+          "gesto": "brazos2",
+          "pausa_despues": 0.1
         },
         {
           "off": "Anastas-IA",
@@ -248,7 +265,8 @@
         {
           "dice": "Usu",
           "texto": "¡Gracias! [sadly] Qué pena que solo una máquina se dé cuenta…",
-          "gesto": "encoge"
+          "gesto": "encoge",
+          "pausa_despues": 0.15
         },
         {
           "efecto": "enfado",
@@ -301,17 +319,16 @@
       ],
       "pasos": [
         {
-          "sonido": "teclado"
-        },
-        {
           "dice": "Sister",
           "texto": "Jefe, la reunión de las diez. Te la he puesto en el móvil, en el calendario y en un pósit.",
-          "gesto": "movil"
+          "gesto": "movil",
+          "pausa_despues": 0.05
         },
         {
           "dice": "Jefe",
           "texto": "¿Qué reunión?",
-          "gesto": "confundido"
+          "gesto": "confundido",
+          "pausa_despues": 0.05
         },
         {
           "entra": "Director"
@@ -319,77 +336,88 @@
         {
           "dice": "Director",
           "texto": "¡Mira! ¡Aquí está mi equipo de nerds favorito!",
-          "gesto": "explica"
+          "gesto": "explica",
+          "pausa_despues": 0.05
         },
         {
           "dice": "Director",
           "texto": "A ti, Jefe, te estaba buscando.",
-          "gesto": "senala"
+          "gesto": "senala",
+          "pausa_despues": 0.05
         },
         {
           "dice": "Director",
           "texto": "Este viernes presentamos ÍCARO ante los inversores. Y no puede fallar nada.",
-          "gesto": "explica"
+          "gesto": "explica",
+          "pausa_despues": 0.05
         },
         {
           "dice": "Director",
           "texto": "Más te vale que no pierda ese contrato por vuestra incompetencia.",
-          "gesto": "grita_senala"
+          "gesto": "grita_senala",
+          "pausa_despues": 0.05
         },
         {
           "dice": "Director",
           "texto": "¡Así que lo quiero todo funcionando!",
-          "gesto": "grita"
+          "gesto": "grita",
+          "pausa_despues": 0.05
         },
         {
           "dice": "Jefe",
           "texto": "¿ÍCARO? Umm… Vale, vale. Todo saldrá bien, no se preocupe.",
-          "gesto": "explica"
+          "gesto": "explica",
+          "pausa_despues": 0.05
         },
         {
           "dice": "Director",
           "texto": "Más te vale…",
-          "gesto": "neutro"
+          "gesto": "neutro",
+          "pausa_despues": 0.05
         },
         {
           "sale": "Director"
         },
         {
-          "pausa": 0.5
-        },
-        {
           "dice": "Sister",
           "texto": "Jefe, no sabes de qué te está hablando, ¿verdad?",
-          "gesto": "explica"
+          "gesto": "explica",
+          "pausa_despues": 0.05
         },
         {
           "dice": "Jefe",
           "texto": "Pues no…",
-          "gesto": "confundido"
+          "gesto": "confundido",
+          "pausa_despues": 0.05
         },
         {
           "dice": "Sister",
           "texto": "Ay, Dios… Nada, ya te envío un correo con todo el estado del proyecto.",
-          "gesto": "movil"
+          "gesto": "movil",
+          "pausa_despues": 0.05
         },
         {
           "dice": "Barbas",
           "texto": "Yo no sé, Jefe, pero me parece una puta vergüenza que nos trate así ese psicópata.",
-          "gesto": "explica"
+          "gesto": "explica",
+          "pausa_despues": 0.05
         },
         {
           "dice": "Barbas",
           "texto": "Deberías ir a hablar con él y dejárselo claro.",
-          "gesto": "senala"
+          "gesto": "senala",
+          "pausa_despues": 0.05
         },
         {
           "dice": "Jefe",
           "texto": "¡Sí, es cierto! Luego iré a su despacho y le pondré en su sitio.",
-          "gesto": "explica"
+          "gesto": "explica",
+          "pausa_despues": 0.05
         },
         {
           "off": "Anastas-IA",
-          "texto": "Recordatorio: la productividad mejora con descansos. Usu, has trabajado muy bien hoy."
+          "texto": "Recordatorio: la productividad mejora con descansos. Usu, has trabajado muy bien hoy.",
+          "pausa_despues": 0.1
         },
         {
           "mira": "Barbas",
@@ -398,7 +426,8 @@
         {
           "dice": "Barbas",
           "texto": "¡Pero si solo son las nueve y cinco!",
-          "gesto": "encoge"
+          "gesto": "encoge",
+          "pausa_despues": 0.05
         }
       ],
       "pantalla": {

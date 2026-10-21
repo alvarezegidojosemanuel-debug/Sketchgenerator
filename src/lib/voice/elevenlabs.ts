@@ -162,7 +162,9 @@ export async function generateElevenDialogue(
         piece = { samples: c.samples, sampleRate: c.sampleRate };
       }
       await clipCache.put(`${base}|${i}`, piece).catch(() => {});
-      out.set(group[i].key, toClip(shape(piece, cast?.[group[i].characterId], group[i].characterId)));
+      // en modo conversación ElevenLabs deja pausas entre frases: se recortan (el ritmo lo marca el guion)
+      const tight = { samples: trimSilence(piece.samples, piece.sampleRate, 0.006, 0.02, 0.1), sampleRate: piece.sampleRate };
+      out.set(group[i].key, toClip(shape(tight, cast?.[group[i].characterId], group[i].characterId)));
     }
   }
   onProgress?.({ stage: "generate", label: "Voces listas", ratio: 1 });
