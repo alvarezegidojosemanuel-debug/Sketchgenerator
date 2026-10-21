@@ -241,7 +241,7 @@
         },
         {
           "dice": "Reynaldo",
-          "texto": "Son las nueve menos uno. Hasta las nueve no existo. Y tú tampoco deberías.",
+          "texto": "Son las nueve menos uno. Hasta las nueve no existo.",
           "gesto": "para",
           "pausa_despues": 0.15
         },
