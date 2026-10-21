@@ -4,6 +4,37 @@
   "idea": "El Jefe no cobra el alquiler de la casa que heredó; los Puñetos discuten qué hacer en la cafetería.",
   "escenas": [
     {
+      "nombre": "Título",
+      "lugar": "bg_cafeteria_barra",
+      "transicion": "fundido",
+      "pasos": [
+        {
+          "sonido": "whoosh"
+        },
+        {
+          "objeto": "prop_logo_punetos",
+          "durante": 3.6,
+          "anim": "flota"
+        },
+        {
+          "pausa": 0.5
+        },
+        {
+          "sonido": "pop"
+        },
+        {
+          "efecto": "titulo",
+          "x": 540,
+          "y": 1420,
+          "texto": "Un par de añitos",
+          "durante": 3.0
+        },
+        {
+          "pausa": 3.1
+        }
+      ]
+    },
+    {
       "nombre": "La pausa del café",
       "lugar": "bg_cafeteria_barra",
       "camara": "auto",
@@ -54,26 +85,46 @@
       },
       "pasos": [
         {
-          "objeto": "prop_extra_clienta_movil",
-          "x": 120,
-          "y": 1330,
-          "escala": 0.42,
-          "capa": "detras"
+          "sonido": "sfx_ambiente_recepcion"
         },
         {
-          "objeto": "prop_extra_cliente_portatil",
-          "x": 960,
-          "y": 1330,
+          "objeto": "prop_extra_camarero",
+          "x": 340,
+          "y": 790,
           "escala": 0.42,
           "capa": "detras",
           "voltear": true
         },
         {
+          "objeto": "prop_extra_cliente_portatil",
+          "x": 960,
+          "y": 1160,
+          "escala": 0.57,
+          "capa": "detras",
+          "voltear": true
+        },
+        {
           "objeto": "prop_mesa_redonda",
-          "x": 545,
-          "y": 1900,
-          "escala": 1.25,
+          "x": 555,
+          "y": 1660,
+          "escala": 0.9,
           "profundidad": 6
+        },
+        {
+          "objeto": "prop_mesa_redonda",
+          "x": 355,
+          "y": 1150,
+          "escala": 0.6,
+          "profundidad": 6,
+          "capa": "detras"
+        },
+        {
+          "objeto": "prop_servilletero",
+          "x": 355,
+          "y": 980,
+          "escala": 0.6,
+          "profundidad": 6,
+          "capa": "detras"
         },
         {
           "objeto": "prop_primer_planta",
@@ -158,7 +209,8 @@
         {
           "dice": "Jefe",
           "texto": "Ya sé… Me busco yo una casa vacía y me meto.",
-          "gesto": "sentado_malo1"
+          "gesto": "sentado_malo1",
+          "columna": true
         },
         {
           "efecto": "sorpresa",
@@ -198,98 +250,127 @@
         {
           "quien": "Jefe",
           "desde": 0,
-          "hasta": 7,
+          "hasta": 9,
           "animacion": "triste"
         },
         {
           "quien": "Usu",
-          "desde": 8,
-          "hasta": 13,
+          "desde": 10,
+          "hasta": 15,
           "gesto": "sentado_escucha1"
         },
         {
           "quien": "Barbas",
-          "desde": 8,
-          "hasta": 11,
+          "desde": 10,
+          "hasta": 13,
           "gesto": "sentado_comenta4"
         },
         {
           "quien": "Sister",
-          "desde": 10,
-          "hasta": 15,
+          "desde": 12,
+          "hasta": 17,
           "gesto": "sentada_preocupa3"
         },
         {
           "quien": "Usu",
-          "desde": 15,
-          "hasta": 17,
+          "desde": 17,
+          "hasta": 19,
           "gesto": "sentado_loco4"
         },
         {
           "quien": "Barbas",
-          "desde": 14,
-          "hasta": 17,
+          "desde": 16,
+          "hasta": 19,
           "gesto": "sentado_indignado3"
         },
         {
           "quien": "Usu",
-          "desde": 19,
-          "hasta": 19,
+          "desde": 22,
+          "hasta": 22,
           "gesto": "sentado_silencio1"
         },
         {
           "quien": "Reynaldo",
-          "desde": 19,
-          "hasta": 19,
+          "desde": 22,
+          "hasta": 22,
           "gesto": "sentado_silencio1"
         },
         {
           "quien": "Sister",
-          "desde": 19,
-          "hasta": 19,
+          "desde": 22,
+          "hasta": 22,
           "gesto": "sentado_silencio1"
         },
         {
           "quien": "Barbas",
-          "desde": 19,
-          "hasta": 19,
+          "desde": 22,
+          "hasta": 22,
           "gesto": "sentado_silencio1"
         },
         {
           "quien": "Usu",
-          "desde": 20,
-          "hasta": 28,
+          "desde": 22,
+          "hasta": 30,
           "gesto": "sentado_escucha3"
         },
         {
           "quien": "Sister",
-          "desde": 20,
-          "hasta": 28,
+          "desde": 22,
+          "hasta": 30,
           "gesto": "sentada_preocupa3"
         },
         {
           "quien": "Barbas",
-          "desde": 20,
-          "hasta": 28,
+          "desde": 22,
+          "hasta": 30,
           "gesto": "sentado_silencio3"
         },
         {
           "quien": "Reynaldo",
-          "desde": 25,
-          "hasta": 28,
+          "desde": 27,
+          "hasta": 30,
           "gesto": "sentado_alarma4"
         },
         {
           "quien": "Jefe",
-          "desde": 25,
-          "hasta": 25,
+          "desde": 28,
+          "hasta": 28,
           "gesto": "sentado_malo3"
         },
         {
           "quien": "Jefe",
-          "desde": 26,
-          "hasta": 28,
+          "desde": 28,
+          "hasta": 30,
           "gesto": "sentado_malo4"
+        },
+        {
+          "quien": "Jefe",
+          "desde": 23,
+          "hasta": 23,
+          "gesto": "sentado_drama1"
+        },
+        {
+          "quien": "Jefe",
+          "desde": 27,
+          "hasta": 27,
+          "gesto": "sentado_malo4"
+        },
+        {
+          "quien": "Jefe",
+          "desde": 10,
+          "hasta": 10,
+          "gesto": "sentado_triste_n3"
+        },
+        {
+          "quien": "Jefe",
+          "desde": 11,
+          "hasta": 11,
+          "gesto": "sentado_triste_n3"
+        },
+        {
+          "quien": "Reynaldo",
+          "desde": 9,
+          "hasta": 9
         }
       ]
     }

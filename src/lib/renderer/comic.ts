@@ -2,8 +2,8 @@
  * Recursos de cómic sobre los personajes (gotas de sudor, susto, vena de enfado, líneas de movimiento,
  * risas y onomatopeyas). Se dibujan en canvas: los usan el escenario y el MP4.
  */
-export type ComicKind = "sudor" | "sorpresa" | "enfado" | "lineas" | "risa" | "onomatopeya" | "rotulo" | "humo" | "corazones" | "mareo";
-export const COMIC_KINDS: ComicKind[] = ["sudor", "sorpresa", "enfado", "lineas", "risa", "onomatopeya", "rotulo", "humo", "corazones", "mareo"];
+export type ComicKind = "sudor" | "sorpresa" | "enfado" | "lineas" | "risa" | "onomatopeya" | "rotulo" | "humo" | "corazones" | "mareo" | "titulo";
+export const COMIC_KINDS: ComicKind[] = ["sudor", "sorpresa", "enfado", "lineas", "risa", "onomatopeya", "rotulo", "humo", "corazones", "mareo", "titulo"];
 
 export interface ComicState {
   kind: ComicKind;
@@ -298,6 +298,26 @@ export function drawComic(ctx: Ctx, c: ComicState) {
       lines.forEach((l, i) => {
         ctx.font = `900 ${i ? 40 : 64}px "Arial Black", Impact, system-ui, sans-serif`;
         ctx.fillText(l, 0, lines.length > 1 ? -bh / 2 + 52 + (i ? 30 + 52 * i : 0) : 0);
+      });
+      break;
+    }
+    case "titulo": {
+      // título del sketch: letras gordas de cómic, en una o dos líneas, ajustado al ancho de la pantalla
+      const words = (c.text ?? "").toUpperCase().split(/\s+/).filter(Boolean);
+      const lines = words.join(" ").length > 14 && words.length > 1 ? [words.slice(0, Math.ceil(words.length / 2)).join(" "), words.slice(Math.ceil(words.length / 2)).join(" ")] : [words.join(" ")];
+      ctx.font = `900 100px "Arial Black", Impact, system-ui, sans-serif`;
+      const w = Math.max(...lines.map((l) => ctx.measureText(l).width));
+      const size = Math.min(150, (100 * 940) / Math.max(1, w));
+      ctx.translate(c.x, c.y);
+      ctx.rotate(-0.04);
+      ctx.scale(scale, scale);
+      lines.forEach((l, i) => {
+        ctx.save();
+        ctx.translate(0, (i - (lines.length - 1) / 2) * size * 1.1);
+        ctx.fillStyle = INK;
+        ctx.save(); ctx.translate(size * 0.06, size * 0.08); comicText(ctx, l, size, INK); ctx.restore();
+        comicText(ctx, l, size, i ? "#ffffff" : "#ffd23f");
+        ctx.restore();
       });
       break;
     }

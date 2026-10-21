@@ -866,7 +866,8 @@
                         "rotulo",
                         "humo",
                         "corazones",
-                        "mareo"
+                        "mareo",
+                        "titulo"
                       ]
                     },
                     "x": {

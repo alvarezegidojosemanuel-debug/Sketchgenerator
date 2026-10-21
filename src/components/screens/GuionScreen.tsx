@@ -54,7 +54,7 @@ const QUICK = ["dice", "gesto", "efecto", "pausa", "off", "objeto"];
 
 const EFFECTS: [string, string][] = [
   ["sorpresa", "❗ Sorpresa"], ["sudor", "💧 Sudor"], ["enfado", "💢 Enfado"], ["risa", "😂 Risa"], ["lineas", "💨 Líneas de velocidad"],
-  ["mareo", "💫 Mareo"], ["humo", "☁ Humo"], ["corazones", "💕 Corazones"], ["onomatopeya", "💬 Onomatopeya (con texto)"],
+  ["mareo", "💫 Mareo"], ["humo", "☁ Humo"], ["corazones", "💕 Corazones"], ["onomatopeya", "💬 Onomatopeya (con texto)"], ["titulo", "🎬 Título (texto grande)"],
   ["explosion", "💥 Explosión"], ["pantallazo", "🟦 Pantallazo azul"], ["destello", "⚡ Destello"], ["temblor", "〰 Temblor de pantalla"], ["oscuro", "🌑 Apagón"],
 ];
 const EMOTIONS = ["", "neutral", "alegria", "risa", "enfado", "sorpresa", "tristeza"];
@@ -697,7 +697,7 @@ function StepProps({ st, cast, vista, catalog, set, cats }: { st: Obj; cast: str
               </select>
             </Field>
           )}
-          {["onomatopeya", "explosion", "pantallazo"].includes(normKey(str(st.efecto))) && (
+          {["onomatopeya", "explosion", "pantallazo", "titulo"].includes(normKey(str(st.efecto))) && (
             <Field label="Texto del efecto"><input value={str(st.texto)} maxLength={60} onChange={(e) => field("texto", e.target.value)} /></Field>
           )}
           {normKey(str(st.efecto)) === "destello" && (

@@ -85,7 +85,8 @@ const AMBIENT_BY_BG: Record<string, string> = {
 };
 const SOUND_ALIAS: Record<string, string> = { telefono: "sfx_telefono", alarma: "sfx_alarma", pop: "sfx_pop", whoosh: "sfx_whoosh", ding: "sfx_ding", boing: "sfx_boing", golpe: "sfx_golpe", fracaso: "sfx_fracaso", teclado: "sfx_teclado", pantallazo: "sfx_pantallazo", servidor: "sfx_servidor", explosion: "sfx_explosion", portazo: "sfx_golpe" };
 
-const COMIC_FX: Record<string, "sudor" | "sorpresa" | "enfado" | "lineas" | "risa" | "onomatopeya" | "corazones" | "mareo" | "humo"> = {
+const COMIC_FX: Record<string, "sudor" | "sorpresa" | "enfado" | "lineas" | "risa" | "onomatopeya" | "corazones" | "mareo" | "humo" | "titulo"> = {
+  titulo: "titulo", title: "titulo",
   sudor: "sudor", gotas: "sudor", sorpresa: "sorpresa", susto: "sorpresa", enfado: "enfado", vena: "enfado", furia: "enfado",
   lineas: "lineas", velocidad: "lineas", risa: "risa", ja: "risa", jaja: "risa", onomatopeya: "onomatopeya", zas: "onomatopeya", humo: "humo", polvo: "humo", polvareda: "humo", mareo: "mareo", aturdido: "mareo", estrellas: "mareo", corazones: "corazones", corazon: "corazones", amor: "corazones", enamorada: "corazones",
 };
