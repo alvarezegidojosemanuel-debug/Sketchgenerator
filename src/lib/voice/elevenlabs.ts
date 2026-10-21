@@ -127,7 +127,7 @@ export async function generateElevenDialogue(
     });
     const stab = group.reduce((s, l) => s + (cast?.[l.characterId]?.stability ?? 0.5), 0) / group.length;
     const stability = stab < 0.34 ? 0 : stab < 0.67 ? 0.5 : 1; // v3: creativo / natural / robusto
-    const base = `dlg2|${stability}|${JSON.stringify(inputs)}`;
+    const base = `dlg3|${stability}|${JSON.stringify(inputs)}`;
     const cached = await Promise.all(group.map((_, i) => clipCache.get(`${base}|${i}`).catch(() => undefined)));
     if (cached.every(Boolean)) {
       group.forEach((l, i) => { const c = cached[i]!; out.set(l.key, toClip(shape({ samples: dropEdgeBlobs(trimSilence(c.samples, c.sampleRate, 0.006, 0.02, 0.1), c.sampleRate, 0.012, 0.07, 0.18, sameNeighbours(group, i)), sampleRate: c.sampleRate }, cast?.[l.characterId], l.characterId))); });
@@ -152,7 +152,9 @@ export async function generateElevenDialogue(
       if (seg) {
         const next = segs.find((x) => x.start > seg.start + 1e-3);
         const a = Math.max(0, Math.floor((seg.start - 0.04) * sr));
-        const endT = Math.min(seg.end + 0.1, next ? Math.max(seg.end, next.start - 0.02) : seg.end + 0.1);
+        // los tiempos de ElevenLabs a veces acaban antes de la última palabra: se coge hasta que empieza la
+        // frase siguiente (los silencios y los «ah» sueltos del final se quitan después)
+        const endT = next ? Math.max(seg.end + 0.05, next.start - 0.03) : seg.end + 0.6;
         const b = Math.min(all.length, Math.ceil(endT * sr));
         const samples = all.slice(a, Math.max(a + 1, b));
         const fin = Math.min(samples.length, Math.round(sr * 0.006));

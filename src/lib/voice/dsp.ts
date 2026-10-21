@@ -111,7 +111,7 @@ export function dropEdgeBlobs(samples: Float32Array, sampleRate: number, thresho
   // un «ah» suena flojo comparado con la frase; una sílaba final («…pata») suena tan fuerte como el resto
   const loud = (r: [number, number]) => Math.max(...lvl.slice(r[0], r[1] + 1));
   const body = Math.max(...merged.map(loud));
-  const isBlob = (r: [number, number]) => len(r) < maxBlob && loud(r) < body * 0.45;
+  const isBlob = (r: [number, number]) => len(r) < maxBlob && loud(r) < body * 0.3;
   let a = 0;
   let b = merged.length - 1;
   while (ends.head && a < b && isBlob(merged[a]) && merged[a][1] < 70) a++;

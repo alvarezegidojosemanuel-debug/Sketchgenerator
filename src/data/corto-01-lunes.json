@@ -256,8 +256,17 @@
           "pausa_despues": 0.1
         },
         {
+          "quien": "Usu",
+          "gesto": "confundido"
+        },
+        {
           "off": "Anastas-IA",
           "texto": "Fichaje no registrado. Buenos días, Usu. Hoy estás muy guapo."
+        },
+        {
+          "efecto": "sudor",
+          "donde": "Usu",
+          "durante": 1.4
         },
         {
           "mira": "Vanesa",
