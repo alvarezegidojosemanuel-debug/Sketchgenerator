@@ -81,7 +81,7 @@ const HUMAN_POSE: Record<string, string[]> = {
 };
 const AMBIENT_BY_BG: Record<string, string> = {
   bg_recepcion: "recepcion", bg_sistemas: "oficina", bg_oficina_soporte: "oficina", bg_oficina_manana: "oficina", bg_oficina: "oficina",
-  bg_pasillo: "oficina", bg_sala_reuniones: "oficina", bg_despacho_director: "oficina", bg_despacho_director_2: "oficina",
+  bg_pasillo: "oficina", bg_sala_reuniones: "oficina", bg_cafeteria: "cafeteria", bg_cafeteria_barra: "cafeteria", bg_despacho_director: "oficina", bg_despacho_director_2: "oficina",
 };
 const SOUND_ALIAS: Record<string, string> = { telefono: "sfx_telefono", alarma: "sfx_alarma", pop: "sfx_pop", whoosh: "sfx_whoosh", ding: "sfx_ding", boing: "sfx_boing", golpe: "sfx_golpe", fracaso: "sfx_fracaso", teclado: "sfx_teclado", pantallazo: "sfx_pantallazo", servidor: "sfx_servidor", explosion: "sfx_explosion", portazo: "sfx_golpe" };
 
