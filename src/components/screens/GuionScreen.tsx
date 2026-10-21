@@ -7,6 +7,7 @@ import { evaluateTake } from "@/lib/timeline/evaluate";
 import { Stage } from "../Stage";
 import type { PocketState } from "../usePocket";
 import { Field } from "../ui";
+import { downloadText, exportProjectText, importProjectText, projectFileName } from "@/lib/import-export";
 import { CategoryFilter, filterPoses } from "../PoseCategories";
 import type { PoseCategoryMap } from "@/lib/catalog/poseCategories";
 import { animationsFor, cleanAnimation, type AnimLibrary, type Animation } from "@/lib/animation/animations";
@@ -241,6 +242,28 @@ export function GuionScreen({ s }: { s: PocketState }) {
     setScriptState(prev);
   };
 
+  /** Copia de seguridad: el sketch entero (guion incluido) en un archivo .json. */
+  const saveFile = () => {
+    flush();
+    // el proyecto con el guion más reciente (aunque aún no se haya pasado al proyecto)
+    const c = script ? compileScript(script, catalog) : null;
+    const p = c?.project ? { ...structuredClone(s.project), takes: c.project.takes, metadata: { ...s.project.metadata, ...c.project.metadata } } : s.project;
+    downloadText(projectFileName(p), exportProjectText(p));
+  };
+  const loadFile = async (f?: File) => {
+    if (!f) return;
+    const r = importProjectText(await f.text(), catalog);
+    if (!r.ok || !r.project) return alert(`No se pudo abrir el archivo: ${r.errors.map((e) => e.message).join("; ") || "no es un sketch de Pocket"}`);
+    const st = r.project.metadata.script;
+    if (!isObj(st) || !Array.isArray(st.escenas)) return alert("El archivo no trae guion: ábrelo desde Proyectos → Importar.");
+    if (!confirm(`¿Abrir «${r.project.metadata.title}»? Se guarda como una copia nueva; lo que tienes abierto sigue en Proyectos.`)) return;
+    pending.current = null;
+    s.replaceProject(r.project);
+    setScriptState(structuredClone(st) as Script);
+    history.current = [];
+    setSel({ scene: 0, step: 0 });
+  };
+
   if (!script) {
     return (
       <div className="screen">
@@ -252,6 +275,10 @@ export function GuionScreen({ s }: { s: PocketState }) {
               ＋ Empezar un sketch nuevo
             </button>
             <button type="button" className="btn btn-secondary" onClick={() => s.setTab("proyectos")}>🗂 Proyectos</button>
+            <label className="btn btn-secondary file-btn">
+              📂 Cargar archivo
+              <input type="file" accept=".json,application/json" onChange={(e) => { void loadFile(e.target.files?.[0]); e.target.value = ""; }} />
+            </label>
           </div>
         </section>
       </div>
@@ -377,6 +404,13 @@ export function GuionScreen({ s }: { s: PocketState }) {
         <div className="guion-head">
           <input className="guion-title" value={str(script.titulo)} maxLength={120} onChange={(e) => update((d) => { d.titulo = e.target.value; })} aria-label="Título" />
           <button type="button" className="btn btn-small btn-ghost" onClick={undo} disabled={!history.current.length} title="Deshacer">↶</button>
+        </div>
+        <div className="row g-file">
+          <button type="button" className="btn btn-small btn-secondary" onClick={saveFile} title="Descarga el sketch en un archivo .json (copia de seguridad)">💾 Guardar archivo</button>
+          <label className="btn btn-small btn-ghost file-btn" title="Abre un sketch guardado antes en un archivo .json">
+            📂 Cargar archivo
+            <input type="file" accept=".json,application/json" onChange={(e) => { void loadFile(e.target.files?.[0]); e.target.value = ""; }} />
+          </label>
         </div>
         <p className="fine">{scenes.length} escena(s) · {lineCount} frase(s) · {totalDur.toFixed(0)} s aprox.</p>
         {scenes.map((x, i) => {
