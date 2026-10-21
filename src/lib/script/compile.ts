@@ -264,7 +264,8 @@ class SceneBuilder {
   build(name: string, bg: string | null, camera?: "auto", transition?: "cut" | "fade" | "white"): Take {
     const dur = Math.round((this.t + 0.5) * 10) / 10;
     // una vuelta al reposo justo antes de otro gesto del mismo actor solo haría parpadear la pose
-    const ev = this.ev.filter((e) => !this.reverts.has(e) || !this.ev.some((o) => o !== e && o.track === "body" && o.actorUid === e.actorUid && "poseId" in o && o.start >= e.start && o.start - e.start < 0.6));
+    // (también si el otro gesto empezó un poco ANTES: con frases muy seguidas la vuelta caía dentro de la siguiente frase)
+    const ev = this.ev.filter((e) => !this.reverts.has(e) || !this.ev.some((o) => o !== e && !this.reverts.has(o) && o.track === "body" && o.actorUid === e.actorUid && "poseId" in o && o.start - e.start < 0.6 && e.start - o.start < 0.6));
     for (const a of this.actors) ev.push({ id: this.nid("mo"), track: "mouth", start: 0, duration: dur, actorUid: a.uid, mode: "auto" } as PocketEvent);
     if (this.back) ev.push(...this.backProps(dur));
     for (const e of ev) if (e.start + e.duration > dur) e.duration = Math.max(0.1, Math.round((dur - e.start) * 100) / 100);

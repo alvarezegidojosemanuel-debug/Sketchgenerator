@@ -49,7 +49,8 @@
      "displayScale": 1.091,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.554
     },
     {
      "id": "char.usu.pose_h_explica",
@@ -62,7 +63,8 @@
      "displayScale": 1.091,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.561
     },
     {
      "id": "char.usu.pose_h_pensando",
@@ -75,7 +77,8 @@
      "displayScale": 1.091,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.578
     },
     {
      "id": "char.usu.pose_h_confundido",
@@ -88,7 +91,8 @@
      "displayScale": 1.091,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.584
     },
     {
      "id": "char.usu.pose_h_celebra",
@@ -101,7 +105,8 @@
      "displayScale": 1.091,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.532
     },
     {
      "id": "char.usu.pose_h_susto",
@@ -113,7 +118,8 @@
      "displayScale": 1.091,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.542
     },
     {
      "id": "char.usu.pose_h_panico",
@@ -125,7 +131,8 @@
      "displayScale": 1.091,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.515
     },
     {
      "id": "char.usu.pose_h_senala",
@@ -138,7 +145,8 @@
      "displayScale": 1.091,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.501
     },
     {
      "id": "char.usu.pose_h_movil",
@@ -151,7 +159,8 @@
      "displayScale": 1.091,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.573
     },
     {
      "id": "char.usu.pose_h_camina",
@@ -163,7 +172,8 @@
      "displayScale": 1.091,
      "facing": "right",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.683
     },
     {
      "id": "char.usu.pose_h_corre",
@@ -175,7 +185,8 @@
      "displayScale": 1.091,
      "facing": "right",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.699
     },
     {
      "id": "char.usu.pose_h_sorprendido",
@@ -187,7 +198,8 @@
      "displayScale": 1.091,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.523
     },
     {
      "id": "char.usu.pose_h_encoge",
@@ -200,7 +212,8 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/usu/encoge_boca.webp"
+     "talkSrc": "/assets/punetos/humanos/usu/encoge_boca.webp",
+     "cx": 0.573
     },
     {
      "id": "char.usu.pose_h_sentado_teclea",
@@ -212,7 +225,8 @@
      "displayScale": 1.091,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.46
     },
     {
      "id": "char.usu.pose_h_sentado_habla",
@@ -225,7 +239,8 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/usu/sentado_habla.webp"
+     "talkSrc": "/assets/punetos/humanos/usu/sentado_habla.webp",
+     "cx": 0.445
     },
     {
      "id": "char.usu.pose_h_sentado_pensativo",
@@ -237,7 +252,8 @@
      "displayScale": 1.091,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.488
     },
     {
      "id": "char.usu.pose_h_sentado_agobiado",
@@ -249,7 +265,8 @@
      "displayScale": 1.091,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.595
     },
     {
      "id": "char.usu.pose_h_silla_relajado",
@@ -261,7 +278,8 @@
      "displayScale": 1.091,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.466
     },
     {
      "id": "char.usu.pose_h_silla_pensativo",
@@ -273,7 +291,8 @@
      "displayScale": 1.091,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.533
     },
     {
      "id": "char.usu.pose_h_silla_bosteza",
@@ -285,7 +304,8 @@
      "displayScale": 1.091,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.08
     },
     {
      "id": "char.usu.pose_h_silla_cansado",
@@ -297,7 +317,8 @@
      "displayScale": 1.091,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.604
     },
     {
      "id": "char.usu.pose_p_neutro",
@@ -311,7 +332,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.525
     },
     {
      "id": "char.usu.pose_p_senala",
@@ -325,7 +347,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.605
     },
     {
      "id": "char.usu.pose_p_pulgar",
@@ -339,7 +362,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.439
     },
     {
      "id": "char.usu.pose_p_contento",
@@ -353,7 +377,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.513
     },
     {
      "id": "char.usu.pose_p_senala2",
@@ -367,7 +392,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.601
     },
     {
      "id": "char.usu.pose_p_susto",
@@ -381,7 +407,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.667
     },
     {
      "id": "char.usu.pose_p_celebra",
@@ -395,7 +422,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.44
     },
     {
      "id": "char.usu.pose_p_camina",
@@ -409,7 +437,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.549
     },
     {
      "id": "char.usu.pose_p_brazos_cruzados",
@@ -422,7 +451,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.476
     },
     {
      "id": "char.usu.pose_p_ajusta_gafas",
@@ -436,7 +466,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.476
     },
     {
      "id": "char.usu.pose_p_saluda",
@@ -450,7 +481,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.343
     },
     {
      "id": "char.usu.pose_p_senala3",
@@ -464,7 +496,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.684
     },
     {
      "id": "char.usu.pose_p_pensando",
@@ -477,7 +510,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.562
     },
     {
      "id": "char.usu.pose_p_encoge",
@@ -491,7 +525,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.489
     },
     {
      "id": "char.usu.pose_p_susto2",
@@ -505,7 +540,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.676
     },
     {
      "id": "char.usu.pose_p_risa",
@@ -519,7 +555,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.41
     },
     {
      "id": "char.usu.pose_p_suelo_portatil",
@@ -533,7 +570,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.492
     },
     {
      "id": "char.usu.pose_p_movil",
@@ -547,7 +585,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.511
     },
     {
      "id": "char.usu.pose_p_tablet",
@@ -561,7 +600,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.501
     },
     {
      "id": "char.usu.pose_p_idea",
@@ -575,7 +615,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.402
     },
     {
      "id": "char.usu.pose_p_suelo_portatil2",
@@ -589,7 +630,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.483
     },
     {
      "id": "char.usu.pose_p_movil2",
@@ -603,7 +645,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.488
     },
     {
      "id": "char.usu.pose_p_tablet2",
@@ -617,7 +660,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.519
     },
     {
      "id": "char.usu.pose_p_idea2",
@@ -631,7 +675,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.449
     },
     {
      "id": "char.usu.pose_p_saluda2",
@@ -645,7 +690,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.306
     },
     {
      "id": "char.usu.pose_p_camina2",
@@ -659,7 +705,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.519
     },
     {
      "id": "char.usu.pose_p_anda1",
@@ -673,7 +720,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/usu/anda1_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.558
     },
     {
      "id": "char.usu.pose_p_anda2",
@@ -687,7 +735,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/usu/anda2_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.559
     },
     {
      "id": "char.usu.pose_p_anda3",
@@ -701,7 +750,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/usu/anda3_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.56
     },
     {
      "id": "char.usu.pose_p_anda4",
@@ -715,7 +765,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/usu/anda4_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.56
     },
     {
      "id": "char.usu.pose_p_baila",
@@ -729,7 +780,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.441
     },
     {
      "id": "char.usu.pose_p_relax",
@@ -742,7 +794,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.535
     },
     {
      "id": "char.usu.pose_p_pensando2",
@@ -755,7 +808,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.588
     },
     {
      "id": "char.usu.pose_p_corre",
@@ -769,7 +823,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.501
     },
     {
      "id": "char.usu.pose_p_risa2",
@@ -783,7 +838,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.482
     },
     {
      "id": "char.usu.pose_p_tumbado_risa",
@@ -797,7 +853,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.659
     },
     {
      "id": "char.usu.pose_p_enfado",
@@ -810,7 +867,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.535
     },
     {
      "id": "char.usu.pose_p_enfado2",
@@ -823,7 +881,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.438
     },
     {
      "id": "char.usu.pose_p_grita",
@@ -837,7 +896,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.466
     },
     {
      "id": "char.usu.pose_p_furia",
@@ -850,7 +910,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.46
     },
     {
      "id": "char.usu.pose_p_grita_senala",
@@ -864,7 +925,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.585
     },
     {
      "id": "char.usu.pose_p_enfado3",
@@ -877,7 +939,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.489
     },
     {
      "id": "char.usu.pose_p_enfado4",
@@ -890,7 +953,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.554
     },
     {
      "id": "char.usu.pose_p_furia2",
@@ -903,7 +967,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.434
     },
     {
      "id": "char.usu.pose_p_silla_portatil",
@@ -917,7 +982,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.433
     },
     {
      "id": "char.usu.pose_p_sentado_teclea",
@@ -931,7 +997,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.417
     },
     {
      "id": "char.usu.pose_p_silla_tablet",
@@ -945,7 +1012,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.517
     },
     {
      "id": "char.usu.pose_p_silla_notas",
@@ -959,7 +1027,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.45
     },
     {
      "id": "char.usu.pose_p_sentado_teclea2",
@@ -972,7 +1041,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.528
     },
     {
      "id": "char.usu.pose_p_sentado_pensando",
@@ -985,7 +1055,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.523
     },
     {
      "id": "char.usu.pose_p_sentado_agobiado",
@@ -999,7 +1070,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.507
     },
     {
      "id": "char.usu.pose_p_sentado_panico",
@@ -1013,7 +1085,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.709
     },
     {
      "id": "char.usu.pose_p_sentado_teclea3",
@@ -1026,7 +1099,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.519
     },
     {
      "id": "char.usu.pose_p_sentado_teclea4",
@@ -1039,7 +1113,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.527
     },
     {
      "id": "char.usu.pose_p_sentado_estresado",
@@ -1052,7 +1127,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.528
     },
     {
      "id": "char.usu.pose_p_sentado_agobiado2",
@@ -1066,7 +1142,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.581
     },
     {
      "id": "char.usu.pose_p_triste",
@@ -1079,7 +1156,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.638
     },
     {
      "id": "char.usu.pose_p_sentado_triste",
@@ -1092,7 +1170,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.546
     },
     {
      "id": "char.usu.pose_p_triste2",
@@ -1105,7 +1184,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.55
     },
     {
      "id": "char.usu.pose_p_tumbado",
@@ -1118,7 +1198,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.379
     },
     {
      "id": "char.usu.pose_p_sentado_triste2",
@@ -1131,7 +1212,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.44
     },
     {
      "id": "char.usu.pose_p_sentado_triste3",
@@ -1144,7 +1226,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.374
     },
     {
      "id": "char.usu.pose_p_sentado_triste4",
@@ -1157,7 +1240,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.617
     },
     {
      "id": "char.usu.pose_p_tumbado2",
@@ -1170,7 +1254,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.462
     },
     {
      "id": "char.usu.pose_p_despierta",
@@ -1183,7 +1268,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.56
     },
     {
      "id": "char.usu.pose_p_aturdido",
@@ -1197,7 +1283,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/usu/aturdido_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.468
     },
     {
      "id": "char.usu.pose_p_cafe_habla",
@@ -1210,7 +1297,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.432
     },
     {
      "id": "char.usu.pose_p_cafe_bebe",
@@ -1223,7 +1311,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.46
     },
     {
      "id": "char.usu.pose_p_cafe_aburrido",
@@ -1236,7 +1325,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.552
     },
     {
      "id": "char.usu.pose_p_cafe_habla2",
@@ -1249,7 +1339,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.443
     },
     {
      "id": "char.usu.pose_p_cafe_bebe2",
@@ -1262,7 +1353,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.449
     },
     {
      "id": "char.usu.pose_p_cafe_relajado",
@@ -1275,7 +1367,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.504
     },
     {
      "id": "char.usu.pose_p_cafe_discute",
@@ -1288,7 +1381,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.417
     },
     {
      "id": "char.usu.pose_p_cafe_discute2",
@@ -1301,7 +1395,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.453
     },
     {
      "id": "char.usu.pose_p_cafe_discute3",
@@ -1314,7 +1409,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.446
     },
     {
      "id": "char.usu.pose_p_come1",
@@ -1327,7 +1423,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.396
     },
     {
      "id": "char.usu.pose_p_come2",
@@ -1340,7 +1437,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.414
     },
     {
      "id": "char.usu.pose_p_come3",
@@ -1353,7 +1451,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.422
     },
     {
      "id": "char.usu.pose_p_come4",
@@ -1366,7 +1465,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.405
     },
     {
      "id": "char.usu.pose_p_sentado_loco1",
@@ -1379,7 +1479,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "talkSrc": "/assets/punetos/punetos/usu/sentado_loco1_boca.webp"
+     "talkSrc": "/assets/punetos/punetos/usu/sentado_loco1_boca.webp",
+     "cx": 0.418
     },
     {
      "id": "char.usu.pose_p_sentado_loco2",
@@ -1392,7 +1493,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "talkSrc": "/assets/punetos/punetos/usu/sentado_loco2_boca.webp"
+     "talkSrc": "/assets/punetos/punetos/usu/sentado_loco2_boca.webp",
+     "cx": 0.305
     },
     {
      "id": "char.usu.pose_p_sentado_loco3",
@@ -1404,7 +1506,8 @@
      "displayScale": 0.99,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.436
     },
     {
      "id": "char.usu.pose_p_sentado_loco4",
@@ -1416,7 +1519,8 @@
      "displayScale": 0.99,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.467
     },
     {
      "id": "char.usu.pose_p_sentado_escucha1",
@@ -1428,7 +1532,8 @@
      "displayScale": 0.99,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.499
     },
     {
      "id": "char.usu.pose_p_sentado_escucha2",
@@ -1440,7 +1545,8 @@
      "displayScale": 0.99,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.452
     },
     {
      "id": "char.usu.pose_p_sentado_escucha3",
@@ -1453,7 +1559,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "talkSrc": "/assets/punetos/punetos/usu/sentado_escucha3_boca.webp"
+     "talkSrc": "/assets/punetos/punetos/usu/sentado_escucha3_boca.webp",
+     "cx": 0.45
     },
     {
      "id": "char.usu.pose_p_sentado_escucha4",
@@ -1465,7 +1572,8 @@
      "displayScale": 0.99,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.515
     },
     {
      "id": "char.usu.pose_p_sentado_silencio1",
@@ -1477,7 +1585,8 @@
      "displayScale": 0.99,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.483
     },
     {
      "id": "char.usu.pose_p_sentado_silencio2",
@@ -1489,7 +1598,8 @@
      "displayScale": 0.99,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.46
     },
     {
      "id": "char.usu.pose_p_sentado_silencio3",
@@ -1501,7 +1611,8 @@
      "displayScale": 0.99,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.42
     },
     {
      "id": "char.usu.pose_p_sentado_silencio4",
@@ -1513,7 +1624,22 @@
      "displayScale": 0.99,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.458
+    },
+    {
+     "id": "char.usu.pose_p_sentado_grita",
+     "key": "pose_p_sentado_grita",
+     "label": "Puñeto · sentado · grita enfadado",
+     "src": "/assets/punetos/punetos/usu/sentado_panico_serio.webp",
+     "talkSrc": "/assets/punetos/punetos/usu/sentado_panico_boca.webp",
+     "width": 531,
+     "height": 605,
+     "displayScale": 1.0,
+     "facing": "front",
+     "flat": true,
+     "look": "puneto",
+     "cx": 0.709
     }
    ],
    "face": {
@@ -2217,7 +2343,8 @@
      "displayScale": 1.023,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.5
     },
     {
      "id": "char.reynaldo.pose_h_explica",
@@ -2230,7 +2357,8 @@
      "displayScale": 0.947,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.461
     },
     {
      "id": "char.reynaldo.pose_h_confundido",
@@ -2243,7 +2371,8 @@
      "displayScale": 0.947,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.535
     },
     {
      "id": "char.reynaldo.pose_h_pensando",
@@ -2256,7 +2385,8 @@
      "displayScale": 0.947,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.52
     },
     {
      "id": "char.reynaldo.pose_h_para",
@@ -2269,7 +2399,8 @@
      "displayScale": 0.947,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.585
     },
     {
      "id": "char.reynaldo.pose_h_sentado_teclea",
@@ -2282,7 +2413,8 @@
      "displayScale": 0.947,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.508
     },
     {
      "id": "char.reynaldo.pose_h_teclea_susto",
@@ -2295,7 +2427,8 @@
      "displayScale": 0.947,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.568
     },
     {
      "id": "char.reynaldo.pose_h_teclea_concentrado",
@@ -2308,7 +2441,8 @@
      "displayScale": 0.947,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.547
     },
     {
      "id": "char.reynaldo.pose_h_teclea_risa",
@@ -2321,7 +2455,8 @@
      "displayScale": 0.947,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.404
     },
     {
      "id": "char.reynaldo.pose_h_silla_neutro",
@@ -2334,7 +2469,8 @@
      "displayScale": 0.916,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.524
     },
     {
      "id": "char.reynaldo.pose_h_sentado_habla",
@@ -2347,7 +2483,8 @@
      "displayScale": 0.916,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.434
     },
     {
      "id": "char.reynaldo.pose_h_silla_papeles",
@@ -2360,7 +2497,8 @@
      "displayScale": 0.916,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.424
     },
     {
      "id": "char.reynaldo.pose_h_sentado_agobiado",
@@ -2373,7 +2511,8 @@
      "displayScale": 0.916,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.639
     },
     {
      "id": "char.reynaldo.pose_h_movil",
@@ -2385,7 +2524,8 @@
      "displayScale": 1.023,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.534
     },
     {
      "id": "char.reynaldo.pose_h_susto",
@@ -2398,7 +2538,8 @@
      "displayScale": 1.023,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.461
     },
     {
      "id": "char.reynaldo.pose_h_camina",
@@ -2410,7 +2551,8 @@
      "displayScale": 1.023,
      "facing": "right",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.628
     },
     {
      "id": "char.reynaldo.pose_h_senala",
@@ -2423,7 +2565,8 @@
      "displayScale": 1.023,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.492
     },
     {
      "id": "char.reynaldo.pose_h_lee",
@@ -2435,7 +2578,8 @@
      "displayScale": 1.023,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.628
     },
     {
      "id": "char.reynaldo.pose_h_jarras",
@@ -2448,7 +2592,8 @@
      "displayScale": 1.023,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.465
     },
     {
      "id": "char.reynaldo.pose_h_papeles",
@@ -2460,7 +2605,8 @@
      "displayScale": 1.023,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.534
     },
     {
      "id": "char.reynaldo.pose_p_camina",
@@ -2474,7 +2620,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.455
     },
     {
      "id": "char.reynaldo.pose_p_anda1",
@@ -2488,7 +2635,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/reynaldo/anda1_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.494
     },
     {
      "id": "char.reynaldo.pose_p_anda2",
@@ -2502,7 +2650,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/reynaldo/anda2_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.494
     },
     {
      "id": "char.reynaldo.pose_p_anda3",
@@ -2516,7 +2665,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/reynaldo/anda3_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.494
     },
     {
      "id": "char.reynaldo.pose_p_anda4",
@@ -2530,7 +2680,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/reynaldo/anda4_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.495
     },
     {
      "id": "char.reynaldo.pose_p_celebra",
@@ -2544,7 +2695,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.531
     },
     {
      "id": "char.reynaldo.pose_p_senala",
@@ -2558,7 +2710,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.377
     },
     {
      "id": "char.reynaldo.pose_p_susto",
@@ -2572,7 +2725,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.431
     },
     {
      "id": "char.reynaldo.pose_p_sentado_teclea",
@@ -2585,7 +2739,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.441
     },
     {
      "id": "char.reynaldo.pose_p_sentado_agobiado",
@@ -2599,7 +2754,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.423
     },
     {
      "id": "char.reynaldo.pose_p_sentado_preocupado",
@@ -2612,7 +2768,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.451
     },
     {
      "id": "char.reynaldo.pose_p_sentado_nervioso",
@@ -2625,7 +2782,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.386
     },
     {
      "id": "char.reynaldo.pose_p_corre",
@@ -2639,7 +2797,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.601
     },
     {
      "id": "char.reynaldo.pose_p_celebra2",
@@ -2653,7 +2812,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.475
     },
     {
      "id": "char.reynaldo.pose_p_lee",
@@ -2666,7 +2826,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.491
     },
     {
      "id": "char.reynaldo.pose_p_pensando",
@@ -2679,7 +2840,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.462
     },
     {
      "id": "char.reynaldo.pose_p_celebra3",
@@ -2693,7 +2855,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.542
     },
     {
      "id": "char.reynaldo.pose_p_panico",
@@ -2707,7 +2870,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.489
     },
     {
      "id": "char.reynaldo.pose_p_agotado",
@@ -2721,7 +2885,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.546
     },
     {
      "id": "char.reynaldo.pose_p_ko",
@@ -2735,7 +2900,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.393
     },
     {
      "id": "char.reynaldo.pose_p_saluda",
@@ -2749,7 +2915,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.575
     },
     {
      "id": "char.reynaldo.pose_p_senala2",
@@ -2763,7 +2930,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.39
     },
     {
      "id": "char.reynaldo.pose_p_pensando2",
@@ -2776,7 +2944,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.542
     },
     {
      "id": "char.reynaldo.pose_p_celebra4",
@@ -2790,7 +2959,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.485
     },
     {
      "id": "char.reynaldo.pose_p_sentado_agobiado2",
@@ -2804,7 +2974,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.477
     },
     {
      "id": "char.reynaldo.pose_p_sentado_pensando",
@@ -2817,7 +2988,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.398
     },
     {
      "id": "char.reynaldo.pose_p_sentado_estresado",
@@ -2830,7 +3002,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.476
     },
     {
      "id": "char.reynaldo.pose_p_sentado_teclea2",
@@ -2843,7 +3016,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.502
     },
     {
      "id": "char.reynaldo.pose_p_neutro",
@@ -2857,7 +3031,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.501
     },
     {
      "id": "char.reynaldo.pose_p_anda_n1",
@@ -2870,7 +3045,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "talkSrc": "/assets/punetos/punetos/reynaldo/anda_n1_boca.webp"
+     "talkSrc": "/assets/punetos/punetos/reynaldo/anda_n1_boca.webp",
+     "cx": 0.561
     },
     {
      "id": "char.reynaldo.pose_p_anda_n2",
@@ -2883,7 +3059,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "talkSrc": "/assets/punetos/punetos/reynaldo/anda_n2_boca.webp"
+     "talkSrc": "/assets/punetos/punetos/reynaldo/anda_n2_boca.webp",
+     "cx": 0.559
     },
     {
      "id": "char.reynaldo.pose_p_anda_n3",
@@ -2896,7 +3073,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "talkSrc": "/assets/punetos/punetos/reynaldo/anda_n3_boca.webp"
+     "talkSrc": "/assets/punetos/punetos/reynaldo/anda_n3_boca.webp",
+     "cx": 0.559
     },
     {
      "id": "char.reynaldo.pose_p_anda_n4",
@@ -2909,7 +3087,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "talkSrc": "/assets/punetos/punetos/reynaldo/anda_n4_boca.webp"
+     "talkSrc": "/assets/punetos/punetos/reynaldo/anda_n4_boca.webp",
+     "cx": 0.559
     },
     {
      "id": "char.reynaldo.pose_p_idea",
@@ -2923,7 +3102,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.408
     },
     {
      "id": "char.reynaldo.pose_p_saluda2",
@@ -2937,7 +3117,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.422
     },
     {
      "id": "char.reynaldo.pose_p_pensando3",
@@ -2950,7 +3131,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.549
     },
     {
      "id": "char.reynaldo.pose_p_suelo_portatil",
@@ -2964,7 +3146,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.518
     },
     {
      "id": "char.reynaldo.pose_p_suelo_movil",
@@ -2978,7 +3161,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.53
     },
     {
      "id": "char.reynaldo.pose_p_suelo_libro",
@@ -2992,7 +3176,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.521
     },
     {
      "id": "char.reynaldo.pose_p_suelo_tablet",
@@ -3006,7 +3191,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.524
     },
     {
      "id": "char.reynaldo.pose_p_despierta",
@@ -3019,7 +3205,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.633
     },
     {
      "id": "char.reynaldo.pose_p_aturdido",
@@ -3033,7 +3220,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/reynaldo/aturdido_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.423
     },
     {
      "id": "char.reynaldo.pose_p_cafe_habla",
@@ -3046,7 +3234,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.411
     },
     {
      "id": "char.reynaldo.pose_p_cafe_bebe",
@@ -3059,7 +3248,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.429
     },
     {
      "id": "char.reynaldo.pose_p_cafe_aburrido",
@@ -3072,7 +3262,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.491
     },
     {
      "id": "char.reynaldo.pose_p_cafe_habla2",
@@ -3085,7 +3276,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.431
     },
     {
      "id": "char.reynaldo.pose_p_cafe_bebe2",
@@ -3098,7 +3290,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.423
     },
     {
      "id": "char.reynaldo.pose_p_cafe_relajado",
@@ -3111,7 +3304,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.496
     },
     {
      "id": "char.reynaldo.pose_p_cafe_discute",
@@ -3124,7 +3318,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.403
     },
     {
      "id": "char.reynaldo.pose_p_cafe_discute2",
@@ -3137,7 +3332,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.407
     },
     {
      "id": "char.reynaldo.pose_p_cafe_discute3",
@@ -3150,7 +3346,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.425
     },
     {
      "id": "char.reynaldo.pose_p_come1",
@@ -3163,7 +3360,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.431
     },
     {
      "id": "char.reynaldo.pose_p_come2",
@@ -3176,7 +3374,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.441
     },
     {
      "id": "char.reynaldo.pose_p_come3",
@@ -3189,7 +3388,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.41
     },
     {
      "id": "char.reynaldo.pose_p_come4",
@@ -3202,7 +3402,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.393
     },
     {
      "id": "char.reynaldo.pose_p_discute_a1",
@@ -3214,7 +3415,8 @@
      "displayScale": 1.16,
      "facing": "front",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.448
     },
     {
      "id": "char.reynaldo.pose_p_discute_a2",
@@ -3226,7 +3428,8 @@
      "displayScale": 1.16,
      "facing": "front",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.438
     },
     {
      "id": "char.reynaldo.pose_p_discute_a3",
@@ -3238,7 +3441,8 @@
      "displayScale": 1.16,
      "facing": "front",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.444
     },
     {
      "id": "char.reynaldo.pose_p_discute_a4",
@@ -3250,7 +3454,8 @@
      "displayScale": 1.16,
      "facing": "left",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.579
     },
     {
      "id": "char.reynaldo.pose_p_discute_b1",
@@ -3262,7 +3467,8 @@
      "displayScale": 1.243,
      "facing": "front",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.585
     },
     {
      "id": "char.reynaldo.pose_p_discute_b2",
@@ -3274,7 +3480,8 @@
      "displayScale": 1.243,
      "facing": "front",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.423
     },
     {
      "id": "char.reynaldo.pose_p_discute_b3",
@@ -3286,7 +3493,8 @@
      "displayScale": 1.243,
      "facing": "front",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.393
     },
     {
      "id": "char.reynaldo.pose_p_discute_b4",
@@ -3298,7 +3506,8 @@
      "displayScale": 1.243,
      "facing": "left",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.597
     },
     {
      "id": "char.reynaldo.pose_p_sentado_legal1",
@@ -3311,7 +3520,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "talkSrc": "/assets/punetos/punetos/reynaldo/sentado_legal1_boca.webp"
+     "talkSrc": "/assets/punetos/punetos/reynaldo/sentado_legal1_boca.webp",
+     "cx": 0.453
     },
     {
      "id": "char.reynaldo.pose_p_sentado_legal2",
@@ -3323,7 +3533,8 @@
      "displayScale": 0.967,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.431
     },
     {
      "id": "char.reynaldo.pose_p_sentado_legal3",
@@ -3336,7 +3547,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "talkSrc": "/assets/punetos/punetos/reynaldo/sentado_legal3_boca.webp"
+     "talkSrc": "/assets/punetos/punetos/reynaldo/sentado_legal3_boca.webp",
+     "cx": 0.41
     },
     {
      "id": "char.reynaldo.pose_p_sentado_legal4",
@@ -3348,7 +3560,8 @@
      "displayScale": 0.967,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.405
     },
     {
      "id": "char.reynaldo.pose_p_sentado_alarma1",
@@ -3361,7 +3574,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "talkSrc": "/assets/punetos/punetos/reynaldo/sentado_alarma1_boca.webp"
+     "talkSrc": "/assets/punetos/punetos/reynaldo/sentado_alarma1_boca.webp",
+     "cx": 0.456
     },
     {
      "id": "char.reynaldo.pose_p_sentado_alarma2",
@@ -3374,7 +3588,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "talkSrc": "/assets/punetos/punetos/reynaldo/sentado_alarma2_boca.webp"
+     "talkSrc": "/assets/punetos/punetos/reynaldo/sentado_alarma2_boca.webp",
+     "cx": 0.403
     },
     {
      "id": "char.reynaldo.pose_p_sentado_alarma3",
@@ -3387,7 +3602,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "talkSrc": "/assets/punetos/punetos/reynaldo/sentado_alarma3_boca.webp"
+     "talkSrc": "/assets/punetos/punetos/reynaldo/sentado_alarma3_boca.webp",
+     "cx": 0.311
     },
     {
      "id": "char.reynaldo.pose_p_sentado_alarma4",
@@ -3399,7 +3615,8 @@
      "displayScale": 0.967,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.418
     },
     {
      "id": "char.reynaldo.pose_p_sentado_silencio1",
@@ -3411,7 +3628,8 @@
      "displayScale": 0.967,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.459
     },
     {
      "id": "char.reynaldo.pose_p_sentado_silencio2",
@@ -3423,7 +3641,8 @@
      "displayScale": 0.967,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.443
     },
     {
      "id": "char.reynaldo.pose_p_sentado_silencio3",
@@ -3435,7 +3654,8 @@
      "displayScale": 0.967,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.449
     },
     {
      "id": "char.reynaldo.pose_p_sentado_silencio4",
@@ -3447,7 +3667,8 @@
      "displayScale": 0.967,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.428
     }
    ],
    "face": {
@@ -4401,7 +4622,8 @@
      "displayScale": 1.029,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.609
     },
     {
      "id": "char.sister.pose_h_brazos_cruzados",
@@ -4414,7 +4636,8 @@
      "displayScale": 1.029,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.555
     },
     {
      "id": "char.sister.pose_h_para",
@@ -4427,7 +4650,8 @@
      "displayScale": 0.935,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.518
     },
     {
      "id": "char.sister.pose_h_movil",
@@ -4440,7 +4664,8 @@
      "displayScale": 0.935,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.529
     },
     {
      "id": "char.sister.pose_h_explica",
@@ -4453,7 +4678,8 @@
      "displayScale": 0.935,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.582
     },
     {
      "id": "char.sister.pose_h_senala",
@@ -4466,7 +4692,8 @@
      "displayScale": 1.029,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.297
     },
     {
      "id": "char.sister.pose_h_cafe",
@@ -4478,7 +4705,8 @@
      "displayScale": 0.935,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.446
     },
     {
      "id": "char.sister.pose_h_panico",
@@ -4490,7 +4718,8 @@
      "displayScale": 1.078,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.507
     },
     {
      "id": "char.sister.pose_h_agachada",
@@ -4503,7 +4732,8 @@
      "displayScale": 0.935,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.352
     },
     {
      "id": "char.sister.pose_h_caja",
@@ -4516,7 +4746,8 @@
      "displayScale": 0.935,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.521
     },
     {
      "id": "char.sister.pose_h_pensando",
@@ -4529,7 +4760,8 @@
      "displayScale": 1.074,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.472
     },
     {
      "id": "char.sister.pose_h_silla_neutro",
@@ -4542,7 +4774,8 @@
      "displayScale": 0.935,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.43
     },
     {
      "id": "char.sister.pose_h_sentado_habla",
@@ -4555,7 +4788,8 @@
      "displayScale": 0.935,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.366
     },
     {
      "id": "char.sister.pose_h_silla_pensativo",
@@ -4568,7 +4802,8 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/sister/silla_pensativo_boca.webp"
+     "talkSrc": "/assets/punetos/humanos/sister/silla_pensativo_boca.webp",
+     "cx": 0.392
     },
     {
      "id": "char.sister.pose_h_sentado_agobiado",
@@ -4581,7 +4816,8 @@
      "displayScale": 0.935,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.693
     },
     {
      "id": "char.sister.pose_h_sentado_cansado",
@@ -4594,7 +4830,8 @@
      "displayScale": 0.935,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.659
     },
     {
      "id": "char.sister.pose_h_sentado_teclea",
@@ -4607,7 +4844,8 @@
      "displayScale": 0.935,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.478
     },
     {
      "id": "char.sister.pose_h_portatil_habla",
@@ -4620,7 +4858,8 @@
      "displayScale": 0.935,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.397
     },
     {
      "id": "char.sister.pose_h_silla_tablet",
@@ -4632,7 +4871,8 @@
      "displayScale": 0.935,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.429
     },
     {
      "id": "char.sister.pose_h_silla_relajado",
@@ -4645,7 +4885,8 @@
      "displayScale": 0.935,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.414
     },
     {
      "id": "char.sister.pose_h_silla_risa",
@@ -4658,7 +4899,8 @@
      "displayScale": 0.935,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.338
     },
     {
      "id": "char.sister.pose_h_grita",
@@ -4671,7 +4913,8 @@
      "displayScale": 0.935,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.567
     },
     {
      "id": "char.sister.pose_h_tablet",
@@ -4683,7 +4926,8 @@
      "displayScale": 0.935,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.403
     },
     {
      "id": "char.sister.pose_h_confundido",
@@ -4696,7 +4940,8 @@
      "displayScale": 1.074,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.452
     },
     {
      "id": "char.sister.pose_h_encoge",
@@ -4709,7 +4954,8 @@
      "displayScale": 1.074,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.425
     },
     {
      "id": "char.sister.pose_h_celebra",
@@ -4722,7 +4968,8 @@
      "displayScale": 1.078,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.457
     },
     {
      "id": "char.sister.pose_h_resignada",
@@ -4735,7 +4982,8 @@
      "displayScale": 1.078,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.418
     },
     {
      "id": "char.sister.pose_h_susto",
@@ -4747,7 +4995,8 @@
      "displayScale": 1.078,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.441
     },
     {
      "id": "char.sister.pose_h_desesperada",
@@ -4759,7 +5008,8 @@
      "displayScale": 0.935,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.471
     },
     {
      "id": "char.sister.pose_p_agobiada_portatil",
@@ -4772,7 +5022,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.44
     },
     {
      "id": "char.sister.pose_p_ko",
@@ -4786,7 +5037,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.432
     },
     {
      "id": "char.sister.pose_p_carga_papeles",
@@ -4799,7 +5051,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.445
     },
     {
      "id": "char.sister.pose_p_ko_mesa",
@@ -4812,7 +5065,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.459
     },
     {
      "id": "char.sister.pose_p_pulgares",
@@ -4826,7 +5080,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.587
     },
     {
      "id": "char.sister.pose_p_celebra",
@@ -4840,7 +5095,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.505
     },
     {
      "id": "char.sister.pose_p_explica",
@@ -4854,7 +5110,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.434
     },
     {
      "id": "char.sister.pose_p_celebra2",
@@ -4868,7 +5125,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.539
     },
     {
      "id": "char.sister.pose_p_sentada_saluda",
@@ -4882,7 +5140,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.541
     },
     {
      "id": "char.sister.pose_p_sentada_portatil",
@@ -4896,7 +5155,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.487
     },
     {
      "id": "char.sister.pose_p_sentada_movil",
@@ -4910,7 +5170,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.555
     },
     {
      "id": "char.sister.pose_p_sentada_tranquila",
@@ -4923,7 +5184,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.557
     },
     {
      "id": "char.sister.pose_p_sentada_agobiada",
@@ -4936,7 +5198,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.531
     },
     {
      "id": "char.sister.pose_p_movil_preocupada",
@@ -4950,7 +5213,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.554
     },
     {
      "id": "char.sister.pose_p_papeles_preocupada",
@@ -4964,7 +5228,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.545
     },
     {
      "id": "char.sister.pose_p_agobiada_papeles",
@@ -4977,7 +5242,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.518
     },
     {
      "id": "char.sister.pose_p_susto",
@@ -4991,7 +5257,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.505
     },
     {
      "id": "char.sister.pose_p_senala",
@@ -5005,7 +5272,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.409
     },
     {
      "id": "char.sister.pose_p_tablet",
@@ -5019,7 +5287,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.51
     },
     {
      "id": "char.sister.pose_p_movil",
@@ -5033,7 +5302,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.536
     },
     {
      "id": "char.sister.pose_p_neutro",
@@ -5047,7 +5317,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.547
     },
     {
      "id": "char.sister.pose_p_anda1",
@@ -5061,7 +5332,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/sister/anda1_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.597
     },
     {
      "id": "char.sister.pose_p_anda2",
@@ -5075,7 +5347,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/sister/anda2_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.597
     },
     {
      "id": "char.sister.pose_p_anda3",
@@ -5089,7 +5362,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/sister/anda3_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.597
     },
     {
      "id": "char.sister.pose_p_anda4",
@@ -5103,7 +5377,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/sister/anda4_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.597
     },
     {
      "id": "char.sister.pose_p_idea",
@@ -5117,7 +5392,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.491
     },
     {
      "id": "char.sister.pose_p_explica2",
@@ -5131,7 +5407,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.457
     },
     {
      "id": "char.sister.pose_p_saluda",
@@ -5145,7 +5422,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.473
     },
     {
      "id": "char.sister.pose_p_corre",
@@ -5159,7 +5437,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.621
     },
     {
      "id": "char.sister.pose_p_saluda2",
@@ -5173,7 +5452,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.407
     },
     {
      "id": "char.sister.pose_p_enfado",
@@ -5186,7 +5466,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.61
     },
     {
      "id": "char.sister.pose_p_sentada_triste",
@@ -5199,7 +5480,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.549
     },
     {
      "id": "char.sister.pose_p_preocupada",
@@ -5213,7 +5495,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.507
     },
     {
      "id": "char.sister.pose_p_confundido",
@@ -5226,7 +5509,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.504
     },
     {
      "id": "char.sister.pose_p_sentada_preocupada",
@@ -5239,7 +5523,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.529
     },
     {
      "id": "char.sister.pose_p_pensando_preocupada",
@@ -5252,7 +5537,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.482
     },
     {
      "id": "char.sister.pose_p_neutro2",
@@ -5266,7 +5552,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.544
     },
     {
      "id": "char.sister.pose_p_idea2",
@@ -5280,7 +5567,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.496
     },
     {
      "id": "char.sister.pose_p_saluda3",
@@ -5294,7 +5582,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.465
     },
     {
      "id": "char.sister.pose_p_celebra3",
@@ -5308,7 +5597,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.55
     },
     {
      "id": "char.sister.pose_p_pensando",
@@ -5322,7 +5612,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.503
     },
     {
      "id": "char.sister.pose_p_encoge",
@@ -5336,7 +5627,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.489
     },
     {
      "id": "char.sister.pose_p_brazos_cruzados",
@@ -5350,7 +5642,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.509
     },
     {
      "id": "char.sister.pose_p_ilusion",
@@ -5364,7 +5657,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.517
     },
     {
      "id": "char.sister.pose_p_panico",
@@ -5378,7 +5672,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.55
     },
     {
      "id": "char.sister.pose_p_panico2",
@@ -5392,7 +5687,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.439
     },
     {
      "id": "char.sister.pose_p_panico3",
@@ -5406,7 +5702,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.572
     },
     {
      "id": "char.sister.pose_p_panico_suelo",
@@ -5420,7 +5717,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.487
     },
     {
      "id": "char.sister.pose_p_nerviosa",
@@ -5433,7 +5731,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.549
     },
     {
      "id": "char.sister.pose_p_pensando2",
@@ -5447,7 +5746,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.481
     },
     {
      "id": "char.sister.pose_p_nerviosa2",
@@ -5460,7 +5760,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.535
     },
     {
      "id": "char.sister.pose_p_sentada_nerviosa",
@@ -5473,7 +5774,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.561
     },
     {
      "id": "char.sister.pose_p_despierta",
@@ -5486,7 +5788,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.671
     },
     {
      "id": "char.sister.pose_p_aturdido",
@@ -5500,7 +5803,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/sister/aturdido_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.405
     },
     {
      "id": "char.sister.pose_p_cafe_habla",
@@ -5513,7 +5817,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.455
     },
     {
      "id": "char.sister.pose_p_cafe_bebe",
@@ -5526,7 +5831,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.45
     },
     {
      "id": "char.sister.pose_p_cafe_aburrido",
@@ -5539,7 +5845,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.581
     },
     {
      "id": "char.sister.pose_p_cafe_habla2",
@@ -5552,7 +5859,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.431
     },
     {
      "id": "char.sister.pose_p_cafe_bebe2",
@@ -5565,7 +5873,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.45
     },
     {
      "id": "char.sister.pose_p_cafe_relajado",
@@ -5578,7 +5887,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.503
     },
     {
      "id": "char.sister.pose_p_cafe_discute",
@@ -5591,7 +5901,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.455
     },
     {
      "id": "char.sister.pose_p_cafe_discute2",
@@ -5604,7 +5915,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.447
     },
     {
      "id": "char.sister.pose_p_cafe_discute3",
@@ -5617,7 +5929,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.442
     },
     {
      "id": "char.sister.pose_p_come1",
@@ -5630,7 +5943,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.409
     },
     {
      "id": "char.sister.pose_p_come2",
@@ -5643,7 +5957,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.469
     },
     {
      "id": "char.sister.pose_p_come3",
@@ -5656,7 +5971,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.416
     },
     {
      "id": "char.sister.pose_p_come4",
@@ -5669,7 +5985,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.426
     },
     {
      "id": "char.sister.pose_p_sentada_preocupa1",
@@ -5682,7 +5999,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "talkSrc": "/assets/punetos/punetos/sister/sentada_preocupa1_boca.webp"
+     "talkSrc": "/assets/punetos/punetos/sister/sentada_preocupa1_boca.webp",
+     "cx": 0.427
     },
     {
      "id": "char.sister.pose_p_sentada_preocupa2",
@@ -5695,7 +6013,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "talkSrc": "/assets/punetos/punetos/sister/sentada_preocupa2_boca.webp"
+     "talkSrc": "/assets/punetos/punetos/sister/sentada_preocupa2_boca.webp",
+     "cx": 0.574
     },
     {
      "id": "char.sister.pose_p_sentada_preocupa3",
@@ -5708,7 +6027,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "talkSrc": "/assets/punetos/punetos/sister/sentada_preocupa3_boca.webp"
+     "talkSrc": "/assets/punetos/punetos/sister/sentada_preocupa3_boca.webp",
+     "cx": 0.439
     },
     {
      "id": "char.sister.pose_p_sentada_preocupa4",
@@ -5720,7 +6040,8 @@
      "displayScale": 0.917,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.453
     },
     {
      "id": "char.sister.pose_p_sentada_protesta1",
@@ -5733,7 +6054,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "talkSrc": "/assets/punetos/punetos/sister/sentada_protesta1_boca.webp"
+     "talkSrc": "/assets/punetos/punetos/sister/sentada_protesta1_boca.webp",
+     "cx": 0.431
     },
     {
      "id": "char.sister.pose_p_sentada_protesta2",
@@ -5746,7 +6068,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "talkSrc": "/assets/punetos/punetos/sister/sentada_protesta2_boca.webp"
+     "talkSrc": "/assets/punetos/punetos/sister/sentada_protesta2_boca.webp",
+     "cx": 0.494
     },
     {
      "id": "char.sister.pose_p_sentada_protesta3",
@@ -5758,7 +6081,8 @@
      "displayScale": 0.917,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.441
     },
     {
      "id": "char.sister.pose_p_sentada_protesta4",
@@ -5770,7 +6094,8 @@
      "displayScale": 0.917,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.449
     },
     {
      "id": "char.sister.pose_p_sentado_silencio1",
@@ -5782,7 +6107,8 @@
      "displayScale": 0.917,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.43
     },
     {
      "id": "char.sister.pose_p_sentado_silencio2",
@@ -5794,7 +6120,8 @@
      "displayScale": 0.917,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.455
     },
     {
      "id": "char.sister.pose_p_sentado_silencio3",
@@ -5807,7 +6134,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "talkSrc": "/assets/punetos/punetos/sister/sentado_silencio3_boca.webp"
+     "talkSrc": "/assets/punetos/punetos/sister/sentado_silencio3_boca.webp",
+     "cx": 0.453
     },
     {
      "id": "char.sister.pose_p_sentado_silencio4",
@@ -5819,7 +6147,8 @@
      "displayScale": 0.917,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.445
     }
    ],
    "face": {
@@ -6744,7 +7073,8 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/barbas/pensando_boca.webp"
+     "talkSrc": "/assets/punetos/humanos/barbas/pensando_boca.webp",
+     "cx": 0.456
     },
     {
      "id": "char.barbas.pose_h_pulgar",
@@ -6769,7 +7099,8 @@
       "px": 94.5,
       "py": 119,
       "rot": 6
-     }
+     },
+     "cx": 0.519
     },
     {
      "id": "char.barbas.pose_h_movil",
@@ -6793,7 +7124,8 @@
       "h": 109,
       "px": 76.0,
       "py": 99
-     }
+     },
+     "cx": 0.575
     },
     {
      "id": "char.barbas.pose_h_explica",
@@ -6818,7 +7150,8 @@
       "px": 75.5,
       "py": 90,
       "rot": 6
-     }
+     },
+     "cx": 0.475
     },
     {
      "id": "char.barbas.pose_h_silla_relajado",
@@ -6831,7 +7164,8 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/barbas/silla_relajado.webp"
+     "talkSrc": "/assets/punetos/humanos/barbas/silla_relajado.webp",
+     "cx": 0.466
     },
     {
      "id": "char.barbas.pose_h_silla_pensando",
@@ -6844,7 +7178,8 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/barbas/silla_pensando.webp"
+     "talkSrc": "/assets/punetos/humanos/barbas/silla_pensando.webp",
+     "cx": 0.578
     },
     {
      "id": "char.barbas.pose_h_silla_cuernos",
@@ -6857,7 +7192,8 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/barbas/silla_cuernos_boca.webp"
+     "talkSrc": "/assets/punetos/humanos/barbas/silla_cuernos_boca.webp",
+     "cx": 0.458
     },
     {
      "id": "char.barbas.pose_h_camina",
@@ -6881,7 +7217,8 @@
       "h": 88,
       "px": 83.0,
       "py": 78
-     }
+     },
+     "cx": 0.677
     },
     {
      "id": "char.barbas.pose_h_corre",
@@ -6893,7 +7230,8 @@
      "displayScale": 1.731,
      "facing": "right",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.707
     },
     {
      "id": "char.barbas.pose_h_celebra",
@@ -6906,7 +7244,8 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/barbas/celebra_boca2.webp"
+     "talkSrc": "/assets/punetos/humanos/barbas/celebra_boca2.webp",
+     "cx": 0.505
     },
     {
      "id": "char.barbas.pose_h_para",
@@ -6931,7 +7270,8 @@
       "px": 99.0,
       "py": 123,
       "rot": 6
-     }
+     },
+     "cx": 0.445
     },
     {
      "id": "char.barbas.pose_h_agobiado",
@@ -6944,7 +7284,8 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/barbas/agobiado_boca.webp"
+     "talkSrc": "/assets/punetos/humanos/barbas/agobiado_boca.webp",
+     "cx": 0.508
     },
     {
      "id": "char.barbas.pose_h_abre_brazos",
@@ -6969,7 +7310,8 @@
       "px": 91.0,
       "py": 113,
       "rot": 6
-     }
+     },
+     "cx": 0.52
     },
     {
      "id": "char.barbas.pose_h_susto",
@@ -6982,7 +7324,8 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/barbas/susto_boca2.webp"
+     "talkSrc": "/assets/punetos/humanos/barbas/susto_boca2.webp",
+     "cx": 0.376
     },
     {
      "id": "char.barbas.pose_h_neutro",
@@ -7007,7 +7350,8 @@
       "px": 70.0,
       "py": 90,
       "rot": 6
-     }
+     },
+     "cx": 0.527
     },
     {
      "id": "char.barbas.pose_h_brazos_cruzados",
@@ -7032,7 +7376,8 @@
       "px": 75.5,
       "py": 95,
       "rot": 6
-     }
+     },
+     "cx": 0.483
     },
     {
      "id": "char.barbas.pose_h_senala",
@@ -7056,7 +7401,8 @@
       "h": 89,
       "px": 74.5,
       "py": 79
-     }
+     },
+     "cx": 0.436
     },
     {
      "id": "char.barbas.pose_h_encoge",
@@ -7081,7 +7427,8 @@
       "px": 70.0,
       "py": 97,
       "rot": 6
-     }
+     },
+     "cx": 0.46
     },
     {
      "id": "char.barbas.pose_h_confundido",
@@ -7094,7 +7441,8 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/barbas/confundido_boca2.webp"
+     "talkSrc": "/assets/punetos/humanos/barbas/confundido_boca2.webp",
+     "cx": 0.422
     },
     {
      "id": "char.barbas.pose_h_risa",
@@ -7119,7 +7467,8 @@
       "px": 91.0,
       "py": 104,
       "rot": 6
-     }
+     },
+     "cx": 0.431
     },
     {
      "id": "char.barbas.pose_h_facepalm",
@@ -7131,7 +7480,8 @@
      "displayScale": 1.565,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.562
     },
     {
      "id": "char.barbas.pose_h_cuernos",
@@ -7144,7 +7494,8 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/barbas/cuernos_boca2.webp"
+     "talkSrc": "/assets/punetos/humanos/barbas/cuernos_boca2.webp",
+     "cx": 0.456
     },
     {
      "id": "char.barbas.pose_p_celebra",
@@ -7158,7 +7509,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.465
     },
     {
      "id": "char.barbas.pose_p_corre",
@@ -7171,7 +7523,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.662
     },
     {
      "id": "char.barbas.pose_p_suelo_portatil",
@@ -7185,7 +7538,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.544
     },
     {
      "id": "char.barbas.pose_p_tumbado_relax",
@@ -7199,7 +7553,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.486
     },
     {
      "id": "char.barbas.pose_p_lee_mapa",
@@ -7213,7 +7568,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.572
     },
     {
      "id": "char.barbas.pose_p_lupa",
@@ -7227,7 +7583,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.638
     },
     {
      "id": "char.barbas.pose_p_relax",
@@ -7241,7 +7598,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.613
     },
     {
      "id": "char.barbas.pose_p_carga_caja",
@@ -7254,7 +7612,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.558
     },
     {
      "id": "char.barbas.pose_p_pensando",
@@ -7267,7 +7626,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.466
     },
     {
      "id": "char.barbas.pose_p_idea",
@@ -7281,7 +7641,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.261
     },
     {
      "id": "char.barbas.pose_p_basura",
@@ -7294,7 +7655,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.611
     },
     {
      "id": "char.barbas.pose_p_friega",
@@ -7308,7 +7670,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.573
     },
     {
      "id": "char.barbas.pose_p_nervioso",
@@ -7321,7 +7684,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.471
     },
     {
      "id": "char.barbas.pose_p_agobiado",
@@ -7335,7 +7699,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.5
     },
     {
      "id": "char.barbas.pose_p_sentado_triste",
@@ -7348,7 +7713,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.399
     },
     {
      "id": "char.barbas.pose_p_tumbado_preocupado",
@@ -7361,7 +7727,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.396
     },
     {
      "id": "char.barbas.pose_p_movil",
@@ -7375,7 +7742,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.53
     },
     {
      "id": "char.barbas.pose_p_neutro",
@@ -7389,7 +7757,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.569
     },
     {
      "id": "char.barbas.pose_p_anda1",
@@ -7403,7 +7772,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/barbas/anda1_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.618
     },
     {
      "id": "char.barbas.pose_p_anda2",
@@ -7417,7 +7787,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/barbas/anda2_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.618
     },
     {
      "id": "char.barbas.pose_p_anda3",
@@ -7431,7 +7802,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/barbas/anda3_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.618
     },
     {
      "id": "char.barbas.pose_p_anda4",
@@ -7445,7 +7817,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/barbas/anda4_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.619
     },
     {
      "id": "char.barbas.pose_p_anda_contento1",
@@ -7459,7 +7832,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/barbas/anda_contento1_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.584
     },
     {
      "id": "char.barbas.pose_p_anda_contento2",
@@ -7473,7 +7847,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/barbas/anda_contento2_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.584
     },
     {
      "id": "char.barbas.pose_p_anda_contento3",
@@ -7487,7 +7862,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/barbas/anda_contento3_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.584
     },
     {
      "id": "char.barbas.pose_p_anda_contento4",
@@ -7501,7 +7877,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/barbas/anda_contento4_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.585
     },
     {
      "id": "char.barbas.pose_p_cafe",
@@ -7514,7 +7891,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.569
     },
     {
      "id": "char.barbas.pose_p_ko",
@@ -7527,7 +7905,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.417
     },
     {
      "id": "char.barbas.pose_p_brazos_cruzados",
@@ -7540,7 +7919,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.539
     },
     {
      "id": "char.barbas.pose_p_furia",
@@ -7554,7 +7934,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.462
     },
     {
      "id": "char.barbas.pose_p_corre_furia",
@@ -7567,7 +7948,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.536
     },
     {
      "id": "char.barbas.pose_p_enfado_suelo",
@@ -7580,7 +7962,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.451
     },
     {
      "id": "char.barbas.pose_p_sentado_preocupado",
@@ -7593,7 +7976,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.46
     },
     {
      "id": "char.barbas.pose_p_panico",
@@ -7607,7 +7991,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.51
     },
     {
      "id": "char.barbas.pose_p_sentado_pensando",
@@ -7620,7 +8005,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.376
     },
     {
      "id": "char.barbas.pose_p_tumbado_preocupado2",
@@ -7633,7 +8019,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.417
     },
     {
      "id": "char.barbas.pose_p_suelo_portatil2",
@@ -7647,7 +8034,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.52
     },
     {
      "id": "char.barbas.pose_p_relax2",
@@ -7661,7 +8049,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.535
     },
     {
      "id": "char.barbas.pose_p_tumbado_risa",
@@ -7675,7 +8064,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.496
     },
     {
      "id": "char.barbas.pose_p_ko2",
@@ -7688,7 +8078,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.52
     },
     {
      "id": "char.barbas.pose_p_portatil",
@@ -7702,7 +8093,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.49
     },
     {
      "id": "char.barbas.pose_p_relax3",
@@ -7716,7 +8108,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.539
     },
     {
      "id": "char.barbas.pose_p_tumbado_risa2",
@@ -7730,7 +8123,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.488
     },
     {
      "id": "char.barbas.pose_p_ko3",
@@ -7743,7 +8137,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.511
     },
     {
      "id": "char.barbas.pose_p_sentado_agobiado",
@@ -7756,7 +8151,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.515
     },
     {
      "id": "char.barbas.pose_p_sentado_teclea",
@@ -7769,7 +8165,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.504
     },
     {
      "id": "char.barbas.pose_p_sentado_estresado",
@@ -7782,7 +8179,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.552
     },
     {
      "id": "char.barbas.pose_p_sentado_nervioso",
@@ -7795,7 +8193,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.516
     },
     {
      "id": "char.barbas.pose_p_despierta",
@@ -7808,7 +8207,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.681
     },
     {
      "id": "char.barbas.pose_p_aturdido",
@@ -7822,7 +8222,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/barbas/aturdido_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.496
     },
     {
      "id": "char.barbas.pose_p_cafe_habla",
@@ -7835,7 +8236,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.446
     },
     {
      "id": "char.barbas.pose_p_cafe_bebe",
@@ -7848,7 +8250,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.463
     },
     {
      "id": "char.barbas.pose_p_cafe_aburrido",
@@ -7861,7 +8264,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.566
     },
     {
      "id": "char.barbas.pose_p_cafe_habla2",
@@ -7874,7 +8278,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.444
     },
     {
      "id": "char.barbas.pose_p_cafe_bebe2",
@@ -7887,7 +8292,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.461
     },
     {
      "id": "char.barbas.pose_p_cafe_relajado",
@@ -7900,7 +8306,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.525
     },
     {
      "id": "char.barbas.pose_p_cafe_discute",
@@ -7913,7 +8320,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.435
     },
     {
      "id": "char.barbas.pose_p_cafe_discute2",
@@ -7926,7 +8334,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.442
     },
     {
      "id": "char.barbas.pose_p_cafe_discute3",
@@ -7939,7 +8348,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.457
     },
     {
      "id": "char.barbas.pose_p_come1",
@@ -7952,7 +8362,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.39
     },
     {
      "id": "char.barbas.pose_p_come2",
@@ -7965,7 +8376,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.409
     },
     {
      "id": "char.barbas.pose_p_come3",
@@ -7978,7 +8390,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.392
     },
     {
      "id": "char.barbas.pose_p_come4",
@@ -7991,7 +8404,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.363
     },
     {
      "id": "char.barbas.pose_p_sentado_indignado1",
@@ -8004,7 +8418,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "talkSrc": "/assets/punetos/punetos/barbas/sentado_indignado1_boca.webp"
+     "talkSrc": "/assets/punetos/punetos/barbas/sentado_indignado1_boca.webp",
+     "cx": 0.376
     },
     {
      "id": "char.barbas.pose_p_sentado_indignado2",
@@ -8017,7 +8432,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "talkSrc": "/assets/punetos/punetos/barbas/sentado_indignado2_boca.webp"
+     "talkSrc": "/assets/punetos/punetos/barbas/sentado_indignado2_boca.webp",
+     "cx": 0.38
     },
     {
      "id": "char.barbas.pose_p_sentado_indignado3",
@@ -8029,7 +8445,8 @@
      "displayScale": 0.826,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.401
     },
     {
      "id": "char.barbas.pose_p_sentado_indignado4",
@@ -8041,7 +8458,8 @@
      "displayScale": 0.826,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.398
     },
     {
      "id": "char.barbas.pose_p_sentado_comenta1",
@@ -8054,7 +8472,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "talkSrc": "/assets/punetos/punetos/barbas/sentado_comenta1_boca.webp"
+     "talkSrc": "/assets/punetos/punetos/barbas/sentado_comenta1_boca.webp",
+     "cx": 0.379
     },
     {
      "id": "char.barbas.pose_p_sentado_comenta2",
@@ -8066,7 +8485,8 @@
      "displayScale": 0.826,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.397
     },
     {
      "id": "char.barbas.pose_p_sentado_comenta3",
@@ -8079,7 +8499,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "talkSrc": "/assets/punetos/punetos/barbas/sentado_comenta3_boca.webp"
+     "talkSrc": "/assets/punetos/punetos/barbas/sentado_comenta3_boca.webp",
+     "cx": 0.372
     },
     {
      "id": "char.barbas.pose_p_sentado_comenta4",
@@ -8091,7 +8512,8 @@
      "displayScale": 0.826,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.413
     },
     {
      "id": "char.barbas.pose_p_sentado_silencio1",
@@ -8103,7 +8525,8 @@
      "displayScale": 0.826,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.409
     },
     {
      "id": "char.barbas.pose_p_sentado_silencio2",
@@ -8115,7 +8538,8 @@
      "displayScale": 0.826,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.408
     },
     {
      "id": "char.barbas.pose_p_sentado_silencio3",
@@ -8127,7 +8551,8 @@
      "displayScale": 0.826,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.396
     },
     {
      "id": "char.barbas.pose_p_sentado_silencio4",
@@ -8139,7 +8564,8 @@
      "displayScale": 0.826,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.402
     }
    ],
    "face": {
@@ -8989,7 +9415,8 @@
      "displayScale": 1.091,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.51
     },
     {
      "id": "char.jefe.pose_h_explica",
@@ -9002,7 +9429,8 @@
      "displayScale": 1.091,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.492
     },
     {
      "id": "char.jefe.pose_h_confundido",
@@ -9015,7 +9443,8 @@
      "displayScale": 1.091,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.486
     },
     {
      "id": "char.jefe.pose_h_panico",
@@ -9028,7 +9457,8 @@
      "displayScale": 1.091,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.534
     },
     {
      "id": "char.jefe.pose_h_sorprendido",
@@ -9041,7 +9471,8 @@
      "displayScale": 1.214,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.379
     },
     {
      "id": "char.jefe.pose_h_camina",
@@ -9054,7 +9485,8 @@
      "displayScale": 1.146,
      "facing": "right",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.653
     },
     {
      "id": "char.jefe.pose_h_entra",
@@ -9067,7 +9499,8 @@
      "displayScale": 1.091,
      "facing": "right",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.522
     },
     {
      "id": "char.jefe.pose_h_sentado_habla",
@@ -9080,7 +9513,8 @@
      "displayScale": 1.091,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.476
     },
     {
      "id": "char.jefe.pose_h_sentado_cansado",
@@ -9093,7 +9527,8 @@
      "displayScale": 0.805,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.577
     },
     {
      "id": "char.jefe.pose_h_sentado_teclea",
@@ -9105,7 +9540,8 @@
      "displayScale": 0.805,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.447
     },
     {
      "id": "char.jefe.pose_p_pensando",
@@ -9119,7 +9555,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.524
     },
     {
      "id": "char.jefe.pose_p_senala",
@@ -9133,7 +9570,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.63
     },
     {
      "id": "char.jefe.pose_p_pulgares",
@@ -9147,7 +9585,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.563
     },
     {
      "id": "char.jefe.pose_p_pulgar",
@@ -9161,7 +9600,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.569
     },
     {
      "id": "char.jefe.pose_p_susto",
@@ -9175,7 +9615,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.449
     },
     {
      "id": "char.jefe.pose_p_pensando2",
@@ -9189,7 +9630,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.467
     },
     {
      "id": "char.jefe.pose_p_serio",
@@ -9203,7 +9645,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.482
     },
     {
      "id": "char.jefe.pose_p_senala2",
@@ -9217,7 +9660,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.651
     },
     {
      "id": "char.jefe.pose_p_explica",
@@ -9231,7 +9675,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.507
     },
     {
      "id": "char.jefe.pose_p_brazos_cruzados",
@@ -9245,7 +9690,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.471
     },
     {
      "id": "char.jefe.pose_p_pensando3",
@@ -9258,7 +9704,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.487
     },
     {
      "id": "char.jefe.pose_p_celebra",
@@ -9272,7 +9719,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.481
     },
     {
      "id": "char.jefe.pose_p_senala3",
@@ -9286,7 +9734,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.643
     },
     {
      "id": "char.jefe.pose_p_sorprendido",
@@ -9300,7 +9749,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.503
     },
     {
      "id": "char.jefe.pose_p_pensando4",
@@ -9313,7 +9763,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.533
     },
     {
      "id": "char.jefe.pose_p_neutro",
@@ -9327,7 +9778,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.445
     },
     {
      "id": "char.jefe.pose_p_portatil_suelo",
@@ -9341,7 +9793,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.489
     },
     {
      "id": "char.jefe.pose_p_tablet",
@@ -9355,7 +9808,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.436
     },
     {
      "id": "char.jefe.pose_p_relax",
@@ -9369,7 +9823,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.222
     },
     {
      "id": "char.jefe.pose_p_espaldas",
@@ -9382,7 +9837,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.464
     },
     {
      "id": "char.jefe.pose_p_celebra2",
@@ -9396,7 +9852,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.384
     },
     {
      "id": "char.jefe.pose_p_corre",
@@ -9410,7 +9867,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.622
     },
     {
      "id": "char.jefe.pose_p_camina",
@@ -9424,7 +9882,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.66
     },
     {
      "id": "char.jefe.pose_p_anda1",
@@ -9438,7 +9897,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/jefe/anda1_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.504
     },
     {
      "id": "char.jefe.pose_p_anda2",
@@ -9452,7 +9912,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/jefe/anda2_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.504
     },
     {
      "id": "char.jefe.pose_p_anda3",
@@ -9466,7 +9927,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/jefe/anda3_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.505
     },
     {
      "id": "char.jefe.pose_p_anda4",
@@ -9480,7 +9942,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/jefe/anda4_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.506
     },
     {
      "id": "char.jefe.pose_p_confundido",
@@ -9494,7 +9957,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.531
     },
     {
      "id": "char.jefe.pose_p_celebra3",
@@ -9508,7 +9972,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.425
     },
     {
      "id": "char.jefe.pose_p_burla",
@@ -9522,7 +9987,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.518
     },
     {
      "id": "char.jefe.pose_p_pensando5",
@@ -9536,7 +10002,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.498
     },
     {
      "id": "char.jefe.pose_p_ajusta_gafas",
@@ -9550,7 +10017,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.498
     },
     {
      "id": "char.jefe.pose_p_portatil",
@@ -9564,7 +10032,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.459
     },
     {
      "id": "char.jefe.pose_p_sentado_movil",
@@ -9578,7 +10047,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.49
     },
     {
      "id": "char.jefe.pose_p_tumbado",
@@ -9592,7 +10062,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.244
     },
     {
      "id": "char.jefe.pose_p_ko",
@@ -9606,7 +10077,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.312
     },
     {
      "id": "char.jefe.pose_p_sentado_teclea",
@@ -9620,7 +10092,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.462
     },
     {
      "id": "char.jefe.pose_p_sentado_celebra",
@@ -9634,7 +10107,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.457
     },
     {
      "id": "char.jefe.pose_p_sentado_pensando",
@@ -9648,7 +10122,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.495
     },
     {
      "id": "char.jefe.pose_p_sentado_relax",
@@ -9662,7 +10137,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.624
     },
     {
      "id": "char.jefe.pose_p_despierta",
@@ -9675,7 +10151,8 @@
      "facing": "front",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.672
     },
     {
      "id": "char.jefe.pose_p_aturdido",
@@ -9689,7 +10166,8 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/jefe/aturdido_boca.webp",
-     "archived": true
+     "archived": true,
+     "cx": 0.515
     },
     {
      "id": "char.jefe.pose_p_cafe_habla",
@@ -9702,7 +10180,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.386
     },
     {
      "id": "char.jefe.pose_p_cafe_bebe",
@@ -9715,7 +10194,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.404
     },
     {
      "id": "char.jefe.pose_p_cafe_aburrido",
@@ -9728,7 +10208,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.492
     },
     {
      "id": "char.jefe.pose_p_cafe_habla2",
@@ -9741,7 +10222,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.397
     },
     {
      "id": "char.jefe.pose_p_cafe_bebe2",
@@ -9754,7 +10236,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.379
     },
     {
      "id": "char.jefe.pose_p_cafe_relajado",
@@ -9767,7 +10250,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.39
     },
     {
      "id": "char.jefe.pose_p_cafe_discute",
@@ -9780,7 +10264,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.393
     },
     {
      "id": "char.jefe.pose_p_cafe_discute2",
@@ -9793,7 +10278,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.368
     },
     {
      "id": "char.jefe.pose_p_cafe_discute3",
@@ -9806,7 +10292,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.401
     },
     {
      "id": "char.jefe.pose_p_come1",
@@ -9819,7 +10306,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.381
     },
     {
      "id": "char.jefe.pose_p_come2",
@@ -9832,7 +10320,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.356
     },
     {
      "id": "char.jefe.pose_p_come3",
@@ -9845,7 +10334,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.373
     },
     {
      "id": "char.jefe.pose_p_come4",
@@ -9858,7 +10348,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "archived": true
+     "archived": true,
+     "cx": 0.375
     },
     {
      "id": "char.jefe.pose_p_sentado_triste_n1",
@@ -9870,7 +10361,8 @@
      "displayScale": 0.968,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.522
     },
     {
      "id": "char.jefe.pose_p_sentado_triste_n2",
@@ -9882,7 +10374,8 @@
      "displayScale": 0.968,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.487
     },
     {
      "id": "char.jefe.pose_p_sentado_triste_n3",
@@ -9894,7 +10387,8 @@
      "displayScale": 0.968,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.463
     },
     {
      "id": "char.jefe.pose_p_sentado_triste_n4",
@@ -9906,7 +10400,8 @@
      "displayScale": 0.968,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.47
     },
     {
      "id": "char.jefe.pose_p_sentado_drama1",
@@ -9919,7 +10414,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "talkSrc": "/assets/punetos/punetos/jefe/sentado_drama1_boca.webp"
+     "talkSrc": "/assets/punetos/punetos/jefe/sentado_drama1_boca.webp",
+     "cx": 0.469
     },
     {
      "id": "char.jefe.pose_p_sentado_drama2",
@@ -9931,7 +10427,8 @@
      "displayScale": 0.968,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.482
     },
     {
      "id": "char.jefe.pose_p_sentado_drama3",
@@ -9944,7 +10441,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "talkSrc": "/assets/punetos/punetos/jefe/sentado_drama3_boca.webp"
+     "talkSrc": "/assets/punetos/punetos/jefe/sentado_drama3_boca.webp",
+     "cx": 0.467
     },
     {
      "id": "char.jefe.pose_p_sentado_drama4",
@@ -9956,7 +10454,8 @@
      "displayScale": 0.968,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.473
     },
     {
      "id": "char.jefe.pose_p_sentado_malo1",
@@ -9969,7 +10468,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "talkSrc": "/assets/punetos/punetos/jefe/sentado_malo1_boca.webp"
+     "talkSrc": "/assets/punetos/punetos/jefe/sentado_malo1_boca.webp",
+     "cx": 0.449
     },
     {
      "id": "char.jefe.pose_p_sentado_malo2",
@@ -9982,7 +10482,8 @@
      "facing": "right",
      "flat": true,
      "look": "puneto",
-     "talkSrc": "/assets/punetos/punetos/jefe/sentado_malo2_boca.webp"
+     "talkSrc": "/assets/punetos/punetos/jefe/sentado_malo2_boca.webp",
+     "cx": 0.462
     },
     {
      "id": "char.jefe.pose_p_sentado_malo3",
@@ -9994,7 +10495,8 @@
      "displayScale": 0.968,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.395
     },
     {
      "id": "char.jefe.pose_p_sentado_malo4",
@@ -10006,7 +10508,8 @@
      "displayScale": 0.968,
      "facing": "right",
      "flat": true,
-     "look": "puneto"
+     "look": "puneto",
+     "cx": 0.507
     }
    ],
    "face": {
@@ -10646,7 +11149,8 @@
      "displayScale": 1.389,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.567
     },
     {
      "id": "char.director.pose_h_grita_senala",
@@ -10659,7 +11163,8 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/director/grita_senala.webp"
+     "talkSrc": "/assets/punetos/humanos/director/grita_senala.webp",
+     "cx": 0.5
     },
     {
      "id": "char.director.pose_h_espalda",
@@ -10672,7 +11177,8 @@
      "displayScale": 1.389,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.57
     },
     {
      "id": "char.director.pose_h_explica",
@@ -10685,7 +11191,8 @@
      "displayScale": 1.389,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.483
     },
     {
      "id": "char.director.pose_h_manos_espalda",
@@ -10698,7 +11205,8 @@
      "displayScale": 1.261,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.551
     },
     {
      "id": "char.director.pose_h_senala",
@@ -10711,7 +11219,8 @@
      "displayScale": 1.261,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.557
     },
     {
      "id": "char.director.pose_h_pensando",
@@ -10724,7 +11233,8 @@
      "displayScale": 1.261,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.411
     },
     {
      "id": "char.director.pose_h_movil",
@@ -10737,7 +11247,8 @@
      "displayScale": 1.261,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.535
     },
     {
      "id": "char.director.pose_h_grita",
@@ -10750,7 +11261,8 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/director/grita.webp"
+     "talkSrc": "/assets/punetos/humanos/director/grita.webp",
+     "cx": 0.541
     },
     {
      "id": "char.director.pose_h_para",
@@ -10763,7 +11275,8 @@
      "displayScale": 1.325,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.561
     },
     {
      "id": "char.director.pose_h_tapa_boca",
@@ -10775,7 +11288,8 @@
      "displayScale": 1.325,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.513
     },
     {
      "id": "char.director.pose_h_lee",
@@ -10788,7 +11302,8 @@
      "displayScale": 1.325,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.533
     },
     {
      "id": "char.director.pose_h_grita2",
@@ -10801,7 +11316,8 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/director/grita2.webp"
+     "talkSrc": "/assets/punetos/humanos/director/grita2.webp",
+     "cx": 0.547
     },
     {
      "id": "char.director.pose_h_brazos_arriba",
@@ -10814,7 +11330,8 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/director/brazos_arriba.webp"
+     "talkSrc": "/assets/punetos/humanos/director/brazos_arriba.webp",
+     "cx": 0.533
     },
     {
      "id": "char.director.pose_h_puno",
@@ -10827,7 +11344,8 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/director/puno.webp"
+     "talkSrc": "/assets/punetos/humanos/director/puno.webp",
+     "cx": 0.584
     },
     {
      "id": "char.director.pose_h_telefono",
@@ -10840,7 +11358,8 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/director/telefono.webp"
+     "talkSrc": "/assets/punetos/humanos/director/telefono.webp",
+     "cx": 0.571
     },
     {
      "id": "char.director.pose_h_grita3",
@@ -10853,7 +11372,8 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/director/grita3.webp"
+     "talkSrc": "/assets/punetos/humanos/director/grita3.webp",
+     "cx": 0.535
     },
     {
      "id": "char.director.pose_h_punos_arriba",
@@ -10866,7 +11386,8 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/director/punos_arriba.webp"
+     "talkSrc": "/assets/punetos/humanos/director/punos_arriba.webp",
+     "cx": 0.493
     },
     {
      "id": "char.director.pose_h_furia",
@@ -10879,7 +11400,8 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/director/furia.webp"
+     "talkSrc": "/assets/punetos/humanos/director/furia.webp",
+     "cx": 0.479
     },
     {
      "id": "char.director.pose_h_golpe_mesa",
@@ -10892,7 +11414,8 @@
      "facing": "front",
      "flat": true,
      "look": "humano",
-     "talkSrc": "/assets/punetos/humanos/director/golpe_mesa.webp"
+     "talkSrc": "/assets/punetos/humanos/director/golpe_mesa.webp",
+     "cx": 0.621
     },
     {
      "id": "char.director.pose_h_rompe_papel",
@@ -10905,7 +11428,8 @@
      "displayScale": 1.325,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.597
     },
     {
      "id": "char.director.pose_h_megafono",
@@ -10918,7 +11442,8 @@
      "displayScale": 1.325,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.734
     },
     {
      "id": "char.director.pose_h_grita4",
@@ -10931,7 +11456,8 @@
      "displayScale": 1.325,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.539
     },
     {
      "id": "char.director.pose_h_manos_cabeza",
@@ -10944,7 +11470,8 @@
      "displayScale": 1.325,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.535
     },
     {
      "id": "char.director.pose_h_silla_grita",
@@ -10957,7 +11484,8 @@
      "displayScale": 1.325,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.341
     },
     {
      "id": "char.director.pose_h_silla_papeles",
@@ -10970,7 +11498,8 @@
      "displayScale": 1.325,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.46
     },
     {
      "id": "char.director.pose_h_silla_tapa_boca",
@@ -10982,7 +11511,8 @@
      "displayScale": 1.325,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.471
     },
     {
      "id": "char.director.pose_h_silla_cafe",
@@ -10995,7 +11525,8 @@
      "displayScale": 1.325,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.377
     },
     {
      "id": "char.director.pose_h_silla_pensando",
@@ -11008,7 +11539,8 @@
      "displayScale": 1.325,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.384
     },
     {
      "id": "char.director.pose_h_silla_brazos",
@@ -11021,7 +11553,8 @@
      "displayScale": 1.325,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.351
     },
     {
      "id": "char.director.pose_h_silla_manos",
@@ -11033,7 +11566,8 @@
      "displayScale": 1.325,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.477
     },
     {
      "id": "char.director.pose_h_silla_lee",
@@ -11046,7 +11580,8 @@
      "displayScale": 1.325,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.411
     }
    ],
    "face": {
@@ -11243,7 +11778,8 @@
      "displayScale": 1.135,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.45
     },
     {
      "id": "char.neli.pose_h_senala",
@@ -11256,7 +11792,8 @@
      "displayScale": 1.135,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.375
     },
     {
      "id": "char.neli.pose_h_explica",
@@ -11269,7 +11806,8 @@
      "displayScale": 1.135,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.435
     },
     {
      "id": "char.neli.pose_h_tablet",
@@ -11282,7 +11820,8 @@
      "displayScale": 1.135,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.479
     }
    ],
    "face": {
@@ -11479,7 +12018,8 @@
      "displayScale": 1.205,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.5
     },
     {
      "id": "char.gala.pose_h_explica",
@@ -11492,7 +12032,8 @@
      "displayScale": 1.205,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.609
     },
     {
      "id": "char.gala.pose_h_gafas",
@@ -11505,7 +12046,8 @@
      "displayScale": 1.205,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.478
     },
     {
      "id": "char.gala.pose_h_espaldas",
@@ -11518,7 +12060,8 @@
      "displayScale": 1.205,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.495
     },
     {
      "id": "char.gala.pose_h_mesa",
@@ -11531,7 +12074,8 @@
      "displayScale": 1.205,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.552
     },
     {
      "id": "char.gala.pose_h_mesa2",
@@ -11544,7 +12088,8 @@
      "displayScale": 1.205,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.569
     },
     {
      "id": "char.gala.pose_h_selfie",
@@ -11556,7 +12101,8 @@
      "displayScale": 1.205,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.647
     },
     {
      "id": "char.gala.pose_h_silla",
@@ -11569,7 +12115,8 @@
      "displayScale": 1.205,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.575
     }
    ],
    "face": {
@@ -11766,7 +12313,8 @@
      "displayScale": 0.994,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.504
     },
     {
      "id": "char.damian.pose_h_matraz",
@@ -11779,7 +12327,8 @@
      "displayScale": 1.106,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.479
     },
     {
      "id": "char.damian.pose_h_pensando",
@@ -11791,7 +12340,8 @@
      "displayScale": 1.106,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.411
     },
     {
      "id": "char.damian.pose_h_lee",
@@ -11804,7 +12354,8 @@
      "displayScale": 1.106,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.518
     },
     {
      "id": "char.damian.pose_h_para",
@@ -11817,7 +12368,8 @@
      "displayScale": 1.106,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.584
     },
     {
      "id": "char.damian.pose_h_cafe",
@@ -11829,7 +12381,8 @@
      "displayScale": 0.994,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.52
     },
     {
      "id": "char.damian.pose_h_bolsa",
@@ -11842,7 +12395,8 @@
      "displayScale": 0.994,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.562
     },
     {
      "id": "char.damian.pose_h_carpeta",
@@ -11855,7 +12409,8 @@
      "displayScale": 0.994,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.577
     },
     {
      "id": "char.damian.pose_h_camina",
@@ -11868,7 +12423,8 @@
      "displayScale": 0.911,
      "facing": "right",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.486
     },
     {
      "id": "char.damian.pose_h_cafe2",
@@ -11880,7 +12436,8 @@
      "displayScale": 0.911,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.456
     },
     {
      "id": "char.damian.pose_h_agachado",
@@ -11893,7 +12450,8 @@
      "displayScale": 0.911,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.568
     },
     {
      "id": "char.damian.pose_h_senala",
@@ -11906,7 +12464,8 @@
      "displayScale": 0.911,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.558
     }
    ],
    "face": {
@@ -12103,7 +12662,8 @@
      "displayScale": 1.029,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.471
     },
     {
      "id": "char.cientifica.pose_h_grita_senala",
@@ -12116,7 +12676,8 @@
      "displayScale": 1.029,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.473
     },
     {
      "id": "char.cientifica.pose_h_jarras",
@@ -12129,7 +12690,8 @@
      "displayScale": 1.029,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.488
     },
     {
      "id": "char.cientifica.pose_h_para",
@@ -12142,7 +12704,8 @@
      "displayScale": 1.029,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.522
     },
     {
      "id": "char.cientifica.pose_h_tubo",
@@ -12155,7 +12718,8 @@
      "displayScale": 1.029,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.471
     },
     {
      "id": "char.cientifica.pose_h_pensando",
@@ -12167,7 +12731,8 @@
      "displayScale": 1.029,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.381
     },
     {
      "id": "char.cientifica.pose_h_sorpresa",
@@ -12180,7 +12745,8 @@
      "displayScale": 1.029,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.474
     },
     {
      "id": "char.cientifica.pose_h_taburete",
@@ -12193,7 +12759,8 @@
      "displayScale": 1.029,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.522
     }
    ],
    "face": {
@@ -12390,7 +12957,8 @@
      "displayScale": 0.952,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.364
     },
     {
      "id": "char.vanesa.pose_h_brazos2",
@@ -12403,7 +12971,8 @@
      "displayScale": 0.952,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.337
     },
     {
      "id": "char.vanesa.pose_h_explica",
@@ -12416,7 +12985,8 @@
      "displayScale": 0.952,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.383
     },
     {
      "id": "char.vanesa.pose_h_senala",
@@ -12429,7 +12999,8 @@
      "displayScale": 0.952,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.45
     },
     {
      "id": "char.vanesa.pose_h_carpeta",
@@ -12442,7 +13013,8 @@
      "displayScale": 0.952,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.418
     },
     {
      "id": "char.vanesa.pose_h_telefono",
@@ -12455,7 +13027,8 @@
      "displayScale": 0.952,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.385
     },
     {
      "id": "char.vanesa.pose_h_telefono2",
@@ -12468,7 +13041,8 @@
      "displayScale": 0.952,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.466
     },
     {
      "id": "char.vanesa.pose_h_mostrador",
@@ -12481,7 +13055,8 @@
      "displayScale": 0.952,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.639
     },
     {
      "id": "char.vanesa.pose_h_silla_explica",
@@ -12494,7 +13069,8 @@
      "displayScale": 0.952,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.45
     },
     {
      "id": "char.vanesa.pose_h_mesa",
@@ -12507,7 +13083,8 @@
      "displayScale": 0.952,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.411
     },
     {
      "id": "char.vanesa.pose_h_silla_te",
@@ -12520,7 +13097,8 @@
      "displayScale": 0.952,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.37
     },
     {
      "id": "char.vanesa.pose_h_silla_telefono",
@@ -12533,7 +13111,8 @@
      "displayScale": 0.952,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.369
     },
     {
      "id": "char.vanesa.pose_h_ilusion",
@@ -12546,7 +13125,8 @@
      "displayScale": 0.918,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.398
     },
     {
      "id": "char.vanesa.pose_h_ofrece",
@@ -12559,7 +13139,8 @@
      "displayScale": 0.918,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.441
     },
     {
      "id": "char.vanesa.pose_h_boli",
@@ -12572,7 +13153,8 @@
      "displayScale": 0.918,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.573
     },
     {
      "id": "char.vanesa.pose_h_abraza",
@@ -12585,7 +13167,8 @@
      "displayScale": 0.918,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.393
     }
    ],
    "face": {
@@ -12782,7 +13365,8 @@
      "displayScale": 1.118,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.395
     },
     {
      "id": "char.ruan.pose_h_carga",
@@ -12795,7 +13379,8 @@
      "displayScale": 1.118,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.493
     },
     {
      "id": "char.ruan.pose_h_sentado_teclea",
@@ -12808,7 +13393,8 @@
      "displayScale": 1.118,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.618
     },
     {
      "id": "char.ruan.pose_h_silla_relajado",
@@ -12821,7 +13407,8 @@
      "displayScale": 1.118,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.521
     }
    ],
    "face": {
@@ -13018,7 +13605,8 @@
      "displayScale": 1.218,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.441
     },
     {
      "id": "char.alf.pose_h_bolsillos",
@@ -13031,7 +13619,8 @@
      "displayScale": 1.445,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.494
     },
     {
      "id": "char.alf.pose_h_explica",
@@ -13044,7 +13633,8 @@
      "displayScale": 1.445,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.335
     },
     {
      "id": "char.alf.pose_h_senala_arriba",
@@ -13057,7 +13647,8 @@
      "displayScale": 1.376,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.517
     },
     {
      "id": "char.alf.pose_h_planos",
@@ -13070,7 +13661,8 @@
      "displayScale": 1.445,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.394
     },
     {
      "id": "char.alf.pose_h_lee_planos",
@@ -13082,7 +13674,8 @@
      "displayScale": 1.329,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.458
     },
     {
      "id": "char.alf.pose_h_pensando",
@@ -13094,7 +13687,8 @@
      "displayScale": 1.284,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.347
     },
     {
      "id": "char.alf.pose_h_cohete",
@@ -13107,7 +13701,8 @@
      "displayScale": 1.277,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.427
     },
     {
      "id": "char.alf.pose_h_ofrece",
@@ -13120,7 +13715,8 @@
      "displayScale": 1.208,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.336
     },
     {
      "id": "char.alf.pose_h_rasca",
@@ -13133,7 +13729,8 @@
      "displayScale": 1.24,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.326
     },
     {
      "id": "char.alf.pose_h_para",
@@ -13146,7 +13743,8 @@
      "displayScale": 1.243,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.39
     },
     {
      "id": "char.alf.pose_h_explica2",
@@ -13159,7 +13757,8 @@
      "displayScale": 1.333,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.345
     },
     {
      "id": "char.alf.pose_h_garras",
@@ -13172,7 +13771,8 @@
      "displayScale": 1.327,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.402
     },
     {
      "id": "char.alf.pose_h_idea_malvada",
@@ -13185,7 +13785,8 @@
      "displayScale": 1.337,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.342
     },
     {
      "id": "char.alf.pose_h_cohete_malvado",
@@ -13198,7 +13799,8 @@
      "displayScale": 1.36,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.409
     },
     {
      "id": "char.alf.pose_h_acecha",
@@ -13211,7 +13813,8 @@
      "displayScale": 1.402,
      "facing": "right",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.565
     },
     {
      "id": "char.alf.pose_h_trama",
@@ -13224,7 +13827,8 @@
      "displayScale": 1.337,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.531
     },
     {
      "id": "char.alf.pose_h_grita",
@@ -13237,7 +13841,8 @@
      "displayScale": 1.28,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.342
     },
     {
      "id": "char.alf.pose_h_planos_malvado",
@@ -13250,7 +13855,8 @@
      "displayScale": 1.483,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.542
     },
     {
      "id": "char.alf.pose_h_portatil",
@@ -13263,7 +13869,8 @@
      "displayScale": 1.339,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.346
     }
    ],
    "face": {
@@ -13460,7 +14067,8 @@
      "displayScale": 1.139,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.462
     },
     {
      "id": "char.fake.pose_h_explica",
@@ -13473,7 +14081,8 @@
      "displayScale": 1.139,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.521
     },
     {
      "id": "char.fake.pose_h_cafe",
@@ -13486,7 +14095,8 @@
      "displayScale": 1.139,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.445
     },
     {
      "id": "char.fake.pose_h_charla",
@@ -13499,7 +14109,8 @@
      "displayScale": 1.139,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.429
     },
     {
      "id": "char.fake.pose_h_pensando",
@@ -13512,7 +14123,8 @@
      "displayScale": 1.139,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.444
     },
     {
      "id": "char.fake.pose_h_encoge",
@@ -13525,7 +14137,8 @@
      "displayScale": 1.139,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.48
     },
     {
      "id": "char.fake.pose_h_grita_senala",
@@ -13538,7 +14151,8 @@
      "displayScale": 1.139,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.546
     },
     {
      "id": "char.fake.pose_h_para",
@@ -13551,7 +14165,8 @@
      "displayScale": 1.139,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.465
     },
     {
      "id": "char.fake.pose_h_timido",
@@ -13564,7 +14179,8 @@
      "displayScale": 1.139,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.554
     },
     {
      "id": "char.fake.pose_h_enfado",
@@ -13577,7 +14193,8 @@
      "displayScale": 1.139,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.412
     },
     {
      "id": "char.fake.pose_h_panico",
@@ -13590,7 +14207,8 @@
      "displayScale": 1.139,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.47
     },
     {
      "id": "char.fake.pose_h_huevo",
@@ -13603,7 +14221,8 @@
      "displayScale": 1.139,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.479
     },
     {
      "id": "char.fake.pose_h_garras_huevos",
@@ -13616,7 +14235,8 @@
      "displayScale": 1.139,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.426
     },
     {
      "id": "char.fake.pose_h_acurrucado",
@@ -13629,7 +14249,8 @@
      "displayScale": 1.139,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.509
     },
     {
      "id": "char.fake.pose_h_huye",
@@ -13642,7 +14263,8 @@
      "displayScale": 1.139,
      "facing": "right",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.423
     },
     {
      "id": "char.fake.pose_h_panico_huevos",
@@ -13655,7 +14277,8 @@
      "displayScale": 1.139,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.603
     }
    ],
    "face": {
@@ -13852,7 +14475,8 @@
      "displayScale": 1.978,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.5
     },
     {
      "id": "char.anastasia.pose_h_ofrece",
@@ -13865,7 +14489,8 @@
      "displayScale": 1.978,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.459
     },
     {
      "id": "char.anastasia.pose_h_explica",
@@ -13878,7 +14503,8 @@
      "displayScale": 1.978,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.497
     },
     {
      "id": "char.anastasia.pose_h_senala",
@@ -13891,7 +14517,8 @@
      "displayScale": 1.978,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.518
     },
     {
      "id": "char.anastasia.pose_h_para",
@@ -13904,7 +14531,8 @@
      "displayScale": 1.978,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.538
     },
     {
      "id": "char.anastasia.pose_h_brazos",
@@ -13917,7 +14545,8 @@
      "displayScale": 1.978,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.513
     },
     {
      "id": "char.anastasia.pose_h_saluda",
@@ -13930,7 +14559,8 @@
      "displayScale": 1.978,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.498
     },
     {
      "id": "char.anastasia.pose_h_manos",
@@ -13943,7 +14573,8 @@
      "displayScale": 1.978,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.521
     },
     {
      "id": "char.anastasia.pose_h_enamorada",
@@ -13956,7 +14587,8 @@
      "displayScale": 1.978,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.51
     },
     {
      "id": "char.anastasia.pose_h_suspira",
@@ -13969,7 +14601,8 @@
      "displayScale": 1.978,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.502
     },
     {
      "id": "char.anastasia.pose_h_corazon",
@@ -13982,7 +14615,8 @@
      "displayScale": 1.978,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.475
     },
     {
      "id": "char.anastasia.pose_h_coqueta",
@@ -13995,7 +14629,8 @@
      "displayScale": 1.978,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.555
     },
     {
      "id": "char.anastasia.pose_h_enfado",
@@ -14008,7 +14643,8 @@
      "displayScale": 1.978,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.513
     },
     {
      "id": "char.anastasia.pose_h_mosqueo",
@@ -14021,7 +14657,8 @@
      "displayScale": 1.978,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.587
     },
     {
      "id": "char.anastasia.pose_h_acusa",
@@ -14034,7 +14671,8 @@
      "displayScale": 1.978,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.481
     },
     {
      "id": "char.anastasia.pose_h_corazon_roto",
@@ -14047,7 +14685,8 @@
      "displayScale": 1.978,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.426
     },
     {
      "id": "char.anastasia.pose_h_timida",
@@ -14060,7 +14699,8 @@
      "displayScale": 1.978,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.524
     },
     {
      "id": "char.anastasia.pose_h_guino",
@@ -14073,7 +14713,8 @@
      "displayScale": 1.978,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.444
     },
     {
      "id": "char.anastasia.pose_h_encantada",
@@ -14086,7 +14727,8 @@
      "displayScale": 1.978,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.536
     },
     {
      "id": "char.anastasia.pose_h_tablet",
@@ -14099,7 +14741,8 @@
      "displayScale": 1.978,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.527
     },
     {
      "id": "char.anastasia.pose_h_sorpresa",
@@ -14112,7 +14755,8 @@
      "displayScale": 1.978,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.522
     },
     {
      "id": "char.anastasia.pose_h_celosa",
@@ -14125,7 +14769,8 @@
      "displayScale": 1.978,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.421
     },
     {
      "id": "char.anastasia.pose_h_corre",
@@ -14138,7 +14783,8 @@
      "displayScale": 1.978,
      "facing": "right",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.512
     },
     {
      "id": "char.anastasia.pose_h_vuela",
@@ -14151,7 +14797,8 @@
      "displayScale": 1.978,
      "facing": "front",
      "flat": true,
-     "look": "humano"
+     "look": "humano",
+     "cx": 0.515
     }
    ],
    "face": {

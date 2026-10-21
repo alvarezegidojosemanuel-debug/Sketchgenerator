@@ -105,14 +105,18 @@ function layoutActorPose(catalog: Catalog, a: ActorState): ActorLayout {
   const pw = pose?.width ?? 400;
   const ph = pose?.height ?? 600;
   const expression = a.expressionId ? findExpression(catalog, a.characterId, a.expressionId) : undefined;
+  // el personaje se coloca por su cuerpo, no por el centro del dibujo (un brazo extendido no lo desplaza)
+  const s = a.scale * poseScale(catalog, a.characterId, pose) * a.presenceScale;
+  const cx = pose?.cx !== undefined && pose.flat ? Math.min(0.7, Math.max(0.3, pose.cx)) : 0.5;
+  const bodyOff = (cx - 0.5) * pw * s * (a.flip ? -1 : 1);
   return {
     uid: a.uid,
     poseId: a.poseId,
     z: Z.actors + a.zIndex,
     pose,
-    left: a.x + a.offX - pw / 2,
+    left: a.x + a.offX - pw / 2 - bodyOff,
     top: a.y + a.offY - ph,
-    scale: a.scale * poseScale(catalog, a.characterId, pose) * a.presenceScale,
+    scale: s,
     flip: a.flip,
     speaking: a.speaking,
     opacity: 1,

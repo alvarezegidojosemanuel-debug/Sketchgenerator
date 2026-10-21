@@ -44,10 +44,6 @@
       "transicion": "blanco",
       "pasos": [
         {
-          "quien": "Usu",
-          "gesto": "sentado_teclea"
-        },
-        {
           "sonido": "servidor"
         },
         {
@@ -72,7 +68,7 @@
         {
           "dice": "Usu",
           "texto": "¡NI SE TE OCURRA!",
-          "gesto": "sentado_panico",
+          "gesto": "sentado_grita",
           "emocion": "enfado"
         },
         {
@@ -101,7 +97,8 @@
         "Usu": {
           "x": 560,
           "y": 1560,
-          "z": -5
+          "z": -5,
+          "gesto": "sentado_teclea"
         },
         "Jefe": {
           "x": 230,
