@@ -260,13 +260,13 @@
           "gesto": "confundido"
         },
         {
-          "off": "Anastas-IA",
-          "texto": "Fichaje no registrado. Buenos días, Usu. Hoy estás muy guapo."
-        },
-        {
           "efecto": "sudor",
           "donde": "Usu",
-          "durante": 1.4
+          "durante": 3
+        },
+        {
+          "off": "Anastas-IA",
+          "texto": "Fichaje no registrado. Buenos días, Usu. Hoy estás muy guapo."
         },
         {
           "mira": "Vanesa",
