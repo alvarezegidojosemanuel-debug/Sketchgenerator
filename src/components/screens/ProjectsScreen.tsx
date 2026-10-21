@@ -21,6 +21,16 @@ export function ProjectsScreen({ s }: { s: PocketState }) {
   }, []);
   useEffect(refresh, [refresh, s.saveState]);
 
+  /** Abre un capítulo/sketch oficial; si ya tienes una copia tuya modificada, pregunta antes (para no «perder» los cambios). */
+  const openOfficial = (which: Parameters<typeof demoProject>[0], tab: "ver" | "guion") => {
+    const official = demoProject(which, s.catalog);
+    const mine = list?.find((p) => p.title === official.metadata.title);
+    if (mine && confirm(`Tienes una copia tuya de «${mine.title}» con cambios (guardada el ${new Date(mine.updatedAt).toLocaleString("es-ES")}).\n\nAceptar = abrir TU copia\nCancelar = abrir la versión oficial (sin tus cambios; tu copia sigue guardada)`)) {
+      s.replaceProject(mine.project, mine.id);
+    } else s.replaceProject(official, "demo");
+    s.setTab(tab);
+  };
+
   const exportPocket = () => {
     const v = validateProject(project, catalog);
     if (!v.ok) {
@@ -48,25 +58,25 @@ export function ProjectsScreen({ s }: { s: PocketState }) {
         <p className="fine">Siempre la última versión, igual en todos los dispositivos. Ábrelos desde aquí.</p>
         <div className="row">
           <p className="fine"><b>Sketches</b></p>
-          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("sk-01", s.catalog), "demo"); s.setTab("ver"); }}>
+          <button type="button" className="btn btn-primary" onClick={() => openOfficial("sk-01", "ver")}>
             😂 Sketch · ¿Está en vigor?
           </button>
-          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("sk-02", s.catalog), "demo"); s.setTab("guion"); }}>
+          <button type="button" className="btn btn-primary" onClick={() => openOfficial("sk-02", "guion")}>
             ☕ Sketch · El último café
           </button>
-          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("sk-03", s.catalog), "demo"); s.setTab("ver"); }}>
+          <button type="button" className="btn btn-primary" onClick={() => openOfficial("sk-03", "ver")}>
             🏠 Sketch · Un par de añitos
           </button>
         </div>
         <div className="row">
           <p className="fine"><b>Serie · Temporada 1</b></p>
-          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("corto-01", s.catalog), "demo"); s.setTab("ver"); }}>
+          <button type="button" className="btn btn-primary" onClick={() => openOfficial("corto-01", "ver")}>
             🎬 Corto 1 · El lunes no perdona
           </button>
-          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("cap-02", s.catalog), "demo"); s.setTab("ver"); }}>
+          <button type="button" className="btn btn-primary" onClick={() => openOfficial("cap-02", "ver")}>
             🎬 Capítulo 2 · Martes
           </button>
-          <button type="button" className="btn btn-primary" onClick={() => { s.replaceProject(demoProject("sis-01", s.catalog), "demo"); s.setTab("ver"); }}>
+          <button type="button" className="btn btn-primary" onClick={() => openOfficial("sis-01", "ver")}>
             🎬 Versión Sister · 1 · Espacio-tiempo
           </button>
         </div>
