@@ -83,6 +83,42 @@ export function trimSilence(samples: Float32Array, sampleRate: number, threshold
   return out;
 }
 
+/**
+ * Quita «muletillas» sueltas en los extremos de una frase («ah», respiraciones) que ElevenLabs mete entre
+ * frases seguidas en modo conversación: trozos de voz cortos (< maxBlob s) separados del cuerpo de la frase
+ * por un silencio de al menos minGap s, en los primeros/últimos 0,7 s.
+ */
+export function dropEdgeBlobs(samples: Float32Array, sampleRate: number, threshold = 0.012, minGap = 0.04, maxBlob = 0.3): Float32Array {
+  const win = Math.max(1, Math.round(sampleRate * 0.01));
+  const n = Math.ceil(samples.length / win);
+  const on: boolean[] = [];
+  for (let w = 0; w < n; w++) {
+    let s = 0;
+    const end = Math.min(samples.length, (w + 1) * win);
+    for (let i = w * win; i < end; i++) s += samples[i] * samples[i];
+    on.push(Math.sqrt(s / Math.max(1, end - w * win)) >= threshold);
+  }
+  // tramos de voz
+  const runs: [number, number][] = [];
+  for (let w = 0; w < n; w++) if (on[w]) { const a = w; while (w + 1 < n && on[w + 1]) w++; runs.push([a, w]); }
+  // une tramos separados por huecos muy cortos (dentro de una palabra)
+  const merged: [number, number][] = [];
+  for (const r of runs) { const l = merged[merged.length - 1]; if (l && r[0] - l[1] - 1 < minGap * 100) l[1] = r[1]; else merged.push([...r]); }
+  if (merged.length < 2) return samples;
+  const len = (r: [number, number]) => (r[1] - r[0] + 1) / 100;
+  let a = 0;
+  let b = merged.length - 1;
+  while (a < b && len(merged[a]) < maxBlob && merged[a][1] < 70) a++;
+  while (b > a && len(merged[b]) < maxBlob && merged[b][0] > n - 70) b--;
+  if (a === 0 && b === merged.length - 1) return samples;
+  const i0 = Math.max(0, merged[a][0] * win - Math.round(0.03 * sampleRate));
+  const i1 = Math.min(samples.length, (merged[b][1] + 1) * win + Math.round(0.08 * sampleRate));
+  const out = samples.slice(i0, i1);
+  const fout = Math.min(out.length, Math.round(sampleRate * 0.06));
+  for (let i = 0; i < fout; i++) out[out.length - 1 - i] *= i / fout;
+  return out;
+}
+
 export function encodeWav(samples: Float32Array, sampleRate: number): ArrayBuffer {
   const buf = new ArrayBuffer(44 + samples.length * 2);
   const v = new DataView(buf);

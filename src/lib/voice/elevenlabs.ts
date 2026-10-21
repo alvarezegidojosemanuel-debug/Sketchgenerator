@@ -2,7 +2,7 @@
 /** Voces ElevenLabs (a través de /api/voice/*, con la clave solo en el servidor). */
 import { clipCache } from "@/lib/storage/projects";
 import type { PocketProject } from "@/lib/schema/pocket";
-import { envelope, masterVoice, timeStretch, trimSilence } from "./dsp";
+import { dropEdgeBlobs, envelope, masterVoice, timeStretch, trimSilence } from "./dsp";
 import { audioContext, type Clip, type LineRequest, type Progress } from "./piper";
 import { stripAudioTags } from "./tags";
 
@@ -125,7 +125,7 @@ export async function generateElevenDialogue(
     const base = `dlg2|${stability}|${JSON.stringify(inputs)}`;
     const cached = await Promise.all(group.map((_, i) => clipCache.get(`${base}|${i}`).catch(() => undefined)));
     if (cached.every(Boolean)) {
-      group.forEach((l, i) => out.set(l.key, toClip(shape(cached[i]!, cast?.[l.characterId], l.characterId))));
+      group.forEach((l, i) => { const c = cached[i]!; out.set(l.key, toClip(shape({ samples: dropEdgeBlobs(trimSilence(c.samples, c.sampleRate, 0.006, 0.02, 0.1), c.sampleRate), sampleRate: c.sampleRate }, cast?.[l.characterId], l.characterId))); });
       continue;
     }
     onProgress?.({ stage: "generate", label: `Conversación: escena ${g}/${groups.size}`, ratio: (g - 1) / groups.size });
@@ -147,7 +147,7 @@ export async function generateElevenDialogue(
       if (seg) {
         const next = segs.find((x) => x.start > seg.start + 1e-3);
         const a = Math.max(0, Math.floor((seg.start - 0.04) * sr));
-        const endT = Math.min(seg.end + 0.15, next ? Math.max(seg.end, next.start - 0.02) : seg.end + 0.15);
+        const endT = Math.min(seg.end + 0.1, next ? Math.max(seg.end, next.start - 0.02) : seg.end + 0.1);
         const b = Math.min(all.length, Math.ceil(endT * sr));
         const samples = all.slice(a, Math.max(a + 1, b));
         const fin = Math.min(samples.length, Math.round(sr * 0.006));
@@ -163,7 +163,7 @@ export async function generateElevenDialogue(
       }
       await clipCache.put(`${base}|${i}`, piece).catch(() => {});
       // en modo conversación ElevenLabs deja pausas entre frases: se recortan (el ritmo lo marca el guion)
-      const tight = { samples: trimSilence(piece.samples, piece.sampleRate, 0.006, 0.02, 0.1), sampleRate: piece.sampleRate };
+      const tight = { samples: dropEdgeBlobs(trimSilence(piece.samples, piece.sampleRate, 0.006, 0.02, 0.1), piece.sampleRate), sampleRate: piece.sampleRate };
       out.set(group[i].key, toClip(shape(tight, cast?.[group[i].characterId], group[i].characterId)));
     }
   }
