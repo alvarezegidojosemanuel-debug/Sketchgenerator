@@ -338,31 +338,31 @@
           "dice": "Director",
           "texto": "¡Mira! ¡Aquí está mi equipo de nerds favorito!",
           "gesto": "explica",
-          "pausa_despues": 0.05
+          "pausa_despues": 0.35
         },
         {
           "dice": "Director",
           "texto": "A ti, Jefe, te estaba buscando.",
           "gesto": "senala",
-          "pausa_despues": 0.05
+          "pausa_despues": 0.35
         },
         {
           "dice": "Director",
           "texto": "Este viernes presentamos ÍCARO ante los inversores. Y no puede fallar nada.",
           "gesto": "explica",
-          "pausa_despues": 0.05
+          "pausa_despues": 0.35
         },
         {
           "dice": "Director",
           "texto": "Más te vale que no pierda ese contrato por vuestra incompetencia.",
           "gesto": "grita_senala",
-          "pausa_despues": 0.05
+          "pausa_despues": 0.35
         },
         {
           "dice": "Director",
           "texto": "¡Así que lo quiero todo funcionando!",
           "gesto": "grita",
-          "pausa_despues": 0.05
+          "pausa_despues": 0.35
         },
         {
           "dice": "Jefe",
@@ -374,7 +374,7 @@
           "dice": "Director",
           "texto": "Más te vale…",
           "gesto": "neutro",
-          "pausa_despues": 0.05
+          "pausa_despues": 0.35
         },
         {
           "sale": "Director"
