@@ -92,11 +92,13 @@ export function dropEdgeBlobs(samples: Float32Array, sampleRate: number, thresho
   const win = Math.max(1, Math.round(sampleRate * 0.01));
   const n = Math.ceil(samples.length / win);
   const on: boolean[] = [];
+  const lvl: number[] = [];
   for (let w = 0; w < n; w++) {
     let s = 0;
     const end = Math.min(samples.length, (w + 1) * win);
     for (let i = w * win; i < end; i++) s += samples[i] * samples[i];
-    on.push(Math.sqrt(s / Math.max(1, end - w * win)) >= threshold);
+    lvl.push(Math.sqrt(s / Math.max(1, end - w * win)));
+    on.push(lvl[w] >= threshold);
   }
   // tramos de voz
   const runs: [number, number][] = [];
@@ -106,10 +108,14 @@ export function dropEdgeBlobs(samples: Float32Array, sampleRate: number, thresho
   for (const r of runs) { const l = merged[merged.length - 1]; if (l && r[0] - l[1] - 1 < minGap * 100) l[1] = r[1]; else merged.push([...r]); }
   if (merged.length < 2) return samples;
   const len = (r: [number, number]) => (r[1] - r[0] + 1) / 100;
+  // un «ah» suena flojo comparado con la frase; una sílaba final («…pata») suena tan fuerte como el resto
+  const loud = (r: [number, number]) => Math.max(...lvl.slice(r[0], r[1] + 1));
+  const body = Math.max(...merged.map(loud));
+  const isBlob = (r: [number, number]) => len(r) < maxBlob && loud(r) < body * 0.45;
   let a = 0;
   let b = merged.length - 1;
-  while (ends.head && a < b && len(merged[a]) < maxBlob && merged[a][1] < 70) a++;
-  while (ends.tail && b > a && len(merged[b]) < maxBlob && merged[b][0] > n - 70) b--;
+  while (ends.head && a < b && isBlob(merged[a]) && merged[a][1] < 70) a++;
+  while (ends.tail && b > a && isBlob(merged[b]) && merged[b][0] > n - 70) b--;
   if (a === 0 && b === merged.length - 1) return samples;
   const i0 = Math.max(0, merged[a][0] * win - Math.round(0.03 * sampleRate));
   const i1 = Math.min(samples.length, (merged[b][1] + 1) * win + Math.round(0.08 * sampleRate));
