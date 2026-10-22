@@ -74,3 +74,13 @@ Orden: 1A fondo panorámico vacío (entrada, mesas, barra, sofás; suelo despeja
 - Bocas de las poses sentado nuevas: tools/andar/cerrar_boca.py crea la versión cerrada de las poses con la boca abierta (la abierta pasa a *_boca.webp = talkSrc). Jefe malo1/malo2: boca abierta dibujada a mano (polígono). Test: en «Un par de añitos» todas las frases usan pose con boca.
 - Sketch de Sister «El cumplimiento del protocolo»: src/data/sketch-04-protocolo.json (botón 🤖, sk-04). Oficina bg_sistemas con escala 1.6, Anastas-IA en pantalla, Jefe de pie con poses antiguas (archivadas, siguen funcionando), sala de servidores, apagón y cierre en bg_complejo_apagado.
 - Poses con `cx` (centro del cuerpo en el dibujo, calculado por la cabeza): layout coloca por el cuerpo, así no salta de sitio al cambiar de gesto. Las poses nuevas que se instalen deben llevar cx (calcular igual: media x de la franja superior 14 %).
+
+## Tono Puñetos (lo que busca el autor)
+Humor **transgresor pero gracioso**: humor negro sobre situaciones de oficina reconocibles (reuniones, teletrabajo, evaluaciones…).
+Referencia: «El más comprometido» (Martínez murió en marzo y nadie lo nota porque su calendario acepta reuniones solo; el Director lo pone de ejemplo y lo asciende).
+- Partir de un absurdo REAL y llevarlo a su consecuencia más bestia (no quejarse del tema: exagerarlo hasta el extremo).
+- Una sola idea que va a más y acaba en un golpe; 30–45 s; gancho en el primer segundo.
+- Pocos personajes (2 + quien remata); chistes de personaje, frases cortas.
+- Remate visual cuando se pueda (la pantalla del ascenso, la lápida «Siempre conectado»).
+- Nada de chistes de frase hecha corporativa sin giro («comité de crisis», «palabras vacías de liderazgo»): eso no hace gracia.
+- Si se toca el diálogo del autor, decírselo siempre.
