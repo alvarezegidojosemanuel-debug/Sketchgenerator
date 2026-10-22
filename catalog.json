@@ -15144,6 +15144,13 @@
    "src": "/assets/punetos/backgrounds/bg_pasillo_maquina.webp",
    "actorScale": 1.0,
    "actorY": 1760
+  },
+  {
+   "id": "bg_casa_martinez",
+   "label": "Casa de Martínez · despacho abandonado (noche)",
+   "src": "/assets/punetos/backgrounds/bg_casa_martinez.webp",
+   "actorScale": 1.0,
+   "actorY": 1760
   }
  ],
  "props": [
@@ -15857,6 +15864,20 @@
    "src": "/assets/punetos/props/marco_maquina.webp",
    "width": 1080,
    "height": 1920
+  },
+  {
+   "id": "prop_pantalla_martinez_meet",
+   "label": "Portátil de Martínez · videollamada (va en x 685.5, y 903)",
+   "src": "/assets/punetos/props/pantalla_martinez_meet.webp",
+   "width": 187,
+   "height": 116
+  },
+  {
+   "id": "prop_pantalla_martinez_ascenso",
+   "label": "Portátil de Martínez · ascenso (va en x 685.5, y 903)",
+   "src": "/assets/punetos/props/pantalla_martinez_ascenso.webp",
+   "width": 187,
+   "height": 116
   }
  ]
 }
