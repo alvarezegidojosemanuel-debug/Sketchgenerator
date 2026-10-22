@@ -27,7 +27,11 @@ export function PocketApp() {
   return (
     <div className="app">
       <header className="topbar">
-        <span className="logo">PUÑETOS <b>Pocket</b></span>
+        <span className="logo">
+          <img src="/assets/punetos/props/logo_punetos.webp" alt="PUÑETOS" />
+          <b>Pocket</b>
+        </span>
+        <span className="topbar-tag">estudio de sketches</span>
       </header>
       <main className={`content${s.tab === "guion" ? " content-wide" : ""}`}>
         {s.tab === "idea" && <IdeaScreen s={s} />}

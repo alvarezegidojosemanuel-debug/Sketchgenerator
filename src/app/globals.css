@@ -396,3 +396,112 @@ textarea.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; fon
 @media (min-width: 760px) { .mouth-body { grid-template-columns: minmax(0, 1fr) 280px; } }
 .mouth-canvas { display: block; margin: 0 auto; width: auto; height: auto; max-width: 100%; max-height: 62vh; background: repeating-conic-gradient(#ffffff10 0% 25%, transparent 0% 50%) 50% / 16px 16px; border-radius: 10px; cursor: crosshair; touch-action: none; }
 .g-file { gap: 6px; } .g-file .btn-small { min-height: 34px; padding: 4px 10px; }
+
+/* ================================================================ LAVADO DE CARA · estilo PUÑETOS (cómic) */
+:root {
+  --bg: #0b2a6b;
+  --panel: #12388a;
+  --panel-2: #1a4aa8;
+  --line: #050b1a;
+  --text: #ffffff;
+  --muted: #b9d0ff;
+  --accent: #ffd23f;
+  --accent-ink: #111111;
+  --blue: #1e8bff;
+  --ink: #050b1a;
+  --ok: #5cf08a;
+  --warn: #ffd23f;
+  --err: #ff6b6b;
+  --radius: 18px;
+  --pop: 4px 4px 0 var(--ink);
+  --pop-lg: 6px 6px 0 var(--ink);
+}
+body {
+  font-family: "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-weight: 600;
+  background:
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.09) 1.4px, transparent 1.6px) 0 0 / 14px 14px,
+    radial-gradient(120% 70% at 50% -10%, #2a7bff 0%, #0f3a96 45%, #0b2a6b 75%, #081d4d 100%) fixed;
+}
+h1, h2, h3, .card-head h2, .title-row h1, .tabbar button, .btn-primary, .chip.on, .g-props-head h2 {
+  font-family: "Lilita One", "Nunito", system-ui, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* barra superior */
+.topbar {
+  background: linear-gradient(180deg, #1e8bff 0%, #1468d8 100%);
+  border-bottom: 3px solid var(--ink);
+  box-shadow: 0 4px 0 rgba(5, 11, 26, 0.55);
+  padding-top: calc(env(safe-area-inset-top) + 6px);
+  padding-bottom: 6px;
+}
+.logo { display: flex; align-items: center; gap: 8px; letter-spacing: 0; }
+.logo img { height: 40px; width: auto; filter: drop-shadow(2px 2px 0 var(--ink)); }
+.logo b {
+  font-family: "Lilita One", system-ui, sans-serif; font-weight: 400; font-size: 18px;
+  color: var(--ink); background: var(--accent); border: 3px solid var(--ink); border-radius: 999px;
+  padding: 0 10px; transform: rotate(-4deg); box-shadow: 2px 2px 0 var(--ink);
+}
+.topbar-tag { font-family: "Lilita One", system-ui, sans-serif; color: #fff; opacity: 0.85; font-size: 14px; text-shadow: 2px 2px 0 var(--ink); }
+@media (max-width: 420px) { .topbar-tag { display: none; } }
+
+/* tarjetas de cómic */
+.card, .guion-col, .mouth-edit, .pick-bar {
+  background: var(--panel);
+  border: 3px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: var(--pop-lg);
+}
+.card-head h2 { font-size: 20px; color: #fff; text-shadow: 2px 2px 0 var(--ink); }
+.card-accent { background: linear-gradient(180deg, #1e8bff, var(--panel)); }
+.card-muted { background: #0e2f75; }
+
+/* botones */
+.btn {
+  border: 3px solid var(--ink); border-radius: 14px; background: var(--panel-2); color: #fff;
+  box-shadow: var(--pop); font-weight: 800; transition: transform 0.06s, box-shadow 0.06s;
+}
+.btn:active:not(:disabled) { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--ink); }
+.btn-primary { background: var(--accent); color: var(--ink); border-color: var(--ink); font-size: 17px; }
+.btn-primary:hover:not(:disabled) { background: #ffe066; }
+.btn-secondary { background: var(--blue); color: #fff; }
+.btn-ghost { background: transparent; box-shadow: none; border-color: transparent; color: var(--muted); }
+.btn-danger { background: #ff6b6b; color: var(--ink); border-color: var(--ink); }
+.btn-round { border-width: 3px; }
+
+/* chips */
+.chip { border: 2px solid var(--ink); background: var(--panel-2); color: #fff; box-shadow: 2px 2px 0 var(--ink); font-weight: 800; }
+.chip.on { background: var(--accent); color: var(--ink); border-color: var(--ink); }
+.view-toggle { border: 2px solid var(--ink) !important; box-shadow: 2px 2px 0 var(--ink); }
+
+/* campos */
+input:not([type]), input[type="text"], input[type="number"], input[inputmode], select, textarea {
+  border: 2px solid var(--ink); background: #0a2459; color: #fff; border-radius: 12px;
+}
+input:focus, select:focus, textarea:focus { outline: 3px solid var(--accent); outline-offset: 1px; }
+.badge { background: var(--accent); color: var(--ink); border: 2px solid var(--ink); font-weight: 800; }
+
+/* barra de pestañas */
+.tabbar { background: #0a2459; border-top: 3px solid var(--ink); box-shadow: 0 -4px 0 rgba(5, 11, 26, 0.45); }
+.tabbar button { color: #cfe0ff; font-size: 12px; }
+.tabbar button span { font-size: 22px; filter: drop-shadow(1px 1px 0 var(--ink)); }
+.tabbar button.on { color: var(--ink); }
+.tabbar button.on span, .tabbar button.on { position: relative; }
+.tabbar button.on::before {
+  content: ""; position: absolute; inset: 6px 4px; z-index: -1; border-radius: 14px;
+  background: var(--accent); border: 2px solid var(--ink); box-shadow: 2px 2px 0 var(--ink);
+}
+.tabbar button { position: relative; z-index: 0; }
+
+/* escenario: marco de viñeta */
+.stage { border: 4px solid var(--ink); border-radius: 16px; box-shadow: var(--pop-lg); }
+
+/* editor de guion */
+.g-row.on { background: color-mix(in srgb, var(--accent) 28%, transparent); outline: 2px solid var(--accent); }
+.g-scene-row .g-main { background: var(--panel-2); border: 2px solid var(--ink); }
+.g-pose, .lib-item { border: 2px solid var(--ink); background: var(--panel-2); }
+.g-pose.on, .lib-item.picked { background: color-mix(in srgb, var(--accent) 35%, var(--panel-2)); border-color: var(--accent); }
+.guion-title { font-family: "Lilita One", system-ui, sans-serif; font-weight: 400; font-size: 20px; border: 2px solid var(--ink); background: #0a2459; color: #fff; }
+.fine, .field-label, .muted { color: var(--muted); }
