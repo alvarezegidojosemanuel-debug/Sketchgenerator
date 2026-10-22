@@ -15836,6 +15836,13 @@
      "dur": 2.5
     }
    ]
+  },
+  {
+   "id": "prop_enchufe",
+   "label": "Enchufe con cable (desenchufado)",
+   "src": "/assets/punetos/props/enchufe.webp",
+   "width": 420,
+   "height": 300
   }
  ]
 }
