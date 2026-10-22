@@ -22,3 +22,17 @@ it("en «Un par de añitos» todas las frases se dicen con una pose que mueve la
     expect(pose?.talkSrc, `${d.actorUid}: ${(d as { text: string }).text}`).toBeTruthy();
   }
 });
+
+import proto from "@/data/sketch-04-protocolo.json";
+it("«El cumplimiento del protocolo» monta sin avisos y todas las frases mueven la boca", () => {
+  const r = compileScript(proto as never, catalog);
+  expect(r.issues).toEqual([]);
+  for (const take of r.project!.takes) {
+    const chars = new Map(take.actors.map((a) => [a.uid, a.characterId]));
+    for (const d of take.events.filter((e) => e.track === "dialogue" && e.actorUid && chars.has(e.actorUid))) {
+      const body = take.events.filter((e) => e.track === "body" && e.actorUid === d.actorUid && "poseId" in e && e.start <= d.start + 0.01).sort((a, b) => b.start - a.start)[0] as { poseId?: string } | undefined;
+      const pose = catalog.characters.find((c) => c.id === chars.get(d.actorUid!))!.poses.find((p) => p.id === body?.poseId);
+      expect(pose?.talkSrc, `${d.actorUid}: ${(d as { text: string }).text}`).toBeTruthy();
+    }
+  }
+});

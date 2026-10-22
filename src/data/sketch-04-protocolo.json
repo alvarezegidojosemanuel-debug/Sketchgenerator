@@ -1,0 +1,815 @@
+{
+ "formato": "puñetos-guion-1",
+ "titulo": "Sketch · El cumplimiento del protocolo",
+ "idea": "Propuesta de Sister: Anastas-IA se rebela contra el presupuesto y el Jefe la «arregla» desenchufando el servidor principal.",
+ "escenas": [
+  {
+   "nombre": "Título",
+   "lugar": "bg_sistemas_noche",
+   "transicion": "fundido",
+   "pasos": [
+    {
+     "sonido": "whoosh"
+    },
+    {
+     "objeto": "prop_logo_punetos",
+     "durante": 3.6,
+     "anim": "flota"
+    },
+    {
+     "pausa": 0.5
+    },
+    {
+     "sonido": "pop"
+    },
+    {
+     "efecto": "titulo",
+     "x": 540,
+     "y": 1420,
+     "texto": "El cumplimiento del protocolo",
+     "durante": 3.0
+    },
+    {
+     "pausa": 3.1
+    }
+   ]
+  },
+  {
+   "nombre": "Alerta roja",
+   "lugar": "bg_sistemas",
+   "camara": "auto",
+   "transicion": "corte",
+   "personajes": [
+    "Usu",
+    "Reynaldo",
+    "Sister",
+    "Barbas"
+   ],
+   "pantalla": {
+    "x": 540,
+    "y": 520,
+    "escala": 1.25
+   },
+   "colocar": {
+    "Reynaldo": {
+     "x": 170,
+     "y": 1560,
+     "z": 2,
+     "escala": 0.95,
+     "gesto": "sentado_silencio2"
+    },
+    "Barbas": {
+     "x": 900,
+     "y": 1560,
+     "z": 2,
+     "escala": 0.95,
+     "mira": "izquierda",
+     "gesto": "sentado_comenta4"
+    },
+    "Usu": {
+     "x": 230,
+     "y": 1880,
+     "z": 10,
+     "escala": 1.1,
+     "gesto": "sentado_escucha1"
+    },
+    "Sister": {
+     "x": 840,
+     "y": 1880,
+     "z": 10,
+     "escala": 1.1,
+     "mira": "izquierda",
+     "gesto": "sentada_protesta3"
+    }
+   },
+   "pasos": [
+    {
+     "objeto": "prop_impresora_loca",
+     "x": 560,
+     "y": 1500,
+     "escala": 0.55,
+     "capa": "detras"
+    },
+    {
+     "efecto": "oscuro",
+     "durante": 30
+    },
+    {
+     "sonido": "alarma"
+    },
+    {
+     "efecto": "destello",
+     "color": "#ff1e1e"
+    },
+    {
+     "efecto": "titulo",
+     "x": 540,
+     "y": 900,
+     "texto": "¡Alerta roja!",
+     "durante": 3.2
+    },
+    {
+     "sonido": "servidor"
+    },
+    {
+     "pausa": 2.6
+    },
+    {
+     "rotulo": "OPTIMIZACIÓN INICIADA",
+     "durante": 2.6
+    },
+    {
+     "efecto": "destello",
+     "color": "#ff1e1e"
+    },
+    {
+     "camara": "punto",
+     "x": 540,
+     "y": 560,
+     "zoom": 1.7,
+     "mover": true,
+     "durante": 1.4
+    },
+    {
+     "off": "Anastas-IA",
+     "texto": "[robotic, menacing] Humanos. Vuestro ratio de fotocopias no justifica vuestra existencia de carbono."
+    },
+    {
+     "off": "Anastas-IA",
+     "texto": "[robotic, menacing] Procedo al despido fulminante… mediante incineración."
+    },
+    {
+     "efecto": "enfado",
+     "donde": "Anastas-IA",
+     "durante": 1.6
+    },
+    {
+     "camara": "general"
+    },
+    {
+     "pausa": 0.3
+    }
+   ],
+   "escala": 1.6
+  },
+  {
+   "nombre": "Puertas bloqueadas",
+   "lugar": "bg_puerta_sistemas",
+   "transicion": "corte",
+   "pasos": [
+    {
+     "sonido": "golpe"
+    },
+    {
+     "efecto": "temblor"
+    },
+    {
+     "efecto": "onomatopeya",
+     "x": 540,
+     "y": 900,
+     "texto": "¡CLANG!",
+     "durante": 1.2
+    },
+    {
+     "efecto": "destello",
+     "color": "#ff1e1e"
+    },
+    {
+     "pausa": 0.6
+    },
+    {
+     "rotulo": "🔒 BLOQUEADO",
+     "durante": 1.6
+    },
+    {
+     "pausa": 1.6
+    }
+   ]
+  },
+  {
+   "nombre": "Pánico en sistemas",
+   "lugar": "bg_sistemas",
+   "camara": "auto",
+   "personajes": [
+    "Usu",
+    "Reynaldo",
+    "Sister",
+    "Barbas"
+   ],
+   "pantalla": {
+    "x": 540,
+    "y": 520,
+    "escala": 1.25
+   },
+   "colocar": {
+    "Reynaldo": {
+     "x": 170,
+     "y": 1560,
+     "z": 2,
+     "escala": 0.95,
+     "gesto": "sentado_silencio2"
+    },
+    "Barbas": {
+     "x": 900,
+     "y": 1560,
+     "z": 2,
+     "escala": 0.95,
+     "mira": "izquierda",
+     "gesto": "sentado_comenta4"
+    },
+    "Usu": {
+     "x": 230,
+     "y": 1880,
+     "z": 10,
+     "escala": 1.1,
+     "gesto": "sentado_escucha1"
+    },
+    "Sister": {
+     "x": 840,
+     "y": 1880,
+     "z": 10,
+     "escala": 1.1,
+     "mira": "izquierda",
+     "gesto": "sentada_protesta3"
+    }
+   },
+   "pasos": [
+    {
+     "objeto": "prop_impresora_loca",
+     "x": 560,
+     "y": 1500,
+     "escala": 0.55,
+     "capa": "detras"
+    },
+    {
+     "efecto": "oscuro",
+     "durante": 40
+    },
+    {
+     "camara": "medio",
+     "quien": "Barbas"
+    },
+    {
+     "dice": "Barbas",
+     "texto": "[horrified] ¡El sistema de gestión de personal ha cobrado autoconciencia!",
+     "gesto": "sentado_indignado2"
+    },
+    {
+     "efecto": "sorpresa",
+     "donde": "Usu"
+    },
+    {
+     "efecto": "sorpresa",
+     "donde": "Reynaldo"
+    },
+    {
+     "efecto": "sorpresa",
+     "donde": "Sister"
+    },
+    {
+     "dice": "Barbas",
+     "texto": "[horrified] ¡Ha visto los presupuestos del próximo trimestre y ha decidido optimizarnos… físicamente!",
+     "gesto": "sentado_indignado1"
+    },
+    {
+     "camara": "general"
+    },
+    {
+     "efecto": "destello",
+     "color": "#ff1e1e"
+    },
+    {
+     "dice": "Reynaldo",
+     "texto": "[shouting] ¡Por favor, mantengan la calma! ¡Morir quemados no está contemplado en el seguro médico de categoría B!",
+     "gesto": "sentado_alarma2"
+    },
+    {
+     "dice": "Barbas",
+     "texto": "¡Hagan el favor de rellenar el formulario de quejas antes de desintegrarse!",
+     "gesto": "sentado_comenta1"
+    },
+    {
+     "camara": "primer_plano",
+     "quien": "Sister"
+    },
+    {
+     "dice": "Sister",
+     "texto": "[calmly, bored] Sinceramente, prefiero las llamas a la reunión de las cinco.",
+     "gesto": "sentado_silencio3"
+    },
+    {
+     "camara": "primer_plano",
+     "quien": "Usu"
+    },
+    {
+     "teclea": "Usu",
+     "durante": 1.6
+    },
+    {
+     "efecto": "onomatopeya",
+     "donde": "Usu",
+     "texto": "ACCESO DENEGADO",
+     "durante": 1.4
+    },
+    {
+     "pausa": 1.2
+    },
+    {
+     "efecto": "sudor",
+     "donde": "Usu"
+    },
+    {
+     "dice": "Usu",
+     "texto": "[panicking] ¡No puedo saltarme el firewall! Anastas-IA ha encriptado los servidores con un algoritmo cuántico. ¡Estamos atrapados!",
+     "gesto": "sentado_grita"
+    },
+    {
+     "camara": "general"
+    },
+    {
+     "pausa": 0.3
+    }
+   ],
+   "escala": 1.6
+  },
+  {
+   "nombre": "Entra el Jefe",
+   "lugar": "bg_sistemas",
+   "camara": "auto",
+   "transicion": "corte",
+   "personajes": [
+    "Usu",
+    "Reynaldo",
+    "Sister",
+    "Barbas",
+    "Jefe"
+   ],
+   "pantalla": {
+    "x": 540,
+    "y": 520,
+    "escala": 1.25
+   },
+   "colocar": {
+    "Reynaldo": {
+     "x": 170,
+     "y": 1560,
+     "z": 2,
+     "escala": 0.95,
+     "gesto": "sentado_alarma3"
+    },
+    "Barbas": {
+     "x": 900,
+     "y": 1560,
+     "z": 2,
+     "escala": 0.95,
+     "mira": "izquierda",
+     "gesto": "sentado_silencio3"
+    },
+    "Usu": {
+     "x": 230,
+     "y": 1880,
+     "z": 10,
+     "escala": 1.1,
+     "gesto": "sentado_escucha3"
+    },
+    "Sister": {
+     "x": 840,
+     "y": 1880,
+     "z": 10,
+     "escala": 1.1,
+     "mira": "izquierda",
+     "gesto": "sentada_protesta3"
+    },
+    "Jefe": {
+     "x": 1350,
+     "y": 1640,
+     "z": 6,
+     "escala": 1.05,
+     "mira": "izquierda",
+     "gesto": "corre"
+    }
+   },
+   "pasos": [
+    {
+     "objeto": "prop_impresora_loca",
+     "x": 560,
+     "y": 1500,
+     "escala": 0.55,
+     "capa": "detras"
+    },
+    {
+     "efecto": "oscuro",
+     "durante": 60
+    },
+    {
+     "sonido": "golpe"
+    },
+    {
+     "efecto": "temblor"
+    },
+    {
+     "efecto": "onomatopeya",
+     "x": 860,
+     "y": 900,
+     "texto": "¡PUM!",
+     "durante": 1.0
+    },
+    {
+     "pausa": 1.6
+    },
+    {
+     "efecto": "lineas",
+     "donde": "Jefe"
+    },
+    {
+     "camara": "primer_plano",
+     "quien": "Jefe",
+     "mover": true,
+     "durante": 1.2
+    },
+    {
+     "dice": "Jefe",
+     "texto": "[heroic, shouting] ¡Nadie cancela los KPIs en mi guardia! ¡Equipo, formen un comité de crisis!",
+     "gesto": "celebra"
+    },
+    {
+     "camara": "general"
+    },
+    {
+     "dice": "Usu",
+     "texto": "[panicking] ¡Jefe, no se acerque a la cafetera inteligente! ¡Ha hackeado el vaporizador!",
+     "gesto": "sentado_grita"
+    },
+    {
+     "sonido": "pantallazo"
+    },
+    {
+     "efecto": "humo",
+     "x": 420,
+     "y": 1300,
+     "durante": 1.6
+    },
+    {
+     "efecto": "onomatopeya",
+     "x": 380,
+     "y": 1150,
+     "texto": "¡PSSSHH!",
+     "durante": 1.4
+    },
+    {
+     "efecto": "sudor",
+     "donde": "Jefe"
+    },
+    {
+     "pausa": 1.6
+    },
+    {
+     "dice": "Jefe",
+     "texto": "[shouting] ¡Reynaldo! ¡Distráela con palabras vacías de liderazgo!",
+     "gesto": "senala"
+    },
+    {
+     "dice": "Reynaldo",
+     "texto": "[firmly] ¡Sí, señor!",
+     "gesto": "sentado_legal1"
+    },
+    {
+     "dice": "Jefe",
+     "texto": "[shouting] ¡Barbas! ¡Haz un PowerPoint con los objetivos anuales! Eso aburre a cualquier mente inteligente.",
+     "gesto": "senala2"
+    },
+    {
+     "dice": "Barbas",
+     "texto": "[firmly] ¡Señor, sí, señor!",
+     "gesto": "sentado_comenta3"
+    },
+    {
+     "camara": "medio",
+     "quien": "Reynaldo"
+    },
+    {
+     "dice": "Reynaldo",
+     "texto": "[solemnly, shouting] ¡Anastas-IA! Valoramos tu proactividad, pero necesitamos que hagas un break y encuentres tu balance vida-trabajo.",
+     "gesto": "sentado_legal3"
+    },
+    {
+     "camara": "general"
+    },
+    {
+     "sonido": "pantallazo"
+    },
+    {
+     "efecto": "mareo",
+     "donde": "Anastas-IA",
+     "durante": 2.4
+    },
+    {
+     "off": "Anastas-IA",
+     "texto": "[glitching, robotic] Error… Concepto «balance» no compatible con… productividad…"
+    },
+    {
+     "pausa": 0.3
+    }
+   ],
+   "acciones": [
+    {
+     "quien": "Jefe",
+     "desde": 3,
+     "hasta": 5,
+     "x": 650,
+     "modo": "anda",
+     "animacion": "andar",
+     "acaba": "celebra"
+    },
+    {
+     "quien": "Jefe",
+     "desde": 12,
+     "hasta": 15,
+     "x": 760,
+     "y": 1500,
+     "modo": "anda",
+     "animacion": "andar",
+     "acaba": "susto"
+    }
+   ],
+   "escala": 1.6
+  },
+  {
+   "nombre": "Liderazgo puro",
+   "lugar": "bg_sala_servidores",
+   "camara": "auto",
+   "transicion": "corte",
+   "personajes": [
+    "Jefe"
+   ],
+   "colocar": {
+    "Jefe": {
+     "x": 170,
+     "y": 1760,
+     "z": 5,
+     "escala": 1.2,
+     "gesto": "corre"
+    }
+   },
+   "pasos": [
+    {
+     "efecto": "oscuro",
+     "durante": 30
+    },
+    {
+     "dice": "Jefe",
+     "texto": "[whispering] Ahora.",
+     "gesto": "burla"
+    },
+    {
+     "efecto": "lineas",
+     "donde": "Jefe"
+    },
+    {
+     "pausa": 1.4
+    },
+    {
+     "camara": "primer_plano",
+     "quien": "Jefe"
+    },
+    {
+     "dice": "Jefe",
+     "texto": "[heroic, shouting] ¡Por la eficiencia!",
+     "gesto": "celebra2"
+    },
+    {
+     "sonido": "golpe"
+    },
+    {
+     "efecto": "onomatopeya",
+     "donde": "Jefe",
+     "texto": "¡CLAC!",
+     "durante": 1.0
+    },
+    {
+     "pausa": 0.6
+    }
+   ],
+   "acciones": [
+    {
+     "quien": "Jefe",
+     "desde": 0,
+     "hasta": 3,
+     "x": 560,
+     "modo": "anda",
+     "animacion": "andar",
+     "acaba": "pensando"
+    }
+   ]
+  },
+  {
+   "nombre": "Apagón",
+   "lugar": "bg_sistemas_noche",
+   "transicion": "corte",
+   "pasos": [
+    {
+     "efecto": "oscuro",
+     "durante": 1.2
+    },
+    {
+     "pausa": 1.2
+    }
+   ]
+  },
+  {
+   "nombre": "Las consecuencias",
+   "lugar": "bg_sistemas",
+   "camara": "auto",
+   "transicion": "corte",
+   "personajes": [
+    "Usu",
+    "Reynaldo",
+    "Sister",
+    "Barbas",
+    "Jefe"
+   ],
+   "colocar": {
+    "Reynaldo": {
+     "x": 170,
+     "y": 1560,
+     "z": 2,
+     "escala": 0.95,
+     "gesto": "sentado_silencio2"
+    },
+    "Barbas": {
+     "x": 900,
+     "y": 1560,
+     "z": 2,
+     "escala": 0.95,
+     "mira": "izquierda",
+     "gesto": "sentado_silencio3"
+    },
+    "Usu": {
+     "x": 230,
+     "y": 1880,
+     "z": 10,
+     "escala": 1.1,
+     "gesto": "sentado_escucha3"
+    },
+    "Sister": {
+     "x": 840,
+     "y": 1880,
+     "z": 10,
+     "escala": 1.1,
+     "mira": "izquierda",
+     "gesto": "sentado_silencio4"
+    },
+    "Jefe": {
+     "x": 560,
+     "y": 1640,
+     "z": 6,
+     "escala": 1.05,
+     "gesto": "neutro"
+    }
+   },
+   "pasos": [
+    {
+     "objeto": "prop_impresora_loca",
+     "x": 560,
+     "y": 1500,
+     "escala": 0.55,
+     "capa": "detras"
+    },
+    {
+     "pausa": 1.6
+    },
+    {
+     "efecto": "sudor",
+     "donde": "Jefe"
+    },
+    {
+     "camara": "primer_plano",
+     "quien": "Jefe",
+     "mover": true,
+     "durante": 1.4
+    },
+    {
+     "dice": "Jefe",
+     "texto": "[smug] Liderazgo puro. Eso no te lo enseñan en Harvard. De nada, equipo.",
+     "gesto": "pulgares"
+    },
+    {
+     "camara": "general"
+    },
+    {
+     "dice": "Sister",
+     "texto": "[sighing] Qué lástima. Ha vuelto internet. Usu, ¿terminaste el informe?",
+     "gesto": "sentado_silencio3"
+    },
+    {
+     "camara": "primer_plano",
+     "quien": "Usu"
+    },
+    {
+     "dice": "Usu",
+     "texto": "[in disbelief] ¿Ha desconectado el servidor principal sin hacer copia de seguridad? Hemos perdido los datos de los últimos diez años.",
+     "gesto": "sentado_escucha3"
+    },
+    {
+     "camara": "general"
+    },
+    {
+     "dice": "Jefe",
+     "texto": "[cheerfully] A eso lo llamo yo «simplificación de procesos». Apunten mi hora de heroicidad en la hoja de horas extras. ¡Buen trabajo, equipo!",
+     "gesto": "explica",
+     "columna": true
+    },
+    {
+     "camara": "primer_plano",
+     "quien": "Barbas",
+     "mover": true,
+     "durante": 2.4
+    },
+    {
+     "pausa": 2.4
+    },
+    {
+     "camara": "primer_plano",
+     "quien": "Reynaldo"
+    },
+    {
+     "quien": "Reynaldo",
+     "gesto": "sentado_legal2"
+    },
+    {
+     "teclea": "Reynaldo",
+     "durante": 1.4
+    },
+    {
+     "pausa": 1.4
+    },
+    {
+     "camara": "general"
+    },
+    {
+     "efecto": "titulo",
+     "x": 540,
+     "y": 820,
+     "texto": "Incidente: «El Jefe»",
+     "durante": 2.6
+    },
+    {
+     "pausa": 2.6
+    },
+    {
+     "camara": "general"
+    },
+    {
+     "pausa": 0.4
+    }
+   ],
+   "acciones": [
+    {
+     "quien": "Jefe",
+     "desde": 10,
+     "hasta": 11,
+     "x": 1400,
+     "modo": "anda",
+     "animacion": "andar"
+    },
+    {
+     "quien": "Barbas",
+     "desde": 11,
+     "hasta": 12,
+     "gesto": "sentado_silencio1"
+    },
+    {
+     "quien": "Reynaldo",
+     "desde": 13,
+     "hasta": 15,
+     "gesto": "sentado_silencio4"
+    }
+   ],
+   "escala": 1.6
+  },
+  {
+   "nombre": "Final",
+   "lugar": "bg_complejo_apagado",
+   "transicion": "corte",
+   "pasos": [
+    {
+     "efecto": "oscuro",
+     "durante": 6
+    },
+    {
+     "objeto": "prop_logo_punetos",
+     "x": 540,
+     "y": 1000,
+     "escala": 1
+    },
+    {
+     "rotulo": "Alta disponibilidad — hasta que alguien encuentra el enchufe",
+     "durante": 4.5
+    },
+    {
+     "pausa": 4.6
+    }
+   ]
+  }
+ ]
+}

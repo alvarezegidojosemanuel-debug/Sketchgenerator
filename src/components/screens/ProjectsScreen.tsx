@@ -67,6 +67,9 @@ export function ProjectsScreen({ s }: { s: PocketState }) {
           <button type="button" className="btn btn-primary" onClick={() => openOfficial("sk-03", "ver")}>
             🏠 Sketch · Un par de añitos
           </button>
+          <button type="button" className="btn btn-primary" onClick={() => openOfficial("sk-04", "ver")}>
+            🤖 Sketch · El cumplimiento del protocolo
+          </button>
         </div>
         <div className="row">
           <p className="fine"><b>Serie · Temporada 1</b></p>
