@@ -15137,6 +15137,13 @@
    "src": "/assets/punetos/backgrounds/bg_cafeteria_barra.webp",
    "actorScale": 1.0,
    "actorY": 1760
+  },
+  {
+   "id": "bg_pasillo_maquina",
+   "label": "Pasillo · vista desde la máquina de café",
+   "src": "/assets/punetos/backgrounds/bg_pasillo_maquina.webp",
+   "actorScale": 1.0,
+   "actorY": 1760
   }
  ],
  "props": [
@@ -15843,6 +15850,13 @@
    "src": "/assets/punetos/props/enchufe.webp",
    "width": 420,
    "height": 300
+  },
+  {
+   "id": "prop_marco_maquina",
+   "label": "Marco de la máquina de café (primer término, pantalla completa)",
+   "src": "/assets/punetos/props/marco_maquina.webp",
+   "width": 1080,
+   "height": 1920
   }
  ]
 }
