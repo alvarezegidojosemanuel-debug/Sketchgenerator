@@ -46,7 +46,8 @@ export function PocketApp() {
       <nav className="tabbar sidebar" aria-label="Secciones">
         {TABS.map((t) => (
           <button key={t.id} type="button" className={s.tab === t.id ? "on" : ""} aria-current={s.tab === t.id ? "page" : undefined} onClick={() => s.setTab(t.id)}>
-            {t.label}
+            <img className="tab-icon" src={`/assets/ui/tab_${t.id}.webp`} alt="" aria-hidden />
+            <span className="tab-label">{t.label}</span>
           </button>
         ))}
       </nav>
