@@ -60,6 +60,12 @@ describe("ElevenLabs: límites", () => {
     expect(r.json?.error).toBe("quota");
     expect(deps.state.chars).toBe(0);
   });
+
+  it("explica qué límite de ElevenLabs ha saltado", async () => {
+    const { deps } = setup([() => new Response('{"detail":{"status":"quota_exceeded","message":"This request exceeds your API key quota of 10000."}}', { status: 401 })]);
+    const r = await handleTts(body, "A", "puñetos-2026", env, deps);
+    expect(r.json?.message).toContain("API key quota of 10000");
+  });
 });
 
 describe("acotaciones de voz", () => {

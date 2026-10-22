@@ -158,7 +158,7 @@ export async function handleTts(body: unknown, ip: string, code: string | null, 
         status: r.status === 429 || quota ? 429 : 502,
         json: {
           error: quota ? "quota" : "upstream",
-          message: quota ? "Se acabaron los créditos de ElevenLabs de este mes (o el límite de la clave)." : `ElevenLabs respondió ${r.status}.`,
+          message: (quota ? "Se acabaron los créditos de ElevenLabs de este mes (o el límite de la clave)." : `ElevenLabs respondió ${r.status}.`) + upstreamReason(detail),
         },
       };
     }
@@ -178,6 +178,17 @@ const DialogueBody = z.object({
     .max(40),
   stability: z.number().min(0).max(1).optional(),
 });
+
+/** El motivo que da ElevenLabs (p. ej. «exceeds your API key quota of 10000…»), para saber qué límite salta. */
+function upstreamReason(detail: string): string {
+  try {
+    const d = (JSON.parse(detail) as { detail?: { message?: string } | string }).detail;
+    const m = typeof d === "string" ? d : d?.message;
+    return m ? ` ElevenLabs dice: «${m.slice(0, 300)}»` : "";
+  } catch {
+    return "";
+  }
+}
 
 export interface DialogueSegment {
   index: number;
@@ -226,7 +237,7 @@ export async function handleDialogue(body: unknown, ip: string, code: string | n
       deps.state.chars -= chars;
       const detail = await r.text().catch(() => "");
       const quota = r.status === 401 && /quota|credit/i.test(detail);
-      return { status: r.status === 429 || quota ? 429 : 502, json: { error: quota ? "quota" : "upstream", message: quota ? "Se acabaron los créditos de ElevenLabs." : `ElevenLabs respondió ${r.status} al diálogo.` } };
+      return { status: r.status === 429 || quota ? 429 : 502, json: { error: quota ? "quota" : "upstream", message: (quota ? "Se acabaron los créditos de ElevenLabs (o el límite de la clave)." : `ElevenLabs respondió ${r.status} al diálogo.`) + upstreamReason(detail) } };
     }
     const raw = (await r.json()) as {
       audio_base64?: string;
