@@ -505,3 +505,26 @@ input:focus, select:focus, textarea:focus { outline: 3px solid var(--accent); ou
 .g-pose.on, .lib-item.picked { background: color-mix(in srgb, var(--accent) 35%, var(--panel-2)); border-color: var(--accent); }
 .guion-title { font-family: "Lilita One", system-ui, sans-serif; font-weight: 400; font-size: 20px; border: 2px solid var(--ink); background: #0a2459; color: #fff; }
 .fine, .field-label, .muted { color: var(--muted); }
+
+/* ================================================================ menú a la izquierda (sin iconos) */
+:root { --tabbar: 0px; --rail: 96px; --topbar-h: 58px; }
+@media (min-width: 760px) { :root { --rail: 190px; } }
+.app { padding-left: var(--rail); }
+.topbar { margin-left: calc(-1 * var(--rail)); }
+.tabbar.sidebar {
+  top: var(--topbar-h); bottom: 0; left: 0; right: auto; width: var(--rail); height: auto;
+  display: flex; flex-direction: column; gap: 8px; padding: 14px 8px calc(env(safe-area-inset-bottom) + 14px);
+  border-top: 0; border-right: 3px solid var(--ink); box-shadow: 4px 0 0 rgba(5, 11, 26, 0.45);
+  overflow-y: auto; z-index: 15;
+}
+.tabbar.sidebar button {
+  flex: none; min-height: 46px; padding: 8px 10px; border-radius: 14px; justify-content: center; align-items: flex-start;
+  font-family: "Lilita One", system-ui, sans-serif; font-size: 15px; letter-spacing: 0.02em; text-align: left; color: #cfe0ff;
+}
+.tabbar.sidebar button:hover { background: rgba(255, 255, 255, 0.07); }
+.tabbar.sidebar button.on { color: var(--ink); }
+.tabbar.sidebar button.on::before { inset: 0; }
+@media (min-width: 760px) { .tabbar.sidebar button { font-size: 18px; padding: 10px 16px; } }
+@media (max-width: 759px) { .tabbar.sidebar button { font-size: 13px; padding: 8px 6px; align-items: center; text-align: center; } }
+.content { padding-bottom: calc(env(safe-area-inset-bottom) + 24px); }
+.content-wide { max-width: 1560px; }

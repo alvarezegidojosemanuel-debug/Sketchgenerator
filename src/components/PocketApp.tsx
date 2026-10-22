@@ -43,10 +43,9 @@ export function PocketApp() {
         {s.tab === "caras" && <ResourcesScreen s={s} />}
         {s.tab === "proyectos" && <ProjectsScreen s={s} />}
       </main>
-      <nav className="tabbar" aria-label="Secciones">
+      <nav className="tabbar sidebar" aria-label="Secciones">
         {TABS.map((t) => (
           <button key={t.id} type="button" className={s.tab === t.id ? "on" : ""} aria-current={s.tab === t.id ? "page" : undefined} onClick={() => s.setTab(t.id)}>
-            <span aria-hidden>{t.icon}</span>
             {t.label}
           </button>
         ))}
