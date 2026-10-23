@@ -41,7 +41,8 @@ export function HeadPreview({ catalog, characterId, poseId, expressionId, mouthA
   const size = fluid && measured ? measured : fixedSize;
   if (!pose) return <div className="head-preview" style={{ width: size, height: size }} />;
   const state: ActorState = {
-    uid: "preview", characterId, poseId, x: pose.width / 2, y: pose.height, scale: 1 / pose.displayScale, flip: false, zIndex: 0,
+    uid: "preview", characterId, poseId, x: pose.width / 2, y: pose.height, scale: 1 / pose.displayScale, flip: false,
+    flipV: false, zIndex: 0,
     expressionId, gazeX, gazeY, speaking: false, mouthOpen: Boolean(mouthAssetId), mouthAssetId, mouthMode: "auto", mouthDx: 0, mouthDy: 0, poseMix: 1, exprMix: 1, offX: 0, offY: 0,
           visible: 1,
           presenceScale: 1,

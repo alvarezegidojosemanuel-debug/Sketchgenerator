@@ -106,3 +106,21 @@ it("la pose elegida para una frase se mantiene hasta que se elige otra («gestos
   expect(poseAtEnd(sc())).toBe("char.barbas.pose_p_maq_explica");
   expect(poseAtEnd(sc("volver"))).toBe("char.barbas.pose_p_maq_camara");
 });
+
+it("orientación a mano: espejo, boca abajo y giro (y «mira» manda sobre el giro al andar)", () => {
+  const raw = {
+    formato: "puñetos-guion-1",
+    escenas: [{ lugar: "bg_pasillo_maquina", personajes: ["Barbas", "Jefe"], colocar: { Barbas: { x: 300, voltear_v: true, giro: 30 } }, pasos: [
+      { pausa: 1 }, { pausa: 1 }, { pausa: 1 },
+    ], acciones: [
+      { quien: "Jefe", desde: 1, hasta: 1, x: 200, mira: "derecha" },
+      { quien: "Barbas", desde: 2, hasta: 2, mira: "izquierda", giro: 0 },
+    ] }],
+  };
+  const tk = compileScript(raw, catalog).project!.takes[0];
+  const at = (t: number, uid: string) => evaluateTake(tk, catalog, t).actors.find((a) => a.uid === uid)!;
+  expect(at(0.5, "barbas")).toMatchObject({ flipV: true, rot: 30 });
+  // el Jefe anda hacia la izquierda pero sigue mirando a la derecha
+  expect(at(2, "jefe").flip).toBe(false);
+  expect(at(tk.duration - 0.05, "barbas")).toMatchObject({ flip: true, rot: 0, flipV: true });
+});

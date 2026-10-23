@@ -81,6 +81,9 @@ export const BodyEvent = z.object({
   y: coordY.optional(),
   scale: scale.optional(),
   flip: z.boolean().optional(),
+  /** Espejo vertical (boca abajo) y giro en grados alrededor de los pies; se aplican al empezar el evento. */
+  flipV: z.boolean().optional(),
+  rot: z.number().finite().min(-180).max(180).optional(),
   ease: z.enum(["linear", "inOut", "instant"]).optional(),
   /** Efecto corporal durante el evento: temblar, saltar o teclear. */
   fx: z.enum(["shake", "jump", "type", "walk"]).optional(),
@@ -206,6 +209,8 @@ export const Actor = z.object({
   scale: scale.default(1),
   zIndex: zIndex.default(0),
   flip: z.boolean().optional(),
+  /** Espejo vertical (boca abajo, en su sitio). */
+  flipV: z.boolean().optional(),
   /** Giro del personaje en grados alrededor de los pies (p. ej. 90 = tumbado en el suelo). */
   rot: z.number().finite().min(-180).max(180).optional(),
   expressionId: id.optional(),

@@ -628,3 +628,10 @@ input:focus, select:focus, textarea:focus { outline: 3px solid var(--accent); ou
 .pos-note { position: absolute; left: 10px; right: 10px; bottom: 8px; z-index: 5; padding: 10px 12px; border-radius: 14px; background: #fff7d1; color: #1b1b1b; border: 3px solid var(--ink); box-shadow: 3px 3px 0 var(--ink); font-size: 14px; }
 .pos-note p { margin: 0 0 8px; }
 .guion-stage { position: relative; }
+
+/* orientación del personaje tocado en el visor */
+.orient-bar { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: center; }
+.orient-bar b { font-family: "Lilita One", system-ui, sans-serif; color: #fff; }
+.orient-bar .btn { min-width: 40px; }
+.orient-bar .btn.on { background: var(--accent); color: var(--ink); }
+.orient-deg { min-width: 34px; text-align: center; }

@@ -284,6 +284,9 @@
                 "flip": {
                   "type": "boolean"
                 },
+                "flipV": {
+                  "type": "boolean"
+                },
                 "rot": {
                   "type": "number",
                   "minimum": -180,
@@ -434,6 +437,14 @@
                     },
                     "flip": {
                       "type": "boolean"
+                    },
+                    "flipV": {
+                      "type": "boolean"
+                    },
+                    "rot": {
+                      "type": "number",
+                      "minimum": -180,
+                      "maximum": 180
                     },
                     "ease": {
                       "type": "string",

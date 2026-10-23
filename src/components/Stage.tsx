@@ -167,7 +167,8 @@ export function Stage({ catalog, frame, showSubtitles = true, selectedUid, onSel
                   opacity: a.role === "pre" ? 0.001 : a.opacity < 1 ? a.opacity : undefined,
                   pointerEvents: ghost ? "none" : undefined,
                   filter: layout.actorLight,
-                  transform: `${a.rot ? `rotate(${a.rot}deg) ` : ""}${a.skew ? `skewX(${a.skew.toFixed(2)}deg) ` : ""}scale(${(a.flip ? -a.scale : a.scale) * a.sx}, ${a.scale * a.sy})`,
+                  // boca abajo: espejo vertical sobre los pies y se sube su altura para que quede en su sitio
+                  transform: `${a.rot ? `rotate(${a.rot}deg) ` : ""}${a.skew ? `skewX(${a.skew.toFixed(2)}deg) ` : ""}${a.flipV ? `translateY(${(-ph * a.scale * a.sy).toFixed(1)}px) ` : ""}scale(${(a.flip ? -a.scale : a.scale) * a.sx}, ${(a.flipV ? -1 : 1) * a.scale * a.sy})`,
                   cursor: onMoveActor ? "grab" : undefined,
                 }}
               >

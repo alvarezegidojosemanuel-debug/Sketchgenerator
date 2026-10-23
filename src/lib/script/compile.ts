@@ -402,9 +402,16 @@ function applyActions(b: SceneBuilder, list: unknown[], times: number[], path: s
     } else if (hold && !talking) b.add({ track: "body", actorUid: who, duration: 0.3, poseId: hold }, T0);
     if (moves) {
       const dur = mode === "aparece" ? 0.05 : Math.max(0.4, T1 - T0 - 0.15);
-      b.add({ track: "body", actorUid: who, duration: dur, ...(typeof a.x === "number" ? { x: x1 } : {}), ...(typeof a.y === "number" ? { y: Math.round(a.y) } : {}), ...(mode === "aparece" ? { ease: "instant" } : mode === "anda" ? { ease: "linear", ...(frames.length ? (anim!.mov === "bote" ? { fx: "walk" } : {}) : { fx: "walk" }) } : {}), ...(mode === "anda" && x1 !== x0 ? { flip: x1 < x0 } : {}) }, T0);
+      b.add({ track: "body", actorUid: who, duration: dur, ...(typeof a.x === "number" ? { x: x1 } : {}), ...(typeof a.y === "number" ? { y: Math.round(a.y) } : {}), ...(mode === "aparece" ? { ease: "instant" } : mode === "anda" ? { ease: "linear", ...(frames.length ? (anim!.mov === "bote" ? { fx: "walk" } : {}) : { fx: "walk" }) } : {}), ...(typeof a.mira === "string" ? { flip: norm(a.mira) === "izquierda" } : mode === "anda" && x1 !== x0 ? { flip: x1 < x0 } : {}) }, T0);
       b.px.set(who, x1);
     }
+    // orientación a mano («mira», «voltear_v», «giro»): desde el principio de la acción y se queda
+    const ori = {
+      ...(typeof a.mira === "string" ? { flip: norm(a.mira) === "izquierda" } : {}),
+      ...(typeof a.voltear_v === "boolean" ? { flipV: a.voltear_v } : {}),
+      ...(typeof a.giro === "number" ? { rot: Math.max(-180, Math.min(180, Math.round(a.giro))) } : {}),
+    };
+    if (Object.keys(ori).length) b.add({ track: "body", actorUid: who, duration: 0.05, ease: "instant", ...ori }, T0);
     // al acabar: la pose de «acaba», o vuelta al reposo si era un gesto pasajero (las posturas se quedan)
     const end = key(a.acaba);
     const endPose = end ? b.pose(who, end) : undefined;
@@ -491,7 +498,9 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
         const g0 = typeof o.gesto === "string" ? POSE_ALIAS[norm(o.gesto)] ?? norm(o.gesto) : undefined;
         const p0 = g0 ? b.pose(cid, g0) : undefined;
         if (p0 && isStateGesture(g0!)) b.rest.set(cid, p0);
-        b.actors.push({ uid: cid, characterId: cid, poseId: p0 ?? ko ?? `char.${cid}.pose_${pose}`, x: ox, y: oy, scale: osc, zIndex: oz, ...(typeof o.x === "number" || typeof o.mira === "string" ? oflip : flip), ...(rot ? { rot } : {}), expressionId: b.expr(cid, "neutral") });
+        // «voltear_v»: boca abajo · «giro»: grados (manda sobre el giro de «tumbados»)
+        const orot = typeof o.giro === "number" ? Math.max(-180, Math.min(180, Math.round(o.giro))) : rot;
+        b.actors.push({ uid: cid, characterId: cid, poseId: p0 ?? ko ?? `char.${cid}.pose_${pose}`, x: ox, y: oy, scale: osc, zIndex: oz, ...(typeof o.x === "number" || typeof o.mira === "string" ? oflip : flip), ...(orot ? { rot: orot } : {}), ...(o.voltear_v === true ? { flipV: true } : {}), expressionId: b.expr(cid, "neutral") });
       });
     }
     const steps = (Array.isArray(sc.pasos) ? sc.pasos : []) as unknown[];

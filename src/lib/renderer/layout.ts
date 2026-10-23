@@ -18,6 +18,8 @@ export interface ActorLayout {
   /** Escala total = escala del actor × displayScale de la pose. */
   scale: number;
   flip: boolean;
+  /** Espejo vertical (boca abajo, en su sitio). */
+  flipV: boolean;
   face: FaceLayer[];
   speaking: boolean;
   /** Opacidad del actor (fundido de pose). */
@@ -118,6 +120,7 @@ function layoutActorPose(catalog: Catalog, a: ActorState): ActorLayout {
     top: a.y + a.offY - ph,
     scale: s,
     flip: a.flip,
+    flipV: a.flipV,
     speaking: a.speaking,
     opacity: 1,
     faceMix: a.prevExpressionId && a.exprMix < 1 ? a.exprMix : 1,

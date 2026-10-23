@@ -112,7 +112,8 @@ function drawActor(ctx: Ctx, a: ActorLayout, images: ImageMap) {
   if (a.rot) ctx.rotate((a.rot * Math.PI) / 180);
   // igual que el CSS «skewX() scale()» con origen en los pies
   if (a.skew) ctx.transform(1, 0, Math.tan((a.skew * Math.PI) / 180), 1, 0, 0);
-  ctx.scale((a.flip ? -a.scale : a.scale) * a.sx, a.scale * a.sy);
+  if (a.flipV) ctx.translate(0, -ph * a.scale * a.sy);
+  ctx.scale((a.flip ? -a.scale : a.scale) * a.sx, (a.flipV ? -1 : 1) * a.scale * a.sy);
   ctx.translate(-pw / 2, -ph);
   if (a.pose.flat) {
     // sombra de contacto (igual que .contact-shadow en el escenario)

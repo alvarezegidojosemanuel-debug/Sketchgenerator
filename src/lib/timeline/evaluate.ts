@@ -13,6 +13,7 @@ export interface ActorState {
   y: number;
   scale: number;
   flip: boolean;
+  flipV: boolean;
   zIndex: number;
   expressionId: string | undefined;
   gazeX: number;
@@ -192,6 +193,7 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
       presenceScale: 1,
       skew: 0,
       rot: a.rot ?? 0,
+      flipV: a.flipV ?? false,
       sx: 1,
       sy: 1,
       headRot: 0,
@@ -273,6 +275,8 @@ export function evaluateTake(take: Take, catalog: Catalog, t: number, opts: Eval
           if (st.poseMix >= 1) st.prevPoseId = undefined;
         }
         if (e.flip !== undefined) st.flip = e.flip;
+        if (e.flipV !== undefined) st.flipV = e.flipV;
+        if (e.rot !== undefined) st.rot = e.rot;
         const raw = e.ease === "instant" ? 1 : clamp01((t - e.start) / e.duration);
         const p = e.ease === "linear" ? raw : easeInOut(raw);
         if (e.x !== undefined) st.x = lerp(st.x, e.x, p);

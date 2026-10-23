@@ -232,6 +232,8 @@ export function GuionScreen({ s }: { s: PocketState }) {
   const [placing, setPlacing] = useState(false);
   const [placeVer, setPlaceVer] = useState(0);
   const [sheet, setSheet] = useState(false);
+  // personaje tocado en el visor de la ventana del paso (para su orientación)
+  const [pick, setPick] = useState<string | null>(null);
   const [posNote, setPosNote] = useState<{ uid: string; owner: number; x: number; y: number } | null>(null);
   const update = (fn: (d: Script) => void, keepHistory = true) => {
     if (!script) return;
@@ -391,6 +393,36 @@ export function GuionScreen({ s }: { s: PocketState }) {
       col[key] = o;
       scn.colocar = col;
     }, keep);
+  };
+  /**
+   * Orientación a mano (espejo horizontal / vertical, giro): en la acción abierta de ese personaje; si no, en lo que
+   * manda sobre su posición si es este paso; y si no, una acción nueva en este paso (cambia a partir de aquí).
+   */
+  const orient = (uid: string, patch: Obj) => {
+    if (stepIdx === null) return;
+    const k = stepIdx;
+    if (action && resolveCharacter(action.quien, catalog) === uid) return setAction((a) => Object.assign(a, patch));
+    const own = posOwner(uid, k);
+    const name = cast.find((n) => resolveCharacter(n, catalog) === uid) ?? uid;
+    if (own.step === k) {
+      update((d) => {
+        const scn = d.escenas[si];
+        const acts = (Array.isArray(scn.acciones) ? scn.acciones : []) as Obj[];
+        if (own.move !== undefined && isObj(acts[own.move])) return void Object.assign(acts[own.move], patch);
+        const col = (isObj(scn.colocar) ? scn.colocar : {}) as Obj;
+        const key = Object.keys(col).find((n) => resolveCharacter(n, catalog) === uid) ?? name;
+        col[key] = Object.assign(isObj(col[key]) ? col[key] : {}, patch);
+        scn.colocar = col;
+      });
+      return;
+    }
+    const at = actions.length;
+    update((d) => {
+      const x = d.escenas[si];
+      if (!Array.isArray(x.acciones)) x.acciones = [];
+      (x.acciones as Obj[]).push({ quien: name, desde: k, hasta: k, ...patch });
+    });
+    setSel({ scene: si, step: k, action: at });
   };
   /** «＋ Moverlo desde aquí»: un movimiento en este paso hasta donde lo has soltado (luego se afina arrastrando). */
   const addMoveHere = () => {
@@ -584,12 +616,30 @@ export function GuionScreen({ s }: { s: PocketState }) {
           <Stage
             catalog={catalog}
             frame={frame}
-            maxHeight={sheet ? "calc(42dvh - 64px)" : "58vh"}
+            maxHeight={sheet ? (pick ? "calc(42dvh - 112px)" : "calc(42dvh - 64px)") : "58vh"}
             {...(sheet && stepIdx !== null && !(action && (typeof action.x === "number" || typeof action.y === "number"))
-              ? { selectedUid: action ? resolveCharacter(action.quien, catalog) ?? null : null, onMoveActor: placeAt }
+              ? { selectedUid: pick ?? (action ? resolveCharacter(action.quien, catalog) ?? null : null), onSelectActor: (uid: string) => setPick(uid), onMoveActor: (uid: string, x: number, y: number) => { setPick(uid); placeAt(uid, x, y); } }
               : action ? { selectedUid: resolveCharacter(action.quien, catalog) ?? null, onMoveActor: (uid: string, x: number, y: number) => { if (uid === resolveCharacter(action.quien, catalog)) setAction((a) => { a.x = Math.round(x); a.y = Math.round(y); if (!a.modo) a.modo = "anda"; }, true); } } : {})}
           />
         ) : <p className="fine">No se puede montar esta escena todavía.</p>}
+        {sheet && pick && stepIdx !== null && frame && (() => {
+          const fa = frame.actors.find((a) => a.uid === pick);
+          if (!fa) return null;
+          const nm = cast.find((n) => resolveCharacter(n, catalog) === pick) ?? pick;
+          const giro = (v: number) => orient(pick, { giro: Math.max(-180, Math.min(180, Math.round(v))) });
+          return (
+            <div className="orient-bar" aria-label={`Orientación de ${nm}`}>
+              <b>{nm}</b>
+              <button type="button" className={`btn btn-small btn-secondary${fa.flip ? " on" : ""}`} onClick={() => orient(pick, { mira: fa.flip ? "derecha" : "izquierda" })} title="Espejo horizontal (mira al otro lado)">↔</button>
+              <button type="button" className={`btn btn-small btn-secondary${fa.flipV ? " on" : ""}`} onClick={() => orient(pick, { voltear_v: !fa.flipV })} title="Espejo vertical (boca abajo)">↕</button>
+              <button type="button" className="btn btn-small btn-secondary" onClick={() => giro(fa.rot - 15)} title="Girar 15° a la izquierda">⟲</button>
+              <span className="fine orient-deg">{Math.round(fa.rot)}°</span>
+              <button type="button" className="btn btn-small btn-secondary" onClick={() => giro(fa.rot + 15)} title="Girar 15° a la derecha">⟳</button>
+              {fa.rot !== 0 && <button type="button" className="btn btn-small btn-ghost" onClick={() => giro(0)} title="Sin giro">0°</button>}
+              <button type="button" className="btn btn-small btn-ghost" onClick={() => setPick(null)} aria-label="Cerrar">✕</button>
+            </div>
+          );
+        })()}
         {sheet && posNote && stepIdx !== null && posNote.owner !== stepIdx && (
           <div className="pos-note" role="alert">
             <p>
