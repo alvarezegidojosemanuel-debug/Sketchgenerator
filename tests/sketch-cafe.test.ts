@@ -61,3 +61,15 @@ it("el ambiente de fondo respeta «ambiente_volumen» y los sonidos sueltos su �
   expect(sfx.find((e) => e.soundId === "sfx_ambiente_pajaros")?.volume).toBe(0.1);
   expect(sfx.find((e) => e.soundId === "sfx_ding")?.volume).toBe(0.3);
 });
+
+import { placementToScript } from "@/lib/script/placement";
+it("las posiciones arrastradas en el editor pasan al «colocar» del guion", () => {
+  const take = structuredClone(compileScript(comp as never, catalog).project!.takes[4]);
+  const b = take.actors.find((a) => a.uid === "barbas")!;
+  b.x = 150; b.y = 1900; b.scale = b.scale * 1.5;
+  const next = placementToScript(comp as never, 4, take, catalog)!;
+  const o = ((next.escenas as Record<string, unknown>[])[4].colocar as Record<string, Record<string, unknown>>).Barbas;
+  expect(o).toMatchObject({ x: 150, y: 1900, escala: 3.9, gesto: "maq_camara" });
+  const again = compileScript(next, catalog).project!.takes[4].actors.find((a) => a.uid === "barbas")!;
+  expect([again.x, again.y, Math.round(again.scale * 100)]).toEqual([150, 1900, Math.round(b.scale * 100)]);
+});

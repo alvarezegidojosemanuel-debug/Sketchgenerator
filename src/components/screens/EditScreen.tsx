@@ -13,6 +13,7 @@ import { Stage } from "../Stage";
 import { HeadPreview } from "../HeadPreview";
 import { TimelineLanes } from "../TimelineLanes";
 import { arrangeTake } from "@/lib/timeline/arrange";
+import { placementToScript } from "@/lib/script/placement";
 import { deskFor, guessDesk, swapEvents, transformEvents, typingEvents } from "@/lib/timeline/desk";
 import type { Catalog } from "@/lib/catalog/types";
 import type { PocketState } from "../usePocket";
@@ -95,10 +96,12 @@ export function EditScreen({ s }: { s: PocketState }) {
     });
   };
   const [deskPick, setDeskId] = useState<string | null>(null);
+  const [placed, setPlaced] = useState<string | null>(null);
   const deskId = deskPick && catalog.props.some((p) => p.id === deskPick) ? deskPick : guessDesk(catalog)?.id ?? catalog.props[0]?.id ?? "";
 
   /** Arrastre: si hay un evento body seleccionado edita su destino; si no, la posición base del actor. */
   const onMoveActor = (uid: string, x: number, y: number) => {
+    setPlaced(null);
     if (selectedEvent?.track === "body" && selectedEvent.actorUid === uid) {
       editEvent(selectedEvent.id, (e) => {
         if (e.track === "body") Object.assign(e, { x, y });
@@ -202,6 +205,23 @@ export function EditScreen({ s }: { s: PocketState }) {
         <span className="time">{t.toFixed(2)} s / {take.duration} s</span>
       </div>
       <p className="fine">Arrastra un personaje para moverlo. Con un evento «Cuerpo» seleccionado, arrastrar cambia su destino.</p>
+      {project.metadata.script && (
+        <div className="row">
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => {
+              const next = placementToScript(project.metadata.script as Record<string, unknown>, takeIndex, take, catalog);
+              if (!next) return setPlaced("Esta toma no sale del guion: no hay dónde guardarlo.");
+              editProject((p) => { p.metadata.script = next; });
+              setPlaced("✓ Guardado en el guion: la próxima vez que se monte, salen ahí.");
+            }}
+          >
+            ✓ Aplicar cambios al guion
+          </button>
+          {placed && <span className="fine">{placed}</span>}
+        </div>
+      )}
 
       <Card
         title={`Línea de tiempo (${take.events.length})`}
