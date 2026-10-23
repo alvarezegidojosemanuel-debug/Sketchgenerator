@@ -617,3 +617,9 @@ input:focus, select:focus, textarea:focus { outline: 3px solid var(--accent); ou
     padding-bottom: calc(env(safe-area-inset-bottom) + 20px);
   }
 }
+
+/* pestañas de la ventana del paso: el paso y lo que hace cada personaje en él */
+.sheet-tabs { display: flex; gap: 6px; overflow-x: auto; position: sticky; top: -12px; z-index: 2; background: var(--panel); margin: -12px -12px 4px; padding: 10px 12px 8px; flex: none; }
+.sheet-tabs .chip { flex: none; }
+.sheet-tabs .chip.full:not(.on) { border-color: var(--accent); }
+@media (max-width: 759px) { .guion.sheet-open .guion-stage > p.fine { display: none; } }

@@ -308,7 +308,7 @@ export function GuionScreen({ s }: { s: PocketState }) {
   const t0 = mark ? (stepIdx !== null ? mark.times[stepIdx] ?? 0 : 0) : 0;
   const t1 = mark ? (stepIdx !== null ? mark.times[stepIdx + 1] ?? t0 : mark.times[0] ?? 0) : 0;
   const aT1 = mark && action ? mark.times[Math.min(steps.length - 1, Math.max(Number(action.desde) || 0, typeof action.hasta === "number" ? action.hasta : Number(action.desde) || 0)) + 1] ?? 0 : 0;
-  const tShow = take && action ? Math.max(0, Math.min(take.duration - 0.05, aT1 - 0.05)) : take ? Math.min(take.duration - 0.05, stepIdx === null ? Math.max(0.4, t0 + 0.4) : t1 > t0 ? t0 + Math.min(t1 - t0 - 0.05, Math.max(0.35, (t1 - t0) * 0.6)) : t0 + 0.5) : 0;
+  const tShow = take && action && !(sheet && stepIdx !== null) ? Math.max(0, Math.min(take.duration - 0.05, aT1 - 0.05)) : take ? Math.min(take.duration - 0.05, stepIdx === null ? Math.max(0.4, t0 + 0.4) : t1 > t0 ? t0 + Math.min(t1 - t0 - 0.05, Math.max(0.35, (t1 - t0) * 0.6)) : t0 + 0.5) : 0;
   const frame = take ? evaluateTake(take, catalog, Math.max(0, tShow)) : null;
   const sceneIssues = (compiled?.issues ?? []).filter((i) => i.path.startsWith(`escenas[${si}]`));
   const stepIssues = stepIdx !== null ? sceneIssues.filter((i) => i.path.startsWith(`escenas[${si}].pasos[${stepIdx}]`)) : sceneIssues.filter((i) => !i.path.includes(".pasos["));
@@ -360,7 +360,7 @@ export function GuionScreen({ s }: { s: PocketState }) {
       if (!Array.isArray(x.acciones)) x.acciones = [];
       (x.acciones as Obj[]).push({ quien: who, desde: row, hasta: row });
     });
-    select({ scene: si, step: null, action: at });
+    select({ scene: si, step: row, action: at });
   };
   const actionAt = (who: string, row: number) => {
     const cid = resolveCharacter(who, catalog);
@@ -405,19 +405,30 @@ export function GuionScreen({ s }: { s: PocketState }) {
   };
 
   // ventana del móvil: pasar al paso anterior / siguiente sin cerrarla (la escena es el «paso 0»)
+  const isEmptyAction = (a: Obj | null) => !!a && Object.keys(a).every((k) => k === "quien" || k === "desde" || k === "hasta");
+  const goSel = (next: Sel) => {
+    if (actIdx !== null && isEmptyAction(action) && next.action !== actIdx) {
+      const gone = actIdx;
+      update((d) => { (d.escenas[si].acciones as Obj[]).splice(gone, 1); });
+      if (next.action !== undefined && next.action > gone) next = { ...next, action: next.action - 1 };
+    }
+    setSel(next);
+  };
   const goStep = (dir: -1 | 1) => {
     const cur = stepIdx === null ? -1 : stepIdx;
     const to = cur + dir;
     if (to < -1 || to >= steps.length) return;
-    setSel({ scene: si, step: to === -1 ? null : to });
+    const who = action ? str(action.quien) : "";
+    const hit = who && to >= 0 ? actionAt(who, to) : undefined;
+    goSel({ scene: si, step: to === -1 ? null : to, ...(hit ? { action: hit.i } : {}) });
   };
   return (
     <div className={`guion${sheet ? " sheet-open" : ""}`}>
       {sheet && (
         <div className="sheet-bar">
-          <button type="button" className="btn btn-small btn-ghost" onClick={() => setSheet(false)} aria-label="Cerrar">✕</button>
+          <button type="button" className="btn btn-small btn-ghost" onClick={() => { if (actIdx !== null) goSel({ scene: si, step: stepIdx }); setSheet(false); }} aria-label="Cerrar">✕</button>
           <button type="button" className="btn btn-small btn-secondary" onClick={() => goStep(-1)} disabled={!action && stepIdx === null} aria-label="Paso anterior">◀</button>
-          <span className="sheet-title">{action ? `🎭 ${str(action.quien)}` : stepIdx === null ? `🎬 Escena ${si + 1}` : `Paso ${stepIdx + 1} de ${steps.length}`}</span>
+          <span className="sheet-title">{stepIdx !== null ? `Paso ${stepIdx + 1} de ${steps.length}` : action ? `🎭 ${str(action.quien)}` : `🎬 Escena ${si + 1}`}</span>
           <button type="button" className="btn btn-small btn-secondary" onClick={() => goStep(1)} disabled={!action && stepIdx === steps.length - 1} aria-label="Paso siguiente">▶</button>
         </div>
       )}
@@ -480,7 +491,7 @@ export function GuionScreen({ s }: { s: PocketState }) {
                               type="button"
                               className={`g-cell${hit ? " full" : ""}${hit?.first ? " first" : ""}${hit?.last ? " last" : ""}${hit && hit.i === actIdx ? " on" : ""}`}
                               title={hit ? `${c}: ${hit.a.gesto ? String(hit.a.gesto) : ""}${mv ? " se mueve" : ""}` : `${c}: añadir acción aquí`}
-                              onClick={() => (hit ? select({ scene: i, step: null, action: hit.i }) : addAction(c, k))}
+                              onClick={() => (hit ? select({ scene: i, step: k, action: hit.i }) : addAction(c, k))}
                             >
                               {hit?.first ? (hit.a.animacion ? "🎞" : mv ? "🚶" : hit.a.gesto ? "🤸" : "•") : hit ? "" : "+"}
                             </button>
@@ -525,6 +536,35 @@ export function GuionScreen({ s }: { s: PocketState }) {
 
       {/* ------------------------------------------------ derecha: propiedades */}
       <aside className="guion-col guion-props" ref={propsRef} aria-label="Propiedades">
+        {sheet && stepIdx !== null && (
+          <div className="sheet-tabs" role="tablist" aria-label="Qué editar en este paso">
+            <button type="button" role="tab" aria-selected={!action} className={`chip${!action ? " on" : ""}`} onClick={() => goSel({ scene: si, step: stepIdx })}>
+              {kindOf(step ?? {})?.icon ?? "•"} Paso
+            </button>
+            {cast.map((c) => {
+              const hit = actionAt(c, stepIdx);
+              const on = !!action && resolveCharacter(action.quien, catalog) === resolveCharacter(c, catalog);
+              return (
+                <button key={c} type="button" role="tab" aria-selected={on} className={`chip${on ? " on" : ""}${hit ? " full" : ""}`} onClick={() => {
+                  if (hit) goSel({ scene: si, step: stepIdx, action: hit.i });
+                  else {
+                    // una sola actualización: se quita la acción vacía que estuviera abierta y se crea la nueva
+                    const gone = actIdx !== null && isEmptyAction(action) ? actIdx : null;
+                    update((d) => {
+                      const x = d.escenas[si];
+                      if (!Array.isArray(x.acciones)) x.acciones = [];
+                      if (gone !== null) (x.acciones as Obj[]).splice(gone, 1);
+                      (x.acciones as Obj[]).push({ quien: c, desde: stepIdx, hasta: stepIdx });
+                    });
+                    setSel({ scene: si, step: stepIdx, action: actions.length - (gone !== null ? 1 : 0) });
+                  }
+                }} title={hit ? `Lo que hace ${c} en este paso` : `Añadir algo que haga ${c} en este paso`}>
+                  {hit ? "🎭" : "＋"} {c}
+                </button>
+              );
+            })}
+          </div>
+        )}
         {action && actIdx !== null ? (
           <>
             <div className="g-props-head">
