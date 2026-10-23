@@ -595,3 +595,25 @@ input:focus, select:focus, textarea:focus { outline: 3px solid var(--accent); ou
 .place-who, .place-tools { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
 .place-tools .btn { min-width: 52px; padding-left: 12px; padding-right: 12px; }
 .place-hint { text-align: center; margin: 0; }
+
+/* ================================================================ móvil: el paso se abre en una ventana (visor arriba, ajustes abajo) */
+.sheet-bar { display: none; }
+@media (max-width: 759px) {
+  .guion.sheet-open::before { content: ""; position: fixed; inset: 0; z-index: 60; background: var(--bg, #0b1f4d); }
+  .guion.sheet-open .sheet-bar {
+    display: flex; align-items: center; gap: 8px; position: fixed; z-index: 62; left: 0; right: 0; top: 0;
+    padding: calc(env(safe-area-inset-top) + 6px) 10px 6px; background: #0a2459; border-bottom: 3px solid var(--ink);
+  }
+  .sheet-title { flex: 1; text-align: center; font-family: "Lilita One", system-ui, sans-serif; font-size: 17px; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .guion.sheet-open .guion-stage {
+    position: fixed; z-index: 61; left: 0; right: 0; top: calc(env(safe-area-inset-top) + 52px); height: 42dvh;
+    border-radius: 0; border: 0; padding: 6px 10px; gap: 4px; overflow: hidden; align-items: center;
+  }
+  .guion.sheet-open .guion-stage .g-info, .guion.sheet-open .guion-stage .g-stage-bar .fine { display: none; }
+  .guion.sheet-open .guion-stage .g-stage-bar { justify-content: center; }
+  .guion.sheet-open .guion-props {
+    position: fixed; z-index: 61; left: 0; right: 0; bottom: 0; top: calc(env(safe-area-inset-top) + 52px + 42dvh);
+    border-radius: 18px 18px 0 0; border: 3px solid var(--ink); border-bottom: 0; overflow-y: auto; overscroll-behavior: contain;
+    padding-bottom: calc(env(safe-area-inset-bottom) + 20px);
+  }
+}

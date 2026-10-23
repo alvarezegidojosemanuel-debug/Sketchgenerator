@@ -89,3 +89,20 @@ it("mover en el editor a quien entra andando desplaza todo su recorrido (no apar
   const tk = compileScript(next, catalog).project!.takes[4];
   expect(evaluateTake(tk, catalog, 5).actors.find((a) => a.uid === "director")!.visible).toBe(0);
 });
+
+it("la pose elegida para una frase se mantiene hasta que se elige otra («gestos»: «volver» = como antes)", () => {
+  const sc = (gestos?: string) => ({
+    formato: "puñetos-guion-1", ...(gestos ? { gestos } : {}),
+    escenas: [{ lugar: "bg_pasillo_maquina", personajes: ["Barbas", "Jefe"], colocar: { Barbas: { gesto: "maq_camara" } }, pasos: [
+      { dice: "Barbas", texto: "Hola, ¿qué tal?", gesto: "maq_explica" },
+      { dice: "Jefe", texto: "Bien, ¿y tú?" },
+      { pausa: 1 },
+    ] }],
+  });
+  const poseAtEnd = (raw: Record<string, unknown>) => {
+    const tk = compileScript(raw, catalog).project!.takes[0];
+    return evaluateTake(tk, catalog, tk.duration - 0.1).actors.find((a) => a.uid === "barbas")!.poseId;
+  };
+  expect(poseAtEnd(sc())).toBe("char.barbas.pose_p_maq_explica");
+  expect(poseAtEnd(sc("volver"))).toBe("char.barbas.pose_p_maq_camara");
+});

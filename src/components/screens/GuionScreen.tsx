@@ -231,6 +231,7 @@ export function GuionScreen({ s }: { s: PocketState }) {
   // «Colocar con el dedo» (pantalla completa) y versión para refrescar el formulario de la escena al volver
   const [placing, setPlacing] = useState(false);
   const [placeVer, setPlaceVer] = useState(0);
+  const [sheet, setSheet] = useState(false);
   const update = (fn: (d: Script) => void, keepHistory = true) => {
     if (!script) return;
     const d = structuredClone(script);
@@ -316,7 +317,9 @@ export function GuionScreen({ s }: { s: PocketState }) {
 
   const select = (next: Sel) => {
     setSel(next);
-    if (typeof window !== "undefined" && window.innerWidth < 1000) setTimeout(() => propsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 30);
+    // móvil: el paso se abre en una ventana con el visor arriba y su configuración debajo (sin subir y bajar)
+    if (typeof window !== "undefined" && window.innerWidth < 760) setSheet(true);
+    else if (typeof window !== "undefined" && window.innerWidth < 1000) setTimeout(() => propsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 30);
   };
   const playFrom = (scene: number, stepI: number | null) => {
     flush();
@@ -401,8 +404,23 @@ export function GuionScreen({ s }: { s: PocketState }) {
     setSel({ scene: to, step: null });
   };
 
+  // ventana del móvil: pasar al paso anterior / siguiente sin cerrarla (la escena es el «paso 0»)
+  const goStep = (dir: -1 | 1) => {
+    const cur = stepIdx === null ? -1 : stepIdx;
+    const to = cur + dir;
+    if (to < -1 || to >= steps.length) return;
+    setSel({ scene: si, step: to === -1 ? null : to });
+  };
   return (
-    <div className="guion">
+    <div className={`guion${sheet ? " sheet-open" : ""}`}>
+      {sheet && (
+        <div className="sheet-bar">
+          <button type="button" className="btn btn-small btn-ghost" onClick={() => setSheet(false)} aria-label="Cerrar">✕</button>
+          <button type="button" className="btn btn-small btn-secondary" onClick={() => goStep(-1)} disabled={!action && stepIdx === null} aria-label="Paso anterior">◀</button>
+          <span className="sheet-title">{action ? `🎭 ${str(action.quien)}` : stepIdx === null ? `🎬 Escena ${si + 1}` : `Paso ${stepIdx + 1} de ${steps.length}`}</span>
+          <button type="button" className="btn btn-small btn-secondary" onClick={() => goStep(1)} disabled={!action && stepIdx === steps.length - 1} aria-label="Paso siguiente">▶</button>
+        </div>
+      )}
       {/* ------------------------------------------------ izquierda: estructura */}
       <aside className="guion-col guion-list" aria-label="Escenas y pasos">
         <div className="guion-head">
@@ -416,6 +434,10 @@ export function GuionScreen({ s }: { s: PocketState }) {
             <input type="file" accept=".json,application/json" onChange={(e) => { void loadFile(e.target.files?.[0]); e.target.value = ""; }} />
           </label>
         </div>
+        <label className="g-check" title="Al elegir una pose para una frase, el personaje se queda en ella hasta que le pongas otra">
+          <input type="checkbox" checked={normKey(str(script.gestos)) !== "volver"} onChange={(e) => update((d) => { if (e.target.checked) delete d.gestos; else d.gestos = "volver"; })} />
+          Las poses se mantienen (si no, vuelven a la de reposo al acabar cada frase)
+        </label>
         <p className="fine">{scenes.length} escena(s) · {lineCount} frase(s) · {totalDur.toFixed(0)} s aprox.</p>
         {scenes.map((x, i) => {
           const ps = (Array.isArray(x.pasos) ? x.pasos : []) as Obj[];
@@ -423,7 +445,7 @@ export function GuionScreen({ s }: { s: PocketState }) {
           return (
             <div key={i} className={`g-scene${open ? " open" : ""}`}>
               <div className={`g-row g-scene-row${open && stepIdx === null ? " on" : ""}`}>
-                <button type="button" className="g-main" onClick={() => select({ scene: i, step: null })}>
+                <button type="button" className="g-main" onClick={() => (open ? select({ scene: i, step: null }) : setSel({ scene: i, step: null }))}>
                   <span className="g-ico">🎬</span>
                   <span className="g-txt"><b>{i + 1}. {str(x.nombre) || `Escena ${i + 1}`}</b><small>{str(x.lugar).replace(/^bg_/, "")} · {ps.length} pasos</small></span>
                 </button>
@@ -489,7 +511,7 @@ export function GuionScreen({ s }: { s: PocketState }) {
           <Stage
             catalog={catalog}
             frame={frame}
-            maxHeight="58vh"
+            maxHeight={sheet ? "calc(42dvh - 64px)" : "58vh"}
             {...(action ? { selectedUid: resolveCharacter(action.quien, catalog) ?? null, onMoveActor: (uid: string, x: number, y: number) => { if (uid === resolveCharacter(action.quien, catalog)) setAction((a) => { a.x = Math.round(x); a.y = Math.round(y); if (!a.modo) a.modo = "anda"; }, true); } } : {})}
           />
         ) : <p className="fine">No se puede montar esta escena todavía.</p>}

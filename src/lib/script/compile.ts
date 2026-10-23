@@ -157,6 +157,8 @@ class SceneBuilder {
   hiddenFrom = new Set<string>();
   /** Posición x actual de cada actor (cambia con empujones / huidas). */
   px = new Map<string, number>();
+  /** «gestos»: "mantener" (por defecto): la pose elegida a mano se queda hasta que se elija otra; "volver": al acabar la frase vuelve a la de reposo. */
+  keep = true;
   /** Ya está colgada la tele de Anastas-IA en esta escena. */
   iaTv = false;
   /** Dónde cuelga la tele de Anastas-IA (para poner efectos sobre ella). */
@@ -236,7 +238,7 @@ class SceneBuilder {
         this.talk.push({ ev: this.add({ track: "body", actorUid: who, duration: 0.3, poseId }, at), who, column: !!opts.column, revert: false });
         // los gestos de hablar (señalar, explicar, gritar…) vuelven a la postura de reposo al acabar la frase;
         // los «de estado» (sentado, brazos cruzados, móvil, KO…) se quedan y pasan a ser el reposo
-        if (!opts.gesture || !isStateGesture(opts.gesture)) {
+        if (!opts.gesture || (!this.keep && !isStateGesture(opts.gesture))) {
           const base = this.rest.get(who) ?? this.actors.find((a) => a.uid === who)?.poseId;
           if (base && base !== poseId) {
             const rv = this.add({ track: "body", actorUid: who, duration: 0.3, poseId: base }, at + d + 0.15);
@@ -459,6 +461,7 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
     const wantsBack = vista.startsWith("espalda") && catalog.props.some((x) => x.id.endsWith("_espaldas_teclea"));
     const back = wantsBack && !!bg && OFFICE_BGS.includes(bg);
     const b = new SceneBuilder(`s${si + 1}`, back, cast, catalog, human, pfx);
+    b.keep = norm(String(raw.gestos ?? "mantener")) !== "volver";
     if (!back) {
       const bgInfo = bg ? catalog.backgrounds.find((x) => x.id === bg) : undefined;
       // «escala» de la escena: acerca o aleja a todo el reparto (p. ej. 0.6 para un plano más abierto)
@@ -566,7 +569,7 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
         const poseId = who ? b.pose(who, POSE_ALIAS[norm(String(st.gesto))] ?? norm(String(st.gesto))) : undefined;
         if (who && poseId && !back) {
           b.add({ track: "body", actorUid: who, duration: 0.3, poseId });
-          if (isStateGesture(String(st.gesto))) b.rest.set(who, poseId);
+          if (b.keep || isStateGesture(String(st.gesto))) b.rest.set(who, poseId);
           b.comicAuto(who, POSE_ALIAS[norm(String(st.gesto))] ?? norm(String(st.gesto)), "", b.t, 1.4);
         }
       } else if (st.sale !== undefined || st.entra !== undefined) {
