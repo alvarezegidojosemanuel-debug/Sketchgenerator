@@ -70,7 +70,7 @@ it("las posiciones arrastradas en el editor pasan al «colocar» del guion", () 
   b.x = 150; b.y = 1900; b.scale = b.scale * 1.5;
   const next = placementToScript(comp as never, 4, take, catalog)!;
   const o = ((next.escenas as Record<string, unknown>[])[4].colocar as Record<string, Record<string, unknown>>).Barbas;
-  expect(o).toMatchObject({ x: 150, y: 1900, escala: 3.9, gesto: "maq_explica" });
+  expect(o).toMatchObject({ x: 150, y: 1900, escala: 3.9, gesto: "maq_camara" });
   const again = compileScript(next, catalog).project!.takes[4].actors.find((a) => a.uid === "barbas")!;
   expect([again.x, again.y, Math.round(again.scale * 100)]).toEqual([150, 1900, Math.round(b.scale * 100)]);
 });
@@ -82,9 +82,9 @@ it("mover en el editor a quien entra andando desplaza todo su recorrido (no apar
   for (const e of take.events) if (e.track === "body" && e.actorUid === "director") { if (e.x !== undefined) e.x += 100; if (e.y !== undefined) e.y -= 200; }
   const next = placementToScript(comp as never, 4, take, catalog)!;
   const sc = (next.escenas as Record<string, unknown>[])[4];
-  expect((sc.colocar as Record<string, Record<string, unknown>>).Director).toMatchObject({ x: -350, y: 1360 });
+  expect((sc.colocar as Record<string, Record<string, unknown>>).Director).toMatchObject({ x: -450, y: 1039 });
   const walks = (sc.acciones as Record<string, unknown>[]).filter((a) => a.quien === "Director").map((a) => a.x);
-  expect(walks).toEqual([640, 1550]);
+  expect(walks).toEqual([540, 1450]);
   // sigue oculto hasta que entra
   const tk = compileScript(next, catalog).project!.takes[4];
   expect(evaluateTake(tk, catalog, 5).actors.find((a) => a.uid === "director")!.visible).toBe(0);
