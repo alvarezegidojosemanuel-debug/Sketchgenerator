@@ -344,6 +344,40 @@ export function GuionScreen({ s }: { s: PocketState }) {
     return [...m.values()];
   };
   const lastDrag = useRef(0);
+  /**
+   * Recolocar a alguien en el paso abierto sin que dé botes: se cambia dónde está quieto en ese tramo
+   * (su posición de partida, o adónde llegó con su último movimiento antes de este paso).
+   */
+  const placeAt = (uid: string, x: number, y: number) => {
+    if (stepIdx === null) return;
+    const now = Date.now();
+    const keep = now - lastDrag.current > 600;
+    lastDrag.current = now;
+    const k = stepIdx;
+    update((d) => {
+      const scn = d.escenas[si];
+      const acts = (Array.isArray(scn.acciones) ? scn.acciones : []) as Obj[];
+      let mv: Obj | undefined;
+      for (const a of acts) {
+        if (!isObj(a) || resolveCharacter(a.quien, catalog) !== uid) continue;
+        if (typeof a.x !== "number" && typeof a.y !== "number") continue;
+        if ((Number(a.desde) || 0) > k) continue;
+        if (!mv || (Number(a.desde) || 0) >= (Number(mv.desde) || 0)) mv = a;
+      }
+      if (mv) {
+        mv.x = Math.round(x);
+        mv.y = Math.round(y);
+        return;
+      }
+      const col = (isObj(scn.colocar) ? scn.colocar : {}) as Obj;
+      const key = Object.keys(col).find((n) => resolveCharacter(n, catalog) === uid) ?? cast.find((n) => resolveCharacter(n, catalog) === uid) ?? uid;
+      const o = (isObj(col[key]) ? col[key] : {}) as Obj;
+      o.x = Math.round(x);
+      o.y = Math.round(y);
+      col[key] = o;
+      scn.colocar = col;
+    }, keep);
+  };
   const setAction = (fn: (a: Obj) => void, fromDrag = false) => {
     const now = Date.now();
     const keep = !fromDrag || now - lastDrag.current > 600;
@@ -523,7 +557,9 @@ export function GuionScreen({ s }: { s: PocketState }) {
             catalog={catalog}
             frame={frame}
             maxHeight={sheet ? "calc(42dvh - 64px)" : "58vh"}
-            {...(action ? { selectedUid: resolveCharacter(action.quien, catalog) ?? null, onMoveActor: (uid: string, x: number, y: number) => { if (uid === resolveCharacter(action.quien, catalog)) setAction((a) => { a.x = Math.round(x); a.y = Math.round(y); if (!a.modo) a.modo = "anda"; }, true); } } : {})}
+            {...(sheet && stepIdx !== null && !(action && (typeof action.x === "number" || typeof action.y === "number"))
+              ? { selectedUid: action ? resolveCharacter(action.quien, catalog) ?? null : null, onMoveActor: placeAt }
+              : action ? { selectedUid: resolveCharacter(action.quien, catalog) ?? null, onMoveActor: (uid: string, x: number, y: number) => { if (uid === resolveCharacter(action.quien, catalog)) setAction((a) => { a.x = Math.round(x); a.y = Math.round(y); if (!a.modo) a.modo = "anda"; }, true); } } : {})}
           />
         ) : <p className="fine">No se puede montar esta escena todavía.</p>}
         {action && <p className="fine">✋ Arrastra a {str(action.quien)} en la imagen para decir adónde va.</p>}
