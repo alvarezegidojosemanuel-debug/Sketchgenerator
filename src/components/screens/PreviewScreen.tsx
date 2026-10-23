@@ -1,6 +1,6 @@
 "use client";
 
-import { ambientVolume } from "@/lib/sfx/player";
+import { ambientVolume, effectsVolume } from "@/lib/sfx/player";
 import { useEffect, useMemo, useState } from "react";
 import { evaluateTake, projectSchedule } from "@/lib/timeline/evaluate";
 import { ttsSupported } from "@/lib/tts";
@@ -331,13 +331,17 @@ export function PreviewScreen({ s }: { s: PocketState }) {
   );
 }
 
-/** Volumen del ruido de fondo (oficina, recepción…), guardado en este dispositivo. */
+/** Volumen del ruido de fondo (oficina, recepción…) y de los efectos, guardado en este dispositivo. */
 function AmbientVolume() {
   const [v, setV] = useState(() => ambientVolume.get());
+  const [fx, setFx] = useState(() => effectsVolume.get());
   return (
-    <Card title="Ruido de fondo">
-      <Field label={`Volumen del ambiente: ${Math.round(v * 100)} %`} hint="0 % = sin ambiente. Se aplica al reproducir y al exportar el vídeo.">
+    <Card title="Volumen de los sonidos">
+      <Field label={`Ambiente de fondo: ${Math.round(v * 100)} %`} hint="Oficina, cafetería, pájaros… 0 % = sin ambiente.">
         <input type="range" min={0} max={1.5} step={0.05} value={v} onChange={(e) => { const x = Number(e.target.value); setV(x); ambientVolume.set(x); }} />
+      </Field>
+      <Field label={`Efectos: ${Math.round(fx * 100)} %`} hint="Golpes, «ding», whoosh… Las voces no cambian. Se aplica al reproducir y al exportar el vídeo.">
+        <input type="range" min={0} max={1.5} step={0.05} value={fx} onChange={(e) => { const x = Number(e.target.value); setFx(x); effectsVolume.set(x); }} />
       </Field>
     </Card>
   );

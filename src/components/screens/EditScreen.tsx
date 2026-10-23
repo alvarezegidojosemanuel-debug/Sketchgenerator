@@ -107,7 +107,21 @@ export function EditScreen({ s }: { s: PocketState }) {
         if (e.track === "body") Object.assign(e, { x, y });
       });
     } else {
-      editActor(uid, (a) => Object.assign(a, { x, y }));
+      // se desplaza todo su recorrido (posición de partida y adónde va): quien entra andando desde fuera sigue entrando
+      const now = frame.actors.find((a) => a.uid === uid);
+      const dx = now ? x - now.x : 0;
+      const dy = now ? y - now.y : 0;
+      editTake((tk) => {
+        const a = tk.actors.find((q) => q.uid === uid);
+        if (!a) return;
+        a.x = Math.round(a.x + dx);
+        a.y = Math.round(a.y + dy);
+        for (const e of tk.events) {
+          if (e.track !== "body" || e.actorUid !== uid) continue;
+          if (e.x !== undefined) e.x = Math.round(e.x + dx);
+          if (e.y !== undefined) e.y = Math.round(e.y + dy);
+        }
+      });
     }
   };
 

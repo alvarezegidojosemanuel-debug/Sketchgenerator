@@ -12,6 +12,7 @@ const RECORDED_SOUNDS: Sound[] = [
   { id: "sfx_ambiente_recepcion", label: "Ambiente recepción (grabado)", src: "/assets/sfx/ambiente_recepcion.mp3", duration: 60, builtin: true },
   // sintetizado (tools/sfx/pajaros.py): trinos, gorjeos lejanos y brisa, bucle de 30 s
   { id: "sfx_ambiente_pajaros", label: "Ambiente exterior · pájaros", src: "/assets/sfx/pajaros.mp3", duration: 30, builtin: true },
+  { id: "sfx_ambiente_pajaros2", label: "Ambiente exterior · pájaros (otra toma)", src: "/assets/sfx/pajaros2.mp3", duration: 30, builtin: true },
 ];
 import type { Catalog, Character, ExpressionPrefab, FaceAsset, FaceOverrides, Pose, Sound } from "./types";
 

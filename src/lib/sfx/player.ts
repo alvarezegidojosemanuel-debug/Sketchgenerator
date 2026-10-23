@@ -6,26 +6,32 @@ import { envelope, normalizeLevel } from "@/lib/voice/dsp";
 import { audioContext, playClip, type Clip } from "@/lib/voice/piper";
 import { SR, synthSamples } from "./synth";
 
-/** Volumen del ambiente de fondo (bucles «sfx_ambiente_*»), ajustable en Ver; 1 = el del guion. */
-const AMB_KEY = "pocket:ambientVolume";
-export const ambientVolume = {
-  get(): number {
-    try {
-      const v = Number(localStorage.getItem(AMB_KEY));
-      return Number.isFinite(v) && localStorage.getItem(AMB_KEY) !== null ? Math.min(2, Math.max(0, v)) : 0.5;
-    } catch {
-      return 0.5;
-    }
-  },
-  set(v: number) {
-    try {
-      localStorage.setItem(AMB_KEY, String(v));
-    } catch {
-      /* sin almacenamiento */
-    }
-  },
-};
-export const mixVolume = (soundId: string, volume = 1) => (soundId.startsWith("sfx_ambiente") ? volume * ambientVolume.get() : volume);
+/** Volúmenes guardados en este dispositivo (ajustables en Ver; se aplican al reproducir y al exportar). */
+function storedVolume(key: string, fallback: number) {
+  return {
+    get(): number {
+      try {
+        const raw = localStorage.getItem(key);
+        const v = Number(raw);
+        return raw !== null && Number.isFinite(v) ? Math.min(2, Math.max(0, v)) : fallback;
+      } catch {
+        return fallback;
+      }
+    },
+    set(v: number) {
+      try {
+        localStorage.setItem(key, String(v));
+      } catch {
+        /* sin almacenamiento */
+      }
+    },
+  };
+}
+/** Ambiente de fondo (bucles «sfx_ambiente_*»); 1 = el del guion. Por defecto bajito: no debe tapar las voces. */
+export const ambientVolume = storedVolume("pocket:ambientVolume2", 0.35);
+/** Resto de efectos (golpes, «ding», whoosh…). */
+export const effectsVolume = storedVolume("pocket:effectsVolume", 1);
+export const mixVolume = (soundId: string, volume = 1) => volume * (soundId.startsWith("sfx_ambiente") ? ambientVolume.get() : effectsVolume.get());
 
 const cache = new Map<string, Promise<Clip | null>>();
 
@@ -57,13 +63,20 @@ export async function preloadSounds(catalog: Catalog, soundIds: string[]) {
   await Promise.all([...new Set(soundIds)].map((id) => soundClip(catalog, id)));
 }
 
+/** Fundido de entrada de un sonido según lo largo que es (ambientes en bucle: medio segundo). */
+export function fadeInFor(duration: number): number {
+  return duration >= 15 ? 0.6 : 0.012;
+}
+
 /** maxDur: corta el sonido (con un fundido corto) al acabar su evento, p. ej. el ambiente en bucle al cambiar de escena. */
 export async function playSound(catalog: Catalog, soundId: string, volume = 1, maxDur?: number): Promise<boolean> {
   const clip = await soundClip(catalog, soundId);
   if (!clip) return false;
   const ctx = audioContext();
   const g = ctx.createGain();
-  g.gain.value = volume;
+  // fundido de entrada: sin chasquido; los ambientes largos (que vuelven a empezar en cada toma) entran suaves
+  g.gain.setValueAtTime(0, ctx.currentTime);
+  g.gain.linearRampToValueAtTime(volume, ctx.currentTime + fadeInFor(clip.duration));
   g.connect(ctx.destination);
   const stop = playClip(clip, {}, g);
   if (maxDur !== undefined && maxDur < clip.duration - 0.05) {

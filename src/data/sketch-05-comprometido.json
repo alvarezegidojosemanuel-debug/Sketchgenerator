@@ -143,23 +143,23 @@
    ],
    "colocar": {
     "Barbas": {
-     "x": 300,
-     "y": 1990,
+     "x": 292,
+     "y": 1791,
      "z": 10,
      "escala": 2.6,
      "gesto": "maq_camara"
     },
     "Jefe": {
-     "x": 790,
-     "y": 1990,
+     "x": 728,
+     "y": 1922,
      "z": 10,
      "escala": 2.6,
      "mira": "izquierda",
      "gesto": "maq_desgana"
     },
     "Director": {
-     "x": -300,
-     "y": 1450,
+     "x": -450,
+     "y": 2020,
      "z": 2,
      "escala": 1.1,
      "gesto": "anda_m1"
@@ -179,16 +179,16 @@
     {
      "dice": "Barbas",
      "texto": "[whispering] ¿Sabes que Martínez, el de Coordinación, murió en marzo?",
-     "gesto": "maq_cotilleo"
+     "gesto": "maq_explica"
     },
     {
      "dice": "Jefe",
      "texto": "[shocked] ¿Cómo que murió? Si esta mañana estaba en la reunión de las nueve.",
-     "gesto": "maq_sorpresa"
+     "gesto": "maq_desgana"
     },
     {
      "dice": "Barbas",
-     "texto": "Como teletrabaja, nadie se ha dado cuenta. Su calendario acepta solo. Cámara apagada, micro en silencio.",
+     "texto": "[mischievously] Como teletrabaja, nadie se ha dado cuenta. Su calendario acepta solo. Cámara apagada, micro en silencio.",
      "gesto": "maq_explica"
     },
     {
@@ -198,7 +198,7 @@
     },
     {
      "dice": "Barbas",
-     "texto": "Y legalmente sigue en plantilla. Nadie ha convocado la reunión para darle de baja.",
+     "texto": "[mischievously] Y legalmente sigue en plantilla. Nadie ha convocado la reunión para darle de baja.",
      "gesto": "maq_explica"
     },
     {
@@ -213,6 +213,9 @@
     },
     {
      "pausa": 1.2
+    },
+    {
+     "entra": "Director"
     },
     {
      "pausa": 2.2
@@ -254,8 +257,8 @@
    "acciones": [
     {
      "quien": "Director",
-     "desde": 10,
-     "hasta": 10,
+     "desde": 11,
+     "hasta": 11,
      "x": 540,
      "modo": "anda",
      "animacion": "andar",
@@ -263,33 +266,27 @@
     },
     {
      "quien": "Jefe",
-     "desde": 11,
-     "hasta": 17,
+     "desde": 12,
+     "hasta": 18,
      "gesto": "maq_encogido"
     },
     {
      "quien": "Barbas",
-     "desde": 11,
-     "hasta": 14,
-     "gesto": "maq_camara"
+     "desde": 12,
+     "hasta": 18,
+     "gesto": "maq_encoge"
     },
     {
      "quien": "Director",
-     "desde": 15,
-     "hasta": 15,
+     "desde": 16,
+     "hasta": 16,
      "x": 1450,
      "modo": "anda",
      "animacion": "andar"
-    },
-    {
-     "quien": "Barbas",
-     "desde": 15,
-     "hasta": 17,
-     "gesto": "maq_camara"
     }
    ],
    "ambiente": "oficina",
-   "ambiente_volumen": 0.12
+   "ambiente_volumen": 0.1
   },
   {
    "nombre": "El ascenso",

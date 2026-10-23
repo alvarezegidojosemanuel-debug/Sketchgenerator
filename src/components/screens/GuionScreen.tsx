@@ -988,6 +988,7 @@ function SceneProps({ sc, catalog, set }: { sc: Obj; catalog: Catalog; set: (fn:
             <option value="recepcion">Recepción</option>
             <option value="cafeteria">Cafetería</option>
             <option value="pajaros">Exterior · pájaros</option>
+            <option value="pajaros2">Exterior · pájaros (otra toma)</option>
             <option value="no">Sin ambiente</option>
           </select>
         </Field>

@@ -12,7 +12,7 @@ import { projectImageUrls } from "@/lib/renderer/preload";
 import { encodeWav, levelAt } from "@/lib/voice/dsp";
 import { clipKey } from "@/lib/voice/fit";
 import type { Clip } from "@/lib/voice/piper";
-import { mixVolume, soundClip } from "@/lib/sfx/player";
+import { fadeInFor, mixVolume, soundClip } from "@/lib/sfx/player";
 import { drawFrame, H, W, type ImageMap } from "./draw";
 
 export interface ExportProgress {
@@ -59,7 +59,8 @@ async function mixAudio(project: PocketProject, catalog: Catalog, clips: Map<str
     const src = ctx.createBufferSource();
     src.buffer = buf;
     const g = ctx.createGain();
-    g.gain.value = volume;
+    g.gain.setValueAtTime(0, Math.max(0, at));
+    g.gain.linearRampToValueAtTime(volume, Math.max(0, at) + fadeInFor(clip.duration));
     src.connect(g).connect(ctx.destination);
     src.start(Math.max(0, at));
     if (maxDur !== undefined && maxDur < clip.duration - 0.05) {

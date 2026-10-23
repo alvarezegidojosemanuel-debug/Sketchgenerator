@@ -1,10 +1,13 @@
 """Ambiente de pájaros sintetizado (mañana tranquila: trinos, gorjeos lejanos y algo de brisa), bucle de 30 s.
-Uso: python3 tools/sfx/pajaros.py → public/assets/sfx/pajaros.mp3"""
-import numpy as np, subprocess, tempfile, wave
+El primer segundo es solo brisa: al cambiar de toma el ambiente vuelve a empezar y así no se nota el corte.
+Uso: python3 tools/sfx/pajaros.py [semilla] [salida]  (por defecto 11 → public/assets/sfx/pajaros.mp3)"""
+import sys, numpy as np, subprocess, tempfile, wave
 
 SR = 44100
 DUR = 30.0
-rng = np.random.default_rng(11)
+SEED = int(sys.argv[1]) if len(sys.argv) > 1 else 11
+OUT = sys.argv[2] if len(sys.argv) > 2 else "public/assets/sfx/pajaros.mp3"
+rng = np.random.default_rng(SEED)
 N = int(SR * DUR)
 out = np.zeros(N)
 
@@ -56,8 +59,8 @@ def whistle(at, gain):
     put(chirp(b, b * 0.92, 0.28), at + 0.3, gain)
 
 
-t = 0.3
-while t < DUR:
+t = 1.2
+while t < DUR - 1.0:
     kind = rng.random()
     near = rng.random() < 0.45
     g = 0.22 if near else 0.08
@@ -91,5 +94,5 @@ pcm = (out * 32767).astype(np.int16)
 with tempfile.NamedTemporaryFile(suffix=".wav") as f:
     with wave.open(f.name, "wb") as wv:
         wv.setnchannels(1); wv.setsampwidth(2); wv.setframerate(SR); wv.writeframes(pcm.tobytes())
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", f.name, "-ac", "1", "-b:a", "96k", "public/assets/sfx/pajaros.mp3"], check=True)
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", f.name, "-ac", "1", "-b:a", "96k", OUT], check=True)
 print("ok", round(float(np.abs(out).max()), 3))

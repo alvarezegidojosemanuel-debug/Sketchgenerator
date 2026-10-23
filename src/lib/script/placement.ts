@@ -35,6 +35,15 @@ export function placementToScript(script: Obj, takeIndex: number, take: Take, ca
     if (a.scale !== was.scale && was.scale > 0) o.escala = r3((typeof o.escala === "number" ? o.escala : 1) * (a.scale / was.scale));
     if (!!a.flip !== !!was.flip) o.mira = a.flip ? "izquierda" : "derecha";
     colocar[key] = o;
+    // lo que anda en la escena («acciones» con x/y) se desplaza lo mismo: el recorrido entero se mueve junto
+    const dx = Math.round(a.x - was.x), dy = Math.round(a.y - was.y);
+    if ((dx || dy) && Array.isArray(sc.acciones)) {
+      for (const ac of sc.acciones as unknown[]) {
+        if (!isObj(ac) || resolveCharacter(ac.quien, catalog) !== a.characterId) continue;
+        if (typeof ac.x === "number" && dx) ac.x = Math.round(ac.x + dx);
+        if (typeof ac.y === "number" && dy) ac.y = Math.round(ac.y + dy);
+      }
+    }
   }
   sc.colocar = colocar;
   return next;
