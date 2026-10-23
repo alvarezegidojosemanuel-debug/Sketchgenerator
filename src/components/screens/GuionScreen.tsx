@@ -424,6 +424,20 @@ export function GuionScreen({ s }: { s: PocketState }) {
     });
     setSel({ scene: si, step: k, action: at });
   };
+  /** Quitar el desplazamiento de una acción (vuelve a heredar la posición de antes); si se queda vacía, se borra. */
+  const dropMove = (i: number) => {
+    update((d) => {
+      const arr = d.escenas[si].acciones as Obj[];
+      const a = arr?.[i];
+      if (!isObj(a)) return;
+      delete a.x;
+      delete a.y;
+      delete a.modo;
+      if (Object.keys(a).every((k) => k === "quien" || k === "desde" || k === "hasta")) arr.splice(i, 1);
+    });
+    setSel({ scene: si, step: stepIdx });
+    setPosNote(null);
+  };
   /** «＋ Moverlo desde aquí»: un movimiento en este paso hasta donde lo has soltado (luego se afina arrastrando). */
   const addMoveHere = () => {
     if (!posNote || stepIdx === null) return;
@@ -650,6 +664,10 @@ export function GuionScreen({ s }: { s: PocketState }) {
             <div className="row">
               <button type="button" className="btn btn-small btn-primary" onClick={() => { const o = posNote.owner; setPosNote(null); goSel({ scene: si, step: o }); }}>Ir al paso {posNote.owner + 1}</button>
               <button type="button" className="btn btn-small btn-secondary" onClick={addMoveHere}>＋ Moverlo desde aquí</button>
+              {(() => {
+                const mv = posOwner(posNote.uid, stepIdx).move;
+                return mv !== undefined ? <button type="button" className="btn btn-small btn-danger" onClick={() => dropMove(mv)} title="Quita ese movimiento: vuelve a la posición que tenía antes">🧹 Quitar ese movimiento</button> : null;
+              })()}
               <button type="button" className="btn btn-small btn-ghost" onClick={() => setPosNote(null)} aria-label="Cerrar aviso">✕</button>
             </div>
           </div>
@@ -749,6 +767,21 @@ export function GuionScreen({ s }: { s: PocketState }) {
             </div>
             {Array.isArray(sc.personajes) && sc.personajes.length > 0 && (
               <button type="button" className="btn btn-primary place-open" onClick={() => setPlacing(true)}>📍 Colocar personajes con el dedo</button>
+            )}
+            {actions.some((a) => isObj(a) && (typeof a.x === "number" || typeof a.y === "number")) && (
+              <details className="g-moves">
+                <summary>🚶 Movimientos en esta escena ({actions.filter((a) => isObj(a) && (typeof a.x === "number" || typeof a.y === "number")).length})</summary>
+                <p className="fine">Cada movimiento cambia dónde está el personaje desde ese paso. Si sobra alguno, quítalo y volverá a heredar la posición de antes.</p>
+                <ul>
+                  {actions.map((a, i) => (isObj(a) && (typeof a.x === "number" || typeof a.y === "number") ? (
+                    <li key={i}>
+                      <span><b>{str(a.quien)}</b> · paso {(Number(a.desde) || 0) + 1}{typeof a.hasta === "number" && a.hasta !== a.desde ? `–${a.hasta + 1}` : ""} → x {typeof a.x === "number" ? a.x : "·"}, y {typeof a.y === "number" ? a.y : "·"}{a.animacion ? ` · ${str(a.animacion)}` : ""}</span>
+                      <button type="button" className="btn btn-small btn-ghost" onClick={() => setSel({ scene: si, step: Number(a.desde) || 0, action: i })}>Ver</button>
+                      <button type="button" className="btn btn-small btn-danger" onClick={() => dropMove(i)}>🧹 Quitar</button>
+                    </li>
+                  ) : null))}
+                </ul>
+              </details>
             )}
             {placing && script && (
               <PlaceMode

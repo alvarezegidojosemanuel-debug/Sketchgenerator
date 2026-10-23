@@ -635,3 +635,8 @@ input:focus, select:focus, textarea:focus { outline: 3px solid var(--accent); ou
 .orient-bar .btn { min-width: 40px; }
 .orient-bar .btn.on { background: var(--accent); color: var(--ink); }
 .orient-deg { min-width: 34px; text-align: center; }
+
+.g-moves ul { list-style: none; margin: 6px 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.g-moves li { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.g-moves li span { flex: 1; min-width: 160px; }
+.pos-note .row { flex-wrap: wrap; }
