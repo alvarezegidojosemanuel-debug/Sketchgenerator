@@ -1007,6 +1007,20 @@ function RawSceneExtras({ sc, set }: { sc: Obj; set: (fn: (x: Obj) => void) => v
   const extras = Object.fromEntries(["colocar", "tumbados", "pantalla"].filter((k) => sc[k] !== undefined).map((k) => [k, sc[k]]));
   const [txt, setTxt] = useState(() => JSON.stringify(extras, null, 1));
   const [err, setErr] = useState(false);
+  const [ok, setOk] = useState(false);
+  // se aplica en cuanto el texto es válido (en el móvil, tocar una pestaña no siempre quita el foco del cuadro)
+  const apply = (t: string, showErr: boolean) => {
+    try {
+      const v = JSON.parse(t || "{}") as unknown;
+      if (!isObj(v)) throw new Error();
+      setErr(false);
+      setOk(true);
+      set((x) => { for (const k of ["colocar", "tumbados", "pantalla"]) { if (v[k] === undefined) delete x[k]; else x[k] = v[k]; } });
+    } catch {
+      setOk(false);
+      if (showErr) setErr(true);
+    }
+  };
   return (
     <details className="g-raw">
       <summary>Colocación a mano (avanzado)</summary>
@@ -1015,18 +1029,13 @@ function RawSceneExtras({ sc, set }: { sc: Obj; set: (fn: (x: Obj) => void) => v
         rows={6}
         value={txt}
         spellCheck={false}
-        onChange={(e) => setTxt(e.target.value)}
-        onBlur={() => {
-          try {
-            const v = JSON.parse(txt || "{}") as unknown;
-            if (!isObj(v)) throw new Error();
-            setErr(false);
-            set((x) => { for (const k of ["colocar", "tumbados", "pantalla"]) { if (v[k] === undefined) delete x[k]; else x[k] = v[k]; } });
-          } catch {
-            setErr(true);
-          }
-        }}
+        onChange={(e) => { setTxt(e.target.value); setErr(false); apply(e.target.value, false); }}
+        onBlur={() => apply(txt, true)}
       />
+      <div className="row">
+        <button type="button" className="btn btn-small btn-secondary" onClick={() => apply(txt, true)}>✓ Aplicar</button>
+        {ok && !err && <span className="fine">Aplicado y guardado.</span>}
+      </div>
       {err && <p className="error-text">No es un texto válido; no se ha aplicado.</p>}
     </details>
   );
