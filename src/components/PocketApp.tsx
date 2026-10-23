@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 
 import { usePocket, type Tab } from "./usePocket";
 import { IdeaScreen } from "./screens/IdeaScreen";
@@ -22,8 +23,14 @@ const TABS: { id: Tab; label: string; icon: string }[] = [
   { id: "proyectos", label: "Proyectos", icon: "🗂" },
 ];
 
+/** En el móvil: menú abajo con lo de cada día; el resto en «Más». */
+const MAIN_MOBILE: Tab[] = ["guion", "ver", "editar"];
+
 export function PocketApp() {
   const s = usePocket();
+  const [more, setMore] = useState(false);
+  const go = (t: Tab) => { s.setTab(t); setMore(false); };
+  const inMore = !MAIN_MOBILE.includes(s.tab);
   return (
     <div className="app">
       <header className="topbar">
@@ -51,6 +58,33 @@ export function PocketApp() {
           </button>
         ))}
       </nav>
+      <nav className="bottomnav" aria-label="Secciones">
+        {MAIN_MOBILE.map((id) => {
+          const t = TABS.find((x) => x.id === id)!;
+          return (
+            <button key={id} type="button" className={s.tab === id && !more ? "on" : ""} aria-current={s.tab === id ? "page" : undefined} onClick={() => go(id)}>
+              <img className="tab-icon" src={`/assets/ui/tab_${id}.webp`} alt="" aria-hidden />
+              <span className="tab-label">{t.label}</span>
+            </button>
+          );
+        })}
+        <button type="button" className={more || inMore ? "on" : ""} aria-expanded={more} onClick={() => setMore((m) => !m)}>
+          {inMore && !more ? <img className="tab-icon" src={`/assets/ui/tab_${s.tab}.webp`} alt="" aria-hidden /> : <span className="more-icon" aria-hidden>☰</span>}
+          <span className="tab-label">{inMore && !more ? TABS.find((x) => x.id === s.tab)?.label : "Más"}</span>
+        </button>
+      </nav>
+      {more && (
+        <div className="more-sheet" role="dialog" aria-label="Más secciones" onClick={() => setMore(false)}>
+          <div className="more-panel" onClick={(e) => e.stopPropagation()}>
+            {TABS.filter((t) => !MAIN_MOBILE.includes(t.id)).map((t) => (
+              <button key={t.id} type="button" className={s.tab === t.id ? "on" : ""} onClick={() => go(t.id)}>
+                <img className="tab-icon" src={`/assets/ui/tab_${t.id}.webp`} alt="" aria-hidden />
+                <span>{t.label}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

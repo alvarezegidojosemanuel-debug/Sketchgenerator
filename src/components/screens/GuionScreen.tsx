@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import type { Catalog } from "@/lib/catalog/types";
 import { compileScript, estimate, normKey, resolveCharacter } from "@/lib/script/compile";
+import { PlaceMode } from "../PlaceMode";
 import { evaluateTake } from "@/lib/timeline/evaluate";
 import { Stage } from "../Stage";
 import type { PocketState } from "../usePocket";
@@ -227,6 +228,9 @@ export function GuionScreen({ s }: { s: PocketState }) {
     return () => clearTimeout(h);
   }, [script]);
 
+  // «Colocar con el dedo» (pantalla completa) y versión para refrescar el formulario de la escena al volver
+  const [placing, setPlacing] = useState(false);
+  const [placeVer, setPlaceVer] = useState(0);
   const update = (fn: (d: Script) => void, keepHistory = true) => {
     if (!script) return;
     const d = structuredClone(script);
@@ -553,7 +557,19 @@ export function GuionScreen({ s }: { s: PocketState }) {
                 <button type="button" className="btn btn-small btn-danger" disabled={scenes.length < 2} onClick={() => { if (confirm(`¿Borrar la escena «${str(sc.nombre)}»?`)) { update((d) => { d.escenas.splice(si, 1); }); setSel({ scene: Math.max(0, si - 1), step: null }); } }} title="Borrar">🗑</button>
               </div>
             </div>
-            <SceneProps key={si} sc={sc} catalog={catalog} set={setScene} />
+            {Array.isArray(sc.personajes) && sc.personajes.length > 0 && (
+              <button type="button" className="btn btn-primary place-open" onClick={() => setPlacing(true)}>📍 Colocar personajes con el dedo</button>
+            )}
+            {placing && script && (
+              <PlaceMode
+                script={script as unknown as Obj}
+                sceneIndex={si}
+                catalog={catalog}
+                onApply={(next) => { update((d) => { d.escenas = (next as Script).escenas; }); setPlaceVer((v) => v + 1); }}
+                onClose={() => setPlacing(false)}
+              />
+            )}
+            <SceneProps key={`${si}:${placeVer}`} sc={sc} catalog={catalog} set={setScene} />
           </>
         )}
         <div className="g-add">

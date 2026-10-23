@@ -16,6 +16,8 @@ interface Props {
   selectedUid?: string | null;
   onSelectActor?: (uid: string) => void;
   onMoveActor?: (uid: string, x: number, y: number) => void;
+  /** Pellizco con dos dedos sobre el actor que se está arrastrando: factor respecto al tamaño al empezar. */
+  onScaleActor?: (uid: string, factor: number, phase: "start" | "move") => void;
   maxHeight?: string;
   /** Escena que viene a continuación: se pinta invisible para que el corte no parpadee. */
   preload?: FrameState;
@@ -24,10 +26,17 @@ interface Props {
 const W = 1080;
 const H = 1920;
 
-export function Stage({ catalog, frame, showSubtitles = true, selectedUid, onSelectActor, onMoveActor, maxHeight = "64vh", preload }: Props) {
+export function Stage({ catalog, frame, showSubtitles = true, selectedUid, onSelectActor, onMoveActor, onScaleActor, maxHeight = "64vh", preload }: Props) {
   const box = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(0.3);
   const drag = useRef<{ uid: string; sx: number; sy: number; ox: number; oy: number } | null>(null);
+  // dedos sobre el escenario (para el pellizco) y distancia al empezar a pellizcar
+  const fingers = useRef(new Map<number, { x: number; y: number }>());
+  const pinch = useRef<{ uid: string; d0: number } | null>(null);
+  const dist = () => {
+    const [a, b] = [...fingers.current.values()];
+    return a && b ? Math.hypot(a.x - b.x, a.y - b.y) : 0;
+  };
 
   useEffect(() => {
     const el = box.current;
@@ -76,14 +85,33 @@ export function Stage({ catalog, frame, showSubtitles = true, selectedUid, onSel
     drag.current = { uid, sx: e.clientX, sy: e.clientY, ox: a.x, oy: a.y };
     e.preventDefault();
   };
+  // segundo dedo (en cualquier sitio del escenario) mientras se arrastra a alguien: pellizco para el tamaño
+  const onCanvasDown = (e: React.PointerEvent) => {
+    fingers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (onScaleActor && drag.current && fingers.current.size === 2) {
+      pinch.current = { uid: drag.current.uid, d0: Math.max(10, dist()) };
+      onScaleActor(drag.current.uid, 1, "start");
+    }
+  };
   const onPointerMove = (e: React.PointerEvent) => {
+    if (fingers.current.has(e.pointerId)) fingers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pinch.current && onScaleActor) {
+      if (fingers.current.size >= 2) onScaleActor(pinch.current.uid, dist() / pinch.current.d0, "move");
+      return;
+    }
     const d = drag.current;
     if (!d || !onMoveActor) return;
     const nx = Math.round(d.ox + (e.clientX - d.sx) / scale);
     const ny = Math.round(d.oy + (e.clientY - d.sy) / scale);
     onMoveActor(d.uid, Math.max(-200, Math.min(W + 200, nx)), Math.max(200, Math.min(H + 100, ny)));
   };
-  const onPointerUp = () => {
+  const onPointerUp = (e: React.PointerEvent) => {
+    fingers.current.delete(e.pointerId);
+    if (pinch.current) {
+      // al soltar un dedo del pellizco se acaba todo el gesto (no salta a arrastrar con el otro)
+      if (fingers.current.size < 2) { pinch.current = null; drag.current = null; }
+      return;
+    }
     drag.current = null;
   };
 
@@ -93,6 +121,7 @@ export function Stage({ catalog, frame, showSubtitles = true, selectedUid, onSel
         <div
           className="stage-canvas"
           style={{ width: W, height: H, transform: `scale(${scale})${layout.screen.shake ? ` translate(${layout.screen.shake.dx}px, ${layout.screen.shake.dy}px)` : ""}` }}
+          onPointerDownCapture={onCanvasDown}
           onPointerMove={onPointerMove}
           onPointerUp={onPointerUp}
           onPointerCancel={onPointerUp}

@@ -541,3 +541,57 @@ input:focus, select:focus, textarea:focus { outline: 3px solid var(--accent); ou
 }
 .tabbar.sidebar button span.tab-label { font-size: inherit; filter: none; line-height: 1.1; }
 @media (max-width: 759px) { .tabbar.sidebar button span.tab-label { font-size: 11px; } }
+
+/* ================================================================ móvil: menú abajo (Guion · Ver · Avanzado · Más) */
+.bottomnav, .more-sheet { display: none; }
+@media (max-width: 759px) {
+  :root { --rail: 0px; --tabbar: 74px; --topbar-h: 50px; }
+  .tabbar.sidebar { display: none; }
+  .topbar { padding-top: calc(env(safe-area-inset-top) + 6px); padding-bottom: 6px; }
+  .topbar .logo img { height: 34px; }
+  .topbar-tag { display: none; }
+  .content { padding-left: 10px; padding-right: 10px; padding-bottom: calc(var(--tabbar) + env(safe-area-inset-bottom) + 20px); }
+  .bottomnav {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+    height: calc(var(--tabbar) + env(safe-area-inset-bottom)); padding: 6px 8px calc(env(safe-area-inset-bottom) + 6px);
+    background: #0a2459; border-top: 3px solid var(--ink); box-shadow: 0 -4px 0 rgba(5, 11, 26, 0.45);
+  }
+  .bottomnav button {
+    position: relative; z-index: 0; border: 0; background: none; color: #cfe0ff; border-radius: 16px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+    font-family: "Lilita One", system-ui, sans-serif; font-size: 13px; letter-spacing: 0.02em;
+  }
+  .bottomnav button .tab-icon { width: 34px; height: 34px; }
+  .bottomnav button.on { color: var(--ink); }
+  .bottomnav button.on::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: 16px; background: var(--accent); border: 2px solid var(--ink); box-shadow: 2px 2px 0 var(--ink); }
+  .bottomnav button.on .tab-icon { transform: rotate(-6deg) scale(1.08); }
+  .more-icon { font-size: 26px; line-height: 34px; height: 34px; }
+  .more-sheet { display: block; position: fixed; inset: 0; z-index: 39; background: rgba(3, 8, 22, 0.55); }
+  .more-panel {
+    position: absolute; left: 8px; right: 8px; bottom: calc(var(--tabbar) + env(safe-area-inset-bottom) + 8px);
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 12px;
+    background: var(--panel); border: 3px solid var(--ink); border-radius: 20px; box-shadow: var(--pop-lg);
+  }
+  .more-panel button {
+    display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 12px 4px; border-radius: 14px;
+    border: 2px solid var(--ink); background: var(--panel-2); color: #fff;
+    font-family: "Lilita One", system-ui, sans-serif; font-size: 14px;
+  }
+  .more-panel button.on { background: var(--accent); color: var(--ink); }
+  .more-panel .tab-icon { width: 40px; height: 40px; }
+}
+
+/* ================================================================ colocar con el dedo (pantalla completa) */
+.place-open { width: 100%; margin: 4px 0 8px; }
+.place-mode {
+  position: fixed; inset: 0; z-index: 80; display: flex; flex-direction: column; gap: 8px;
+  padding: calc(env(safe-area-inset-top) + 8px) 10px calc(env(safe-area-inset-bottom) + 8px);
+  background: var(--bg, #0b1f4d); overflow-y: auto;
+}
+.place-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.place-top b { font-family: "Lilita One", system-ui, sans-serif; font-size: 20px; color: #fff; }
+.place-stage { display: flex; justify-content: center; }
+.place-who, .place-tools { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.place-tools .btn { min-width: 52px; padding-left: 12px; padding-right: 12px; }
+.place-hint { text-align: center; margin: 0; }
