@@ -8566,6 +8566,57 @@
      "flat": true,
      "look": "puneto",
      "cx": 0.402
+    },
+    {
+     "id": "char.barbas.pose_p_maq_cotilleo",
+     "key": "pose_p_maq_cotilleo",
+     "label": "Puñeto · Máquina · cotilleando",
+     "src": "/assets/punetos/punetos/barbas/maq_cotilleo.webp",
+     "width": 396,
+     "height": 550,
+     "displayScale": 0.767,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/barbas/maq_cotilleo_boca.webp"
+    },
+    {
+     "id": "char.barbas.pose_p_maq_explica",
+     "key": "pose_p_maq_explica",
+     "label": "Puñeto · Máquina · explica",
+     "src": "/assets/punetos/punetos/barbas/maq_explica.webp",
+     "width": 438,
+     "height": 558,
+     "displayScale": 0.767,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/barbas/maq_explica_boca.webp"
+    },
+    {
+     "id": "char.barbas.pose_p_maq_encoge",
+     "key": "pose_p_maq_encoge",
+     "label": "Puñeto · Máquina · es lo que hay",
+     "src": "/assets/punetos/punetos/barbas/maq_encoge.webp",
+     "width": 450,
+     "height": 557,
+     "displayScale": 0.767,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/barbas/maq_encoge_boca.webp"
+    },
+    {
+     "id": "char.barbas.pose_p_maq_camara",
+     "key": "pose_p_maq_camara",
+     "label": "Puñeto · Máquina · mira a cámara",
+     "src": "/assets/punetos/punetos/barbas/maq_camara.webp",
+     "width": 366,
+     "height": 560,
+     "displayScale": 0.767,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
     }
    ],
    "face": {
@@ -10510,6 +10561,57 @@
      "flat": true,
      "look": "puneto",
      "cx": 0.507
+    },
+    {
+     "id": "char.jefe.pose_p_maq_sorpresa",
+     "key": "pose_p_maq_sorpresa",
+     "label": "Puñeto · Máquina · sorprendido",
+     "src": "/assets/punetos/punetos/jefe/maq_sorpresa.webp",
+     "width": 510,
+     "height": 605,
+     "displayScale": 0.898,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/jefe/maq_sorpresa_boca.webp"
+    },
+    {
+     "id": "char.jefe.pose_p_maq_desgana",
+     "key": "pose_p_maq_desgana",
+     "label": "Puñeto · Máquina · con desgana",
+     "src": "/assets/punetos/punetos/jefe/maq_desgana.webp",
+     "width": 444,
+     "height": 600,
+     "displayScale": 0.898,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/jefe/maq_desgana_boca.webp"
+    },
+    {
+     "id": "char.jefe.pose_p_maq_culpable",
+     "key": "pose_p_maq_culpable",
+     "label": "Puñeto · Máquina · culpable",
+     "src": "/assets/punetos/punetos/jefe/maq_culpable.webp",
+     "width": 380,
+     "height": 599,
+     "displayScale": 0.898,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/jefe/maq_culpable_boca.webp"
+    },
+    {
+     "id": "char.jefe.pose_p_maq_encogido",
+     "key": "pose_p_maq_encogido",
+     "label": "Puñeto · Máquina · encogido (le gritan)",
+     "src": "/assets/punetos/punetos/jefe/maq_encogido.webp",
+     "width": 338,
+     "height": 584,
+     "displayScale": 0.898,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
     }
    ],
    "face": {
@@ -11582,6 +11684,60 @@
      "flat": true,
      "look": "humano",
      "cx": 0.411
+    },
+    {
+     "id": "char.director.pose_h_maq_grita",
+     "key": "pose_h_maq_grita",
+     "label": "Humano · gritando furioso y señalando (nuevo)",
+     "src": "/assets/punetos/humanos/director/maq_grita.webp",
+     "width": 470,
+     "height": 620,
+     "displayScale": 1.389,
+     "facing": "front",
+     "flat": true,
+     "look": "humano",
+     "cx": 0.491,
+     "talkSrc": "/assets/punetos/humanos/director/maq_grita_boca.webp"
+    },
+    {
+     "id": "char.director.pose_h_maq_orgullo",
+     "key": "pose_h_maq_orgullo",
+     "label": "Humano · orgulloso, mano en el pecho (nuevo)",
+     "src": "/assets/punetos/humanos/director/maq_orgullo.webp",
+     "width": 416,
+     "height": 633,
+     "displayScale": 1.389,
+     "facing": "front",
+     "flat": true,
+     "look": "humano",
+     "cx": 0.454,
+     "talkSrc": "/assets/punetos/humanos/director/maq_orgullo_boca.webp"
+    },
+    {
+     "id": "char.director.pose_h_anda_m1",
+     "key": "pose_h_anda_m1",
+     "label": "Humano · andando de perfil 1",
+     "src": "/assets/punetos/humanos/director/anda_m1.webp",
+     "width": 450,
+     "height": 623,
+     "displayScale": 1.389,
+     "facing": "right",
+     "flat": true,
+     "look": "humano",
+     "cx": 0.424
+    },
+    {
+     "id": "char.director.pose_h_anda_m2",
+     "key": "pose_h_anda_m2",
+     "label": "Humano · andando de perfil 2",
+     "src": "/assets/punetos/humanos/director/anda_m2.webp",
+     "width": 474,
+     "height": 623,
+     "displayScale": 1.389,
+     "facing": "right",
+     "flat": true,
+     "look": "humano",
+     "cx": 0.418
     }
    ],
    "face": {

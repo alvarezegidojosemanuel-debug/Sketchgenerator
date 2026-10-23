@@ -506,5 +506,21 @@
         }
       ]
     }
+  ],
+  "director": [
+    {
+      "nombre": "andar",
+      "bucle": true,
+      "frames": [
+        {
+          "pose": "anda_m1",
+          "dur": 0.28
+        },
+        {
+          "pose": "anda_m2",
+          "dur": 0.28
+        }
+      ]
+    }
   ]
 }
