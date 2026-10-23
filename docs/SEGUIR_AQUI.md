@@ -84,3 +84,15 @@ Referencia: «El más comprometido» (Martínez murió en marzo y nadie lo nota 
 - Remate visual cuando se pueda (la pantalla del ascenso, la lápida «Siempre conectado»).
 - Nada de chistes de frase hecha corporativa sin giro («comité de crisis», «palabras vacías de liderazgo»): eso no hace gracia.
 - Si se toca el diálogo del autor, decírselo siempre.
+
+## Lecciones de los reels publicados (aplicar en todos los sketches nuevos)
+Dato: «El más comprometido» (75 s, 15 s de entradilla sin diálogo + 4 s de título) → tasa de omisión 46 % («superior»),
+me gusta 3,6 % y compartidos 1,2 % («inferior»). La gente pasa antes de llegar al chiste.
+- **Segundo 1 = gancho hablado**: la primera frase ya plantea el chiste (nada de planos de ambiente lentos al principio).
+- **Sin cabecera de título al empezar**: el logo y el título, al final (o pequeño encima, nunca 4 s de cartela).
+- **Planos de ambiente como insertos de 1–1,5 s** que ilustran lo que se está diciendo (no antes de hablar).
+- **Duración 30–45 s**; pausas solo donde hay golpe (una antes del remate).
+- **Voces algo rápidas**; frases cortas.
+- **Remate en los últimos 3–5 s** y corte seco (sin colas largas).
+- **Texto del post con llamada a compartir/etiquetar** («Etiqueta al Martínez de tu oficina»).
+- Mirar las métricas a las 24–48 h; la clave es la **tasa de omisión** (primeros 3 s).
