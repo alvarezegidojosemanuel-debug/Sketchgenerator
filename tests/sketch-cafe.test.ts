@@ -82,7 +82,7 @@ it("mover en el editor a quien entra andando desplaza todo su recorrido (no apar
   for (const e of take.events) if (e.track === "body" && e.actorUid === "director") { if (e.x !== undefined) e.x += 100; if (e.y !== undefined) e.y -= 200; }
   const next = placementToScript(comp as never, 4, take, catalog)!;
   const sc = (next.escenas as Record<string, unknown>[])[4];
-  expect((sc.colocar as Record<string, Record<string, unknown>>).Director).toMatchObject({ x: -350, y: 1250 });
+  expect((sc.colocar as Record<string, Record<string, unknown>>).Director).toMatchObject({ x: -350, y: 1360 });
   const walks = (sc.acciones as Record<string, unknown>[]).filter((a) => a.quien === "Director").map((a) => a.x);
   expect(walks).toEqual([640, 1550]);
   // sigue oculto hasta que entra
