@@ -623,3 +623,8 @@ input:focus, select:focus, textarea:focus { outline: 3px solid var(--accent); ou
 .sheet-tabs .chip { flex: none; }
 .sheet-tabs .chip.full:not(.on) { border-color: var(--accent); }
 @media (max-width: 759px) { .guion.sheet-open .guion-stage > p.fine { display: none; } }
+
+/* aviso: este paso no manda sobre la posición */
+.pos-note { position: absolute; left: 10px; right: 10px; bottom: 8px; z-index: 5; padding: 10px 12px; border-radius: 14px; background: #fff7d1; color: #1b1b1b; border: 3px solid var(--ink); box-shadow: 3px 3px 0 var(--ink); font-size: 14px; }
+.pos-note p { margin: 0 0 8px; }
+.guion-stage { position: relative; }

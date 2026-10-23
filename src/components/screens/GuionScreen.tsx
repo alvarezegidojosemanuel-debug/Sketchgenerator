@@ -232,6 +232,7 @@ export function GuionScreen({ s }: { s: PocketState }) {
   const [placing, setPlacing] = useState(false);
   const [placeVer, setPlaceVer] = useState(0);
   const [sheet, setSheet] = useState(false);
+  const [posNote, setPosNote] = useState<{ uid: string; owner: number; x: number; y: number } | null>(null);
   const update = (fn: (d: Script) => void, keepHistory = true) => {
     if (!script) return;
     const d = structuredClone(script);
@@ -345,25 +346,38 @@ export function GuionScreen({ s }: { s: PocketState }) {
   };
   const lastDrag = useRef(0);
   /**
-   * Recolocar a alguien en el paso abierto sin que dé botes: se cambia dónde está quieto en ese tramo
-   * (su posición de partida, o adónde llegó con su último movimiento antes de este paso).
+   * Quién manda sobre la posición de un personaje en un paso: su último movimiento que empieza en o antes de ese
+   * paso (manda el paso donde empieza), o si no se ha movido, el principio de la escena (paso 1).
+   */
+  const posOwner = (uid: string, k: number): { step: number; move?: number } => {
+    let best: { step: number; move?: number } = { step: 0 };
+    actions.forEach((a, i) => {
+      if (!isObj(a) || resolveCharacter(a.quien, catalog) !== uid) return;
+      if (typeof a.x !== "number" && typeof a.y !== "number") return;
+      const d0 = Number(a.desde) || 0;
+      if (d0 <= k && (best.move === undefined || d0 >= best.step)) best = { step: d0, move: i };
+    });
+    return best;
+  };
+  /**
+   * Arrastrar en el visor de un paso: solo en el paso que manda sobre su posición (así nunca da botes).
+   * En otro paso sale un aviso: ir a ese paso, o añadir un movimiento desde aquí.
    */
   const placeAt = (uid: string, x: number, y: number) => {
     if (stepIdx === null) return;
+    const k = stepIdx;
+    const own = posOwner(uid, k);
+    if (own.step !== k) {
+      setPosNote({ uid, owner: own.step, x: Math.round(x), y: Math.round(y) });
+      return;
+    }
     const now = Date.now();
     const keep = now - lastDrag.current > 600;
     lastDrag.current = now;
-    const k = stepIdx;
     update((d) => {
       const scn = d.escenas[si];
       const acts = (Array.isArray(scn.acciones) ? scn.acciones : []) as Obj[];
-      let mv: Obj | undefined;
-      for (const a of acts) {
-        if (!isObj(a) || resolveCharacter(a.quien, catalog) !== uid) continue;
-        if (typeof a.x !== "number" && typeof a.y !== "number") continue;
-        if ((Number(a.desde) || 0) > k) continue;
-        if (!mv || (Number(a.desde) || 0) >= (Number(mv.desde) || 0)) mv = a;
-      }
+      const mv = own.move !== undefined && isObj(acts[own.move]) ? acts[own.move] : undefined;
       if (mv) {
         mv.x = Math.round(x);
         mv.y = Math.round(y);
@@ -377,6 +391,19 @@ export function GuionScreen({ s }: { s: PocketState }) {
       col[key] = o;
       scn.colocar = col;
     }, keep);
+  };
+  /** «＋ Moverlo desde aquí»: un movimiento en este paso hasta donde lo has soltado (luego se afina arrastrando). */
+  const addMoveHere = () => {
+    if (!posNote || stepIdx === null) return;
+    const name = cast.find((n) => resolveCharacter(n, catalog) === posNote.uid) ?? posNote.uid;
+    const at = actions.length;
+    update((d) => {
+      const x = d.escenas[si];
+      if (!Array.isArray(x.acciones)) x.acciones = [];
+      (x.acciones as Obj[]).push({ quien: name, desde: stepIdx, hasta: stepIdx, x: posNote.x, y: posNote.y, modo: "anda" });
+    });
+    setSel({ scene: si, step: stepIdx, action: at });
+    setPosNote(null);
   };
   const setAction = (fn: (a: Obj) => void, fromDrag = false) => {
     const now = Date.now();
@@ -441,6 +468,7 @@ export function GuionScreen({ s }: { s: PocketState }) {
   // ventana del móvil: pasar al paso anterior / siguiente sin cerrarla (la escena es el «paso 0»)
   const isEmptyAction = (a: Obj | null) => !!a && Object.keys(a).every((k) => k === "quien" || k === "desde" || k === "hasta");
   const goSel = (next: Sel) => {
+    setPosNote(null);
     if (actIdx !== null && isEmptyAction(action) && next.action !== actIdx) {
       const gone = actIdx;
       update((d) => { (d.escenas[si].acciones as Obj[]).splice(gone, 1); });
@@ -562,6 +590,20 @@ export function GuionScreen({ s }: { s: PocketState }) {
               : action ? { selectedUid: resolveCharacter(action.quien, catalog) ?? null, onMoveActor: (uid: string, x: number, y: number) => { if (uid === resolveCharacter(action.quien, catalog)) setAction((a) => { a.x = Math.round(x); a.y = Math.round(y); if (!a.modo) a.modo = "anda"; }, true); } } : {})}
           />
         ) : <p className="fine">No se puede montar esta escena todavía.</p>}
+        {sheet && posNote && stepIdx !== null && posNote.owner !== stepIdx && (
+          <div className="pos-note" role="alert">
+            <p>
+              La posición de <b>{cast.find((n) => resolveCharacter(n, catalog) === posNote.uid) ?? posNote.uid}</b> la manda el <b>paso {posNote.owner + 1}</b>
+              {posOwner(posNote.uid, stepIdx).move !== undefined ? " (donde empieza su último movimiento)" : " (el principio de la escena)"}.
+              Para cambiarla, ve a ese paso; para que cambie a partir de aquí, añade un movimiento.
+            </p>
+            <div className="row">
+              <button type="button" className="btn btn-small btn-primary" onClick={() => { const o = posNote.owner; setPosNote(null); goSel({ scene: si, step: o }); }}>Ir al paso {posNote.owner + 1}</button>
+              <button type="button" className="btn btn-small btn-secondary" onClick={addMoveHere}>＋ Moverlo desde aquí</button>
+              <button type="button" className="btn btn-small btn-ghost" onClick={() => setPosNote(null)} aria-label="Cerrar aviso">✕</button>
+            </div>
+          </div>
+        )}
         {action && <p className="fine">✋ Arrastra a {str(action.quien)} en la imagen para decir adónde va.</p>}
         <div className="row g-stage-bar">
           <button type="button" className="btn btn-primary btn-small" onClick={() => playFrom(si, stepIdx)}>▶ Ver desde aquí</button>
