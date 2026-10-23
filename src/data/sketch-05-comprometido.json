@@ -1,0 +1,332 @@
+{
+ "formato": "puñetos-guion-1",
+ "titulo": "Sketch · El más comprometido",
+ "idea": "Martínez murió en marzo, pero como teletrabaja nadie lo ha notado: su calendario acepta las reuniones solo. El Director lo pone de ejemplo y lo asciende.",
+ "escenas": [
+  {
+   "nombre": "Cementerio",
+   "lugar": "bg_cementerio_martinez",
+   "transicion": "fundido",
+   "pasos": [
+    {
+     "pausa": 0.6
+    },
+    {
+     "camara": "punto",
+     "x": 548,
+     "y": 1040,
+     "zoom": 2.1,
+     "mover": true,
+     "durante": 3.2
+    },
+    {
+     "pausa": 3.6
+    }
+   ]
+  },
+  {
+   "nombre": "La casa",
+   "lugar": "bg_casa_martinez_fuera",
+   "transicion": "corte",
+   "pasos": [
+    {
+     "rotulo": "MARTES · 10:30",
+     "durante": 3.4
+    },
+    {
+     "camara": "punto",
+     "x": 290,
+     "y": 1120,
+     "zoom": 1.5
+    },
+    {
+     "pausa": 0.8
+    },
+    {
+     "camara": "punto",
+     "x": 835,
+     "y": 640,
+     "zoom": 2.6,
+     "mover": true,
+     "durante": 2.8
+    },
+    {
+     "pausa": 3.0
+    }
+   ]
+  },
+  {
+   "nombre": "El despacho",
+   "lugar": "bg_casa_martinez",
+   "transicion": "corte",
+   "pasos": [
+    {
+     "objeto": "prop_pantalla_martinez_meet",
+     "x": 685.5,
+     "y": 903,
+     "escala": 1
+    },
+    {
+     "pausa": 0.6
+    },
+    {
+     "camara": "punto",
+     "x": 685,
+     "y": 845,
+     "zoom": 3,
+     "mover": true,
+     "durante": 3.0
+    },
+    {
+     "pausa": 2.6
+    },
+    {
+     "sonido": "ding"
+    },
+    {
+     "pausa": 1.8
+    }
+   ]
+  },
+  {
+   "nombre": "Título",
+   "lugar": "bg_pasillo_maquina",
+   "transicion": "corte",
+   "pasos": [
+    {
+     "objeto": "prop_marco_maquina",
+     "x": 540,
+     "y": 1920,
+     "escala": 1,
+     "profundidad": 99
+    },
+    {
+     "sonido": "whoosh"
+    },
+    {
+     "objeto": "prop_logo_punetos",
+     "durante": 3.6,
+     "anim": "flota"
+    },
+    {
+     "pausa": 0.5
+    },
+    {
+     "sonido": "pop"
+    },
+    {
+     "efecto": "titulo",
+     "x": 540,
+     "y": 1420,
+     "texto": "El más comprometido",
+     "durante": 3.0
+    },
+    {
+     "pausa": 3.1
+    }
+   ]
+  },
+  {
+   "nombre": "La máquina de café",
+   "lugar": "bg_pasillo_maquina",
+   "camara": "auto",
+   "transicion": "corte",
+   "personajes": [
+    "Barbas",
+    "Jefe",
+    "Director"
+   ],
+   "colocar": {
+    "Barbas": {
+     "x": 300,
+     "y": 1990,
+     "z": 10,
+     "escala": 2.6,
+     "gesto": "maq_camara"
+    },
+    "Jefe": {
+     "x": 790,
+     "y": 1990,
+     "z": 10,
+     "escala": 2.6,
+     "mira": "izquierda",
+     "gesto": "maq_desgana"
+    },
+    "Director": {
+     "x": -300,
+     "y": 1450,
+     "z": 2,
+     "escala": 1.1,
+     "gesto": "anda_m1"
+    }
+   },
+   "pasos": [
+    {
+     "objeto": "prop_marco_maquina",
+     "x": 540,
+     "y": 1920,
+     "escala": 1,
+     "profundidad": 99
+    },
+    {
+     "sonido": "sfx_ambiente_oficina"
+    },
+    {
+     "pausa": 0.8
+    },
+    {
+     "dice": "Barbas",
+     "texto": "[whispering] ¿Sabes que Martínez, el de Coordinación, murió en marzo?",
+     "gesto": "maq_cotilleo"
+    },
+    {
+     "dice": "Jefe",
+     "texto": "[shocked] ¿Cómo que murió? Si esta mañana estaba en la reunión de las nueve.",
+     "gesto": "maq_sorpresa"
+    },
+    {
+     "dice": "Barbas",
+     "texto": "Como teletrabaja, nadie se ha dado cuenta. Su calendario acepta solo. Cámara apagada, micro en silencio.",
+     "gesto": "maq_explica"
+    },
+    {
+     "dice": "Jefe",
+     "texto": "[deadpan] O sea, como siempre.",
+     "gesto": "maq_desgana"
+    },
+    {
+     "dice": "Barbas",
+     "texto": "Y legalmente sigue en plantilla. Nadie ha convocado la reunión para darle de baja.",
+     "gesto": "maq_explica"
+    },
+    {
+     "dice": "Jefe",
+     "texto": "[a bit guilty] Pues ayer le asigné tres tareas.",
+     "gesto": "maq_culpable"
+    },
+    {
+     "dice": "Barbas",
+     "texto": "[matter-of-fact] Y las tiene en verde.",
+     "gesto": "maq_encoge"
+    },
+    {
+     "pausa": 1.2
+    },
+    {
+     "pausa": 2.2
+    },
+    {
+     "dice": "Director",
+     "texto": "[shouting angrily] ¡Par de holgazanes! ¿Qué hacéis ahí perdiendo el tiempo?",
+     "gesto": "maq_grita"
+    },
+    {
+     "efecto": "enfado",
+     "donde": "Director",
+     "durante": 1.4
+    },
+    {
+     "dice": "Director",
+     "texto": "[shouting] ¡A ver si aprendéis de Martínez, que lleva conectado a la reunión desde el segundo uno!",
+     "gesto": "maq_grita"
+    },
+    {
+     "dice": "Director",
+     "texto": "[proudly] ¡A ese sí que le voy a ascender!",
+     "gesto": "maq_orgullo"
+    },
+    {
+     "pausa": 2.2
+    },
+    {
+     "camara": "punto",
+     "quien": "Barbas",
+     "zoom": 1.35,
+     "mover": true,
+     "durante": 1.2
+    },
+    {
+     "pausa": 2.0
+    }
+   ],
+   "acciones": [
+    {
+     "quien": "Director",
+     "desde": 11,
+     "hasta": 11,
+     "x": 540,
+     "modo": "anda",
+     "animacion": "andar",
+     "acaba": "maq_grita"
+    },
+    {
+     "quien": "Jefe",
+     "desde": 12,
+     "hasta": 18,
+     "gesto": "maq_encogido"
+    },
+    {
+     "quien": "Barbas",
+     "desde": 12,
+     "hasta": 15,
+     "gesto": "maq_camara"
+    },
+    {
+     "quien": "Director",
+     "desde": 16,
+     "hasta": 16,
+     "x": 1450,
+     "modo": "anda",
+     "animacion": "andar"
+    },
+    {
+     "quien": "Barbas",
+     "desde": 16,
+     "hasta": 18,
+     "gesto": "maq_camara"
+    }
+   ]
+  },
+  {
+   "nombre": "El ascenso",
+   "lugar": "bg_casa_martinez",
+   "transicion": "corte",
+   "pasos": [
+    {
+     "objeto": "prop_pantalla_martinez_ascenso",
+     "x": 685.5,
+     "y": 903,
+     "escala": 1
+    },
+    {
+     "camara": "punto",
+     "x": 685,
+     "y": 845,
+     "zoom": 3
+    },
+    {
+     "sonido": "pop"
+    },
+    {
+     "pausa": 2.2
+    },
+    {
+     "camara": "general"
+    },
+    {
+     "pausa": 1.0
+    },
+    {
+     "efecto": "titulo",
+     "x": 540,
+     "y": 1450,
+     "texto": "Descanse en paz. Y en mute.",
+     "durante": 3.4
+    },
+    {
+     "pausa": 3.6
+    }
+   ]
+  }
+ ]
+}
