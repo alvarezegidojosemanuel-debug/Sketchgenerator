@@ -22,7 +22,9 @@
     {
      "pausa": 3.6
     }
-   ]
+   ],
+   "ambiente": "pajaros",
+   "ambiente_volumen": 0.5
   },
   {
    "nombre": "La casa",
@@ -53,7 +55,9 @@
     {
      "pausa": 3.0
     }
-   ]
+   ],
+   "ambiente": "pajaros",
+   "ambiente_volumen": 0.5
   },
   {
    "nombre": "El despacho",
@@ -86,7 +90,8 @@
     {
      "pausa": 1.8
     }
-   ]
+   ],
+   "ambiente": "no"
   },
   {
    "nombre": "Título",
@@ -169,9 +174,6 @@
      "profundidad": 99
     },
     {
-     "sonido": "sfx_ambiente_oficina"
-    },
-    {
      "pausa": 0.8
     },
     {
@@ -252,8 +254,8 @@
    "acciones": [
     {
      "quien": "Director",
-     "desde": 11,
-     "hasta": 11,
+     "desde": 10,
+     "hasta": 10,
      "x": 540,
      "modo": "anda",
      "animacion": "andar",
@@ -261,31 +263,33 @@
     },
     {
      "quien": "Jefe",
-     "desde": 12,
-     "hasta": 18,
+     "desde": 11,
+     "hasta": 17,
      "gesto": "maq_encogido"
     },
     {
      "quien": "Barbas",
-     "desde": 12,
-     "hasta": 15,
+     "desde": 11,
+     "hasta": 14,
      "gesto": "maq_camara"
     },
     {
      "quien": "Director",
-     "desde": 16,
-     "hasta": 16,
+     "desde": 15,
+     "hasta": 15,
      "x": 1450,
      "modo": "anda",
      "animacion": "andar"
     },
     {
      "quien": "Barbas",
-     "desde": 16,
-     "hasta": 18,
+     "desde": 15,
+     "hasta": 17,
      "gesto": "maq_camara"
     }
-   ]
+   ],
+   "ambiente": "oficina",
+   "ambiente_volumen": 0.12
   },
   {
    "nombre": "El ascenso",
@@ -326,7 +330,8 @@
     {
      "pausa": 3.6
     }
-   ]
+   ],
+   "ambiente": "no"
   }
  ]
 }

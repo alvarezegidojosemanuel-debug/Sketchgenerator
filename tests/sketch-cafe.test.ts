@@ -52,3 +52,12 @@ it("«El más comprometido» monta sin avisos y todas las frases mueven la boca"
     }
   }
 });
+
+it("el ambiente de fondo respeta «ambiente_volumen» y los sonidos sueltos su «volumen»", () => {
+  const raw = { formato: "puñetos-guion-1", escenas: [{ lugar: "bg_cementerio_martinez", ambiente_volumen: 0.1, pasos: [{ sonido: "ding", volumen: 0.3 }, { pausa: 2 }] }] };
+  const r = compileScript(raw as never, catalog);
+  expect(r.issues).toEqual([]);
+  const sfx = r.project!.takes[0].events.filter((e) => e.track === "sfx") as { soundId: string; volume?: number }[];
+  expect(sfx.find((e) => e.soundId === "sfx_ambiente_pajaros")?.volume).toBe(0.1);
+  expect(sfx.find((e) => e.soundId === "sfx_ding")?.volume).toBe(0.3);
+});

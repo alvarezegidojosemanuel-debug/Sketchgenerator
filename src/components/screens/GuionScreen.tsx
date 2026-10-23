@@ -987,8 +987,12 @@ function SceneProps({ sc, catalog, set }: { sc: Obj; catalog: Catalog; set: (fn:
             <option value="oficina">Oficina</option>
             <option value="recepcion">Recepción</option>
             <option value="cafeteria">Cafetería</option>
+            <option value="pajaros">Exterior · pájaros</option>
             <option value="no">Sin ambiente</option>
           </select>
+        </Field>
+        <Field label="Volumen del ambiente">
+          <input type="range" min={0} max={1} step={0.05} value={typeof sc.ambiente_volumen === "number" ? sc.ambiente_volumen : 0.25} onChange={(e) => field("ambiente_volumen", Number(e.target.value))} />
         </Field>
         <Field label="Escala del reparto"><input type="number" step={0.05} value={typeof sc.escala === "number" ? sc.escala : ""} placeholder="1" onChange={(e) => field("escala", e.target.value === "" ? undefined : Number(e.target.value))} /></Field>
       </div>

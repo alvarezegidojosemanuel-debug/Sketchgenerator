@@ -81,7 +81,7 @@ const HUMAN_POSE: Record<string, string[]> = {
 };
 const AMBIENT_BY_BG: Record<string, string> = {
   bg_recepcion: "recepcion", bg_sistemas: "oficina", bg_oficina_soporte: "oficina", bg_oficina_manana: "oficina", bg_oficina: "oficina",
-  bg_pasillo: "oficina", bg_sala_reuniones: "oficina", bg_cafeteria: "cafeteria", bg_cafeteria_barra: "cafeteria", bg_despacho_director: "oficina", bg_despacho_director_2: "oficina",
+  bg_pasillo: "oficina", bg_pasillo_maquina: "oficina", bg_cementerio_martinez: "pajaros", bg_casa_martinez_fuera: "pajaros", bg_sala_reuniones: "oficina", bg_cafeteria: "cafeteria", bg_cafeteria_barra: "cafeteria", bg_despacho_director: "oficina", bg_despacho_director_2: "oficina",
 };
 const SOUND_ALIAS: Record<string, string> = { telefono: "sfx_telefono", alarma: "sfx_alarma", pop: "sfx_pop", whoosh: "sfx_whoosh", ding: "sfx_ding", boing: "sfx_boing", golpe: "sfx_golpe", fracaso: "sfx_fracaso", teclado: "sfx_teclado", pantallazo: "sfx_pantallazo", servidor: "sfx_servidor", explosion: "sfx_explosion", portazo: "sfx_golpe" };
 
@@ -592,7 +592,9 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
       } else if (st.sonido !== undefined) {
         const id = typeof st.sonido === "string" ? SOUND_ALIAS[norm(st.sonido)] ?? st.sonido : "";
         const snd = catalog.sounds?.find((s) => s.id === id);
-        if (snd) b.add({ track: "sfx", soundId: snd.id, duration: snd.duration });
+        // «volumen»: 0–1 (sin él, a tope)
+        const vol = typeof st.volumen === "number" ? Math.max(0, Math.min(1, st.volumen)) : undefined;
+        if (snd) b.add({ track: "sfx", soundId: snd.id, duration: snd.duration, ...(vol !== undefined ? { volume: vol } : {}) });
         else issues.push({ path: `${sp}.sonido`, message: `sonido «${String(st.sonido)}» no existe` });
       } else if (st.efecto !== undefined) {
         const ef = norm(String(st.efecto));
@@ -712,7 +714,9 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
       : undefined;
     if (ambSnd) {
       const total = b.t + 0.5;
-      for (let at = 0; at < total; at += ambSnd.duration - 0.4) b.add({ track: "sfx", soundId: ambSnd.id, duration: Math.min(ambSnd.duration, total - at), volume: 0.25 }, at);
+      // «ambiente_volumen»: 0–1 (por defecto 0,25, de fondo)
+      const ambVol = typeof sc.ambiente_volumen === "number" ? Math.max(0, Math.min(1, sc.ambiente_volumen)) : 0.25;
+      for (let at = 0; at < total; at += ambSnd.duration - 0.4) b.add({ track: "sfx", soundId: ambSnd.id, duration: Math.min(ambSnd.duration, total - at), volume: ambVol }, at);
     }
     times[steps.length] = b.t;
     // «acciones»: la columna de cada personaje (gestos y movimientos que abarcan uno o varios pasos)
