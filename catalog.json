@@ -15151,6 +15151,20 @@
    "src": "/assets/punetos/backgrounds/bg_casa_martinez.webp",
    "actorScale": 1.0,
    "actorY": 1760
+  },
+  {
+   "id": "bg_cementerio_martinez",
+   "label": "Cementerio · lápida de Martínez («Siempre conectado»)",
+   "src": "/assets/punetos/backgrounds/bg_cementerio_martinez.webp",
+   "actorScale": 1.0,
+   "actorY": 1760
+  },
+  {
+   "id": "bg_casa_martinez_fuera",
+   "label": "Casa de Martínez · exterior de día (buzón lleno, persiana bajada)",
+   "src": "/assets/punetos/backgrounds/bg_casa_martinez_fuera.webp",
+   "actorScale": 1.0,
+   "actorY": 1760
   }
  ],
  "props": [
