@@ -53,7 +53,7 @@
      "durante": 2.8
     },
     {
-     "pausa": 3.0
+     "pausa": 3
     }
    ],
    "ambiente": "pajaros",
@@ -79,7 +79,7 @@
      "y": 845,
      "zoom": 3,
      "mover": true,
-     "durante": 3.0
+     "durante": 3
     },
     {
      "pausa": 2.6
@@ -124,7 +124,7 @@
      "x": 540,
      "y": 1420,
      "texto": "El más comprometido",
-     "durante": 3.0
+     "durante": 3
     },
     {
      "pausa": 3.1
@@ -147,11 +147,11 @@
      "y": 1791,
      "z": 10,
      "escala": 2.6,
-     "gesto": "maq_camara"
+     "gesto": "maq_explica"
     },
     "Jefe": {
-     "x": 728,
-     "y": 1922,
+     "x": 719,
+     "y": 1961,
      "z": 10,
      "escala": 2.6,
      "mira": "izquierda",
@@ -159,9 +159,9 @@
     },
     "Director": {
      "x": -450,
-     "y": 2020,
+     "y": 1560,
      "z": 2,
-     "escala": 1.1,
+     "escala": 1.45,
      "gesto": "anda_m1"
     }
    },
@@ -197,11 +197,6 @@
      "gesto": "maq_desgana"
     },
     {
-     "dice": "Barbas",
-     "texto": "[mischievously] Y legalmente sigue en plantilla. Nadie ha convocado la reunión para darle de baja.",
-     "gesto": "maq_explica"
-    },
-    {
      "dice": "Jefe",
      "texto": "[a bit guilty] Pues ayer le asigné tres tareas.",
      "gesto": "maq_culpable"
@@ -224,6 +219,11 @@
      "dice": "Director",
      "texto": "[shouting angrily] ¡Par de holgazanes! ¿Qué hacéis ahí perdiendo el tiempo?",
      "gesto": "maq_grita"
+    },
+    {
+     "efecto": "sudor",
+     "donde": "Barbas",
+     "durante": 5
     },
     {
      "efecto": "enfado",
@@ -251,14 +251,14 @@
      "durante": 1.2
     },
     {
-     "pausa": 2.0
+     "pausa": 2
     }
    ],
    "acciones": [
     {
      "quien": "Director",
-     "desde": 11,
-     "hasta": 11,
+     "desde": 10,
+     "hasta": 10,
      "x": 540,
      "modo": "anda",
      "animacion": "andar",
@@ -266,14 +266,14 @@
     },
     {
      "quien": "Jefe",
-     "desde": 12,
+     "desde": 11,
      "hasta": 18,
      "gesto": "maq_encogido"
     },
     {
      "quien": "Barbas",
-     "desde": 12,
-     "hasta": 18,
+     "desde": 11,
+     "hasta": 16,
      "gesto": "maq_encoge"
     },
     {
@@ -283,6 +283,12 @@
      "x": 1450,
      "modo": "anda",
      "animacion": "andar"
+    },
+    {
+     "quien": "Barbas",
+     "desde": 17,
+     "hasta": 18,
+     "gesto": "maq_camara"
     }
    ],
    "ambiente": "oficina",
@@ -315,7 +321,7 @@
      "camara": "general"
     },
     {
-     "pausa": 1.0
+     "pausa": 1
     },
     {
      "efecto": "titulo",
