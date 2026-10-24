@@ -25,23 +25,23 @@
      "gesto": "ef_teclea"
     },
     "Barbas": {
-     "x": 505,
-     "y": 1275,
+     "x": 502,
+     "y": 1321,
      "z": 5,
      "escala": 1.3,
      "gesto": "ef_poker"
     },
     "Usu": {
-     "x": 915,
-     "y": 1335,
+     "x": 892,
+     "y": 1339,
      "z": 20,
      "escala": 1.22,
      "gesto": "ef_come",
-     "mira": "derecha"
+     "mira": "izquierda"
     },
     "Jefe": {
-     "x": 960,
-     "y": 1640,
+     "x": 924,
+     "y": 1763,
      "z": 90,
      "escala": 1.8,
      "gesto": "ef_palmada"
@@ -89,7 +89,7 @@
      "efecto": "onomatopeya",
      "donde": "Jefe",
      "texto": "¡CLAP! ¡CLAP!",
-     "durante": 1.0
+     "durante": 1
     },
     {
      "dice": "Jefe",
@@ -191,26 +191,26 @@
    ],
    "colocar": {
     "Reynaldo": {
-     "x": 165,
-     "y": 1345,
+     "x": 161,
+     "y": 1396,
      "z": 20,
      "escala": 1.4,
      "gesto": "ef_teclea"
     },
     "Barbas": {
-     "x": 505,
-     "y": 1275,
+     "x": 510,
+     "y": 1334,
      "z": 5,
      "escala": 1.3,
      "gesto": "ef_cascos"
     },
     "Usu": {
-     "x": 915,
-     "y": 1335,
+     "x": 1063,
+     "y": 1353,
      "z": 20,
      "escala": 1.22,
      "gesto": "ef_juega",
-     "mira": "derecha"
+     "mira": "izquierda"
     }
    },
    "pasos": [
@@ -357,23 +357,24 @@
      "gesto": "ef_teclea"
     },
     "Barbas": {
-     "x": 505,
-     "y": 1275,
+     "x": 511,
+     "y": 1299,
      "z": 5,
      "escala": 1.3,
-     "gesto": "ef_bebe"
+     "gesto": "ef_bebe",
+     "mira": "izquierda"
     },
     "Usu": {
-     "x": 915,
-     "y": 1335,
+     "x": 938,
+     "y": 1361,
      "z": 20,
      "escala": 1.22,
      "gesto": "ef_come",
-     "mira": "derecha"
+     "mira": "izquierda"
     },
     "Jefe": {
-     "x": 960,
-     "y": 1640,
+     "x": 781,
+     "y": 1809,
      "z": 90,
      "escala": 1.8,
      "gesto": "ef_palmada"
@@ -416,7 +417,7 @@
     },
     {
      "rotulo": "DOS DÍAS DESPUÉS",
-     "durante": 2.0
+     "durante": 2
     },
     {
      "pausa": 1.6
@@ -608,10 +609,10 @@
    "name": "Johnny - Mocking, Sarcastic and Rich",
    "stability": 0.5,
    "similarity": 0.75,
-   "style": 0.7,
+   "style": 0.35,
    "speed": 1.15,
    "pitch": 1.02,
-   "model": "eleven_multilingual_v2"
+   "model": "eleven_v3"
   }
  },
  "animaciones": {
