@@ -1,6 +1,6 @@
 {
  "formato": "puñetos-guion-1",
- "titulo": "Sketch · El premio al eficiente",
+ "titulo": "Sketch · Ascenso merecido",
  "idea": "Reynaldo resuelve cincuenta incidencias y le caen cien más; decide hacerlo todo mal… y le ascienden a supervisor.",
  "escenas": [
   {
@@ -529,7 +529,7 @@
      "efecto": "titulo",
      "x": 540,
      "y": 1000,
-     "texto": "El premio al eficiente",
+     "texto": "Ascenso merecido",
      "durante": 2.6
     },
     {

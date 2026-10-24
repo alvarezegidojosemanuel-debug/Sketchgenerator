@@ -74,7 +74,7 @@ export function ProjectsScreen({ s }: { s: PocketState }) {
             🪦 Sketch · El más comprometido
           </button>
           <button type="button" className="btn btn-primary" onClick={() => openOfficial("sk-06", "ver")}>
-            🏆 Sketch · El premio al eficiente
+            🏆 Sketch · Ascenso merecido
           </button>
         </div>
         <div className="row">
