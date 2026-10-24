@@ -144,3 +144,9 @@ it("el reparto de voces («voces») viaja con el guion", () => {
   const r = compileScript(efi as never, catalog);
   expect(r.project!.metadata.elevenVoices?.barbas?.voiceId).toBe("hrAIEKnLFU8SyuWYOZjJ");
 });
+
+it("el decorado puesto al principio de la escena (mesa, portátiles) está desde el primer fotograma", () => {
+  const tk = compileScript(efi as never, catalog).project!.takes[0];
+  const f = evaluateTake(tk, catalog, 0);
+  expect(f.props.some((p) => p.propId === "prop_mesa_oficina_delante")).toBe(true);
+});

@@ -702,7 +702,9 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
         // colocado a mano (x/y = base del objeto): parte del decorado, sin «pop»
         if (typeof st.x === "number" && typeof st.y === "number") {
           const depth = typeof st.profundidad === "number" ? { depth: Math.max(-100, Math.min(100, Math.round(st.profundidad))) } : {};
-          b.add({ track: "props", propId: prop.id, layer: norm(String(st.capa ?? "")) === "detras" ? "props-back" : "props-front", x: st.x, y: st.y, scale: typeof st.escala === "number" ? st.escala : 1, ...depth, ...(st.voltear ? { flip: true } : {}), ...(typeof st.hasta_x === "number" ? { toX: st.hasta_x } : {}), ...(typeof st.hasta_y === "number" ? { toY: st.hasta_y } : {}), enter: "none", exit: "none", ...(loop ? { loop } : {}), duration: Number(st.durante) || 999 });
+          // decorado fijo puesto antes de que pase nada (mesa, marco…): está desde el primer fotograma
+          const atStart = b.t <= 0.3001 && !b.ev.some((e) => e.track !== "props" && e.track !== "camera" && e.track !== "sfx");
+          b.add({ track: "props", propId: prop.id, layer: norm(String(st.capa ?? "")) === "detras" ? "props-back" : "props-front", x: st.x, y: st.y, scale: typeof st.escala === "number" ? st.escala : 1, ...depth, ...(st.voltear ? { flip: true } : {}), ...(typeof st.hasta_x === "number" ? { toX: st.hasta_x } : {}), ...(typeof st.hasta_y === "number" ? { toY: st.hasta_y } : {}), enter: "none", exit: "none", ...(loop ? { loop } : {}), duration: Number(st.durante) || 999 }, atStart ? 0 : undefined);
           return;
         }
         b.add({ track: "props", propId: prop.id, layer: "props-front", x: xs[where] ?? 540, y: 1250, enter: "pop", exit: "fade", ...(loop ? { loop } : {}), duration: dur });
