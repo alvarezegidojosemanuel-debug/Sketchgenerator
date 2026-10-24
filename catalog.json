@@ -10612,6 +10612,58 @@
      "facing": "right",
      "flat": true,
      "look": "puneto"
+    },
+    {
+     "id": "char.jefe.pose_p_ef_palmada",
+     "key": "pose_p_ef_palmada",
+     "label": "Puñeto · Eficiente · palmada",
+     "src": "/assets/punetos/punetos/jefe/ef_palmada.webp",
+     "width": 347,
+     "height": 552,
+     "displayScale": 0.981,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/jefe/ef_palmada_boca.webp"
+    },
+    {
+     "id": "char.jefe.pose_p_ef_senala",
+     "key": "pose_p_ef_senala",
+     "label": "Puñeto · Eficiente · señala con el móvil",
+     "src": "/assets/punetos/punetos/jefe/ef_senala.webp",
+     "width": 409,
+     "height": 552,
+     "displayScale": 0.981,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/jefe/ef_senala_boca.webp"
+    },
+    {
+     "id": "char.jefe.pose_p_ef_furioso",
+     "key": "pose_p_ef_furioso",
+     "label": "Puñeto · Eficiente · furioso señalando",
+     "src": "/assets/punetos/punetos/jefe/ef_furioso.webp",
+     "width": 356,
+     "height": 545,
+     "displayScale": 0.981,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/jefe/ef_furioso_boca.webp"
+    },
+    {
+     "id": "char.jefe.pose_p_ef_orgullo",
+     "key": "pose_p_ef_orgullo",
+     "label": "Puñeto · Eficiente · orgulloso presentando",
+     "src": "/assets/punetos/punetos/jefe/ef_orgullo.webp",
+     "width": 437,
+     "height": 554,
+     "displayScale": 0.981,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/jefe/ef_orgullo_boca.webp"
     }
    ],
    "face": {
@@ -15321,6 +15373,13 @@
    "src": "/assets/punetos/backgrounds/bg_casa_martinez_fuera.webp",
    "actorScale": 1.0,
    "actorY": 1760
+  },
+  {
+   "id": "bg_oficina_mesa",
+   "label": "Oficina · mesa larga con portátiles («El premio al eficiente»)",
+   "src": "/assets/punetos/backgrounds/bg_oficina_mesa.webp",
+   "actorScale": 1.0,
+   "actorY": 1760
   }
  ],
  "props": [
@@ -16048,6 +16107,13 @@
    "src": "/assets/punetos/props/pantalla_martinez_ascenso.webp",
    "width": 187,
    "height": 116
+  },
+  {
+   "id": "prop_mesa_oficina_delante",
+   "label": "Mesa de la oficina en primer término (va con bg_oficina_mesa: x 540, y 1920)",
+   "src": "/assets/punetos/props/mesa_oficina_delante.webp",
+   "width": 1080,
+   "height": 1920
   }
  ]
 }
