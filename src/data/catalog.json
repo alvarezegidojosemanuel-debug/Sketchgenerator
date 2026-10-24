@@ -3669,6 +3669,58 @@
      "flat": true,
      "look": "puneto",
      "cx": 0.428
+    },
+    {
+     "id": "char.reynaldo.pose_p_ef_contento",
+     "key": "pose_p_ef_contento",
+     "label": "Puñeto · Eficiente · contento",
+     "src": "/assets/punetos/punetos/reynaldo/ef_contento.webp",
+     "width": 442,
+     "height": 620,
+     "displayScale": 0.868,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/reynaldo/ef_contento_boca.webp"
+    },
+    {
+     "id": "char.reynaldo.pose_p_ef_helado",
+     "key": "pose_p_ef_helado",
+     "label": "Puñeto · Eficiente · helado",
+     "src": "/assets/punetos/punetos/reynaldo/ef_helado.webp",
+     "width": 405,
+     "height": 617,
+     "displayScale": 0.868,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/reynaldo/ef_helado_boca.webp"
+    },
+    {
+     "id": "char.reynaldo.pose_p_ef_senala",
+     "key": "pose_p_ef_senala",
+     "label": "Puñeto · Eficiente · indignado señalando",
+     "src": "/assets/punetos/punetos/reynaldo/ef_senala.webp",
+     "width": 498,
+     "height": 606,
+     "displayScale": 0.868,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/reynaldo/ef_senala_boca.webp"
+    },
+    {
+     "id": "char.reynaldo.pose_p_ef_grita",
+     "key": "pose_p_ef_grita",
+     "label": "Puñeto · Eficiente · grita con los brazos arriba",
+     "src": "/assets/punetos/punetos/reynaldo/ef_grita.webp",
+     "width": 509,
+     "height": 609,
+     "displayScale": 0.868,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/reynaldo/ef_grita_boca.webp"
     }
    ],
    "face": {
