@@ -508,15 +508,14 @@
    "model": "eleven_v3"
   },
   "reynaldo": {
-   "voiceId": "pqHfZKP75CvOlQylNhV4",
-   "name": "Bill - Wise, Mature, Balanced",
-   "stability": 1,
-   "similarity": 0.5,
-   "style": 0.55,
-   "speed": 1,
-   "pitch": 1.04,
-   "model": "eleven_v3",
-   "tempo": 1.25
+   "voiceId": "HMCmDsbKeaSZp5LMOYKR",
+   "name": "Johnny - Mocking, Sarcastic and Rich",
+   "stability": 0.5,
+   "similarity": 0.75,
+   "style": 0.7,
+   "speed": 1.15,
+   "pitch": 1.02,
+   "model": "eleven_multilingual_v2"
   }
  }
 }
