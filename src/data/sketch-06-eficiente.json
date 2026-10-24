@@ -58,23 +58,23 @@
     {
      "objeto": "prop_portatil_liso",
      "x": 210,
-     "y": 1280,
+     "y": 1305,
      "escala": 0.42,
-     "profundidad": 40
+     "profundidad": 70
     },
     {
      "objeto": "prop_portatil_metal",
      "x": 530,
-     "y": 1280,
+     "y": 1305,
      "escala": 0.42,
-     "profundidad": 40
+     "profundidad": 70
     },
     {
      "objeto": "prop_portatil_dragon",
      "x": 840,
-     "y": 1280,
+     "y": 1305,
      "escala": 0.42,
-     "profundidad": 40
+     "profundidad": 70
     },
     {
      "camara": "punto",
@@ -224,23 +224,23 @@
     {
      "objeto": "prop_portatil_liso",
      "x": 210,
-     "y": 1280,
+     "y": 1305,
      "escala": 0.42,
-     "profundidad": 40
+     "profundidad": 70
     },
     {
      "objeto": "prop_portatil_metal",
      "x": 530,
-     "y": 1280,
+     "y": 1305,
      "escala": 0.42,
-     "profundidad": 40
+     "profundidad": 70
     },
     {
      "objeto": "prop_portatil_dragon",
      "x": 840,
-     "y": 1280,
+     "y": 1305,
      "escala": 0.42,
-     "profundidad": 40
+     "profundidad": 70
     },
     {
      "camara": "punto",
@@ -370,23 +370,23 @@
     {
      "objeto": "prop_portatil_liso",
      "x": 210,
-     "y": 1280,
+     "y": 1305,
      "escala": 0.42,
-     "profundidad": 40
+     "profundidad": 70
     },
     {
      "objeto": "prop_portatil_metal",
      "x": 530,
-     "y": 1280,
+     "y": 1305,
      "escala": 0.42,
-     "profundidad": 40
+     "profundidad": 70
     },
     {
      "objeto": "prop_portatil_dragon",
      "x": 840,
-     "y": 1280,
+     "y": 1305,
      "escala": 0.42,
-     "profundidad": 40
+     "profundidad": 70
     },
     {
      "camara": "punto",
