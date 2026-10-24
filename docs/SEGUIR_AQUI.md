@@ -96,3 +96,9 @@ me gusta 3,6 % y compartidos 1,2 % («inferior»). La gente pasa antes de llegar
 - **Remate en los últimos 3–5 s** y corte seco (sin colas largas).
 - **Texto del post con llamada a compartir/etiquetar** («Etiqueta al Martínez de tu oficina»).
 - Mirar las métricas a las 24–48 h; la clave es la **tasa de omisión** (primeros 3 s).
+
+## Pendiente para más adelante (cuando haya 15–20 reels publicados)
+Reel «making of» con el Jefe de protagonista enseñando cómo se hace un sketch en la app (guion escrito a mano,
+colocar con el dedo, tiras de poses, bocas, paso a paso). Gancho: «¿Os creéis que esto lo hace una IA en 5 s?».
+Contador «8 horas de trabajo / 1,2 s en pasarlo». Remate: «La IA dibuja. El que tiene la mala leche soy yo».
+Objetivo: que se vea el trabajo de autor detrás (la etiqueta de IA de Instagram NO se quita).
