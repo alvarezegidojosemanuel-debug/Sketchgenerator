@@ -1,18 +1,28 @@
 """Tiras «boca cerrada» + «boca abierta» de las mismas poses: la cerrada ya instalada es la pose; de la abierta
 se copia solo la boca (alineada) → <clave>_boca.webp como talkSrc. Así al hablar solo se mueve la boca.
-Uso: python3 tools/andar/boca_pareja.py <personaje> <dir_figuras_abiertas (f1.png…)> clave1 clave2 …"""
+Uso: python3 tools/andar/boca_pareja.py <personaje> <dir_figuras_abiertas (f1.png…)> clave1 clave2 … [--hasta 0.4]
+«--hasta»: busca la boca solo en esa fracción de arriba de la figura (p. ej. si lleva algo rojo en el cuerpo).
+Una clave «-» = esa figura no habla (se salta)."""
 import sys, json, subprocess, tempfile, numpy as np
 from PIL import Image
 from scipy import ndimage
 
-cid, odir, keys = sys.argv[1], sys.argv[2], sys.argv[3:]
+args = sys.argv[3:]
+upto = 0.55
+if "--hasta" in args:
+    i = args.index("--hasta")
+    upto = float(args[i + 1])
+    args = args[:i] + args[i + 2:]
+cid, odir, keys = sys.argv[1], sys.argv[2], args
 D = f"public/assets/punetos/punetos/{cid}/"
 tmp = tempfile.mkdtemp()
 for i, k in enumerate(keys, 1):
+    if k == "-":
+        continue
     op = f"{odir}/f{i}.png"
     o = np.array(Image.open(op).convert("RGBA")).astype(int)
     red = (o[..., 0] > 170) & (o[..., 1] < 120) & (o[..., 2] < 130) & (o[..., 0] - o[..., 1] > 90) & (o[..., 3] > 128)
-    red[int(o.shape[0] * 0.55):] = False
+    red[int(o.shape[0] * upto):] = False
     lab, n = ndimage.label(red)
     if not n:
         print(k, "sin boca roja: se deja sin talkSrc")

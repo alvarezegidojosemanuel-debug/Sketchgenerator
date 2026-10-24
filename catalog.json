@@ -1640,6 +1640,56 @@
      "flat": true,
      "look": "puneto",
      "cx": 0.709
+    },
+    {
+     "id": "char.usu.pose_p_ef_come",
+     "key": "pose_p_ef_come",
+     "label": "Puñeto · Eficiente · comiendo patatas",
+     "src": "/assets/punetos/punetos/usu/ef_come.webp",
+     "width": 473,
+     "height": 550,
+     "displayScale": 0.983,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.usu.pose_p_ef_chulo",
+     "key": "pose_p_ef_chulo",
+     "label": "Puñeto · Eficiente · chulesco con patata",
+     "src": "/assets/punetos/punetos/usu/ef_chulo.webp",
+     "width": 504,
+     "height": 536,
+     "displayScale": 0.983,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/usu/ef_chulo_boca.webp"
+    },
+    {
+     "id": "char.usu.pose_p_ef_pies",
+     "key": "pose_p_ef_pies",
+     "label": "Puñeto · Eficiente · pies en alto",
+     "src": "/assets/punetos/punetos/usu/ef_pies.webp",
+     "width": 564,
+     "height": 496,
+     "displayScale": 0.983,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/usu/ef_pies_boca.webp"
+    },
+    {
+     "id": "char.usu.pose_p_ef_pies_mastica",
+     "key": "pose_p_ef_pies_mastica",
+     "label": "Puñeto · Eficiente · pies en alto masticando",
+     "src": "/assets/punetos/punetos/usu/ef_pies_mastica.webp",
+     "width": 506,
+     "height": 506,
+     "displayScale": 0.983,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
     }
    ],
    "face": {
