@@ -18,32 +18,32 @@
    ],
    "colocar": {
     "Reynaldo": {
-     "x": 200,
-     "y": 1500,
+     "x": 210,
+     "y": 1430,
      "z": 20,
-     "escala": 1.85,
+     "escala": 1.5,
      "gesto": "ef_teclea"
     },
     "Barbas": {
-     "x": 520,
-     "y": 1400,
+     "x": 530,
+     "y": 1360,
      "z": 5,
-     "escala": 1.7,
+     "escala": 1.4,
      "gesto": "ef_poker"
     },
     "Usu": {
-     "x": 850,
-     "y": 1500,
+     "x": 840,
+     "y": 1430,
      "z": 20,
-     "escala": 1.85,
+     "escala": 1.5,
      "gesto": "ef_come",
      "mira": "derecha"
     },
     "Jefe": {
-     "x": 900,
-     "y": 1880,
+     "x": 890,
+     "y": 1800,
      "z": 90,
-     "escala": 1.65,
+     "escala": 1.35,
      "gesto": "ef_palmada"
     }
    },
@@ -58,8 +58,8 @@
     {
      "camara": "punto",
      "x": 540,
-     "y": 1150,
-     "zoom": 1.2
+     "y": 1100,
+     "zoom": 1.1
     },
     {
      "entra": "Jefe"
@@ -108,8 +108,8 @@
     {
      "camara": "punto",
      "x": 540,
-     "y": 1150,
-     "zoom": 1.2
+     "y": 1100,
+     "zoom": 1.1
     },
     {
      "dice": "Jefe",
@@ -182,8 +182,8 @@
     {
      "camara": "punto",
      "x": 540,
-     "y": 1150,
-     "zoom": 1.2
+     "y": 1100,
+     "zoom": 1.1
     },
     {
      "sonido": "golpe"
@@ -215,8 +215,8 @@
     {
      "camara": "punto",
      "x": 540,
-     "y": 1150,
-     "zoom": 1.2
+     "y": 1100,
+     "zoom": 1.1
     },
     {
      "dice": "Jefe",
@@ -298,5 +298,82 @@
     }
    ]
   }
- ]
+ ],
+ "voces": {
+  "jefe": {
+   "voiceId": "wzwqviNGrzu0BmqEIbY8",
+   "name": "Puñetos · Jefe",
+   "stability": 0.5,
+   "similarity": 0.8,
+   "style": 0.75,
+   "speed": 1.2,
+   "model": "eleven_v3",
+   "tempo": 1.2
+  },
+  "sister": {
+   "voiceId": "Sm7IPVqNHN3zm39J5VGT",
+   "name": "Puñetos · Sister",
+   "stability": 0.5,
+   "similarity": 0.8,
+   "style": 0.1,
+   "speed": 1
+  },
+  "barbas": {
+   "voiceId": "hrAIEKnLFU8SyuWYOZjJ",
+   "name": "BARBAS",
+   "stability": 0.5,
+   "similarity": 0.8,
+   "style": 0.3,
+   "speed": 1.2,
+   "model": "eleven_v3",
+   "tempo": 1.3
+  },
+  "usu": {
+   "voiceId": "ChmL8GuEZ6T3ZS0keVX4",
+   "name": "USU",
+   "stability": 0.6,
+   "similarity": 0.5,
+   "style": 0.95,
+   "speed": 1.2,
+   "pitch": 1.08
+  },
+  "vanesa": {
+   "voiceId": "M9RTtrzRACmbUzsEMq8p",
+   "name": "Granny - Cartoonish Old Lady",
+   "stability": 0.75,
+   "similarity": 0.45,
+   "style": 0.7,
+   "speed": 1.2,
+   "pitch": 1,
+   "model": "eleven_multilingual_v2"
+  },
+  "director": {
+   "voiceId": "YKrm0N1EAM9Bw27j8kuD",
+   "name": "Leónidas - Legendary Spartan Warrior",
+   "stability": 0.5,
+   "similarity": 0.85,
+   "style": 0.15,
+   "speed": 1,
+   "pitch": 0.96
+  },
+  "anastasia": {
+   "voiceId": "weA4Q36twV5kwSaTEL0Q",
+   "name": "Eva - Futuristic Robot Helper",
+   "stability": 0.5,
+   "similarity": 0.8,
+   "style": 0.55,
+   "speed": 1,
+   "model": "eleven_v3"
+  },
+  "reynaldo": {
+   "voiceId": "HMCmDsbKeaSZp5LMOYKR",
+   "name": "Johnny - Mocking, Sarcastic and Rich",
+   "stability": 0.5,
+   "similarity": 0.75,
+   "style": 0.7,
+   "speed": 1.15,
+   "pitch": 1.02,
+   "model": "eleven_multilingual_v2"
+  }
+ }
 }

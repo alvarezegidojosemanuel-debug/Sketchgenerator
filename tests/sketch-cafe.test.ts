@@ -139,3 +139,8 @@ it("«El premio al eficiente» monta sin avisos y todas las frases mueven la boc
     }
   }
 });
+
+it("el reparto de voces («voces») viaja con el guion", () => {
+  const r = compileScript(efi as never, catalog);
+  expect(r.project!.metadata.elevenVoices?.barbas?.voiceId).toBe("hrAIEKnLFU8SyuWYOZjJ");
+});

@@ -746,6 +746,8 @@ export function compileScript(raw: Obj, catalog: Catalog): { project?: PocketPro
       approxDuration: Math.min(180, Math.max(1, Math.round(total * 10) / 10)),
       ...(typeof raw.idea === "string" ? { idea: raw.idea.slice(0, 1000) } : {}),
       script: JSON.parse(JSON.stringify(raw)) as Record<string, unknown>,
+      // «voces»: el reparto de ElevenLabs que viaja con el guion (así el sketch oficial suena igual en cualquier dispositivo)
+      ...(isObj(raw.voces) ? { elevenVoices: JSON.parse(JSON.stringify(raw.voces)) } : {}),
       ...(Array.isArray(raw.faltan) ? { wishlist: (raw.faltan as unknown[]).filter((x): x is string => typeof x === "string").slice(0, 12).map((s) => s.slice(0, 120)) } : {}),
     },
     canvas: { width: 1080, height: 1920 },
