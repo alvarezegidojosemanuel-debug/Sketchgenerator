@@ -3721,6 +3721,58 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/reynaldo/ef_grita_boca.webp"
+    },
+    {
+     "id": "char.reynaldo.pose_p_ef_teclea",
+     "key": "pose_p_ef_teclea",
+     "label": "Puñeto · Eficiente · teclea malvado",
+     "src": "/assets/punetos/punetos/reynaldo/ef_teclea.webp",
+     "width": 339,
+     "height": 565,
+     "displayScale": 0.953,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/reynaldo/ef_teclea_boca.webp"
+    },
+    {
+     "id": "char.reynaldo.pose_p_ef_shock",
+     "key": "pose_p_ef_shock",
+     "label": "Puñeto · Eficiente · shock",
+     "src": "/assets/punetos/punetos/reynaldo/ef_shock.webp",
+     "width": 350,
+     "height": 561,
+     "displayScale": 0.953,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/reynaldo/ef_shock_boca.webp"
+    },
+    {
+     "id": "char.reynaldo.pose_p_ef_codicia",
+     "key": "pose_p_ef_codicia",
+     "label": "Puñeto · Eficiente · codicioso",
+     "src": "/assets/punetos/punetos/reynaldo/ef_codicia.webp",
+     "width": 347,
+     "height": 556,
+     "displayScale": 0.953,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/reynaldo/ef_codicia_boca.webp"
+    },
+    {
+     "id": "char.reynaldo.pose_p_ef_pregunta",
+     "key": "pose_p_ef_pregunta",
+     "label": "Puñeto · Eficiente · pregunta",
+     "src": "/assets/punetos/punetos/reynaldo/ef_pregunta.webp",
+     "width": 419,
+     "height": 558,
+     "displayScale": 0.953,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/reynaldo/ef_pregunta_boca.webp"
     }
    ],
    "face": {
