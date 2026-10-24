@@ -1,0 +1,302 @@
+{
+ "formato": "puñetos-guion-1",
+ "titulo": "Sketch · El premio al eficiente",
+ "idea": "Reynaldo resuelve cincuenta incidencias y le caen cien más; decide hacerlo todo mal… y le ascienden a supervisor.",
+ "escenas": [
+  {
+   "nombre": "La oficina",
+   "lugar": "bg_oficina_mesa",
+   "camara": "auto",
+   "transicion": "corte",
+   "ambiente": "oficina",
+   "ambiente_volumen": 0.1,
+   "personajes": [
+    "Reynaldo",
+    "Barbas",
+    "Usu",
+    "Jefe"
+   ],
+   "colocar": {
+    "Reynaldo": {
+     "x": 200,
+     "y": 1500,
+     "z": 20,
+     "escala": 1.85,
+     "gesto": "ef_teclea"
+    },
+    "Barbas": {
+     "x": 520,
+     "y": 1400,
+     "z": 5,
+     "escala": 1.7,
+     "gesto": "ef_poker"
+    },
+    "Usu": {
+     "x": 850,
+     "y": 1500,
+     "z": 20,
+     "escala": 1.85,
+     "gesto": "ef_come",
+     "mira": "derecha"
+    },
+    "Jefe": {
+     "x": 900,
+     "y": 1880,
+     "z": 90,
+     "escala": 1.65,
+     "gesto": "ef_palmada"
+    }
+   },
+   "pasos": [
+    {
+     "objeto": "prop_mesa_oficina_delante",
+     "x": 540,
+     "y": 1920,
+     "escala": 1,
+     "profundidad": 60
+    },
+    {
+     "camara": "punto",
+     "x": 540,
+     "y": 1150,
+     "zoom": 1.2
+    },
+    {
+     "entra": "Jefe"
+    },
+    {
+     "efecto": "onomatopeya",
+     "donde": "Jefe",
+     "texto": "¡CLAP! ¡CLAP!",
+     "durante": 1.0
+    },
+    {
+     "dice": "Jefe",
+     "texto": "[excited] ¡Reynaldo! ¡Cincuenta incidencias en una mañana!",
+     "gesto": "ef_palmada"
+    },
+    {
+     "dice": "Reynaldo",
+     "texto": "[proud] ¡Gracias, jefe!",
+     "gesto": "ef_contento"
+    },
+    {
+     "dice": "Jefe",
+     "texto": "[cheerfully] ¡Te he asignado otras cien!",
+     "gesto": "ef_senala"
+    },
+    {
+     "efecto": "sorpresa",
+     "donde": "Reynaldo"
+    },
+    {
+     "quien": "Reynaldo",
+     "gesto": "ef_helado"
+    },
+    {
+     "pausa": 0.6
+    },
+    {
+     "camara": "medio",
+     "quien": "Reynaldo"
+    },
+    {
+     "dice": "Reynaldo",
+     "texto": "[outraged] ¿¡Cómo!? ¿Y por qué Usu no tiene ninguna?",
+     "gesto": "ef_senala"
+    },
+    {
+     "camara": "punto",
+     "x": 540,
+     "y": 1150,
+     "zoom": 1.2
+    },
+    {
+     "dice": "Jefe",
+     "texto": "Porque Usu no hace nada.",
+     "gesto": "ef_orgullo"
+    },
+    {
+     "dice": "Reynaldo",
+     "texto": "[shouting] ¿¡Y no lo despide!?",
+     "gesto": "ef_grita"
+    },
+    {
+     "dice": "Jefe",
+     "texto": "[shrugging] ¿Para qué? ¿Para pagarle el paro? Déjale tranquilo.",
+     "gesto": "ef_orgullo"
+    },
+    {
+     "sale": "Jefe"
+    },
+    {
+     "camara": "medio",
+     "quien": "Barbas"
+    },
+    {
+     "dice": "Barbas",
+     "texto": "[dry, sarcastic] ¿Ves por qué yo tardo tres días en cambiar una contraseña?",
+     "gesto": "ef_sorna"
+    },
+    {
+     "quien": "Barbas",
+     "gesto": "ef_bebe"
+    },
+    {
+     "camara": "medio",
+     "quien": "Reynaldo"
+    },
+    {
+     "dice": "Reynaldo",
+     "texto": "[evil grin] Pues se acabó. Voy a hacerlo todo fatal.",
+     "gesto": "ef_teclea"
+    },
+    {
+     "sonido": "teclado"
+    },
+    {
+     "teclea": "Reynaldo",
+     "durante": 1.2
+    },
+    {
+     "dice": "Reynaldo",
+     "texto": "[typing, smug] «No funciona internet». Solución: salga a la calle y hable con gente.",
+     "gesto": "ef_teclea"
+    },
+    {
+     "sonido": "ding"
+    },
+    {
+     "camara": "medio",
+     "quien": "Usu"
+    },
+    {
+     "dice": "Usu",
+     "texto": "[mouth full, amused] Este aprende rápido.",
+     "gesto": "ef_chulo"
+    },
+    {
+     "quien": "Usu",
+     "gesto": "ef_come"
+    },
+    {
+     "camara": "punto",
+     "x": 540,
+     "y": 1150,
+     "zoom": 1.2
+    },
+    {
+     "sonido": "golpe"
+    },
+    {
+     "entra": "Jefe"
+    },
+    {
+     "dice": "Jefe",
+     "texto": "[furious, shouting] ¡Reynaldo! ¡Treinta reclamaciones! ¡A partir de mañana serás supervisor!",
+     "gesto": "ef_furioso"
+    },
+    {
+     "camara": "primer_plano",
+     "quien": "Reynaldo"
+    },
+    {
+     "efecto": "sorpresa",
+     "donde": "Reynaldo"
+    },
+    {
+     "dice": "Reynaldo",
+     "texto": "[shocked] ¿¡QUÉ!?",
+     "gesto": "ef_shock"
+    },
+    {
+     "pausa": 0.5
+    },
+    {
+     "camara": "punto",
+     "x": 540,
+     "y": 1150,
+     "zoom": 1.2
+    },
+    {
+     "dice": "Jefe",
+     "texto": "[proudly] ¡Has demostrado que no sirves para trabajar! ¡Ya puedes dirigir!",
+     "gesto": "ef_orgullo"
+    },
+    {
+     "dice": "Barbas",
+     "texto": "[solemn] Enhorabuena. Te has convertido en lo que más odiabas.",
+     "gesto": "ef_compasivo"
+    },
+    {
+     "dice": "Reynaldo",
+     "texto": "¿Y cuánto cobraré?",
+     "gesto": "ef_pregunta"
+    },
+    {
+     "dice": "Jefe",
+     "texto": "El doble.",
+     "gesto": "ef_orgullo"
+    },
+    {
+     "dice": "Reynaldo",
+     "texto": "[greedy] ¿Dónde firmo?",
+     "gesto": "ef_codicia"
+    },
+    {
+     "sale": "Jefe"
+    },
+    {
+     "quien": "Barbas",
+     "gesto": "ef_poker"
+    },
+    {
+     "dice": "Reynaldo",
+     "texto": "¿Y tú por qué no eres supervisor?",
+     "gesto": "ef_pregunta"
+    },
+    {
+     "quien": "Usu",
+     "gesto": "ef_pies"
+    },
+    {
+     "camara": "medio",
+     "quien": "Usu"
+    },
+    {
+     "dice": "Usu",
+     "texto": "[smug, chewing] Para ascender hay que cagarla trabajando. Yo ni eso.",
+     "gesto": "ef_pies"
+    },
+    {
+     "quien": "Usu",
+     "gesto": "ef_pies_mastica"
+    },
+    {
+     "pausa": 0.8
+    },
+    {
+     "camara": "general"
+    },
+    {
+     "objeto": "prop_logo_punetos",
+     "x": 540,
+     "y": 760,
+     "escala": 0.9,
+     "anim": "flota",
+     "durante": 3
+    },
+    {
+     "efecto": "titulo",
+     "x": 540,
+     "y": 1000,
+     "texto": "El premio al eficiente",
+     "durante": 2.6
+    },
+    {
+     "pausa": 2.7
+    }
+   ]
+  }
+ ]
+}

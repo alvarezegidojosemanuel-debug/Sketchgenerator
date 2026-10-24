@@ -8771,6 +8771,58 @@
      "facing": "right",
      "flat": true,
      "look": "puneto"
+    },
+    {
+     "id": "char.barbas.pose_p_ef_sorna",
+     "key": "pose_p_ef_sorna",
+     "label": "Puñeto · Eficiente · comenta con sorna",
+     "src": "/assets/punetos/punetos/barbas/ef_sorna.webp",
+     "width": 409,
+     "height": 490,
+     "displayScale": 0.871,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/barbas/ef_sorna_boca.webp"
+    },
+    {
+     "id": "char.barbas.pose_p_ef_bebe",
+     "key": "pose_p_ef_bebe",
+     "label": "Puñeto · Eficiente · bebe café",
+     "src": "/assets/punetos/punetos/barbas/ef_bebe.webp",
+     "width": 375,
+     "height": 492,
+     "displayScale": 0.871,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/barbas/ef_bebe_boca.webp"
+    },
+    {
+     "id": "char.barbas.pose_p_ef_compasivo",
+     "key": "pose_p_ef_compasivo",
+     "label": "Puñeto · Eficiente · compasivo",
+     "src": "/assets/punetos/punetos/barbas/ef_compasivo.webp",
+     "width": 443,
+     "height": 493,
+     "displayScale": 0.871,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/barbas/ef_compasivo_boca.webp"
+    },
+    {
+     "id": "char.barbas.pose_p_ef_poker",
+     "key": "pose_p_ef_poker",
+     "label": "Puñeto · Eficiente · cara de póker",
+     "src": "/assets/punetos/punetos/barbas/ef_poker.webp",
+     "width": 375,
+     "height": 493,
+     "displayScale": 0.871,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/barbas/ef_poker_boca.webp"
     }
    ],
    "face": {

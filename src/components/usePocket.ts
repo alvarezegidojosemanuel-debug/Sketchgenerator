@@ -13,6 +13,7 @@ import sk02Raw from "@/data/sketch-02-ultimo-cafe.json";
 import sk03Raw from "@/data/sketch-03-alquiler.json";
 import sk04Raw from "@/data/sketch-04-protocolo.json";
 import sk05Raw from "@/data/sketch-05-comprometido.json";
+import sk06Raw from "@/data/sketch-06-eficiente.json";
 import type { PocketProject } from "@/lib/schema/pocket";
 import { validateProject, type Issue } from "@/lib/schema/validate";
 import { faceStore, libraryStore, newProjectId, projectStore, type LibraryItem } from "@/lib/storage/projects";
@@ -35,6 +36,7 @@ export const DEMOS = {
   "sk-03": sk03Raw,
   "sk-04": sk04Raw,
   "sk-05": sk05Raw,
+  "sk-06": sk06Raw,
 } as const;
 
 export function demoProject(which: keyof typeof DEMOS = "corto-01", catalog: Catalog = defaultCatalog): PocketProject {

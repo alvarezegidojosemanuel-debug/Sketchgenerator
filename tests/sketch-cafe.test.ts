@@ -124,3 +124,18 @@ it("orientación a mano: espejo, boca abajo y giro (y «mira» manda sobre el gi
   expect(at(2, "jefe").flip).toBe(false);
   expect(at(tk.duration - 0.05, "barbas")).toMatchObject({ flip: true, rot: 0, flipV: true });
 });
+
+import efi from "@/data/sketch-06-eficiente.json";
+it("«El premio al eficiente» monta sin avisos y todas las frases mueven la boca", () => {
+  const r = compileScript(efi as never, catalog);
+  expect(r.issues).toEqual([]);
+  expect(validateProject(r.project, catalog).errors).toEqual([]);
+  for (const take of r.project!.takes) {
+    const chars = new Map(take.actors.map((a) => [a.uid, a.characterId]));
+    for (const d of take.events.filter((e) => e.track === "dialogue" && e.actorUid && chars.has(e.actorUid))) {
+      const body = take.events.filter((e) => e.track === "body" && e.actorUid === d.actorUid && "poseId" in e && e.poseId && e.start <= d.start + 0.01).sort((a, b) => b.start - a.start)[0] as { poseId?: string } | undefined;
+      const pose = catalog.characters.find((c) => c.id === chars.get(d.actorUid!))!.poses.find((p) => p.id === body?.poseId);
+      expect(pose?.talkSrc, `${d.actorUid}: ${(d as { text: string }).text}`).toBeTruthy();
+    }
+  }
+});
