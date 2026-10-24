@@ -3823,6 +3823,30 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/reynaldo/ef_pregunta_boca.webp"
+    },
+    {
+     "id": "char.reynaldo.pose_p_ef_teclea2",
+     "key": "pose_p_ef_teclea2",
+     "label": "Puñeto · Eficiente · teclea (mano izq.)",
+     "src": "/assets/punetos/punetos/reynaldo/ef_teclea2.webp",
+     "width": 339,
+     "height": 565,
+     "displayScale": 0.953,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
+    },
+    {
+     "id": "char.reynaldo.pose_p_ef_teclea3",
+     "key": "pose_p_ef_teclea3",
+     "label": "Puñeto · Eficiente · teclea (mano dcha.)",
+     "src": "/assets/punetos/punetos/reynaldo/ef_teclea3.webp",
+     "width": 339,
+     "height": 565,
+     "displayScale": 0.953,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto"
     }
    ],
    "face": {

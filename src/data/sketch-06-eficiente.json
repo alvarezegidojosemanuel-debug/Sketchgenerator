@@ -135,7 +135,7 @@
     },
     {
      "dice": "Barbas",
-     "texto": "[dry, sarcastic] ¿Ves por qué yo tardo tres días en cambiar una contraseña?",
+     "texto": "¿Ves por qué yo tardo tres días en cambiar una contraseña?",
      "gesto": "ef_sorna"
     },
     {
@@ -181,14 +181,14 @@
      "y": 1360,
      "z": 5,
      "escala": 1.4,
-     "gesto": "ef_poker"
+     "gesto": "ef_bebe"
     },
     "Usu": {
      "x": 840,
      "y": 1420,
      "z": 20,
      "escala": 1.3,
-     "gesto": "ef_come",
+     "gesto": "ef_pies_mastica",
      "mira": "derecha"
     }
    },
@@ -218,11 +218,11 @@
      "quien": "Reynaldo"
     },
     {
-     "sonido": "teclado"
+     "sonido": "teclado",
+     "volumen": 0.6
     },
     {
-     "teclea": "Reynaldo",
-     "durante": 1.2
+     "pausa": 1.4
     },
     {
      "dice": "Reynaldo",
@@ -233,8 +233,11 @@
      "sonido": "ding"
     },
     {
-     "teclea": "Reynaldo",
-     "durante": 0.8
+     "sonido": "teclado",
+     "volumen": 0.5
+    },
+    {
+     "pausa": 1.2
     },
     {
      "dice": "Reynaldo",
@@ -251,14 +254,22 @@
     {
      "dice": "Usu",
      "texto": "[mouth full, amused] Este aprende rápido.",
-     "gesto": "ef_chulo"
+     "gesto": "ef_pies"
     },
     {
      "quien": "Usu",
-     "gesto": "ef_come"
+     "gesto": "ef_pies_mastica"
     },
     {
      "pausa": 0.8
+    }
+   ],
+   "acciones": [
+    {
+     "quien": "Reynaldo",
+     "desde": 1,
+     "hasta": 16,
+     "animacion": "teclear"
     }
    ]
   },
@@ -367,7 +378,7 @@
     },
     {
      "dice": "Barbas",
-     "texto": "[solemn] Enhorabuena. Te has convertido en lo que más odiabas.",
+     "texto": "Enhorabuena. Te has convertido en lo que más odiabas.",
      "gesto": "ef_compasivo"
     },
     {
@@ -517,5 +528,31 @@
    "pitch": 1.02,
    "model": "eleven_multilingual_v2"
   }
+ },
+ "animaciones": {
+  "reynaldo": [
+   {
+    "nombre": "teclear",
+    "bucle": true,
+    "frames": [
+     {
+      "pose": "ef_teclea",
+      "dur": 0.11
+     },
+     {
+      "pose": "ef_teclea2",
+      "dur": 0.11
+     },
+     {
+      "pose": "ef_teclea",
+      "dur": 0.11
+     },
+     {
+      "pose": "ef_teclea3",
+      "dur": 0.11
+     }
+    ]
+   }
+  ]
  }
 }
