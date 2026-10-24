@@ -4,7 +4,7 @@
  "idea": "Reynaldo resuelve cincuenta incidencias y le caen cien más; decide hacerlo todo mal… y le ascienden a supervisor.",
  "escenas": [
   {
-   "nombre": "La oficina",
+   "nombre": "La recompensa",
    "lugar": "bg_oficina_mesa",
    "camara": "auto",
    "transicion": "corte",
@@ -33,17 +33,17 @@
     },
     "Usu": {
      "x": 840,
-     "y": 1430,
+     "y": 1420,
      "z": 20,
-     "escala": 1.5,
+     "escala": 1.3,
      "gesto": "ef_come",
      "mira": "derecha"
     },
     "Jefe": {
-     "x": 890,
-     "y": 1800,
+     "x": 960,
+     "y": 1640,
      "z": 90,
-     "escala": 1.35,
+     "escala": 1.8,
      "gesto": "ef_palmada"
     }
    },
@@ -152,6 +152,72 @@
      "gesto": "ef_teclea"
     },
     {
+     "pausa": 0.8
+    }
+   ]
+  },
+  {
+   "nombre": "Todo fatal",
+   "lugar": "bg_oficina_mesa",
+   "camara": "auto",
+   "transicion": "fundido",
+   "ambiente": "oficina",
+   "ambiente_volumen": 0.1,
+   "personajes": [
+    "Reynaldo",
+    "Barbas",
+    "Usu"
+   ],
+   "colocar": {
+    "Reynaldo": {
+     "x": 210,
+     "y": 1430,
+     "z": 20,
+     "escala": 1.5,
+     "gesto": "ef_teclea"
+    },
+    "Barbas": {
+     "x": 530,
+     "y": 1360,
+     "z": 5,
+     "escala": 1.4,
+     "gesto": "ef_poker"
+    },
+    "Usu": {
+     "x": 840,
+     "y": 1420,
+     "z": 20,
+     "escala": 1.3,
+     "gesto": "ef_come",
+     "mira": "derecha"
+    }
+   },
+   "pasos": [
+    {
+     "objeto": "prop_mesa_oficina_delante",
+     "x": 540,
+     "y": 1920,
+     "escala": 1,
+     "profundidad": 60
+    },
+    {
+     "camara": "punto",
+     "x": 540,
+     "y": 1100,
+     "zoom": 1.1
+    },
+    {
+     "rotulo": "MANOS A LA OBRA",
+     "durante": 1.6
+    },
+    {
+     "pausa": 0.6
+    },
+    {
+     "camara": "medio",
+     "quien": "Reynaldo"
+    },
+    {
      "sonido": "teclado"
     },
     {
@@ -161,6 +227,18 @@
     {
      "dice": "Reynaldo",
      "texto": "[typing, smug] «No funciona internet». Solución: salga a la calle y hable con gente.",
+     "gesto": "ef_teclea"
+    },
+    {
+     "sonido": "ding"
+    },
+    {
+     "teclea": "Reynaldo",
+     "durante": 0.8
+    },
+    {
+     "dice": "Reynaldo",
+     "texto": "[typing, smug] «Servidor caído». Solución: dejarlo en el suelo.",
      "gesto": "ef_teclea"
     },
     {
@@ -180,10 +258,74 @@
      "gesto": "ef_come"
     },
     {
+     "pausa": 0.8
+    }
+   ]
+  },
+  {
+   "nombre": "Dos días después",
+   "lugar": "bg_oficina_mesa",
+   "camara": "auto",
+   "transicion": "fundido",
+   "ambiente": "oficina",
+   "ambiente_volumen": 0.1,
+   "personajes": [
+    "Reynaldo",
+    "Barbas",
+    "Usu",
+    "Jefe"
+   ],
+   "colocar": {
+    "Reynaldo": {
+     "x": 210,
+     "y": 1430,
+     "z": 20,
+     "escala": 1.5,
+     "gesto": "ef_teclea"
+    },
+    "Barbas": {
+     "x": 530,
+     "y": 1360,
+     "z": 5,
+     "escala": 1.4,
+     "gesto": "ef_bebe"
+    },
+    "Usu": {
+     "x": 840,
+     "y": 1420,
+     "z": 20,
+     "escala": 1.3,
+     "gesto": "ef_come",
+     "mira": "derecha"
+    },
+    "Jefe": {
+     "x": 960,
+     "y": 1640,
+     "z": 90,
+     "escala": 1.8,
+     "gesto": "ef_palmada"
+    }
+   },
+   "pasos": [
+    {
+     "objeto": "prop_mesa_oficina_delante",
+     "x": 540,
+     "y": 1920,
+     "escala": 1,
+     "profundidad": 60
+    },
+    {
      "camara": "punto",
      "x": 540,
      "y": 1100,
      "zoom": 1.1
+    },
+    {
+     "rotulo": "DOS DÍAS DESPUÉS",
+     "durante": 2.0
+    },
+    {
+     "pausa": 1.6
     },
     {
      "sonido": "golpe"
@@ -366,14 +508,15 @@
    "model": "eleven_v3"
   },
   "reynaldo": {
-   "voiceId": "HMCmDsbKeaSZp5LMOYKR",
-   "name": "Johnny - Mocking, Sarcastic and Rich",
-   "stability": 0.5,
-   "similarity": 0.75,
-   "style": 0.7,
-   "speed": 1.15,
-   "pitch": 1.02,
-   "model": "eleven_multilingual_v2"
+   "voiceId": "pqHfZKP75CvOlQylNhV4",
+   "name": "Bill - Wise, Mature, Balanced",
+   "stability": 1,
+   "similarity": 0.5,
+   "style": 0.55,
+   "speed": 1,
+   "pitch": 1.04,
+   "model": "eleven_v3",
+   "tempo": 1.25
   }
  }
 }
