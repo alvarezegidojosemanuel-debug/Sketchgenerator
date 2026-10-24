@@ -1690,6 +1690,58 @@
      "facing": "right",
      "flat": true,
      "look": "puneto"
+    },
+    {
+     "id": "char.usu.pose_p_ef_juega",
+     "key": "pose_p_ef_juega",
+     "label": "Puñeto · Eficiente · jugando concentrado",
+     "src": "/assets/punetos/punetos/usu/ef_juega.webp",
+     "width": 387,
+     "height": 510,
+     "displayScale": 0.953,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/usu/ef_juega_boca.webp"
+    },
+    {
+     "id": "char.usu.pose_p_ef_juega_gana",
+     "key": "pose_p_ef_juega_gana",
+     "label": "Puñeto · Eficiente · celebra con el mando",
+     "src": "/assets/punetos/punetos/usu/ef_juega_gana.webp",
+     "width": 428,
+     "height": 567,
+     "displayScale": 0.953,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/usu/ef_juega_gana_boca.webp"
+    },
+    {
+     "id": "char.usu.pose_p_ef_juega_relax",
+     "key": "pose_p_ef_juega_relax",
+     "label": "Puñeto · Eficiente · jugando relajado",
+     "src": "/assets/punetos/punetos/usu/ef_juega_relax.webp",
+     "width": 394,
+     "height": 497,
+     "displayScale": 0.953,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/usu/ef_juega_relax_boca.webp"
+    },
+    {
+     "id": "char.usu.pose_p_ef_juega_habla",
+     "key": "pose_p_ef_juega_habla",
+     "label": "Puñeto · Eficiente · juega y habla",
+     "src": "/assets/punetos/punetos/usu/ef_juega_habla.webp",
+     "width": 377,
+     "height": 510,
+     "displayScale": 0.953,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/usu/ef_juega_habla_boca.webp"
     }
    ],
    "face": {
@@ -8847,6 +8899,58 @@
      "flat": true,
      "look": "puneto",
      "talkSrc": "/assets/punetos/punetos/barbas/ef_poker_boca.webp"
+    },
+    {
+     "id": "char.barbas.pose_p_ef_cascos",
+     "key": "pose_p_ef_cascos",
+     "label": "Puñeto · Eficiente · música con cascos",
+     "src": "/assets/punetos/punetos/barbas/ef_cascos.webp",
+     "width": 453,
+     "height": 632,
+     "displayScale": 0.676,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/barbas/ef_cascos_boca.webp"
+    },
+    {
+     "id": "char.barbas.pose_p_ef_cuernos",
+     "key": "pose_p_ef_cuernos",
+     "label": "Puñeto · Eficiente · cuernos heavy",
+     "src": "/assets/punetos/punetos/barbas/ef_cuernos.webp",
+     "width": 471,
+     "height": 630,
+     "displayScale": 0.676,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/barbas/ef_cuernos_boca.webp"
+    },
+    {
+     "id": "char.barbas.pose_p_ef_movil",
+     "key": "pose_p_ef_movil",
+     "label": "Puñeto · Eficiente · mirando el móvil",
+     "src": "/assets/punetos/punetos/barbas/ef_movil.webp",
+     "width": 441,
+     "height": 625,
+     "displayScale": 0.676,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/barbas/ef_movil_boca.webp"
+    },
+    {
+     "id": "char.barbas.pose_p_ef_reojo",
+     "key": "pose_p_ef_reojo",
+     "label": "Puñeto · Eficiente · de reojo, madre mía",
+     "src": "/assets/punetos/punetos/barbas/ef_reojo.webp",
+     "width": 444,
+     "height": 635,
+     "displayScale": 0.676,
+     "facing": "right",
+     "flat": true,
+     "look": "puneto",
+     "talkSrc": "/assets/punetos/punetos/barbas/ef_reojo_boca.webp"
     }
    ],
    "face": {
