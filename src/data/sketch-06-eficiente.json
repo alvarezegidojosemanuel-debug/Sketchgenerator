@@ -56,6 +56,27 @@
      "profundidad": 60
     },
     {
+     "objeto": "prop_portatil_liso",
+     "x": 210,
+     "y": 1280,
+     "escala": 0.42,
+     "profundidad": 40
+    },
+    {
+     "objeto": "prop_portatil_metal",
+     "x": 530,
+     "y": 1280,
+     "escala": 0.42,
+     "profundidad": 40
+    },
+    {
+     "objeto": "prop_portatil_dragon",
+     "x": 840,
+     "y": 1280,
+     "escala": 0.42,
+     "profundidad": 40
+    },
+    {
      "camara": "punto",
      "x": 540,
      "y": 1100,
@@ -201,6 +222,27 @@
      "profundidad": 60
     },
     {
+     "objeto": "prop_portatil_liso",
+     "x": 210,
+     "y": 1280,
+     "escala": 0.42,
+     "profundidad": 40
+    },
+    {
+     "objeto": "prop_portatil_metal",
+     "x": 530,
+     "y": 1280,
+     "escala": 0.42,
+     "profundidad": 40
+    },
+    {
+     "objeto": "prop_portatil_dragon",
+     "x": 840,
+     "y": 1280,
+     "escala": 0.42,
+     "profundidad": 40
+    },
+    {
      "camara": "punto",
      "x": 540,
      "y": 1100,
@@ -267,8 +309,8 @@
    "acciones": [
     {
      "quien": "Reynaldo",
-     "desde": 1,
-     "hasta": 16,
+     "desde": 4,
+     "hasta": 19,
      "animacion": "teclear"
     }
    ]
@@ -324,6 +366,27 @@
      "y": 1920,
      "escala": 1,
      "profundidad": 60
+    },
+    {
+     "objeto": "prop_portatil_liso",
+     "x": 210,
+     "y": 1280,
+     "escala": 0.42,
+     "profundidad": 40
+    },
+    {
+     "objeto": "prop_portatil_metal",
+     "x": 530,
+     "y": 1280,
+     "escala": 0.42,
+     "profundidad": 40
+    },
+    {
+     "objeto": "prop_portatil_dragon",
+     "x": 840,
+     "y": 1280,
+     "escala": 0.42,
+     "profundidad": 40
     },
     {
      "camara": "punto",
