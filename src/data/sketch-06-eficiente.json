@@ -19,21 +19,21 @@
    "colocar": {
     "Reynaldo": {
      "x": 210,
-     "y": 1430,
+     "y": 1410,
      "z": 20,
      "escala": 1.5,
      "gesto": "ef_teclea"
     },
     "Barbas": {
      "x": 530,
-     "y": 1360,
+     "y": 1340,
      "z": 5,
      "escala": 1.4,
      "gesto": "ef_poker"
     },
     "Usu": {
      "x": 840,
-     "y": 1420,
+     "y": 1400,
      "z": 20,
      "escala": 1.3,
      "gesto": "ef_come",
@@ -58,22 +58,22 @@
     {
      "objeto": "prop_portatil_liso",
      "x": 210,
-     "y": 1305,
-     "escala": 0.42,
+     "y": 1330,
+     "escala": 0.62,
      "profundidad": 70
     },
     {
      "objeto": "prop_portatil_metal",
      "x": 530,
-     "y": 1305,
-     "escala": 0.42,
+     "y": 1330,
+     "escala": 0.62,
      "profundidad": 70
     },
     {
      "objeto": "prop_portatil_dragon",
      "x": 840,
-     "y": 1305,
-     "escala": 0.42,
+     "y": 1330,
+     "escala": 0.62,
      "profundidad": 70
     },
     {
@@ -192,21 +192,21 @@
    "colocar": {
     "Reynaldo": {
      "x": 210,
-     "y": 1430,
+     "y": 1410,
      "z": 20,
      "escala": 1.5,
      "gesto": "ef_teclea"
     },
     "Barbas": {
      "x": 530,
-     "y": 1360,
+     "y": 1340,
      "z": 5,
      "escala": 1.4,
      "gesto": "ef_bebe"
     },
     "Usu": {
      "x": 840,
-     "y": 1420,
+     "y": 1400,
      "z": 20,
      "escala": 1.3,
      "gesto": "ef_pies_mastica",
@@ -224,22 +224,22 @@
     {
      "objeto": "prop_portatil_liso",
      "x": 210,
-     "y": 1305,
-     "escala": 0.42,
+     "y": 1330,
+     "escala": 0.62,
      "profundidad": 70
     },
     {
      "objeto": "prop_portatil_metal",
      "x": 530,
-     "y": 1305,
-     "escala": 0.42,
+     "y": 1330,
+     "escala": 0.62,
      "profundidad": 70
     },
     {
      "objeto": "prop_portatil_dragon",
      "x": 840,
-     "y": 1305,
-     "escala": 0.42,
+     "y": 1330,
+     "escala": 0.62,
      "profundidad": 70
     },
     {
@@ -331,21 +331,21 @@
    "colocar": {
     "Reynaldo": {
      "x": 210,
-     "y": 1430,
+     "y": 1410,
      "z": 20,
      "escala": 1.5,
      "gesto": "ef_teclea"
     },
     "Barbas": {
      "x": 530,
-     "y": 1360,
+     "y": 1340,
      "z": 5,
      "escala": 1.4,
      "gesto": "ef_bebe"
     },
     "Usu": {
      "x": 840,
-     "y": 1420,
+     "y": 1400,
      "z": 20,
      "escala": 1.3,
      "gesto": "ef_come",
@@ -370,22 +370,22 @@
     {
      "objeto": "prop_portatil_liso",
      "x": 210,
-     "y": 1305,
-     "escala": 0.42,
+     "y": 1330,
+     "escala": 0.62,
      "profundidad": 70
     },
     {
      "objeto": "prop_portatil_metal",
      "x": 530,
-     "y": 1305,
-     "escala": 0.42,
+     "y": 1330,
+     "escala": 0.62,
      "profundidad": 70
     },
     {
      "objeto": "prop_portatil_dragon",
      "x": 840,
-     "y": 1305,
-     "escala": 0.42,
+     "y": 1330,
+     "escala": 0.62,
      "profundidad": 70
     },
     {
